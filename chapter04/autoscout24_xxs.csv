@@ -1,0 +1,11 @@
+﻿ID,Marke,Modell,Farbe,Erstzulassung,Jahr,Preis (Euro),Leistung (kW),Leistung (PS),Getriebe,Kraftstoff,Verbrauch (l/100 km),Verbrauch (g/km),Kilometerstand (km),Bemerkungen
+Audi Nr. 1,Audi,Audi A4,silber,08/1997,1997,1999,66,90,Schaltgetriebe,Diesel,5.4,146,231000,1.9 TDI / AHK / Tüv neu
+Audi Nr. 2,Audi,Audi A1,weiß,05/2023,2023,35990,81,110,Automatik,Benzin,6.1,138,2500,S line 30 TFSI 81(110) kW(PS) S tr
+Audi Nr. 3,Audi,Audi A3,blau,11/2018,2018,17850,85,116,Automatik,Benzin,6.6,150,127800,Sportback sport 30 TFSI PDC SHZ XENON
+BMW Nr. 1,BMW,BMW X3,blau,04/2018,2018,46830,294,400,Automatik,Diesel,5.9,154,117433,M550 d xDrive AHK+HUD+360+SOFT+SITZKLIMA+NAV-PRO
+BMW Nr. 2,BMW,BMW X2 ,gold,07/2020,2020,27443,103,140,Schaltgetriebe,Benzin,5.5,125,19895,sDrive18i Advantage LED.Navi.RüKamera.ParkAss
+Citroen Nr. 1,Citroen,C3,beige,03/2021,2021,14240,60,82,Schaltgetriebe,Benzin,4.2,97,57070,Feel PureTech 83 + LED + PDC + DAB + BLUETOOTH
+Citroen Nr. 2,Citroen,Citroen Berlingo,blau,07/2020,2020,19950,75,102,Schaltgetriebe,Diesel,4.1,107,81700,HDI 100 Live M Navi Klima PDC
+Citroen Nr. 3,Citroen,Citroen Berlingo,blau,12/2019,2019,15950,75,102,Schaltgetriebe,Diesel,4.1,108,98832,Live M/1 Hand/Klima/Tempomat/PDC
+Citroen Nr. 4,Citroen,Citroen Berlingo,schwarz,01/2021,2021,21990,96,131,Schaltgetriebe,Diesel,4.4,116,8500,"Club XL Kasten Blue-HDI 130 *Mwst.,Navi,DAB,Temp."
+Citroen Nr. 5,Citroen,Citroen C1,silber,03/2021,2021,12450,53,72,Schaltgetriebe,Benzin,3.7,85,15200,VTi 72 Shine+KAMERA+SHZ+APP+DAB+KLIMA+BT

@@ -1,0 +1,931 @@
+Marke,Modell,Farbe,Erstzulassung,Jahr,Preis (Euro),Leistung (kW),Leistung (PS),Getriebe,Kraftstoff,Verbrauch (l/100 km),Kilometerstand (km),Bemerkungen,Zustand
+ford,Ford S-Max,grau,12/2018,2018,19350,140,190,Automatik,Diesel,5.2,100000.0,"Titanium LED+ Navi 18"" Kam DAB+ SpurhalteA",Gebrauchtwagen
+mercedes-benz,Mercedes-Benz G 500,grün,10/2018,2018,119900,310,421,Automatik,Benzin,11.5,92500.0,-Mod.19 -  dt. 1. Hd. - MB-Garantie !,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 250,schwarz,05/2012,2012,18997,150,204,Schaltgetriebe,Diesel,5.1,128586.0,CDI DPF Cabrio BlueEFFICIENCY Avantgarde,Gebrauchtwagen
+bmw,BMW 325,schwarz,05/2003,2003,11000,141,192,Schaltgetriebe,Benzin,9.6,190000.0,Ci Cabrio,Gebrauchtwagen
+ford,Ford S-Max,schwarz,04/2017,2017,21980,132,179,Automatik,Diesel,5.0,85349.0,2.0 TDCi Aut. Titanium,Gebrauchtwagen
+bmw,BMW 118,schwarz,06/2016,2016,17990,110,150,Schaltgetriebe,Diesel,5.0,76000.0,118d M Sport,Gebrauchtwagen
+ford,Ford Kuga,blau,08/2020,2020,31990,140,190,Automatik,Diesel,4.8,30400.0,2.0 EcoBlue Titanium Start/Stopp Panorama SHZ/NSW,junger Gebrauchtwagen
+volkswagen,Volkswagen Sharan,schwarz,02/2011,2011,9600,103,140,Schaltgetriebe,Diesel,5.5,206000.0,Sharan 2.0 TDI BlueMotion Technology Highline,Gebrauchtwagen
+nissan,Nissan Note,schwarz,03/2014,2014,8999,59,80,Schaltgetriebe,Benzin,4.7,59500.0,Acenta 1.2 Keyless Totwinkel 360° - Kamera,Gebrauchtwagen
+kia,Kia Ceed SW / cee'd SW,blau,06/2023,2023,24990,118,160,Schaltgetriebe,Benzin,5.3,5.0,Ceed SW 1.5 T-GDI Klima SHZ Kamera Android/Apple,Neuwagen
+volkswagen,Volkswagen Polo R WRC,weiß,06/2013,2013,15999,272,370,Schaltgetriebe,Benzin,7.5,141000.0,turbo TSI 370PS/560NM,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 250,silber,10/2010,2010,14990,150,204,Automatik,Benzin,7.9,117155.0,CGI BlueEfficiency Garantie* TÜV Neu*Pano*,Gebrauchtwagen
+ford,Ford Mondeo,weiß,10/2017,2017,18749,110,150,Automatik,Diesel,4.9,73450.0,Turnier 2.0 TDCI Titanium NAV+LED+ACC+AHK,Gebrauchtwagen
+opel,Opel GT,silber,08/2007,2007,13980,194,264,Schaltgetriebe,Benzin,8.9,78000.0,GT,Gebrauchtwagen
+volkswagen,Volkswagen Touareg,schwarz,02/2005,2005,4600,128,174,Schaltgetriebe,Diesel,9.8,301555.0,R5 TDI (7LA),Gebrauchtwagen
+opel,Opel Vectra,silber,07/2004,2004,2998,108,147,Schaltgetriebe,Benzin,8.2,65971.0,2.2 Klima Allwetterreifen Tüv 04.2025,Gebrauchtwagen
+skoda,Skoda Octavia,grau,04/2019,2019,25530,180,245,Schaltgetriebe,Benzin,6.8,78455.0,Style DYNAMIC/LED/KAMERA/SPORTSITZE,Gebrauchtwagen
+volkswagen,Volkswagen Golf,weiß,05/2014,2014,14450,77,105,Automatik,Benzin,4.8,70000.0,VII Lim. Cup BMT DSG NAVI SHZ PDC,Gebrauchtwagen
+skoda,Skoda Fabia,rot,04/2023,2023,28795,110,150,Automatik,Benzin,5.5,10.0,"Monte Carlo 1.5 TSI DSG Carlo, Kamera, Winter, ...",Neuwagen
+volkswagen,Volkswagen Tiguan,schwarz,03/2009,2009,7730,125,170,Schaltgetriebe,Diesel,6.3,188050.0,Tiguan 2.0 TDI DPF 4Motion Track,Gebrauchtwagen
+porsche,Porsche Cayenne,schwarz,05/2015,2015,40900,193,262,Automatik,Diesel,6.8,185000.0,Diesel Sport Design *Pano *21 *Luft *,Gebrauchtwagen
+mazda,Mazda MX-5,schwarz,09/2018,2018,24590,135,184,Schaltgetriebe,Benzin,6.9,18640.0,2.0 SKYACTIV-G 184 Signature LED NAVI PDC GRA SHZ,Gebrauchtwagen
+mazda,Mazda CX-30,grau,06/2020,2020,20950,90,122,Schaltgetriebe,Benzin,5.1,28265.0,Selection KAMERA NAVI ACC HUD AID LED,junger Gebrauchtwagen
+toyota,Toyota Land Cruiser,grau,09/2022,2022,63430,150,204,Automatik,Diesel,7.4,60.0,"2.8 D-4D Comfort , SHZ AHK LED",junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,grau,04/2015,2015,15700,125,170,Automatik,Diesel,4.3,170000.0,C 220 (BlueTEC) d T 7G-TRONIC,Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,silber,10/2014,2014,15550,92,125,Automatik,Benzin,5.6,55170.0,"1,4 TSI Comfortline DSG Bi-Xenon",Gebrauchtwagen
+seat,SEAT Ateca,blau,03/2019,2019,26165,110,150,Automatik,Benzin,7.0,28450.0,1.5TSI Style DSG Navigationssystem Climatronic,Gebrauchtwagen
+seat,SEAT Leon,silber,05/2016,2016,7990,81,110,Schaltgetriebe,Diesel,4.5,229000.0,1.4 TSI Start&Stop FR,Gebrauchtwagen
+hyundai,Hyundai i10,braun,03/2016,2016,8000,64,87,Schaltgetriebe,Benzin,4.9,71156.0,YES!,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 250,schwarz,08/2020,2020,29880,165,224,Automatik,Benzin,6.2,100000.0,"Shooting Brake 3x AMG KEYLESS,DISTRONIC",junger Gebrauchtwagen
+skoda,Skoda Octavia,schwarz,01/2021,2021,36990,180,245,Schaltgetriebe,Benzin,6.7,22831.0,Combi 2.0 TSI RS Plus Matrix Kamera Navi,junger Gebrauchtwagen
+porsche,Porsche Macan,blau,03/2022,2022,86850,195,265,Automatik,Benzin,8.8,8900.0,*PANO*LuFT*PDLS*CHRONO*KAMERA*BOSE*ACC*14W,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLS 400,schwarz,10/2018,2018,55900,250,340,Automatik,Diesel,7.2,52055.0,d 4M AMG/Com/ABC/HUD/Distr/Burm/Standhzg Autom.,Gebrauchtwagen
+volkswagen,Volkswagen T-Roc,rot,12/2020,2020,26950,110,150,Automatik,Diesel,5.6,60878.0,"2,0 TDi DSG 4Motion Sport ACC DAB LED NAVI SHZ",junger Gebrauchtwagen
+audi,Audi A6,schwarz,02/2008,2008,8500,171,232,Schaltgetriebe,Diesel,8.1,275000.0,Avant 3.0 TDI DPF quattro,Gebrauchtwagen
+bmw,BMW X1,schwarz,06/2016,2016,21999,170,231,Automatik,Benzin,6.4,149868.0,xD 25i M SPORT NAVI LED KAMERA KEYLESS-GO 1H*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 200,weiß,06/2019,2019,29400,135,184,Automatik,Benzin,6.5,75500.0,9G-TRONIC Avantgarde,Gebrauchtwagen
+opel,Opel Insignia,rot,10/2018,2018,13200,100,136,Automatik,Diesel,5.4,75043.0,1.6 Edition*Automatik*PDC*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 180,silber,03/2017,2017,27999,115,156,Automatik,Benzin,5.3,36000.0,Coupe Automatik/Leder/Navi/LED/Kamera/Totw,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz G 500,silber,11/2012,2012,56999,285,387,Automatik,Benzin,14.9,173250.0,G -Modell Station G 500 - G 63 OPTIK -TOP-,Gebrauchtwagen
+toyota,Toyota Yaris,weiß,04/2020,2020,15590,82,111,Schaltgetriebe,Benzin,5.1,27169.0,Comfort 1.5 Dual-VVT-iE EU6d-T Rückfahrkam. Fernli,junger Gebrauchtwagen
+ford,Ford Transit Custom,grau,08/2016,2016,21999,96,131,Schaltgetriebe,Diesel,6.0,154000.0,/Tourneo Custom 2.0 Kombi 310 L1,Gebrauchtwagen
+volkswagen,Volkswagen Touran,silber,07/2003,2003,3500,85,116,Schaltgetriebe,Benzin,7.7,247000.0,1.6 FSI Trendline 2 Hand 7 Sitzer Tüv Neu,Gebrauchtwagen
+ford,Ford Transit,weiß,03/2012,2012,11999,85,116,Schaltgetriebe,Diesel,8.4,139215.0,2.0 TDCi Business/7 Sitze/Navi/PDC/Temp,Gebrauchtwagen
+ford,Ford Focus,rot,04/2019,2019,19960,92,125,Schaltgetriebe,Benzin,5.1,34800.0,Titanium Navi LED Klima City Stop Keyless Wipa PDC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,grau,05/2011,2011,20999,135,184,Schaltgetriebe,Benzin,6.4,49500.0,SLK 200 (BlueEFFICIENCY),Gebrauchtwagen
+mini,MINI Cooper Countryman,blau,04/2020,2020,22500,100,136,Automatik,Benzin,5.8,42644.0,Aut.,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 200,blau,06/2021,2021,27699,118,160,Automatik,Diesel,4.4,81372.0,"d T+AVANTGARDE+COMAND+Kamera+LED+AHK+17""",junger Gebrauchtwagen
+ford,Ford Mondeo,silber,06/2021,2021,22990,110,150,Schaltgetriebe,Diesel,4.5,18374.0,Turnier ST-Line 2.0 EcoBlue elektr.Panoramadach+el,junger Gebrauchtwagen
+bmw,BMW 118,grau,12/2009,2009,10900,105,143,Schaltgetriebe,Benzin,6.6,97900.0,118i Cabrio,Gebrauchtwagen
+ford,Ford Kuga,grau,09/2022,2022,28980,110,150,Schaltgetriebe,Benzin,5.5,25.0,"Titanium 1,5L Ecoboost/Navi/LED/Kamera",junger Gebrauchtwagen
+seat,SEAT Ateca,weiß,01/2021,2021,32180,110,150,Automatik,Diesel,5.9,23620.0,"2.0 TDI Xperience AHK Pano LM 18"" LED Navi",junger Gebrauchtwagen
+opel,Opel Meriva,grau,06/2017,2017,11990,103,140,Schaltgetriebe,Benzin,7.1,100000.0,B Innovation-Kamera-PDC-Lenkrad HZG-,Gebrauchtwagen
+ford,Ford EcoSport,schwarz,07/2015,2015,10999,92,125,Schaltgetriebe,Benzin,5.3,55000.0,1.0 EcoBoost TITANIUM mit Sonderausstattung,Gebrauchtwagen
+opel,Opel Mokka,blau,03/2022,2022,24780,96,131,Automatik,Benzin,5.9,30000.0,GS Line *ACC* AUTOMATIK KAMERA LED SPURHALTE NAVI,junger Gebrauchtwagen
+volvo,Volvo XC40,silber,02/2023,2023,38200,120,163,Automatik,Benzin,6.6,2182.0,Core B3 Aut. EU6d Kamera Navi LED,Jahreswagen
+renault,Renault Megane,grau,05/2023,2023,79999,103,140,Schaltgetriebe,Benzin,5.4,18.0,TCe140 LED EasyLink AAC PDC Alu,Neuwagen
+bmw,BMW X1,blau,09/2018,2018,23800,140,190,Automatik,Diesel,4.8,79500.0,"xDrive20d Aut, Navi, AHK, Sportsi.,Stop&Go",Gebrauchtwagen
+seat,SEAT Leon,rot,05/2021,2021,28480,110,150,Automatik,Benzin,5.0,24360.0,"ST 1.5 eTSI DSG Style AHK, RFK, Beats, Keyless,...",junger Gebrauchtwagen
+skoda,Skoda Citigo,silber,04/2019,2019,11980,44,60,Schaltgetriebe,Benzin,4.1,31262.0,1.0 Style Urban Paket,Gebrauchtwagen
+nissan,Nissan Qashqai,grau,10/2014,2014,15990,81,110,Schaltgetriebe,Diesel,3.8,50800.0,1.5 dCi TEKNA,Gebrauchtwagen
+audi,Audi A4,weiß,07/2013,2013,13950,110,150,Schaltgetriebe,Diesel,4.7,121222.0,Avant Ambiente/Navigation/Tempomat/PDC/,Gebrauchtwagen
+citroen,Citroen C5 X,schwarz,02/2023,2023,32950,96,131,Automatik,Benzin,6.1,3000.0,PureTech 130 Start&Stop EAT8 FEEL PACK,Jahreswagen
+skoda,Skoda Octavia,blau,07/2019,2019,15980,85,116,Automatik,Diesel,4.0,109669.0,"Combi 1.6TDI DSG Ambition Navi, PDC",Gebrauchtwagen
+opel,Opel Corsa,orange,04/2020,2020,13990,55,75,Schaltgetriebe,Benzin,5.9,55124.0,F 1.2 Edition Klima SHZ LHZ TouchDisplay,junger Gebrauchtwagen
+seat,SEAT Arona,weiß,07/2021,2021,21480,81,110,Schaltgetriebe,Benzin,5.0,14500.0,"FR Parklenk,Navi,LED",junger Gebrauchtwagen
+audi,Audi Q5,silber,06/2021,2021,50650,195,265,Automatik,Benzin,8.3,29043.0,45 TFSI quattro Advanced S tronic S line ACC,junger Gebrauchtwagen
+audi,Audi A4 allroad,schwarz,07/2019,2019,34745,180,245,Automatik,Benzin,6.8,56621.0,45TFSI S TRONIC NAVI SPORTS ALCANTARA,Gebrauchtwagen
+seat,SEAT Leon,rot,10/2019,2019,18450,96,131,Schaltgetriebe,Benzin,4.9,74380.0,1.5 TSI Style Navi Pano Beats ACC PDC 17Alu,Gebrauchtwagen
+peugeot,Peugeot 5008,silber,04/2023,2023,37990,96,131,Automatik,Benzin,5.2,2.0,1.2 PureTech 130 AT LED Navi SHZ Kam VC,Neuwagen
+peugeot,Peugeot 508,schwarz,12/2020,2020,32550,165,224,Automatik,Benzin,5.3,59500.0,SW PT 225 EAT8 GT +PSD+MET+V/LED+18LM+NAVI++,junger Gebrauchtwagen
+fiat,Fiat Tipo,schwarz,06/2021,2021,18990,74,101,Schaltgetriebe,Benzin,5.4,23000.0,5-Türer Cross 1.0 74 kW mit AHK LED SHZ,junger Gebrauchtwagen
+volkswagen,Volkswagen Passat Variant,grau,06/2019,2019,17930,110,150,Schaltgetriebe,Diesel,4.1,121403.0,2.0 TDI COMFORTLINE NAVI+AHK+ACC,Gebrauchtwagen
+audi,Audi Q3,grau,10/2020,2020,28750,140,190,Automatik,Benzin,7.5,63250.0,40 TFSI QUATTRO S-TRONIC NAVI/LED/AHK/SHZ/PDC,junger Gebrauchtwagen
+ford,Ford Fiesta,schwarz,05/2012,2012,7500,60,82,Schaltgetriebe,Benzin,5.7,175000.0,Neue Tüv SHZ Klima 8 fach bereift,Gebrauchtwagen
+opel,Opel Insignia,schwarz,03/2019,2019,17989,125,170,Automatik,Diesel,6.7,72814.0,Sports Tourer 2.0 Diesel Aut. Business Innovation,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz A 150,silber,11/2006,2006,3250,70,95,Schaltgetriebe,Benzin,6.2,107000.0,"TÜV, 2.Hand von Rentnern, nur 107.000km!",Gebrauchtwagen
+opel,Opel Corsa,silber,01/2022,2022,16490,55,75,Schaltgetriebe,Benzin,5.4,10688.0,F Edition 1.2 KAMERA NAVI LED SHZ APPLECAR,junger Gebrauchtwagen
+bmw,BMW 318,schwarz,10/2013,2013,10500,105,143,Automatik,Diesel,4.5,245000.0,d*Bluetooth*Sitzhzg*PDC*2.Hd*Tempomat*,Gebrauchtwagen
+volkswagen,Volkswagen T-Roc,grau,07/2019,2019,24555,110,150,Automatik,Benzin,5.6,68100.0,1.5 TSI DSG Style Pano Navi LED ACC,Gebrauchtwagen
+ford,Ford Fiesta,schwarz,11/2015,2015,7990,55,75,Schaltgetriebe,Diesel,3.6,126964.0,Trend Einparkhilfe Frontscheibenheizung,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,weiß,09/2017,2017,26950,125,170,Automatik,Diesel,4.7,100229.0,d 4Matic *AMG Line * Navi * LED *Standheiz,Gebrauchtwagen
+opel,Opel Mokka X,schwarz,09/2017,2017,14900,103,140,Schaltgetriebe,Benzin,5.9,75450.0,1.4 (ecoFLEX) ECOTEC Start/Stop Innovation,Gebrauchtwagen
+audi,Audi A4,grau,03/2012,2012,15499,180,245,Automatik,Diesel,5.9,171000.0,A4 Avant 3.0 TDI DPF clean diesel quattro S tronic,Gebrauchtwagen
+bmw,BMW 120,silber,01/2018,2018,20000,135,184,Schaltgetriebe,Benzin,5.7,34000.0,120i Advantage,Gebrauchtwagen
+porsche,Porsche Cayenne,silber,07/2020,2020,109490,404,549,Automatik,Benzin,11.4,83147.0,"4.0 V8 Turbo Keramik 22"" PDLS+ BOSE SAGA",junger Gebrauchtwagen
+mini,MINI One Countryman,grau,12/2022,2022,29990,75,102,Schaltgetriebe,Benzin,6.1,10.0,Aut. RFK Panorama HeadUp DAB Navi Apple CarPlay,junger Gebrauchtwagen
+hyundai,Hyundai i20,silber,04/2022,2022,17199,62,84,Schaltgetriebe,Benzin,5.5,3458.0,Select 1.2 KLIMA PDC DAB TEMPOMAT,junger Gebrauchtwagen
+volkswagen,Volkswagen Polo,grau,02/2015,2015,8490,55,75,Schaltgetriebe,Benzin,5.1,123000.0,Comfortline,Gebrauchtwagen
+volkswagen,Volkswagen Caddy,rot,02/2019,2019,13290,75,102,Schaltgetriebe,Benzin,5.5,82938.0,1.0 TSI Kasten Radio Leiterklappe Flex Sitz,Gebrauchtwagen
+audi,Audi A6,grau,03/2016,2016,41000,240,326,Automatik,Diesel,6.4,76000.0,A6 Avant 3.0 TDI competition quattro tiptronic,Gebrauchtwagen
+opel,Opel Grandland X,weiß,04/2020,2020,19890,96,131,Schaltgetriebe,Diesel,3.9,79850.0,F 1.2 T[Euro6d] S/S 5-T Elegance,junger Gebrauchtwagen
+bmw,BMW X2,schwarz,07/2019,2019,34749,225,306,Automatik,Benzin,6.9,59750.0,M35i xDrive NAV+LED+HEADUP+H&K+ACC+SHZ+KAMERA,Gebrauchtwagen
+dacia,Dacia Jogger,braun,06/2023,2023,22880,81,110,Schaltgetriebe,Benzin,5.7,10.0,Jogger Extreme 7-SITZER+NAVI+LED+SHZ+LM+KAMERA+PDC,Neuwagen
+ford,Ford Fiesta,blau,05/2021,2021,18400,70,95,Schaltgetriebe,Benzin,4.1,35020.0,Titanium X LED SITZHEIZUNG PDC NAVI SOUND SYSTEM,junger Gebrauchtwagen
+peugeot,Peugeot 5008,weiß,11/2019,2019,32000,133,181,Automatik,Benzin,5.7,37336.0,Allure inkl. GT-LIne Pure Tech 180EAT8,Gebrauchtwagen
+volkswagen,Volkswagen Golf Plus,blau,04/2013,2013,10250,90,122,Schaltgetriebe,Benzin,6.5,70000.0,1.4 TSI MATCH,Gebrauchtwagen
+volkswagen,Volkswagen Golf,braun,05/2011,2011,9970,77,105,Schaltgetriebe,Benzin,5.8,121577.0,VI Variant Trendline Top Zustand,Gebrauchtwagen
+ford,Ford Kuga,grau,11/2015,2015,14500,110,150,Schaltgetriebe,Diesel,4.7,109500.0,Kuga 2.0 TDCi 2x4 Titanium,Gebrauchtwagen
+dacia,Dacia Logan,braun,07/2018,2018,7890,54,73,Schaltgetriebe,Benzin,5.4,114335.0,"MCV Essential 1.0 Benzin 54 kW (73 PS), Schalt....",Gebrauchtwagen
+bmw,BMW 330,schwarz,03/2021,2021,45980,210,286,Automatik,Diesel,4.4,43000.0,"dA M-SPORT LC.PROF LASER HUD DA PROF. ACC 19""",junger Gebrauchtwagen
+skoda,Skoda Octavia,grau,11/2018,2018,22900,180,245,Automatik,Benzin,6.4,42202.0,2.0 TSI RS 245 Aut.*ACC*PANO*PDC*SHZ*ALU,Gebrauchtwagen
+volvo,Volvo XC60,silber,12/2022,2022,51900,145,197,Automatik,Benzin,7.0,100.0,Core B4 Benzin EU6d digitales Cockpit LED ACC 2-Zo,junger Gebrauchtwagen
+ford,Ford Mustang,rot,03/2016,2016,36999,324,441,Schaltgetriebe,Benzin,13.6,54441.0,MUSTANG 5.0 CABRIO V8 GT/CS CALIFORNIA SPECIAL!,Gebrauchtwagen
+porsche,Porsche 911,grau,12/2016,2016,105500,309,420,Automatik,Benzin,8.7,47000.0,Carrera S,Gebrauchtwagen
+ford,Ford Fiesta,weiß,02/2018,2018,11500,74,101,Schaltgetriebe,Benzin,5.2,62780.0,2.0 EcoBlue Titanium B&O SpoSi Navi,Gebrauchtwagen
+audi,Audi A6,silber,02/2015,2015,31500,265,360,Automatik,Diesel,6.4,149990.0,design quattro 2.0 TFSI S-Line S-Tronic LEDER,Gebrauchtwagen
+porsche,Porsche Cayenne,schwarz,04/2023,2023,122980,250,340,Automatik,Benzin,11.8,22.0,Platinum Chrono Sbel PASM ACC Sportabg.,Neuwagen
+volkswagen,Volkswagen Passat Variant,grau,03/2012,2012,7000,77,105,Schaltgetriebe,Diesel,4.4,255902.0,Comfortline BlueMotion (365),Gebrauchtwagen
+toyota,Toyota Verso,schwarz,12/2014,2014,9399,130,177,Schaltgetriebe,Diesel,5.8,127675.0,2.2 D-CAT 7-Sitzer Executive,Gebrauchtwagen
+bmw,BMW 318,schwarz,05/2011,2011,9950,105,143,Schaltgetriebe,Diesel,4.8,188000.0,d Touring Aut.*Bi-XENON*T.LEDER*NAVI*PDC*AHK*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,schwarz,05/2005,2005,12770,120,163,Automatik,Benzin,9.2,95900.0,"Kompressor, Automatik, Leder, Airscarf-Sys",Gebrauchtwagen
+ford,Ford Fiesta,blau,05/2013,2013,8990,92,125,Schaltgetriebe,Benzin,4.3,72000.0,Titanium Individual *1.Hand*Sitzhzg*Leder,Gebrauchtwagen
+seat,SEAT Ateca,blau,10/2016,2016,16490,110,150,Schaltgetriebe,Benzin,5.3,92150.0,Style Navi Rückfahrkamera Sitzheizing Klima Navi,Gebrauchtwagen
+mazda,Mazda MX-5,rot,08/2022,2022,31990,135,184,Schaltgetriebe,Benzin,6.9,1963.0,SKYACTIV-G 2.0,junger Gebrauchtwagen
+toyota,Toyota Aygo X,weiß,09/2017,2017,11590,51,69,Schaltgetriebe,Benzin,4.1,63079.0,-play touch KAMERA BLUETOOTH,Gebrauchtwagen
+toyota,Toyota,schwarz,12/2009,2009,3990,50,68,Schaltgetriebe,Benzin,4.6,102803.0,Aygo AYGO Cool / KLIMA /,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz T-Class,silber,01/2023,2023,32950,85,116,Automatik,Diesel,5.7,17746.0,T 180 d ED Progressive Navi*Cam*Klima*LED*DAB*7G,Jahreswagen
+mercedes-benz,Mercedes-Benz AMG GT,schwarz,01/2017,2017,119900,375,510,Automatik,Benzin,9.4,4050.0,S Coupe (BM 190),Gebrauchtwagen
+bmw,BMW 530,silber,03/2020,2020,26600,195,265,Automatik,Diesel,5.5,109998.0,d LiveCockpit*Navi*LED*Leder*Kamera*17LM,junger Gebrauchtwagen
+skoda,Skoda Superb,schwarz,03/2018,2018,24880,140,190,Automatik,Diesel,5.3,118253.0,Combi 2.0TDI DSG 4X4 STYLE *LEDER *NAVI *AHK,Gebrauchtwagen
+renault,Renault Twingo,rot,02/2021,2021,15499,68,92,Schaltgetriebe,Benzin,4.7,5700.0,TCe 90 LIMITED,junger Gebrauchtwagen
+seat,SEAT Ateca,weiß,02/2022,2022,29890,110,150,Automatik,Diesel,4.5,15530.0,2.0 TDI DSG Style VIRTUAL*NAVI*LED*ACC*PDC*KAME...,junger Gebrauchtwagen
+ford,Ford Fiesta,weiß,10/2020,2020,14999,63,86,Schaltgetriebe,Diesel,3.9,13000.0,1.5 TDCi COOL&CONNECT / 1.Hand / Allwetterreifen,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 350,silber,09/2011,2011,17990,195,265,Automatik,Diesel,6.5,190000.0,CDI T-Modell AVANTGARDE*XENON*PANO*TOTW,Gebrauchtwagen
+skoda,Skoda Karoq,weiß,04/2023,2023,37395,110,150,Automatik,Benzin,6.2,10.0,"Sportline 1.5 TSI DSG Sportline, Matrix, Navi, ...",Neuwagen
+mercedes-benz,Mercedes-Benz CLA 220,weiß,04/2015,2015,23600,130,177,Automatik,Diesel,4.3,85155.0,CLA220Cdi|SB|AMG Line|AMG Sport Paket|ChromPaket,Gebrauchtwagen
+renault,Renault Kadjar,weiß,05/2018,2018,14999,96,131,Schaltgetriebe,Benzin,5.9,35120.0,Life/Top-gepflegt/ 1 Hand,Gebrauchtwagen
+ford,Ford Fiesta,grau,12/2003,2003,500,50,68,Schaltgetriebe,Diesel,4.6,400000.0,Fiesta 1.4 TDCI,Gebrauchtwagen
+opel,Opel Crossland,rot,01/2023,2023,27490,96,131,Automatik,Benzin,5.4,3000.0,"Elegance, Kamera, Sitzhzg., LED",Jahreswagen
+nissan,Nissan Qashqai,weiß,03/2023,2023,40990,140,190,Automatik,Benzin,5.3,10.0,N-Connecta 1.5 VC-T e-POWER 190 PS 4x2 Winter+Busi,Neuwagen
+skoda,Skoda Fabia,weiß,05/2023,2023,20790,81,110,Schaltgetriebe,Benzin,5.6,640.0,"Fabia 1.0 TSI Style,ACC,SHZ,AHK,Kame,DigilCock",Jahreswagen
+dacia,Dacia Sandero,rot,01/2023,2023,16450,67,91,Schaltgetriebe,Benzin,5.3,11.0,"III 1,0 TCe Expression DAB LED PDC",Neuwagen
+opel,Opel Corsa,blau,05/2022,2022,19390,74,101,Automatik,Benzin,4.4,13929.0,Elegance :SOFORT+ NAVI+ WinterPak+ Leder+ Kamer...,junger Gebrauchtwagen
+volkswagen,Volkswagen Touran,blau,06/2018,2018,18950,85,116,Schaltgetriebe,Diesel,4.5,75553.0,1.6 TDI Join ACC Navi PDC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SL 500,blau,10/2004,2004,18450,225,306,Automatik,Benzin,12.1,131400.0,Roadster im TOP Zustand !,Gebrauchtwagen
+opel,Opel Insignia,braun,11/2020,2020,27990,90,122,Automatik,Diesel,5.5,5773.0,ST 1.5 D Business Elegance 'LEDER''LED',junger Gebrauchtwagen
+audi,Audi Q5,schwarz,08/2022,2022,52985,195,265,Automatik,Benzin,7.3,25700.0,45 TFSI  quattro S-LINE*LED*VIRTUAL*NAVI-PLUS,junger Gebrauchtwagen
+seat,SEAT Alhambra,schwarz,04/2013,2013,21499,103,140,Schaltgetriebe,Diesel,5.5,122500.0,*Style*Navi*Kamera*7 Sitzer*Sitzh*PDC*,Gebrauchtwagen
+volkswagen,Volkswagen Golf Plus,grau,06/2005,2005,3299,55,75,Schaltgetriebe,Benzin,7.2,199000.0,1.4 Comfortline Klima Navi Bluetooth,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 250,silber,02/2016,2016,42990,150,204,Automatik,Diesel,5.0,29600.0,d 4Matic l AMG l 360° l 1.HAND l,Gebrauchtwagen
+ford,Ford EcoSport,gelb,08/2021,2021,20980,92,125,Schaltgetriebe,Benzin,5.0,4025.0,1.0 EcoBoost Active LED Navi Blis Temp.,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,grau,04/2014,2014,16990,162,220,Schaltgetriebe,Benzin,6.0,90000.0,VII Lim. GTI BMT *Navi*SHZ*PDC*8-Fach*,Gebrauchtwagen
+opel,Opel Crossland,weiß,06/2022,2022,22990,96,131,Schaltgetriebe,Benzin,6.0,8900.0,1.2 GS Line,junger Gebrauchtwagen
+ford,Ford Focus,schwarz,04/2023,2023,29990,114,155,Automatik,Benzin,5.4,15.0,1.0 MHEV Autom. ST-Line X / Keyfree / LED,Neuwagen
+bmw,BMW 528,grau,06/2011,2011,12900,190,258,Automatik,Benzin,8.0,139000.0,i*Leder*Automatik*M-Lenkrad*Sportsitze*R-Kam*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 200,weiß,05/2010,2010,15900,135,184,Automatik,Benzin,7.9,145000.0,E 200 CGI Cabrio BlueEFFICIENCY Avantgarde,Gebrauchtwagen
+skoda,Skoda Superb,silber,07/2019,2019,26490,110,150,Automatik,Diesel,4.4,70200.0,"2,0TDI Ambition DSG Navi ACC Bi-Xenon Kamera 1. H",Gebrauchtwagen
+opel,Opel Mokka,blau,02/2015,2015,12700,103,140,Schaltgetriebe,Benzin,6.3,65081.0,Innovation ecoFlex 4x4,Gebrauchtwagen
+volkswagen,Volkswagen Caddy,silber,04/2014,2014,16999,77,105,Schaltgetriebe,Benzin,6.7,98000.0,Kombi*SHZ*PDC*Klimaaut*Scheckheft*8-fachBR,Gebrauchtwagen
+land-rover,Land Rover Range Rover,blau,05/2018,2018,67700,190,258,Automatik,Diesel,6.9,88300.0,"3,0 TDV6 *MANSORY* (PANO/LED/CAM/",Gebrauchtwagen
+hyundai,Hyundai i30,schwarz,08/2022,2022,19990,88,120,Schaltgetriebe,Benzin,5.0,15341.0,1.0 Turbo 48V Trend Klima DAB Apple Android,junger Gebrauchtwagen
+mini,MINI Cooper S Cabrio,weiß,05/2009,2009,12250,141,192,Schaltgetriebe,Benzin,7.1,118000.0,Mini One,Gebrauchtwagen
+audi,Audi A8,schwarz,01/2016,2016,35970,193,262,Automatik,Diesel,6.0,132836.0,3.0 TDI qu. Tiptr. MASSAGE-HuD-NIGHT-STANDHZG,Gebrauchtwagen
+bmw,BMW 530,grau,02/2017,2017,26999,195,265,Automatik,Diesel,5.0,223480.0,Baureihe 5 Lim. 530 d xDrive Luxury Line,Gebrauchtwagen
+ford,Ford Tourneo Custom,schwarz,03/2023,2023,52490,125,170,Automatik,Diesel,8.8,35.0,TOURNEO CUSTOM 2.0 TDCI AUTO. 320 L1 TITANIUM NAVI,Jahreswagen
+audi,Audi A3,blau,02/2003,2003,750,75,102,Schaltgetriebe,Benzin,6.8,232400.0,A3 1.6 Ambition,Gebrauchtwagen
+mazda,Mazda CX-5,schwarz,05/2019,2019,26990,135,184,Schaltgetriebe,Diesel,5.2,39000.0,Sports-Line AWD/1. Hand/TOP/2000kg Anhängerkupp,Gebrauchtwagen
+mazda,Mazda CX-5,blau,12/2018,2018,23990,110,150,Schaltgetriebe,Diesel,5.2,64123.0,Exclusive-Line,Gebrauchtwagen
+peugeot,Peugeot 3008,grau,05/2017,2017,20500,96,131,Schaltgetriebe,Benzin,5.1,37800.0,PureTech 130 Stop & Start Allure/AHK/Restgarantie,Gebrauchtwagen
+audi,Audi Q5,schwarz,04/2009,2009,14600,155,211,Automatik,Benzin,8.6,143200.0,2.0 TFSI quattro S tronic,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLS 63 AMG,weiß,05/2016,2016,69900,430,585,Automatik,Benzin,12.3,82350.0,4Matic Speedshift 7G-TRONIC,Gebrauchtwagen
+ford,Ford Kuga,grau,05/2018,2018,20950,129,175,Automatik,Benzin,9.0,79052.0,ST-Line Anhängerkupplung,Gebrauchtwagen
+audi,Audi Q2,silber,08/2022,2022,64950,110,150,Automatik,Diesel,4.7,18733.0,35 TDI quattro S-tronic advanced LED/Navi,junger Gebrauchtwagen
+renault,Renault Grand Scenic,schwarz,02/2019,2019,21950,103,140,Automatik,Benzin,5.5,53846.0,1.3 TCe 140 Limited GPF Bluetooth,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 200,silber,05/2021,2021,34760,120,163,Automatik,Benzin,6.6,29679.0,SB AMG Night Pano LED  Kam 360° Ambie 19,junger Gebrauchtwagen
+peugeot,Peugeot 208,rot,08/2022,2022,30997,74,101,Schaltgetriebe,Benzin,4.3,500.0,Allure Pack PureTech 100 Keyless Sitzheizung,junger Gebrauchtwagen
+volkswagen,Volkswagen Caddy,weiß,11/2017,2017,18500,110,150,Schaltgetriebe,Diesel,4.9,100000.0,PKW Trendline BMT*KLIMA*NAVI*PDC*5-SI*AHK*,Gebrauchtwagen
+opel,Opel Corsa,blau,11/2006,2006,1750,44,60,Schaltgetriebe,Benzin,5.6,197235.0,D Edition Klima,Gebrauchtwagen
+kia,Kia Picanto,weiß,06/2021,2021,13450,62,84,Schaltgetriebe,Benzin,4.8,19013.0,1.2 DreamTeam NAVI Sitzhzg. 8-fach,junger Gebrauchtwagen
+ford,Ford Focus,weiß,07/2019,2019,19790,110,150,Automatik,Benzin,5.9,56800.0,Lim. ST-Line 1.5 EcoBoost Automatik,Gebrauchtwagen
+bmw,BMW X5,weiß,04/2016,2016,36000,190,258,Automatik,Diesel,7.0,138000.0,xDrive30d Sport-Aut.,Gebrauchtwagen
+volkswagen,Volkswagen T-Roc,gold,05/2021,2021,25450,110,150,Schaltgetriebe,Benzin,5.3,19000.0,United*ACC/SHZ/LANE-ASSIST/CARPLAY/KAMERA*,junger Gebrauchtwagen
+audi,Audi A6,schwarz,02/2014,2014,16499,230,313,Automatik,Diesel,6.4,232720.0,Avant 3.0 TDI quattro Abstandstempomat Standh,Gebrauchtwagen
+audi,Audi S6,schwarz,04/2000,2000,4500,250,340,Automatik,Benzin,14.2,394000.0,A3 1.8 T Ambition,Gebrauchtwagen
+kia,Kia Sportage,schwarz,12/2021,2021,33950,130,177,Automatik,Benzin,7.4,13600.0,1.6T DCT | GT Line | Tech | LED | GD,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf Variant,silber,08/2007,2007,2296,77,105,Schaltgetriebe,Diesel,5.2,217000.0,1.9 TDI,Gebrauchtwagen
+skoda,Skoda Scala,blau,06/2020,2020,17490,85,116,Schaltgetriebe,Diesel,4.0,88500.0,1.6 TDI DPF Ambition Android Auto,junger Gebrauchtwagen
+kia,Kia Rio,rot,12/2018,2018,14990,73,99,Schaltgetriebe,Benzin,5.5,77729.0,1.4  Dream Team Shz Lhz KlimAt Alu16 EU6d-T,Gebrauchtwagen
+seat,SEAT Ibiza,grau,04/2023,2023,31850,110,150,Automatik,Benzin,5.0,50.0,IBIZA 1.5 TSI 110kW FR Pro *SOFORT+AHK+ESD+LED,Jahreswagen
+audi,Audi A4,grau,04/2011,2011,6999,105,143,Automatik,Diesel,4.9,169800.0,2.0 TDI 105kW Multitronic Ambiente Avant,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLA 180,silber,01/2018,2018,25880,90,122,Automatik,Benzin,5.6,39800.0,URBAN+AHK+LED+EASYP.+NAVI+BUSINESS+SITZH Navi,Gebrauchtwagen
+audi,Audi Q8,schwarz,02/2019,2019,74980,210,286,Automatik,Diesel,6.8,38351.0,50 TDI 3x S LINE ACC+KAMER+HEADUP+PANO+MATRIX,Gebrauchtwagen
+volkswagen,Volkswagen Golf,blau,02/2019,2019,15399,85,116,Schaltgetriebe,Diesel,4.1,105000.0,VII Lim. Join 1.6 TDI ACC~NAVI~SHZ~PDC~,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 350,schwarz,12/2015,2015,18000,173,235,Automatik,Diesel,5.1,230000.0,BlueTEC 9G-TRONIC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 220,silber,06/2018,2018,16990,143,194,Automatik,Diesel,4.9,350000.0,E -Klasse T-Modell E 220 d,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 220,blau,07/2017,2017,28490,125,170,Automatik,Diesel,5.0,96874.0,d 4M Navi Kamera SHZ Klima PTS,Gebrauchtwagen
+ford,Ford Fiesta,blau,05/2020,2020,34950,103,140,Schaltgetriebe,Benzin,4.9,35603.0,1.0 EcoBoost S&S VIGNALE,junger Gebrauchtwagen
+peugeot,Peugeot 3008,schwarz,01/2022,2022,35990,96,131,Automatik,Benzin,5.0,1000.0,PureTech 130 Stop & Start GPF EAT8 Allure Pack,junger Gebrauchtwagen
+opel,Opel Corsa,weiß,06/2019,2019,9450,51,69,Schaltgetriebe,Benzin,5.6,47000.0,E Selection Klima/Tempomat/HU+AU neu,Gebrauchtwagen
+skoda,Skoda Kodiaq,blau,05/2023,2023,40395,110,150,Automatik,Benzin,7.2,10.0,"Style 1.5 TSI DSG Style, AHK, Navi, el. Klappe,...",Neuwagen
+seat,SEAT Ibiza,grau,03/2023,2023,15999,59,80,Schaltgetriebe,Benzin,4.8,10.0,1.0 MPI STYLE VIRTUAL LED CARPLAY,Neuwagen
+volkswagen,Volkswagen Caddy,grün,11/2018,2018,27499,96,131,Schaltgetriebe,Benzin,6.7,45325.0,1.4 TSI Alltrack NAVI AHK STHZ LANE ACC,Gebrauchtwagen
+volvo,Volvo XC60,weiß,10/2019,2019,42990,140,190,Automatik,Diesel,4.9,38000.0,R Design 2WD D4 EU6d-T AHK Navi digitales Cockpit,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 220,grau,11/2015,2015,22000,130,177,Automatik,Diesel,4.6,153000.0,CLA Shooting Brake 220 (CDI) d 4Matic 7G-DCT Urban,Gebrauchtwagen
+volkswagen,Volkswagen up!,schwarz,06/2019,2019,14990,85,116,Schaltgetriebe,Benzin,4.8,34798.0,GTI / 5 Türen / incl. Garantie /,Gebrauchtwagen
+volkswagen,Volkswagen Golf Variant,rot,06/2018,2018,15499,85,116,Automatik,Diesel,4.0,132500.0,1.6 TDI DSG Join*Front-Assist*Navi*1Hand*,Gebrauchtwagen
+fiat,Fiat 500,rot,06/2019,2019,16950,51,69,Schaltgetriebe,Benzin,5.3,29188.0,1.2 8V Pop Star Klimaanlage EURO 6d,Gebrauchtwagen
+porsche,Porsche Macan,schwarz,08/2018,2018,59990,309,420,Automatik,Benzin,8.8,23190.0,S *420PS PP Performance Tuning* BOSE XENON,Gebrauchtwagen
+toyota,Toyota,grau,03/2009,2009,5899,50,68,Automatik,Benzin,4.6,148000.0,Aygo City 1.0/2.HND/SCKHFT/AUTMTK/KLIMA/EL.FENST,Gebrauchtwagen
+skoda,Skoda Superb,schwarz,04/2019,2019,25899,140,190,Automatik,Diesel,6.1,49000.0,Combi 2.0 TDI DSG Sportline,Gebrauchtwagen
+fiat,Fiat Fiorino,weiß,03/2023,2023,17990,59,80,Schaltgetriebe,Diesel,5.0,99.0,KAWA SX 1.3 MJET 80PS KLIMA PDC TRENNWAND,Jahreswagen
+mazda,Mazda CX-3,schwarz,08/2016,2016,15490,88,120,Schaltgetriebe,Benzin,5.9,75345.0,SKYACTIV-G 120 FWD 6GS AL-SPORTS NAV,Gebrauchtwagen
+mazda,Mazda 3,grau,10/2019,2019,19990,85,116,Schaltgetriebe,Diesel,4.2,84364.0,116PS Selection I-ACTIVSENSE-P+360°-KAMERA+APPLECA,Gebrauchtwagen
+mini,MINI Cooper Clubman,rot,07/2021,2021,28850,100,136,Automatik,Benzin,6.1,8400.0,"Classic Trim 18""/Pano/Navi/Excite Pano.-Dach/LED",junger Gebrauchtwagen
+ford,Ford S-Max,silber,04/2019,2019,19599,121,165,Schaltgetriebe,Benzin,7.4,132600.0,Titanium*7 SITZE*VOLL*TOP-ZUSTAND*GARANTIE,Gebrauchtwagen
+toyota,Toyota Proace,braun,05/2022,2022,52880,130,177,Automatik,Diesel,7.4,4900.0,"2,0 D-4D L1 (8-Si.) Autm. Verso Team-D, AHK, Navi",junger Gebrauchtwagen
+bmw,BMW 320,grau,06/2009,2009,11999,125,170,Schaltgetriebe,Benzin,6.4,76000.0,i Limousine erst 76Tkm,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 250,silber,09/2018,2018,27950,150,204,Automatik,Diesel,6.1,147500.0,d 4Matic**9-G-Tronic**Mod. 2019**1. Hand,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 250,silber,06/2015,2015,26199,155,211,Automatik,Benzin,6.6,53639.0,211PS Shooting Brake Memory Sitz Leder,Gebrauchtwagen
+bmw,BMW X1,schwarz,12/2009,2009,7450,130,177,Schaltgetriebe,Diesel,5.3,219800.0,Baureihe 20d**NAVI*PDC*AHK*SITZHZ**,Gebrauchtwagen
+volkswagen,Volkswagen T-Cross,blau,01/2023,2023,33980,110,150,Automatik,Benzin,6.0,11000.0,1.5 TSI R-Line LED*NAVI*ACC*KEYLESS*KAMERA,Jahreswagen
+audi,Audi A4,silber,03/2003,2003,1900,96,131,Schaltgetriebe,Diesel,5.7,348000.0,Avant 1.9 TDI  Alu/131PS/1.Hand,Gebrauchtwagen
+hyundai,Hyundai i10,grün,06/2023,2023,15490,49,67,Schaltgetriebe,Benzin,4.8,1000.0,MJ23 1.0 M/T Connect & Go Klima Navi Sitzheizung,Jahreswagen
+mercedes-benz,Mercedes-Benz E 350,silber,04/2009,2009,17500,170,231,Automatik,Diesel,7.1,187000.0,CDI * VOLLAUSSTATTUNG * MASSAGE * MEMORY *,Gebrauchtwagen
+renault,Renault Megane,grau,01/2017,2017,12990,74,101,Schaltgetriebe,Benzin,5.4,72351.0,IV Lim. 5-trg. Intens Klimaautom. Navi uvm.,Gebrauchtwagen
+toyota,Toyota Yaris,rot,10/2017,2017,12900,82,111,Schaltgetriebe,Benzin,5.0,31000.0,"1.8 VVT-i Hybrid Automatik Navigation,17"",MP3,USB",Gebrauchtwagen
+mini,MINI Cooper S,grau,05/2019,2019,29750,141,192,Automatik,Benzin,5.7,34955.0,Cabrio Navi DSG Leder Tempom.aktiv Bluetooth MP3 S,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLE 400,silber,01/2023,2023,99499,243,330,Automatik,Diesel,8.3,10744.0,d 4M AMG Night+MBUX+M-LED+AHK+Pano+360°K,Jahreswagen
+mercedes-benz,Mercedes-Benz C 200,weiß,06/2021,2021,42900,135,184,Automatik,Benzin,6.4,14800.0,C 200 Cabrio 9G AMG-Line NIGHT Kamera Spur Nav Dis,junger Gebrauchtwagen
+audi,Audi A5,weiß,04/2011,2011,16500,155,211,Schaltgetriebe,Benzin,6.8,178000.0,A5 Cabrio 2.0 TFSI S-Line,Gebrauchtwagen
+audi,Audi A5,braun,04/2012,2012,17900,130,177,Schaltgetriebe,Diesel,5.4,84990.0,Cabriolet 2.0 TDI quattro S-Line,Gebrauchtwagen
+audi,Audi A3,schwarz,05/2009,2009,8940,92,125,Schaltgetriebe,Benzin,6.1,125000.0,Sportback 1.4 T Attraction 1. Hand,Gebrauchtwagen
+volvo,Volvo XC60,schwarz,12/2022,2022,52350,145,197,Automatik,Benzin,7.0,2323.0,Plus Dark B4 Benzin Panorama. ACC BLIS LED,junger Gebrauchtwagen
+skoda,Skoda Karoq,weiß,03/2021,2021,25999,110,150,Schaltgetriebe,Benzin,5.3,46100.0,1.5 TSI Sportline Navi/LED/Kamera/1.Hand,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,schwarz,04/2000,2000,7500,100,136,Automatik,Benzin,9.1,74520.0,CDI Debesta Bestattungswagen/Leichenwagen,Gebrauchtwagen
+volvo,Volvo XC90,schwarz,05/2016,2016,30900,140,190,Automatik,Diesel,5.2,181250.0,D4 Geartronic Inscription 2WD D4,Gebrauchtwagen
+fiat,Fiat 500,orange,06/2022,2022,14980,52,71,Schaltgetriebe,Benzin,4.1,10.0,Cult 1.0 Mild Hybrid EU6d DAB Berganfahrass. Speed,junger Gebrauchtwagen
+renault,Renault Kadjar,schwarz,06/2018,2018,13380,81,110,Automatik,Diesel,3.8,94506.0,1.5 dCi Collection Automatik/Kamera/Navi,Gebrauchtwagen
+ford,Ford Galaxy,silber,05/2005,2005,3500,66,90,Schaltgetriebe,Diesel,6.7,172000.0,Galaxy TDI Ambiente,Gebrauchtwagen
+mazda,Mazda 6,rot,03/2023,2023,40985,143,194,Automatik,Benzin,6.8,1200.0,2.5L SKYACTIV G 194 20THANNIVERSARY SUNR,Jahreswagen
+audi,Audi RS3,weiß,08/2012,2012,31000,302,411,Automatik,Benzin,9.1,78500.0,Sportback S tronic,Gebrauchtwagen
+seat,SEAT Leon,schwarz,05/2018,2018,20670,132,179,Automatik,Benzin,5.8,44900.0,FR 1.8 TSI DSG ACC LED NAVI SHZ PDC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 350,grau,03/2010,2010,12999,170,231,Automatik,Diesel,6.8,165375.0,CDI DPF BlueEFFICIENCY 7G-TRONIC Elegance,Gebrauchtwagen
+opel,Opel Mokka X,grau,05/2017,2017,13880,100,136,Schaltgetriebe,Diesel,5.4,117000.0,1.6 D (CDTI ecoFLEX) 4x4 Innovation,Gebrauchtwagen
+renault,Renault Kadjar,rot,09/2017,2017,15690,96,131,Schaltgetriebe,Benzin,5.7,75002.0,Collection TCe 130 KLIMA PDC SHZ NAVI,Gebrauchtwagen
+skoda,Skoda Roomster,blau,04/2007,2007,5800,77,105,Automatik,Benzin,7.7,100000.0,Automatik *8xBereift *Klima,Gebrauchtwagen
+seat,SEAT Leon,grau,05/2014,2014,15850,103,140,Schaltgetriebe,Benzin,5.3,73900.0,"ST 1,4TSI FR 1.Hand Navi vieleExtras Alu18""",Gebrauchtwagen
+volvo,Volvo V60,grau,11/2017,2017,9990,88,120,Schaltgetriebe,Diesel,3.7,205000.0,Kinetic Kombi,Gebrauchtwagen
+ford,Ford Transit Custom,weiß,04/2016,2016,16660,74,101,Schaltgetriebe,Diesel,6.5,82940.0,250 L1 City Light / Radio / Bluetooth / MwSt.,Gebrauchtwagen
+volkswagen,Volkswagen Golf,silber,11/2012,2012,10990,63,86,Schaltgetriebe,Benzin,4.9,101850.0,VI Cabriolet Basis,Gebrauchtwagen
+renault,Renault Trafic,weiß,06/2021,2021,21690,88,120,Schaltgetriebe,Diesel,5.6,65000.0,"Kasten L2H1 3,0t Komfort - PDC - KLIMA",junger Gebrauchtwagen
+opel,Opel Mokka,weiß,02/2022,2022,29990,96,131,Automatik,Benzin,6.0,5000.0,1.2 DI Turbo Automatik GS Line Sondermodel,junger Gebrauchtwagen
+opel,Opel Insignia,blau,07/2017,2017,20500,121,165,Automatik,Benzin,6.2,77935.0,Sports Tourer 1.5 Direct InjectionT Aut Business I,Gebrauchtwagen
+volvo,Volvo XC60,schwarz,11/2019,2019,33990,140,190,Automatik,Diesel,4.9,83800.0,D4 2WD R-Design,Gebrauchtwagen
+bmw,BMW 325,blau,08/2011,2011,16300,160,218,Schaltgetriebe,Benzin,7.2,109000.0,325i Coupe,Gebrauchtwagen
+audi,Audi A5,blau,07/2015,2015,24900,180,245,Automatik,Diesel,5.7,79600.0,3.0 TDI quattro Sportback|Xenon|Navi|SHZ|PDC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz ML 350,silber,07/2005,2005,19990,173,235,Automatik,Benzin,12.7,66000.0,ML350 Final Edition+2.Hand+Navi+66.000KM+PDC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLK 220,silber,07/2006,2006,8999,110,150,Schaltgetriebe,Diesel,6.5,156000.0,CDI Coupe (BM 209),Gebrauchtwagen
+volkswagen,Volkswagen Touran,schwarz,05/2006,2006,6999,125,170,Automatik,Diesel,6.6,194900.0,2.0 TDI Highline Automatik Navi Klimaauto,Gebrauchtwagen
+seat,SEAT Leon,grau,02/2015,2015,15670,110,150,Automatik,Diesel,4.5,137950.0,ST FR 2.0 TDI Navi l PDC l ACC l SHZ l LED l Autom,Gebrauchtwagen
+volkswagen,Volkswagen Caddy,braun,01/2017,2017,17700,92,125,Schaltgetriebe,Benzin,5.9,90000.0,Trendline BMT PKW,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 200,blau,12/2021,2021,48780,145,197,Automatik,Benzin,7.6,9171.0,4M AMG LED+PANO+KEYLESS+PTS+Spur Paket+S,junger Gebrauchtwagen
+hyundai,Hyundai i20,schwarz,05/2023,2023,31090,150,204,Schaltgetriebe,Benzin,7.0,620.0,1.6 T-GDI 150kW N Performance Bose SOFORT,Jahreswagen
+toyota,Toyota Verso-S,schwarz,07/2011,2011,4590,66,90,Schaltgetriebe,Diesel,4.3,179650.0,Cool 1.HAND! TÜVNEU!,Gebrauchtwagen
+nissan,Nissan Qashqai,silber,02/2018,2018,17480,85,116,Schaltgetriebe,Benzin,5.6,52663.0,N-Connecta 1.2 DIG-T Navi Keyless e-Sitze Rückfahr,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 43 AMG,schwarz,08/2019,2019,54890,270,367,Automatik,Benzin,10.6,39916.0,4Matic LED AHK Burmester SKR&WKR Navi,Gebrauchtwagen
+audi,Audi Q3,silber,12/2016,2016,22500,110,150,Automatik,Diesel,5.0,94800.0,2.0 TDI quattro S tronic,Gebrauchtwagen
+volkswagen,Volkswagen Golf,silber,02/2008,2008,2550,59,80,Schaltgetriebe,Benzin,6.9,298000.0,1.4 United,Gebrauchtwagen
+opel,Opel Corsa,weiß,04/2016,2016,9990,74,101,Schaltgetriebe,Benzin,5.1,85000.0,"E Color Ed. 1.4 Turbo ecoFlex*PDC*SHZ*17""",Gebrauchtwagen
+opel,Opel Crossland X,silber,05/2017,2017,18470,81,110,Automatik,Benzin,5.3,43978.0,1.2 INNOVATION Aut. *HUD*KAMERA*LED*NAVI*,Gebrauchtwagen
+skoda,Skoda Superb,rot,08/2019,2019,27400,110,150,Automatik,Benzin,7.2,33900.0,Combi 1.5 TSI DSG Sportline,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,schwarz,12/2018,2018,35800,143,194,Automatik,Diesel,4.6,78891.0,d Cp. AMG-LINE LED_ILS+KAMERA+SPUR+NAVI,Gebrauchtwagen
+ford,Ford Fiesta,blau,12/2013,2013,6300,44,60,Schaltgetriebe,Benzin,5.2,79000.0,1.25 Trend,Gebrauchtwagen
+opel,Opel Adam,weiß,04/2015,2015,14270,110,150,Schaltgetriebe,Benzin,5.9,23086.0,1.4 Turbo S*PDC*SHZ*KLIMA*ALU*,Gebrauchtwagen
+ford,Ford S-Max,grau,05/2020,2020,31000,140,190,Automatik,Diesel,5.7,48600.0,S-Max 2.0 EcoBlue Allrad Aut. VIGNALE,junger Gebrauchtwagen
+skoda,Skoda Octavia,schwarz,09/2022,2022,37449,180,245,Schaltgetriebe,Benzin,6.9,23848.0,COMBI 2.0 TSI RS | HEAD UP | LED | NAVI,junger Gebrauchtwagen
+ford,Ford Kuga,grau,12/2017,2017,24290,134,182,Automatik,Benzin,7.5,35114.0,1.5 EcoBoost 4x4 Aut. Panoramaschiebedach,Gebrauchtwagen
+mazda,Mazda CX-3,braun,11/2018,2018,18790,89,121,Schaltgetriebe,Benzin,6.2,63415.0,2.0 Skyactiv-G Sports-Line *NAVI*HUD*LED*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz A 180,blau,04/2022,2022,33490,100,136,Automatik,Benzin,5.3,8975.0,AMG Pano LED Night Laderaump Spurhalt-Ass,junger Gebrauchtwagen
+audi,Audi A4,schwarz,07/2006,2006,5200,85,116,Schaltgetriebe,Diesel,5.9,203084.0,Avant 1.9 TDI TÜV/HU/NEU,Gebrauchtwagen
+hyundai,Hyundai i40,weiß,08/2012,2012,8490,99,135,Schaltgetriebe,Benzin,6.4,168000.0,cw 5 Star Edition Wagen Nr.:022,Gebrauchtwagen
+ford,Ford Fiesta,grau,07/2008,2008,2950,59,80,Automatik,Benzin,6.6,283213.0,Style Autom. / E.Fenster / Klima,Gebrauchtwagen
+fiat,Fiat 500,blau,01/2023,2023,17190,51,69,Schaltgetriebe,Benzin,4.7,50.0,"1.0 Dolcevita|PANO|DAB+|CarPlay|Temp.|15""Alu",Jahreswagen
+citroen,Citroen Berlingo,beige,12/2022,2022,31890,96,131,Schaltgetriebe,Diesel,5.3,10.0,Shine XL-7 BlueHDi 130,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,blau,07/2013,2013,11950,90,122,Schaltgetriebe,Benzin,5.3,123060.0,VII 1.4 TSI Lim. Comfortline Navi Sitzheiz.,Gebrauchtwagen
+audi,Audi A4,weiß,12/2018,2018,26999,140,190,Automatik,Diesel,4.4,90000.0,40 TDI Stronic S line LED/Standh./AHK/Virtual,Gebrauchtwagen
+nissan,Nissan Micra,weiß,12/2022,2022,21190,68,92,Schaltgetriebe,Benzin,4.7,1500.0,N-SPORT 1.0L IG-T 92PS 5MT,junger Gebrauchtwagen
+skoda,Skoda Octavia,beige,02/2012,2012,9429,77,105,Automatik,Diesel,4.7,79716.0,Lim Family 1.6 TDI*DSG*AHK*PDC*SHZ*RCD*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz B 180,silber,05/2006,2006,2499,80,109,Schaltgetriebe,Diesel,5.6,216400.0,"CDI DPF***,2Hand,Klima***TÜV ABGELAUFEN",Gebrauchtwagen
+fiat,Fiat 500,schwarz,12/2014,2014,6480,51,69,Schaltgetriebe,Benzin,5.1,149900.0,1.2 PANORAMA KLIMA 8FACH ZAHNRIEMEN NEU,Gebrauchtwagen
+bmw,BMW 340,grau,06/2022,2022,59690,275,374,Automatik,Benzin,6.6,21096.0,"M340i xDrive Limousine DA PA HUD HiFi Laser 19""",junger Gebrauchtwagen
+porsche,Porsche Panamera,schwarz,12/2019,2019,104800,338,460,Automatik,Benzin,10.3,29600.0,Panamera GTS,Gebrauchtwagen
+audi,Audi A6,blau,02/2009,2009,7000,140,190,Schaltgetriebe,Diesel,6.2,248005.0,Avant 2.7 TDI DPF,Gebrauchtwagen
+audi,Audi A4,schwarz,12/2008,2008,2800,118,160,Schaltgetriebe,Benzin,7.2,302000.0,Avant 1.8 TFSI Attraction,Gebrauchtwagen
+dacia,Dacia Duster,grau,09/2022,2022,21990,67,91,Schaltgetriebe,Benzin,5.6,20.0,Prestige  SHZ Klimaauto Keyless-Entry Navi Mult...,junger Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,grau,10/2012,2012,11500,90,122,Schaltgetriebe,Benzin,6.5,137200.0,BMT Sport & Style,Gebrauchtwagen
+opel,Opel Grandland X,grau,03/2020,2020,23000,96,131,Schaltgetriebe,Diesel,3.9,20000.0,Grandland X 1.5 D Start/Stop Ultimate,junger Gebrauchtwagen
+renault,Renault Scenic,schwarz,09/2018,2018,18680,103,140,Schaltgetriebe,Benzin,5.7,43344.0,IV Grand Intens*S-HEFT*NAVI*7-SITZ*,Gebrauchtwagen
+volkswagen,Volkswagen Touareg,schwarz,07/2003,2003,4300,128,174,Schaltgetriebe,Diesel,9.8,258664.0,Cabriolet 1.4,Gebrauchtwagen
+skoda,Skoda Kamiq,weiß,03/2023,2023,26480,81,110,Schaltgetriebe,Benzin,5.4,5000.0,Tour 1.0 TSI Klima Rückfahrkamera Kurvenlicht,Jahreswagen
+volkswagen,Volkswagen Taigo,grün,06/2022,2022,25640,81,110,Automatik,Benzin,6.0,8600.0,1.0 TSI DSG Life *LED*ACC*APPCONNECT*,junger Gebrauchtwagen
+opel,Opel Corsa,weiß,03/2011,2011,5190,64,87,Schaltgetriebe,Benzin,5.7,143800.0,"TÜV Neu Klimaautomatik Sitz,- Lenkradheizung",Gebrauchtwagen
+volkswagen,Volkswagen Caddy,schwarz,09/2011,2011,12950,75,102,Automatik,Diesel,5.7,111000.0,1.6 TDI (5-Si.) DSG Trendline,Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,blau,07/2014,2014,14795,110,150,Schaltgetriebe,Benzin,5.4,62100.0,1.4TSi Comfortline *NAVI.PARKASSIS,Gebrauchtwagen
+audi,Audi A1,gelb,07/2022,2022,27200,81,110,Automatik,Benzin,4.9,10060.0,30 TFSI S tr. PDC VIRTUAL DAB SITZH,junger Gebrauchtwagen
+skoda,Skoda Octavia,silber,12/2018,2018,19790,85,116,Automatik,Benzin,6.5,53200.0,Combi 1.0 TSI DSG Ambition NAVI uvm.,Gebrauchtwagen
+bmw,BMW X1,blau,12/2011,2011,13399,110,150,Automatik,Benzin,8.4,114000.0,Baureihe X1 sDrive 18i,Gebrauchtwagen
+bmw,BMW 318,schwarz,09/2002,2002,2999,105,143,Schaltgetriebe,Benzin,7.6,208900.0,Baureihe 3 Touring 318i - TÜV 12/23,Gebrauchtwagen
+renault,Renault Twingo,schwarz,07/2010,2010,3999,55,75,Schaltgetriebe,Benzin,5.1,116000.0,1.2 LEV 16V 75 Night,Gebrauchtwagen
+seat,SEAT Tarraco,grau,06/2019,2019,25949,110,150,Automatik,Diesel,5.6,99204.0,"4Drive 2.0 TDI DSG, Kamera, Navi, 1.Hand",Gebrauchtwagen
+audi,Audi Q2,rot,04/2019,2019,22900,85,116,Automatik,Diesel,4.8,75000.0,30 TDI Sport VIRTUEL/LEDER/KAMERA/AUTOMATIK,Gebrauchtwagen
+hyundai,Hyundai i30,weiß,04/2019,2019,25980,202,275,Schaltgetriebe,Benzin,7.8,42500.0,2.0 N Performance -Navi-Komfort-Pano  2.0 Turb,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,blau,11/2002,2002,1500,105,143,Automatik,Diesel,6.3,325000.0,T Elegance Automatik läuft in Notporgramm,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,blau,09/2022,2022,53665,143,194,Automatik,Diesel,5.3,10143.0,"d 4M Cabrio SPORTSTYLE+AMG+19""+COMAND+AHK",junger Gebrauchtwagen
+bmw,BMW 118,weiß,12/2013,2013,9898,105,143,Schaltgetriebe,Benzin,6.5,175000.0,118i Cabrio Edition Exclusive 1-Hand Leder Klimaau,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz V 250,blau,09/2017,2017,41950,140,190,Automatik,Diesel,6.0,66640.0,EDITION Kompakt AMG Line LED Kamera,Gebrauchtwagen
+volkswagen,Volkswagen T-Roc,silber,10/2020,2020,33890,110,150,Automatik,Benzin,5.8,16778.0,T-ROC CABRIO 1.5 TSI DSG R-LINE NAVI LED LEDER KAM,junger Gebrauchtwagen
+opel,Opel Insignia,grau,12/2017,2017,11290,121,165,Automatik,Benzin,5.8,94215.0,B Sports Tourer Business INNOVATION HUD Navi Leder,Gebrauchtwagen
+opel,Opel Crossland,grau,06/2017,2017,14995,96,131,Schaltgetriebe,Benzin,5.0,82499.0,1.2 Turbo*Edition*WinterPak*PDC*Verkehrszeichen*,Gebrauchtwagen
+audi,Audi A5,grau,08/2016,2016,21900,130,177,Automatik,Benzin,5.5,86982.0,1.8 TFSI* 2xS line*PANO*KEYLESS,Gebrauchtwagen
+skoda,Skoda Kodiaq,grau,01/2019,2019,39950,140,190,Automatik,Diesel,5.7,78164.0,Kodiaq Sportline 4x4 DCC AHK 360° Pano STHZ ACC,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz Vito,grau,07/2017,2017,24978,100,136,Schaltgetriebe,Diesel,6.6,95000.0,114 CDI MIXTO LANG|WIE NEU|1.HD|AC|STD HZG,Gebrauchtwagen
+ford,Ford Focus,weiß,02/2013,2013,6999,92,125,Schaltgetriebe,Benzin,5.1,119000.0,Focus Turnier 1.0 EcoBoost Start-Stopp-System Cham,Gebrauchtwagen
+renault,Renault Grand Scenic,weiß,05/2011,2011,8900,103,140,Automatik,Benzin,8.1,118255.0,"III  2,0 16V Dynamique / Automatik",Gebrauchtwagen
+skoda,Skoda Kodiaq,weiß,10/2019,2019,32500,140,190,Automatik,Benzin,6.7,59495.0,2.0 TSI 4x4 DSG Style AHK 2.2 To,Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,12/2015,2015,24000,221,300,Schaltgetriebe,Benzin,7.1,64000.0,7 R 4MOTION BMT 64TKM,Gebrauchtwagen
+ford,Ford Fiesta,schwarz,11/2015,2015,7300,60,82,Schaltgetriebe,Benzin,5.2,124000.0,Trend,Gebrauchtwagen
+volkswagen,Volkswagen Polo,blau,09/2002,2002,1999,47,64,Schaltgetriebe,Benzin,6.3,153000.0,"Caravelle 2,5TDI 150PS neu Tüv Standheizung",Gebrauchtwagen
+citroen,Citroen Berlingo,weiß,06/2018,2018,25980,73,99,Schaltgetriebe,Diesel,4.3,62100.0,1.6 Feel rollstuhlgerecht,Gebrauchtwagen
+seat,SEAT Leon,grau,05/2023,2023,35188,140,190,Automatik,Benzin,6.1,10.0,2.0 TSI 190 DSG FR LED Nav 18Z Beats ParkA,Neuwagen
+toyota,Toyota Avensis,silber,12/2003,2003,3000,108,147,Schaltgetriebe,Benzin,7.5,233518.0,Avensis 2.0 VVT-i Combi Executive,Gebrauchtwagen
+audi,Audi A3,blau,12/2010,2010,6730,103,140,Schaltgetriebe,Diesel,5.0,235025.0,SB 2.0TDI qu.Ambition TEMP-BiXENON-APS-SITZHZ,Gebrauchtwagen
+opel,Opel Karl,blau,01/2018,2018,12990,55,75,Automatik,Benzin,4.6,39990.0,Rocks Automatik / Klima / Alufelgen,Gebrauchtwagen
+toyota,Toyota Avensis,schwarz,11/2017,2017,18990,108,147,Automatik,Benzin,6.0,82000.0,TS 1.8 Edition S+ *Navi*Kamera*Smart-Key*,Gebrauchtwagen
+opel,Opel Insignia,grau,01/2018,2018,17948,100,136,Schaltgetriebe,Diesel,5.3,135000.0,1.6 Diesel  Business *Panorama*Navi*,Gebrauchtwagen
+seat,SEAT Arona,weiß,12/2022,2022,27250,110,150,Automatik,Benzin,6.3,20.0,1.5 TSI DSG FR ACC / Voll-LED / 18 / Kessy,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 300,blau,12/2020,2020,45449,190,258,Automatik,Benzin,7.5,33090.0,Cabrio AMG 3x HIGH END-DISTRONIC-360°-DAB,junger Gebrauchtwagen
+audi,Audi A3,weiß,04/2016,2016,14900,81,110,Schaltgetriebe,Diesel,4.1,125000.0,A3 1.6 TDI Cabrio (clean diesel) Ambiente,Gebrauchtwagen
+seat,SEAT Leon,weiß,06/2022,2022,28880,110,150,Automatik,Benzin,4.8,16000.0,Sportstourer 1.5 eTSI FR DSG Beats Kessy,junger Gebrauchtwagen
+skoda,Skoda Octavia,grau,04/2018,2018,26500,169,230,Automatik,Benzin,6.6,59500.0,Combi 2.0 TSI DSG RS,Gebrauchtwagen
+seat,SEAT Leon,rot,03/2021,2021,22990,96,131,Schaltgetriebe,Benzin,4.8,26700.0,ST 1.5 TSI Style+AHK+PDC+FULL LINK+LED+GRA,junger Gebrauchtwagen
+dacia,Dacia Sandero,weiß,06/2020,2020,9930,54,73,Schaltgetriebe,Benzin,5.2,49623.0,1.0 SCe Essential*KLIMA*GARANTIE*,junger Gebrauchtwagen
+volkswagen,Volkswagen Polo,blau,05/2012,2012,9950,66,90,Schaltgetriebe,Diesel,3.7,91863.0,1.6TDI Match BMT*SHZ*Klima*PDC*AUX*,Gebrauchtwagen
+audi,Audi A1,schwarz,10/2011,2011,8999,90,122,Schaltgetriebe,Benzin,5.3,149000.0,1.4 TFSI Ambition | Scheckheft gepfelgt | 8-fach,Gebrauchtwagen
+bmw,BMW 320,schwarz,11/2007,2007,9900,125,170,Schaltgetriebe,Benzin,6.6,180000.0,320i Cabrio,Gebrauchtwagen
+volkswagen,Volkswagen Jetta,beige,06/2008,2008,7880,75,102,Schaltgetriebe,Benzin,7.4,48000.0,1.6 United 1.Hand|Lückenlos Scheckheft!,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,weiß,10/2019,2019,22850,143,194,Automatik,Diesel,4.5,104250.0,d T*Avantgarde*9 G-Tr*NAVI*LED*Night*EU6dT,Gebrauchtwagen
+skoda,Skoda Kamiq,rot,08/2020,2020,18990,85,116,Schaltgetriebe,Benzin,5.0,97186.0,1.0 TSI DRIVE 125 LED AAC SHZ TEMP PDC,junger Gebrauchtwagen
+bmw,BMW 220,weiß,06/2015,2015,10950,141,192,Schaltgetriebe,Benzin,6.1,181200.0,i Cabrio SportLine/Navi/Xenon/HiFi/Leder/PDC,Gebrauchtwagen
+volkswagen,Volkswagen Touareg,schwarz,10/2018,2018,29300,210,286,Automatik,Diesel,6.6,34883.0,3.0 V6 TDI Atmosphere 4 Motion Standheizung AHK,Gebrauchtwagen
+opel,Opel Astra,silber,11/2016,2016,7999,70,95,Schaltgetriebe,Diesel,3.6,160925.0,K Sports Tourer Edition *2.Hand*EURO6*NAVI,Gebrauchtwagen
+toyota,Toyota Corolla,silber,04/2006,2006,4990,81,110,Schaltgetriebe,Benzin,7.0,137200.0,1.6 Edition-2-Hand-Scheckheft-Tempomat-PDC-Sitzhei,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,schwarz,09/2004,2004,9488,120,163,Schaltgetriebe,Benzin,8.7,112000.0,SLK 200 Kompressor,Gebrauchtwagen
+kia,Kia Ceed / cee'd,schwarz,05/2022,2022,25980,118,160,Schaltgetriebe,Benzin,5.8,9250.0,1.5 T-GDI EU6d 5 1.5T Spirit++NAVI+PDC+SHZ++,junger Gebrauchtwagen
+ford,Ford Transit,weiß,09/2011,2011,19500,103,140,Schaltgetriebe,Diesel,8.3,170000.0,350 L TDCi TEMPOMAT TÜV NEU Ausbaufähig,Gebrauchtwagen
+audi,Audi A1,grau,11/2013,2013,12800,105,143,Schaltgetriebe,Diesel,4.1,166000.0,A1 2.0 TDI Sportback Ambition,Gebrauchtwagen
+land-rover,Land Rover Defender,grün,01/2023,2023,75902,147,200,Automatik,Diesel,7.8,6550.0,D200 SE,Jahreswagen
+mercedes-benz,Mercedes-Benz A 180,rot,11/2018,2018,24990,100,136,Automatik,Benzin,5.5,74000.0,7g-dct PROGRESSIVE Automatik,Gebrauchtwagen
+opel,Opel Insignia,braun,12/2020,2020,18490,90,122,Schaltgetriebe,Diesel,5.5,90966.0,B Sports Tourer 1.5 Diesel Klima,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,08/2018,2018,22320,169,230,Automatik,Benzin,6.3,99269.0,VII GTI 2.0 TSI DSG NAVI/LED/ACC/LIGHT-ASSIST,Gebrauchtwagen
+mazda,Mazda CX-3,rot,06/2017,2017,15999,88,120,Schaltgetriebe,Benzin,5.8,76000.0,SKYACTIV-G 120 SKYACTIV-Drive FWD Sports-Line,Gebrauchtwagen
+volkswagen,Volkswagen Caddy,weiß,08/2014,2014,13900,75,102,Schaltgetriebe,Diesel,5.7,85750.0,Kasten/Kombi Kombi EcoProfi,Gebrauchtwagen
+seat,SEAT Ateca,grau,11/2019,2019,26980,110,150,Automatik,Benzin,5.7,30550.0,1.5 TSI ACT DSG OPF,Gebrauchtwagen
+opel,Opel Astra,silber,06/2019,2019,17490,92,125,Schaltgetriebe,Benzin,5.8,19437.0,K 1.4 Turbo Dynamic DynLi LM KlimaA,Gebrauchtwagen
+ford,Ford Mondeo,silber,01/2017,2017,22990,132,179,Schaltgetriebe,Diesel,4.8,89997.0,Turnier 2.0 TDCi ST-Line LED Navi Pano DAB,Gebrauchtwagen
+kia,Kia Ceed / cee'd,weiß,10/2022,2022,22499,88,120,Schaltgetriebe,Benzin,5.8,10.0,Ceed 1.0 T-GDI Vision 120 PS,junger Gebrauchtwagen
+seat,SEAT Leon,rot,11/2016,2016,15990,110,150,Automatik,Benzin,4.7,64849.0,1.4 TSI ST FR ACT *Pano* *Navi* *Klimaauto.*,Gebrauchtwagen
+hyundai,Hyundai i10,silber,01/2023,2023,16990,49,67,Schaltgetriebe,Benzin,4.8,50.0,1.0 CONNECT&FO +NAVI+RFK+PDC,Jahreswagen
+mercedes-benz,Mercedes-Benz C 350,silber,06/2013,2013,19999,225,306,Automatik,Benzin,7.4,163000.0,4Matic (BlueEFFICIENCY) 7G-TRONIC Elegance,Gebrauchtwagen
+volkswagen,Volkswagen Caddy,blau,05/2023,2023,33380,84,114,Automatik,Benzin,6.6,10.0,1.5 TSI DSG Family,Neuwagen
+renault,Renault Clio,weiß,12/2010,2010,3500,55,75,Schaltgetriebe,Benzin,6.2,113000.0,Campus Authentique II (B/CB0),Gebrauchtwagen
+volkswagen,Volkswagen T6 Multivan,schwarz,06/2021,2021,55975,150,204,Automatik,Diesel,6.8,24950.0,6.1 2.0 TDI DSG Comfortline lang 8 Sitze,junger Gebrauchtwagen
+ford,Ford Focus,schwarz,01/2013,2013,6800,120,163,Schaltgetriebe,Diesel,5.2,209000.0,Turnier 2.0 TDCi DPF Aut. Titanium,Gebrauchtwagen
+citroen,Citroen C3 Aircross,weiß,12/2022,2022,23950,81,110,Schaltgetriebe,Benzin,5.0,50.0,PureTech 110 S&S C-Series SHZ LED,junger Gebrauchtwagen
+seat,SEAT Leon,schwarz,04/2022,2022,22940,96,131,Schaltgetriebe,Benzin,5.5,9240.0,1.5 TSI Style Full Link Navi PDC RFK,junger Gebrauchtwagen
+audi,Audi Q5,grau,10/2012,2012,20997,130,177,Automatik,Diesel,6.1,187000.0,2.0 TDI quattro S tronic,Gebrauchtwagen
+peugeot,Peugeot 107,schwarz,10/2008,2008,1200,50,68,Schaltgetriebe,Benzin,4.6,186000.0,70 Urban Move,Gebrauchtwagen
+ford,Ford Fiesta,rot,09/2020,2020,27440,147,200,Schaltgetriebe,Benzin,6.0,32.0,"1,5 EcoB ST Styling WiPa Pano B&O DAB",junger Gebrauchtwagen
+skoda,Skoda Fabia,grau,06/2022,2022,20239,59,80,Schaltgetriebe,Benzin,4.5,2000.0,Ambition IV  1.0 MPI 80 PS,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLA 220,silber,12/2017,2017,22480,130,177,Automatik,Diesel,4.8,71000.0,d 4Matic Urban Navi LED H&K 360° NightP.,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,blau,06/2023,2023,74998,235,320,Automatik,Benzin,9.6,60.0,"R 2.0 TSI 4M BLACK STYLE NAVI LEDER AHK 21""",Jahreswagen
+fiat,Fiat Doblo,weiß,09/2020,2020,29800,59,80,Schaltgetriebe,Diesel,5.0,100000.0,Basis Kasten,junger Gebrauchtwagen
+seat,SEAT Ateca,blau,01/2020,2020,17922,85,116,Schaltgetriebe,Diesel,4.6,103732.0,1.6 TDI BMT STYLE Tempomat PDC 17 Zoll Klima,junger Gebrauchtwagen
+audi,Audi A3,silber,11/2017,2017,16000,85,116,Schaltgetriebe,Diesel,4.0,91000.0,A3 1.6 TDI Limousine,Gebrauchtwagen
+hyundai,Hyundai iX20,weiß,09/2012,2012,8950,66,90,Schaltgetriebe,Benzin,6.0,61000.0,1.4 UEFA EURO 2012 Edition,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 250,silber,07/2015,2015,25900,155,211,Automatik,Benzin,5.6,102815.0,CGI T*AMG Line *Navi*RFK*HUD*Leder*LM 18,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 250,grau,06/2015,2015,22900,150,204,Automatik,Diesel,4.8,146000.0,C 250 (BlueTEC) d 4Matic 7G-TRONIC AMG Line,Gebrauchtwagen
+dacia,Dacia Sandero,grün,03/2010,2010,2750,55,75,Schaltgetriebe,Benzin,5.9,137000.0,1.2 Ambiance Klima,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz S 500,silber,10/2003,2003,7990,225,306,Automatik,Benzin,13.4,168000.0,Coupe Kompressor !!!Orig 44989KM!!!!,Gebrauchtwagen
+skoda,Skoda Citigo,rot,06/2019,2019,8285,44,60,Schaltgetriebe,Benzin,4.2,74700.0,Active 1.0 KLIMAANLAGE+RADIO+DAB,Gebrauchtwagen
+volkswagen,Volkswagen Passat Variant,silber,10/2014,2014,13900,103,140,Automatik,Diesel,5.3,168000.0,Passat Variant 2.0 Blue TDI DSG SCR Business Editi,Gebrauchtwagen
+opel,Opel Vectra,silber,01/2008,2008,950,110,150,Schaltgetriebe,Diesel,6.2,300000.0,Edition Plus C Caravan,Gebrauchtwagen
+opel,Opel Astra,weiß,11/2019,2019,17980,96,131,Schaltgetriebe,Benzin,5.5,23380.0,"K 1.2T Elegance Navi,AGR,KlimaA,RückfahrK",Gebrauchtwagen
+opel,Opel Mokka,grau,08/2022,2022,22985,96,131,Schaltgetriebe,Benzin,4.9,6200.0,Elegance 1.2T 96kW LED 180°Kamera Zweifarbig,junger Gebrauchtwagen
+skoda,Skoda Superb,grau,10/2021,2021,36340,147,200,Automatik,Diesel,5.5,34590.0,COMBI 2.0 TDI DSG Ambition | NAVI | ACC |,junger Gebrauchtwagen
+skoda,Skoda Fabia,blau,12/2018,2018,11900,55,75,Schaltgetriebe,Benzin,4.8,12000.0,Cool Plus (NJ3),Gebrauchtwagen
+ford,Ford Tourneo Connect,grau,07/2016,2016,14890,88,120,Schaltgetriebe,Diesel,4.6,152976.0,"1,5TDCI Navi Panoramadach Kamera",Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,04/2019,2019,15650,85,116,Schaltgetriebe,Benzin,4.8,60450.0,1.0 TSI Xcellence BEATS Full-Link LED RFK+PDC K...,Gebrauchtwagen
+bmw,BMW 318,schwarz,05/2006,2006,4200,95,129,Schaltgetriebe,Benzin,7.6,203000.0,i Touring (E91),Gebrauchtwagen
+seat,SEAT Arona,schwarz,05/2019,2019,21220,110,150,Schaltgetriebe,Benzin,5.0,27350.0,1.5 TSI FR Navi|Kamera|LED|Sitzhzg,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 200,blau,09/2017,2017,30980,135,184,Automatik,Benzin,6.0,67570.0,2x Ava+Coupé+Ambiente+RüKam+Spiegel-Pak+,Gebrauchtwagen
+peugeot,Peugeot 1007,schwarz,06/2007,2007,6890,80,109,Automatik,Benzin,6.6,97000.0,Peugeot 1007 Sport 1.6 AUTOMATIK KLIMA PDC TOP!,Gebrauchtwagen
+ford,Ford Galaxy,silber,01/2007,2007,5800,96,131,Schaltgetriebe,Diesel,6.5,265000.0,Trend (CA1) 2.0 TDCI DPF 7 Sitze PDC Klima,Gebrauchtwagen
+bmw,BMW 525,schwarz,03/2011,2011,19990,150,204,Automatik,Diesel,6.2,138000.0,d M-SPORTPAKET INDIVIDUAL ACC HEAD-UP SOFT-CL,Gebrauchtwagen
+nissan,Nissan Navara,weiß,10/2018,2018,35000,140,190,Automatik,Diesel,6.9,70000.0,Navara DC 4x4 Autm. EU6 Tekna,Gebrauchtwagen
+ford,Ford Fiesta,rot,06/2023,2023,25350,92,125,Automatik,Benzin,6.1,10.0,1.0 EcoBoost M-Hybrid Titanium X FLA,Neuwagen
+ford,Ford S-Max,schwarz,08/2017,2017,20000,132,179,Automatik,Diesel,5.2,114000.0,"Titanium TDCI Aut.*NAVI*Kamera*7Sitzer*LED*18""Alus",Gebrauchtwagen
+audi,Audi A6,blau,05/2019,2019,54880,250,340,Automatik,Benzin,9.0,42255.0,S line B&O|Sthzg|Tour|Stadt|AHK|HuD|AIR,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz 200,silber,07/2002,2002,5900,120,163,Automatik,Benzin,9.6,114000.0,"CLK Cabrio 200 Kompressor, Automatik, Bose, Navi",Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 200,weiß,06/2019,2019,28690,135,184,Automatik,Benzin,6.4,59000.0,C -Klasse Cabrio (BM 205),Gebrauchtwagen
+audi,Audi Q5,grau,10/2012,2012,21298,180,245,Automatik,Diesel,6.4,137391.0,3.0 TDI quattro-SPURHALTE-TOTENWINKEL-BIXENON,Gebrauchtwagen
+dacia,Dacia Sandero,grau,07/2017,2017,10980,66,90,Schaltgetriebe,Benzin,5.5,83700.0,TCe 90 Stepway Celebration,Gebrauchtwagen
+ford,Ford Focus,silber,05/2018,2018,16999,92,125,Automatik,Benzin,5.5,40000.0,Cool&Connect/Automatik/Winter-Paket/,Gebrauchtwagen
+seat,SEAT Arona,rot,09/2020,2020,16800,70,95,Schaltgetriebe,Benzin,4.9,25751.0,1.0 TSI Style (EURO 6d-TEMP),junger Gebrauchtwagen
+volkswagen,Volkswagen Touran,blau,03/2011,2011,11684,103,140,Schaltgetriebe,Benzin,6.8,128650.0,1.4 TSI Highline PANORAMAD-CLIMATR-PDC-NAVI-XENON,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 200,weiß,03/2019,2019,25999,115,156,Automatik,Benzin,6.5,59100.0,7G-Tronic AMG-Line+LED+,Gebrauchtwagen
+bmw,BMW X3,schwarz,11/2004,2004,3800,141,192,Schaltgetriebe,Benzin,11.2,331000.0,X3 2.5i,Gebrauchtwagen
+skoda,Skoda Fabia,silber,03/2022,2022,20595,70,95,Schaltgetriebe,Benzin,4.6,1100.0,Combi  KLIMAAT SHZ PDC LED USB DAB APPLE CARPLAY,junger Gebrauchtwagen
+hyundai,Hyundai H-1,weiß,07/2014,2014,15899,100,136,Schaltgetriebe,Diesel,7.5,169992.0,Travel Comfort *1.Hand*8-Sitzer*,Gebrauchtwagen
+audi,Audi Q2,weiß,11/2022,2022,28950,110,150,Schaltgetriebe,Benzin,5.9,5159.0,advanced 35TFSI+Sofort Verfügbar+,junger Gebrauchtwagen
+mini,MINI One,blau,10/2021,2021,24900,75,102,Automatik,Benzin,5.2,23000.0,Aut. MINI Yours Trim 8-fach Navi PDC 1.Hand,junger Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,beige,05/2018,2018,32219,162,220,Automatik,Benzin,7.7,28794.0,2.0 TSI 4Motion Highline*R-Line*DSG*Navi*AHK*Stan,Gebrauchtwagen
+opel,Opel Grandland X,blau,07/2021,2021,19990,96,131,Automatik,Benzin,5.0,56245.0,1.2 T[Euro6d] S/S AT Elegance,junger Gebrauchtwagen
+skoda,Skoda Kamiq,rot,06/2023,2023,32695,110,150,Automatik,Benzin,6.1,10.0,"1.5 TSI DSG Monte Carlo, AHK, Navi, Kamera, el. Kl",Neuwagen
+mercedes-benz,Mercedes-Benz C 200,silber,11/2004,2004,3480,120,163,Schaltgetriebe,Benzin,8.4,248000.0,Kompressor Classic,Gebrauchtwagen
+volkswagen,Volkswagen Taigo,grün,04/2023,2023,27990,81,110,Automatik,Benzin,4.9,10.0,1.0 TSI DSG LED AAC SHZ Kam ACC VC,Neuwagen
+volkswagen,Volkswagen Polo,schwarz,07/2013,2013,7500,66,90,Schaltgetriebe,Diesel,3.7,149000.0,Polo 1.6 TDI Blue Motion Technology Highline,Gebrauchtwagen
+volkswagen,Volkswagen Polo,rot,01/2012,2012,5500,77,105,Schaltgetriebe,Diesel,4.2,216000.0,1.6 TDI Style - AHK - Sitzhz. - Xenon - 17‘,Gebrauchtwagen
+bmw,BMW 318,grau,03/2006,2006,4900,95,129,Schaltgetriebe,Benzin,7.3,196500.0,318i,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLK 220,schwarz,10/2010,2010,9500,125,170,Automatik,Diesel,6.1,270000.0,Automatik /PANORAMA / LICHTPAKET Avantgarde,Gebrauchtwagen
+bmw,BMW 220,grau,03/2019,2019,23995,140,190,Automatik,Diesel,4.4,79074.0,dA Luxury Line 1.Hand LED Lede,Gebrauchtwagen
+ford,Ford Edge,braun,04/2019,2019,29000,175,238,Automatik,Diesel,8.4,79000.0,Edge 2.0 EcoBlue 4x4 Aut. Vignale,Gebrauchtwagen
+ford,Ford Focus,grau,12/2020,2020,17681,70,95,Schaltgetriebe,Diesel,3.7,44703.0,Turnier 1.5 EcoBlue Cool&Connect Navi*LED,junger Gebrauchtwagen
+skoda,Skoda Fabia,rot,01/2023,2023,19945,70,95,Schaltgetriebe,Benzin,4.6,2500.0,1.0 TSI Style+Bi-LED+KAMERA+GARANTIE 11/26,Jahreswagen
+opel,Opel Zafira,grau,06/2018,2018,19790,103,140,Schaltgetriebe,Benzin,6.2,59379.0,"ZAFIRA C, Edition Plus, LHZ, SHZ, PDC, Kamera",Gebrauchtwagen
+audi,Audi A3,silber,01/2018,2018,17740,110,150,Automatik,Diesel,4.6,63211.0,Sportback 2.0TDI S-tronic Navi PDC,Gebrauchtwagen
+audi,Audi A1,schwarz,03/2011,2011,6950,63,86,Schaltgetriebe,Benzin,5.1,124800.0,Attraction**STEUERKETTE+BREMSEN+REIFEN NEU**,Gebrauchtwagen
+skoda,Skoda Scala,grau,08/2021,2021,22800,110,150,Automatik,Benzin,5.0,22221.0,1.5 TSI Drive 125 OPF (EURO 6d),junger Gebrauchtwagen
+opel,Opel Grandland X,rot,12/2020,2020,14845,96,131,Schaltgetriebe,Diesel,4.0,8285.0,INNOVATION  LED Keyless Fernlichtass. PDCv+h LED-h,junger Gebrauchtwagen
+dacia,Dacia Sandero,grau,01/2023,2023,18879,67,91,Schaltgetriebe,Benzin,5.6,2.0,Stepway 1.0 TCe 90PS Expression LED-Scheinwerfe...,Neuwagen
+nissan,Nissan Qashqai,grau,09/2021,2021,29490,103,140,Schaltgetriebe,Benzin,5.8,30000.0,1.3 DIG-T Mild Hybrid N-Connecta *ACC*PDC*LED*N...,junger Gebrauchtwagen
+dacia,Dacia Sandero,braun,09/2017,2017,10750,66,90,Automatik,Diesel,3.6,60850.0,dCi 90 S&S Easy-R Laureate,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz Vito,weiß,07/2017,2017,13880,100,136,Schaltgetriebe,Diesel,7.3,240000.0,Kasten 114 CDI lang BlueTEC,Gebrauchtwagen
+toyota,Toyota Aygo X,weiß,05/2019,2019,11900,53,72,Schaltgetriebe,Benzin,4.1,41700.0,-play club KAMERA BLUETOOTH,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz A 200,weiß,06/2013,2013,13999,100,136,Schaltgetriebe,Diesel,4.3,177000.0,A 200 CDI (BlueEFFICIENCY),Gebrauchtwagen
+renault,Renault Laguna,grau,05/2005,2005,3300,79,107,Schaltgetriebe,Benzin,9.5,298000.0,1.6 16V Emotion LPG-Gas/Tüv neu,Gebrauchtwagen
+opel,Opel Crossland X,blau,08/2020,2020,20790,96,131,Schaltgetriebe,Benzin,5.1,5705.0,1.2 Start/Stop Edition *beh. Front.*PDC*AHK uvm...,junger Gebrauchtwagen
+bmw,BMW 320,silber,10/2006,2006,7900,110,150,Schaltgetriebe,Benzin,7.6,99000.0,i touring ORG 99Tkm Steuerkette Neu TÜV Neu,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 200,silber,08/2012,2012,13950,135,184,Automatik,Benzin,7.8,105288.0,C -Klasse Lim. CGI BlueEfficiency Elegance,Gebrauchtwagen
+renault,Renault Scenic,braun,06/2017,2017,17985,96,131,Schaltgetriebe,Diesel,4.6,38400.0,IV Grand Intens 1.6 dCi NAVI+SPURHALTEASS,Gebrauchtwagen
+ford,Ford C-Max,blau,03/2008,2008,7890,107,145,Automatik,Benzin,9.5,38900.0,Ghia KLIMA SCHIEBEDACH PDC,Gebrauchtwagen
+skoda,Skoda Octavia,rot,01/2022,2022,34195,110,150,Automatik,Benzin,5.7,34050.0,Combi 1.5 TSI e-TEC Sportline DSG LED,junger Gebrauchtwagen
+seat,SEAT Arona,schwarz,05/2022,2022,26990,110,150,Automatik,Benzin,5.0,7879.0,1.5 TSI FR OPF,junger Gebrauchtwagen
+kia,Kia Rio,grau,05/2020,2020,13950,62,84,Schaltgetriebe,Benzin,5.5,20000.0,1.2 Edition 7 EU6d-T Klima PDC Tempomat SHZ,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,schwarz,06/2014,2014,13499,103,140,Automatik,Benzin,5.0,138000.0,VII Variant Highline  Navi Sitzheizung AHK,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLK 200,schwarz,03/2002,2002,4690,120,163,Schaltgetriebe,Benzin,9.5,221000.0,Cabrio Kompressor Avantgarde,Gebrauchtwagen
+seat,SEAT Ibiza,rot,11/2019,2019,13870,59,80,Schaltgetriebe,Benzin,5.0,30412.0,Reference 1.0 MPI Klimaanlage el.Fensterheber,Gebrauchtwagen
+opel,Opel Grandland X,blau,10/2018,2018,18899,96,131,Automatik,Benzin,5.2,45663.0,1.2 Turbo Edition PDC KAM SHZ,Gebrauchtwagen
+bmw,BMW 430,grau,03/2018,2018,31999,190,258,Automatik,Diesel,5.9,77800.0,430d Gran Coupe xDrive Aut. M Sport,Gebrauchtwagen
+audi,Audi RS5,blau,06/2019,2019,49960,331,450,Automatik,Benzin,9.1,143904.0,Sportback 2.9l TFSI 331kW qu. Navi MatrixLED B&O,Gebrauchtwagen
+opel,Opel Astra,silber,03/2023,2023,27490,96,131,Automatik,Benzin,5.8,10.0,1.2 Turbo GS Line *LED*Sitzheizung*PDC*,Neuwagen
+mercedes-benz,Mercedes-Benz A 150,schwarz,01/2005,2005,1999,70,95,Schaltgetriebe,Benzin,7.2,126929.0,A -Klasse (BM 169),Gebrauchtwagen
+bmw,BMW X6,weiß,04/2015,2015,26285,180,245,Automatik,Diesel,7.4,198000.0,Active Tourer 220 d*M-SPORT PAKET*PANO*NAVI*AHK*,Gebrauchtwagen
+volvo,Volvo V90,schwarz,06/2018,2018,27770,140,190,Automatik,Benzin,6.8,106900.0,T4 GEARTRONIC MOMENTUM+PGD+HUD+RFK+NAV+AHK++,Gebrauchtwagen
+volkswagen,Volkswagen T7 Multivan,bronze,08/2022,2022,62870,110,150,Automatik,Diesel,5.4,1000.0,Life *18Zoll*PANORAMA*TISCH*KAMERA*ACC*,junger Gebrauchtwagen
+volkswagen,Volkswagen Passat CC,schwarz,09/2009,2009,9800,147,200,Schaltgetriebe,Benzin,7.9,170000.0,Passat CC 2.0 TSI Individual,Gebrauchtwagen
+ford,Ford C-Max,schwarz,06/2018,2018,13200,92,125,Schaltgetriebe,Benzin,5.7,83447.0,1.0 EcoBoost Start-Stopp-System Titanium,Gebrauchtwagen
+mini,MINI Cooper SD Countryman,grün,04/2017,2017,24570,140,190,Automatik,Diesel,4.8,104131.0,JCW Chili Paket Panorama LED HUD 18 Zoll,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 220,grau,05/2013,2013,7990,125,170,Automatik,Diesel,5.0,330000.0,T CDI 7G-TRONIC,Gebrauchtwagen
+skoda,Skoda Superb,grau,04/2019,2019,30990,140,190,Automatik,Diesel,4.9,45987.0,Combi 2.0 TDI L&K 4x4 Bi-Xenon Navi AHZV,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLK 200,schwarz,03/2009,2009,17980,135,184,Automatik,Benzin,8.3,65600.0,K Grand Edition AMG Xenon Navi Leder PDC,Gebrauchtwagen
+bmw,BMW M6,schwarz,06/2012,2012,69000,412,560,Automatik,Benzin,10.3,39000.0,Cabrio-Volleder-1. Hand-BIXenon-Rückfahrkam.,Gebrauchtwagen
+renault,Renault Grand Scenic,weiß,06/2022,2022,33490,116,158,Automatik,Benzin,5.9,21070.0,TCE160 EDC Executive LED Leder 7-Si,junger Gebrauchtwagen
+opel,Opel Tigra,silber,12/2009,2009,7490,66,90,Schaltgetriebe,Benzin,6.1,45000.0,1.4 EU4 Edition Sitzheizung,Gebrauchtwagen
+bmw,BMW 325,blau,04/2007,2007,19500,160,218,Schaltgetriebe,Benzin,7.9,142000.0,BMW 325i E93 Cabrio,Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,schwarz,02/2017,2017,16490,85,116,Automatik,Diesel,4.1,54598.0,"Beetle 1.2 TSI BMT Klima, Alu 19"" Scheckheft",Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,05/2009,2009,8900,81,110,Automatik,Diesel,5.3,210000.0,VI ABT,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,braun,10/2016,2016,25999,125,170,Automatik,Diesel,4.3,72671.0,C -Klasse T-Modell C 220 BlueTEC / d T,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 200,schwarz,05/2022,2022,36499,120,163,Automatik,Diesel,4.5,34498.0,T d Avantgarde 2x+AHK+NavPrem+LED+DAB+MBUX,junger Gebrauchtwagen
+opel,Opel Zafira,silber,09/2008,2008,5290,103,140,Schaltgetriebe,Benzin,7.4,163500.0,"B  ""Edition""    ""im Kundenauftrag !",Gebrauchtwagen
+fiat,Fiat 500,rot,09/2020,2020,13300,51,69,Schaltgetriebe,Benzin,4.1,20000.0,1.0 GSE N3 Hybrid Lounge,junger Gebrauchtwagen
+audi,Audi S3,blau,05/2023,2023,55444,228,310,Automatik,Benzin,8.2,4900.0,Sportback Matrix Pano b+O Kamera ACC,Jahreswagen
+ford,Ford Puma,grau,03/2022,2022,23450,114,155,Schaltgetriebe,Benzin,5.5,15008.0,"1.0 EB Hybrid ST-LINE, Navi, PDC, Gjr",junger Gebrauchtwagen
+seat,SEAT Leon,blau,09/2016,2016,18420,135,184,Schaltgetriebe,Diesel,4.8,58900.0,Sportstourer FR 2.0TDI 184PS PANO+LED+NAVI+DAB+AP,Gebrauchtwagen
+mini,MINI Cooper S Clubman,grau,03/2019,2019,18200,141,192,Schaltgetriebe,Benzin,6.4,54500.0,Chili LED Navi HuD,Gebrauchtwagen
+ford,Ford Fiesta,rot,07/2019,2019,28450,147,200,Schaltgetriebe,Benzin,6.0,51000.0,1.5 EcoBoost S&S ST,Gebrauchtwagen
+peugeot,Peugeot 3008,schwarz,03/2018,2018,26250,88,120,Schaltgetriebe,Diesel,4.0,58405.0,3008 BlueHDi Allure LED-Scheinwerfer,Gebrauchtwagen
+bmw,BMW 520,weiß,03/2015,2015,14000,140,190,Schaltgetriebe,Diesel,4.8,330000.0,5er 520d Touring Luxury Line,Gebrauchtwagen
+skoda,Skoda Fabia,rot,05/2023,2023,25988,110,150,Automatik,Benzin,4.8,10.0,1.5 TSI 150 DSG Monte Carlo Nav Pano 17Z,Neuwagen
+volkswagen,Volkswagen Golf,rot,04/2022,2022,27460,110,150,Schaltgetriebe,Benzin,5.2,2990.0,"VIII 1.5 TSI Style Navi, Harman Kardon",junger Gebrauchtwagen
+citroen,Citroen C5 Aircross,grau,05/2023,2023,37995,96,131,Automatik,Diesel,5.6,1.0,130 BHDI Superior Pano ACC 360 Grad,Neuwagen
+porsche,Porsche Macan,schwarz,05/2018,2018,65790,265,360,Automatik,Benzin,8.9,45629.0,"GTS 360° Bose Pano Chrono LED WLAN 20""LMR",Gebrauchtwagen
+volkswagen,Volkswagen Golf,silber,03/2010,2010,10900,90,122,Schaltgetriebe,Benzin,6.3,159000.0,VI Variant Highline*Panoramadach*,Gebrauchtwagen
+skoda,Skoda Scala,schwarz,02/2020,2020,22490,110,150,Schaltgetriebe,Benzin,4.8,27987.0,1.5TSI Style*Panorama* LED*Climatronic*,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,silber,08/2012,2012,9499,125,170,Automatik,Diesel,6.1,200000.0,CDI T-Modell *AUTOMAT*KM nicht Original!,Gebrauchtwagen
+audi,Audi TT RS,schwarz,07/2018,2018,67700,294,400,Automatik,Benzin,8.2,62379.0,TT RS Coupe,Gebrauchtwagen
+ford,Ford Tourneo Custom,schwarz,06/2021,2021,39950,96,131,Schaltgetriebe,Diesel,6.3,49540.0,Titanium 320 L2 / BLIS / Navi,junger Gebrauchtwagen
+opel,Opel Corsa,blau,01/2022,2022,17700,74,101,Schaltgetriebe,Benzin,4.3,20300.0,Elegance+Navi+Spurhalte+Klima+,junger Gebrauchtwagen
+ford,Ford C-Max,grau,09/2007,2007,3300,74,101,Schaltgetriebe,Benzin,6.9,239800.0,Style (CB3) 1-HAND.,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,blau,01/2018,2018,37990,176,239,Automatik,Diesel,6.4,42410.0,2.0 TDI DSG 4M R-Line VC ACC LED Navi 20Z,Gebrauchtwagen
+renault,Renault Megane,weiß,05/2016,2016,11500,81,110,Schaltgetriebe,Diesel,3.6,82900.0,Coupe - wenig km - Sehr gute Ausstattung!,Gebrauchtwagen
+bmw,BMW X2,gold,03/2020,2020,33870,170,231,Automatik,Diesel,5.1,40153.0,xDrive25d A M-Sport AHK|Navi|MFL|PDC|RFK|SHZ|BT&US,junger Gebrauchtwagen
+ford,Ford Fiesta,blau,09/2015,2015,21480,60,82,Schaltgetriebe,Benzin,5.2,72757.0,"Einparkhilfe, Sitzheizung",Gebrauchtwagen
+kia,Kia Stonic,grau,07/2018,2018,15500,73,99,Schaltgetriebe,Benzin,5.5,19900.0,Stonic 1.4 Edition 7,Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,silber,07/2015,2015,14980,92,125,Schaltgetriebe,Benzin,5.4,82679.0,VII*Lounge*1.Hand*Bi-Xenon*Navi*Panor*MFL*GRA.,Gebrauchtwagen
+ford,Ford Edge,grau,11/2016,2016,24840,154,209,Automatik,Diesel,5.8,51294.0,2.0 TDCi Bi-Turbo 4x4 Titanium LED Navi DAB,Gebrauchtwagen
+peugeot,Peugeot 2008,schwarz,10/2019,2019,17500,75,102,Schaltgetriebe,Diesel,3.5,38164.0,BlueHDi 100 STOP & START Allure,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 220,schwarz,04/2016,2016,16900,125,170,Schaltgetriebe,Diesel,4.3,189000.0,d Coupe BlueTEC Sportpaket-Navi-LED-PDC-,Gebrauchtwagen
+skoda,Skoda Superb,rot,02/2017,2017,26990,140,190,Automatik,Diesel,5.1,84237.0,Combi 2.0 TDI DSG 4x4 SportLine Canton,Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,03/2020,2020,17950,85,116,Schaltgetriebe,Benzin,5.5,46500.0,1.0 TSI Beats NAVI LED KAMERA ALU 16,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,11/2021,2021,21822,81,110,Schaltgetriebe,Benzin,4.6,14657.0,8 1.0 TSI BMT Active Navi PDC DAB+ ACC LED,junger Gebrauchtwagen
+skoda,Skoda Karoq,blau,06/2019,2019,21990,110,150,Automatik,Diesel,5.5,108700.0,2.0 TDI SCR 4x4 Style DSG NAVI ACC Rückf.K,Gebrauchtwagen
+volvo,Volvo C30,schwarz,05/2008,2008,5300,92,125,Schaltgetriebe,Benzin,7.3,186000.0,C30 1.8 Edition,Gebrauchtwagen
+skoda,Skoda Octavia,orange,02/2023,2023,46188,147,200,Automatik,Diesel,5.1,3947.0,Combi 2.0 TDI DSG RS*LED*HUD*Sunset*PDC*Keyless*AH,Jahreswagen
+bmw,BMW 318,grau,03/2014,2014,14250,105,143,Schaltgetriebe,Benzin,6.6,132207.0,Baureihe Cabrio 318i-TüV-Vollleder-Scheckheft,Gebrauchtwagen
+land-rover,Land Rover Discovery Sport,schwarz,09/2020,2020,36530,132,179,Automatik,Diesel,5.8,37450.0,D180 AWD S+NAV+LED+Autom.+MY20,junger Gebrauchtwagen
+opel,Opel Corsa,blau,12/2020,2020,16925,74,101,Automatik,Benzin,4.2,21890.0,1.2 Edition Automatik *Sitzheiz/Ganzjahresreifen*,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 200,grau,06/2016,2016,74900,135,184,Automatik,Benzin,6.1,45741.0,Coupe AMG*7G*LED*MASSAGE*TEMPO*NAVI*LEDER,Gebrauchtwagen
+volkswagen,Volkswagen Passat,grau,04/2017,2017,17300,140,190,Automatik,Diesel,4.5,181183.0,Passat 2.0 TDI *SHZ*TEMPO*LICHT*PDC*CARPLAY*KEYL,Gebrauchtwagen
+audi,Audi A6,silber,01/2020,2020,39850,180,245,Automatik,Benzin,6.8,63294.0,45 2.0 TFSI Avant quattro basis (EURO 6d-TEMP,junger Gebrauchtwagen
+opel,Opel Meriva,silber,07/2011,2011,8990,81,110,Schaltgetriebe,Diesel,5.2,112928.0,B Innovation Beheizbares Lenkrad HU neu,Gebrauchtwagen
+kia,Kia Rio,blau,06/2022,2022,20499,74,101,Schaltgetriebe,Benzin,4.8,50.0,Exclusive 1.0 T-GDI Paket Premium & Radio,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf Variant,silber,08/2015,2015,13995,81,110,Automatik,Benzin,5.4,110100.0,Golf VII Variant 1.2 TSI DSG Lounge AHK Navi,Gebrauchtwagen
+skoda,Skoda Superb,weiß,02/2019,2019,24690,110,150,Automatik,Benzin,5.1,50190.0,Limousine 1.5 TSI L&K Navi Leder Sitzheizung Autom,Gebrauchtwagen
+opel,Opel Grandland X,rot,12/2019,2019,22990,96,131,Automatik,Diesel,4.1,46550.0,"1.5 AUTOMATIK 120 Jahre, AHK, Sitz- u Lenkradhzg.",Gebrauchtwagen
+bmw,BMW 118,silber,07/2007,2007,5990,105,143,Automatik,Diesel,6.0,229000.0,d Automatik PDC SHZ Isofix,Gebrauchtwagen
+volkswagen,Volkswagen Touran,schwarz,09/2010,2010,10999,103,140,Schaltgetriebe,Benzin,7.2,160000.0,1.4 TSI,Gebrauchtwagen
+volkswagen,Volkswagen Golf,weiß,05/2015,2015,7490,81,110,Schaltgetriebe,Diesel,3.9,298000.0,"VII Variant Trendline BMT/1,6TDI/Navi/Klima",Gebrauchtwagen
+skoda,Skoda Fabia,blau,04/2009,2009,3650,63,86,Schaltgetriebe,Benzin,6.8,183000.0,Fabia 1.4 16V Combi COOL Edition,Gebrauchtwagen
+skoda,Skoda Octavia,grau,05/2023,2023,42250,147,200,Automatik,Diesel,5.1,500.0,"Combi RS 2,0 TDI+DSG+Pano+LED+ACC+AHK",Jahreswagen
+seat,SEAT Arona,schwarz,02/2023,2023,25450,81,110,Automatik,Benzin,4.9,50.0,"FR 1.0TSI DSG,LED, Navi, Kamera, Sitzh. Klima",Jahreswagen
+fiat,Fiat 500,rot,08/2014,2014,8970,51,69,Schaltgetriebe,Benzin,5.1,116440.0,Cabrio*el.Verdeck*KLIMA*EURO6*TÜV NEU,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 300,schwarz,05/2019,2019,39990,180,245,Automatik,Benzin,7.9,24547.0,Avantgarde Exclusive WideScreen Pano LED PTS,Gebrauchtwagen
+audi,Audi A4,silber,08/2019,2019,33450,210,286,Automatik,Diesel,6.0,89399.0,Avant 50 TDI quattro Sport tiptronic AHK,Gebrauchtwagen
+ford,Ford EcoSport,silber,07/2018,2018,15955,92,125,Schaltgetriebe,Benzin,6.2,53400.0,1.0 EB Cool&Connect SNYC Winter-Paket,Gebrauchtwagen
+ford,Ford Fiesta,grau,02/2023,2023,21490,74,101,Schaltgetriebe,Benzin,5.3,15.0,1.0 EcoBoost ST-Line,Neuwagen
+ford,Ford C-Max,grau,04/2015,2015,13250,74,101,Schaltgetriebe,Benzin,5.1,40000.0,Business Edition Navi Klimaaut PDC Shz Top gepfl,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz B 200,grau,10/2009,2009,7700,100,136,Schaltgetriebe,Benzin,6.7,140000.0,Autom-Klima-Sitzheizung-erst 70.000 KM,Gebrauchtwagen
+opel,Opel Crossland X,rot,09/2022,2022,19780,96,131,Schaltgetriebe,Benzin,4.7,24400.0,Crossland Elegance #Start/Stop#KEYLESS#LED#SHZ,junger Gebrauchtwagen
+skoda,Skoda Scala,grau,02/2020,2020,15980,85,116,Schaltgetriebe,Benzin,5.0,89520.0,1.0 TSI Schaltgetriebe - Style,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 250,weiß,10/2018,2018,33499,150,204,Automatik,Diesel,6.1,78177.0,d AMG Line 4Matic AHK,Gebrauchtwagen
+dacia,Dacia Lodgy,weiß,08/2020,2020,14950,96,131,Schaltgetriebe,Benzin,6.2,81332.0,STEPWAY PLUS-NAVI-KAMERA-KLI.-AHK-1.HAND-7-SITZER,junger Gebrauchtwagen
+mazda,Mazda 6,schwarz,11/2011,2011,4750,120,163,Schaltgetriebe,Diesel,5.4,239482.0,Kombi 2.2 CRDT Active,Gebrauchtwagen
+bmw,BMW 525,grau,09/2011,2011,7998,150,204,Automatik,Diesel,6.1,294000.0,5er Sport-Aut.,Gebrauchtwagen
+land-rover,Land Rover Defender,grau,01/2023,2023,101900,221,300,Automatik,Diesel,8.9,1000.0,130 D300 SE,Jahreswagen
+dacia,Dacia Dokker,blau,10/2016,2016,8400,66,90,Schaltgetriebe,Diesel,4.2,167000.0,Stepway,Gebrauchtwagen
+opel,Opel Astra,weiß,04/2023,2023,25000,96,131,Schaltgetriebe,Benzin,5.7,6000.0,1.2 Turbo Elegance (L),Jahreswagen
+audi,Audi TT,silber,07/2000,2000,6900,132,179,Schaltgetriebe,Benzin,8.1,172000.0,TT Coupe 1.8 T,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 180,weiß,02/2016,2016,26900,115,156,Automatik,Benzin,5.7,161459.0,Coupé AMG Prestige Panoramadak Stoelverwarming Lee,Gebrauchtwagen
+opel,Opel Meriva,schwarz,12/2010,2010,5550,74,101,Schaltgetriebe,Benzin,6.1,150000.0,"B Edition ""Tempomat ""Klimaautomatik",Gebrauchtwagen
+ford,Ford Focus,silber,12/2020,2020,18490,92,125,Schaltgetriebe,Benzin,6.0,68900.0,Focus Turnier 1.0 EcoBoost S&S TITANIUM X *iACC*RF,junger Gebrauchtwagen
+peugeot,Peugeot 208,weiß,02/2023,2023,19880,55,75,Schaltgetriebe,Benzin,4.1,5.0,1.2 Active Pack  LED/PDC/DAB/USB/TEMPOMAT/LM,Neuwagen
+seat,SEAT Leon,grau,07/2020,2020,27990,140,190,Automatik,Benzin,6.2,45960.0,ST Cupra 300 4Drive 2.0 TSI DSG beats Audio,junger Gebrauchtwagen
+hyundai,Hyundai TUCSON,braun,03/2021,2021,32490,110,150,Automatik,Benzin,5.7,20400.0,1.6 T-GDi 48V-Hybrid 2WD DCT Trend*NAVI*KAMERA*LED,junger Gebrauchtwagen
+mazda,Mazda 2,blau,03/2018,2018,12885,66,90,Schaltgetriebe,Benzin,4.5,76711.0,Kizoku G-90 17-Zoll Klimaaut. EPH SHZ DAB BSM RCTA,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz V 250,braun,03/2018,2018,55550,140,190,Automatik,Diesel,6.0,104400.0,d AVA ED L COMAND+AHK+360°+Liege+Burmester Navi,Gebrauchtwagen
+volkswagen,Volkswagen Eos,silber,04/2015,2015,7299,103,140,Schaltgetriebe,Diesel,4.8,232000.0,Basis BMT Navi Sport Tüv Alus Kamera,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLA 200,grau,07/2015,2015,20500,115,156,Automatik,Benzin,5.8,94200.0,7G-DCT Urban,Gebrauchtwagen
+seat,SEAT Leon,rot,03/2022,2022,32785,110,150,Automatik,Benzin,4.8,6100.0,FR 1.5 eTSI ACT DSG NAVI LED BEATS ALCANTARA PANO,junger Gebrauchtwagen
+kia,Kia Sportage,orange,08/2018,2018,18990,130,177,Schaltgetriebe,Benzin,7.3,74106.0,"GT-Plus Line -Technik-Paket, P-Dach, Xenon, Sit...",Gebrauchtwagen
+porsche,Porsche Macan,schwarz,05/2018,2018,65890,265,360,Automatik,Benzin,8.9,28955.0,GTS 3.0 *PDLS+*PCM*MEMORY*CHRONO*LUFT*,Gebrauchtwagen
+land-rover,Land Rover Range Rover Evoque,blau,03/2018,2018,32990,132,179,Automatik,Diesel,5.1,51950.0,2.0TD4 Aut. Landmark Edition,Gebrauchtwagen
+skoda,Skoda Octavia,weiß,12/2020,2020,28880,110,150,Automatik,Diesel,3.7,26388.0,Combi 2.0 TDI DSG First Edition AHK Navi Virtual,junger Gebrauchtwagen
+mini,MINI Cooper,braun,06/2013,2013,11950,90,122,Automatik,Benzin,5.7,106000.0,Cabrio Cooper/Navi/Klima/Sitzheizung,Gebrauchtwagen
+ford,Ford Puma,grau,05/2021,2021,23750,92,125,Schaltgetriebe,Benzin,5.3,13500.0,"1,0 EcoBoost Hybrid 92kW ST-Line / Schiebed",junger Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,rot,05/2019,2019,24480,110,150,Automatik,Diesel,6.0,82156.0,2.0 TDI DSG Comfortline Navi LED FrontAss,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 200,silber,07/2002,2002,1500,85,116,Automatik,Diesel,7.1,272000.0,CDI Aut|PDC|TEMPO|KLIMAAUT|EL-SITZE,Gebrauchtwagen
+audi,Audi Q7,schwarz,06/2006,2006,13900,171,232,Automatik,Diesel,10.5,230000.0,3.0 TDI quattro  7 Sitzer! AHK Kamera Volleder,Gebrauchtwagen
+bmw,BMW X1,schwarz,06/2012,2012,8285,120,163,Schaltgetriebe,Diesel,5.3,194520.0,20d sDrive Pano LM PDC Klimaaut,Gebrauchtwagen
+toyota,Toyota Yaris,grau,12/2016,2016,9449,51,69,Schaltgetriebe,Benzin,4.3,124547.0,"1,0 VVT-i Edition-S NAVI-BT-KLIMA-SHZ-CAM",Gebrauchtwagen
+bmw,BMW 320,schwarz,12/2021,2021,32790,140,190,Automatik,Diesel,4.8,34069.0,d Touring Adv. StandHz GARANTIE bis 12/2026,junger Gebrauchtwagen
+renault,Renault Clio,orange,11/2022,2022,18489,67,91,Schaltgetriebe,Benzin,4.9,10.0,ZEN TCe 90,junger Gebrauchtwagen
+nissan,Nissan Townstar,rot,02/2023,2023,26440,96,131,Schaltgetriebe,Benzin,6.8,10.0,Kombi L1 1.3 DIG-T 130PS 6MT N-DESIGN Navi,Neuwagen
+opel,Opel Corsa,rot,12/2014,2014,7990,85,116,Schaltgetriebe,Benzin,4.9,40800.0,1.0 (Ecotec) Turbo (ecoFLEX) Start/Stop Color Edit,Gebrauchtwagen
+audi,Audi SQ7,grau,10/2016,2016,44900,320,435,Automatik,Diesel,7.5,124000.0,4.0 TDI Quattro*Bose*Virtual*Kamera*Luftfed*,Gebrauchtwagen
+bmw,BMW 116,schwarz,07/2010,2010,4400,85,116,Schaltgetriebe,Diesel,5.2,212920.0,d Lim. (E81/E87) ATM 174000 KM,Gebrauchtwagen
+fiat,Fiat 500,rot,03/2016,2016,10530,51,69,Schaltgetriebe,Benzin,4.9,37894.0,1.2 Lounge *PDC*KLIMA*ALU*GARANTIE*,Gebrauchtwagen
+opel,Opel Tigra,silber,05/2005,2005,3490,92,125,Schaltgetriebe,Benzin,7.7,141000.0,H Lim. Edition*TÜV*NEU*,Gebrauchtwagen
+audi,Audi A6,schwarz,04/2020,2020,48900,210,286,Automatik,Diesel,5.7,43450.0,Design 50 TDI qu.tiptr. AHK STDHZG RFK,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,schwarz,12/2005,2005,3990,110,150,Automatik,Diesel,6.9,259000.0,CDI Automatik Avantgarde DPF,Gebrauchtwagen
+toyota,Toyota Corolla,silber,02/2021,2021,27900,112,152,Automatik,Benzin,3.7,17370.0,2.0 Hybrid Team D*LED*Cam*Navi*Totwinkel,junger Gebrauchtwagen
+audi,Audi Q5,grau,07/2016,2016,23950,162,220,Automatik,Benzin,7.2,65776.0,"S-Line Quattro,Kamera,Leder,Navi,Soundsystem",Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLE 400,weiß,08/2016,2016,35900,225,306,Automatik,Benzin,8.8,108000.0,4Matic 7G-TRONIC AMG Line,Gebrauchtwagen
+seat,SEAT Leon,silber,03/2017,2017,16490,85,116,Automatik,Benzin,4.4,74000.0,1.0 TSI ST Style Ecomotive/Automatik/PDC,Gebrauchtwagen
+volkswagen,Volkswagen Golf,silber,12/2021,2021,22520,81,110,Schaltgetriebe,Benzin,4.6,3720.0,VIII 1.0 TSI Active *ACC *DAB+ *LED,junger Gebrauchtwagen
+opel,Opel Corsa,silber,12/2020,2020,14500,55,75,Schaltgetriebe,Benzin,5.6,26620.0,F Edition Kamera Navi PDC Sitzheizung,junger Gebrauchtwagen
+skoda,Skoda Octavia,blau,08/2017,2017,15700,85,116,Automatik,Diesel,3.9,98000.0,Combi 1.6 TDI Drive Navi Kamera DSG LED,Gebrauchtwagen
+audi,Audi A6,weiß,10/2014,2014,19990,140,190,Automatik,Diesel,4.6,99814.0,Avant 2.0 TDI ultra BiXenon Navigat. SHZ ...,Gebrauchtwagen
+peugeot,Peugeot Rifter,weiß,03/2023,2023,28450,75,102,Schaltgetriebe,Diesel,5.3,3.0,"1,5 HDI ActivePack L2 DAB KLIMA PDC",Neuwagen
+volkswagen,Volkswagen Golf,silber,08/2015,2015,13490,81,110,Automatik,Diesel,3.9,129000.0,VII Lim. Comfortline BMT,Gebrauchtwagen
+citroen,Citroen Berlingo,weiß,04/2019,2019,27695,81,110,Schaltgetriebe,Benzin,5.5,52150.0,XL 110 SHINE XTR Klimaaut/Navi+Cam/7 Sitze,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,schwarz,07/2013,2013,15700,103,140,Automatik,Diesel,6.0,95350.0,Sport & Style 2.0 TDI 4Motion DSG,Gebrauchtwagen
+toyota,Toyota Proace,orange,09/2022,2022,45990,106,144,Schaltgetriebe,Diesel,5.5,50.0,"Verso 2.0 L1 Team D,6-Gang",junger Gebrauchtwagen
+ford,Ford Mondeo,schwarz,03/2016,2016,9600,110,150,Automatik,Diesel,4.9,90200.0,"Turnier Business  Navi,PDC,Sitzh,8FachALU",Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,11/2020,2020,15480,70,95,Schaltgetriebe,Benzin,4.6,18749.0,1.0 TSI S&S,junger Gebrauchtwagen
+renault,Renault Austral,schwarz,05/2023,2023,48490,147,200,Automatik,Benzin,4.6,1000.0,Iconic E-TECH Hybrid 200 Head-UP Navi Soundsystem,Jahreswagen
+audi,Audi Q2,weiß,05/2018,2018,21790,110,150,Automatik,Benzin,5.2,100000.0,sport++TOP ANGEBOT++,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 300,silber,04/2019,2019,33350,190,258,Automatik,Benzin,6.6,27000.0,T AVANTGARDE+MULTIBEAM+ NAVI+SPURP+KAMERA Navi,Gebrauchtwagen
+audi,Audi A6,grau,07/2011,2011,9980,150,204,Automatik,Diesel,5.3,271628.0,Lim. 3.0 TDI Bi-Xenon Navi Leder Kamera,Gebrauchtwagen
+bmw,BMW 640,schwarz,05/2013,2013,25500,230,313,Automatik,Diesel,5.4,159800.0,640d Coupe,Gebrauchtwagen
+nissan,Nissan Juke,grau,07/2020,2020,20990,86,117,Schaltgetriebe,Benzin,5.1,37486.0,N-Design 1.0 DIG-T 117 6 MT 4X2 LED Apple CarPlay,junger Gebrauchtwagen
+volkswagen,Volkswagen Polo,weiß,08/2014,2014,7700,63,86,Schaltgetriebe,Benzin,5.8,155500.0,V Comfortline,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 200,grau,03/2012,2012,17250,100,136,Automatik,Diesel,5.1,123000.0,CDI DPF BlueEFFICIENCY 7G-TRONIC Avantgarde,Gebrauchtwagen
+skoda,Skoda Fabia,blau,06/2017,2017,8490,77,105,Schaltgetriebe,Diesel,4.1,179100.0,Combi 1.4 TDI/1.Hand/Scheckheft/Navi/ACC/Klimaauto,Gebrauchtwagen
+ford,Ford Ka/Ka+,silber,02/2006,2006,150,38,52,Schaltgetriebe,Benzin,5.9,103000.0,Ka 1.3,Gebrauchtwagen
+audi,Audi Q5,weiß,11/2019,2019,27700,140,190,Schaltgetriebe,Diesel,5.8,99958.0,2.0 40 TDI quattro Matrix Virtual Navi Key,Gebrauchtwagen
+ford,Ford Tourneo Courier,rot,04/2021,2021,20450,74,101,Schaltgetriebe,Diesel,4.2,24300.0,1.5 TDCi Sport,junger Gebrauchtwagen
+citroen,Citroen Jumpy,weiß,07/2018,2018,17000,132,179,Automatik,Diesel,5.7,190300.0,Business M (L2) Kasten,Gebrauchtwagen
+bmw,BMW 330,schwarz,05/2014,2014,11890,190,258,Automatik,Diesel,5.2,230270.0,"d Limousine xDrive PDC,KLIMAAUTOMATIK",Gebrauchtwagen
+porsche,Porsche 991,schwarz,06/2016,2016,106123,309,420,Automatik,Benzin,7.9,88938.0,Turbo S Cabriolet*KERAMIK*CHRONO*BOSE*PDLS+,Gebrauchtwagen
+mini,MINI Cooper S,grau,04/2019,2019,23500,141,192,Automatik,Benzin,5.7,93795.0,5-trg. JCW Trim LED Hamrkar. Navi+,Gebrauchtwagen
+kia,Kia Rio,grau,03/2023,2023,23790,74,101,Schaltgetriebe,Benzin,4.5,1500.0,1.0T 100 Vision +NAVI+SHZ+LED+KAMERA+BT+LHZ+,Jahreswagen
+kia,Kia Stonic,rot,06/2019,2019,19590,73,99,Automatik,Benzin,6.4,20000.0,Edition 7*AUTOMATIK*GARANTIE*1.HAND*,Gebrauchtwagen
+seat,SEAT Ateca,rot,05/2023,2023,37047,110,150,Automatik,Diesel,5.2,10.0,"FR 2.0 TDI DSG FR, KESSY, el.Klappe, Navi, 5 J....",Neuwagen
+porsche,Porsche Boxster,rot,04/2017,2017,55554,220,299,Schaltgetriebe,Benzin,7.4,27301.0,MY 2017 20 Zoll LED Navi Klappe,Gebrauchtwagen
+porsche,Porsche 718 Spyder,weiß,06/2021,2021,117500,309,420,Automatik,Benzin,10.9,16000.0,718 Spyder,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,schwarz,06/2015,2015,15600,135,184,Schaltgetriebe,Diesel,4.2,132500.0,GTD BlueMotion Technology,Gebrauchtwagen
+renault,Renault Twingo,grau,05/2019,2019,10990,68,92,Schaltgetriebe,Benzin,4.7,36025.0,TCe 90 Le Coq Sportif,Gebrauchtwagen
+porsche,Porsche Macan,gold,05/2017,2017,43500,185,252,Automatik,Benzin,7.2,65000.0,Macan PDK,Gebrauchtwagen
+hyundai,Hyundai i10,silber,04/2021,2021,14490,49,67,Schaltgetriebe,Benzin,4.8,11400.0,1.0 Trend *Lenkrdhzg*Sitzhzg*Spurhalte*PDC*,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLS 350,grau,06/2016,2016,31990,190,258,Automatik,Diesel,6.2,119000.0,CLS Shooting Brake 4Matic Distr./Multib./Sitzkli,Gebrauchtwagen
+seat,SEAT Mii,silber,09/2016,2016,7480,44,60,Schaltgetriebe,Benzin,4.5,36900.0,1.0 KLIMA 1.HAND Scheckheft TÜV NEU,Gebrauchtwagen
+seat,SEAT Leon,blau,08/2017,2017,16990,110,150,Automatik,Benzin,4.7,80016.0,ST FR 1.4 TSI DSG Navi LED SHZ PDC vo.+hi.,Gebrauchtwagen
+audi,Audi Q5,blau,05/2013,2013,21440,132,179,Schaltgetriebe,Benzin,7.5,92000.0,2.0TFSI qu AHK Pano Xenon plus Sitzh Klimaaut,Gebrauchtwagen
+volvo,Volvo XC60,grau,03/2021,2021,45800,145,197,Automatik,Diesel,5.5,52160.0,B4 Autom. AWD R-Design +PANO+LED+NAVI+MET.+  Navi,junger Gebrauchtwagen
+opel,Opel Corsa,braun,02/2015,2015,6950,66,90,Schaltgetriebe,Benzin,5.2,120500.0,Color Edition E,Gebrauchtwagen
+seat,SEAT Leon,rot,06/2018,2018,17990,135,184,Schaltgetriebe,Diesel,4.6,108656.0,ST FR Sportline Performance Paket,Gebrauchtwagen
+renault,Renault Megane,blau,12/2001,2001,2999,79,107,Schaltgetriebe,Benzin,7.2,170000.0,Grandtour Leder+Klima+TUV neu+NR35,Gebrauchtwagen
+ford,Ford Fiesta,schwarz,05/2010,2010,5300,60,82,Schaltgetriebe,Benzin,5.6,154000.0,1.25 Trend,Gebrauchtwagen
+seat,SEAT Leon,silber,08/2018,2018,16990,110,150,Automatik,Diesel,4.9,98129.0,ST Style 4Drive Full-LED Navi ACC TOUCH BT,Gebrauchtwagen
+mazda,Mazda,grau,04/2019,2019,18890,85,116,Schaltgetriebe,Diesel,4.2,87960.0,M3 SKY-D115  Selection  Design-/Activsense-Paket/B,Gebrauchtwagen
+bmw,BMW 135,schwarz,11/2022,2022,48990,225,306,Automatik,Benzin,7.6,7490.0,i xDrive MPerformance/Premium/Convenience/Travel,junger Gebrauchtwagen
+volkswagen,Volkswagen Touran,weiß,01/2011,2011,8000,77,105,Schaltgetriebe,Diesel,5.1,211100.0,"Pritsche,4 Motion,lang",Gebrauchtwagen
+audi,Audi SQ7,blau,09/2019,2019,75950,320,435,Automatik,Diesel,9.1,124504.0,TDi 22Z./PANO/S-SITZE/HuD/StHz./7-SITZER/360,Gebrauchtwagen
+volvo,Volvo XC60,grau,09/2020,2020,46290,145,197,Automatik,Diesel,5.5,19800.0,B4 AWD Inscription*Xenium*IntelliSafePro*,junger Gebrauchtwagen
+volkswagen,Volkswagen Touareg,silber,12/2018,2018,44490,210,286,Automatik,Diesel,7.9,76500.0,3.0 TDI V6 4M Elegance Navi. AHK. StandHZ,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz X 350,weiß,02/2020,2020,90990,190,258,Automatik,Diesel,8.4,99849.0,d 4Matic MAYBACH UMBAU / 360° / LED,junger Gebrauchtwagen
+toyota,Toyota Auris,weiß,07/2017,2017,12990,73,99,Schaltgetriebe,Benzin,5.6,59144.0,*WASSERSTOFF* *LEDER*NAVI*JBL*ACC*LED*SHZ,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz B 180,weiß,08/2012,2012,14450,80,109,Schaltgetriebe,Diesel,4.4,119347.0,CDI (BlueEFFICIENCY) *COMAND*Pano*RFK*AHK*,Gebrauchtwagen
+volkswagen,Volkswagen Crafter,blau,10/2010,2010,11300,65,88,Schaltgetriebe,Diesel,10.7,167000.0,Doka Pritsche 7 Sitzer TDI PDF,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,silber,01/2012,2012,16950,135,184,Automatik,Benzin,6.4,140000.0,BlueEFFICIENCY Roadster*1.Hand*Panorama*TÜV NEU,Gebrauchtwagen
+audi,Audi Q2,rot,08/2017,2017,19990,85,116,Schaltgetriebe,Benzin,5.1,18940.0,1.0 TFSI ultra,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz V 300,schwarz,07/2022,2022,76088,174,237,Automatik,Diesel,8.0,22044.0,d *AVANTGARDE*STANDHZG*LED*LEDER*8SITZER* Navi,junger Gebrauchtwagen
+skoda,Skoda Rapid/Spaceback,schwarz,07/2018,2018,13990,70,95,Schaltgetriebe,Benzin,4.5,34850.0,Spaceback Ambition,Gebrauchtwagen
+audi,Audi Q5,schwarz,04/2018,2018,47970,210,286,Automatik,Diesel,5.7,82500.0,3.0 TDIquattro Matrix+PANO+LEDER+NAVI+Ambiente,Gebrauchtwagen
+ford,Ford Focus,schwarz,06/2013,2013,27000,92,125,Schaltgetriebe,Benzin,5.0,99999.0,Lim. Titanium *ZAHNRIEMEN NEU*TEMPOMAT*NAVI*PDC*,Gebrauchtwagen
+skoda,Skoda Kodiaq,weiß,04/2018,2018,30567,140,190,Automatik,Diesel,5.7,66785.0,2.0 TDI 4x4 DSG Style,Gebrauchtwagen
+peugeot,Peugeot 207,schwarz,05/2008,2008,7990,88,120,Automatik,Benzin,7.4,111700.0,CC Cabrio-Coupe Sport Klimaaut. Sitzh. Leder,Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,03/2013,2013,5990,51,69,Schaltgetriebe,Benzin,5.5,118000.0,ST Reference*KLIMA*E-FENSTER*ISOFIX*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 220,schwarz,04/2005,2005,4950,110,150,Automatik,Diesel,7.1,222000.0,E 220 T CDI Automatik Classic DPF,Gebrauchtwagen
+skoda,Skoda Superb,rot,06/2019,2019,27899,110,150,Automatik,Diesel,5.6,49300.0,2.0 TDI SportLine NAVI ACC AHK Xenon PDC,Gebrauchtwagen
+bmw,BMW 435,schwarz,10/2014,2014,22400,230,313,Automatik,Diesel,5.7,175000.0,435d Gran Coupé*xDrive*M-Paket*ACC*Head-Up*H&K*,Gebrauchtwagen
+volvo,Volvo XC90,weiß,04/2019,2019,54900,173,235,Automatik,Diesel,6.2,67200.0,D5 AWD Geartr. R-DESIGN - AHK - 360 - Pano - Luftf,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 200,silber,04/2016,2016,20990,115,156,Automatik,Benzin,5.8,80500.0,BI-XENON*KAMERA*19 ZOLL,Gebrauchtwagen
+skoda,Skoda Scala,weiß,11/2020,2020,24371,85,116,Automatik,Benzin,5.1,10.0,Style DSG KESSY SHZ RFK PDC v+h FULL LED 1.0 TS...,junger Gebrauchtwagen
+kia,Kia Ceed SW / cee'd SW,weiß,07/2016,2016,15500,99,135,Schaltgetriebe,Benzin,6.3,68000.0,Ceed 1.6 GDI SW Platinum Edition,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 250,weiß,09/2017,2017,33950,150,204,Automatik,Diesel,5.0,36800.0,d 4Matic Exclusive Panoramadach FLA,Gebrauchtwagen
+opel,Opel Corsa,blau,01/2019,2019,11446,74,101,Schaltgetriebe,Benzin,6.6,7765.0,E 1.4 120 Jahre Sitz-/Lenkh BFS PDC Kamera,Gebrauchtwagen
+opel,Opel Crossland,orange,01/2021,2021,20490,96,131,Automatik,Benzin,5.0,11103.0,Innovation 130 Automatik Navi Kamera,junger Gebrauchtwagen
+volkswagen,Volkswagen Passat,schwarz,11/2014,2014,14500,110,150,Schaltgetriebe,Benzin,4.9,143000.0,1.4 TSI ACT (BlueMotion Technology) Comfortline,Gebrauchtwagen
+bmw,BMW M850,blau,12/2018,2018,66188,390,530,Automatik,Benzin,9.7,51990.0,i Coupe xDrive Laser Nav HuD HK Kam360 SHZ,Gebrauchtwagen
+skoda,Skoda Rapid/Spaceback,blau,04/2018,2018,11490,70,95,Schaltgetriebe,Benzin,4.5,103205.0,Spaceback Ambition,Gebrauchtwagen
+audi,Audi A5,grün,08/2018,2018,32980,110,150,Automatik,Diesel,4.5,50089.0,Cabriolet 2.0 TDI Alu XenonPlus Klima Sitzh. PD,Gebrauchtwagen
+kia,Kia Ceed / cee'd,weiß,12/2016,2016,9400,100,136,Schaltgetriebe,Diesel,3.8,152800.0,1.6 CRDi Dream Team *Navi* Kamera*Winterp,Gebrauchtwagen
+renault,Renault Twingo,blau,09/2018,2018,10490,51,69,Schaltgetriebe,Benzin,5.0,14797.0,1.0  70 Life*ALLWETTER*KLIMA*RADIO*BLUETOOTH*USB*,Gebrauchtwagen
+mini,MINI Cooper,weiß,03/2023,2023,32750,100,136,Automatik,Benzin,5.8,10.0,3-Türer ~sofort verfügbar~*DAB*LED*Panorama Dach*,Neuwagen
+skoda,Skoda Fabia,weiß,05/2018,2018,14990,81,110,Schaltgetriebe,Benzin,4.3,56818.0,Combi Clever Climatronic ACC Tempomat PDC,Gebrauchtwagen
+bmw,BMW 520,blau,10/2019,2019,26989,140,190,Automatik,Diesel,5.1,72110.0,d xDrive Business-Paket|LED|Navigation|SHZ,Gebrauchtwagen
+ford,Ford Mondeo,silber,03/2020,2020,14979,110,150,Automatik,Diesel,5.1,149950.0,2.0 Business FRONT+LANE+NAVI+GRA+ALU+AHK,junger Gebrauchtwagen
+bmw,BMW M2,orange,07/2019,2019,54490,302,411,Automatik,Benzin,9.8,16712.0,Coupe Competition NAVI-LEDER-KAM-LED-TOTWINKE,Gebrauchtwagen
+opel,Opel Astra,schwarz,09/2016,2016,9700,81,110,Schaltgetriebe,Diesel,3.6,85880.0,1.6 D (CDTI) Innovation,Gebrauchtwagen
+skoda,Skoda Superb,weiß,06/2018,2018,18900,110,150,Automatik,Diesel,4.4,123950.0,Lim. Ambition 1-Hand EU6 DSG Bi-Xenon,Gebrauchtwagen
+volvo,Volvo XC90,schwarz,10/2018,2018,15990,173,235,Automatik,Diesel,6.0,66500.0,D5 AWD Geartronic Momentum 7 sitzer Panorama leder,Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,silber,10/2017,2017,16900,81,110,Schaltgetriebe,Benzin,5.1,145716.0,1.2 TSI Sound,Gebrauchtwagen
+volvo,Volvo V60,rot,12/2018,2018,20500,140,190,Schaltgetriebe,Diesel,4.4,89397.0,Momentum Navi LED VIRTUAL Winter-Paket PDC,Gebrauchtwagen
+volkswagen,Volkswagen T6 California,weiß,06/2017,2017,52950,110,150,Automatik,Diesel,6.5,82000.0,Beach 4Motion*Navi*Standheizung,Gebrauchtwagen
+hyundai,Hyundai iX35,grau,11/2011,2011,8600,99,135,Schaltgetriebe,Benzin,6.8,114350.0,1.6 Comfort 2WD*AHK*PDC*Scheckheft,Gebrauchtwagen
+toyota,Toyota Aygo X,beige,12/2022,2022,17890,53,72,Schaltgetriebe,Benzin,4.7,2500.0,Pulse 1.0*CARPLAY*CAM*TEMPOMAT*KLIMA*,junger Gebrauchtwagen
+mazda,Mazda CX-5,grau,03/2023,2023,42950,143,194,Automatik,Benzin,7.6,2302.0,2.5i 194PS A/T AWD TAKUMI,Jahreswagen
+ford,Ford S-Max,schwarz,03/2012,2012,10999,120,163,Automatik,Diesel,6.0,197000.0,2.0 TDCi Aut. Titanium Leder/Navi/Xen/Pano,Gebrauchtwagen
+fiat,Fiat Tipo,grau,05/2019,2019,12500,70,95,Schaltgetriebe,Benzin,6.6,28000.0,1.4 16V Lounge,Gebrauchtwagen
+bmw,BMW 318,schwarz,10/2009,2009,7200,105,143,Schaltgetriebe,Diesel,4.8,186500.0,d Touring (E91),Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,01/2023,2023,23990,81,110,Schaltgetriebe,Benzin,4.7,8.0,FR 1.0 TSI LED Navi SHZ Kam ACC VC,Neuwagen
+peugeot,Peugeot 208,grau,08/2022,2022,24390,74,101,Schaltgetriebe,Benzin,5.3,4500.0,PureTech 100 Allure Pack,junger Gebrauchtwagen
+audi,Audi Q2,schwarz,08/2017,2017,17990,110,150,Schaltgetriebe,Benzin,5.5,74523.0,basis/TÜV-NEU..,Gebrauchtwagen
+volkswagen,Volkswagen Polo,grau,03/2000,2000,1150,37,50,Schaltgetriebe,Benzin,5.9,200000.0,Polo,Gebrauchtwagen
+volkswagen,Volkswagen Touran,schwarz,02/2019,2019,29900,140,190,Automatik,Diesel,4.0,109900.0,2.0 TDI DSG R LINE PANO 7 SITZ LED NAVI,Gebrauchtwagen
+opel,Opel Mokka X,schwarz,12/2017,2017,15290,103,140,Schaltgetriebe,Benzin,5.9,30634.0,1.4 Turbo Innovation NAVI SHZ PDC KLI,Gebrauchtwagen
+skoda,Skoda Kodiaq,schwarz,04/2023,2023,52788,180,245,Automatik,Benzin,7.4,10.0,2.0 TSI RS 4x4 AHK+ASSISTENTEN+El. SITZ+NAVI+LED,Neuwagen
+volkswagen,Volkswagen Golf,silber,01/2011,2011,11750,77,105,Automatik,Benzin,5.3,159000.0,Sharan 1.4 TSI DSG BlueMotion Technology Trendline,Gebrauchtwagen
+bmw,BMW 135,blau,09/2020,2020,37490,225,306,Automatik,Benzin,7.1,36265.0,I-xDRIVE+NAV+CARPLAY+BUSINESS-P+SHZ+8-FACH!,junger Gebrauchtwagen
+audi,Audi A4,silber,11/2019,2019,31930,140,190,Automatik,Diesel,5.9,84275.0,40 TDI Quattro Advanced LED/Standh./DAB,Gebrauchtwagen
+hyundai,Hyundai i20,weiß,08/2016,2016,10890,55,75,Schaltgetriebe,Benzin,5.1,54100.0,"blue Classic Klima/Pioneer DAB/Fin. ab 3,99%",Gebrauchtwagen
+bmw,BMW X1,schwarz,12/2013,2013,17400,160,218,Automatik,Diesel,5.9,145000.0,xDrive 25d|BIXENON|PDC|SHZ|PANO|NAVI|BT|,Gebrauchtwagen
+seat,SEAT Alhambra,silber,04/2020,2020,31888,110,150,Schaltgetriebe,Benzin,7.1,58200.0,Style 1.4 TSI 7 Sitze Navi ACC,junger Gebrauchtwagen
+volkswagen,Volkswagen Passat Variant,schwarz,01/2013,2013,9490,103,140,Schaltgetriebe,Diesel,5.3,150000.0,2.0 Blue TDI DSG SCR Comfortline,Gebrauchtwagen
+volkswagen,Volkswagen CC,braun,06/2012,2012,13470,118,160,Schaltgetriebe,Benzin,7.1,130136.0,1.8 TSI/BI-XENON/LED/NAVI/SHZ/ALCANTARA/EU5,Gebrauchtwagen
+seat,SEAT Arona,rot,09/2020,2020,17990,70,95,Schaltgetriebe,Benzin,4.9,32176.0,Style,junger Gebrauchtwagen
+opel,Opel Corsa,blau,12/2003,2003,1500,55,75,Schaltgetriebe,Benzin,6.4,278225.0,1.2 16V Njoy,Gebrauchtwagen
+renault,Renault Scenic,weiß,06/2012,2012,11750,81,110,Schaltgetriebe,Benzin,7.4,100000.0,TomTom Edition 1.6 16V 110/KLIMA/AHK/NAVI,Gebrauchtwagen
+ford,Ford Tourneo Custom,grau,07/2020,2020,36885,96,131,Schaltgetriebe,Diesel,6.3,53254.0,"Trend 2,0l 320 L2 Navi Sitzheizung Tempomat 8 Sitz",junger Gebrauchtwagen
+volkswagen,Volkswagen Golf Sportsvan,blau,02/2018,2018,19960,96,131,Schaltgetriebe,Benzin,5.1,32818.0,1.5 TSI ACT Highline,Gebrauchtwagen
+hyundai,Hyundai i30,silber,02/2023,2023,22374,88,120,Schaltgetriebe,Benzin,5.0,12.0,1.0 T-GDI Select *SHZ*LED*Lane Assist*DAB*,Neuwagen
+renault,Renault Twingo,gelb,09/2020,2020,11600,68,92,Schaltgetriebe,Benzin,5.0,17075.0,Twingo TCe 90 LIMITED,junger Gebrauchtwagen
+opel,Opel Vivaro,schwarz,09/2017,2017,29500,92,125,Schaltgetriebe,Diesel,5.7,105000.0,"B Kombi Combi L2H1  2,9t 8Sitzer",Gebrauchtwagen
+ford,Ford Tourneo Custom,weiß,06/2020,2020,44280,136,185,Schaltgetriebe,Diesel,6.3,22585.0,2.0 TDCi 320 L1 Titanium X AHK Navi Kamera,junger Gebrauchtwagen
+ford,Ford Edge,rot,09/2019,2019,28910,175,238,Automatik,Diesel,6.8,84229.0,Titanium 2.0 EcoBlue Bi-Turbo 4x4 Aut.,Gebrauchtwagen
+volkswagen,Volkswagen T4 Caravelle,blau,08/2002,2002,18000,75,102,Schaltgetriebe,Diesel,7.9,350000.0,Caravelle T4 TDI 7DK2Y2,Gebrauchtwagen
+audi,Audi SQ7,blau,10/2016,2016,69950,320,435,Automatik,Diesel,7.6,117500.0,4.0 TDI quattro/Keramik/Pano/B&O/AHK/7-Sitz,Gebrauchtwagen
+toyota,Toyota C-HR,rot,02/2017,2017,16499,85,116,Schaltgetriebe,Benzin,6.0,85000.0,Flow ACC~KAMERA~NAVI~NAVI~85000KM,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 250,grau,01/2016,2016,30480,155,211,Automatik,Benzin,6.5,91833.0,Exclusive 4MATIC NAVI STANDHZ LED KLI,Gebrauchtwagen
+volkswagen,Volkswagen T6 Multivan,beige,06/2019,2019,62910,146,199,Automatik,Diesel,8.1,35530.0,DSG Kurz 4MOTION Edition 146 kW,Gebrauchtwagen
+ford,Ford Kuga,silber,05/2017,2017,14990,88,120,Schaltgetriebe,Diesel,4.4,124000.0,1.5 TDCi Trend 4x2*SHZ*SRA*PDC*TEMPOMAT*RDK Klima,Gebrauchtwagen
+citroen,Citroen C3,schwarz,06/2012,2012,5995,70,95,Schaltgetriebe,Benzin,5.8,46000.0,VTi 120 Exclusive,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 200,schwarz,12/2007,2007,7600,120,163,Schaltgetriebe,Benzin,8.7,176000.0,SLK 200 Kompressor,Gebrauchtwagen
+ford,Ford Ranger,silber,03/2023,2023,47450,156,212,Automatik,Diesel,9.8,35.0,2.0 TDCI 4x4 AT DoKa Wildtrak Rollo / ACC,Jahreswagen
+skoda,Skoda Octavia,silber,05/2018,2018,17930,110,150,Schaltgetriebe,Diesel,4.3,83200.0,"Combi Ambition 2,0 TDI Navi PDC GRA AHK",Gebrauchtwagen
+skoda,Skoda Kamiq,silber,12/2022,2022,23990,81,110,Schaltgetriebe,Benzin,4.7,14.0,1.0 TSI LED AAC Kam SmartLink,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz V 300,weiß,04/2022,2022,78150,174,237,Automatik,Diesel,7.3,32901.0,d 4M Marco Polo Küche Night Leder Sound,junger Gebrauchtwagen
+volvo,Volvo XC60,grau,09/2017,2017,36810,187,254,Automatik,Benzin,7.3,100000.0,T5 Inscription AWD AHK Luftfahrwerk Standheizung V,Gebrauchtwagen
+kia,Kia XCeed,schwarz,04/2022,2022,31190,118,160,Automatik,Benzin,6.1,17990.0,Platinum Edition 1.5 T-GDI EU6d 1.5T DCT7 Glasdach,junger Gebrauchtwagen
+ford,Ford B-Max,rot,06/2017,2017,10950,70,95,Schaltgetriebe,Diesel,3.8,108980.0,1.5 TDCI SYNC Edition*Cool & Sound-P.*PDC*,Gebrauchtwagen
+seat,SEAT Arona,rot,03/2021,2021,19250,70,95,Schaltgetriebe,Diesel,5.0,23790.0,1.6 TDI Style NAVI PDC SH ALU 16,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,schwarz,05/2014,2014,15190,135,184,Schaltgetriebe,Diesel,4.2,189000.0,VII GTD BMT*NAVI*KAMERA*4-Rohr Sport-Abgasa,Gebrauchtwagen
+volkswagen,Volkswagen Passat,schwarz,06/2007,2007,2299,110,150,Schaltgetriebe,Benzin,8.2,253000.0,Tour V Lim. (1K1)***ohne TÜV fährt gut!,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SL 500,silber,07/2003,2003,15990,225,306,Automatik,Benzin,12.1,143811.0,CDI T ELEGANCE / DISTRO+ / KEY GO / 7.SITZ / AIRMA,Gebrauchtwagen
+audi,Audi A6,schwarz,11/2009,2009,15000,125,170,Automatik,Benzin,7.7,170000.0,A6 2.0 TFSI S-Line multitronic,Gebrauchtwagen
+bmw,BMW X2,grau,04/2018,2018,29700,170,231,Automatik,Diesel,5.3,123700.0,xDrive25d M Sport Navi Plus Head-Up AHK LED,Gebrauchtwagen
+ford,Ford Transit Connect,weiß,08/2017,2017,22448,88,120,Schaltgetriebe,Diesel,4.6,10650.0,"1,5L Kombi lang+Klima",Gebrauchtwagen
+skoda,Skoda Kodiaq,grau,03/2023,2023,22495,110,150,Automatik,Benzin,7.2,10.0,"1.5 TSI DSG Style, Travel, FS- heizbar, Matrix, Na",Neuwagen
+bmw,BMW 318,braun,07/2010,2010,6950,105,143,Schaltgetriebe,Diesel,4.5,236770.0,318d DPF Touring Edition Lifestyle,Gebrauchtwagen
+opel,Opel Crossland,grau,04/2023,2023,22788,96,131,Automatik,Benzin,6.4,10.0,1.2 Turbo 130 AT Elegance LED SHZ KAM,Neuwagen
+volkswagen,Volkswagen Polo,grau,03/2019,2019,25890,70,95,Automatik,Diesel,3.9,37282.0,"VI Highline 1.6 TDI 7-G-DSG PDC, Sitzheizung",Gebrauchtwagen
+volkswagen,Volkswagen Golf GTI,rot,12/2020,2020,28860,180,245,Automatik,Benzin,7.4,22162.0,DSG NAVI LED KAMERA SHZ,junger Gebrauchtwagen
+kia,Kia Picanto,schwarz,08/2021,2021,12977,62,84,Schaltgetriebe,Benzin,4.5,22500.0,1.2 Dream Team *KLIMA*ALU*SITZHZG*,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,grau,11/2017,2017,17770,96,131,Schaltgetriebe,Benzin,4.8,71250.0,VII 1.5 TSI ACT BlueMotion Sitzheizung Navi Klima,Gebrauchtwagen
+renault,Renault Alpine A110,blau,03/2018,2018,81040,185,252,Automatik,Benzin,6.1,26000.0,PREMIERE EDITION bleue alpine,Gebrauchtwagen
+volkswagen,Volkswagen Golf,gold,12/2017,2017,18090,96,131,Automatik,Benzin,4.8,39750.0,Golf 1.5 TSI BlueMotion ACT DSG Highline,Gebrauchtwagen
+audi,Audi A5,grau,02/2009,2009,34800,132,179,Schaltgetriebe,Benzin,6.2,192000.0,Coupe 2.0 TFSI Sline Sport Leder PDC,Gebrauchtwagen
+seat,SEAT Arona,weiß,08/2018,2018,19990,85,116,Schaltgetriebe,Benzin,4.9,25814.0,"Style 1,0 TSI 85 KW Navi",Gebrauchtwagen
+opel,Opel Astra,grau,12/2022,2022,28896,96,131,Schaltgetriebe,Diesel,4.5,7500.0,Sports Tourer 1.5 D Elegance *NAVI*AHK*LED,junger Gebrauchtwagen
+audi,Audi TTS,gelb,04/2018,2018,37990,228,310,Automatik,Benzin,6.9,60000.0,Roadster neu Inspektion non OPF,Gebrauchtwagen
+audi,Audi A3,weiß,06/2023,2023,39890,110,150,Automatik,Benzin,5.7,10.0,Sportback S-Line 35 TFSI * LED ACC NAVI PDC HI....,Neuwagen
+porsche,Porsche Panamera,schwarz,05/2016,2016,58900,324,441,Automatik,Benzin,10.3,95000.0,GTS * SCH * Carbon * PDK * Chrono *,Gebrauchtwagen
+seat,SEAT Ateca,silber,06/2020,2020,24980,110,150,Automatik,Diesel,5.8,48824.0,2.0 TDI DSG Xcellence,junger Gebrauchtwagen
+seat,SEAT Alhambra,grau,05/2019,2019,34900,110,150,Automatik,Diesel,5.3,47200.0,2.0 TDI Xcellence DSG*Navi*Xenon*AHK* Xcellence,Gebrauchtwagen
+dacia,Dacia Lodgy,blau,05/2018,2018,13990,75,102,Schaltgetriebe,Benzin,6.1,33324.0,Ambiance.-Klimaa.-Bluetooth.-CD,Gebrauchtwagen
+skoda,Skoda Superb,silber,04/2013,2013,7490,103,140,Automatik,Diesel,6.8,246700.0,Combi Ambition *Navi-DSG-AHK 24 Stunden..,Gebrauchtwagen
+volkswagen,Volkswagen Sharan,grau,11/2011,2011,13990,125,170,Automatik,Diesel,5.9,160000.0,Highline BMT,Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,07/2021,2021,22900,81,110,Schaltgetriebe,Benzin,4.6,16000.0,"VIII Active 1.0 TSI *LED*VIRTUAL*ACC*16""*",junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz A 170,grau,04/2007,2007,5990,85,116,Schaltgetriebe,Benzin,6.8,150500.0,Avantgarde/Kein Rost/Lückenlss Scheckheft,Gebrauchtwagen
+mazda,Mazda 6,violett,02/2018,2018,18550,129,175,Automatik,Diesel,4.9,125000.0,Kombi 2.2 SKYACTIV-D Sports-Line Automatik EU6,Gebrauchtwagen
+renault,Renault Clio,schwarz,03/2012,2012,4998,76,103,Schaltgetriebe,Benzin,5.4,169100.0,Grandtour Night & Day l 2.HAND l,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 220,silber,08/2001,2001,1950,105,143,Automatik,Diesel,6.7,245000.0,CDI C -Klasse Lim. (BM 203),Gebrauchtwagen
+ford,Ford Transit Custom,grau,11/2018,2018,32480,96,131,Automatik,Diesel,7.0,82400.0,320 L2H1 VA Autm. Trend,Gebrauchtwagen
+opel,Opel Crossland X,orange,09/2021,2021,26990,96,131,Automatik,Benzin,4.9,12900.0,"Crossland ""Facelift"" Elegance +LED+DAB+SHZ+",junger Gebrauchtwagen
+bmw,BMW 640,schwarz,02/2014,2014,16100,230,313,Automatik,Diesel,6.0,53000.0,d xDrive Cabrio M Sportpaket / GARANTIE,Gebrauchtwagen
+audi,Audi Q5,grau,06/2009,2009,12990,125,170,Automatik,Diesel,6.8,189950.0,"2.0 TDI quattro, Panorama,Xenon,Navi",Gebrauchtwagen
+volkswagen,Volkswagen Caddy,weiß,06/2010,2010,7500,75,102,Schaltgetriebe,Benzin,8.3,188000.0,1.6 (5-Si.),Gebrauchtwagen
+opel,Opel Insignia,silber,09/2019,2019,14900,125,170,Automatik,Diesel,5.6,146000.0,Sports Tourer *INNOVATION*IntelliLux*,Gebrauchtwagen
+opel,Opel Astra,rot,01/2014,2014,3250,81,110,Schaltgetriebe,Diesel,4.5,320000.0,1.7 CDTI DPF Sports Tourer Active,Gebrauchtwagen
+ford,Ford Focus,blau,09/2008,2008,4299,92,125,Schaltgetriebe,Benzin,7.0,125000.0,Titanium Lim. (CB4),Gebrauchtwagen
+kia,Kia Ceed / cee'd,grau,02/2023,2023,23490,118,160,Schaltgetriebe,Benzin,5.3,5000.0,CEED 1.5 T-GDI VISION *NAVI-PAKET*KOMFORT-PAKET*,Jahreswagen
+mercedes-benz,Mercedes-Benz E 200,silber,04/2003,2003,3500,90,122,Automatik,Diesel,5.9,369000.0,CDI Limousine.-Aut.-Xenon-Klimaaut-Tüv Au neu,Gebrauchtwagen
+kia,Kia Venga,silber,09/2018,2018,11450,66,90,Schaltgetriebe,Benzin,6.0,126000.0,VENGA DREAM TEAM PANO PDC NAVI SHZ 1.HAND TOP,Gebrauchtwagen
+ford,Ford Fusion,blau,05/2006,2006,5940,59,80,Schaltgetriebe,Benzin,6.9,44047.0,Plus (CBK),Gebrauchtwagen
+peugeot,Peugeot 3008,silber,01/2023,2023,29990,96,131,Schaltgetriebe,Benzin,5.0,50.0,1.2 PureTech 130 LED Navi SHZ Kamera VC,Jahreswagen
+audi,Audi A3,weiß,11/2009,2009,6900,118,160,Schaltgetriebe,Benzin,6.6,218000.0,1.8 TFSI S line Sportpaket plus Sportback (8PA),Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 180,silber,09/2017,2017,21946,115,156,Schaltgetriebe,Benzin,6.0,77400.0,T AVANTG/LED/PTS/NAVI/SHZ/EASYPACK/TEMPOMAT/TW-ASS,Gebrauchtwagen
+bmw,BMW 320,silber,12/2008,2008,10750,125,170,Automatik,Benzin,7.0,127157.0,i Garantie* Auto.* Steuerkette Neu* TOP*,Gebrauchtwagen
+audi,Audi TT,silber,05/2006,2006,8500,120,163,Schaltgetriebe,Benzin,8.2,143122.0,Cabrio Leder Sitzheizung,Gebrauchtwagen
+nissan,Nissan Pixo,rot,02/2010,2010,3999,50,68,Schaltgetriebe,Benzin,4.4,133000.0,Acenta *Klima*TÜV 01/2025 AHK*Zentral V.*,Gebrauchtwagen
+bmw,BMW X5,schwarz,10/2010,2010,15990,180,245,Automatik,Diesel,7.4,226000.0,xDrive30d Facelift |M-PAKET|LEDER|XENON|AHK|,Gebrauchtwagen
+ford,Ford Fiesta,rot,04/2018,2018,11990,74,101,Schaltgetriebe,Benzin,4.6,98764.0,1.0 EcoBoost S&S COOL&CONNECT,Gebrauchtwagen
+hyundai,Hyundai SANTA FE,schwarz,06/2011,2011,5999,128,174,Automatik,Benzin,8.8,150000.0,2.4 4WD Automatik Comfort,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 250,schwarz,08/2013,2013,17998,150,204,Automatik,Benzin,7.4,116139.0,Coupe Automatik CGI BE Leder Navi Xenon,Gebrauchtwagen
+opel,Opel Insignia,silber,06/2019,2019,32500,154,209,Automatik,Diesel,6.9,38000.0,"GSi 4x4 2.0 154kW, OPC Performance Ledersitze &...",Gebrauchtwagen
+nissan,Nissan Qashqai,rot,02/2019,2019,18700,103,140,Schaltgetriebe,Benzin,5.3,42532.0,1.3 DIG-T N-CONNECTA,Gebrauchtwagen
+renault,Renault Megane,schwarz,04/2008,2008,3600,82,111,Schaltgetriebe,Benzin,7.0,172000.0,Megane 1.6 Coupe-Cabriolet Avantage,Gebrauchtwagen
+audi,Audi A4,schwarz,05/2013,2013,14700,125,170,Schaltgetriebe,Benzin,6.1,127746.0,"Attraction Avant (8K5),ALU,NAVI,XENON,TEMPOMAT",Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,weiß,03/2014,2014,16900,118,160,Schaltgetriebe,Benzin,6.7,82000.0,Sport & Style BMT R-Line 1. Hand Navi All,Gebrauchtwagen
+skoda,Skoda Superb,silber,03/2020,2020,31990,140,190,Automatik,Benzin,7.6,56308.0,2.0TSI DSG Sportline Digt Cockpit AHK,junger Gebrauchtwagen
+seat,SEAT Ateca,grau,06/2023,2023,31990,110,150,Automatik,Benzin,6.4,10.0,1.5 TSI Style DSG * LED * DAB * PDC HI. * KLIMA *,Neuwagen
+citroen,Citroen C3 Aircross,silber,05/2019,2019,14990,81,110,Schaltgetriebe,Benzin,4.8,56000.0,PureTech 110 Stop & Start OPF LIVE,Gebrauchtwagen
+ford,Ford Fiesta,grau,02/2009,2009,7950,71,97,Automatik,Benzin,6.5,106562.0,Trend Automatik Klimaanlage HU neu,Gebrauchtwagen
+land-rover,Land Rover Range Rover Evoque,grau,10/2018,2018,39890,177,241,Automatik,Benzin,8.2,61672.0,Si4 Autobiography,Gebrauchtwagen
+ford,Ford S-Max,rot,02/2019,2019,31950,140,190,Automatik,Diesel,5.3,31987.0,"2,0 TDCi ST-Line KAM LED E-SITZE SHZ PDC",Gebrauchtwagen
+volkswagen,Volkswagen T-Cross,orange,05/2022,2022,22970,81,110,Schaltgetriebe,Benzin,4.9,11500.0,Life 1.0 TSI ACC PDC v+h Navi über APP Connect Cli,junger Gebrauchtwagen
+porsche,Porsche Cayenne,schwarz,12/2005,2005,7299,250,340,Automatik,Benzin,14.9,190000.0,Porsche Cayenne S TÜV XENON BOSE,Gebrauchtwagen
+fiat,Fiat Tipo,silber,06/2022,2022,16990,74,101,Schaltgetriebe,Benzin,5.1,10.0,Lim 1.0 /KLIMA/TEMPOMAT/BLUETOOTH,junger Gebrauchtwagen
+opel,Opel Insignia,silber,03/2019,2019,15290,125,170,Schaltgetriebe,Diesel,5.4,128266.0,2.0 CDTI Sports Tourer INNOVATION LED A,Gebrauchtwagen
+hyundai,Hyundai iX35,weiß,09/2012,2012,10880,99,135,Schaltgetriebe,Benzin,6.8,122000.0,"1.6 2WD 5 Star Edition, Navi, Klimaautomatik",Gebrauchtwagen
+audi,Audi A4,silber,12/2008,2008,8000,195,265,Automatik,Benzin,9.4,225000.0,limusine  3.2 FSI quattro  S line,Gebrauchtwagen
+porsche,Porsche Macan,grau,04/2018,2018,47400,185,252,Automatik,Benzin,7.2,47767.0,PDK/ PASM/ PCM/ KAMERA,Gebrauchtwagen
+opel,Opel Meriva,braun,11/2011,2011,10799,74,101,Automatik,Diesel,6.4,94893.0,B Innovation *Automatik*Navi*Winterpaket*,Gebrauchtwagen
+mini,MINI One D Clubman,rot,10/2019,2019,18420,85,116,Schaltgetriebe,Diesel,4.1,41625.0,One D Navi*LED*Sportsitze*Parkassist*1.Hand*Unfall,Gebrauchtwagen
+skoda,Skoda Fabia,blau,05/2023,2023,17355,59,80,Schaltgetriebe,Benzin,5.1,8.0,1.0 MPI Ambition Plus 5J Garnatie SHZ GRA LAGER,Neuwagen
+audi,Audi A5,grau,04/2018,2018,26999,140,190,Automatik,Diesel,4.5,140000.0,Coupe QUATTRO 2x S Line Plus,Gebrauchtwagen
+audi,Audi A4,grau,07/2001,2001,2950,75,102,Schaltgetriebe,Benzin,7.7,124853.0,Lim. 1.6|Klima|El.Fenster|2.Hand|,Gebrauchtwagen
+hyundai,Hyundai i30,schwarz,06/2014,2014,8790,99,135,Schaltgetriebe,Benzin,6.2,134000.0,cw FIFA World Cup Edition Navi Kamera SHZ,Gebrauchtwagen
+audi,Audi A6 allroad,schwarz,10/2019,2019,54960,257,349,Automatik,Diesel,6.4,37600.0,55 TDI quattro*PANORAMA*360*AHK*HeadUp*LUFT*,Gebrauchtwagen
+hyundai,Hyundai i10,silber,03/2023,2023,17490,49,67,Schaltgetriebe,Benzin,4.8,1576.0,1.0 BENZIN M/T CONNECT&GO Navi Spurhalteassistent,Jahreswagen
+peugeot,Peugeot 207,schwarz,10/2010,2010,6699,115,156,Schaltgetriebe,Benzin,7.4,160000.0,Platinum CC Black & White Edition,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 180,grau,02/2012,2012,13000,115,156,Automatik,Benzin,6.6,138900.0,C 180 T BlueEFFICIENCY 7G-TRONIC,Gebrauchtwagen
+hyundai,Hyundai SANTA FE,weiß,03/2023,2023,53490,142,193,Automatik,Diesel,7.0,3500.0,2.2 CRDi 4WD 8-DCT SEVEN Signature,Jahreswagen
+volkswagen,Volkswagen New Beetle,schwarz,08/2009,2009,7980,75,102,Schaltgetriebe,Benzin,7.5,128300.0,"1,6 Freestyle Sitzheizung Klima Tempo",Gebrauchtwagen
+audi,Audi A5,rot,10/2017,2017,35690,185,252,Automatik,Benzin,6.6,76525.0,Cabriolet quattro S-Line sport Kopfraumheiz.,Gebrauchtwagen
+audi,Audi A6,grau,03/2021,2021,61650,250,340,Automatik,Benzin,7.3,20100.0,Limousine 55 TFSI qu. S-Line HUD PAN Matrix B+O,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf Variant,blau,07/2020,2020,22795,110,150,Automatik,Diesel,4.4,19770.0,Golf VII Variant GP 2.0 TDI DSG Comfortline | NAVI,junger Gebrauchtwagen
+kia,Kia Picanto,weiß,05/2023,2023,15490,62,84,Schaltgetriebe,Benzin,4.6,50.0,PICANTO 1.2 VISION *KOMFORT-PAKET*,Jahreswagen
+kia,Kia XCeed,grau,11/2020,2020,29870,150,204,Automatik,Benzin,6.9,26656.0,1.6T DCT PLATINUM STD Fernlichtass. LED,junger Gebrauchtwagen
+volkswagen,Volkswagen Polo,rot,01/2017,2017,12490,66,90,Schaltgetriebe,Benzin,4.7,78867.0,1.2 TSI Allstar BMT*NAVI*PDC*SHZ*,Gebrauchtwagen
+skoda,Skoda Octavia,silber,12/2013,2013,8990,110,150,Schaltgetriebe,Diesel,4.2,162755.0,2.0 TDI Combi *Klima*Tempomat*17 Zoll*,Gebrauchtwagen
+fiat,Fiat Talento,schwarz,01/2019,2019,26420,89,121,Schaltgetriebe,Diesel,6.3,73140.0,Kombi L2H1 1.6 9 SITZER KLIMA PDC RADIO,Gebrauchtwagen
+volkswagen,Volkswagen Touran,grau,11/2019,2019,24499,110,150,Automatik,Diesel,6.1,104000.0,"2.0 TDI SCR DSG Comfortline Massagesitz, SH, Alcan",Gebrauchtwagen
+ford,Ford B-Max,grau,03/2016,2016,18900,77,105,Automatik,Benzin,6.4,38745.0,Titanium AUTOMATIK wenig KM!,Gebrauchtwagen
+ford,Ford Focus,grau,12/2020,2020,19000,92,125,Schaltgetriebe,Benzin,4.9,28000.0,1.0 ecoboost ST-Line business. Garantie!,junger Gebrauchtwagen
+dacia,Dacia Sandero,schwarz,08/2017,2017,11990,66,90,Schaltgetriebe,Benzin,5.1,59000.0,Stepway TCe 90 Prestige,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz S 600,schwarz,12/2003,2003,28999,368,500,Automatik,Benzin,14.8,59990.0,AB 247€ S 600 L V12 Bi-Turbo Service+Tüv neu,Gebrauchtwagen
+citroen,Citroen Berlingo,beige,09/2022,2022,35980,96,131,Schaltgetriebe,Diesel,4.3,50.0,Shine XL*STANDHEIZUNG*NAVI*KEYLESS*,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz ML 320,schwarz,10/2006,2006,14299,165,224,Automatik,Diesel,9.4,198000.0,CDI 4Matic -RÜCKFAHRKAMERA / Sportpaket (Black),Gebrauchtwagen
+skoda,Skoda Fabia,weiß,01/2018,2018,15390,81,110,Automatik,Benzin,4.6,43000.0,Combi Monte Carlo,Gebrauchtwagen
+volkswagen,Volkswagen Scirocco,blau,02/2017,2017,19800,132,179,Automatik,Benzin,6.4,40099.0,2.0 TSI BMT,Gebrauchtwagen
+volkswagen,Volkswagen up!,rot,03/2016,2016,8900,44,60,Schaltgetriebe,Benzin,4.4,17200.0,Generation Four Navi Sitzheiz HU/AU neu,Gebrauchtwagen
+opel,Opel Corsa,blau,01/2010,2010,2400,51,69,Schaltgetriebe,Benzin,5.3,223000.0,1.2 16V ecoFLEX Edition 111 Jahre,Gebrauchtwagen
+ford,Ford Ranger Raptor,schwarz,02/2023,2023,59870,156,212,Automatik,Diesel,10.6,808.0,"ST-Line 1,0 125PS 5*J.Gar/Navi/LED/Winterp.   **",Jahreswagen
+land-rover,Land Rover Discovery Sport,weiß,03/2020,2020,42880,110,150,Automatik,Diesel,5.6,83567.0,D240 HSE *AHK und HUD*,junger Gebrauchtwagen
+land-rover,Land Rover Range Rover Sport,schwarz,03/2019,2019,56500,183,249,Automatik,Diesel,7.5,49912.0,SE 3.0 SDV6*LED*20Zoll*Kamera,Gebrauchtwagen
+skoda,Skoda Octavia,grau,07/2018,2018,20990,135,184,Automatik,Diesel,4.9,116000.0,"- L&K - 4x4*SHZ*LED*Alu 18""Standheizung",Gebrauchtwagen
+seat,SEAT Leon,grau,06/2016,2016,13990,110,150,Schaltgetriebe,Benzin,4.8,143000.0,FR ST *LED*KLIMA*NAVI*TEILLEDER*HU/AU NEU*GARANTIE,Gebrauchtwagen
+skoda,Skoda Fabia,grau,09/2017,2017,23840,81,110,Schaltgetriebe,Benzin,4.4,96029.0,1.0 TSI Ambition*PDC*TEMPO*SHZ*KLIMA*,Gebrauchtwagen
+opel,Opel Mokka X,weiß,01/2017,2017,18990,103,140,Automatik,Benzin,6.2,47666.0,Edition,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz A 160,blau,12/2001,2001,9650,75,102,Automatik,Benzin,7.9,96000.0,CDI CLASSIC Automatik*Klima*Regensensor*,Gebrauchtwagen
+toyota,Toyota Avensis,grau,01/2009,2009,6799,93,126,Schaltgetriebe,Diesel,5.9,123450.0,2,Gebrauchtwagen
+skoda,Skoda Octavia,weiß,09/2019,2019,16350,85,116,Schaltgetriebe,Diesel,4.1,123500.0,Combi 1.6 TDI Style,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,rot,10/2017,2017,22900,110,150,Automatik,Diesel,4.8,103000.0,Highline BMT/Start-Stopp/LED/NAVI,Gebrauchtwagen
+mazda,Mazda CX-5,grau,02/2023,2023,39990,143,194,Automatik,Benzin,7.1,5000.0,"Homura SKYACTIV-G Navi, 360 Kamera",Jahreswagen
+mercedes-benz,Mercedes-Benz C 220,schwarz,01/2014,2014,11890,125,170,Schaltgetriebe,Diesel,4.3,177000.0,T CDI BE Spur.-Totwin-.SHZ-Navi-BiXenon-6G,Gebrauchtwagen
+seat,SEAT Ibiza,blau,02/2020,2020,16880,85,116,Schaltgetriebe,Benzin,4.7,59612.0,Style 1.0 TSI EU6d-T+Klima+Apple CarPlay+Android A,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,grau,10/2008,2008,7950,59,80,Schaltgetriebe,Benzin,7.2,78200.0,"V Plus 1,4 Edition Tempomat FINANZIERUNG",Gebrauchtwagen
+audi,Audi SQ5,weiß,06/2013,2013,23000,294,400,Automatik,Diesel,6.8,198000.0,3.0 TDI quattro tiptronic,Gebrauchtwagen
+toyota,Toyota Yaris,silber,07/2009,2009,3400,51,69,Schaltgetriebe,Benzin,5.0,156000.0,Cool (KSP9/SCP9/NLP9),Gebrauchtwagen
+hyundai,Hyundai TUCSON,weiß,11/2015,2015,16490,97,132,Schaltgetriebe,Benzin,6.3,70033.0,blue Trend 2WD,Gebrauchtwagen
+volvo,Volvo V60,grau,02/2019,2019,32490,228,310,Automatik,Benzin,7.4,37412.0,T6 AWD Geartronic Inscription,Gebrauchtwagen
+bmw,BMW 114,weiß,01/2015,2015,8890,75,102,Schaltgetriebe,Benzin,5.7,163000.0,i Lim.Klima ALU Top Zustand!,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,schwarz,11/2018,2018,28990,110,150,Automatik,Diesel,4.8,63419.0,"2.0 TDI BMT DSG R-Line*AHK*LED*19""*Navi* R-Line",Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,blau,07/2016,2016,19499,85,116,Schaltgetriebe,Diesel,4.7,67820.0,BMT/Start-Stopp,Gebrauchtwagen
+volkswagen,Volkswagen Golf,blau,10/2003,2003,2999,55,75,Schaltgetriebe,Benzin,6.4,114000.0,IV Lim. 1.4L *Edition*  *114tKm* TÜV & AU NEU *,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz SLK 230,schwarz,04/2001,2001,12849,145,197,Automatik,Benzin,9.6,76829.0,Kompressor Automatik Cabrio GRA*KLIMA*SHZ,Gebrauchtwagen
+seat,SEAT Ibiza,schwarz,09/2018,2018,14500,85,116,Schaltgetriebe,Benzin,4.3,35000.0,Seat Ibiza FR 1.0 TSI,Gebrauchtwagen
+opel,Opel Insignia,schwarz,09/2014,2014,15750,120,163,Schaltgetriebe,Diesel,4.5,53000.0,Country Tourer *Standheiz*Kamera*AHK*,Gebrauchtwagen
+audi,Audi S5,blau,10/2014,2014,20800,245,333,Automatik,Benzin,7.7,199000.0,Coupe 3.0 TFSI quattro,Gebrauchtwagen
+audi,Audi A1,gelb,03/2020,2020,26947,110,150,Automatik,Benzin,6.3,24429.0,35 TFSI advanced S line LED Virtual,junger Gebrauchtwagen
+renault,Renault Clio,blau,01/2006,2006,1700,55,75,Schaltgetriebe,Benzin,5.9,167200.0,Authentique III,Gebrauchtwagen
+opel,Opel Corsa,weiß,10/2018,2018,11490,110,150,Schaltgetriebe,Benzin,6.1,32256.0,E Color Edition ecoFlex/Tüv&Inspektion NEU,Gebrauchtwagen
+opel,Opel Adam,weiß,03/2017,2017,12550,110,150,Schaltgetriebe,Benzin,6.3,68000.0,"1.4 Turbo S ,Sportpaket,Alu 18 Zoll,Top Zustand",Gebrauchtwagen
+skoda,Skoda Kodiaq,schwarz,05/2023,2023,43945,110,150,Automatik,Diesel,5.6,1002.0,Sportline TDI DSG|7SITZE|KAMERA|AHK|ACC|,Jahreswagen
+hyundai,Hyundai i20,weiß,12/2019,2019,14190,55,75,Schaltgetriebe,Benzin,5.8,33586.0,1.2 Select*KLIMA*GARANTIE*,Gebrauchtwagen
+land-rover,Land Rover Range Rover Sport,blau,05/2019,2019,62000,225,306,Automatik,Diesel,7.5,60614.0,HSE Dynamic*Panorama*AHK*LED*,Gebrauchtwagen
+opel,Opel Meriva,blau,04/2006,2006,2000,66,90,Schaltgetriebe,Benzin,6.2,147000.0,1.4,Gebrauchtwagen
+ford,Ford Fiesta,silber,05/2019,2019,17430,74,101,Schaltgetriebe,Benzin,5.1,31500.0,Titanium Navi Wipa ACC PDC City Stop Kamera,Gebrauchtwagen
+volkswagen,Volkswagen Golf Plus,silber,09/2012,2012,9500,90,122,Automatik,Benzin,6.3,133000.0,1.4 TSI DSG MATCH,Gebrauchtwagen
+bmw,BMW 120,schwarz,10/2015,2015,17900,140,190,Automatik,Diesel,3.9,99560.0,120d Aut. Advantage,Gebrauchtwagen
+mazda,Mazda 3,weiß,12/2019,2019,25490,132,179,Automatik,Benzin,5.5,85290.0,Prime-Line 1 Hand Garantie,Gebrauchtwagen
+bmw,BMW X3,silber,11/2005,2005,4900,110,150,Schaltgetriebe,Diesel,7.2,259000.0,"2.0d Klimaautomatik, Navi, Rückfahrkamera, Alu",Gebrauchtwagen
+mercedes-benz,Mercedes-Benz C 300,blau,07/2017,2017,29950,180,245,Automatik,Benzin,6.3,39300.0,AVANTGARDE MULTIBEAM DISTRO COMAND KAMERA,Gebrauchtwagen
+seat,SEAT Leon,weiß,02/2022,2022,26500,81,110,Schaltgetriebe,Benzin,5.6,19500.0,FR 1.0 eTSI NAVI/LED uvm.,junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 250,schwarz,01/2019,2019,29990,155,211,Automatik,Benzin,6.9,50250.0,2.0 CGI  AMG* AHK*Exkus. P.*Keyless*NAVI,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLA 200,rot,01/2022,2022,42490,110,150,Automatik,Diesel,4.6,18320.0,d Progressive Multibeam High-End Navi,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf GTI,schwarz,06/2016,2016,25000,284,386,Automatik,Benzin,6.9,94000.0,Clubsport DSG Schale,Gebrauchtwagen
+kia,Kia XCeed,grau,10/2020,2020,21450,103,140,Schaltgetriebe,Benzin,6.2,45711.0,"1,4 T-GTI AHK LED NAVI RFK LHZ PDC SHZ",junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz CLA 220,weiß,07/2017,2017,26000,135,184,Automatik,Benzin,6.5,68000.0,4Matic 7G-DCT AMG Line,Gebrauchtwagen
+ford,Ford Fiesta,silber,03/2012,2012,6650,70,95,Schaltgetriebe,Diesel,4.1,95000.0,"1,6TDCI 95.000km 5 Türig",Gebrauchtwagen
+mercedes-benz,Mercedes-Benz ML 350,silber,02/2012,2012,30999,225,306,Automatik,Benzin,8.5,90000.0,4MATIC (BlueEFFICIENCY) 7G-TRONIC offroad Paket,Gebrauchtwagen
+opel,Opel Insignia,schwarz,04/2019,2019,17000,100,136,Automatik,Diesel,5.5,74500.0,Grand Sport 1.6 Diesel Automatik Business Edition,Gebrauchtwagen
+volkswagen,Volkswagen Golf,weiß,05/2011,2011,8500,77,105,Schaltgetriebe,Benzin,5.7,130000.0,1.2 TSI Style,Gebrauchtwagen
+volkswagen,Volkswagen Golf,schwarz,06/2019,2019,30990,213,290,Automatik,Benzin,6.7,29300.0,GTI TCR 2.0 TSI DSG +NAVI+ACC+LED+LM18+S/HZ,Gebrauchtwagen
+bmw,BMW 118,blau,10/2007,2007,6300,105,143,Schaltgetriebe,Benzin,6.2,170410.0,i Lim. (E81/E87),Gebrauchtwagen
+audi,Audi Q2,blau,04/2022,2022,21990,110,150,Automatik,Benzin,6.4,7490.0,"S line 35 TFSI S tronic, Navi LED Fahren-Pake",junger Gebrauchtwagen
+volkswagen,Volkswagen T5 Transporter,blau,05/2013,2013,13850,75,102,Schaltgetriebe,Diesel,7.2,158920.0,Kasten*Klimaanlage*,Gebrauchtwagen
+seat,SEAT Leon,rot,07/2013,2013,13919,110,150,Schaltgetriebe,Diesel,4.1,76783.0,2.0 TDI FR NAVI LED PDC SHZ  TEMPOMAT,Gebrauchtwagen
+opel,Opel Insignia,weiß,11/2018,2018,26200,154,209,Automatik,Diesel,7.2,54301.0,CT 2.0 CDTI 4X4 Exclusive LED/NAVI/AHZV,Gebrauchtwagen
+volkswagen,Volkswagen Golf,blau,01/2018,2018,19490,135,184,Automatik,Diesel,4.8,123000.0,VII Variant GTD BMT / 1.Hand / NAVI /PANO,Gebrauchtwagen
+hyundai,Hyundai BAYON,silber,05/2023,2023,22490,74,101,Schaltgetriebe,Benzin,5.7,20.0,1.0 T-GDi Connect & Go *kurzfr. Verfügbar*,Neuwagen
+skoda,Skoda Karoq,blau,06/2022,2022,34999,110,150,Automatik,Benzin,5.2,4500.0,DSG Sportline*MATRIX*VIRTUAL*KESSY*AHZV*,junger Gebrauchtwagen
+opel,Opel Mokka,grau,12/2021,2021,25900,96,131,Automatik,Benzin,4.8,7871.0,Ultimate,junger Gebrauchtwagen
+audi,Audi A4,schwarz,11/2004,2004,850,132,179,Schaltgetriebe,Diesel,7.8,292300.0,Avant 2.5 TDI quattro.Klima.Navi.SHZ.KeinTÜV,Gebrauchtwagen
+seat,SEAT Ateca,weiß,02/2020,2020,23980,110,150,Automatik,Diesel,5.9,60450.0,2.0 TDI XCELLENCE DSG AHK / LED / ACC /,junger Gebrauchtwagen
+opel,Opel Insignia,grau,12/2018,2018,32480,154,209,Automatik,Diesel,7.1,91293.0,GSi 4x4 B Sports Tourer,Gebrauchtwagen
+ford,Ford Kuga,schwarz,06/2016,2016,16498,110,150,Schaltgetriebe,Benzin,6.2,66255.0,1.5 Navi/Tel-Sync/PDC/Bi-Xenon/Temp/SHZ/BC!,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz B 180,grau,08/2005,2005,4000,80,109,Schaltgetriebe,Diesel,5.6,250000.0,CDI,Gebrauchtwagen
+seat,SEAT Arona,weiß,02/2018,2018,18990,110,150,Schaltgetriebe,Benzin,5.1,67100.0,"FR 1,5 TSi-Navi/LED/AHK/Parklenksystem",Gebrauchtwagen
+ford,Ford Focus,weiß,09/2015,2015,8399,63,86,Schaltgetriebe,Benzin,6.0,110979.0,Ambiente Turnier  Klima guter Zustand,Gebrauchtwagen
+audi,Audi A4,silber,07/2020,2020,23490,120,163,Automatik,Diesel,5.2,89364.0,35 TDI S-tronic +STADT+TOUR+KAMERA+ACC+,junger Gebrauchtwagen
+opel,Opel Insignia,silber,11/2021,2021,26990,128,174,Automatik,Diesel,4.3,9756.0,GS Elegance / Anhängerkupplung / Massage,junger Gebrauchtwagen
+seat,SEAT Arona,blau,05/2018,2018,16500,85,116,Schaltgetriebe,Benzin,4.9,33468.0,"Style, LED, PDC",Gebrauchtwagen
+audi,Audi SQ5,weiß,09/2016,2016,30900,240,326,Automatik,Diesel,6.6,96344.0,3.0 TDI competition quattro PanoDach Xenon,Gebrauchtwagen
+land-rover,Land Rover Range Rover Velar,weiß,10/2019,2019,54900,221,300,Automatik,Benzin,8.2,73400.0,2.0 R-Dynamic SE,Gebrauchtwagen
+bmw,BMW 320,grau,05/2014,2014,19190,135,184,Automatik,Diesel,4.7,107850.0,d xDrive PDC l 2.Hd l Bi-Xenon l HUD l NaviProf l,Gebrauchtwagen
+dacia,Dacia Duster,schwarz,03/2023,2023,22990,96,131,Schaltgetriebe,Benzin,6.2,180.0,Journey+ II TCE 130.-Navig/Sitzh/Klima/PDC/Kamera,Jahreswagen
+volkswagen,Volkswagen Sharan,silber,08/2013,2013,11799,103,140,Automatik,Diesel,6.0,238000.0,2.0 TDI 4Motion Highline - 7 Sitzer - Navi,Gebrauchtwagen
+audi,Audi TTS,weiß,10/2011,2011,20900,200,272,Schaltgetriebe,Benzin,7.9,96500.0,Coupe,Gebrauchtwagen
+volkswagen,Volkswagen Tiguan,schwarz,07/2016,2016,7900,132,179,Automatik,Benzin,7.4,58983.0,Highline 4Motion 2.0 TSI DSG Led Navi ACC Panorama,Gebrauchtwagen
+bmw,BMW X3 M,silber,10/2018,2018,28900,140,190,Automatik,Diesel,5.1,141000.0,xDrive20d Aut.  X-Line Garantie 8F 19 Zoll TÜV,Gebrauchtwagen
+skoda,Skoda Fabia,blau,05/2020,2020,16240,70,95,Schaltgetriebe,Benzin,4.6,7676.0,1.0 TSI Cool Plus,junger Gebrauchtwagen
+volkswagen,Volkswagen Golf,rot,02/2021,2021,37900,221,300,Automatik,Benzin,7.4,29100.0,"2.0 DSG GTI Clubsport, 19"",Navi,DAB,LED...",junger Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 63 AMG,grau,03/2018,2018,79890,450,612,Automatik,Benzin,8.8,73000.0,S  4M+ PanD/360/Burm/AMGPerfom,Gebrauchtwagen
+dacia,Dacia Duster,schwarz,03/2017,2017,12980,80,109,Schaltgetriebe,Diesel,4.4,41500.0,1.5 dCi 110 FAP Prestige 4x2 S&S (EU 6) 1.5 dCi 11,Gebrauchtwagen
+citroen,Citroen C3,blau,04/2020,2020,15600,81,110,Schaltgetriebe,Benzin,4.8,15000.0,Aircross Feel,junger Gebrauchtwagen
+bmw,BMW 530,schwarz,05/2023,2023,71650,210,286,Automatik,Diesel,5.6,50.0,d xDrive Limousine M Sportpaket Head-Up HiFi,Jahreswagen
+renault,Renault Megane,blau,02/2020,2020,19990,103,140,Schaltgetriebe,Benzin,5.7,41302.0,GRANDTOUR 4 1.3 TCE 140 KOMBI,junger Gebrauchtwagen
+hyundai,Hyundai TUCSON,schwarz,05/2023,2023,38650,110,150,Automatik,Benzin,5.7,10.0,"1,6 Blackline 48V Mild-Hybrid 2WD DCT Voll LED/Nav",Neuwagen
+bmw,BMW M4,weiß,04/2016,2016,47500,317,431,Automatik,Benzin,8.7,92000.0,Cabrio*H&K*360° Kam*CS-Felgen*Head-Up*Carbon*,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz GLC 43 AMG,blau,10/2018,2018,48890,270,367,Automatik,Benzin,9.8,92660.0,4M Comand+360°+LED+Pano+Standhzg+HUD,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz E 350,schwarz,03/2011,2011,17850,215,292,Automatik,Benzin,8.9,165000.0,E 350 CGI Cabrio BlueEFFICIENCY 7G-TRONIC Elegance,Gebrauchtwagen
+dacia,Dacia Lodgy,weiß,08/2020,2020,14800,75,102,Schaltgetriebe,Benzin,6.0,49700.0,Start | 1.Hand | 7-Sitzer | Klima | TOP ANGEBOT,junger Gebrauchtwagen
+citroen,Citroen C3 Aircross,grau,11/2020,2020,18990,81,110,Schaltgetriebe,Benzin,5.0,16000.0,PureTech 110 S&S C-Series KAMERA,junger Gebrauchtwagen
+seat,SEAT Arona,rot,10/2022,2022,30190,81,110,Automatik,Benzin,4.9,100.0,"1.0 TSI DSG FR_18""ALU_KAMERA_VOLL LED_PDC V+H_SHZ",junger Gebrauchtwagen
+ford,Ford Fiesta,silber,10/2019,2019,16780,92,125,Schaltgetriebe,Benzin,4.7,18224.0,1.0 EcoBoost TITANIUM NAVI LED SITZHZ KAM,Gebrauchtwagen
+audi,Audi Q5,braun,05/2018,2018,37998,185,252,Automatik,Benzin,6.9,49578.0,2.0 TFSI quattro S line ACC LED Navi Kamer,Gebrauchtwagen
+volkswagen,Volkswagen T6.1 Multivan,beige,12/2021,2021,62880,110,150,Automatik,Diesel,6.0,14464.0,2.0 TDI DSG Navi SHZ Klima ParkPilot,junger Gebrauchtwagen
+opel,Opel Corsa,silber,02/2004,2004,2250,55,75,Schaltgetriebe,Benzin,6.4,139000.0,Enjoy C,Gebrauchtwagen
+seat,SEAT Ateca,weiß,05/2023,2023,28988,110,150,Automatik,Benzin,6.4,10.0,1.5 TSI 150 DSG Style LED PDC FullL 17Z,Neuwagen
+skoda,Skoda Scala,blau,11/2019,2019,16170,85,116,Schaltgetriebe,Benzin,4.9,56000.0,1.0 TSI Ambition*115PS*SmartLink*Alu/17Zoll*PDC*,Gebrauchtwagen
+renault,Renault Twingo,orange,09/2017,2017,14660,80,109,Automatik,Benzin,5.3,63987.0,GT AUTOMATIK NAV FALTDACH SHZ TEMPOMAT ALU PDC BLU,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz Sprinter,weiß,04/2007,2007,19999,110,150,Schaltgetriebe,Diesel,8.8,9500.0,315 CDI 906.633 1S17 5272,Gebrauchtwagen
+seat,SEAT Ibiza,grau,05/2017,2017,13985,81,110,Schaltgetriebe,Benzin,4.3,33100.0,"1.0 TSI Style *Panorama, Navi, Klimaauto., CarPlay",Gebrauchtwagen
+renault,Renault Captur,blau,06/2023,2023,27988,103,140,Automatik,Benzin,6.0,10.0,TCe 140 EDC (AUTOM.) GPF TECHNO NAVI R-KAM KLIMAUT,Neuwagen
+seat,SEAT Arona,rot,11/2018,2018,16490,85,116,Automatik,Benzin,5.0,106450.0,FR+AHK+SHZ+NAVI+LED+FULL LINK+PDC+KAMERA,Gebrauchtwagen
+ford,Ford C-Max,braun,09/2018,2018,15480,92,125,Schaltgetriebe,Benzin,5.7,65622.0,"1.0 Titanium, Winter Pak., Navi, Kamera",Gebrauchtwagen
+kia,Kia Sportage,weiß,10/2016,2016,22550,130,177,Automatik,Benzin,7.5,50350.0,"1.6T (177PS) GT-Line, DCT, 4WD, Leder, Glasdach",Gebrauchtwagen
+audi,Audi A6 allroad,blau,11/2019,2019,48999,257,349,Automatik,Diesel,6.4,49570.0,quattro 55 TDI Panorama UPE : 89805 €,Gebrauchtwagen
+mini,MINI John Cooper Works Cabrio,weiß,04/2020,2020,36990,170,231,Automatik,Benzin,6.2,30145.0,VOLLFOLIERT CHILI HUD H/K DAB DA NAVI+,junger Gebrauchtwagen
+opel,Opel Astra,grau,05/2023,2023,25590,96,131,Automatik,Benzin,5.6,500.0,Business Edition 1.2*Navi*Shz*RFK*PDC*,Jahreswagen
+opel,Opel Astra,grau,01/2019,2019,15950,110,150,Automatik,Benzin,7.5,47669.0,K 1.4 Turbo Edition,Gebrauchtwagen
+mercedes-benz,Mercedes-Benz B 180,grau,03/2019,2019,24680,100,136,Automatik,Benzin,5.5,28314.0,Style 7G-DCT Navi Premium LED Kamera,Gebrauchtwagen
+seat,SEAT Ateca,schwarz,04/2023,2023,33395,110,150,Schaltgetriebe,Benzin,6.7,10.0,"FR 1.5 TSI FR, KESSY, AHK, el.Klappe, Navi, 5 J...",Neuwagen
+toyota,Toyota,grau,04/2019,2019,11990,53,72,Automatik,Benzin,4.1,33730.0,"Aygo (X) 1,0-l-VVT-i x Aut.KLIMA KAM Insp+TÜVNeu",Gebrauchtwagen
+volkswagen,Volkswagen Polo,blau,03/2003,2003,3350,55,75,Schaltgetriebe,Diesel,4.4,115000.0,1.4 TDI Comfortline,Gebrauchtwagen

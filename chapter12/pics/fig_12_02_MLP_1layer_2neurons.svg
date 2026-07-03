@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <path d="M800,13.432C800,6.019 793.981,0 786.568,0L13.432,0C6.019,0 0,6.019 0,13.432L0,386.568C0,393.981 6.019,400 13.432,400L786.568,400C793.981,400 800,393.981 800,386.568L800,13.432Z" style="fill:rgb(243,244,244);"/>
+    <g>
+        <text x="327.338px" y="32.725px" style="font-family:'Helvetica';font-size:20px;">1 verdeckte Schicht</text>
+        <g transform="matrix(20,0,0,20,497.416,52.7248)">
+        </g>
+        <text x="331.791px" y="52.725px" style="font-family:'Helvetica';font-size:20px;">mit zwei Neuronen</text>
+    </g>
+    <g transform="matrix(2.94745,0,0,-1,-166.399,101.428)">
+        <path d="M103.976,-251.904L176.773,-19.342" style="fill:none;stroke:black;stroke-width:0.91px;"/>
+    </g>
+    <g transform="matrix(2.94745,0,0,-1,-166.399,101.428)">
+        <path d="M103.843,-148.916L176.773,-19.342" style="fill:none;stroke:black;stroke-width:0.91px;"/>
+    </g>
+    <g transform="matrix(3.5424,0,0,1,-1105.94,0)">
+        <path d="M437.686,134.963L509.808,200" style="fill:none;stroke:black;stroke-width:0.77px;"/>
+    </g>
+    <g transform="matrix(3.5424,0,0,1,-1105.94,0)">
+        <path d="M437.926,282.289L509.808,201.049" style="fill:none;stroke:black;stroke-width:0.77px;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-39.0938,540.896)">
+        <circle cx="150" cy="190" r="30" style="fill:rgb(204,222,233);"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,580,390)">
+        <circle cx="150" cy="190" r="30" style="fill:rgb(0,90,148);"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-40,440.909)">
+        <circle cx="150" cy="190" r="30" style="fill:rgb(204,222,233);"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-40,340.921)">
+        <circle cx="150" cy="190" r="30" style="fill:rgb(204,222,233);"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-39.252,240.934)">
+        <circle cx="150" cy="190" r="30" style="fill:rgb(204,222,233);"/>
+    </g>
+    <g transform="matrix(1.8,0,0,-1.8,48.7441,332.658)">
+        <circle cx="195" cy="115" r="25" style="fill:white;stroke:black;stroke-width:1.11px;"/>
+    </g>
+    <g transform="matrix(1.8,0,0,-1.8,48.9551,493.822)">
+        <circle cx="195" cy="115" r="25" style="fill:white;stroke:black;stroke-width:1.11px;"/>
+    </g>
+    <g transform="matrix(1.98401,0,0,-1,-67.3094,410)">
+        <path d="M104.49,50L212.764,119.818" style="fill:none;stroke:black;stroke-width:1.27px;"/>
+    </g>
+    <g transform="matrix(1.98401,0,0,-1,-67.3094,410)">
+        <path d="M104.278,353.762L212.764,119.818" style="fill:none;stroke:black;stroke-width:1.27px;"/>
+    </g>
+    <g transform="matrix(1.98401,0,0,-1,-67.3094,410)">
+        <path d="M103.801,252.268L212.764,119.818" style="fill:none;stroke:black;stroke-width:1.27px;"/>
+    </g>
+    <g transform="matrix(1.98401,0,0,-1,-67.3094,410)">
+        <path d="M104.021,154.369L212.764,119.818" style="fill:none;stroke:black;stroke-width:1.27px;"/>
+    </g>
+    <g transform="matrix(2.94745,0,0,-1,-166.399,101.428)">
+        <path d="M104.49,50L176.773,-19.342" style="fill:none;stroke:black;stroke-width:0.91px;"/>
+    </g>
+    <g transform="matrix(2.94745,0,0,-1,-166.399,101.428)">
+        <path d="M104.192,-51.551L176.773,-19.342" style="fill:none;stroke:black;stroke-width:0.91px;"/>
+    </g>
+</svg>
