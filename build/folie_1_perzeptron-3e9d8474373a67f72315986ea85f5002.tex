@@ -1,0 +1,46 @@
+\documentclass[11pt]{standalone}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[no-math]{fontspec}
+\setmainfont{Lato}
+\usepackage{unicode-math}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+% Farben definieren
+\definecolor{background}{HTML}{F3F4F4}
+\definecolor{inputneuron}{HTML}{CCDEE9}
+\definecolor{outputneuron}{HTML}{005A94}
+\begin{document}
+\begin{tikzpicture}[
+    % Stile definieren
+    neuron/.style={circle, minimum size=1cm, draw=black, line width=0.7pt},
+    input neuron/.style={neuron, fill=inputneuron, draw=none},
+    output neuron/.style={neuron, fill=outputneuron, draw=none, minimum size=1.5cm},
+    connection/.style={draw=black, line width=0.7pt}
+]
+% Hintergrund
+\fill[background] (-3,-3.5) rectangle (9,4);
+
+% Eingabeschicht (4 Neuronen)
+\node[input neuron] (I1) at (0,2) {};
+\node[input neuron] (I2) at (0,0.5) {};
+\node[input neuron] (I3) at (0,-1) {};
+\node[input neuron] (I4) at (0,-2.5) {};
+
+% Ausgabeschicht (1 Neuron)
+\node[output neuron] (O1) at (6,0) {};
+
+% Verbindungen von Eingabeschicht zur Ausgabe
+\foreach \i in {1,...,4}
+    \draw[connection] (I\i) -- (O1);
+
+% Beschriftungen
+\node[font=\Large] at (3,3.3) {Das Perzeptron};
+
+\node[font=\Large, align=center] at (0,3.5) {Eingabe-\\schicht};
+
+\node[font=\Large, align=center] at (6,2) {Ausgabe-\\schicht};
+
+\end{tikzpicture}
+\end{document}
