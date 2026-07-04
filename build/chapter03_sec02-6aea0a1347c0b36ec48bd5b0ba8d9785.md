@@ -1,0 +1,421 @@
+---
+kernelspec:
+  name: python3
+  display_name: 'Python 3'
+---
+
+# 3.2 Statistische Kennzahlen
+
+Bisher haben wir die Messreihe der Wellendurchmesser mit bloßem Auge
+durchsucht, um Auffälligkeiten zu finden. Bei zehn Werten geht das noch. Bei
+einer Charge von hundert oder tausend Wellen brauchen wir Kennzahlen, die die
+Messreihe auf einen Blick zusammenfassen. In dieser Sektion lernen wir, wie
+Pandas die wichtigsten statistischen Kennzahlen berechnet und wie wir sie für
+die Qualitätskontrolle interpretieren.
+
+## Lernziele
+
+```{admonition} Lernziele
+:class: attention
+- [ ] Sie können sich mit **.describe()** eine Übersicht über statistische
+  Kennzahlen verschaffen.
+- [ ] Sie wissen, wie Sie die Anzahl der gültigen Einträge mit **.count()**
+  ermitteln.
+- [ ] Sie kennen die statistischen Kennzahlen Mittelwert und
+  Standardabweichung und wissen, wie diese mit **.mean()** und **.std()**
+  berechnet werden.
+- [ ] Sie können das Minimum und das Maximum mit **.min()** und **.max()**
+  bestimmen.
+- [ ] Sie wissen, wie ein Quantil interpretiert wird und wie es mit
+  **.quantile()** berechnet wird.
+```
+
+## Schnelle Übersicht mit describe()
+
+Die Methode `.describe()` aus dem Pandas-Modul liefert eine schnelle Übersicht
+über viele statistische Kennzahlen. Vor allem, wenn neue Daten geladen werden,
+sollte diese Methode direkt am Anfang angewendet werden. Wir bleiben bei
+unserem Beispiel mit den zehn Wellendurchmessern aus der letzten Sektion.
+
+```{code-cell} python
+# Import des Pandas-Moduls
+import pandas as pd
+
+# Erzeugung der Daten als Series-Objekt
+messwerte = [20.02, 19.98, 20.05, 19.97, 20.01, 20.00, 19.95, 20.08, 19.99, 20.03]
+wellen = ['W01', 'W02', 'W03', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09', 'W10']
+durchmesser = pd.Series(messwerte, index = wellen)
+```
+
+Die Anwendung der `.describe()`-Methode liefert folgende Ausgabe:
+
+```{code-cell} python
+durchmesser.describe()
+```
+
+Die Methode `.describe()` liefert acht statistische Kennzahlen, deren Bedeutung
+in der
+[Pandas-Dokumentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html)
+erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch.
+
+Was machen wir aber, wenn wir die statistischen Kennzahlen erst später
+verwenden wollen? Können wir sie zwischenspeichern? Probieren wir es aus.
+
+```{code-cell} python
+statistische_kennzahlen = durchmesser.describe()
+```
+
+Es kommt keine Fehlermeldung. Und was ist in der Variable
+`statistische_kennzahlen` nun genau gespeichert, welcher Datentyp?
+
+```{code-cell} python
+type(statistische_kennzahlen)
+```
+
+Wie wir sehen, wird durch das Anwenden der `.describe()`-Methode auf das
+Series-Objekt `durchmesser` ein neues Series-Objekt erzeugt, in dem wiederum
+die statistischen Kennzahlen von `durchmesser` gespeichert sind. Da wir in der
+letzten Sektion schon gelernt haben, dass mit eckigen Klammern und dem Index
+auf einen einzelnen Wert zugegriffen werden kann, können wir uns so den
+minimalen Durchmesser der Charge ausgeben lassen:
+
+```{code-cell} python
+minimaler_durchmesser = statistische_kennzahlen['min']
+print(f'Der kleinste gemessene Durchmesser der Charge beträgt {minimaler_durchmesser} mm.')
+```
+
+Neben der Möglichkeit, die statistischen Kennzahlen über `.describe()`
+berechnen zu lassen und dann mit dem expliziten Index darauf zuzugreifen, gibt
+es auch Methoden, um die statistischen Kennzahlen direkt zu ermitteln.
+
+Mit `.count()` wird die Anzahl der Einträge bestimmt, die *nicht* 'NA' sind.
+Der Begriff 'NA' ist ein Fachbegriff der Datenanalyse. Gemeint sind fehlende
+Einträge, wobei die fehlenden Einträge verschiedene Ursachen haben können:
+
+* NA = not available (der Messsensor hat versagt)
+* NA = not applicable (es ist sinnlos bei einem Mann nachzufragen, ob er
+  schwanger ist)
+* NA = no answer (eine Person hat bei der Umfrage nichts angegeben)
+
+```{code-cell} python
+anzahl_gueltige_messwerte = durchmesser.count()
+print(f'Im Series-Objekt sind {anzahl_gueltige_messwerte} nicht NA-Werte, also gültige Messungen gespeichert.')
+```
+
+```{admonition} Mini-Übung
+:class: tip
+Lassen Sie die Durchmesser aufsteigend sortieren und ausgeben. Welche Welle hat
+den größten Durchmesser und wie groß ist er?
+
+Ermitteln Sie dann das Maximum mit `.describe()` und vergleichen Sie beide
+Werte.
+
+*Zusatzfrage:* Wie viele gültige Messwerte liefert `.count()`? Stimmt das mit
+der Anzahl der Wellen im Messprotokoll überein?
+```
+
+```{code-cell} python
+# Hier Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+# Sortierung und Ausgabe
+durchmesser_aufsteigend = durchmesser.sort_values()
+print('Durchmesser aufsteigend sortiert: ')
+print(durchmesser_aufsteigend)
+
+# Maximum ermitteln
+statistische_kennzahlen = durchmesser.describe()
+maximaler_durchmesser = statistische_kennzahlen['max']
+print(f'\nMaximaler Durchmesser mit .describe() ermittelt: {maximaler_durchmesser} mm')
+
+# Zusatzfrage
+anzahl = durchmesser.count()
+print(f'\n.count() liefert {anzahl} gültige Messwerte, das stimmt mit den 10 Wellen im Protokoll überein.')
+```
+
+Interpretation: Welle W08 hat mit 20.08 mm den größten Durchmesser der Charge.
+````
+
+## Mittelwert und Standardabweichung
+
+Der Mittelwert ist die Summe aller Elemente geteilt durch ihre Anzahl. Wie
+praktisch, dass wir mit `.count()` schon die Anzahl der gültigen Werte
+geliefert bekommen. Rechnen wir zuerst einmal "händisch" nach, was der
+durchschnittliche Durchmesser der zehn Wellen ist.
+
+```{code-cell} python
+messwerte = [20.02, 19.98, 20.05, 19.97, 20.01, 20.00, 19.95, 20.08, 19.99, 20.03]
+summe = 20.02 + 19.98 + 20.05 + 19.97 + 20.01 + 20.00 + 19.95 + 20.08 + 19.99 + 20.03
+print(f'Die Summe ist {summe:.2f} mm.')
+mittelwert = summe / 10
+print(f'Der durchschnittliche Durchmesser ist {mittelwert:.3f} mm.')
+```
+
+Mittelwert heißt auf Englisch mean. Daher ist es nicht verwunderlich, dass die
+Methode `.mean()` den Mittelwert der Einträge berechnet.
+
+```{code-cell} python
+mittelwert = durchmesser.mean()
+print(f'Der mittlere Durchmesser beträgt {mittelwert:.3f} mm.')
+```
+
+Das folgende Video wiederholt das Konzept des Mittelwerts.
+
+```{dropdown} Video zu "Mittelwert" von Datatab
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+Der Mittelwert ist wichtig, aber er erzählt nicht die ganze Geschichte.
+Betrachten wir unsere Wellendurchmesser genauer:
+
+```{code-cell} python
+mittelwert = durchmesser.mean()
+print(f'Mittlerer Durchmesser: {mittelwert:.3f} mm')
+print('\nAber schauen wir genauer hin:')
+print(f'Kleinster Durchmesser: {durchmesser.min():.3f} mm')
+print(f'Größter Durchmesser: {durchmesser.max():.3f} mm')
+print(f'Spanne: {durchmesser.max() - durchmesser.min():.3f} mm')
+```
+
+Die Spanne von 0.13 mm zeigt: Innerhalb der Charge gibt es durchaus
+Unterschiede. Die **Standardabweichung** beschreibt diese Streuung in einer
+einzigen Zahl. Aus der Messtechnik kennen wir sie bereits als Kennzahl für die
+Messunsicherheit.
+
+```{code-cell} python
+standardabweichung = durchmesser.std()
+print(f'Standardabweichung: {standardabweichung:.4f} mm')
+```
+
+Was bedeutet das konkret? Eine Standardabweichung von rund 0.04 mm bei einem
+Mittelwert von rund 20.008 mm bedeutet: Wenn wir eine "durchschnittliche" Welle
+mit 20.008 mm erwarten, müssen wir mit Abweichungen von ungefähr ±0.04 mm
+rechnen.
+
+Schauen wir uns das an unseren konkreten Daten an:
+
+* Mittelwert ± Standardabweichung ≈ 20.008 mm ± 0.040 mm
+* Das ergibt den Bereich: [19.968 mm, 20.048 mm]
+* Ein Großteil der Wellen liegt in diesem Bereich, W07 und W08 liegen außerhalb
+
+Die Standardabweichung hat dieselbe Einheit wie die Originaldaten (hier: mm).
+Das macht sie direkt interpretierbar im Gegensatz zur Varianz, die in mm²
+gemessen wird.
+
+```{dropdown} Video zu "Standardabweichung" von Datatab
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+```{admonition} Mini-Übung
+:class: tip
+Berechnen Sie Mittelwert und Standardabweichung der Wellendurchmesser mit
+`.mean()` und `.std()`. Liegt der Solldurchmesser von 20.0 mm innerhalb des
+Bereichs Mittelwert ± Standardabweichung?
+
+*Zusatzfrage:* Die Spanne (Maximum - Minimum) beträgt 0.13 mm. Wie groß ist die
+Standardabweichung im Vergleich zur Spanne? Was bedeutet das für die Streuung
+der Daten?
+```
+
+```{code-cell} python
+# Hier Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+mittelwert = durchmesser.mean()
+standardabweichung = durchmesser.std()
+print(f'Mittelwert: {mittelwert:.3f} mm')
+print(f'Standardabweichung: {standardabweichung:.4f} mm')
+print(f'Bereich: [{mittelwert - standardabweichung:.3f}, {mittelwert + standardabweichung:.3f}] mm')
+
+# Der Solldurchmesser 20.0 mm liegt innerhalb dieses Bereichs.
+
+# Zusatzfrage
+spanne = durchmesser.max() - durchmesser.min()
+print(f'\nSpanne: {spanne:.3f} mm')
+print(f'Die Standardabweichung beträgt ca. {standardabweichung/spanne:.1%} der Spanne.')
+```
+
+Interpretation: Der Solldurchmesser liegt innerhalb von Mittelwert ±
+Standardabweichung, die Charge ist im Mittel also gut getroffen. Die
+Standardabweichung ist rund 30 % der Spanne, was auf eine moderate Streuung
+hindeutet.
+````
+
+## Minimum, Maximum und Quantile
+
+Die Namen der Methoden `.min()` und `.max()` sind fast schon wieder
+selbsterklärend. Die Methode `.min()` liefert den kleinsten Wert zurück, der
+gefunden wird. Umgekehrt liefert `.max()` den größten Eintrag. Wie häufig die
+minimalen und maximalen Werte vorkommen, ist dabei egal. Es kann durchaus sein,
+dass das Minimum oder das Maximum mehrfach vorkommt.
+
+```{code-cell} python
+durchmesser_min = durchmesser.min()
+print(f'Der kleinste gemessene Durchmesser beträgt {durchmesser_min} mm.')
+
+durchmesser_max = durchmesser.max()
+print(f'Der größte gemessene Durchmesser beträgt {durchmesser_max} mm.')
+```
+
+Das Quantil $p\%$ ist der Wert, bei dem $p\%$ der Einträge kleiner oder gleich
+diesem Wert sind und $100\% - p\%$ sind größer. Meist werden nicht
+Prozentzahlen verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 %
+steht.
+
+Angenommen, wir würden gerne das 0.5-Quantil (auch Median genannt) der
+Durchmesser wissen. Mit der Methode `.quantile()` können wir diesen Wert leicht
+aus den Daten holen.
+
+```{code-cell} python
+quantil50 = durchmesser.quantile(0.5)
+print(f'Der Median, d.h. das 50 % Quantil, liegt bei {quantil50} mm.')
+```
+
+Das 50 %-Quantil liegt bei 20.005 mm. 50 % aller Wellen haben einen Durchmesser,
+der kleiner oder gleich 20.005 mm ist. Und 50 % aller Wellen haben einen
+größeren Durchmesser. Wir schauen uns jetzt das 75 % Quantil an.
+
+```{code-cell} python
+quantil75 = durchmesser.quantile(0.75)
+print(f'75 % aller Wellen haben einen Durchmesser kleiner gleich {quantil75} mm.')
+```
+
+Wir können uns für jeden beliebigen Prozentsatz zwischen 0 % und 100 % das
+Quantil ansehen, aber häufig wird neben dem 75 % Quantil, dem 50 % Quantil noch
+das 25 % Quantil betrachtet.
+
+```{code-cell} python
+quantil25 = durchmesser.quantile(0.25)
+print(f'25 % aller Wellen haben einen Durchmesser kleiner gleich {quantil25} mm.')
+```
+
+Der Median ist gegenüber Ausreißern robuster als der Mittelwert. Stellen wir
+uns vor, bei der Erfassung des Messprotokolls hätte sich ein Tippfehler
+eingeschlichen und aus 20.03 mm wäre versehentlich 200.3 mm geworden.
+
+```{code-cell} python
+messwerte_fehler = [20.02, 19.98, 20.05, 19.97, 20.01, 20.00, 19.95, 20.08, 19.99, 200.3]
+durchmesser_fehler = pd.Series(messwerte_fehler, index = wellen)
+
+print(f'Mittelwert mit Tippfehler: {durchmesser_fehler.mean():.2f} mm')
+print(f'Median mit Tippfehler: {durchmesser_fehler.quantile(0.5):.3f} mm')
+```
+
+Der Mittelwert schnellt auf über 38 mm, weil der einzelne Tippfehler die Summe
+massiv verändert. Der Median dagegen bleibt fast unverändert, denn er
+interessiert sich nur für die Position in der sortierten Reihe, nicht für die
+Größe des Ausreißers selbst.
+
+```{admonition} Mini-Übung
+:class: tip
+Berechnen Sie das 25 %-, 50 %- und 75 %-Quantil der Wellendurchmesser mit
+`.quantile()`.
+
+*Zusatzfrage:* Erzeugen Sie wie im Beispiel oben eine Kopie der Messreihe mit
+einem eingebauten Tippfehler (z. B. eine Welle mit 21.5 mm statt 20.05 mm) und
+vergleichen Sie, wie stark sich Mittelwert und Median jeweils verändern.
+```
+
+```{code-cell} python
+# Hier Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+q25 = durchmesser.quantile(0.25)
+q50 = durchmesser.quantile(0.5)
+q75 = durchmesser.quantile(0.75)
+print(f'25 % Quantil: {q25} mm')
+print(f'50 % Quantil (Median): {q50} mm')
+print(f'75 % Quantil: {q75} mm')
+
+# Zusatzfrage
+messwerte_fehler = [20.02, 19.98, 20.05, 19.97, 20.01, 20.00, 19.95, 20.08, 19.99, 21.5]
+durchmesser_fehler = pd.Series(messwerte_fehler, index = wellen)
+print(f'\nMittelwert original: {durchmesser.mean():.4f} mm, mit Tippfehler: {durchmesser_fehler.mean():.4f} mm')
+print(f'Median original: {durchmesser.quantile(0.5):.4f} mm, mit Tippfehler: {durchmesser_fehler.quantile(0.5):.4f} mm')
+```
+
+Der Mittelwert verschiebt sich deutlich stärker als der Median, weil ein
+einzelner extremer Wert die Summe direkt beeinflusst, aber kaum die Position in
+der sortierten Reihe.
+````
+
+## Aufgabe
+
+```{admonition} Aufgabe: Toleranzprüfung
+:class: tip
+Die Fertigungszeichnung schreibt für die Welle eine Toleranz von 20.0 mm ± 0.06
+mm vor, also den zulässigen Bereich [19.94 mm, 20.06 mm].
+
+1. Berechnen Sie Mittelwert und Standardabweichung der Charge.
+2. Prüfen Sie, ob der Bereich Mittelwert ± 2·Standardabweichung innerhalb der
+   Toleranzgrenzen liegt.
+3. Ermitteln Sie mit `.min()` und `.max()`, ob einzelne Wellen außerhalb der
+   Toleranz liegen.
+4. Formulieren Sie in einer Markdown-Zelle eine kurze Empfehlung an den
+   Fertigungsleiter: Welche der berechneten Kennzahlen würden Sie melden und
+   warum?
+```
+
+```{code-cell} python
+# Hier Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+mittelwert = durchmesser.mean()
+standardabweichung = durchmesser.std()
+
+unten = mittelwert - 2 * standardabweichung
+oben = mittelwert + 2 * standardabweichung
+print(f'Bereich Mittelwert ± 2·Standardabweichung: [{unten:.4f}, {oben:.4f}] mm')
+print(f'Toleranzgrenzen: [19.94, 20.06] mm')
+
+print(f'\nMinimum der Charge: {durchmesser.min()} mm')
+print(f'Maximum der Charge: {durchmesser.max()} mm')
+```
+
+Der Bereich Mittelwert ± 2·Standardabweichung liegt knapp innerhalb der
+Toleranzgrenzen. Das Minimum (19.95 mm) und das Maximum (20.08 mm) zeigen aber,
+dass einzelne Wellen (W08) die obere Toleranzgrenze bereits überschreiten.
+
+Empfehlung: Wir melden dem Fertigungsleiter nicht nur den Mittelwert, sondern
+auch Minimum und Maximum. Der Mittelwert allein verdeckt, dass einzelne Teile
+außerhalb der Toleranz liegen. Eine reine Kennzahl reicht für die
+Qualitätsbeurteilung nicht aus.
+````
+
+## Zusammenfassung und Ausblick
+
+In dieser Sektion haben wir uns mit einfachen statistischen Kennzahlen
+beschäftigt, die Pandas mit der Methode `.describe()` zusammenfasst, die aber
+auch einzeln über
+
+* `.count()`
+* `.mean()`
+* `.std()`
+* `.min()` und `.max()`
+* `.quantile()`
+
+berechnet und ausgegeben werden können. Kennzahlen wie Mittelwert und
+Standardabweichung verraten uns aber nicht, wie die Messwerte tatsächlich
+verteilt sind, und Ausreißer wie bei Welle W08 gehen darin leicht unter. In der
+nächsten Sektion visualisieren wir die Messreihe deshalb mit einem Boxplot und
+lernen, wie sich Ausreißer auch grafisch erkennen lassen.
