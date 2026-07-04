@@ -163,7 +163,7 @@ ab, in welcher Form die Daten vorliegen: als Liste oder als Dictionary.
 :class: tip
 Erzeugen Sie ein Series-Objekt mit Ihren Bildschirmzeiten der sieben Tage der
 letzten Woche. Verwenden Sie dazu ein Dictionary mit den Wochentagen als
-Schlüssel und den Bildschirmzeiten in tunden als Werte. Lassen Sie sich die
+Schlüssel und den Bildschirmzeiten in Stunden als Werte. Lassen Sie sich die
 Series ausgeben. Was ist der Index der Series?
 ```
 
@@ -184,7 +184,7 @@ bildschirmzeit = pd.Series({
     'Samstag': 6.5,
     'Sonntag': 5
 })
-print(bildschirmzeit )
+print(bildschirmzeit)
 ```
 
 Die Schlüssel des Dictionaries (= Wochentage) werden automatisch zum Index der
@@ -199,8 +199,8 @@ wir mit dem sogenannten Punktoperator zu. Die vier wichtigsten Attribute sind
 `values`, `index`, `dtype` und `name`.
 
 Beginnen wir mit den beiden Bestandteilen, aus denen eine Series besteht: den
-Daten und dem Index. Das Attribut `values` liefert die reinen Daten der Series
-(ein NumPy-Array), also die Verkaufspreise ohne die Beschriftung:
+Daten und dem Index. Das Attribut `values` liefert die reinen Daten der Series,
+also die Verkaufspreise ohne die Beschriftung:
 
 ```{code-cell} ipython3
 daten = preise.values
@@ -257,7 +257,7 @@ verwenden Sie Ihre Variable weiter).
 
 1. Lassen Sie sich die Attribute `values`, `index` und `dtype` ausgeben.
 2. Welchen Datentyp haben die Elemente? Erklären Sie, warum aus der eingegebenen
-   Ganzzahl `8` in der Series `8.0` geworden ist.
+   Ganzzahl `3` in der Series `3.0` geworden ist.
 3. Geben Sie der Series den Namen `'Bildschirmzeit in Stunden'` und lassen Sie
    sie ausgeben.
 ```
@@ -284,7 +284,7 @@ print(bildschirmzeit.values)
 print(bildschirmzeit.index)
 print(f'Datentyp: {bildschirmzeit.dtype}')
 
-bildschirmzeitn.name = 'Bildschirmzeit in Stunden'
+bildschirmzeit.name = 'Bildschirmzeit in Stunden'
 print(bildschirmzeit)
 ```
 
@@ -328,7 +328,7 @@ Das Autohaus hat zu den zehn Autos auch die Kilometerstände erfasst:
 4. Geben Sie der Series den Namen `'Kilometerstand'` und greifen Sie über den
    Index auf den Kilometerstand von `BMW Nr. 1` zu.
 5. **Zusatzaufgabe:** Die Series `preise` und `kilometerstand` haben denselben
-   Index. Überlegen Sie gemeinsam: Wie könnte man wohl den Preis pro gefahrenem
+   Index. Überlegen Sie: Wie könnte man wohl den Preis pro gefahrenem
    Kilometer berechnen? Probieren Sie Ihre Idee aus.
 ```
 
@@ -362,7 +362,7 @@ print(f'Datentyp: {kilometerstand.dtype}')
 
 Der Datentyp ist `object`, weil die Zeichenkette `'unbekannt'` keinen
 gemeinsamen Zahlen-Datentyp mit den übrigen Elementen erlaubt. Mit einer
-`object`-Series können wir nicht sinnvoll rechnen — schon `kilometerstand / 2`
+`object`-Series können wir nicht sinnvoll rechnen, schon `kilometerstand / 2`
 würde scheitern bzw. Unsinn liefern.
 
 ```python
@@ -384,9 +384,9 @@ print(f'Datentyp: {kilometerstand.dtype}')
 ```
 
 Jetzt ist der Datentyp `float64`. Pandas wandelt `None` beim Erzeugen
-automatisch in den speziellen Wert `NaN` (Not a Number) um — eine besondere
+automatisch in den speziellen Wert `NaN` (Not a Number) um, eine besondere
 Kommazahl, die "fehlender Wert" bedeutet. Damit bleibt die Series eine
-Zahlen-Series und alle Berechnungen funktionieren weiterhin — der fehlende
+Zahlen-Series und alle Berechnungen funktionieren weiterhin, der fehlende
 Wert wird dabei einfach als `NaN` mitgeführt. Wie wir fehlende Werte
 systematisch aufspüren und behandeln, lernen wir in Kapitel 3.3.
 

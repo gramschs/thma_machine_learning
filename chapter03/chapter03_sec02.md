@@ -104,10 +104,11 @@ Label der Obergrenze noch mit. Bei Positionen dagegen bleibt Pandas bei der
 
 ```{admonition} Mini-Übung
 :class: tip
-Erzeugen Sie erneut die Schlafzeiten-Series aus dem letzten Kapitel (Montag 8,
-Dienstag 9.5, Mittwoch 7.8, Donnerstag 8.1, Freitag 8.3 Stunden).
+Erzeugen Sie erneut die Bildschirmzeiten-Series aus dem letzten Kapitel
+(Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5,
+Samstag 6.5, Sonntag 5 Stunden).
 
-1. Greifen Sie auf die Schlafzeit von Mittwoch zu, einmal mit `.loc[]` und
+1. Greifen Sie auf die Bildschirmzeit von Mittwoch zu, einmal mit `.loc[]` und
    einmal mit `.iloc[]`.
 2. Wählen Sie den Teilbereich von Dienstag bis Donnerstag aus, ebenfalls auf
    beide Arten. Achten Sie auf die Obergrenze.
@@ -122,21 +123,23 @@ Dienstag 9.5, Mittwoch 7.8, Donnerstag 8.1, Freitag 8.3 Stunden).
 :class: dropdown
 ```python
 # Eingabe Daten
-schlafzeiten = pd.Series({
-    'Montag': 8,
-    'Dienstag': 9.5,
-    'Mittwoch': 7.8,
-    'Donnerstag': 8.1,
-    'Freitag': 8.3,
+bildschirmzeit = pd.Series({
+    'Montag': 2.5,
+    'Dienstag': 3,
+    'Mittwoch': 4.25,
+    'Donnerstag': 2.75,
+    'Freitag': 3.5,
+    'Samstag': 6.5,
+    'Sonntag': 5
 })
 
 # 1. Zugriff auf Mittwoch
-print(schlafzeiten.loc['Mittwoch'])
-print(schlafzeiten.iloc[2])
+print(bildschirmzeit.loc['Mittwoch'])
+print(bildschirmzeit.iloc[2])
 
 # 2. Teilbereich Dienstag bis Donnerstag
-print(schlafzeiten.loc['Dienstag':'Donnerstag'])
-print(schlafzeiten.iloc[1:4])
+print(bildschirmzeit.loc['Dienstag':'Donnerstag'])
+print(bildschirmzeit.iloc[1:4])
 ```
 
 Beim Zugriff über die Labels ist `'Donnerstag'` eingeschlossen. Beim Zugriff
@@ -221,12 +224,12 @@ wir im nächsten Abschnitt.
 
 ```{admonition} Mini-Übung
 :class: tip
-Verwenden Sie erneut die Schlafzeiten-Series.
+Verwenden Sie erneut die Bildschirmzeiten-Series.
 
-1. Rechnen Sie die Schlafzeiten von Stunden in Minuten um und geben Sie das
+1. Rechnen Sie die Bildschirmzeiten von Stunden in Minuten um und geben Sie das
    Ergebnis aus.
-2. Erzeugen Sie eine boolesche Series, die für jeden Tag angibt, ob Sie
-   mindestens 8 Stunden geschlafen haben. An welchen Tagen steht `False`?
+2. Erzeugen Sie eine boolesche Series, die für jeden Tag angibt, ob Sie mehr
+   als 4 Stunden am Bildschirm verbracht haben. An welchen Tagen steht `True`?
 ```
 
 ```{code-cell} ipython3
@@ -238,16 +241,17 @@ Verwenden Sie erneut die Schlafzeiten-Series.
 :class: dropdown
 ```python
 # 1. Umrechnung in Minuten
-schlafzeiten_minuten = schlafzeiten * 60
-print(schlafzeiten_minuten)
+bildschirmzeit_minuten = bildschirmzeit * 60
+print(bildschirmzeit_minuten)
 
 # 2. Boolesche Series
-genug_geschlafen = schlafzeiten >= 8
-print(genug_geschlafen)
+viel_bildschirmzeit = bildschirmzeit > 4
+print(viel_bildschirmzeit)
 ```
 
-Nur am Mittwoch steht `False`, denn 7.8 Stunden sind weniger als 8 Stunden. An
-allen anderen Tagen wurde die 8-Stunden-Marke erreicht oder überschritten.
+An drei Tagen steht `True`: am Mittwoch (4.25 Stunden), am Samstag
+(6.5 Stunden) und am Sonntag (5 Stunden). An allen anderen Tagen lag die
+Bildschirmzeit bei höchstens 4 Stunden.
 ````
 
 ## Series filtern mit boolescher Indizierung
@@ -301,7 +305,7 @@ zuviel_bildschirmzeit = bildschirmzeit[bildschirmzeit > 6]
 print(zuviel_bildschirmzeit)
 ```
 
-Übrig bleibt nur der Samstag mit 6 Stunden. Der Filter liefert ein neues
+Übrig bleibt nur der Samstag mit 6.5 Stunden. Der Filter liefert ein neues
 Series-Objekt, das nur die Tage enthält, an denen die Bedingung erfüllt ist.
 ````
 
