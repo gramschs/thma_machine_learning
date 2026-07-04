@@ -104,9 +104,9 @@ Label der Obergrenze noch mit. Bei Positionen dagegen bleibt Pandas bei der
 
 ```{admonition} Mini-Übung
 :class: tip
-Erzeugen Sie erneut die Bildschirmzeiten-Series aus dem letzten Kapitel
-(Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5,
-Samstag 6.5, Sonntag 5 Stunden).
+Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus dem
+letzten Kapitel (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75,
+Freitag 3.5, Samstag 6.5, Sonntag 5 Stunden).
 
 1. Greifen Sie auf die Bildschirmzeit von Mittwoch zu, einmal mit `.loc[]` und
    einmal mit `.iloc[]`.

@@ -161,10 +161,16 @@ ab, in welcher Form die Daten vorliegen: als Liste oder als Dictionary.
 
 ```{admonition} Mini-Übung
 :class: tip
-Erzeugen Sie ein Series-Objekt mit Ihren Bildschirmzeiten der sieben Tage der
-letzten Woche. Verwenden Sie dazu ein Dictionary mit den Wochentagen als
-Schlüssel und den Bildschirmzeiten in Stunden als Werte. Lassen Sie sich die
-Series ausgeben. Was ist der Index der Series?
+Eine Studentin hat ihre Bildschirmzeiten der letzten Woche notiert: Montag 2.5,
+Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5, Samstag 6.5 und
+Sonntag 5 Stunden. Erzeugen Sie daraus ein Series-Objekt. Verwenden Sie dazu
+ein Dictionary mit den Wochentagen als Schlüssel und den Bildschirmzeiten in
+Stunden als Werte. Lassen Sie sich die Series ausgeben. Was ist der Index der
+Series?
+
+*Zusatz:* Ermitteln Sie anschließend Ihre eigenen Bildschirmzeiten (Ihr
+Smartphone zeigt die Wochenstatistik in den Einstellungen an) und wiederholen
+Sie die Übung mit Ihren Werten.
 ```
 
 ```{code-cell} ipython3
@@ -252,14 +258,17 @@ wird der Name wichtig, denn dort dient er als Spaltenname.
 
 ```{admonition} Mini-Übung
 :class: tip
-Erzeugen Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung (oder
-verwenden Sie Ihre Variable weiter).
+Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus der
+letzten Mini-Übung (oder verwenden Sie Ihre Variable weiter).
 
 1. Lassen Sie sich die Attribute `values`, `index` und `dtype` ausgeben.
 2. Welchen Datentyp haben die Elemente? Erklären Sie, warum aus der eingegebenen
    Ganzzahl `3` in der Series `3.0` geworden ist.
 3. Geben Sie der Series den Namen `'Bildschirmzeit in Stunden'` und lassen Sie
    sie ausgeben.
+
+*Zusatz:* Prüfen Sie auch den `dtype` Ihrer eigenen Bildschirmzeiten-Series.
+Ist er ebenfalls `float64`? Warum (nicht)?
 ```
 
 ```{code-cell} ipython3
@@ -291,6 +300,12 @@ print(bildschirmzeit)
 Der Datentyp ist `float64`. Eine Series erzwingt einen gemeinsamen Datentyp
 für alle Elemente. Da in den Daten Kommazahlen wie `3.5` vorkommen, wandelt
 Pandas auch die Ganzzahl `3` in die Kommazahl `3.0` um.
+
+Zum Zusatz: Bei Ihren eigenen Daten hängt der Datentyp von den eingegebenen
+Werten ab. Enthält Ihre Series mindestens eine Kommazahl, ist der Datentyp
+`float64`. Sind dagegen alle Ihre Werte Ganzzahlen, ergibt sich `int64`. Beides
+ist richtig, genau diese Abhängigkeit des Datentyps von den Daten sollten Sie
+aus dieser Übung mitnehmen.
 ````
 
 ## Aufgaben
