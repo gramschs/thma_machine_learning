@@ -12,7 +12,21 @@ kernelspec:
   name: python3
 ---
 
-# 3.3 Boxplots mit Plotly
+# 3.3 Kennzahlen, Boxplots und Ausreißer
+
+*Leitfrage: Was sagen mir die Daten?*
+
+* [ ] Sie berechnen statistische Kennzahlen einer Series mit **mean()**,
+  **std()**, **min()**, **max()** und **describe()**.
+* [ ] Sie identifizieren fehlende Werte (**NaN**) mit **isna()** und behandeln
+  sie mit **dropna()** oder **fillna()**.
+* [ ] Sie erstellen mit **px.box()** aus Plotly Express einen Boxplot für eine
+  Series.
+* [ ] Sie interpretieren die Elemente eines Boxplots (**Median**, **Quartile**,
+  **Whisker**, **Ausreißer**) und ordnen ihnen die entsprechenden statistischen
+  Kennzahlen zu.
+* [ ] Sie filtern Ausreißer aus einer Series mithilfe **boolescher Indizierung**
+  heraus.
 
 Die wichtigsten statistischen Kennzahlen lassen sich mit einem Diagramm
 visualisieren, das Boxplot genannt wird. Gelegentlich wird auch der deutsche

@@ -32,7 +32,9 @@ import pandas as pd
 
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
-preise = pd.Series(preisliste, index=autos)
+
+# Lücke (Wiederholung): Erzeugen Sie die Series mit den Autos als explizitem Index
+preise = pd.Series(preisliste, ____)
 print(preise)
 ```
 
@@ -54,7 +56,8 @@ Der Preis des dritten Autos lässt sich also auf zwei Arten ermitteln. Einmal
 über das Label:
 
 ```{code-cell} ipython3
-preis_drittes_auto = preise.loc['Audi Nr. 3']
+# Lücke: Greifen Sie über das Label auf das dritte Auto zu
+preis_drittes_auto = preise.____['Audi Nr. 3']
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -62,7 +65,8 @@ Und einmal über die Position (zur Erinnerung: Python zählt ab 0, das dritte
 Auto steht also an Position 2):
 
 ```{code-cell} ipython3
-preis_drittes_auto = preise.iloc[2]
+# Lücke: Greifen Sie über die Position auf das dritte Auto zu
+preis_drittes_auto = preise.____[____]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -72,7 +76,8 @@ funktioniert mit einem Doppelpunkt zwischen Start und Ende. Wählen wir alle
 Autos von `Audi Nr. 1` bis `BMW Nr. 1` aus:
 
 ```{code-cell} ipython3
-teilbereich = preise.loc['Audi Nr. 1':'BMW Nr. 1']
+# Lücke: Wählen Sie den Teilbereich von 'Audi Nr. 1' bis 'BMW Nr. 1' aus
+teilbereich = preise.loc['Audi Nr. 1':____]
 print(teilbereich)
 ```
 
@@ -81,7 +86,8 @@ Wir erhalten vier Autos, denn `BMW Nr. 1` ist in der Auswahl enthalten, also
 erhalten. Die vier Autos stehen an den Positionen 0, 1, 2 und 3:
 
 ```{code-cell} ipython3
-teilbereich = preise.iloc[0:4]
+# Lücke: Wählen Sie denselben Teilbereich über die Positionen aus. Vorsicht, Stolperstein!
+teilbereich = preise.iloc[0:____]
 print(teilbereich)
 ```
 
@@ -102,48 +108,6 @@ wissen wir nicht, welches Label "eins weiter" wäre. Deshalb nimmt Pandas das
 Label der Obergrenze noch mit. Bei Positionen dagegen bleibt Pandas bei der
 üblichen Python-Konvention.
 
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie erneut die Schlafzeiten-Series aus dem letzten Kapitel (Montag 8,
-Dienstag 9.5, Mittwoch 7.8, Donnerstag 8.1, Freitag 8.3 Stunden).
-
-1. Greifen Sie auf die Schlafzeit von Mittwoch zu, einmal mit `.loc[]` und
-   einmal mit `.iloc[]`.
-2. Wählen Sie den Teilbereich von Dienstag bis Donnerstag aus, ebenfalls auf
-   beide Arten. Achten Sie auf die Obergrenze.
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Eingabe Daten
-schlafzeiten = pd.Series({
-    'Montag': 8,
-    'Dienstag': 9.5,
-    'Mittwoch': 7.8,
-    'Donnerstag': 8.1,
-    'Freitag': 8.3,
-})
-
-# 1. Zugriff auf Mittwoch
-print(schlafzeiten.loc['Mittwoch'])
-print(schlafzeiten.iloc[2])
-
-# 2. Teilbereich Dienstag bis Donnerstag
-print(schlafzeiten.loc['Dienstag':'Donnerstag'])
-print(schlafzeiten.iloc[1:4])
-```
-
-Beim Zugriff über die Labels ist `'Donnerstag'` eingeschlossen. Beim Zugriff
-über die Positionen müssen wir `1:4` schreiben, damit die Position 3 (also
-Donnerstag) noch dabei ist.
-````
-
 ## Rechnen mit Series
 
 Falls der Datentyp der einzelnen Elemente eines Series-Objektes ein numerischer
@@ -152,7 +116,8 @@ lassen sich beispielweise die Preise nicht in Euro, sondern als Preis pro
 Tausend Euro angeben, wenn wir alle Preise durch 1000 teilen.
 
 ```{code-cell} ipython3
-preise_pro_1000euro = preise / 1000
+# Lücke: Rechnen Sie alle Preise in Tausend Euro um, ohne eine Schleife zu verwenden
+preise_pro_1000euro = ____
 print(preise_pro_1000euro)
 ```
 
@@ -162,7 +127,8 @@ ausgedrückt, wir subtrahieren von jedem Preis den Preis des billigsten Autos,
 also 1999 EUR:
 
 ```{code-cell} ipython3
-preise_differenz = preise - 1999
+# Lücke: Subtrahieren Sie von allen Preisen 1999 EUR
+preise_differenz = ____
 print(preise_differenz)
 ```
 
@@ -196,7 +162,8 @@ Teilen wir die Preise durch die Kilometerstände, erhalten wir für jedes Auto
 den Preis pro gefahrenem Kilometer:
 
 ```{code-cell} ipython3
-preis_pro_km = preise / kilometerstand
+# Lücke: Berechnen Sie den Preis pro gefahrenem Kilometer für alle Autos auf einmal
+preis_pro_km = ____
 print(preis_pro_km)
 ```
 
@@ -210,7 +177,8 @@ wird auf jedes einzelne Element angewendet. Prüfen wir, welche Autos mehr als
 20000 EUR kosten:
 
 ```{code-cell} ipython3
-ist_teuer = preise > 20000
+# Lücke: Prüfen Sie für jedes Auto, ob es mehr als 20000 EUR kostet
+ist_teuer = ____
 print(ist_teuer)
 ```
 
@@ -218,37 +186,6 @@ Das Ergebnis ist wieder eine Series, aber eine besondere: Sie enthält für jede
 Auto den Wahrheitswert `True` oder `False` und hat den Datentyp `bool`. Man
 spricht von einer **booleschen Series**. Was wir damit anfangen können, sehen
 wir im nächsten Abschnitt.
-
-```{admonition} Mini-Übung
-:class: tip
-Verwenden Sie erneut die Schlafzeiten-Series.
-
-1. Rechnen Sie die Schlafzeiten von Stunden in Minuten um und geben Sie das
-   Ergebnis aus.
-2. Erzeugen Sie eine boolesche Series, die für jeden Tag angibt, ob Sie
-   mindestens 8 Stunden geschlafen haben. An welchen Tagen steht `False`?
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# 1. Umrechnung in Minuten
-schlafzeiten_minuten = schlafzeiten * 60
-print(schlafzeiten_minuten)
-
-# 2. Boolesche Series
-genug_geschlafen = schlafzeiten >= 8
-print(genug_geschlafen)
-```
-
-Nur am Mittwoch steht `False`, denn 7.8 Stunden sind weniger als 8 Stunden. An
-allen anderen Tagen wurde die 8-Stunden-Marke erreicht oder überschritten.
-````
 
 ## Series filtern mit boolescher Indizierung
 
@@ -259,7 +196,8 @@ dann genau die Elemente, bei denen `True` steht. Diese Technik heißt
 Datenanalyse überhaupt.
 
 ```{code-cell} ipython3
-teure_autos = preise[preise > 20000]
+# Lücke: Filtern Sie alle Autos heraus, die mehr als 20000 EUR kosten
+teure_autos = preise[____]
 print(teure_autos)
 ```
 
@@ -272,7 +210,8 @@ Natürlich funktioniert das mit jeder Bedingung. Suchen wir alle Autos, die
 weniger als 15000 EUR kosten:
 
 ```{code-cell} ipython3
-guenstige_autos = preise[preise < 15000]
+# Lücke: Filtern Sie alle Autos heraus, die weniger als 15000 EUR kosten
+guenstige_autos = ____
 print(guenstige_autos)
 ```
 
@@ -283,32 +222,12 @@ Filtern noch wissen, um welche Autos es sich handelt.
 Merken Sie sich diese Technik gut. Im nächsten Kapitel nutzen wir die boolesche
 Indizierung, um Ausreißer aus einem Datensatz herauszufiltern.
 
-```{admonition} Mini-Übung
-:class: tip
-Filtern Sie aus der Bildschirmzeiten-Series alle Tage heraus, an denen Sie mehr
-als 6 Stunden Bildschirmzeit hatten. Geben Sie das Ergebnis aus.
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-zuviel_bildschirmzeit = bildschirmzeit[bildschirmzeit > 6]
-print(zuviel_bildschirmzeit)
-```
-
-Übrig bleibt nur der Samstag mit 6 Stunden. Der Filter liefert ein neues
-Series-Objekt, das nur die Tage enthält, an denen die Bedingung erfüllt ist.
-````
-
 ## Aufgaben
 
-Zum Abschluss wenden wir alle Techniken dieses Kapitels in einer
-zusammenhängenden Aufgabe an.
+Die folgende Aufgabe bearbeiten Sie zu zweit (Pair Programming): Eine Person
+tippt (*Driver*), die andere denkt mit, prüft und schlägt vor (*Navigator*).
+Wechseln Sie nach Teilaufgabe 2 die Rollen. **Zeit: 12 Minuten**, danach
+besprechen wir die Ergebnisse gemeinsam.
 
 ```{admonition} Aufgabe: Preisverhandlung im Autohaus
 :class: tip
@@ -322,76 +241,19 @@ Verwenden Sie die Series `preise` und `kilometerstand` aus diesem Kapitel.
 2. Das Autohaus startet eine Rabattaktion und senkt alle Preise um 5 %.
    Berechnen Sie die neuen Preise. Berechnen Sie außerdem für jedes Auto den
    Preis pro gefahrenem Kilometer.
-3. Filtern Sie alle Autos heraus, die nach dem Rabatt weniger als 20000 EUR
-   kosten. Filtern Sie anschließend alle Autos heraus, deren Preis pro Kilometer
-   über 0.50 EUR liegt. Notieren Sie in ein, zwei Sätzen: Warum ist ein hoher
-   Preis pro Kilometer ein schlechtes Zeichen für Käuferinnen und Käufer?
+3. *Rollenwechsel!* Filtern Sie alle Autos heraus, die nach dem Rabatt weniger
+   als 20000 EUR kosten. Filtern Sie anschließend alle Autos heraus, deren
+   Preis pro Kilometer über 0.50 EUR liegt. Diskutieren Sie mit Ihrer
+   Partnerin / Ihrem Partner: Warum ist ein hoher Preis pro Kilometer ein
+   schlechtes Zeichen für Käuferinnen und Käufer?
 4. **Zusatzaufgabe:** Wie viele Autos kosten (vor dem Rabatt) zwischen 15000 und
    30000 EUR? Zwei Bedingungen lassen sich mit dem Operator `&` verknüpfen,
    dabei muss jede Bedingung in runde Klammern gesetzt werden.
 ```
 
 ```{code-cell} ipython3
-# Code-Zelle
+# Hier Ihr Code:
 ```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Teilaufgabe 1: Zugriff mit .loc[] und .iloc[]
-print(preise.loc['BMW Nr. 2'])
-
-preise_sortiert = preise.sort_values()
-print(preise_sortiert)
-print(preise_sortiert.iloc[-1])
-```
-
-Der Preis von `BMW Nr. 2` beträgt 27443 EUR. Nach der aufsteigenden Sortierung
-steht das teuerste Auto an der letzten Position. Mit `.iloc[-1]` greifen wir
-direkt darauf zu, das teuerste Auto ist `BMW Nr. 1` mit 46830 EUR. Alternativ
-hätten wir auch absteigend sortieren und `.iloc[0]` verwenden können.
-
-```python
-# Teilaufgabe 2: vektorisiertes Rechnen
-rabattpreise = preise * 0.95
-print(rabattpreise)
-
-preis_pro_km = preise / kilometerstand
-print(preis_pro_km)
-```
-
-Für den Rabatt wird jeder Preis mit 0.95 multipliziert, eine Schleife ist
-nicht nötig. Beim Preis pro Kilometer verrechnet Pandas die Elemente mit
-demselben Label, für `Citroen Nr. 3` entsteht wegen des fehlenden
-Kilometerstands der Wert `NaN`.
-
-```python
-# Teilaufgabe 3: boolesche Indizierung
-guenstig_nach_rabatt = rabattpreise[rabattpreise < 20000]
-print(guenstig_nach_rabatt)
-
-teuer_pro_km = preis_pro_km[preis_pro_km > 0.5]
-print(teuer_pro_km)
-```
-
-Nach dem Rabatt kosten sieben Autos weniger als 20000 EUR. Beim Preis pro
-Kilometer bleiben `BMW Nr. 1` (ca. 2.23 EUR/km) und `Citroen Nr. 5`
-(ca. 0.97 EUR/km) übrig. Ein hoher Preis pro Kilometer bedeutet, dass für ein
-Auto mit wenig Laufleistung vergleichsweise viel Geld verlangt wird. Das kann
-gerechtfertigt sein (junges Auto), sollte aber genauer geprüft werden.
-
-```python
-# Teilaufgabe 4 (Zusatz): zwei Bedingungen kombinieren
-mittlere_preisklasse = preise[(preise >= 15000) & (preise <= 30000)]
-print(mittlere_preisklasse)
-print(f'Anzahl: {mittlere_preisklasse.count()}')
-```
-
-Fünf Autos liegen in der mittleren Preisklasse zwischen 15000 und 30000 EUR.
-Wichtig sind die runden Klammern um jede einzelne Bedingung, ohne sie gibt es
-eine Fehlermeldung.
-````
 
 ## Zusammenfassung und Ausblick
 

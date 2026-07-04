@@ -57,29 +57,8 @@ offiziellen
 [Pandas-Dokumentation](https://pandas.pydata.org/docs/user_guide/index.html).
 
 ```{code-cell} ipython3
-import pandas as pd
-```
-
-```{admonition} Mini-Übung
-:class: tip
-Ordnen Sie zu: Welche Datenstruktur (Liste, Dictionary oder Pandas Series)
-passt am besten zu den folgenden Aufgaben? Begründen Sie kurz.
-
-1. Ein Telefonbuch, in dem zu jedem Namen eine Telefonnummer nachgeschlagen
-   wird.
-2. Eine Einkaufsliste mit gemischten Einträgen wie `['Milch', 2, 'Brot', 0.5]`.
-3. Die Monatsmitteltemperaturen eines Jahres, auf die über den Monatsnamen
-   zugegriffen werden soll und mit denen anschließend gerechnet wird.
-```
-
-```{admonition} Lösung
-:class: tip
-:class: dropdown
-1. Dictionary: reines Nachschlagen von Schlüssel-Wert-Paaren, Reihenfolge
-   und Berechnungen spielen keine Rolle.
-2. Liste: nur eine Liste erlaubt gemischte Datentypen ohne Umwandlung.
-3. Pandas Series: hier kommt beides zusammen: der Zugriff über Labels
-   (Monatsnamen) und die effiziente Verarbeitung von Zahlen für Berechnungen.
+# Lücke: Importieren Sie das Pandas-Modul mit der üblichen Abkürzung
+import ____ as ____
 ```
 
 ## Series erzeugen
@@ -92,8 +71,10 @@ Liste (erkennbar an den eckigen Klammern), aus der dann ein Series-Objekt
 erzeugt wird.
 
 ```{code-cell} ipython3
-preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
-preise = pd.Series(preisliste)
+preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 50000]
+
+# Lücke: Erzeugen Sie aus der Liste ein Series-Objekt
+preise = ____
 print(preise)
 ```
 
@@ -105,7 +86,8 @@ soll, dann verwenden wir den Index 2 (zur Erinnerung: Python zählt ab 0) und
 schreiben
 
 ```{code-cell} ipython3
-preis_drittes_auto = preisliste[2]
+# Lücke: Greifen Sie auf das dritte Element der Liste zu
+preis_drittes_auto = preisliste[____]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -118,7 +100,9 @@ sind, die nächsten sind BMWs und die letzten fünf sind von der Marke Citroën.
 
 ```{code-cell} ipython3
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
-preise = pd.Series(preisliste, index=autos)
+
+# Lücke: Erzeugen Sie die Series erneut, diesmal mit den Autos als explizitem Index
+preise = pd.Series(preisliste, ____)
 print(preise)
 ```
 
@@ -129,7 +113,8 @@ den Verkaufspreis des dritten Autos zuzugreifen. Das dritte Auto ist `Audi Nr.
 3`. Wie bei Listen verwenden wir eckige Klammern:
 
 ```{code-cell} ipython3
-preis_drittes_auto = preise['Audi Nr. 3']
+# Lücke: Greifen Sie über den expliziten Index auf das dritte Auto zu
+preis_drittes_auto = preise[____]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -150,46 +135,16 @@ preis_dictionary = {
     'Citroen Nr. 2': 19950,
     'Citroen Nr. 3': 15950,
     'Citroen Nr. 4': 21990,
-    'Citroen Nr. 5': 12450,
+    'Citroen Nr. 5': 50000,
 }
-preise = pd.Series(preis_dictionary)
+
+# Lücke: Erzeugen Sie eine Series aus dem Dictionary. Was wird zum Index?
+preise = ____
 print(preise)
 ```
 
 Beide Wege führen zum selben Series-Objekt. Welchen Weg wir wählen, hängt davon
 ab, in welcher Form die Daten vorliegen: als Liste oder als Dictionary.
-
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie ein Series-Objekt mit Ihren Bildschirmzeiten der sieben Tage der
-letzten Woche. Verwenden Sie dazu ein Dictionary mit den Wochentagen als
-Schlüssel und den Bildschirmzeiten in tunden als Werte. Lassen Sie sich die
-Series ausgeben. Was ist der Index der Series?
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-print(bildschirmzeit )
-```
-
-Die Schlüssel des Dictionaries (= Wochentage) werden automatisch zum Index der
-Series. Ein zusätzlicher Parameter `index=` ist nicht nötig.
-````
 
 ## Attribute einer Series
 
@@ -199,11 +154,12 @@ wir mit dem sogenannten Punktoperator zu. Die vier wichtigsten Attribute sind
 `values`, `index`, `dtype` und `name`.
 
 Beginnen wir mit den beiden Bestandteilen, aus denen eine Series besteht: den
-Daten und dem Index. Das Attribut `values` liefert die reinen Daten der Series
-(ein NumPy-Array), also die Verkaufspreise ohne die Beschriftung:
+Daten und dem Index. Das Attribut `values` liefert die reinen Daten der Series,
+also die Verkaufspreise ohne die Beschriftung:
 
 ```{code-cell} ipython3
-daten = preise.values
+# Lücke: Lassen Sie sich die reinen Daten der Series ausgeben
+daten = preise.____
 print(daten)
 ```
 
@@ -211,7 +167,8 @@ Das Attribut `index` liefert entsprechend die Beschriftung, also den Index der
 Series:
 
 ```{code-cell} ipython3
-beschriftung = preise.index
+# Lücke: Lassen Sie sich den Index der Series ausgeben
+beschriftung = preise.____
 print(beschriftung)
 ```
 
@@ -224,7 +181,8 @@ Series-Objektes gespeichert. Anders als eine Liste erzwingt eine Series einen
 gemeinsamen Datentyp für alle Elemente und welcher das ist, verrät uns `dtype`:
 
 ```{code-cell} ipython3
-datentyp_preise = preise.dtype
+# Lücke: Lassen Sie sich den Datentyp der Elemente ausgeben
+datentyp_preise = preise.____
 print(f'Die einzelnen Elemente des Series-Objektes "preise" haben den Datentyp {datentyp_preise}.')
 ```
 
@@ -242,7 +200,8 @@ beschreibenden Namen geben, der bei der Ausgabe mit angezeigt wird. Anders als
 die bisherigen Attribute können wir `name` auch direkt setzen:
 
 ```{code-cell} ipython3
-preise.name = 'Verkaufspreis in EUR'
+# Lücke: Geben Sie der Series den Namen 'Verkaufspreis in EUR'
+preise.____ = ____
 print(preise)
 ```
 
@@ -250,81 +209,27 @@ Der Name erscheint jetzt in der letzten Zeile der Ausgabe. Im Moment wirkt das
 wie eine Kleinigkeit, aber spätestens beim DataFrame im übernächsten Kapitel
 wird der Name wichtig, denn dort dient er als Spaltenname.
 
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung (oder
-verwenden Sie Ihre Variable weiter).
-
-1. Lassen Sie sich die Attribute `values`, `index` und `dtype` ausgeben.
-2. Welchen Datentyp haben die Elemente? Erklären Sie, warum aus der eingegebenen
-   Ganzzahl `8` in der Series `8.0` geworden ist.
-3. Geben Sie der Series den Namen `'Bildschirmzeit in Stunden'` und lassen Sie
-   sie ausgeben.
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-
-print(bildschirmzeit.values)
-print(bildschirmzeit.index)
-print(f'Datentyp: {bildschirmzeit.dtype}')
-
-bildschirmzeitn.name = 'Bildschirmzeit in Stunden'
-print(bildschirmzeit)
-```
-
-Der Datentyp ist `float64`. Eine Series erzwingt einen gemeinsamen Datentyp
-für alle Elemente. Da in den Daten Kommazahlen wie `3.5` vorkommen, wandelt
-Pandas auch die Ganzzahl `3` in die Kommazahl `3.0` um.
-````
-
 ## Aufgaben
 
-Zum Abschluss wenden wir alle Techniken dieses Kapitels in einer
-zusammenhängenden Aufgabe an.
+Die folgende Aufgabe bearbeiten Sie zu zweit (Pair Programming): Eine Person
+tippt (*Driver*), die andere denkt mit, prüft und schlägt vor (*Navigator*).
+Wechseln Sie nach Teilaufgabe 2 die Rollen. **Zeit: 12 Minuten**, danach
+besprechen wir die Ergebnisse gemeinsam.
 
 ```{admonition} Aufgabe: Kilometerstände im Autohaus
 :class: tip
-Das Autohaus hat zu den zehn Autos auch die Kilometerstände erfasst:
+Das Autohaus hat zu den zehn Autos auch die Kilometerstände erfasst. Die Daten
+finden Sie bereits als Dictionary in der Code-Zelle unten.
 
-| Auto          | Kilometerstand |
-|---------------|---------------:|
-| Audi Nr. 1    | 165000         |
-| Audi Nr. 2    | 87500          |
-| Audi Nr. 3    | 102300         |
-| BMW Nr. 1     | 21000          |
-| BMW Nr. 2     | 76900          |
-| Citroen Nr. 1 | 98000          |
-| Citroen Nr. 2 | 59000          |
-| Citroen Nr. 3 | unbekannt      |
-| Citroen Nr. 4 | 45200          |
-| Citroen Nr. 5 | 12800          |
-
-1. Erzeugen Sie aus den Daten eine Series `kilometerstand`. Wählen Sie selbst,
-   ob Sie den Weg über Liste plus `index=` oder über ein Dictionary gehen.
-   Tragen Sie für `Citroen Nr. 3` zunächst die Zeichenkette `'unbekannt'` ein.
+1. Erzeugen Sie aus dem Dictionary eine Series `kilometerstand`.
 2. Lassen Sie sich die Attribute `values`, `index` und `dtype` ausgeben.
-   Überlegen Sie: Welchen Datentyp hat die Series und warum ist das ein Problem,
-   wenn wir später mit den Kilometerständen rechnen wollen?
-3. Erzeugen Sie die Series erneut, aber ersetzen Sie `'unbekannt'` durch den
-   speziellen Python-Wert `None` ("kein Wert vorhanden"). Prüfen Sie den
-   Datentyp erneut. Was hat sich geändert und warum ist das die bessere Wahl für
-   einen fehlenden Messwert?
+   Diskutieren Sie mit Ihrer Partnerin / Ihrem Partner: Welchen Datentyp hat die
+   Series und warum ist das ein Problem, wenn wir später mit den
+   Kilometerständen rechnen wollen?
+3. *Rollenwechsel!* Erzeugen Sie die Series erneut, aber ersetzen Sie
+   `'unbekannt'` durch den speziellen Python-Wert `None` ("kein Wert
+   vorhanden"). Prüfen Sie den Datentyp erneut. Was hat sich geändert und warum
+   ist das die bessere Wahl für einen fehlenden Messwert?
 4. Geben Sie der Series den Namen `'Kilometerstand'` und greifen Sie über den
    Index auf den Kilometerstand von `BMW Nr. 1` zu.
 5. **Zusatzaufgabe:** Die Series `preise` und `kilometerstand` haben denselben
@@ -333,15 +238,7 @@ Das Autohaus hat zu den zehn Autos auch die Kilometerstände erfasst:
 ```
 
 ```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Teilaufgabe 1: Series mit 'unbekannt' als Text
-kilometerstand = pd.Series({
+kilometer_dictionary = {
     'Audi Nr. 1': 165000,
     'Audi Nr. 2': 87500,
     'Audi Nr. 3': 102300,
@@ -352,60 +249,10 @@ kilometerstand = pd.Series({
     'Citroen Nr. 3': 'unbekannt',
     'Citroen Nr. 4': 45200,
     'Citroen Nr. 5': 12800,
-})
+}
 
-# Teilaufgabe 2: Attribute
-print(kilometerstand.values)
-print(kilometerstand.index)
-print(f'Datentyp: {kilometerstand.dtype}')
+# Hier Ihr Code:
 ```
-
-Der Datentyp ist `object`, weil die Zeichenkette `'unbekannt'` keinen
-gemeinsamen Zahlen-Datentyp mit den übrigen Elementen erlaubt. Mit einer
-`object`-Series können wir nicht sinnvoll rechnen — schon `kilometerstand / 2`
-würde scheitern bzw. Unsinn liefern.
-
-```python
-# Teilaufgabe 3: fehlender Wert als None
-kilometerstand = pd.Series({
-    'Audi Nr. 1': 165000,
-    'Audi Nr. 2': 87500,
-    'Audi Nr. 3': 102300,
-    'BMW Nr. 1': 21000,
-    'BMW Nr. 2': 76900,
-    'Citroen Nr. 1': 98000,
-    'Citroen Nr. 2': 59000,
-    'Citroen Nr. 3': None,
-    'Citroen Nr. 4': 45200,
-    'Citroen Nr. 5': 12800,
-})
-print(kilometerstand)
-print(f'Datentyp: {kilometerstand.dtype}')
-```
-
-Jetzt ist der Datentyp `float64`. Pandas wandelt `None` beim Erzeugen
-automatisch in den speziellen Wert `NaN` (Not a Number) um — eine besondere
-Kommazahl, die "fehlender Wert" bedeutet. Damit bleibt die Series eine
-Zahlen-Series und alle Berechnungen funktionieren weiterhin — der fehlende
-Wert wird dabei einfach als `NaN` mitgeführt. Wie wir fehlende Werte
-systematisch aufspüren und behandeln, lernen wir in Kapitel 3.3.
-
-```python
-# Teilaufgabe 4: Name setzen und Zugriff über den Index
-kilometerstand.name = 'Kilometerstand'
-print(kilometerstand['BMW Nr. 1'])
-
-# Teilaufgabe 5 (Zusatz): Preis pro Kilometer
-preis_pro_km = preise / kilometerstand
-print(preis_pro_km)
-```
-
-In der Zusatzaufgabe zeigt sich eine der großen Stärken von Pandas: Wir können
-zwei Series direkt durcheinander teilen, ohne eine Schleife zu schreiben.
-Pandas verrechnet dabei automatisch die Elemente mit demselben Index-Label
-miteinander. Für `Citroen Nr. 3` kommt `NaN` heraus, weil der Kilometerstand
-fehlt. Solche Berechnungen vertiefen wir im nächsten Kapitel.
-````
 
 ## Zusammenfassung und Ausblick
 
