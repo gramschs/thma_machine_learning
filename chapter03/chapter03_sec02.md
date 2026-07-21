@@ -151,7 +151,7 @@ Donnerstag) noch dabei ist.
 
 Falls der Datentyp der einzelnen Elemente eines Series-Objektes ein numerischer
 Typ ist (Integer oder Float), können wir mit den Einträgen auch rechnen. So
-lassen sich beispielweise die Preise nicht in Euro, sondern als Preis pro
+lassen sich beispielsweise die Preise nicht in Euro, sondern als Preis pro
 Tausend Euro angeben, wenn wir alle Preise durch 1000 teilen.
 
 ```{code-cell} ipython3
@@ -307,94 +307,6 @@ print(zuviel_bildschirmzeit)
 
 Übrig bleibt nur der Samstag mit 6.5 Stunden. Der Filter liefert ein neues
 Series-Objekt, das nur die Tage enthält, an denen die Bedingung erfüllt ist.
-````
-
-## Aufgaben
-
-Zum Abschluss wenden wir alle Techniken dieses Kapitels in einer
-zusammenhängenden Aufgabe an.
-
-```{admonition} Aufgabe: Preisverhandlung im Autohaus
-:class: tip
-Verwenden Sie die Series `preise` und `kilometerstand` aus diesem Kapitel.
-
-1. Ermitteln Sie mit `.loc[]` den Preis von `BMW Nr. 2`. Ermitteln Sie
-   anschließend den Preis des teuersten Autos mit `.iloc[]`. Sortieren Sie dazu
-   die Preise zunächst aufsteigend. Tipp: Die Methode `preise.sort_values()`
-   liefert ein neues Series-Objekt, in dem die Preise aufsteigend sortiert sind.
-   An welcher Position steht das teuerste Auto dann?
-2. Das Autohaus startet eine Rabattaktion und senkt alle Preise um 5 %.
-   Berechnen Sie die neuen Preise. Berechnen Sie außerdem für jedes Auto den
-   Preis pro gefahrenem Kilometer.
-3. Filtern Sie alle Autos heraus, die nach dem Rabatt weniger als 20000 EUR
-   kosten. Filtern Sie anschließend alle Autos heraus, deren Preis pro Kilometer
-   über 0.50 EUR liegt. Notieren Sie in ein, zwei Sätzen: Warum ist ein hoher
-   Preis pro Kilometer ein schlechtes Zeichen für Käuferinnen und Käufer?
-4. **Zusatzaufgabe:** Wie viele Autos kosten (vor dem Rabatt) zwischen 15000 und
-   30000 EUR? Zwei Bedingungen lassen sich mit dem Operator `&` verknüpfen,
-   dabei muss jede Bedingung in runde Klammern gesetzt werden.
-```
-
-```{code-cell} ipython3
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Teilaufgabe 1: Zugriff mit .loc[] und .iloc[]
-print(preise.loc['BMW Nr. 2'])
-
-preise_sortiert = preise.sort_values()
-print(preise_sortiert)
-print(preise_sortiert.iloc[-1])
-```
-
-Der Preis von `BMW Nr. 2` beträgt 27443 EUR. Nach der aufsteigenden Sortierung
-steht das teuerste Auto an der letzten Position. Mit `.iloc[-1]` greifen wir
-direkt darauf zu, das teuerste Auto ist `BMW Nr. 1` mit 46830 EUR. Alternativ
-hätten wir auch absteigend sortieren und `.iloc[0]` verwenden können.
-
-```python
-# Teilaufgabe 2: vektorisiertes Rechnen
-rabattpreise = preise * 0.95
-print(rabattpreise)
-
-preis_pro_km = preise / kilometerstand
-print(preis_pro_km)
-```
-
-Für den Rabatt wird jeder Preis mit 0.95 multipliziert, eine Schleife ist
-nicht nötig. Beim Preis pro Kilometer verrechnet Pandas die Elemente mit
-demselben Label, für `Citroen Nr. 3` entsteht wegen des fehlenden
-Kilometerstands der Wert `NaN`.
-
-```python
-# Teilaufgabe 3: boolesche Indizierung
-guenstig_nach_rabatt = rabattpreise[rabattpreise < 20000]
-print(guenstig_nach_rabatt)
-
-teuer_pro_km = preis_pro_km[preis_pro_km > 0.5]
-print(teuer_pro_km)
-```
-
-Nach dem Rabatt kosten sieben Autos weniger als 20000 EUR. Beim Preis pro
-Kilometer bleiben `BMW Nr. 1` (ca. 2.23 EUR/km) und `Citroen Nr. 5`
-(ca. 0.97 EUR/km) übrig. Ein hoher Preis pro Kilometer bedeutet, dass für ein
-Auto mit wenig Laufleistung vergleichsweise viel Geld verlangt wird. Das kann
-gerechtfertigt sein (junges Auto), sollte aber genauer geprüft werden.
-
-```python
-# Teilaufgabe 4 (Zusatz): zwei Bedingungen kombinieren
-mittlere_preisklasse = preise[(preise >= 15000) & (preise <= 30000)]
-print(mittlere_preisklasse)
-print(f'Anzahl: {mittlere_preisklasse.count()}')
-```
-
-Fünf Autos liegen in der mittleren Preisklasse zwischen 15000 und 30000 EUR.
-Wichtig sind die runden Klammern um jede einzelne Bedingung, ohne sie gibt es
-eine Fehlermeldung.
 ````
 
 ## Zusammenfassung und Ausblick

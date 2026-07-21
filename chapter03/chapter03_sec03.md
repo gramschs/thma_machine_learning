@@ -1,86 +1,209 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: 'Python 3'
 ---
 
 # 3.3 Kennzahlen, Boxplots und Ausreißer
 
-*Leitfrage: Was sagen mir die Daten?*
-
-* [ ] Sie berechnen statistische Kennzahlen einer Series mit **mean()**,
-  **std()**, **min()**, **max()** und **describe()**.
-* [ ] Sie identifizieren fehlende Werte (**NaN**) mit **isna()** und behandeln
-  sie mit **dropna()** oder **fillna()**.
-* [ ] Sie erstellen mit **px.box()** aus Plotly Express einen Boxplot für eine
-  Series.
-* [ ] Sie interpretieren die Elemente eines Boxplots (**Median**, **Quartile**,
-  **Whisker**, **Ausreißer**) und ordnen ihnen die entsprechenden statistischen
-  Kennzahlen zu.
-* [ ] Sie filtern Ausreißer aus einer Series mithilfe **boolescher Indizierung**
-  heraus.
-
-Die wichtigsten statistischen Kennzahlen lassen sich mit einem Diagramm
-visualisieren, das Boxplot genannt wird. Gelegentlich wird auch der deutsche
-Begriff Kastendiagramm dafür gebraucht. In diesem Kapitel visualisieren wir nur
-einen Datensatz. Die große Stärke der Boxplots ist normalerweise, die
-statistischen Kennzahlen von verschiedenen Datensätzen nebeneinander zu
-visualisieren, um so leicht einen Vergleich der Datensätze zu ermöglichen.
+Pandas dient nicht nur dazu, Daten zu verwalten, sondern ermöglicht auch
+statistische Analysen. Die deskriptive Statistik hat zum Ziel, Daten durch
+einfache Kennzahlen und Diagramme zu beschreiben. In diesem Kapitel ermitteln
+wir zuerst die wichtigsten statistischen Kennzahlen mit Pandas. Danach
+visualisieren wir sie mit einem Diagramm, das Boxplot genannt wird.
+Gelegentlich wird auch der deutsche Begriff Kastendiagramm dafür gebraucht.
+Zum Schluss lernen wir, was ein Ausreißer ist und wie wir Ausreißer im Boxplot
+anzeigen lassen.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können **Plotly Express** mit der typischen Abkürzung **px** importieren.
-* Sie können mit **px.box()** einen Boxplot eines Pandas-Series-Objektes
-  visualisieren.
-* Sie können die Beschriftung eines Boxplots verändern. Dazu gehört die
-  Beschriftung der Achsen und der Titel.
-* Sie können die Datenpunkte neben einem Boxplot anzeigen lassen.
-* Sie wissen, was ein **Ausreißer** ist und können Ausreißer im Boxplot anzeigen
-  lassen.
+* [ ] Sie berechnen statistische Kennzahlen einer Series mit **.mean()**,
+  **.std()**, **.min()**, **.max()**, **.quantile()** und **.describe()**.
+* [ ] Sie erstellen mit **px.box()** aus Plotly Express einen Boxplot für eine
+  Series und beschriften ihn mit **labels=** und **title=**.
+* [ ] Sie interpretieren die Elemente eines Boxplots (**Median**, **Quartile**,
+  **Whisker**, **Ausreißer**) und ordnen ihnen die entsprechenden statistischen
+  Kennzahlen zu, inklusive der IQR-Regel zur Ausreißerdefinition.
+* [ ] Sie lassen mit **points='outliers'** die Ausreißer einer Series im Boxplot
+  anzeigen und rechnen die Ausreißergrenzen mit **.quantile()** nach.
 ```
 
-## Plotly
+## Statistische Kennzahlen ermitteln
 
-Es gibt zahlreiche Python-Module zur Visualisierung von Daten. In dieser
-Vorlesung verwenden wir **Plotly**, das im Gegensatz zu anderen Bibliotheken wie
-Matplotlib interaktive Diagramme erstellt. Mit **Plotly Express** steht uns eine
-einfach zu bedienende Schnittstelle zur Erstellung verschiedenster Diagrammtypen
-zur Verfügung.
+Die Methode `.describe()` aus dem Pandas-Modul (siehe
+[Pandas-Dokumentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html))
+liefert eine schnelle Übersicht über viele statistische Kennzahlen. Vor allem,
+wenn neue Daten geladen werden, ist diese Methode oft ein guter erster Schritt.
+Wir bleiben bei unserem Beispiel mit den zehn Autos und deren Verkaufspreisen.
 
-Üblicherweise wird Plotly Express als `px` abgekürzt.
+```{code-cell} ipython3
+# Import des Pandas-Moduls
+import pandas as pd
 
-```{code-cell}
-import plotly.express as px
+# Erzeugung der Daten als Series-Objekt
+preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
+autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
+preise = pd.Series(preisliste, index=autos)
 ```
 
-Sollte eine Fehlermeldung auftreten, kann Plotly mit `!pip install plotly` oder
-`!conda install plotly` nachinstalliert werden.
+Die Methode `.describe()` zeigt nicht nur die statistischen Kennzahlen an,
+sondern gibt sie auch als Ergebnis zurück. Dieses Ergebnis können wir in einer
+Variablen zwischenspeichern und später weiterverwenden.
+
+```{code-cell} ipython3
+kennzahlen = preise.describe()
+```
+
+Zur Kontrolle lassen wir uns den Inhalt der Variablen ausgeben:
+
+```{code-cell} ipython3
+print(kennzahlen)
+```
+
+Zusätzlich können wir mit `type()` prüfen, welchen Datentyp dieses Ergebnis hat:
+
+```{code-cell} ipython3
+type(kennzahlen)
+```
+
+Das Ergebnis ist ein Series-Objekt von Pandas. Die Namen der Kennzahlen wie
+`'min'` und `'max'` bilden dabei den Index dieser Series. Deshalb können wir auf
+einzelne Kennzahlen genauso zugreifen wie auf andere Elemente einer Series, also
+über den Index in eckigen Klammern.
+
+Zum Beispiel erhalten wir so den kleinsten Verkaufspreis:
+
+```{code-cell} ipython3
+minimaler_preis = kennzahlen['min']
+print(f'Das billigste Auto wird für {minimaler_preis} EUR angeboten.')
+```
+
+Neben der Möglichkeit, die statistischen Kennzahlen über `.describe()` berechnen
+zu lassen und dann über den Index darauf zuzugreifen, gibt es auch direkt
+anwendbare Methoden, um die statistischen Kennzahlen zu ermitteln.
+
+Der **Mittelwert** (engl. Mean) wird mit `.mean()` berechnet. **Minimum** und
+**Maximum** erhalten wir über die Methoden `.min()` und `.max()`.
+
+```{code-cell} ipython3
+print(f'Mittelwert: {preise.mean()} EUR')
+print(f'Minimum: {preise.min()} EUR')
+print(f'Maximum: {preise.max()} EUR')
+```
+
+Der Mittelwert ist wichtig, aber er erzählt nicht die ganze Geschichte. Die
+Spanne zwischen dem billigsten Auto (1999 EUR) und dem teuersten Auto (46830
+EUR) beträgt über 44000 EUR. Diese Autos sind also sehr unterschiedlich! Wie
+sehr die Werte vom Mittelwert abweichen, beschreibt die **Standardabweichung**
+(engl. Standard Deviation), die wir mit `.std()` bestimmen.
+
+```{code-cell} ipython3
+print(f'Standardabweichung: {preise.std():.2f} EUR')
+```
+
+Was bedeutet das konkret? Eine Standardabweichung von rund 12700 EUR bei einem
+Mittelwert von rund 21500 EUR zeigt, dass die Preise stark streuen. Viele
+Preise liegen in einer Größenordnung von etwa 12700 EUR um den Mittelwert,
+einige aber auch deutlich weiter davon entfernt.
+
+Die Standardabweichung hat dieselbe Einheit wie die Originaldaten (hier: EUR).
+Das macht sie direkt interpretierbar im Gegensatz zur Varianz, die in EUR²
+gemessen wird.
+
+In der Ausgabe von `.describe()` sind uns außerdem die Zeilen `25%`, `50%` und
+`75%` aufgefallen. Diese Kennzahlen heißen **Quantile**. Das $p$-Quantil ist der
+Wert, unter dem $p\cdot 100\%$ der Daten liegen. Beim 0.5-Quantil liegen also
+$50 \%$ der Werte darunter. Dieses Quantil heißt auch **Median**. Mit der
+Methode `.quantile()` können wir diesen Wert leicht aus den Daten holen.
+
+```{code-cell} ipython3
+median = preise.quantile(0.5)
+print(f'Der Median, d.h. das 0.5-Quantil, liegt bei {median} EUR.')
+```
+
+Der Median liegt bei 18900 EUR, d.h. 50 % aller Autos werden zu einem Preis
+angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
+teurer angeboten. Das 0.25- und das 0.75-Quantil werden uns gleich im Boxplot
+wieder begegnen.
+
+```{admonition} Mini-Übung
+:class: tip
+Erzeugen Sie erneut die Bildschirmzeiten-Series aus den letzten beiden
+Kapiteln (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5,
+Samstag 6.5, Sonntag 5 Stunden).
+
+1. Verschaffen Sie sich mit `.describe()` einen Überblick. Wie hoch war die
+   längste Bildschirmzeit?
+2. Berechnen Sie Mittelwert und Median. Welcher der beiden Werte ist größer?
+   Haben Sie eine Vermutung, woran das liegt?
+3. Berechnen Sie die Standardabweichung. Wie interpretieren Sie den Wert?
+```
+
+```{code-cell} ipython3
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+bildschirmzeit = pd.Series({
+    'Montag': 2.5,
+    'Dienstag': 3,
+    'Mittwoch': 4.25,
+    'Donnerstag': 2.75,
+    'Freitag': 3.5,
+    'Samstag': 6.5,
+    'Sonntag': 5
+})
+
+# 1. Überblick mit describe()
+print(bildschirmzeit.describe())
+
+# 2. Mittelwert und Median
+print(f'Mittelwert: {bildschirmzeit.mean():.2f} Stunden')
+print(f'Median: {bildschirmzeit.quantile(0.5)} Stunden')
+
+# 3. Standardabweichung
+print(f'Standardabweichung: {bildschirmzeit.std():.2f} Stunden')
+```
+
+Antworten:
+1. Die Kennzahl `max` zeigt 6.5 Stunden, das war der Samstag.
+2. Der Mittelwert (rund 3.93 Stunden) ist größer als der Median
+   (3.5 Stunden). Die beiden langen Wochenendtage ziehen den Mittelwert nach
+   oben, während der Median davon kaum beeinflusst wird.
+3. Die Standardabweichung beträgt rund 1.43 Stunden. Die Bildschirmzeiten
+   weichen also typischerweise um etwa eineinhalb Stunden vom Mittelwert ab.
+````
+
+```{dropdown} Video zu "Mittelwert" von Datatab
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+```{dropdown} Video zu "Standardabweichung" von Datatab
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 
 ## Boxplots mit Plotly Express
 
-Wir greifen erneut unser Autoscout24-Beispiel mit den 10 Autos auf.
+Die wichtigsten statistischen Kennzahlen lassen sich mit dem **Boxplot**
+visualisieren. Es gibt zahlreiche Python-Module zur Visualisierung von Daten. In
+dieser Vorlesung verwenden wir **Plotly**, das im Gegensatz zu anderen
+Bibliotheken wie Matplotlib interaktive Diagramme erstellt. Mit **Plotly
+Express** steht uns eine einfach zu bedienende Schnittstelle zur Erstellung
+verschiedenster Diagrammtypen zur Verfügung.
 
-```{code-cell}
-import pandas as pd
+Üblicherweise wird Plotly Express als `px` abgekürzt.
 
-preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
-preise = pd.Series(preisliste, index=[
-  'Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3',
-  'BMW Nr. 1', 'BMW Nr. 2', 
-  'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5'
-  ])
-
-print(preise)
+```{code-cell} ipython3
+import plotly.express as px
 ```
 
 Um einen Boxplot zu erstellen, nutzen wir die Funktion `box()` von Plotly
@@ -89,50 +212,92 @@ der Variablen `diagramm`. Um es dann auch nach seiner Erzeugung tatsächlich
 anzeigen zu lassen, verwenden wir die Methode `.show()`. Zusammen sieht der
 Python-Code zur Erzeugung eines Boxplots folgendermaßen aus:
 
-```{code-cell}
+```{code-cell} ipython3
 diagramm = px.box(preise)
 diagramm.show()
 ```
 
-Bewegen wir die Maus über dem Diagramm, sehen wir verschiedene interaktive Funktionen:
+Bewegen wir die Maus über dem Diagramm, sehen wir verschiedene interaktive
+Funktionen:
 
 * Hover-Informationen zeigen die genauen Werte an.
 * Rechts oben erscheinen Buttons zum Zoomen, Verschieben und Herunterladen.
 * Mit der Maus können wir in das Diagramm hineinzoomen.
 
-Die untere Antenne (Whisker) zeigt das Minimum an, die obere Antenne das Maximum
-der Daten. Der Kasten (Box) wird durch das untere Quartil Q1 und das obere
-Quartil Q3 begrenzt. Oder anders formuliert: In der Box liegen 50 % aller
-Datenpunkte. Der Median wird durch die horizontale Linie in der Box dargestellt.
+Ein Schönheitsfehler fällt allerdings auf: Die Achsenbeschriftungen wurden
+automatisch gesetzt. Die x-Achse ist mit `'variable'` und die y-Achse mit
+`'value'` beschriftet. Darüber hinaus ist der Titel der Box `'0'`. Der Name wird
+auch angezeigt, wenn wir die Maus über die Box bewegen. Die Series hat keinen
+eigenen Namen. In der Plotly-Darstellung erscheint deshalb intern die
+Bezeichnung 0.
+
+Sollen die Achsenbeschriftungen geändert werden, müssen die automatisch
+gesetzten Beschriftungen durch neue Namen ersetzt werden. Dazu wird ein
+Dictionary konfiguriert und dem optionalen Argument `labels=` übergeben. Das
+Dictionary wird mit geschweiften Klammern erzeugt. Die Schlüssel vor dem
+Doppelpunkt sind die alten Beschriftungen, die Werte nach dem Doppelpunkt die
+neuen.
+
+Da wir weiterhin den Variablennamen `diagramm` nutzen, wird das Diagramm aus der
+vorherigen Code-Zelle überschrieben.
+
+```{code-cell} ipython3
+diagramm = px.box(preise,
+                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'})
+diagramm.show()
+```
+
+Fehlt noch eine Überschrift, ein Titel. Wie das englische Wort 'title' heißt
+auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
+`title=`.
+
+```{code-cell} ipython3
+diagramm = px.box(preise,
+                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
+                  title='Statistische Kennzahlen als Boxplot')
+diagramm.show()
+```
+
+Kehren wir zur Interpretation des Boxplots zurück. Wofür steht eigentlich die
+Box? Die Box zeigt uns die Quantile. Sie wird unten durch das 0.25-Quantil (auch
+Q1-Quartil genannt) und oben durch das 0.75-Quantil (auch Q3-Quartil genannt)
+begrenzt. Oder anders formuliert: In der Box liegen 50 % aller Datenpunkte. Der
+Median wird durch die horizontale Linie in der Box dargestellt. Die Antennen
+(englisch Whisker) reichen bis zum kleinsten bzw. größten Datenpunkt, der noch
+nicht als Ausreißer gilt. Mit Ausreißern beschäftigen wir uns im nächsten
+Abschnitt.
 
 ```{admonition} Mini-Übung
 :class: tip
-Erstellen Sie einen Boxplot der Autopreise und beantworten Sie anhand des 
-Diagramms:
-1. Was ist der Median (die mittlere Linie in der Box)?
-2. Zwischen welchen beiden Werten liegen 50 % aller Autos?
+Verwenden Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung.
 
-*Tipp: Bewegen Sie die Maus über die Box, um die genauen Werte zu sehen.*
+1. Erstellen Sie einen Boxplot der Bildschirmzeiten.
+2. Beschriften Sie die x-Achse mit `'Wochenprotokoll'` und die y-Achse mit
+   `'Bildschirmzeit [h]'`. Geben Sie dem Diagramm den Titel `'Bildschirmzeit pro
+   Tag'`.
+3. Lesen Sie mit der Maus ab: Wo liegt der Median? Zwischen welchen beiden
+   Werten liegt die Box, also die mittleren 50 % der Tage?
 ```
 
-```{code-cell}
-# Hier Ihr Code
+```{code-cell} ipython3
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
 ```python
-diagramm = px.box(preise)
+diagramm = px.box(bildschirmzeit,
+                  labels={'variable': 'Wochenprotokoll', 'value': 'Bildschirmzeit [h]'},
+                  title='Bildschirmzeit pro Tag')
 diagramm.show()
 ```
 
 Antworten:
-1. Der Median liegt bei ca. 18.900 EUR
-2. 50 % der Autos liegen zwischen Q1 (ca. 15.200 EUR) und Q3 (ca. 25.200 EUR)
-````
 
-Das folgende Video erklärt, wie der Boxplot zu interpretieren ist.
+3. Der Median liegt bei 3.5 Stunden. Die Box reicht von rund 2.8 bis rund
+   4.8 Stunden, in diesem Bereich liegen die mittleren 50 % der Tage.
+````
 
 ```{dropdown} Video zu "Boxplot" von Datatab
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1I_ma7nvKQw" 
@@ -141,158 +306,181 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen></iframe>
 ```
 
-## Beschriftung des Boxplots verändern
+## Ausreißer anzeigen
 
-Die Achsenbeschriftungen wurden automatisch gesetzt. Die x-Achse ist mit
-'variable' und die y-Achse mit 'value' beschriftet. Darüber hinaus ist der Titel
-der Box '0'. Der Name wird auch angezeigt, wenn wir die Maus über die Box
-bewegen.
-
-Die 0 erscheint, weil Pandas intern 0 als Standardnamen verwendet, wenn kein
-Name angegeben wurde. Wir können der Spalte aber auch einen eigenen Namen geben.
-Am einfachsten funktioniert das direkt bei der Erzeugung, indem der Parameter
-`name=` gesetzt wird.
-
-```{code-cell}
-preise_mit_name = pd.Series(preisliste, index=[
-  'Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3',
-  'BMW Nr. 1', 'BMW Nr. 2', 
-  'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5'
-  ],
-  name='Liste von Autoscout24')
-
-print(preise_mit_name)
-```
-
-Der neue Name 'Liste von Autoscout24' wird zusätzlich zur Information
-'dtype' angezeigt. Erstellen wir nun den Boxplot mit diesem benannten
-Series-Objekt:
-
-```{code-cell}
-diagramm = px.box(preise_mit_name)
-diagramm.show()
-```
-
-Sollen nun auch noch die Achsenbeschriftungen geändert werden, müssen wir die
-automatisch gesetzten Beschriftungen durch neue Namen ersetzt werden. Dazu wird
-ein Dictionary konfiguriert und dem optionalen Argument `labels=` übergeben. Das
-Dictionary wird mit geschweiften Klammern erzeugt. Die Schlüssel vor dem
-Doppelpunkt sind die alten Beschriftungen, die Werte nach dem Doppelpunkt die
-neuen.
-
-Da wir weiterhin den Variablennamen `diagramm` nutzen, wird das Diagramm aus der
-vorherigen Code-Zelle überschrieben.
-
-```{code-cell}
-diagramm = px.box(preise_mit_name,
-                  labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'})
-diagramm.show()
-```
-
-Fehlt noch eine Überschrift, ein Titel. Wie das englische Wort 'title' heißt
-auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
-`title=`.
-
-```{code-cell}
-diagramm = px.box(preise_mit_name,
-                  labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
-                  title='Statistische Kennzahlen als Boxplot')
-diagramm.show()
-```
-
-## Datenpunkte im Boxplot anzeigen
-
-Oft ist es wünschenswert die Rohdaten zusammen mit dem Boxplot zu visualisieren.
-Das ist mit dem `points=`-Parameter recht einfach, jedoch haben wir zwei mögliche
-Optionen. Wir können mit `'all'` alle Punkte anzeigen lassen oder nur die
-Ausreißer (`'outliers'`).
+Oft ist es wünschenswert, die Rohdaten zusammen mit dem Boxplot zu
+visualisieren. Das ist mit dem `points=`-Parameter recht einfach, jedoch haben
+wir zwei mögliche Optionen. Wir können mit `'all'` alle Punkte anzeigen lassen
+oder nur die **Ausreißer** `'outliers'`.
 
 Lassen wir zuerst alle Punkte anzeigen und setzen also `points='all'`.
 
-```{code-cell}
-diagramm = px.box(preise_mit_name,
-                  labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
+```{code-cell} ipython3
+diagramm = px.box(preise,
+                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
+                  title='Statistische Kennzahlen als Boxplot',
                   points='all')
 diagramm.show()
 ```
 
-Die Punkte werden links vom Boxplot platziert. Als nächstes lassen wir uns die
+Die Punkte werden links vom Boxplot platziert. Als Nächstes lassen wir uns die
 Ausreißer anzeigen.
 
-```{code-cell}
-diagramm = px.box(preise_mit_name,
-                  labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
+```{code-cell} ipython3
+diagramm = px.box(preise,
+                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
+                  title='Statistische Kennzahlen als Boxplot',
                   points='outliers')
 diagramm.show()
 ```
 
-Es sind keine Punkte zu sehen, was ist falsch? Nun, um das zu klären, müssen wir
-erst einmal definieren, was ein Ausreißer ist.
+Das Ergebnis wirkt zunächst enttäuschend: Es erscheint kein einziger Punkt. Die
+Antennen reichen vom billigsten Auto (1999 EUR) bis zum teuersten Auto
+(46830 EUR). Unter unseren zehn Autos gibt es also keinen Ausreißer. Damit wir
+trotzdem sehen, wie ein Ausreißer im Boxplot aussieht, erweitern wir das
+Angebot des Autohauses um einen Luxuswagen: einen Porsche für 98500 EUR. Dazu
+kopieren wir die Series mit `.copy()` und fügen den Porsche über das neue Label
+'Porsche Nr. 1' hinzu.
 
-## Ausreißer berechnen und visualisieren
+```{code-cell} ipython3
+preise_neu = preise.copy()
+preise_neu['Porsche Nr. 1'] = 98500
+print(preise_neu)
+```
 
-Die Box im Boxplot enthält 50 % aller Datenpunkte, denn sie ist durch das untere
-Quartil Q1 und das obere Quartil Q3 begrenzt. Die Differenz zwischen Q1 und Q3,
-also IQR = Q3 - Q1, wird **Interquartilsabstand** (manchmal auch kurz
+Nun erstellen wir den Boxplot mit der erweiterten Series erneut:
+
+```{code-cell} ipython3
+diagramm = px.box(preise_neu,
+                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
+                  title='Statistische Kennzahlen als Boxplot',
+                  points='outliers')
+diagramm.show()
+```
+
+Ein einzelner Punkt erscheint oberhalb der Antenne: Porsche Nr. 1 mit
+98500 EUR. Das wirft zwei Fragen auf. Warum gilt der Porsche als Ausreißer,
+das zweitteuerste Auto (BMW Nr. 1 mit 46830 EUR) aber nicht? Und warum endet
+die obere Antenne beim BMW, obwohl der Porsche das teuerste Auto ist? Um
+beides zu klären, müssen wir definieren, was ein Ausreißer ist.
+
+Die Box im Boxplot enthält 50 % aller Datenpunkte, denn sie ist durch das
+untere Quartil Q1 und das obere Quartil Q3 begrenzt. Die Differenz zwischen Q1
+und Q3, also IQR = Q3 - Q1, wird **Interquartilsabstand** (manchmal auch kurz
 Quartilsabstand) genannt und mit **IQR** (englisch für Interquartile Range)
 abgekürzt. In der Statistik werden Punkte als Ausreißer angesehen, die kleiner
 als Q1 - 1.5 IQR oder größer als Q3 + 1.5 IQR sind. Dabei ist die Wahl des
 Faktors 1.5 eine statistische Konvention, die sich in der Praxis bewährt hat.
+Die Antennen des Boxplots reichen jeweils nur bis zum letzten Datenpunkt
+*innerhalb* dieser Grenzen. Deshalb endet die obere Antenne bei 46830 EUR:
+Das ist der größte Preis, der noch kein Ausreißer ist.
 
-In unserem Beispiel mit den Autopreisen kommen keine Ausreißer vor, weil Minimum
-und Maximum noch innerhalb dieses Bereichs liegen. Wir fügen daher noch ein
-neues, teureres Auto ein. Jetzt sehen wir einen Ausreißer.
+Rechnen wir die Grenzen mit der Methode `.quantile()` selbst nach:
 
-```{code-cell}
-preise_mit_name['BMW Nr. 3'] = 62999
-diagramm = px.box(preise_mit_name, 
-              labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
-              points='outliers')
-diagramm.show()
+```{code-cell} ipython3
+q1 = preise_neu.quantile(0.25)
+q3 = preise_neu.quantile(0.75)
+iqr = q3 - q1
+print(f'Q1: {q1} EUR')
+print(f'Q3: {q3} EUR')
+print(f'IQR: {iqr} EUR')
+
+untere_grenze = q1 - 1.5 * iqr
+obere_grenze = q3 + 1.5 * iqr
+print(f'Untere Grenze: {untere_grenze} EUR')
+print(f'Obere Grenze: {obere_grenze} EUR')
 ```
 
-Wir beenden dieses Kapitel mit einer Mini-Übung.
+Die untere Grenze ist negativ, negative Preise gibt es nicht, also kann es
+nach unten keine Ausreißer geben. Die obere Grenze liegt bei 56648.75 EUR.
+Jeder Preis darüber gilt als Ausreißer. Von unseren elf Autos liegt nur
+Porsche Nr. 1 mit 98500 EUR über dieser Grenze. BMW Nr. 1 mit 46830 EUR bleibt
+darunter und markiert deshalb das Ende der oberen Antenne. Damit sind beide
+Fragen beantwortet.
+
+```{admonition} Hinweis: Quartile sind Konventionssache
+:class: warning
+Statistiksoftware berechnet Quartile nicht einheitlich, es gibt mehrere
+gebräuchliche Rechenverfahren. Plotly verwendet eine etwas andere Konvention
+als die Pandas-Methode `.quantile()`. Die Hover-Werte für Q1 und Q3 im Boxplot
+können deshalb leicht von den selbst berechneten Werten abweichen. Liegt ein
+Datenpunkt sehr nahe an einer Ausreißergrenze, kann er je nach Software einmal
+als Ausreißer eingestuft werden und einmal nicht. An der Interpretation des
+Boxplots ändert das nichts.
+```
+
+Eine Warnung zum Schluss: Ein Ausreißer ist nicht automatisch ein Fehler. Er
+kann ein Tippfehler oder ein Sensordefekt sein, dann sollte er entfernt oder
+korrigiert werden. Er kann aber auch ein echter, wichtiger Wert sein, hier zum
+Beispiel ein tatsächlich sehr teures Auto. Bevor Ausreißer gelöscht werden,
+sollte immer geprüft werden, wie sie entstanden sind. Beim maschinellen Lernen
+kommen wir auf diese Frage zurück, denn Ausreißer können Modelle stark
+verzerren.
 
 ```{admonition} Mini-Übung
 :class: tip
-Erstellen Sie einen Boxplot mit folgenden Eigenschaften:
-1. Benennen Sie das Series-Objekt mit dem Namen "Gebrauchtwagen"
-2. Beschriften Sie die y-Achse mit "Preis [EUR]"
-3. Fügen Sie den Titel "Gebrauchtwagen-Analyse" hinzu
-4. Zeigen Sie alle Datenpunkte an
+In der Woche darauf gab es am Samstag einen Serienmarathon: 12 Stunden
+Bildschirmzeit statt 6.5 Stunden.
 
-*Zusatzfrage:* Welche Autos liegen preislich am weitesten auseinander?
+1. Ändern Sie den Samstagswert der Bildschirmzeiten-Series auf 12 Stunden.
+   Tipp: Weisen Sie den neuen Wert über das Label zu, so wie wir den Porsche
+   in die Preisliste aufgenommen haben.
+2. Erstellen Sie einen Boxplot mit `points='outliers'`. Wird der Samstag als
+   Ausreißer angezeigt? Wo endet die obere Antenne?
+3. Rechnen Sie mit `.quantile()` die obere Ausreißergrenze nach. Passt das
+   Ergebnis zum Diagramm?
 ```
 
-```{code-cell}
-# Hier Ihr Code
+```{code-cell} ipython3
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
 ```python
-preise_benannt = pd.Series(preisliste, 
-                           index=['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3',
-                                  'BMW Nr. 1', 'BMW Nr. 2', 
-                                  'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3',
-                                  'Citroen Nr. 4', 'Citroen Nr. 5'],
-                           name='Gebrauchtwagen')
+# 1. Samstagswert über das Label ändern
+bildschirmzeit['Samstag'] = 12
+print(bildschirmzeit)
 
-diagramm = px.box(preise_benannt,
-                  labels={'value': 'Preis [EUR]'},
-                  title='Gebrauchtwagen-Analyse',
-                  points='all')
+# 2. Boxplot mit Ausreißern
+diagramm = px.box(bildschirmzeit, points='outliers')
 diagramm.show()
+
+# 3. obere Ausreißergrenze nachrechnen
+q1 = bildschirmzeit.quantile(0.25)
+q3 = bildschirmzeit.quantile(0.75)
+iqr = q3 - q1
+obere_grenze = q3 + 1.5 * iqr
+print(f'Q1: {q1} Stunden')
+print(f'Q3: {q3} Stunden')
+print(f'IQR: {iqr} Stunden')
+print(f'Obere Grenze: {obere_grenze} Stunden')
 ```
 
-Zusatzfrage: Audi Nr. 1 (1.999 EUR, günstigstes) und BMW Nr. 1 (46.830 EUR,
-teuerstes) liegen am weitesten auseinander.
+Antworten:
+
+2. Der Samstag erscheint als einzelner Punkt oberhalb der Antenne. Die obere
+   Antenne endet beim Sonntag mit 5 Stunden.
+3. Mit Q1 = 2.875 Stunden und Q3 = 4.625 Stunden ergibt sich ein
+   Interquartilsabstand von 1.75 Stunden und eine obere Grenze von
+   7.25 Stunden. Der Samstag mit 12 Stunden liegt deutlich darüber und ist
+   damit ein Ausreißer. Der Sonntag mit 5 Stunden ist der größte Wert
+   innerhalb der Grenze, deshalb endet dort die Antenne. Und wie beim Porsche
+   gilt: Der Ausreißer ist kein Fehler in den Daten, der Serienmarathon hat ja
+   wirklich stattgefunden.
 ````
 
 ## Zusammenfassung und Ausblick
 
-Der Boxplot ermöglicht eine einfache Visualisierung der wichtigsten
-statistischen Kennzahlen eines Datensatzes. Seine Stärke zeigt sich besonders,
-sobald mehrere Datensätze miteinander verglichen werden sollen. Daher werden wir
-im nächsten Kapitel uns mit Tabellen beschäftigen.
+In diesem Kapitel haben wir gelernt, was die Daten uns erzählen. Die Methode
+`.describe()` liefert die wichtigsten statistischen Kennzahlen auf einen Blick,
+die auch einzeln über `.mean()`, `.std()`, `.min()`, `.max()` und `.quantile()`
+berechnet werden können. Der Boxplot visualisiert die Kennzahlen: Die Box reicht
+von Q1 bis Q3, die Linie darin ist der Median, die Antennen zeigen den Bereich
+der übrigen Daten und Punkte außerhalb sind Ausreißer nach der 1.5-IQR-Regel.
+Mit den Argumenten `labels=` und `title=` beschriften wir das Diagramm, mit dem
+Parameter `points=` steuern wir die Anzeige der Datenpunkte. Ob ein Ausreißer
+entfernt werden darf, hängt von seiner Ursache ab. Die Stärke des Boxplots zeigt
+sich besonders, sobald mehrere Datensätze miteinander verglichen werden sollen.
+Daher werden wir uns im nächsten Kapitel mit Tabellen beschäftigen.
