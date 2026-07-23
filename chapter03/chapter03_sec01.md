@@ -1,7 +1,8 @@
 ---
 kernelspec:
+  display_name: Python 3
+  language: python
   name: python3
-  display_name: 'Python 3'
 ---
 
 # 3.1 Pandas Series
@@ -21,7 +22,7 @@ dieses Problem löst.
 * [ ] Sie erzeugen eine Series aus einer **Liste** oder einem **Dictionary**.
 * [ ] Sie vergeben beim Erzeugen einer Series einen eigenen **Index** und kennen
   den Default-Index.
-* [ ] Sie fragen die Attribute **values**, **index**, **dtype** und **name**
+* [ ] Sie fragen die Attribute **.array**, **.index**, **.dtype** und **.name**
   einer Series ab und interpretieren deren Bedeutung.
 ```
 
@@ -31,32 +32,32 @@ Einfache Listen reichen nicht aus, um größere Datenmengen effizient zu speiche
 und zu analysieren. Listen haben mehrere Nachteile: Sie erzwingen keinen
 gemeinsamen Datentyp ihrer Elemente (in einer Liste dürfen Zahlen und Texte bunt
 gemischt sein), sie bieten keine Möglichkeit, Metadaten wie beschreibende Labels
-zu hinterlegen, und sie sind bei großen Datenmengen ineffizient. Data Scientists
-benutzen daher die Datenstrukturen `Series` oder `DataFrame` aus dem
-Pandas-Modul. Dabei wird **Series** für Datenreihen genommen, also für
-eindimensionale Daten wie eine Messreihe oder eben unsere Verkaufspreise. Die
-Datenstruktur **DataFrame** wiederum dient zum Speichern und Verarbeiten von
-tabellierten Daten, also Tabellen mit Zeilen und Spalten.
+zu hinterlegen, und sie sind bei numerischen Analysen großer Datenmengen meist
+ineffizient. Data Scientists benutzen daher die Datenstrukturen `Series` oder
+`DataFrame` aus dem Pandas-Modul. Dabei wird **Series** für Datenreihen
+genommen, also für eindimensionale Daten wie eine Messreihe oder eben unsere
+Verkaufspreise. Die Datenstruktur **DataFrame** wiederum dient zum Speichern und
+Verarbeiten von tabellierten Daten, also Tabellen mit Zeilen und Spalten.
 
 Der entscheidende Unterschied zur Liste ist der **Index**: Bei einer Liste
 werden die Elemente ausschließlich über ihre Position 0, 1, 2, ... angesprochen.
 Eine Series erlaubt zusätzlich einen *expliziten Index* mit selbst gewählten
-Beschriftungen, den sogenannten Labels. Wir können uns eine Series daher als
+Beschriftungen, den sogenannten **Labels**. Wir können uns eine Series daher als
 eine Kombination aus Liste und Dictionary vorstellen: Die Daten haben wie in
 einer Liste eine feste Reihenfolge und gleichzeitig können wir wie bei einem
 Dictionary über Labels auf sie zugreifen. Dazu kommt, dass eine Series anders
 als eine Liste einen gemeinsamen Datentyp für alle Elemente erzwingt und dadurch
 große Datenmengen deutlich effizienter verarbeiten kann.
 
-Bereitgestellt werden die Datenstrukturen Series und DataFrame vom Modul Pandas.
-Ein Modul ist eine Sammlung von fertigem Python-Code zu einem bestimmten Thema,
-hier zur Verarbeitung und Analyse von Daten. Es ist üblich, das Modul `pandas`
-mit der Abkürzung `pd` zu importieren, damit wir nicht immer `pandas` schreiben
-müssen. Ausführliche Beschreibungen aller Funktionen finden wir in der
-offiziellen
+Bereitgestellt werden die Datenstrukturen Series und DataFrame vom **Modul
+Pandas**. Ein Modul ist eine Sammlung von fertigem Python-Code zu einem
+bestimmten Thema, hier zur Verarbeitung und Analyse von Daten. Es ist üblich,
+das Modul `pandas` mit der Abkürzung `pd` zu importieren, damit wir nicht immer
+`pandas` schreiben müssen. Ausführliche Beschreibungen aller Funktionen finden
+wir in der offiziellen
 [Pandas-Dokumentation](https://pandas.pydata.org/docs/user_guide/index.html).
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 ```
 
@@ -75,9 +76,9 @@ passt am besten zu den folgenden Aufgaben? Begründen Sie kurz.
 ```{admonition} Lösung
 :class: tip
 :class: dropdown
-1. Dictionary: reines Nachschlagen von Schlüssel-Wert-Paaren, Reihenfolge
-   und Berechnungen spielen keine Rolle.
-2. Liste: nur eine Liste erlaubt gemischte Datentypen ohne Umwandlung.
+1. Dictionary: reines Nachschlagen von Schlüssel-Wert-Paaren, Reihenfolge und
+   Berechnungen spielen keine Rolle.
+2. Liste: geeignet für eine einfache geordnete Folge von Einträgen ohne Labels.
 3. Pandas Series: hier kommt beides zusammen: der Zugriff über Labels
    (Monatsnamen) und die effiziente Verarbeitung von Zahlen für Berechnungen.
 ```
@@ -91,7 +92,7 @@ Wir starten mit der einfachsten Möglichkeit, eine Series zu erzeugen, der
 Liste (erkennbar an den eckigen Klammern), aus der dann ein Series-Objekt
 erzeugt wird.
 
-```{code-cell} ipython3
+```{code-cell}
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 preise = pd.Series(preisliste)
 print(preise)
@@ -104,7 +105,7 @@ bei einer Liste. Wenn bei einer Liste auf das dritte Element zugegriffen werden
 soll, dann verwenden wir den Index 2 (zur Erinnerung: Python zählt ab 0) und
 schreiben
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preisliste[2]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -116,7 +117,7 @@ Wir werden diesen Datensatz in den folgenden Kapiteln noch weiter vertiefen. An
 dieser Stelle halten wir fest, dass die ersten drei Autos von der Marke Audi
 sind, die nächsten sind BMWs und die letzten fünf sind von der Marke Citroën.
 
-```{code-cell} ipython3
+```{code-cell}
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
 preise = pd.Series(preisliste, index=autos)
 print(preise)
@@ -128,7 +129,7 @@ generierten Default-Index hatte. Den expliziten Index nutzen wir jetzt, um auf
 den Verkaufspreis des dritten Autos zuzugreifen. Das dritte Auto ist `Audi Nr.
 3`. Wie bei Listen verwenden wir eckige Klammern:
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preise['Audi Nr. 3']
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -139,7 +140,7 @@ Dictionary speichert Schlüssel-Wert-Paare, was perfekt zur Struktur einer Serie
 passt. Die Schlüssel werden automatisch zum Index, die Werte zu den Daten. Wir
 brauchen den Parameter `index=` dann gar nicht mehr:
 
-```{code-cell} ipython3
+```{code-cell}
 preis_dictionary = {
     'Audi Nr. 1': 1999,
     'Audi Nr. 2': 35990,
@@ -156,8 +157,9 @@ preise = pd.Series(preis_dictionary)
 print(preise)
 ```
 
-Beide Wege führen zum selben Series-Objekt. Welchen Weg wir wählen, hängt davon
-ab, in welcher Form die Daten vorliegen: als Liste oder als Dictionary.
+Beide Wege erzeugen eine inhaltlich gleiche Series. Welchen Weg wir wählen,
+hängt davon ab, in welcher Form die Daten vorliegen: als Liste oder als
+Dictionary.
 
 ```{admonition} Mini-Übung
 :class: tip
@@ -173,7 +175,7 @@ Smartphone zeigt die Wochenstatistik in den Einstellungen an) und wiederholen
 Sie die Übung mit Ihren Werten.
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -202,34 +204,36 @@ Series. Ein zusätzlicher Parameter `index=` ist nicht nötig.
 Ein Series-Objekt speichert neben den eigentlichen Daten noch weitere
 Zusatzinformationen, die sogenannten **Attribute**. Auf die Attribute greifen
 wir mit dem sogenannten Punktoperator zu. Die vier wichtigsten Attribute sind
-`values`, `index`, `dtype` und `name`.
+`.array`, `.index`, `.dtype` und `.name`.
 
 Beginnen wir mit den beiden Bestandteilen, aus denen eine Series besteht: den
-Daten und dem Index. Das Attribut `values` liefert die reinen Daten der Series,
+Daten und dem Index. Das Attribut `.array` liefert die reinen Daten der Series,
 also die Verkaufspreise ohne die Beschriftung:
 
-```{code-cell} ipython3
-daten = preise.values
+```{code-cell}
+daten = preise.array
 print(daten)
 ```
 
-Das Attribut `index` liefert entsprechend die Beschriftung, also den Index der
-Series:
+Die genaue Darstellung der Ausgabe mit dem Zusatz `<NumpyExtensionArray>` ist
+hier noch nicht wichtig.
 
-```{code-cell} ipython3
+Das Attribut `.index` liefert die Beschriftung, also den Index der Series:
+
+```{code-cell}
 beschriftung = preise.index
 print(beschriftung)
 ```
 
-Hätten wir beim Erzeugen keinen expliziten Index vergeben, würde hier ein
-sogenannter `RangeIndex` ausgegeben. Das ist die Pandas-Bezeichnung für den
-Default-Index 0, 1, 2, usw.
+Hätten wir beim Erzeugen keinen expliziten Index bzw. Labels vergeben, würde
+hier ein sogenannter `RangeIndex` ausgegeben. Das ist die Pandas-Bezeichnung für
+den Default-Index 0, 1, 2, usw.
 
-Das dritte Attribut ist `dtype`. Darin ist der Datentyp der Elemente des
+Das dritte Attribut ist `.dtype`. Darin ist der Datentyp der Elemente des
 Series-Objektes gespeichert. Anders als eine Liste erzwingt eine Series einen
-gemeinsamen Datentyp für alle Elemente und welcher das ist, verrät uns `dtype`:
+gemeinsamen Datentyp für alle Elemente und welcher das ist, verrät uns `.dtype`:
 
-```{code-cell} ipython3
+```{code-cell}
 datentyp_preise = preise.dtype
 print(f'Die einzelnen Elemente des Series-Objektes "preise" haben den Datentyp {datentyp_preise}.')
 ```
@@ -243,25 +247,32 @@ sind allerdings viele Berechnungen nicht mehr möglich. Ein Blick auf `dtype`
 lohnt sich daher immer, um zu prüfen, ob die Daten so gespeichert sind, wie wir
 es erwarten.
 
-Zuletzt betrachten wir das Attribut `name`. Damit können wir der Series einen
-beschreibenden Namen geben, der bei der Ausgabe mit angezeigt wird. Anders als
-die bisherigen Attribute können wir `name` auch direkt setzen:
+Zuletzt betrachten wir das Attribut `.name`. Damit können wir der Series einen
+beschreibenden Namen geben, der bei der Ausgabe mit angezeigt wird. Wir können
+das Attribut direkt setzen:
 
-```{code-cell} ipython3
-preise.name = 'Verkaufspreis in EUR'
+```{code-cell}
+preise.name = 'Verkaufspreis'
 print(preise)
 ```
 
 Der Name erscheint jetzt in der letzten Zeile der Ausgabe. Im Moment wirkt das
-wie eine Kleinigkeit, aber spätestens beim DataFrame im übernächsten Kapitel
-wird der Name wichtig, denn dort dient er als Spaltenname.
+wie eine Kleinigkeit, aber spätestens beim Thema DataFrames wird der Name
+wichtig, denn dort dient er als Spaltenname. Daher setzen wir ihn im Folgenden
+auch direkt schon bei der Erzeugung.
+
+```{code-cell}
+autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
+preise = pd.Series(preisliste, index=autos, name='Verkaufspreis')
+print(preise)
+```
 
 ```{admonition} Mini-Übung
 :class: tip
 Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus der
 letzten Mini-Übung (oder verwenden Sie Ihre Variable weiter).
 
-1. Lassen Sie sich die Attribute `values`, `index` und `dtype` ausgeben.
+1. Lassen Sie sich die Attribute `.array`, `.index` und `.dtype` ausgeben.
 2. Welchen Datentyp haben die Elemente? Erklären Sie, warum aus der eingegebenen
    Ganzzahl `3` in der Series `3.0` geworden ist.
 3. Geben Sie der Series den Namen `'Bildschirmzeit in Stunden'` und lassen Sie
@@ -271,7 +282,7 @@ letzten Mini-Übung (oder verwenden Sie Ihre Variable weiter).
 Ist er ebenfalls `float64`? Warum (nicht)?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -289,7 +300,7 @@ bildschirmzeit = pd.Series({
     'Sonntag': 5
 })
 
-print(bildschirmzeit.values)
+print(bildschirmzeit.array)
 print(bildschirmzeit.index)
 print(f'Datentyp: {bildschirmzeit.dtype}')
 
@@ -314,7 +325,6 @@ In diesem Kapitel haben wir Pandas und die sehr wichtige Datenstruktur Series
 kennengelernt. Eine Series kombiniert die feste Reihenfolge einer Liste mit
 einem expliziten Index, über den wir Elemente mit sprechenden Labels ansprechen
 können. Erzeugen lässt sich eine Series aus einer Liste oder einem Dictionary,
-und über die Attribute `values`, `index`, `dtype` und `name` erhalten wir die
-wichtigsten Zusatzinformationen. Im nächsten Kapitel geht es darum, die
-wichtigsten statistischen Kennzahlen der Daten zu ermitteln, die in dem
-Series-Objekt gespeichert sind.
+und über die Attribute `.array`, `.index`, `.dtype` und `.name` erhalten wir die
+wichtigsten Zusatzinformationen. Im nächsten Kapitel geht es darum, auf Elemente
+der Series zuzugreifen und mit einer Series zu rechnen.

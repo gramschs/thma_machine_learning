@@ -1,7 +1,8 @@
 ---
 kernelspec:
+  display_name: Python 3
+  language: python
   name: python3
-  display_name: 'Python 3'
 ---
 
 # 3.2 Auswählen und Rechnen mit Series
@@ -10,7 +11,7 @@ Im letzten Kapitel haben wir die Datenstruktur Series kennengelernt und ihre
 Attribute abgefragt. Jetzt fangen wir an, mit den Daten zu arbeiten. Wir greifen
 gezielt auf einzelne Elemente und Teilbereiche zu, wir rechnen mit allen Werten
 auf einmal und wir filtern die Daten nach Bedingungen. Als Beispiel dient uns
-weiterhin das Autohaus mit seinen zehn Autos.
+weiterhin das fiktive Autohaus mit seinen zehn Autos.
 
 ## Lernziele
 
@@ -24,19 +25,19 @@ weiterhin das Autohaus mit seinen zehn Autos.
 * [ ] Sie filtern eine Series mit **boolescher Indizierung**.
 ```
 
+## Zugriff mit .loc[] und .iloc[]
+
 Zunächst erzeugen wir wieder unser Series-Objekt mit den Verkaufspreisen der
 zehn Autos.
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
-preise = pd.Series(preisliste, index=autos)
+preise = pd.Series(preisliste, index=autos, name='Verkaufspreis')
 print(preise)
 ```
-
-## Zugriff mit .loc[] und .iloc[]
 
 Aus dem letzten Kapitel kennen wir bereits den Zugriff über den expliziten
 Index, also beispielsweise `preise['Audi Nr. 3']`. Das funktioniert, hat aber
@@ -53,7 +54,7 @@ vermeiden, stellt Pandas zwei eindeutige Zugriffsarten bereit:
 Der Preis des dritten Autos lässt sich also auf zwei Arten ermitteln. Einmal
 über das Label:
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preise.loc['Audi Nr. 3']
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -61,7 +62,7 @@ print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 Und einmal über die Position (zur Erinnerung: Python zählt ab 0, das dritte
 Auto steht also an Position 2):
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preise.iloc[2]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -71,7 +72,7 @@ Technik heißt **Slicing** (englisch für "in Scheiben schneiden") und
 funktioniert mit einem Doppelpunkt zwischen Start und Ende. Wählen wir alle
 Autos von `Audi Nr. 1` bis `BMW Nr. 1` aus:
 
-```{code-cell} ipython3
+```{code-cell}
 teilbereich = preise.loc['Audi Nr. 1':'BMW Nr. 1']
 print(teilbereich)
 ```
@@ -80,7 +81,7 @@ Wir erhalten vier Autos, denn `BMW Nr. 1` ist in der Auswahl enthalten, also
 *inklusiv*. Versuchen wir nun, denselben Teilbereich über die Positionen zu
 erhalten. Die vier Autos stehen an den Positionen 0, 1, 2 und 3:
 
-```{code-cell} ipython3
+```{code-cell}
 teilbereich = preise.iloc[0:4]
 print(teilbereich)
 ```
@@ -114,7 +115,7 @@ Freitag 3.5, Samstag 6.5, Sonntag 5 Stunden).
    beide Arten. Achten Sie auf die Obergrenze.
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -151,12 +152,12 @@ Donnerstag) noch dabei ist.
 
 Falls der Datentyp der einzelnen Elemente eines Series-Objektes ein numerischer
 Typ ist (Integer oder Float), können wir mit den Einträgen auch rechnen. So
-lassen sich beispielsweise die Preise nicht in Euro, sondern als Preis pro
-Tausend Euro angeben, wenn wir alle Preise durch 1000 teilen.
+lassen sich beispielsweise die Preise nicht in Euro, sondern in Cent angeben,
+wenn wir alle Preise mit 100 multiplizieren.
 
-```{code-cell} ipython3
-preise_pro_1000euro = preise / 1000
-print(preise_pro_1000euro)
+```{code-cell}
+preise_in_cent = preise * 100
+print(preise_in_cent)
 ```
 
 Wir könnten auch auf die Idee kommen, das billigste Auto auf den Preis 0 zu
@@ -164,7 +165,7 @@ setzen und ausgeben, um wie viel Euro die anderen Autos teurer sind. Oder anders
 ausgedrückt, wir subtrahieren von jedem Preis den Preis des billigsten Autos,
 also 1999 EUR:
 
-```{code-cell} ipython3
+```{code-cell}
 preise_differenz = preise - 1999
 print(preise_differenz)
 ```
@@ -176,43 +177,44 @@ Diese Arbeitsweise nennt man **vektorisiertes Rechnen**. Sie macht den Code
 nicht nur kürzer und besser lesbar, sondern bei großen Datenmengen auch
 erheblich schneller.
 
-Vektorisiertes Rechnen funktioniert auch zwischen **zwei Series-Objekten**. Aus
-der Aufgabe des letzten Kapitels kennen wir bereits die Kilometerstände der
-zehn Autos:
+Vektorisiertes Rechnen funktioniert auch zwischen **zwei Series-Objekten**.
+Beispielsweise können wir die Kilometerstände der zehn Autos erfassen:
 
-```{code-cell} ipython3
+```{code-cell}
 kilometerstand = pd.Series({
-    'Audi Nr. 1': 165000,
-    'Audi Nr. 2': 87500,
-    'Audi Nr. 3': 102300,
-    'BMW Nr. 1': 21000,
-    'BMW Nr. 2': 76900,
-    'Citroen Nr. 1': 98000,
-    'Citroen Nr. 2': 59000,
+    'Audi Nr. 1': 231000,
+    'Audi Nr. 2': 2500,
+    'Audi Nr. 3': 127800,
+    'BMW Nr. 1': 117433,
+    'BMW Nr. 2': 19895,
+    'Citroen Nr. 1': 57070,
+    'Citroen Nr. 2': 81700,
     'Citroen Nr. 3': None,
-    'Citroen Nr. 4': 45200,
-    'Citroen Nr. 5': 12800,
+    'Citroen Nr. 4': 8500,
+    'Citroen Nr. 5': 15200,
 })
 ```
 
-Teilen wir die Preise durch die Kilometerstände, erhalten wir für jedes Auto
-den Preis pro gefahrenem Kilometer:
+Beim dritten Citroën ist der Tachostand nicht eindeutig ablesbar, deswegen
+setzen wir `None`. Teilen wir die Preise durch die Kilometerstände, erhalten
+wir für jedes Auto den Preis pro gefahrenem Kilometer:
 
-```{code-cell} ipython3
+```{code-cell}
 preis_pro_km = preise / kilometerstand
 print(preis_pro_km)
 ```
 
 Pandas verrechnet dabei automatisch die Elemente, die dasselbe Label im Index
-tragen. Für `Citroen Nr. 3` kommt `NaN` heraus, weil der Kilometerstand fehlt.
-Der fehlende Wert wird also einfach durch die Rechnung mitgeführt.
+tragen. Für `Citroen Nr. 3` kommt `NaN` heraus, was für *Not a Number* steht,
+weil der Kilometerstand fehlt. Pandas berücksichtigt also fehlende Werte in der
+Rechnung.
 
 Neben den arithmetischen Operationen gibt es noch eine zweite Art von
 vektorisierten Operationen, die **Vergleichsoperatoren**. Auch ein Vergleich
 wird auf jedes einzelne Element angewendet. Prüfen wir, welche Autos mehr als
 20000 EUR kosten:
 
-```{code-cell} ipython3
+```{code-cell}
 ist_teuer = preise > 20000
 print(ist_teuer)
 ```
@@ -232,7 +234,7 @@ Verwenden Sie erneut die Bildschirmzeiten-Series.
    als 4 Stunden am Bildschirm verbracht haben. An welchen Tagen steht `True`?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -262,7 +264,7 @@ dann genau die Elemente, bei denen `True` steht. Diese Technik heißt
 **boolesche Indizierung** und ist eines der wichtigsten Werkzeuge der
 Datenanalyse überhaupt.
 
-```{code-cell} ipython3
+```{code-cell}
 teure_autos = preise[preise > 20000]
 print(teure_autos)
 ```
@@ -275,7 +277,7 @@ Preise, für die gilt: Preis größer als 20000 EUR."
 Natürlich funktioniert das mit jeder Bedingung. Suchen wir alle Autos, die
 weniger als 15000 EUR kosten:
 
-```{code-cell} ipython3
+```{code-cell}
 guenstige_autos = preise[preise < 15000]
 print(guenstige_autos)
 ```
@@ -284,16 +286,13 @@ Das Ergebnis ist wieder ein ganz normales Series-Objekt, mit dem wir
 weiterarbeiten können. Der explizite Index sorgt dafür, dass wir auch nach dem
 Filtern noch wissen, um welche Autos es sich handelt.
 
-Merken Sie sich diese Technik gut. Im nächsten Kapitel nutzen wir die boolesche
-Indizierung, um Ausreißer aus einem Datensatz herauszufiltern.
-
 ```{admonition} Mini-Übung
 :class: tip
 Filtern Sie aus der Bildschirmzeiten-Series alle Tage heraus, an denen Sie mehr
 als 6 Stunden Bildschirmzeit hatten. Geben Sie das Ergebnis aus.
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -319,5 +318,4 @@ Vergleiche werden vektorisiert auf jedes Element angewendet, ganz ohne
 Schleifen. Mit der booleschen Indizierung filtern wir schließlich alle Elemente
 heraus, die eine Bedingung erfüllen. Im nächsten Kapitel lernen wir die
 wichtigsten statistischen Kennzahlen kennen und visualisieren sie mit einem
-Boxplot. Dabei wird uns die boolesche Indizierung wiederbegegnen, wenn wir
-Ausreißer aus den Daten herausfiltern.
+Boxplot.

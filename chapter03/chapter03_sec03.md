@@ -1,7 +1,8 @@
 ---
 kernelspec:
+  display_name: Python 3
+  language: python
   name: python3
-  display_name: 'Python 3'
 ---
 
 # 3.3 Kennzahlen, Boxplots und Ausreißer
@@ -21,7 +22,7 @@ anzeigen lassen.
 :class: attention
 * [ ] Sie berechnen statistische Kennzahlen einer Series mit **.mean()**,
   **.std()**, **.min()**, **.max()**, **.quantile()** und **.describe()**.
-* [ ] Sie erstellen mit **px.box()** aus Plotly Express einen Boxplot für eine
+* [ ] Sie erstellen mit `px.box()` aus Plotly Express einen Boxplot für eine
   Series und beschriften ihn mit **labels=** und **title=**.
 * [ ] Sie interpretieren die Elemente eines Boxplots (**Median**, **Quartile**,
   **Whisker**, **Ausreißer**) und ordnen ihnen die entsprechenden statistischen
@@ -33,38 +34,38 @@ anzeigen lassen.
 ## Statistische Kennzahlen ermitteln
 
 Die Methode `.describe()` aus dem Pandas-Modul (siehe
-[Pandas-Dokumentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html))
+[Dokumentation → describe](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html))
 liefert eine schnelle Übersicht über viele statistische Kennzahlen. Vor allem,
 wenn neue Daten geladen werden, ist diese Methode oft ein guter erster Schritt.
 Wir bleiben bei unserem Beispiel mit den zehn Autos und deren Verkaufspreisen.
 
-```{code-cell} ipython3
+```{code-cell}
 # Import des Pandas-Moduls
 import pandas as pd
 
 # Erzeugung der Daten als Series-Objekt
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
-preise = pd.Series(preisliste, index=autos)
+preise = pd.Series(preisliste, index=autos, name='Verkaufspreis')
 ```
 
 Die Methode `.describe()` zeigt nicht nur die statistischen Kennzahlen an,
 sondern gibt sie auch als Ergebnis zurück. Dieses Ergebnis können wir in einer
 Variablen zwischenspeichern und später weiterverwenden.
 
-```{code-cell} ipython3
+```{code-cell}
 kennzahlen = preise.describe()
 ```
 
 Zur Kontrolle lassen wir uns den Inhalt der Variablen ausgeben:
 
-```{code-cell} ipython3
+```{code-cell}
 print(kennzahlen)
 ```
 
 Zusätzlich können wir mit `type()` prüfen, welchen Datentyp dieses Ergebnis hat:
 
-```{code-cell} ipython3
+```{code-cell}
 type(kennzahlen)
 ```
 
@@ -75,7 +76,7 @@ einzelne Kennzahlen genauso zugreifen wie auf andere Elemente einer Series, also
 
 Zum Beispiel erhalten wir so den kleinsten Verkaufspreis:
 
-```{code-cell} ipython3
+```{code-cell}
 minimaler_preis = kennzahlen['min']
 print(f'Das billigste Auto wird für {minimaler_preis} EUR angeboten.')
 ```
@@ -84,10 +85,10 @@ Neben der Möglichkeit, die statistischen Kennzahlen über `.describe()` berechn
 zu lassen und dann über den Index darauf zuzugreifen, gibt es auch direkt
 anwendbare Methoden, um die statistischen Kennzahlen zu ermitteln.
 
-Der **Mittelwert** (engl. Mean) wird mit `.mean()` berechnet. **Minimum** und
+Der **Mittelwert** (englisch Mean) wird mit `.mean()` berechnet. **Minimum** und
 **Maximum** erhalten wir über die Methoden `.min()` und `.max()`.
 
-```{code-cell} ipython3
+```{code-cell}
 print(f'Mittelwert: {preise.mean()} EUR')
 print(f'Minimum: {preise.min()} EUR')
 print(f'Maximum: {preise.max()} EUR')
@@ -97,9 +98,9 @@ Der Mittelwert ist wichtig, aber er erzählt nicht die ganze Geschichte. Die
 Spanne zwischen dem billigsten Auto (1999 EUR) und dem teuersten Auto (46830
 EUR) beträgt über 44000 EUR. Diese Autos sind also sehr unterschiedlich! Wie
 sehr die Werte vom Mittelwert abweichen, beschreibt die **Standardabweichung**
-(engl. Standard Deviation), die wir mit `.std()` bestimmen.
+(englisch Standard Deviation), die wir mit `.std()` bestimmen.
 
-```{code-cell} ipython3
+```{code-cell}
 print(f'Standardabweichung: {preise.std():.2f} EUR')
 ```
 
@@ -118,7 +119,7 @@ Wert, unter dem $p\cdot 100\%$ der Daten liegen. Beim 0.5-Quantil liegen also
 $50 \%$ der Werte darunter. Dieses Quantil heißt auch **Median**. Mit der
 Methode `.quantile()` können wir diesen Wert leicht aus den Daten holen.
 
-```{code-cell} ipython3
+```{code-cell}
 median = preise.quantile(0.5)
 print(f'Der Median, d.h. das 0.5-Quantil, liegt bei {median} EUR.')
 ```
@@ -141,7 +142,7 @@ Samstag 6.5, Sonntag 5 Stunden).
 3. Berechnen Sie die Standardabweichung. Wie interpretieren Sie den Wert?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -202,7 +203,7 @@ verschiedenster Diagrammtypen zur Verfügung.
 
 Üblicherweise wird Plotly Express als `px` abgekürzt.
 
-```{code-cell} ipython3
+```{code-cell}
 import plotly.express as px
 ```
 
@@ -212,7 +213,7 @@ der Variablen `diagramm`. Um es dann auch nach seiner Erzeugung tatsächlich
 anzeigen zu lassen, verwenden wir die Methode `.show()`. Zusammen sieht der
 Python-Code zur Erzeugung eines Boxplots folgendermaßen aus:
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise)
 diagramm.show()
 ```
@@ -226,24 +227,19 @@ Funktionen:
 
 Ein Schönheitsfehler fällt allerdings auf: Die Achsenbeschriftungen wurden
 automatisch gesetzt. Die x-Achse ist mit `'variable'` und die y-Achse mit
-`'value'` beschriftet. Darüber hinaus ist der Titel der Box `'0'`. Der Name wird
-auch angezeigt, wenn wir die Maus über die Box bewegen. Die Series hat keinen
-eigenen Namen. In der Plotly-Darstellung erscheint deshalb intern die
-Bezeichnung 0.
-
-Sollen die Achsenbeschriftungen geändert werden, müssen die automatisch
-gesetzten Beschriftungen durch neue Namen ersetzt werden. Dazu wird ein
-Dictionary konfiguriert und dem optionalen Argument `labels=` übergeben. Das
-Dictionary wird mit geschweiften Klammern erzeugt. Die Schlüssel vor dem
-Doppelpunkt sind die alten Beschriftungen, die Werte nach dem Doppelpunkt die
-neuen.
+`'value'` beschriftet. Sollen die Achsenbeschriftungen geändert werden, müssen
+die automatisch gesetzten Beschriftungen durch neue Namen ersetzt werden. Dazu
+wird ein Dictionary konfiguriert und dem optionalen Argument `labels=`
+übergeben. Das Dictionary wird mit geschweiften Klammern erzeugt. Die Schlüssel
+vor dem Doppelpunkt sind die alten Beschriftungen, die Werte nach dem
+Doppelpunkt die neuen.
 
 Da wir weiterhin den Variablennamen `diagramm` nutzen, wird das Diagramm aus der
 vorherigen Code-Zelle überschrieben.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise,
-                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'})
+                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'})
 diagramm.show()
 ```
 
@@ -251,10 +247,10 @@ Fehlt noch eine Überschrift, ein Titel. Wie das englische Wort 'title' heißt
 auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
 `title=`.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise,
-                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
-                  title='Statistische Kennzahlen als Boxplot')
+                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  title='Verkaufspreise der Autos')
 diagramm.show()
 ```
 
@@ -279,7 +275,7 @@ Verwenden Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung.
    Werten liegt die Box, also die mittleren 50 % der Tage?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 
@@ -295,8 +291,8 @@ diagramm.show()
 
 Antworten:
 
-3. Der Median liegt bei 3.5 Stunden. Die Box reicht von rund 2.8 bis rund
-   4.8 Stunden, in diesem Bereich liegen die mittleren 50 % der Tage.
+3. Der Median liegt bei 3.5 Stunden. Die Box reicht von rund 2.9 bis rund
+   4.6 Stunden, in diesem Bereich liegen die mittleren 50 % der Tage.
 ````
 
 ```{dropdown} Video zu "Boxplot" von Datatab
@@ -309,16 +305,17 @@ allowfullscreen></iframe>
 ## Ausreißer anzeigen
 
 Oft ist es wünschenswert, die Rohdaten zusammen mit dem Boxplot zu
-visualisieren. Das ist mit dem `points=`-Parameter recht einfach, jedoch haben
-wir zwei mögliche Optionen. Wir können mit `'all'` alle Punkte anzeigen lassen
-oder nur die **Ausreißer** `'outliers'`.
+visualisieren. Das ist mit dem `points=`-Parameter recht einfach, dabei haben
+wir jedoch mehrere Optionen. Hier verwenden wir die beiden Optionen `'all'`, um
+alle Punkte anzeigen zu lassen, oder `'outliers'`, um nur die **Ausreißer** zu
+betrachten.
 
 Lassen wir zuerst alle Punkte anzeigen und setzen also `points='all'`.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise,
-                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
-                  title='Statistische Kennzahlen als Boxplot',
+                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  title='Verkaufspreise der Autos mit Einzelpreisen',
                   points='all')
 diagramm.show()
 ```
@@ -326,10 +323,10 @@ diagramm.show()
 Die Punkte werden links vom Boxplot platziert. Als Nächstes lassen wir uns die
 Ausreißer anzeigen.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise,
-                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
-                  title='Statistische Kennzahlen als Boxplot',
+                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  title='Verkaufspreise der Autos mit Ausreißern',
                   points='outliers')
 diagramm.show()
 ```
@@ -340,9 +337,9 @@ Antennen reichen vom billigsten Auto (1999 EUR) bis zum teuersten Auto
 trotzdem sehen, wie ein Ausreißer im Boxplot aussieht, erweitern wir das
 Angebot des Autohauses um einen Luxuswagen: einen Porsche für 98500 EUR. Dazu
 kopieren wir die Series mit `.copy()` und fügen den Porsche über das neue Label
-'Porsche Nr. 1' hinzu.
+`'Porsche Nr. 1'` hinzu.
 
-```{code-cell} ipython3
+```{code-cell}
 preise_neu = preise.copy()
 preise_neu['Porsche Nr. 1'] = 98500
 print(preise_neu)
@@ -350,10 +347,10 @@ print(preise_neu)
 
 Nun erstellen wir den Boxplot mit der erweiterten Series erneut:
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.box(preise_neu,
-                  labels={'variable': 'Autoscout24', 'value': 'Verkaufspreis [EUR]'},
-                  title='Statistische Kennzahlen als Boxplot',
+                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  title='Verkaufspreise der Autos (mit Porsche)',
                   points='outliers')
 diagramm.show()
 ```
@@ -377,7 +374,7 @@ Das ist der größte Preis, der noch kein Ausreißer ist.
 
 Rechnen wir die Grenzen mit der Methode `.quantile()` selbst nach:
 
-```{code-cell} ipython3
+```{code-cell}
 q1 = preise_neu.quantile(0.25)
 q3 = preise_neu.quantile(0.75)
 iqr = q3 - q1
@@ -391,9 +388,9 @@ print(f'Untere Grenze: {untere_grenze} EUR')
 print(f'Obere Grenze: {obere_grenze} EUR')
 ```
 
-Die untere Grenze ist negativ, negative Preise gibt es nicht, also kann es
-nach unten keine Ausreißer geben. Die obere Grenze liegt bei 56648.75 EUR.
-Jeder Preis darüber gilt als Ausreißer. Von unseren elf Autos liegt nur
+Die untere Grenze ist negativ, negative Preise gibt es in diesem Fall nicht, also
+kann es nach unten keine Ausreißer geben. Die obere Grenze liegt bei 56648.75
+EUR. Jeder Preis darüber gilt als Ausreißer. Von unseren elf Autos liegt nur
 Porsche Nr. 1 mit 98500 EUR über dieser Grenze. BMW Nr. 1 mit 46830 EUR bleibt
 darunter und markiert deshalb das Ende der oberen Antenne. Damit sind beide
 Fragen beantwortet.
@@ -431,7 +428,7 @@ Bildschirmzeit statt 6.5 Stunden.
    Ergebnis zum Diagramm?
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Code-Zelle
 ```
 

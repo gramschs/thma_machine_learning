@@ -10,7 +10,9 @@ downloads:
     title: chapter04_sec01.md
 ---
 
+<!-- markdownlint-disable -->
 # 4.1 Datenstruktur DataFrame
+<!-- markdownlint-enable -->
 
 Bisher haben wir uns mit Datenreihen beschäftigt, sozusagen eindimensionalen
 Arrays. Das Modul Pandas stellt zur Verwaltung von Datenreihen die Datenstruktur
