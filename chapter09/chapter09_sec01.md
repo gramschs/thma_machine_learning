@@ -14,6 +14,12 @@ kernelspec:
 
 # 9.1 Grundideen der Ensemble-Methoden
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Eins, zwei, viele ... im Bereich des maschinellen Lernens sind Ensemble-Methoden
 leistungsstarke Techniken zur Verbesserung der Modellgenauigkeit und Robustheit.
 Diese Methoden kombinieren mehrere Modelle, um die Gesamtleistung zu steigern,

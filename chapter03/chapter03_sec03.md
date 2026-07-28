@@ -45,7 +45,9 @@ import pandas as pd
 
 # Erzeugung der Daten als Series-Objekt
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
-autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
+autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2',
+         'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4',
+         'Citroen Nr. 5']
 preise = pd.Series(preisliste, index=autos, name='Verkaufspreis')
 ```
 
@@ -181,13 +183,13 @@ Antworten:
 ````
 
 ```{dropdown} Video zu "Mittelwert" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU"
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
 ```{dropdown} Video zu "Standardabweichung" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM"
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
@@ -284,8 +286,8 @@ Verwenden Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung.
 :class: dropdown
 ```python
 diagramm = px.box(bildschirmzeit,
-                  labels={'variable': 'Wochenprotokoll', 'value': 'Bildschirmzeit [h]'},
-                  title='Bildschirmzeit pro Tag')
+               labels={'variable': 'Wochenprotokoll', 'value': 'Bildschirmzeit [h]'},
+               title='Bildschirmzeit pro Tag')
 diagramm.show()
 ```
 
@@ -296,7 +298,7 @@ Antworten:
 ````
 
 ```{dropdown} Video zu "Boxplot" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1I_ma7nvKQw" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1I_ma7nvKQw"
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen></iframe>

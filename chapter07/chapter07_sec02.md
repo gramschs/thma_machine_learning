@@ -14,6 +14,12 @@ kernelspec:
 
 # 7.2 Multiple lineare Regression
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Bisher haben wir nur ein einzelnes Merkmal aus den gesammelten Daten
 herausgegriffen und untersucht, ob es zwischen diesem Merkmal und der Zielgröße
 einen linearen Zusammenhang gibt. So simpel ist die Welt normalerweise nicht,

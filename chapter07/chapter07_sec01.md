@@ -14,6 +14,12 @@ kernelspec:
 
 # 7.1 Einfache lineare Regression
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Die lineare Regression gehört zu den überwachten maschinellen Lernverfahren
 (Supervised Learning). Meist ist sie das erste ML-Modell, das eingesetzt wird,
 um Regressionsprobleme zu lösen. In diesem Kapitel führen wir in das Konzept

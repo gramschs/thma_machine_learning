@@ -14,6 +14,12 @@ kernelspec:
 
 # 5.1 Was sind kategoriale Daten?
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
 Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt. In
 den vorherigen Kapiteln konzentrierten sich unsere Analysen hauptsächlich auf

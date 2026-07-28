@@ -14,6 +14,12 @@ kernelspec:
 
 # 9.3 XGBoost
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 In der bisherigen Vorlesung haben wir vor allem Pandas und Scikit-Learn benutzt.
 Zwar bietet Scikit-Learn Boosting-Verfahren an, in vielen Wettbewerben hat sich
 jedoch eine andere Bibliothek durchgesetzt, die eine optimierte Variante des
@@ -256,10 +262,10 @@ fig.show()
 
 Der Fehler bei den Trainingsdaten wird von Boosting-Runde zu Boosting-Runde
 kleiner, aber der Fehler der Testdaten wächst. Zunächst wird der Fehler der
-Testdaten kleiner, erreicht in Minimum in der 6. Boosting-Runde, um dann wieder zu
-steigen. Dieses Verhalten ist typisch für Überanpassung (Overfitting). Etwas
-deutlicher wird dieses Phänomen, wenn wir uns die (transformierte) Differenz
-der Wahrscheinlichkeiten ansehen, die Log-Loss-Maßzahl.
+Testdaten kleiner, erreicht in Minimum in der 6. Boosting-Runde, um dann wieder
+zu steigen. Dieses Verhalten ist typisch für Überanpassung (Overfitting). Etwas
+deutlicher wird dieses Phänomen, wenn wir uns die (transformierte) Differenz der
+Wahrscheinlichkeiten ansehen, die Log-Loss-Maßzahl.
 
 Am kleinsten ist die Log-Loss-Maßzahl für die Boosting-Runde 9, danach steigt
 die Log-Loss-Maßzahl wieder an. Am besten wäre es nach dieser Analyse gewesen,
@@ -347,7 +353,8 @@ nicht behandelt.
 
 ### Vergleich: Random Forest vs. XGBoost
 
-Zum Abschluss dieses Kapitels beschäftigen wir uns noch mit einem Vergleich der beiden Verfahren Random Forest und XGBoost.
+Zum Abschluss dieses Kapitels beschäftigen wir uns noch mit einem Vergleich der
+beiden Verfahren Random Forest und XGBoost.
 
 | Aspekt | Random Forest | XGBoost |
 | -------- | --------------- | --------- |

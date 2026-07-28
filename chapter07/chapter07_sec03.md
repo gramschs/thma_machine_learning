@@ -14,6 +14,12 @@ kernelspec:
 
 # 7.3 Polynomiale Regression
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 In den letzten beiden Kapiteln haben wir uns mit der linearen Regression
 befasst. Dabei haben wir die einfache lineare Regression betrachtet, bei der die
 Zielgröße von einem einzelnen Merkmal abhängt, sowie die multiple lineare

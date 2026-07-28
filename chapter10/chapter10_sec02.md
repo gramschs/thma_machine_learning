@@ -12,219 +12,279 @@ kernelspec:
   name: python3
 ---
 
-# 10.2 Training SVM mit Scikit-Learn
+# 10.2 Gittersuche
 
-Wenn wir in der Dokumentation von Scikit-Learn
-[Scikit-Learn/SVM](https://scikit-learn.org/stable/modules/svm.html) die Support
-Vector Machines nachschlagen, so finden wir viele Einträge: SVC, NuSVC,
-LinearSVC, SVR, NuSVR und LinearSVR. Die Varianten mit "C" stehen für
-Klassifikation (englisch Classification) und die Varianten mit "R" für
-Regression. Wir benutzen in diesem Kapitel das Modell SVC.
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
+Die Kreuzvalidierung wird selten isoliert verwendet. Sie ist jedoch ein
+unverzichtbares Werkzeug, wenn es darum geht, die Hyperparameter eines Modells
+zu optimieren. In diesem Kapitel vertiefen wir daher zunächst das Verständnis
+der Kreuzvalidierung, bevor wir sie im Rahmen der Gittersuche anwenden.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können ein SVM-Modell mit der Klasse SVC erzeugen.
-* Sie können den Parameter C zur Steuerung der Margins einsetzen.
+* Sie verstehen, dass Daten für die Modellauswahl in Trainingsdaten,
+  **Validierungsdaten** und Testdaten unterteilt werden.
+* Sie sind in der Lage, Hyperparameter mittels Gittersuche und Kreuzvalidierung
+  mithilfe von **GridSearchCV** zu optimieren.
 ```
 
-## Wahl des linearen Kernels
+## Kreuzvalidierung zur Modellauswahl
 
-Zuerst importieren wir aus Scikit-Learn das entsprechende Modul 'SVM' und
-instantiieren ein Modell. Da wir die etwas allgemeinere Klasse SVC anstatt
-LinearSVC verwenden, müssen wir bereits bei der Erzeugung die Option `kernel=`
-auf linear setzen, also `kernel='linear'`.
+Im letzten Kapitel haben wir die Kreuzvalidierung eingeführt. Ihr Ziel ist es,
+eine robustere Bewertung der Modellleistung zu ermöglichen. Besonders bei der
+Beurteilung und der Verbesserung der Verallgemeinerungsfähigkeit eines Modells
+(Reduktion von Overfitting), ist die Kreuzvalidierung ein wertvolles Werkzeug.
+In diesem Abschnitt nutzen wir die Kreuzvalidierung, um zwischen zwei Modellen
+zu wählen.
+
+Aus didaktischen Gründen verwenden wir weiterhin künstliche Daten, die mit der
+Funktion `make_moons()` aus dem Modul `sklearn.datasets` erzeugt werden. Diese
+speichern wir in einem Pandas DataFrame und visualisieren sie anschließend mit
+Plotly Express.
 
 ```{code-cell}
-from sklearn import svm
-svm_modell = svm.SVC(kernel='linear')
-```
-
-Wir erzeugen uns erneut künstliche Messdaten.
-
-```{code-cell}
-from sklearn.datasets import make_blobs
-import matplotlib.pylab as plt; plt.style.use('bmh')
-
-# Erzeugung künstlicher Daten
-X, y = make_blobs(n_samples=60, centers=2, random_state=0, cluster_std=0.50)
-
-# Visualisierung künstlicher Daten
+import pandas as pd
 import plotly.express as px
+from sklearn.datasets import make_moons
 
-fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
-                 title='Künstliche Daten',
-                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+X_array, y_array = make_moons(noise = 0.5, n_samples=100, random_state=3)
+daten = pd.DataFrame({
+    'Merkmal 1': X_array[:,0],
+    'Merkmal 2': X_array[:,1],
+    'Wirkung': y_array
+})
+daten['Wirkung'] = daten['Wirkung'].astype('bool')
+
+fig = px.scatter(daten, x = 'Merkmal 1', y = 'Merkmal 2', color='Wirkung',
+    title='Künstliche Daten')
 fig.show()
 ```
 
-```{admonition} Warnung: Datenskalierung für SVM notwendig
-:class: warning
-SVMs sind empfindlich gegenüber unterschiedlichen Feature-Skalen. Ein Feature mit
-Werten von 0-1000 dominiert ein Feature mit Werten 0-1, auch wenn beide gleich
-wichtig sind. Daher sollten Features vor dem Training skaliert werden.
-```
-
-Eine Skalierung der Daten ist hier nicht erforderlich, da alle Features im
-gleichen Wertebereich liegen. Als nächstes teilen wir die Messdaten in
-Trainings- und Testdaten auf.
+Als nächstes trainieren wir einen Entscheidungsbaum. Da Entscheidungsbäume
+häufig zur Überanpassung (Overfitting) neigen, entscheiden wir uns, die
+Baumtiefe zu begrenzen. Aber welche Baumtiefe ist optimal? Die Baumtiefe ist ein
+Hyperparameter, der vor dem Training des Modells festgelegt wird. Mithilfe der
+Kreuzvalidierung können wir untersuchen, wie sich die Baumtiefe auf die
+Modellqualität auswirkt. Wir testen die Baumtiefen 3, 4, 5 und 6 und geben die
+Scores auf den Testdaten aus, wobei wir uns mit einer for-Schleife die Arbeit
+erleichtern.
 
 ```{code-cell}
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+from sklearn.model_selection import cross_validate, KFold
+from sklearn.tree import DecisionTreeClassifier
+
+# Adaption der Daten
+X = daten[['Merkmal 1', 'Merkmal 2']]
+y = daten['Wirkung']
+
+# Vorbereitung der Kreuzvalidierung mit 10 Splits
+kfold = KFold(n_splits=10)
+
+# wiederholte Kreuzvalidierung für Baumtiefe 3, 4, 5 und 6
+for max_tiefe in [3, 4, 5, 6]:
+    modell = DecisionTreeClassifier(max_depth=max_tiefe)
+    cv_results = cross_validate(modell, X,y, cv=kfold)
+    test_scores = cv_results['test_score']
+    print(f'Testscores: {test_scores}')
 ```
 
-Nun können wir unser SVM-Modell trainieren:
+Die Ausgabe von 10 Testscores ist jedoch unübersichtlich. Stattdessen berechnen
+wir besser den Mittelwert (Mean) und die Standardabweichung (Standard Deviation)
+der Scores. Dazu importieren wir `mean()` und `std()` aus dem NumPy-Modul und
+passen die `print()`-Anweisung entsprechend an.
 
 ```{code-cell}
-svm_modell.fit(X_train, y_train);
+from numpy import mean, std
+
+for max_tiefe in [3, 4, 5, 6]:
+    modell = DecisionTreeClassifier(max_depth=max_tiefe)
+    cv_results = cross_validate(modell, X,y, cv=kfold)
+    test_scores = cv_results['test_score']
+    print(f'Mittelwert Testscores: {mean(test_scores):.2f}, Standardabweichung: {std(test_scores):.2f}')
 ```
 
-Und als nächstes analysieren, wie viele der Testdaten mit dem trainierten Modell
-korrekt klassifiziert werden.
+Das beste Ergebnis erzielen wir mit einem Entscheidungsbaum der Tiefe 3. Diesen
+könnten wir nun als finales Modell wählen.
+
+Es gibt jedoch ein Problem: Wir haben die Modellauswahl mit den Scores der
+Testdaten begründet, wodurch diese in das Modelltraining eingeflossen sind. Daher
+benötigen wir einen frischen Datensatz, um die Prognosequalität zu testen. Die
+Lösung dafür ist `train_test_split()`.
+
+Zuerst teilen wir die Daten in Trainings- und Testdaten. Dann verwenden wir die
+Kreuzvalidierung auf den Trainingsdaten, um die Hyperparameter zu bewerten. Die
+Kreuzvalidierung teilt die Trainingsdaten erneut in Trainings- und Testdaten
+auf.  Damit diese »internen« Testdaten nicht mit den richtigen Testdaten
+verwechselt werden, nennt man sie auch **Validierungsdaten**. Die Mittelwerte
+der Scores speichern wir in einem Dictionary, um später das beste Modell zu
+ermitteln. Schließlich trainieren wir das beste Modell auf allen Trainingsdaten
+und bewerten es mit den Testdaten.
+
+Das Hyperparameter-Tuning bzw. die Modellwahl mit Kreuzvalidierung funktioniert
+komplett also wie folgt:
 
 ```{code-cell}
-svm_modell.score(X_test, y_test)
+from sklearn.model_selection import cross_validate, KFold, train_test_split
+from sklearn.tree import DecisionTreeClassifier
+
+X = daten[['Merkmal 1', 'Merkmal 2']]
+y = daten['Wirkung']
+
+X_train, X_test, y_train, y_test = train_test_split(X,y)
+
+kfold = KFold(n_splits=10)
+
+mean_scores = {}
+for max_tiefe in [3, 4, 5, 6]:
+    modell = DecisionTreeClassifier(max_depth=max_tiefe)
+    cv_results_modell = cross_validate(modell, X_train, y_train, cv=kfold)
+    test_scores = cv_results_modell['test_score']
+    mean_scores[max_tiefe] = mean(test_scores)
+    print(f'Mittelwert Testscores: {mean(test_scores):.2f}, Standardabweichung: {std(test_scores):.2f}')
+
+# Ermitteln der besten Baumtiefe (argmax o.ä. wäre einfacher)
+tiefe = 3
+score = mean_scores[3]
+for t in [4,5,6]:
+    if mean_scores[t] > score:
+        tiefe = t
+        score = mean_scores[t]
+print(f'\nWähle Baumtiefe {tiefe} mit dem besten Score {score:.2f}.')
+
+# Finale Modellauswahl, Training und Bewertung
+finales_modell = DecisionTreeClassifier(max_depth=tiefe)
+finales_modell.fit(X_train, y_train)
+finaler_score = finales_modell.score(X_test, y_test)
+print(f'Testscore finales Modell: {finaler_score:.2f}') 
 ```
 
-Ein super Ergebnis! Schön wäre es jetzt noch, die gefundene Trenngerade zu
-visualisieren. Dazu modifizieren wir ein Code-Beispiel aus dem Buch: »Data
-Science mit Python« von Jake VanderPlas (mitp Verlag 2017), ISBN 978-3-95845-
-695-2, siehe
-[https://github.com/jakevdp/PythonDataScienceHandbook](https://github.com/jakevdp/PythonDataScienceHandbook).
+Um die Hyperparameter zu optimieren und das beste Modell zu finden, haben wir
+eine for-Schleife und manuelle Auswahl verwendet. Scikit-Learn bietet jedoch
+eine einfachere Lösung, die wir im nächsten Abschnitt behandeln: die Gittersuche
+mit Kreuzvalidierung **GridSearchCV**.
+
+## Gittersuche mit Kreuzvalidierung: GridSearchCV
+
+Die Gittersuche mit Kreuzvalidierung wird als **GridSearchCV** aus dem Modul
+`sklearn.model_selection` importiert. Zunächst legen wir fest, welche Parameter
+optimiert werden sollen und welche Werte dafür in Betracht kommen. Technisch
+benötigen wir dafür ein Dictionary, in dem die Schlüssel die Parameternamen und
+die Werte Listen der möglichen Einstellungen sind. In unserem Fall soll die
+Baumtiefe `'max_depth'` des Entscheidungsbaums justiert werden. Wie zuvor in der
+for-Schleife, untersuchen wir die Baumtiefen 3, 4, 5 und 6, die im folgenden
+Dictionary `parameter_gitter` definiert werden.
 
 ```{code-cell}
-# Quelle: VanderPlas "Data Science mit Python", S. 482
-# modified by Simone Gramsch
-import numpy as np
+from sklearn.model_selection import GridSearchCV
 
-def plot_svc_grenze(model):
-    # aktuelles Grafik-Fenster auswerten
-    ax = plt.gca()
-    xlim = ax.get_xlim()
-    ylim = ax.get_ylim()
-
-    # Raster für die Auswertung erstellen
-    x = np.linspace(xlim[0], xlim[1], 30)
-    y = np.linspace(ylim[0], ylim[1], 30)
-    Y, X = np.meshgrid(y, x)
-    xy = np.vstack([X.ravel(), Y.ravel()]).T
-
-    # Abstand zur Trennhyperebene berechnen mit eingebauter 
-    # decision_function()
-    P = model.decision_function(xy).reshape(X.shape)
-
-    # Entscheidungsgrenzen und Margin darstellen
-    ax.contour(X, Y, P, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
-
-    # Stützvektoren darstellen
-    ax.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=300, linewidth=1, facecolors='none', edgecolors='orange');
-    ax.set_xlim(xlim)
-    ax.set_ylim(ylim)
+# Festlegung des Suchraumes
+parameter_gitter = {'max_depth': [3, 4, 5, 6]}
 ```
+
+Nun instanziieren wir ein neues `GridSearchCV`-Modell. Als erstes Argument
+übergeben wir das eigentliche Modell, hier also den Entscheidungsbaum, und als
+zweites das Dictionary mit den Hyperparametern. Das dritte Argument ist die
+Methode zur Kreuzvalidierung. Weitere Details können Sie der [Dokumentation
+Scikit-Learn →
+GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV)
+entnehmen.
 
 ```{code-cell}
-
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('SVM mit Soft Margin');
-
-plot_svc_grenze(svm_modell)
+optimiertes_modell = GridSearchCV(DecisionTreeClassifier(), param_grid=parameter_gitter, cv=kfold)
 ```
 
-## Der Parameter C
-
-Im letzten Abschnitt haben wir uns mit dem Parameter `C` beschäftigt, der
-Ausnahmen innerhalb des Sicherheitsstreifens erlaubt. Wir können uns den
-Parameter `C` als die "Höhe der Mauer" um den Margin vorstellen. Eine hohe Mauer
-(großes `C`) schützt den Sicherheitsbereich streng. Praktisch keine Datenpunkte
-dürfen hinein. Eine niedrige Mauer (kleines `C`) ist toleranter und lässt mehr
-Ausnahmen zu. Als nächstes schauen wir uns an, wie der Parameter `C` gesetzt
-wird.  
-
-Die Option zum Setzen des Parameters C lautet schlicht und einfach `C=`. Dabei
-muss C immer positiv sein. Der voreingestellte Standardwert ist `C=1`.
-
-Damit aber besser sichtbar wird, wie sich C auswirkt, vermischen wir die
-künstlichen Daten stärker. Für die Bewertung der Modelle trennen wir die Daten
-in Trainings- und Testdaten.
+Mit der Methode `.fit()` wird die Gittersuche samt Kreuzvalidierung
+durchgeführt. Dabei werden systematisch alle Parameterkombinationen getestet,
+und das optimierte Modell wird abschließend erneut auf den gesamten
+Trainingsdaten trainiert.
 
 ```{code-cell}
-# Erzeugung künstlicher Daten
-X, y = make_blobs(n_samples=60, centers=2, random_state=0, cluster_std=0.80)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-
-# Visualisierung künstlicher Daten
-import plotly.express as px
-
-fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
-                 title='Künstliche Daten',
-                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
-fig.show()
+optimiertes_modell.fit(X_train, y_train)
 ```
 
-Zuerst wählen wir ein sehr hohes `C=1000000`. Das ist ein Hard Margin, eine
-praktisch nicht durchdringbare Mauer, die keine Datenpunkte in den
-Sicherheitsbereich lässt.
+Mit der Methode `.score()` können wir die Modellgüte sowohl auf den Trainings-
+als auch auf den Testdaten bewerten. Auch die Methode `.predict()` funktioniert
+wie gewohnt.
 
 ```{code-cell}
-# Wahl des Modells mit linearem Kern und großem C
-svm_modell = svm.SVC(kernel='linear', C=1000000)
+opt_score_train = optimiertes_modell.score(X_train, y_train)
+opt_score_test  = optimiertes_modell.score(X_test, y_test)
 
-# Training und Bewertung
-svm_modell.fit(X_train, y_train);
-score = svm_modell.score(X_test, y_test)
-print(f'Score auf den Testdaten: {score:.2f}')
-
-# Visualisierung
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('SVM mit Hard Margin');
-plot_svc_grenze(svm_modell)
+print(f'optimierter Entscheidungsbaum Score Trainingsdaten: {opt_score_train:.2f}')
+print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
 ```
 
-Nun reduzieren wir den Wert des Parameters `C` deutlich auf `C=1`. Vereinzelt
-liegen Datenpunkte nun im Sicherheitsbereich, d.h. wir haben einen Soft Margin.
+Zusätzlich zu den Standardmethoden wie `.fit()`, `.predict()` und `.score()`
+können wir mit dem Attribut `best_params_` herausfinden, welche
+Hyperparameter-Kombination am besten abgeschnitten hat.
 
 ```{code-cell}
-# Wahl des Modells mit linearem Kern und kleinem C
-svm_modell = svm.SVC(kernel='linear', C=1)
-
-# Training und Bewertung
-svm_modell.fit(X_train, y_train);
-score = svm_modell.score(X_test, y_test)
-print(f'Score auf den Testdaten: {score:.2f}')
-
-# Visualisierung
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('SVM mit Soft Margin');
-plot_svc_grenze(svm_modell)
+print(optimiertes_modell.best_params_)
 ```
 
-Die Visualisierung zeigt, dass bei kleinem `C` mehr Stützvektoren (orange
-eingekreist) vorhanden sind, und einige davon innerhalb des Margins liegen oder
-die Klassifikationsgrenze verletzen.
+In diesem Fall ergibt die Gittersuche, dass die optimale Baumtiefe 3 beträgt.
 
-Welches `C` sollen wir wählen? Beide Modelle liefern den gleichen Score von 1.0
-auf den Testdaten. Das kleinere `C` führt jedoch zu einem robusteren Modell mit
-breiterem Margin. In der Praxis wird `C` oft durch Kreuzvalidierung
-(Crossvalidation) optimiert, was wir in einem späteren Kapitel aufgreifen
-werden.
+Warum sprechen wir von einer **Gittersuche**? Normalerweise wollen wir nicht nur
+einen Hyperparameter optimieren, sondern mehrere gleichzeitig. Beispielsweise
+könnten wir neben der Baumtiefe auch die minimale Anzahl an Datenpunkten pro
+Blatt (`min_samples_leaf`) optimieren. Dies führt dazu, dass wir jede
+Kombination von `max_depth` mit jedem Wert von `min_samples_leaf` testen. So
+entsteht ein zweidimensionales Gitter, das die Gittersuche effizient durchläuft.
+Wir müssen lediglich das Dictionary entsprechend erweitern. In diesem Beispiel
+werden 4 Baumtiefen und 3 Werte für `min_samples_leaf` kombiniert, was zu
+insgesamt 4 x 3 = 12 Hyperparameter-Kombinationen führt. Da wir 10-fache
+Kreuzvalidierung verwenden, werden insgesamt 120 Modelle trainiert und bewertet.
 
-## Zusammenfassung
+```{code-cell}
+parameter_gitter = {
+    'max_depth': [3, 4, 5, 6],
+    'min_samples_leaf': [1, 2, 3]
+}
 
-Verwenden wir den SVC-Klassifikator aus dem Modul SVM von Scikit-Learn, können
-wir mittels der Option `kernel='linear'` eine binäre Klassifikation durchführen,
-bei der die Trennungsgerade den größtmöglichen Abstand zwischen den Gruppen von
-Punkten erzeugt, also einen möglichst großen Margin. Sind die Daten nicht linear
-trennbar, so können wir mit der Option `C=` steuern, wie viele Ausnahmen erlaubt
-werden sollen. Mit Ausnahmen sind Punkte innerhalb des Margins gemeint. Im
-nächsten Abschnitt betrachten wir nichtlineare Trennungsgrenzen.
+optimiertes_modell = GridSearchCV(DecisionTreeClassifier(), param_grid=parameter_gitter, cv=kfold)
+optimiertes_modell.fit(X_train, y_train)
+
+opt_score_train = optimiertes_modell.score(X_train, y_train)
+opt_score_test  = optimiertes_modell.score(X_test, y_test)
+
+print(f'optimierter Entscheidungsbaum Score Trainingsdaten: {opt_score_train:.2f}')
+print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
+
+print(optimiertes_modell.best_params_)
+```
+
+Auch wenn bei diesem einfachen Beispiel die Unterschiede zwischen den Modellen
+gering sind und die Vorteile der Gittersuche mit Kreuzvalidierung nicht sofort
+ersichtlich werden, ist diese Methode bei größeren Datensätzen und komplexeren
+Modellen ein sehr wertvolles Werkzeug zur Modelloptimierung, bei der alle
+möglichen Kombinationen von Hyperparametern systematisch getestet werden. Dies
+kann jedoch sehr *rechenintensiv* sein, besonders wenn der Suchraum groß ist
+oder komplexe Modelle verwendet werden. Daher unterstützt GridSearchCV die
+*Parallelisierung* der Berechnungen, indem es mehrere Kerne verwendet, um die
+Rechenzeit signifikant zu verkürzen, was besonders bei größeren Datensätzen von
+Vorteil ist.
+
+Eine Alternative zu GridSearchCV ist **RandomizedSearchCV**. Dieses Verfahren
+testet eine zufällige Auswahl von Parametern testet und spart so Zeit, während
+es dennoch gute Ergebnisse liefert. Mehr Details dazu finden Sie in der
+[Dokumentation Scikit-Learn →
+RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV).
+
+```{dropdown} Video "GridSearchCV" von Normalized Nerd
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TvB_3jVIHhg?si=s2jDNKOmqBEcJcAd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+## Zusammenfassung und Ausblick
+
+In diesem Kapitel haben wir erstmals systematisch Hyperparameter optimiert und
+dabei die Gittersuche mit Kreuzvalidierung angewendet. Im nächsten Kapitel
+lernen wir ein weiteres Werkzeug kennen, das nicht nur verschiedene Modelle,
+sondern auch deren Hyperparameter optimiert und anschließend Modellvorschläge
+basierend auf den besten Einstellungen macht.

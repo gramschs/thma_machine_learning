@@ -12,234 +12,333 @@ kernelspec:
   name: python3
 ---
 
-# 8.2 Trainings- und Testdaten
+# 8.2 Kodierung und Skalierung
 
-Bei den Entscheidungsbäumen und der linearen Regression haben wir mit der
-`score()`-Methode bewertet, wie viele der Daten durch das Modell korrekt
-prognostiziert wurden. Je näher der Score an 1 liegt, desto besser. Doch selbst
-ein perfekter Score bedeutet nicht zwangsläufig, dass das Modell optimal ist. Es
-könnte überangepasst (overfitted) sein und daher bei neuen, unbekannten Daten
-schlechte Prognosen liefern. Im Folgenden beschäftigen wir uns mit der
-Aufteilung von Daten in Trainings- und Testdaten.
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
+ML-Algorithmen können nur Zahlen verarbeiten. In diesem Kapitel werden wir uns
+zunächst damit beschäftigen, wie auch kategoriale Daten wie beispielsweise die
+Farbe eines Autos verarbeitet werden können. Da viele ML-Modelle empfindlich
+darauf reagieren, wenn die numerischen Werte in sehr unterschiedlichen
+Größenordnungen liegen, beschäftigen wir uns auch mit der Skalierung von
+numerischen Daten.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie verstehen, warum Daten in **Trainingsdaten** und **Testdaten** aufgeteilt
-  werden.
-* Sie können mit der Funktion **train_test_split()** Pandas-DataFrames in
-  Trainings- und Testdaten aufteilen.
-* Sie kennen das Konzept der **Kreuzvalidierung**.
+* Sie können geordnete kategoriale (= ordinale) Daten mit Hilfe eines
+  Dictionaries und der `replace()`-Methode als Zahlen kodieren.
+* Sie können ungeordnete kategoriale (= nominale) Daten mit Hilfe der
+  `get_dummies()`-Methode als Zahlen kodieren. Diese Methode nennt man
+  **One-Hot-Kodierung**.
+* Sie können numerische Daten skalieren, indem Sie 
+  * mit dem **MinMaxScaler** die Daten **normieren** oder
+  * mit dem **StandardScaler** die Daten **standardisieren**.
 ```
 
-## Auswendiglernen nützt nichts
+## Kodierung von kategorialen Daten
 
-Um die Herausforderungen bei der Modellauswahl zu verdeutlichen, betrachten wir
-einen künstlich generierten Datensatz. Angenommen, wir hätten die folgenden 20
-Messwerte erfasst und möchten ein Regressionsproblem lösen.
+Bei den Beispielen zur linearen Regression haben wir zur Prognose des
+Verkaufspreises nur numerische Daten genutzt, wie beispielsweise den
+Kilometerstand. Es gibt jedoch weitere Merkmale, die die Kaufentscheidung
+beeinflussen, wie der Kraftstofftyp (Diesel oder Benzin) und die Marke des
+Autos. Diese würden wir ebenfalls gerne in die Prognose des Preises einfließen
+lassen. Dazu müssen die kategorialen Daten, die in der Regel durch den Datentyp
+String gekennzeichnet sind, vorab in Integer oder Floats umgewandelt werden. Je
+nachdem, ob die kategorialen Daten geordnet oder ungeordnet sind, gibt es
+verschiedene Vorgehensweisen, wie wir uns im Folgenden anhand eines Beispiels
+erarbeiten.
+
+Wir laden einen Datensatz mit Verkaufsdaten der Plattform
+[Autoscout24.de](https://www.autoscout24.de). Sie können die csv-Datei hier
+herunterladen {download}`Download autoscout24_kodierung.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_kodierung.csv>` und in
+das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei auch über
+die URL importieren, wie es in der folgenden Code-Zelle gemacht wird. Mit der
+Methode `.info()` lassen wir uns anzeigen, welchen Datentyp die Merkmale haben.
 
 ```{code-cell}
 import pandas as pd 
-import plotly.express as px
 
-# Generierung Daten
-daten = pd.DataFrame()
-daten['Ursache'] = [1.8681193560547067, 0.18892899670288932, 1.8907374398595373, 0.8592639746974586, 0.7909152983890833, -1.1356420176784945, 1.905097819104967, -1.9750789791816405, -0.9880705504662242, -0.26083387038221684, 1.1175316871750098, -1.2092597015989877, 1.451972942396889, 1.933602708701251, -1.3446310343812051, 0.38933577573143685, -1.96405560932978, -0.45371486942548245, -1.8233597682740017, 1.8266118708569437]
-daten['Wirkung'] = [18.06801933135814, 0.09048390063552635, 18.29951272892001, 4.02392603643671, 1.97091878521032, 6.799411114666941, 17.540101218695103, 21.051664199041685, 5.604758672240995, 0.38630710692300024, 5.261393705782588, 7.365977868421521, 10.701020062336028, 17.48514901635516, 11.263523310016517, 1.1522069460363902, 20.979929897937023, -0.08352624016486021, 18.258951764602635, 15.321589041941028]
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_kodierung.csv'
+daten = pd.read_csv(url)
 
-# Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', title= 'Künstlich generierte Messdaten')
+daten.info()
+```
+
+Wir sehen
+
+- 8 Merkmale mit Datentyp `object`: Marke, Modell, Farbe, Erstzulassung,
+  Getriebe, Kraftstoff, Bemerkungen, Zustand,
+- 4 Merkmale mit Datentyp `int64`: Jahr, Preis (Euro), Leistung (PS), Leistung
+  (kW)
+- 2 Merkmale mit Datentyp `float64`: Verbrauch (l/100 km) und Kilometerstand
+  (km).
+
+Als erstes betrachten wir geordnete Daten.
+
+### Geordnete kategoriale Daten mit zwei Kategorien (binär ordinale Daten)
+
+Als erstes betrachten wir das Merkmal »Getriebe«. Mit der Methode `.unique()`
+ermitteln wir, wie viele verschiedene Kategorien es für dieses Merkmal gibt.
+
+```{code-cell}
+daten['Getriebe'].unique()
+```
+
+Es gibt nur zwei Kategorien: Automatik und Schaltgetriebe. Diese beiden Werte
+wollen wir durch Integer ersetzen:
+
+- Automatik --> 0 und
+- Schaltgetriebe --> 1.
+
+0 ist dabei nicht besser als 1, wir wollen nur zwei verschiedene Integer nehmen,
+um die beiden Werte 'Automatik' und 'Schaltgetriebe' als Zahlen darzustellen.
+Pandas bietet dazu die Methode `replace()` an. Bei der Verwendung dieser Methode
+darf sich der Datentyp nicht ändern (in Pandas Version 2 noch erlaubt, ab
+Version 3 verboten). Daher kodieren wir zunächst die Strings `'Automatik'` und
+`'Schaltgetriebe'` als die Strings `'0'` und `'1'`mit Hilfe eines Dictionaries:
+
+```{code-cell}
+getriebe_kodierung = {
+  'Automatik': '0',
+  'Schaltgetriebe': '1',
+}
+```
+
+Dann verwenden wir `replace()`, um die Ersetzung vorzunehmen. Zuletzt wandeln
+wir die Strings `'0'` und `'1'` noch mit der Methode `astype()` in Integer um:
+
+```{code-cell}
+daten['Getriebe'] = daten['Getriebe'].replace(getriebe_kodierung)
+daten['Getriebe'] = daten['Getriebe'].astype('int')
+
+# Kontrolle
+daten['Getriebe'].unique()
+```
+
+### Geordnete kategoriale Daten (ordinale Daten)
+
+Für das Merkmal »Zustand« gibt es vier Kategorien.
+
+```{code-cell}
+daten['Zustand'].unique()
+```
+
+Die vier Zustände haben eine Ordnung, denn ein Neuwagen ist wertvoller als ein
+Jahreswagen. Der Jahreswagen wiederum ist im Allgemeinen wertvoller als der junge
+Gebrauchtwagen. Am wenigsten wertvoll ist der Gebrauchtwagen. Durch diese
+Ordnung ist es sinnvoll, beim Kodieren der Zustände durch Integer die Ordnung
+beizubehalten.
+
+```{code-cell}
+zustand_kodierung = {
+  'Gebrauchtwagen': '0',
+  'junger Gebrauchtwagen': '1', 
+  'Jahreswagen': '2',
+  'Neuwagen': '3'
+}
+
+daten['Zustand'] = daten['Zustand'].replace(zustand_kodierung)
+daten['Zustand'] = daten['Zustand'].astype('int')
+
+# Kontrolle
+daten['Zustand'].unique()
+```
+
+### Ungeordnete kategoriale Daten (nominale Daten): One-Hot-Kodierung
+
+Anders verhält es sich bei den ungeordneten kategorialen Daten wie
+beispielsweise den Farben der Autos.
+
+```{code-cell}
+daten['Farbe'].unique()
+```
+
+14 verschiedene Farben haben die Autos in dem Datensatz. Es wäre jedoch falsch,
+nun Integer von 0 bis 13 zu vergeben, denn das würde eine Ordnung der Farben
+voraussetzen, die es nicht gibt. Wir verwenden daher das Verfahren der
+**One-Hot-Kodierung**. Anstatt einer Spalte mit den Farben führen wir 14 neue
+Spalten mit den Farben 'grau', 'grün', 'schwarz', 'blau', usw. ein. Wenn ein
+Auto die Farbe 'grau' hat, notieren wir in der Spalte 'grau' in dieser Zeile
+eine 1 und in den übrigen 13 Spalten mit den anderen Farben eine 0. So können
+wir die Farben numerisch kodieren, ohne eine Ordnung der Farben einzuführen, die
+es nicht gibt. Pandas bietet dafür die Methode `get_dummies()`an. Schauen wir
+uns zunächst an, was diese Methode bewirkt.
+
+```{code-cell}
+pd.get_dummies(daten['Farbe'])
+```
+
+Damit haben wir die Spalte »Farbe« nun durch 14 Spalten kodiert. Wir könnten nun
+im ursprünglichen Datensatz die Spalte »Farbe« löschen und die neuen 14 Spalten
+hinzufügen. Tatsächlich erledigt das Pandas bereits für uns, wenn wir die
+Methode etwas modifiziert aufrufen. Mit dem Argument `data=` übergeben wir nun
+den kompletten Datensatz und mit dem Argument `columns=` spezifizieren wir die
+Liste der ungeordneten kategorialen Daten, die One-Hot-kodiert werden sollen.
+
+```{code-cell}
+daten = pd.get_dummies(data=daten, columns=['Farbe'])
+daten.head()
+```
+
+Die neuen Spaltennamen sind eine Kombination aus dem alten Spaltennamen »Farbe«
+und den Kategorien.
+
+## Skalierung von numerischen Daten
+
+Nachdem wir uns intensiv mit den kategorialen Daten beschäftigt haben,
+betrachten wir nun die numerischen Daten. Wir laden den Original-Datensatz und
+entfernen die kategorialen Daten.
+
+```{code-cell}
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_kodierung.csv'
+daten = pd.read_csv(url)
+
+daten = daten.drop(columns=['Marke', 'Modell', 'Farbe', 'Erstzulassung', 
+                            'Getriebe', 'Kraftstoff','Bemerkungen', 'Zustand'])
+daten.info()
+```
+
+Ein erster Blick auf die Daten zeigt bereits, dass die Eigenschaftswerte in
+unterschiedlichen Bereichen liegen.
+
+```{code-cell}
+daten.head()
+```
+
+Der Verbrauch gemessen in Litern pro 100 Kilometer liegt zwischen 5 und 10,
+wohingegen der Kilometerstand die 100000 km übersteigt. Das zeigt auch die
+Übersicht der statistischen Kennzahlen:
+
+```{code-cell} ipython3
+daten.describe()
+```
+
+Damit ist auch der Boxplot nur noch schwer lesbar:
+
+```{code-cell} ipython3
+import plotly.express as px 
+
+fig = px.box(daten)
 fig.show()
 ```
 
-Nun würden wir das folgende Modell implementieren. Der Name des Modells sagt
-bereits alles!
+Das hat auch Auswirkungen auf das Training der ML-Modelle. Daher beschäftigen
+wir uns nun mit der Skalierung von Daten.
 
-```{code-cell}
-from sklearn.metrics import r2_score
+Sind die Bereiche der Daten von ihren Zahlenwerten sehr verschieden, sollten
+alle numerischen Werte in dieselbe Größenordnung gebracht werden. Dieser Vorgang
+heißt **Skalieren** der Daten. Gebräuchlich sind dabei zwei verschiedene
+Methoden:
 
-class AuswendigLerner:
-    def __init__(self) -> None:
-        self.X = None
-        self.y = None
+- **Normierung** und
+- **Standardisierung**.
 
-    def fit(self, X,y):
-        self.X = X
-        self.y = y
+### Normierung
 
-    def predict(self, X):
-        return self.y
-```
+Bei der Normierung wird festgelegt, dass alle Zahlenwerte in einem festen
+Intervall liegen. Besonders häufig wird das Intervall $[0,1]$ genommen. Die
+Verbrauch (l/100 km), der zwischen 3.5 und 14.9 liegt, würde so transformiert
+werden, dass das Minimum 3.5 der 0 entspricht und das Maximum 14.9 der 1.
+Genauso würde mit den anderen Eigenschaften verfahren werden. Wir nutzen zur
+praktischen Umsetzung Scikit-Learn.
 
-Wir trainieren unser Modell und lassen es dann bewerten. Um nicht selbst den
-R²-Score implementieren zu müssen, verwenden wir die allgemeine Funktion aus
-Scikit-Learn (siehe [Dokumentation Scikit-Learn →
-r2_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)).
-
-```{code-cell}
-# Adaption der Daten
-X = daten[['Ursache']]
-y = daten['Wirkung']
-
-# Auswahl Modell und Training
-mein_super_modell = AuswendigLerner()
-mein_super_modell.fit(X, y)
-
-# prediction
-y_prognose = mein_super_modell.predict(X)
-
-# check quality
-score = r2_score(y,y_prognose)
-print(f'Der R2-Score ist: {score:.2f}')
-```
-
-Ein R²-Score von 1, unser Modell scheint perfekt zu funktionieren! Doch wie
-prognostiziert es neue Daten? Das Modell funktioniert zwar hervorragend für die
-gegebenen Trainingsdaten, ist jedoch **nicht verallgemeinerbar**.
-
-```{code-cell}
-mein_super_modell.predict([[1.3]])
-```
-
-Anstatt für den x-Wert $1.3$ (Ursache) eine Prognose zu treffen, gibt das Modell
-einfach die auswendig gelernten y-Werte (Wirkungen) aus.
-
-## Daten für später aufheben
-
-Bei der Modellauswahl und dem Training des Modells müssen wir zusätzlich
-sicherstellen, dass das Modell verallgemeinerbar ist, das heißt, dass es auch
-für neue, zukünftige Daten verlässliche Prognosen liefern kann. Da wir jedoch
-sofort abschätzen wollen, wie gut das Modell auf neue Daten reagiert, und nicht
-warten möchten, bis die nächsten Messungen vorliegen, legen wir jetzt schon
-einen Teil der vorhandenen Daten zur Seite. Diese Daten nennen wir
-**Testdaten**. Die verbleibenden Daten verwenden wir für das Training des
-Modells, sie heißen **Trainingsdaten**. Später nutzen wir die Testdaten, um zu
-überprüfen, wie gut das Modell bei Daten funktioniert, die nicht zum Training
-verwendet wurden.
-
-Für die Aufteilung in Trainings- und Testdaten verwenden wir eine dafür
-vorgesehene Funktion von Scikit-Learn namens `train_test_split()` (siehe
-[Dokumentation Scikit-Learn →
-train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)).
-Diese Funktion müssen wir aus dem Modul `sklearn.model_selection` importieren.
-Dann übergeben wir `train_test_split()` die Daten, die aufgeteilt werden sollen,
-und erhalten als Rückgabe zwei DataFrames: Der erste enthält die Trainingsdaten,
-der zweite die Testdaten.
+Damit keine Informationen über die Testdaten in das Training des ML-Modells
+sickern (Data Leakage), wird die Normierung an das Minimum und das Maximum der
+Trainingsdaten angepasst und ggf. für die Testdaten angewendet. Damit können
+Testdaten auch außerhalb des Intervalls $[0,1]$ liegen. Wir splitten daher
+zunächst unsere Daten in Trainings- und Testdaten.
 
 ```{code-cell}
 from sklearn.model_selection import train_test_split
 
-daten_train, daten_test = train_test_split(daten)
+daten_train, daten_test = train_test_split(daten, random_state=0)
 ```
 
-Nun wollen wir sehen, welche Datenpunkte zu den Trainingsdaten und welche zu den
-Testdaten gehören. Dazu fügen wir dem Datensatz ein neues Merkmal hinzu und
-füllen es mit den Strings `'Trainingsdaten'` bzw. `'Testdaten'`. Anschließend
-visualisieren wir die Datenpunkte wie oben, wobei die Punkte entsprechend ihrer
-Zugehörigkeit (Trainings- oder Testdaten) eingefärbt werden.
+Dann importieren wir die Klasse `MinMaxScaler` aus dem Untermodul
+`sklearn.preprocessing` und erzeugen ein MinMaxScaler-Objekt:
 
 ```{code-cell}
-# Anreicherung der Daten mit dem Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
-daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
+from sklearn.preprocessing import MinMaxScaler
 
-# Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', color='Splitstatus', 
-title='Künstlich generierte Messdaten')
-fig.show()
+# Auswahl Skalierungsmethode: Normierung
+normierung = MinMaxScaler()
 ```
 
-Standardmäßig hält die Funktion `train_test_split()` 25 % der Daten als
-Testdaten zurück. Ein schnelles Zählen der fünf Testdatenpunkte bestätigt dies.
-Die Auswahl der Testdaten erfolgt zufällig, sodass jeder Durchlauf des Codes
-eine andere Aufteilung der Daten erzeugt.
-
-Die Funktion bietet aber auch Optionen, um die Aufteilung nach eigenen Wünschen
-anzupassen:
-
-- `test_size`: Mit der Option `test_size` kann ein anderer Anteil als 25 % für
-  die Testdaten festgelegt werden. Möchte man zum Beispiel nur 10 % der Daten
-  als Testdaten zurückhalten, kann man `test_size=0.1` einstellen. Der Anteil
-  wird als Float zwischen 0.0 und 1.0 angegeben. Verwendet man stattdessen einen
-  Integer, interpretiert Scikit-Learn diesen als Anzahl der Testdatenpunkte.
-  `test_size=7` bedeutet also, dass sieben Datenpunkte als Testdaten verwendet
-  werden.
-- `random_state`: Die zufällige Auswahl der Testdaten erfolgt durch einen
-  Zufallszahlengenerator, der bei jedem Durchlauf neu gestartet wird. Wenn wir
-  zwar eine zufällige Auswahl wollen, aber den Neustart des
-  Zufallszahlengenerators verhindern möchten, können wir den Ausgangszustand des
-  Generators mit einem festen Wert (Integer) festlegen. Das ist vor allem für
-  Präsentationen oder Lehrmaterialien nützlich.
-- `shuffle`: Die Option `shuffle` bestimmt, ob die Daten vor der Aufteilung
-  durchmischt werden. Der Standard ist `True`, d.h. die Datenpunkte werden
-  zufällig durchmischt, bevor sie aufgeteilt werden. Wird diese Option auf
-  `False` gesetzt, behalten die Daten ihre ursprüngliche Reihenfolge. Bei einem
-  üblichen Split von 80/20 in Trainingsdaten und Testdaten werden die ersten 80
-  \% für die Trainingsdaten genommen und die letzten 20 % für die Testdaten. Sind
-  die Daten sortiert, kann es dadurch zu Verzerrungen kommen. Kommen
-  beispielsweise erst alle billigen Autos und dann die teuren, lernt das
-  ML-Modell mit den billigeren Autos und testet mit den teureren Autos.
-- `stratify`: Diese Option ist vor allem wichtig, wenn die Verteilung zwischen
-  verschiedenen Klassen erhalten bleiben soll. Sind im gesamten Datensatz 30 \%
-  der Autos Diesel-Fahrzeuge, sollen auch in den Trainingsdaten 30 \% der Autos
-  Diesel-Fahrzeuge sein. Diese Option erfordert, dass die Option `shuffle` auf
-  `True` gesetzt ist. Mehr Informationen zum Gebrauch von `stratify` finden wir
-  in der [Dokumentation Scikit-Learn →
-  train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html).
-
-Nun verwenden wir `train_test_split` für unsere Daten.
+Jetzt wird das Minimum/Maximum jeder Spalte bestimmt, also der MinMaxScaler an
+die Trainingsdaten angepasst. Daher ist es nicht verwunderlich, dass die Methode
+`fit()` genannt wurde. Dem MinMaxScaler werden also die Trainingsdaten
+übergeben:
 
 ```{code-cell}
-daten_train, daten_test = train_test_split(daten, test_size=7, random_state=0)
-
-# Aktualisierung des Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
-daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
-
-# Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', color='Splitstatus', 
-title='Künstlich generierte Messdaten')
-fig.show()
+normierung.fit(daten_train)
 ```
 
-## Idee der Kreuzvalidierung
+Zuletzt erfolgt die Transformation der Daten mit der `transform()`-Methode. Dazu
+werden einmal die Trainingsdaten und einmal die Testdaten dem angepassten
+MinMaxScaler übergeben und die transformierten Daten in neuen Variablen
+gespeichert.
 
-Das Zurückhalten eines Teils der Daten als Testdaten hat den Nachteil, dass
-weniger Daten für das Training zur Verfügung stehen. Besonders bei kleinen
-Datensätzen kann dies dazu führen, dass das Modell ungenau oder schlecht
-trainiert wird. Hier kommt die Kreuzvalidierung ins Spiel.
+```{code-cell}
+# Transformation der Trainings- und Testdaten
+X_train_normiert = normierung.transform(daten_train)
+X_test_normiert = normierung.transform(daten_test)
+```
 
-Die Idee der **Kreuzvalidierung** ist, die Daten in mehrere Teilmengen zu
-unterteilen und das Modell mehrmals zu trainieren und zu testen, um die Leistung
-besser beurteilen zu können. Schauen wir uns zunächst die zweifache
-Kreuzvalidierung an:
+Wir schauen in 'X_train_normiert' hinein:
 
-Bei der zweifachen Kreuzvalidierung teilen wir die Daten in zwei Teilmengen, A
-und B. Das Modell wird dann zweimal trainiert und getestet: einmal mit A als
-Trainingsdaten und B als Testdaten, und einmal umgekehrt. Die endgültige
-Modellbewertung ergibt sich aus dem Durchschnitt der beiden Testergebnisse.
+```{code-cell} ipython3
+print(X_train_normiert)
+```
 
-Die dreifache Kreuzvalidierung funktioniert ähnlich, mit dem Unterschied, dass
-die Daten in drei Teilmengen A, B und C aufgeteilt werden. In drei Durchläufen
-wird jeweils mit zwei der Teilmengen trainiert und mit der dritten getestet:
+Die Normierung der Daten scheint funktioniert zu haben. Alle Werte liegen
+zwischen 0 und 1. Gleichzeitig haben wir aber die Pandas-DataFrame-Datenstruktur
+verloren. Die Normierung ist nicht für uns Menschen gedacht, sondern für den
+ML-Algorithmus. Daher nutzt Scikit-Learn die Transformation der Daten
+gleichzeitig für die Umwandlung in das speichereffizientere NumPy-Array, das für
+den ML-Algorithmus gebraucht wird.
 
-- Im ersten Durchlauf wird mit A und B trainiert und mit C getestet.
-- Im zweiten Durchlauf wird mit B und C trainiert und mit A getestet.
-- Im dritten Durchlauf wird mit A und C trainiert und mit B getestet. Am Ende
-wird der Durchschnitt der drei Testergebnisse als Maß für die Modellleistung
-verwendet.
+### Standardisierung
 
-Dieses Verfahren lässt sich auf beliebig viele Teilmengen erweitern.
-Scikit-Learn bietet dafür auch spezielle Funktionen zur effizienten Umsetzung
-der Kreuzvalidierung. Eine detailliertere Betrachtung dieser Techniken erfolgt
-jedoch in einem späteren Kapitel. An dieser Stelle soll lediglich das Konzept
-der Kreuzvalidierung eingeführt werden.
+Oft sind Daten normalverteilt. Die Standardisierung berücksichtigt das und
+transformiert nicht auf ein festes Intervall, sondern verschiebt den Mittelwert
+auf 0 und die Varianz auf 1. Die normalverteilten Daten werden also
+standardnormalverteilt. Auch das lassen wir Scikit-Learn erledigen:
+
+```{code-cell} ipython3
+from sklearn.preprocessing import StandardScaler
+
+# Auswahl Skalierungsmethode: Standardisierung
+standardisierung = StandardScaler()
+
+# Analyse: jede Spalte wird auf ihr Minimum und ihre Maximum hin untersucht
+# es werden immer die Trainingsdaten verwendet
+standardisierung.fit(daten_train)
+
+# Transformation der Trainungs- und Testdaten
+X_train_standardisiert = standardisierung.transform(daten_train)
+X_test_standardisiert = standardisierung.transform(daten_test)
+
+print(X_train_standardisiert)
+```
+
+Auch hier geht die Pandas-DataFrame-Struktur verloren.
 
 ## Zusammenfassung und Ausblick
 
-In diesem Abschnitt haben wir die Aufteilung von Daten in Trainings- und
-Testdaten kennengelernt und die Funktion `train_test_split()` verwendet. Diese
-Funktion wird uns in zukünftigen Kapiteln und Projekten begleiten. Zudem haben
-wir eine erste Einführung in die Kreuzvalidierung erhalten, die wir später
-ausführlicher behandeln werden.
+Kategoriale Daten müssen kodiert werden, damit sie in einem ML-Algorithmus
+verarbeitet werden können. Geordnete kategoriale (ordinale) Daten können dabei
+über ein Dictionary und die `replace()`-Methode kodiert werden. Für ungeordnete
+kategoriale (nominale) Daten muss die One-Hot-Kodierung verwendet werden.
+
+Auch numerische Daten müssen häufig für ML-Algorithmen aufbereitet werden, vor
+allem, wenn die Daten in sehr unterschiedlichen Zahlenbereichen liegen. Bei den
+bisher eingeführten ML-Modellen lineare Regression und Entscheidungsbäumen ist
+die Skalierung der numerischen Daten nicht notwendig. Erst die nachfolgenden
+ML-Modelle werden davon Gebrauch machen.

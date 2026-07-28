@@ -70,18 +70,19 @@ project:
         - file: chapter09/chapter09_sec02.md
         - file: chapter09/chapter09_sec03.md
         - file: chapter09/chapter09_sec04.md
-    - title: 10. Support Vecor Machines
+    - title: 10. ML-Workflow Modellbewertung und Auswahl
       children:
         - file: chapter10/chapter10_sec01.md
         - file: chapter10/chapter10_sec02.md
         - file: chapter10/chapter10_sec03.md
         - file: chapter10/chapter10_sec04.md
-    - title: 11. ML-Workflow Modellbewertung und Auswahl
+    - title: 11. Neuronale Netze
       children:
         - file: chapter11/chapter11_sec01.md
         - file: chapter11/chapter11_sec02.md
+        - file: chapter11/chapter11_sec03.md
         - file: chapter11/chapter11_sec04.md
-    - title: 12. Neuronale Netze
+    - title: 12. Zeitreihen
       children:
         - file: chapter12/chapter12_sec01.md
         - file: chapter12/chapter12_sec02.md

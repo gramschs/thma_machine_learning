@@ -14,6 +14,12 @@ kernelspec:
 
 # 5.2 Barplots und Histogramme
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Barplots (Balken- oder Säulendiagramme) sind die am häufigsten verwendeten
 Visualisierungen für kategoriale Daten. In diesem Kapitel lernen wir, wie mit
 Plotly ein Barplot erstellt und von einem Histogramm unterschieden wird.

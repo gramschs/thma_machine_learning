@@ -1,252 +1,421 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
 ---
 
+# 11.1 Perzeptron = Grundbaustein neuronaler Netze
 
-# 11.1 Kreuzvalidierung
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
 
-In der Praxis ist es entscheidend, dass ein ML-Modell nicht nur gute Prognosen
-für die Daten liefert, sondern auch für neue, unbekannte Daten zuverlässig
-funktioniert. Durch das Aufteilen der Daten in Trainings- und Testdaten können
-wir eine erste Einschätzung über die Verallgemeinerungsfähigkeit eines Modells
-treffen. Dieser Ansatz weist jedoch einige Schwächen auf, die wir in diesem
-Kapitel näher beleuchten. Im Anschluss lernen wir ein fortschrittlicheres
-Verfahren kennen: die Kreuzvalidierung, die über die einfache Aufteilung in
-Trainings- und Testdaten hinausgeht und eine robustere Bewertung der
-Modellleistung ermöglicht.
+Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste
+künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir
+das Perzeptron vorstellen.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-- Sie sind in der Lage, das Konzept der **Kreuzvalidierung (Cross Validation)**
-  verständlich zu erklären.
-- Sie können die Vor- und Nachteile der Kreuzvalidierung aufzählen und bewerten.
-- Sie können mit **KFold** einen Datensatz in verschiedene **Teilmengen
-  (Folds)** aufteilen.
-- Sie beherrschen die Durchführung einer Kreuzvalidierung mithilfe der Funktion
-  **cross_validate()**.
+* Sie können das Perzeptron als mathematische Funktion formulieren und in diesem
+  Zusammenhang die folgenden Begriffe erklären:
+    * **gewichtete Summe** (Weighted Sum),
+    * **Bias** oder Bias-Einheit (Bias),
+    * **Schwellenwert** (Threshold)  
+    * **Heaviside-Funktion** (Heaviside Function) und
+    * **Aktivierungsfunktion** (Activation Function).
+* Sie können das Perzeptron als ein binäres Klassifikationsproblem des
+  überwachten Lernens einordnen.
 ```
 
-## Idee der Kreuzvalidierung
+## Die Hirnzelle dient als Vorlage für künstliche Neuronen
 
-Ein zentraler Schritt im ML-Workflow ist die Aufteilung der Daten in einen
-Trainings- und einen Testdatensatz. Das Modell wird auf den Trainingsdaten
-trainiert und anschließend auf den Testdaten bewertet. Diese Methode hat jedoch
-auch Nachteile. Besonders bei kleinen Datensätzen ist es problematisch,
-beispielsweise 25 % der Daten für den Test zurückhalten zu müssen, da dies die
-Datenmenge für das Training reduziert. Zudem kann eine zufällige Aufteilung der
-Daten zu unbalancierten Splits führen, die die Trainings- und Testergebnisse
-verfälschen. Eine sinnvolle Alternative zu dieser simplen Aufteilung ist die
-**Kreuzvalidierung** (engl. **Cross Validation**).
+1943 haben die Forscher Warren McCulloch und Walter Pitts das erste Modell einer
+vereinfachten Hirnzelle präsentiert. Zu Ehren der beiden Forscher heißt dieses
+Modell MCP-Neuron. Darauf aufbauend publizierte Frank Rosenblatt 1957 seine Idee
+einer Lernregel für das künstliche Neuron. Das sogenannte Perzeptron bildet die
+Grundlage der künstlichen neuronalen Netze. Inspiriert wurden die Forscher dabei
+durch den Aufbau des Gehirns und der Verknüpfung der Nervenzellen.
 
-Bei der Kreuzvalidierung werden die Daten in mehrere **Teilmengen**, sogenannte
-**Folds**, aufgeteilt. Beispielsweise können die Daten in fünf Folds unterteilt
-werden. Das Modell wird dann fünfmal trainiert und getestet, wobei in jedem
-Durchlauf eine andere Teilmenge als Testdaten verwendet wird. Im ersten
-Durchlauf wird etwa Fold A für den Test zurückgehalten, während die Folds B, C,
-D und E zum Training genutzt werden. Im zweiten Durchlauf wird Fold B als
-Testdatensatz verwendet und die restlichen Folds dienen wieder dem Training.
-Dieser Prozess wird so lange wiederholt, bis jeder Fold einmal als Testdaten
-fungiert hat. Am Ende wird die Modellleistung (Score) als Durchschnitt der
-Ergebnisse aus den fünf Durchläufen berechnet.
+```{figure} pics/neuron_wikipedia.svg
+---
+width: 600px
+name: fig_neuron_wikipedia
+---
+Schematische Darstellung einer Nervenzelle
+(Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
+Lizenz: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
+```
 
-Es müssen jedoch nicht zwingend fünf Folds verwendet werden. Oftmals werden die
-Daten in zehn Folds aufgeteilt, sodass 90 % der Daten zum Training und 10 % für
-den Test verwendet werden. Ein weiterer Vorteil ist, dass jeder Datenpunkt im
-Laufe der Kreuzvalidierung sowohl im Training als auch im Test berücksichtigt
-wird, jedoch nie gleichzeitig. Dies verringert die Gefahr, dass unausgewogene
-Daten zu verzerrten Testergebnissen führen, wie es bei einer zufälligen
-Aufteilung passieren könnte.
+Elektrische und chemische Eingabesignale kommen bei den Dendriten an und laufen
+im Zellkörper zusammen. Sobald ein bestimmter Schwellwert überschritten wird,
+wird ein Ausgabesignal erzeugt und über das Axon weitergeleitet. Mehr Details zu
+Nervenzellen finden Sie auf
+[Wikipedia/Nervenzelle](https://de.wikipedia.org/wiki/Nervenzelle).
 
-Zusammengefasst bietet die Kreuzvalidierung mehrere Vorteile:
++++
 
-- **Effizientere Datennutzung**: Jeder Datenpunkt wird mindestens einmal als
-  Testdatenpunkt verwendet, was besonders bei kleinen Datensätzen wichtig ist,
-  da die Daten optimal ausgenutzt werden.
-- **Stabilere Schätzung der Modellleistung**: Durch das wiederholte Training und
-  Testen auf verschiedenen Daten erhöht sich die Robustheit der geschätzten
-  Modellleistung (Score), da zufällige Verzerrungen durch unbalancierte Splits
-  minimiert werden.
+## Von logischem ODER zur mathematischen Ungleichung
 
-Ein Nachteil der Kreuzvalidierung ist der erhöhte Rechenaufwand, da das Modell
-mehrfach trainiert und getestet wird.
+Das einfachste künstliche Neuron besteht aus zwei Inputs und einem Output. Dabei
+sind für die beiden Inputs nur zwei Zustände zugelassen und auch der Output
+besteht nur aus zwei verschiedenen Zuständen. In der Sprache des maschinellen
+Lernens liegt also eine **binäre Klassifikationsaufgabe** innerhalb des
+**Supervised Learnings** vor.
 
-Können wir also auf die Aufteilung in Trainings- und Testdaten verzichten? Nein,
-denn für das Hyperparameter-Tuning ist der Split weiterhin notwendig. Mehr dazu
-im nächsten Kapitel. Zunächst widmen wir uns der praktischen Umsetzung der
-Kreuzvalidierung in Scikit-Learn.
+Beispiel:
 
-## Kreuzvalidierung mit KFold
+* Input 1: Es regnet oder es regnet nicht.
+* Input 2: Der Rasensprenger ist an oder nicht.
+* Output: Der Rasen wird nass oder nicht.
 
-Um die Kreuzvalidierung in Scikit-Learn zu demonstrieren, generieren wir
-zunächst einen künstlichen Datensatz. Mithilfe der Funktion `make_moons()`
-erstellen wir 50 Datenpunkte und speichern sie in einem Pandas-DataFrame. Für
-eine einfachere Visualisierung mit Plotly Express wandeln wir die Zielvariable
-`'Wirkung'` von den Werten 0/1 in boolesche Werte (False/True) um.
+Den Zusammenhang zwischen Regen, Rasensprenger und nassem Rasen können wir in
+einer Tabelle abbilden:
+
+Regnet es? | Ist Sprenger an? | Wird Rasen nass?
+-----------|------------------|-----------------
+nein       | nein             | nein
+ja         | nein             | ja
+nein       | ja               | ja
+ja         | ja               | ja
+
++++
+
+```{admonition} Mini-Übung
+:class: tip
+Schreiben Sie ein kurzes Python-Programm, das abfragt, ob es regnet und ob der
+Rasensprenger eingeschaltet ist. Dann soll der Python-Interpreter ausgeben, ob
+der Rasen nass wird oder nicht.
+```
 
 ```{code-cell}
+# Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+# Eingabe
+x1 = input('Regnet es (j/n)?')
+x2 = input('Ist der Rasensprenger eingeschaltet? (j/n)')
+
+# Verarbeitung
+y = (x1 == 'j') or (x2 == 'j')
+
+# Ausgabe
+if y == True:
+    print('Der Rasen wird nass.')
+else:
+    print('Der Rasen wird nicht nass.')
+```
+````
+
++++
+
+Für das maschinelle Lernen müssen die Daten als Zahlen aufbereitet werden, damit
+die maschinellen Lernverfahren in der Lage sind, Muster in den Daten zu
+erlernen. Anstatt "Regnet es? Nein." oder Variablen mit True/False setzen wir
+jetzt Zahlen ein. Die Eingabewerte bezeichnen wir mit x1 für Regen und x2 für
+Rasensprenger. Die 1 steht für ja, die 0 für nein. Den Output bezeichnen wir mit
+y. Dann lautet die obige Tabelle für das "Ist-der-Rasen-nass-Problem":
+
+x1 | x2 | y
+---|----|---
+0  | 0  | 0
+1  | 0  | 1
+0  | 1  | 1
+1  | 1  | 1
+
++++
+
+```{admonition} Mini-Übung
+:class: tip
+Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Verwenden Sie
+Integer 0 und 1 für die Eingaben.
+```
+
+```{code-cell}
+# Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+# Eingabe
+x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
+x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
+
+# Verarbeitung
+y = (x1 == 1) or (x2 == 1)
+
+# Ausgabe
+if y == True:
+    print('Der Rasen wird nass.')
+else:
+    print('Der Rasen wird nicht nass.')
+```
+````
+
++++
+
+Nun ersetzen wir das logische ODER durch ein mathematisches Konstrukt:
+Wenn die Ungleichung
+
+\begin{equation*}
+x_1 w_1  +  x_2 w_2 \geq \theta
+\end{equation*}
+
+erfüllt ist, dann ist $y = 1$ oder anders ausgedrückt, der Rasen wird nass. Und
+ansonsten ist $y = 0$, der Rasen wird nicht nass. Allerdings müssen wir noch die
+**Gewichte** $w_1$ und $w_2$ (auf Englisch: weights) geschickt wählen. Die Zahl
+$\theta$ ist der griechische Buchstabe Theta und steht als Abkürzung für den
+sogenannten **Schwellenwert** (auf Englisch: threshold).
+
+Beispielsweise würde $w_1 = 0.3$, $w_2=0.3$ und $\theta = 0.2$ passen:
+
+* $0 \cdot 0.3 + 0 \cdot 0.3 = 0.0 \geq 0.2$ nicht erfüllt
+* $0 \cdot 0.3 + 1 \cdot 0.3 = 0.3 \geq 0.2$ erfüllt
+* $1 \cdot 0.3 + 0 \cdot 0.3 = 0.3 \geq 0.2$ erfüllt
+* $1 \cdot 0.3 + 1 \cdot 0.3 = 0.6 \geq 0.2$ erfüllt
+
++++
+
+```{admonition} Mini-Übung
+:class: tip
+Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Ersetzen Sie das
+logische ODER durch die linke Seite der Ungleichung und vergleichen Sie
+anschließend mit $0.2$, um zu entscheiden, ob der Rasen nass wird oder nicht.
+```
+
+```{code-cell}
+# Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+# Eingabe
+x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
+x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
+
+# Verarbeitung
+y = 0.3 * x1 + 0.3 * x2
+
+# Ausgabe
+if y >= 0.2:
+    print('Der Rasen wird nass.')
+else:
+    print('Der Rasen wird nicht nass.')
+```
+````
+
++++
+
+## Die Heaviside-Funktion ersetzt die Ungleichungsprüfung
+
+Noch sind wir aber nicht fertig, denn auch die Frage "Ist die Ungleichung
+erfüllt oder nicht?" muss noch in eine mathematische Funktion umgeschrieben
+werden. Dazu subtrahieren wir zuerst auf beiden Seiten der Ungleichung den
+Schwellenwert $\theta$:
+
+$$-\theta + x_1 w_1  +  x_2 w_2 \geq 0.$$
+
+Damit haben wir jetzt nicht mehr einen Vergleich mit dem Schwellenwert, sondern
+müssen nur noch entscheiden, ob der Ausdruck $-\theta + x_1 w_1 + x_2 w_2$
+negativ oder positiv ist. Bei negativen Werten, soll $y = 0$ sein und bei
+positiven Werten (inklusive der Null) soll $y = 1$ sein. Dafür gibt es in der
+Mathematik eine passende Funktion, die sogenannte
+[Heaviside-Funktion](https://de.wikipedia.org/wiki/Heaviside-Funktion) (manchmal
+auch Theta-, Stufen- oder Treppenfunktion genannt).
+
+```{figure} pics/heaviside_wikipedia.svg
+---
+name: fig_heaviside_wikipedia
+---
+Schaubild der Heaviside-Funktion
+(Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Heaviside.svg) von
+Lennart Kudling; Lizenz: gemeinfrei)
+```
+
+Definiert ist die Heaviside-Funktion folgendermaßen:
+
+$$\Phi(x) = \begin{cases}0:&x<0\\1:&x\geq 0\end{cases}$$
+
+In dem Modul NumPy ist die Heaviside-Funktion schon hinterlegt, siehe
+> <https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html>
+
++++
+
+```{admonition} Mini-Übung
+:class: tip
+Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101
+Punkten. Setzen Sie das zweite Argument einmal auf 0 und einmal auf 2. Was
+bewirkt das zweite Argument? Sehen Sie einen Unterschied in der Visualisierung?
+
+Erhöhen Sie auch die Anzahl der Punkte im Intervall. Wählen Sie dabei immer eine
+ungerade Anzahl an Punkten, damit die 0 dabei ist und der Sprung an der Stelle
+$x = 0$ besser sichtbar wird.
+```
+
+```{code-cell}
+# Ihr Code:
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
 import pandas as pd
 import plotly.express as px
-from sklearn.datasets import make_moons 
+import numpy as np
 
-X_array, y_array = make_moons(noise = 0.5, n_samples=50, random_state=3)
-daten = pd.DataFrame({
-    'Merkmal 1': X_array[:,0],
-    'Merkmal 2': X_array[:,1],
-    'Wirkung': y_array
-})
-daten['Wirkung'] = daten['Wirkung'].astype('bool')
+x = np.linspace(-3, 3, 101)
+y0 = np.heaviside(x, 0)  # an der Stelle x=0 ist y=0
+y1 = np.heaviside(x, 2)  # an der Stelle x=0 ist y=2
 
-fig = px.scatter(daten, x = 'Merkmal 1', y = 'Merkmal 2', color='Wirkung',
-    title='Künstliche Daten')
+# Daten für Plotly Express vorbereiten
+df = pd.DataFrame({'x': x, 'y0': y0, 'y1': y1})
+
+# Visualisierung
+fig = px.scatter(df, x='x', y=['y0', 'y1'], title='Heaviside-Funktion')
+fig.update_layout(
+    xaxis_title='x',
+    yaxis_title='y'
+)
 fig.show()
 ```
+````
 
-Als Nächstes laden wir die Klasse `KFold` aus dem Untermodul
-`sklearn.model_selection`. Wir instanziieren ein KFold-Objekt mit dem Argument
-`n_splits=5`, das die Daten in fünf Teilmengen (Folds) aufteilt. Tatsächlich ist
-dies die Standardeinstellung, wie uns die [Dokumentation Scikit-Learn →
-KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
-zeigt. Das Argument könnte also weggelassen werden.
+Das zweite Argument der Heaviside-Funktion `heaviside` in NumPy gibt an, welchen
+Funktionswert die Heaviside-Funktion an der Stelle $x=0$ hat. Der Standard ist
+$0.5$.
 
-```{code-cell}
-from sklearn.model_selection import KFold
+Mit der Heaviside-Funktion können wir nun den Vergleich in der
+Programmverzweigung mit $0.2$ durch eine direkte Berechnung ersetzen. Betrachten
+wir den folgenden Programm-Code, der zeigt, wie wir ohne logisches Oder bzw.
+ohne Programmverzweigung if-else auskommen.
 
-kfold = KFold(n_splits = 5)
++++
+
+```python
+# Import der notwendigen Module
+import numpy as np
+
+# Eingabe
+x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
+x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
+
+# Verarbeitung
+y = np.heaviside(-0.2 + 0.3 * x1 + 0.3 * x2, 1.0)
+
+# Ausgabe
+ergebnis_als_text = ['Der Rasen wird nicht nass.', 'Der Rasen wird nass.']
+print(ergebnis_als_text[int(y)])
 ```
 
-Im Hintergrund wurde ein Generator erzeugt, mit Hilfe dessen wir Daten in fünf
-Teilmengen (Folds) aufteilen können. Dazu benutzen wir die Methode `.split()`
-und übergeben ihr die Daten, die gesplittet werden sollen.
++++
 
-```{code-cell}
-kfold.split(daten)
+## Das Perzeptron mit mehreren Eingabewerten
+
+Das Perzeptron für zwei Eingabewerte lässt sich in sehr natürlicher Weise auf
+viele Eingabewerte verallgemeinern, die auch mehrere Zustände annehmen können.
+Bei den Outputs bleiben wir jedoch dabei, dass nur zwei Zustände angenommen
+werden können, die wir mit 0 und 1 bezeichnen. Wir betrachten also weiterhin
+binäre Klassifikationsaufgaben.
+
+Wenn wir nicht nur zwei, sondern $n$ Eingabewerte $x_i$ haben, brauchen wir
+entsprechend auch $n$ Gewichte $w_i$. Um die Notation zu vereinfachen, fassen
+wir die Eingabewerte in einem Spaltenvektor zusammen, also
+
+\begin{equation*}
+\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.
+\end{equation*}
+
+Auch die Gewichte fassen wir in einem Spaltenvektor zusammen, also
+
+\begin{equation*}
+\mathbf{w} =
+\begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_n\end{pmatrix}.
+\end{equation*}
+
+Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt abkürzen:
+
+\begin{equation*}
+\mathbf{x}^{T}\mathbf{w} =
+x_1 w_1 +  x_2 w_2 + \ldots + x_n w_n \geq \theta.
+\end{equation*}
+
+Wie bei dem Perzeptron mit zwei Eingängen wird der Schwellenwert $\theta$ durch
+Subtraktion auf die linke Seite gebracht. Wenn wir jetzt bei dem Vektor
+$\mathbf{w}$ mit den Gewichten vorne den Vektor um das Element $w_0 = -\theta$
+ergänzen und den Vektor $\mathbf{x}$ mit $x_0 = 1$ erweitern, dann erhalten wir
+
+\begin{equation*}
+\mathbf{x}^{T}\mathbf{w} =
+1 \cdot (-\theta) + x_1 w_1 + x_2 w_2 + \ldots + x_n w_n \geq 0.
+\end{equation*}
+
+Genaugenommen hätten wir jetzt natürlich für die Vektoren $\mathbf{w}$ und
+$\mathbf{x}$ neue Bezeichnungen einführen müssen, aber ab sofort gehen wir immer
+davon aus, dass ab jetzt immer die erweiterten Vektoren gemeint sind, die um den
+negativen Schwellenwert $-\theta$ bzw. die 1 ergänzt wurden. Der negative
+Schwellenwert wird in der ML-Community **Bias** oder **Bias-Einheit (Bias
+Unit)** genannt.
+
+Um jetzt klassifizieren zu können, wird auf die gewichtete Summe
+$\mathbf{x}^{T}\mathbf{w}$ die Heaviside-Funktion angewendet. In späteren
+Kapiteln werden wir sehen, dass auch andere Funktionstypen anstatt der
+Heaviside-Funktion verwendet werden, die bessere mathematische Eigenschaften
+haben. Im Folgenden nennen wir die Funktion, die auf die gewichtete Summe
+angewendet wird, **Aktivierungsfunktion**.
+
+```{admonition} Was ist ... ein Perzeptron?
+:class: note
+Das Perzeptron ist ein Modell, das Eingaben verarbeitet, indem es erst eine
+gewichtete Summe der Eingaben bildet und dann darauf eine Aktivierungsfunktion
+anwendet.
 ```
 
-Zwar wurde hiermit die Aufteilung in fünf Teilmengen vollzogen, doch die
-eigentlichen Trainings- und Testdaten wurden noch nicht gespeichert und
-weiterverarbeitet. Mithilfe einer for-Schleife greifen wir in jedem Durchgang
-auf die Trainings- und Testindizes zu, die die Methode `split()` als Tupel
-zurückgibt. Das erste Element enthält die Indizes der Trainingsdaten, das zweite
-die der Testdaten.
+Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
+gezeigt. Wir lesen es von links nach rechts und beginnen mit den Eingaben der
+Merkmale, die durch (hellblaue) Kreise symbolisiert werden. In manchen
+Darstellungen wird die Bias-Einheit ebenfalls durch einen Kreis symbolisiert und
+als Eingabe dargestellt. Manchmal wird auf die Darstellung der Bias-Einheit
+komplett verzichtet. Als Kompromiss zwischen diesen beiden Ansätzen ist in
+dieser Grafik die Bias-Einheit zwar als Kreis symbolisiert, aber der Kreis
+befindet sich nicht in einer Reihe mit den Merkmalen, sondern ist etwas nach
+rechts eingerückt. Die Multiplikation der Inputs $x_j$ mit den Gewichten $w_j$
+wird durch Kanten dargestellt. Die einzelnen Summanden $x_j w_j$ treffen sich
+sozusagen im linken, mittleren Kreis, wo die gewichtete Summe $\sum_{j=0}^{n}
+x_j w_j$ gebildet wird. Auf die gewichtete Summe wird dann im rechten, mittleren
+Kreis eine Aktivierungsfunktion angewendet. Um zu verdeutlichen, dass hier zwei
+mathematische Operationen durchgeführt werden, sind die beiden Kreise weiß
+eingefärbt. Das Perzeptron berechnet dann die Ausgabe $\hat{y}$ und dieser Wert
+wird dann ganz rechts als (dunkelblauer) Kreis dargestellt. Um berechnete
+Ausgaben zu kennzeichnen, verwenden wir das $\wedge$-Symbol und setzen es über
+das $y$, so dass das Symbol $\hat{y}$ entsteht.
 
-```{code-cell}
-for (train_index, test_index) in kfold.split(daten):
-  print(f'Index Trainingsdaten: {train_index}')
-  print(f'Index Testdaten: {test_index}')
+```{figure} pics/fig_12_01_topology_perceptron.svg
+---
+name: fig_perzeptron
+---
+Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Die Aufteilung der Daten erfolgt hierbei sehr systematisch. Im ersten Durchgang
-werden die Datenpunkte 0–9 als Testdaten verwendet, im zweiten Durchgang die
-Punkte 10–19 und so weiter. Bei sortierten Daten kann dies ungünstig sein. Um
-eine zufällige Aufteilung zu gewährleisten, können wir das Argument
-`shuffle=True` verwenden, um die Daten vor dem Split zu mischen.
-
-```{code-cell}
-kfold = KFold(n_splits = 5, shuffle=True)
-
-for (train_index, test_index) in kfold.split(daten):
-  print(f'Index Trainingsdaten: {train_index}')
-  print(f'Index Testdaten: {test_index}')
-```
-
-Nun verwenden wir diese fünf Aufteilungen, um einen Entscheidungsbaum zu
-trainieren. Dabei begrenzen wir die Baumtiefe auf 3 und bewerten in jedem
-Durchgang die Genauigkeit (Score) sowohl auf den Trainings- als auch auf den
-Testdaten.
-
-```{code-cell}
-from sklearn.tree import DecisionTreeClassifier
-
-modell = DecisionTreeClassifier(max_depth=3) 
-kfold = KFold(n_splits = 5, shuffle=True, random_state=0)
-
-for (train_index, test_index) in kfold.split(daten):
-  X_train = daten.loc[train_index, ['Merkmal 1', 'Merkmal 2']]
-  y_train = daten.loc[train_index, 'Wirkung']
-  X_test = daten.loc[test_index, ['Merkmal 1', 'Merkmal 2']]
-  y_test = daten.loc[test_index, 'Wirkung']
-  
-  modell.fit(X_train, y_train)
-  score_train = modell.score(X_train, y_train)
-  score_test = modell.score(X_test, y_test)
-
-  print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
-```
-
-Die Scores auf den Trainingsdaten könnten den Eindruck erwecken, dass der
-Entscheidungsbaum sehr gut funktioniert. Doch die Testdaten zeigen Schwankungen
-zwischen 0.4 und 0.8. Hätten wir eine einfache Aufteilung in Trainings- und
-Testdaten vorgenommen und zufällig den dritten Split erwischt, hätten wir
-wahrscheinlich eine zu optimistische Einschätzung der Modellqualität getroffen.
-Aus didaktischen Gründen verwenden wir das Argument `random_state=0`, um die
-Ergebnisse mit dem Vorlesungsskript vergleichbar zu machen.
-
-## Automatische Kreuzvalidierung mit cross_validate
-
-Wie so oft bietet Scikit-Learn eine elegantere und einfachere Möglichkeit, die
-Kreuzvalidierung (Cross Validation) durchzuführen, ohne manuell eine
-for-Schleife programmieren zu müssen. Die Funktion `cross_validate()` übernimmt
-die Durchführung der Kreuzvalidierung automatisch. Wir importieren sie aus dem
-Untermodul `sklearn.model_selection` und teilen anschließend die Daten in
-Eingabedaten `X` und Zielgröße `y` auf.
-
-Die Funktion `cross_validate()` wird mit dem ML-Modell (hier einem
-Entscheidungsbaum), den Eingabedaten `X` und der Zielgröße `y` aufgerufen.
-Standardmäßig wird eine 5-fache Kreuzvalidierung ohne Mischen durchgeführt. Mit
-dem optionalen Argument `cv=` kann jedoch auch ein benutzerdefinierter
-Aufteilungsgenerator übergeben werden, wie zum Beispiel `KFold`. Das zusätzliche
-Argument `return_train_score=True` sorgt dafür, dass auch die Trainingsscores in
-jedem Durchlauf gespeichert werden. Der entsprechende Code sieht folgendermaßen
-aus:
-
-```{code-cell}
-from sklearn.model_selection import cross_validate
-
-X = daten[['Merkmal 1', 'Merkmal 2']]
-y = daten['Wirkung']
-
-cv_results = cross_validate(modell, X,y, cv=kfold, return_train_score=True)
-```
-
-Die Funktion `cross_validate()` gibt ein Dictionary zurück, das wie folgt
-aufgebaut ist:
-
-```{code-cell}
-print(cv_results)
-```
-
-In diesem Dictionary sind zunächst die Rechenzeiten für das Training
-(`'fit_time'`) und die Prognose (`'score_time'`) gespeichert. Danach folgen die
-Scores der Testdaten (`'test_score'`). Falls das Argument
-`return_train_score=True` gesetzt wurde, enthält das Dictionary auch die Scores
-der Trainingsdaten (`'train_score'`). Die Scores können wir wie folgt anzeigen
-lassen:
-
-```{code-cell}
-print(cv_results['test_score'])
-print(cv_results['train_score'])
-```
-
-Weitere Details zu der Funktion `cross_validate()` finden Sie in der
-[Dokumentation Scikit-Learn →
-cross_validate](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html).
+Selbstverständlich können die Farben in anderen Abbildungen anders gewählt sein.
+Wichtig ist die Darstellung mit Kreisen und Kanten.
 
 ## Zusammenfassung und Ausblick
 
-Die Kreuzvalidierung ist ein wichtiges Werkzeug, insbesondere wenn es um die
-Feinjustierung der Hyperparameter geht, also das sogenannte
-Hyperparameter-Tuning. Im nächsten Kapitel werden wir uns mit der Kombination
-von Kreuzvalidierung (Cross Validation) und einer Gittersuche (Grid Search)
-beschäftigen, um die optimalen Hyperparameter für ein Modell zu finden.
+In diesem Kapitel haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
+aus den Daten mit Hilfe von Gewichten und einer Aktivierungsfunktion der binäre
+Zustand prognostiziert wird. Im nächsten Kapitel werden wir mehrere Perzeptrons
+zu mehrschichtigen Netzen verbinden und erhalten ein neuronales Netz.

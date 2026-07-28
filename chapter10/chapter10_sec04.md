@@ -1,303 +1,283 @@
 ---
 jupytext:
-  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.3
 kernelspec:
-  display_name: Python 3
+  display_name: python312
   language: python
   name: python3
 ---
 
-# Übung
+# Übungen
 
-Auf der Internetseite
-[https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks]
-finden Sie einen Datensatz mit Sonarsignalen. Die Muster der Signale sind durch
-60 Zahlenwerte codiert (es handelt sich um die Energie zu bestimmten Frequenzen,
-normalisiert auf \[0,1\]). Darüber hinaus wird angegeben, ob das Sonarsignal
-Gestein (= Stein) oder Metall detektiert hat.
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
 
-Laden Sie nun die Datei 'metall_oder_stein.csv'. Führen Sie eine explorative
-Datenanalyse durch. Lassen Sie dann alle Ihnen bekannten Klassifikationsmodelle
-trainieren und validieren, um die Materialeigenschaft Stein/Metall auf Basis der
-numerischen Werte zu prognostizieren.
+Der Datensatz Pinguine stammt von
+[HuggingFace](https://huggingface.co/datasets/SIH/palmer-penguins). Der
+Datensatz umfasst Daten von Pinguinen, insbesondere die Merkmale
+
+* Art,
+* Insel,
+* Schnabellaenge und Schnabeltiefe in Millimetern
+* Flossenlaenge in Millimetern,
+* Koerpergewicht in Gramm,
+* Geschlecht und
+* Jahr der Geburt.
+
+Laden Sie die deutsche Variante des Datensatzes aus campUAS und führen Sie eine
+explorative Datenanalyse durch. Legen Sie 10 % der Daten als Testdaten zurück.
+Trainieren Sie dann ML-Modelle ggf. mit Gittersuche und wählen Sie das beste
+Modell aus. Welchen Score erreicht Ihr Modell für die Testdaten?
 
 ```{admonition} Überblick über die Daten
 :class: tip
-* Welche Daten enthält der Datensatz?
-* Wie viele Datenpunkte und Merkmale gibt es?
-* Sind die Daten vollständig?
-* Welche Datentypen haben die Merkmale?
-* Gibt es Merkmale mit unerwarteten Datentypen?
+Welche Daten enthält der Datensatz? Wie viele Pinguine sind in der Tabelle enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten vollständig?
 ```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown
+:class: dropdown, dropdown
 ```python
-import pandas as pd
+import pandas as pd 
 
-# Import der Daten (zwei Kommentarzeilen werden übersprungen)
-daten = pd.read_csv('metall_oder_stein.csv', skiprows=2)
+daten = pd.read_csv('pinguine.csv', skiprows=3)
 daten.info()
-
-# Check der Vollständigkeit:
-print(daten.isnull().sum())
-
-# Blick in die Daten:
-daten.head(10)
-```
-Der Datensatz enthält 208 Einträge (Datenpunkte) und 61 Merkmale. Die ersten 60
-Merkmale Signal01 bis Signal60 werden durch Floats repräsentiert, das Merkmal
-Material wird durch Objekte repräsentiert.
-
-Die Daten sind vollständig.
-
-Die ersten 10 Zeilen zeigen in den Spalten Signal01 bis Signal60 numerische
-Werte. In der letzten Spalte Material wird der String 'Stein' aufgelistet. Ein
-kurzer Test mit
-
-```python
-daten['Material'].unique()
 ```
 
-zeigt, dass in dieser Spalte lediglich die beiden Einträge 'Stein' und 'Metall'
-auftreten. Insgesamt sind die Werte der Merkmale für die Datentypen plausibel.
+Die Tabelle enthält 344 Pinguine. Es sind 8 Merkmale enthalten, nämlich die Merkmale Art, Insel, Schnabellaenge_mm, Schnabeltiefe_mm, Flossenlaenge_mm, Koerpergewicht_g, Geschlecht, Jahr. Die Merkmale Schnabellaenge_mm, Schnabeltiefe_mm, Flossenlaenge_mm und Geschlecht sind unvollständig.
 ````
 
-```{admonition} Statistik der numerischen Daten
+```{admonition} Datentypen
 :class: tip
-Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
-Daten. Interpretieren Sie die statistischen Kennzahlen. Gibt es Auffälligkeiten?
-Sind die Werte plausibel?
+Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche sind kategorial?
 ```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown
+:class: dropdown, dropdown
+* Art --> object
+* Insel --> object
+* Schnabellaenge_mm --> float
+* Schnabeltiefe_mm --> float
+* Flossenlaenge_mm --> float
+* Koerpergewicht_g --> float
+* Geschlecht --> object
+* Jahr --> int
+
 ```python
-daten.describe()
+merkmale = daten.columns
+
+for m in merkmale:
+    anzahl_einzigartiger_eintraege = len(daten[m].unique())
+    print(f'Merkmal {m} hat {anzahl_einzigartiger_eintraege} Einträge.')
 ```
-Die statistischen Kennzahlen lassen sich aufgrund der großen Anzahl an Merkmalen
-so kaum interpretieren. Daher hilft hier ein Boxplot der numerischen Daten
-weiter.
+
+Die Merkmale Art, Insel, Geschlecht und Jahr sind kategorial. Die Merkmale Schnabellaenge_mm, Schnabeltiefe_mm, Flossenlaenge_mm, Koerpergewicht_g sind numerisch.
+````
+
+```{admonition} Fehlende Einträge
+:class: tip
+In welcher Spalte fehlen am meisten Einträge? Filtern Sie den Datensatz nach den fehlenden Einträgen und geben Sie eine Liste mit den Indizes (Zeilennummern) aus, wo Einträge fehlen. Löschen Sie anschließend diese Zeilen aus dem Datensatz. Sind jetzt alle Einträge gültig?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown, dropdown
+```python
+fehlende_geschlechtsangaben = daten[ daten['Geschlecht'].isnull() ].index
+print(fehlende_geschlechtsangaben)
+```
 
 ```python
-import plotly.express as px
+daten = daten.drop(fehlende_geschlechtsangaben)
+daten.info()
+```
 
-fig = px.box(daten.drop('Material', axis=1), 
-             title='Stein oder Metall',
-             labels={'variable': 'Merkmal', 'value':'Wert'})
+Jetzt sind alle Einträge gültig.
+````
+
+```{admonition} Analyse numerische Daten
+:class: tip
+Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots. Verwenden Sie ein Diagramm für die Merkmale, die in Millimetern gemessen werden und ein Diagramm für das Körpergewicht. Interpretieren Sie die statistischen Merkmale. Gibt es Ausreißer? Sind die Werte plausibel?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown, dropdown
+```python
+numerische_merkmale = ['Schnabellaenge_mm', 'Schnabeltiefe_mm', 'Flossenlaenge_mm', 'Koerpergewicht_g']
+
+daten[numerische_merkmale].describe()
+```
+
+```python
+import plotly.express as px 
+
+fig = px.box(daten[['Schnabellaenge_mm', 'Schnabeltiefe_mm', 'Flossenlaenge_mm']],
+    labels={'variable': 'Merkmal', 'value':'Wert'},
+    title='Numerische Merkmale der Pinguine (gemessen in Millimetern)')
 fig.show()
 ```
-Die Medianwerte scheinen einem Muster zu folgen. Beginnend bei Merkmal Signal01
-steigen sie bis zu Signal26, wo der Median den Wert 0.7545 erreicht, um dann
-wieder abzufallen. Ab Signal50 liegt der Median unter 0.0179. Bei Eigenschaften
-mit einem größeren Median ist auch der Interquartilsabstand (IQR) größer, dafür
-gibt es keine Ausreißer. Das Maximum liegt bei 1, was konsistent mit der
-Normalisierung auf \[0,1\] ist.
-````
 
-```{admonition} Statistik der kategorialen Merkmale
-:class: tip
-Wie viele Einträge gibt es für Metall oder Stein? Visualisieren Sie die
-Verteilung mit einem Balkendiagramm der Klassenverteilung. Ist der Datensatz
-ausgewogen?
-```
+Die Schnabeltiefe ist deutlich kleiner als die Schnabellänge. Bei der Flossenlänge fällt auf, das der Median deutlich kleiner ist als der Mittelwert. Insgesamt gibt es keine Ausreißer.
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
 ```python
-# Berechnung der Anzahl der Einträge
-print(daten['Material'].value_counts())
+import plotly.express as px 
 
-# Visualisierung als Balkendiagramm
-fig = px.bar(daten['Material'].value_counts(),
-             title='Stein oder Metall')
-fig.update_layout(
-    yaxis_title='Anzahl',
-    xaxis_title='Material',
-    showlegend=False
-)
+fig = px.box(daten[['Koerpergewicht_g']],
+    labels={'variable': 'Merkmal', 'value':'Wert'},
+    title='Numerische Merkmale der Pinguine (gemessen in Gramm)')
 fig.show()
 ```
-Im Datensatz sind 111 Proben Metall und 97 Stein. Damit sind 53 % der Proben
-Metall und 47 % Stein, was ungefähr gleichverteilt ist.
+
+Beim Körpergewicht gibt es keine Besonderheiten, die Werte erscheinen plausibel.
 ````
 
-```{admonition} Vorbereitung der Daten für das Training
+```{admonition} Analyse der kategorialen Werte
 :class: tip
-Bereiten Sie die Daten für das maschinelle Lernen vor:
-1. Kodieren Sie die kategoriale Variable Material mit `replace()`.
-2. Trennen Sie die Merkmale (Input X) und die Zielgröße (Output y).
-3. Teilen Sie die Daten in Trainings- und Testdaten im Verhältnis 80:20 auf.
-4. Skalieren Sie - falls notwendig - die Trainingsdaten mit `fit_transform()`
-   und die Testdaten mit `transform()`.
+Untersuchen Sie die kategorialen Daten. Sind es wirklich kategoriale Daten? Prüfen Sie für jedes kategoriale Merkmal die Einzigartigkeit der auftretenden Werte und erstellen Sie ein Balkendiagramm mit den Häufigkeiten.
+
+Kommen alle Pinguin-Arten auf allen Inseln vor?
 ```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown
+:class: dropdown, dropdown
 ```python
-from sklearn.model_selection import train_test_split
+kategoriale_merkmale = ['Art', 'Insel', 'Geschlecht', 'Jahr']
 
-# Kodierung mit Check (sollte [0 1] ausgeben)
-daten['Material'] = daten['Material'].replace({'Stein': '0', 'Metall': '1'}).astype(int)
-print(daten['Material'].unique())
-
-# Aufteilung in Input/Output
-X = daten.drop('Material', axis=1)
-y = daten['Material']
-
-# Split 80:20
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
-# Prüfen der Wertebereiche
-print(X.min().min(), X.max().max())
+for k in kategoriale_merkmale:
+    print(daten[k].unique())
 ```
-Da die Signaldaten alle im Intervall \[0,1\] liegen, brauchen wir die Daten
-nicht skalieren.
+
+Es gibt drei Pinguin-Arten: Adelie, Gentoo und Chinstrap. Sie leben auf drei Inseln: Torgersen, Biscoe und Dream. Es gibt zwei Geschlechter (männlich/weiblich) und die Pinguine wurden in den Jahren 2007, 2008 und 2009 geboren. Bei allen Merkmalen handelt es sich tatsächlich um kategoriale Daten.
+
+```python
+for k in kategoriale_merkmale:
+
+    fig = px.bar(daten[k].value_counts(),
+        labels={'value': 'Anzahl'},
+        title=f'Histogramm des Merkmals {k}')
+    fig.show()
+```
+
+Bei den Jahren und dem Geschlecht gibt es jeweils ungefähr gleich viele
+Pinguine, aber die Arten und die Inseln sind nicht gleich häufig.
+
+```python
+for art in ['Adelie', 'Gentoo', 'Chinstrap']:
+    pinguine_art = daten[ daten['Art'] == art ]
+    print(f'\nArt: {art}')
+    print(pinguine_art['Insel'].value_counts())
+
+```
+
+Die Pinguin-Art Adelie kommt auf allen drei Inseln vor. Die Pinguin-Art Gentoo ist nur auf der Insel Biscoe zu finden, während Chinstrap-Pinguine nur auf der Insel Dream zu finden sind.
 ````
 
-```{admonition} ML-Modell Entscheidungsbaum
+```{admonition} ML-Modell
 :class: tip
-Trainieren Sie einen Entscheidungsbaum und bewerten Sie das trainierte Modell.
+
+Im Folgenden soll die Art der Pinguine anhand der numerischen Merkmale Schnabellaenge_mm, Schnabeltiefe_mm, Flossenlaenge_mm und Koerpergewicht_g klassifiziert werden.
+
+Trainieren Sie nun drei ML-Modelle:
+
+* Entscheidungsbaum (Decision Tree), 
+* Random Forests und 
+* SVM. 
+
+Führen Sie dazu vorab einen Split in Trainings- und Testdaten durch. Verwenden Sie Kreuzvalidierung und/oder Gittersuche, um die Hyperparameter zu justieren. Für welches Modell würden Sie sich entscheiden? Begründen Sie Ihre Wahl.
 ```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown
+:class: dropdown, dropdown
+```python
+X = daten[['Schnabellaenge_mm', 'Schnabeltiefe_mm', 'Flossenlaenge_mm', 'Koerpergewicht_g']]
+
+kodierung = {
+  'Adelie': '0',
+  'Gentoo': '1', 
+  'Chinstrap': '2'
+}
+
+daten['Art'] = daten['Art'].replace(kodierung)
+daten['Art'] = daten['Art'].astype('int')
+y = daten['Art']
+```
+
+```python
+from sklearn.model_selection import GridSearchCV, KFold, train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+```
+
 ```python
 from sklearn.tree import DecisionTreeClassifier
 
-# Instanziierung des Entscheidungsbaums mit Training
-modell_baum = DecisionTreeClassifier()
-modell_baum.fit(X_train,y_train)
+# Festlegung des Suchraumes
+parameter_gitter = {'max_depth': [None, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 50]}
 
-# Bewertung
-score_train = modell_baum.score(X_train, y_train)
-score_test = modell_baum.score(X_test, y_test)
-print(f'Score Trainingsdaten Entscheidungsbaum: {score_train :.2f}')
-print(f'Score Testdaten Entscheidungsbaum: {score_test :.2f}')
-```
-Der Trainingsscore ist 1.00, der Testscore 0.79; ein Zeichen für Overfitting.
-````
+# Konfiguration der Kreuzvalidierung
+kfold = KFold(n_splits=10)
 
-```{admonition} ML-Modell Random Forest
-:class: tip
-Trainieren Sie nun einen Random Forest mit 1, 5, 10, 20, 50 und 100 Bäumen auf
-denselben Daten. Berechnen Sie wieder die Scores für Training und Test. Wie
-unterscheiden sich die Ergebnisse vom einzelnen Entscheidungsbaum? Welches
-Random-Forest-Modell würden Sie wählen?
+# Gittersuche mit Kreuzvalidierung
+entscheidungsbaum = GridSearchCV(DecisionTreeClassifier(), param_grid=parameter_gitter, cv=kfold)
+entscheidungsbaum.fit(X_train, y_train)
+print(entscheidungsbaum.score(X_train, y_train))
+print(entscheidungsbaum.score(X_test, y_test))
 
-Bewerten Sie darüber hinaus mit der Feature Importance, welche Signale am
-wichtigsten sind.
+# Bestes Modell
+print(entscheidungsbaum.best_params_)
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
-for n in [1, 5, 10, 20, 50, 100]:
-    # Instanziierung des Random-Forest-Modells und Training
-    modell_rf = RandomForestClassifier(n_estimators=n, random_state=0)
-    modell_rf.fit(X_train, y_train)
+# Festlegung des Suchraumes
+random_forest_gitter = {'max_depth': [None, 1, 2, 3, 4, 5],
+                        'min_samples_leaf': [1, 2, 3, 4, 5],
+                        'n_estimators': [50, 100, 200]}
 
-    # Bewertung
-    score_train = modell_rf.score(X_train, y_train)
-    score_test = modell_rf.score(X_test, y_test)
-    print(f'Anzahl Entscheidungsbäume: {n}')
-    print(f'Score Training: {score_train :.2f} | Score Test: {score_test :.2f}')
-    print('')
+# Konfiguration der Kreuzvalidierung
+kfold = KFold(n_splits=10)
 
-# bestes RF-Modell wählen
-modell_rf_final = RandomForestClassifier(n_estimators=50, random_state=0)
-modell_rf_final.fit(X_train, y_train)
+# Gittersuche mit Kreuzvalidierung
+random_forest_modell = GridSearchCV(RandomForestClassifier(), param_grid=random_forest_gitter, cv=kfold)
+random_forest_modell.fit(X_train, y_train)
+print(random_forest_modell.score(X_train, y_train))
+print(random_forest_modell.score(X_test, y_test))
 
-# Feature Importance extrahieren
-importance = pd.DataFrame({
-    'Merkmal': X_train.columns,
-    'Feature Importance': modell_rf_final.feature_importances_
-}).sort_values('Feature Importance', ascending=False)
-
-# die 5 wichtigsten Merkmale anzeigen
-importance.head(5)
-```
-Das Random-Forest-Modell ist besser verallgemeinerbar als der Entscheidungsbaum.
-Für einen Random Forest aus 50 Entscheidungsbäumen erhalten wir einen
-Trainingsscore von 1.00 und einen Testscore von 0.88. Noch mehr
-Entscheidungsbäume führen zu keinem besseren Ergebnis, so dass wir dieses
-Modell wählen würden.
-
-Mit dem besten Modell berechnen wir dann die Feature Importance. Am wichtigsten
-sind die Signale Signal09 bis Signal12 und Signal52.
-````
-
-```{admonition} ML-Modelle SVM und finales Modell
-:class: tip
-Trainieren Sie nun sowohl eine lineare SVM als auch eine nichtlineare SVM.
-Ordnen Sie ein: welches ML-Modell würden Sie final wählen?
+# Bestes Modell
+print(random_forest_modell.best_params_)
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
 ```python
 from sklearn.svm import SVC
 
-# Instanziierung einer linearen SVM und Training
-svm_linear = SVC(kernel='linear', random_state=0)
-svm_linear.fit(X_train, y_train)
+svm_gitter = {'kernel': ['linear', 'rbf'],
+              'C': [0.1, 1, 10, 1000]
+} 
 
-# Bewertung lineare SVM
-score_train = svm_linear.score(X_train, y_train)
-score_test = svm_linear.score(X_test, y_test)
-print(f'Score Trainingsdaten lineare SVM: {score_train :.2f}')
-print(f'Score Testdaten lineare SVM: {score_test :.2f}')
+# Konfiguration der Kreuzvalidierung
+kfold = KFold(n_splits=10)
 
-# Instanziierung einer nichtlinearen SVM und Training
-svm_rbf = SVC(kernel='rbf', random_state=0)
-svm_rbf.fit(X_train, y_train)
+# Gittersuche mit Kreuzvalidierung
+svm_modell = GridSearchCV(SVC(), param_grid=svm_gitter, cv=kfold)
+svm_modell.fit(X_train, y_train)
+print(svm_modell.score(X_train, y_train))
+print(svm_modell.score(X_test, y_test))
 
-# Bewertung nichtlineare SVM
-score_train = svm_rbf.score(X_train, y_train)
-score_test = svm_rbf.score(X_test, y_test)
-print(f'Score Trainingsdaten nichtlineare SVM: {score_train :.2f}')
-print(f'Score Testdaten nichtlineare SVM: {score_test :.2f}')
+# Bestes Modell
+print(svm_modell.best_params_)
 ```
-Wir erhalten die folgenden Scores (zusammen mit den vorherigen):
 
-
-| ML-Modell | Score Training | Score Test |
-| --- | --- | --- |
-| Entscheidungsbaum | 1.00 | 0.79 |
-| Random Forest | 1.00 | 0.88 |
-| lineare SVM | 0.86 | 0.86 |
-| nichtlineare SVM (RBF-Kernel) | 0.88 | 0.79 |
-
-Die lineare SVM generalisiert am besten (gleicher Score auf Train/Test), während
-die nichtlineare SVM (mit RBF-Kernel) leichtes Overfitting zeigt (0.88 vs. 0.79)
-
-Obwohl der Random Forest das beste Ergebnis auf den Testdaten erzielt (Testscore
-0.88), entscheiden wir uns nicht für dieses Modell. Der Random Forest besteht
-aus vielen Entscheidungsbäumen und ist dadurch zwar leistungsstark, aber nur
-eingeschränkt interpretierbar.
-
-Die lineare SVM erreicht mit einem Trainings- und Testscore von jeweils 0.86
-eine ähnlich gute Prognosegüte wie der Random Forest, zeigt aber keinerlei
-Overfitting. Außerdem ist sie deutlich einfacher interpretierbar, da die
-Entscheidungsregel auf einem linearen Modell basiert. Die gelernten Gewichte
-geben direkt an, wie stark und in welche Richtung jedes Signal die
-Klassifikation beeinflusst. Das macht das lineare SVM-Modell transparent.
-
-Daher wählen wir als finales Modell die lineare SVM, da sie stabile Ergebnisse
-liefert, gut verallgemeinert und die zugrunde liegende Entscheidungslogik
-nachvollziehbar bleibt.
+RandomForest und SVM erzielen gleich gute Scores bei den Testdaten und sind daher beide sehr gut geeignet, als finales Modell verwendet zu werden.
 ````

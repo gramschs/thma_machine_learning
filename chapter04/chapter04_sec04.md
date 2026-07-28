@@ -15,6 +15,12 @@ kernelspec:
 
 # Übungen
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Daten für die Übungen:
 
 * [12612-0001_de.csv](https://nextcloud.frankfurt-university.de/s/bpZ8TZrzafKqAxq)

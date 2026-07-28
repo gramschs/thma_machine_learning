@@ -14,6 +14,12 @@ kernelspec:
 
 # 8.1 Fehlende Daten
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Realistische Datensätze sind oft unvollständig. In einer Umfrage hat eine Person
 mit einer Frage nichts anfangen können und daher nichts angekreuzt. Oder ein
 Messsensor an der Produktionsanlage ist abends ausgefallen, was erst am nächsten

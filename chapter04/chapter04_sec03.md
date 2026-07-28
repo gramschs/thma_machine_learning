@@ -14,6 +14,12 @@ kernelspec:
 
 # 4.3 Scatterplots und Scattermatrix
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Bei der Datenvisualisierung geht es darum, Daten durch eine Grafik so
 aufzubereiten, dass Muster oder Unregelmäßigkeiten in den Daten entdeckt werden
 können. Dabei kann die visuelle Darstellung der Daten helfen, Muster in den

@@ -14,6 +14,12 @@ kernelspec:
 
 # 9.2 Random Forests
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Im letzten Kapitel haben wir verschiedene Ensemble-Methoden in der Theorie
 kennengelernt: Stacking, Bagging und Boosting. Für die beiden letzteren
 Ensemble-Methoden werden besonders häufig Entscheidungsbäume (Decision Trees)
@@ -174,7 +180,9 @@ model.fit(X,y)
 print(model.feature_importances_)
 ```
 
-Der erste Wert gibt die Feature Importance für das erste Merkmal an und der zweite Wert entsprechend für das zweite Merkmal. Es ist üblich, die Feature Importance als Balkendiagramm zu visualisieren.
+Der erste Wert gibt die Feature Importance für das erste Merkmal an und der
+zweite Wert entsprechend für das zweite Merkmal. Es ist üblich, die Feature
+Importance als Balkendiagramm zu visualisieren.
 
 ```{code-cell} ipython3
 feature_importances = pd.Series(model.feature_importances_, index=['Kilometerstand [km]', 'Preis [EUR]'])

@@ -14,6 +14,12 @@ kernelspec:
 
 # 6.3 Entscheidungsbäume in der Praxis
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Entscheidungsbäume bieten viele Vorteile, haben aber auch Nachteile, die wir in
 diesem Kapitel diskutieren werden. Darüber hinaus lernen wir Methoden kennen,
 um bei Entscheidungsbäumen diese Nachteile zu reduzieren.
@@ -226,7 +232,8 @@ mit
 print(f'Score des Entscheidungsbaumes mit Tiefe 1: {modell_tiefe1.score(X,y)}')
 ```
 
-auch nicht so gut. Daher verwenden wir nun als maximale Tiefe des Entscheidungsbaumes einen Wert von 2.
+auch nicht so gut. Daher verwenden wir nun als maximale Tiefe des
+Entscheidungsbaumes einen Wert von 2.
 
 ```{code-cell}
 modell_tiefe2 = DecisionTreeClassifier(random_state=0, max_depth=2)

@@ -14,6 +14,12 @@ kernelspec:
 
 # 5.3 Daten filtern und gruppieren
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Im vorherigen Kapitel haben wir Autos basierend auf ihrem Kilometerstand
 gruppiert und visualisiert. Während diese Gruppierung automatisch im Hintergrund
 stattfand, werden wir in diesem Kapitel lernen, wie wir direkt auf die

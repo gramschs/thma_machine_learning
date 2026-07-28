@@ -14,6 +14,12 @@ kernelspec:
 
 # Übungen
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Der California-Housing-Datensatz ist ein klassischer Datensatz für
 Regressionsaufgaben im maschinellen Lernen. Er wurde 1990 aus dem US-Census
 extrahiert und enthält Daten zu **Wohnblöcken** in Kalifornien. Ein Wohnblock

@@ -1,284 +1,217 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
 ---
 
-# 11.2 Gittersuche
+# 11.2 Mehrschichtiges Perzeptron
 
-Die Kreuzvalidierung wird selten isoliert verwendet. Sie ist jedoch ein
-unverzichtbares Werkzeug, wenn es darum geht, die Hyperparameter eines Modells
-zu optimieren. In diesem Kapitel vertiefen wir daher zunächst das Verständnis
-der Kreuzvalidierung, bevor wir sie im Rahmen der Gittersuche anwenden.
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie verstehen, dass Daten für die Modellauswahl in Trainingsdaten,
-  **Validierungsdaten** und Testdaten unterteilt werden.
-* Sie sind in der Lage, Hyperparameter mittels Gittersuche und Kreuzvalidierung
-  mithilfe von **GridSearchCV** zu optimieren.
+* Sie können das Konzept eines **künstlichen Neurons** erklären.
+* Sie wissen, was ein **mehrschichtiges Perzeptron** ist und kennen den
+  englischen Begriff **Multilayer Perceptron** (MLP) dafür.
+* Sie können den Begriff **Deep Learning** erklären.
 ```
 
-## Kreuzvalidierung zur Modellauswahl
++++
 
-Im letzten Kapitel haben wir die Kreuzvalidierung eingeführt. Ihr Ziel ist es,
-eine robustere Bewertung der Modellleistung zu ermöglichen. Besonders bei der
-Beurteilung und der Verbesserung der Verallgemeinerungsfähigkeit eines Modells
-(Reduktion von Overfitting), ist die Kreuzvalidierung ein wertvolles Werkzeug.
-In diesem Abschnitt nutzen wir die Kreuzvalidierung, um zwischen zwei Modellen
-zu wählen.
+## Künstliche Neuronen
 
-Aus didaktischen Gründen verwenden wir weiterhin künstliche Daten, die mit der
-Funktion `make_moons()` aus dem Modul `sklearn.datasets` erzeugt werden. Diese
-speichern wir in einem Pandas DataFrame und visualisieren sie anschließend mit
-Plotly Express.
+Im letzten Kapitel haben wir das Perzeptron kennengelernt. Schematisch können
+wir es folgendermaßen darstellen:
 
-```{code-cell}
-import pandas as pd
-import plotly.express as px
-from sklearn.datasets import make_moons
-
-X_array, y_array = make_moons(noise = 0.5, n_samples=100, random_state=3)
-daten = pd.DataFrame({
-    'Merkmal 1': X_array[:,0],
-    'Merkmal 2': X_array[:,1],
-    'Wirkung': y_array
-})
-daten['Wirkung'] = daten['Wirkung'].astype('bool')
-
-fig = px.scatter(daten, x = 'Merkmal 1', y = 'Merkmal 2', color='Wirkung',
-    title='Künstliche Daten')
-fig.show()
+```{figure} pics/fig_12_02_topology_perceptron.svg
+---
+name: fig_12_02_topology_perceptron
+---
+Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz:
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Als nächstes trainieren wir einen Entscheidungsbaum. Da Entscheidungsbäume
-häufig zur Überanpassung (Overfitting) neigen, entscheiden wir uns, die
-Baumtiefe zu begrenzen. Aber welche Baumtiefe ist optimal? Die Baumtiefe ist ein
-Hyperparameter, der vor dem Training des Modells festgelegt wird. Mithilfe der
-Kreuzvalidierung können wir untersuchen, wie sich die Baumtiefe auf die
-Modellqualität auswirkt. Wir testen die Baumtiefen 3, 4, 5 und 6 und geben die
-Scores auf den Testdaten aus, wobei wir uns mit einer for-Schleife die Arbeit
-erleichtern.
+Kurz zusammengefasst funktioniert ein Perzeptron ähnlich wie ein biologisches
+Neuron. Jedes Eingangssignal wird mit einem Gewicht multipliziert. Anschließend
+werden die gewichteten Eingangssignale summiert. Übersteigt die gewichtete Summe
+einen Schwellenwert, feuert sozusagen das Neuron. Das Ausgabesignal wird
+aktiviert.
 
-```{code-cell}
-from sklearn.model_selection import cross_validate, KFold
-from sklearn.tree import DecisionTreeClassifier
+Mathematisch gesehen, werden auf die Eingabedaten zwei mathematische Funktionen
+angewendet:
 
-# Adaption der Daten
-X = daten[['Merkmal 1', 'Merkmal 2']]
-y = daten['Wirkung']
+1. Übertragungsfunktion (hier die Bildung der gewichteten Summe) und
+2. Aktivierungsfunktion (hier die Anwendung der Heaviside-Funktion).
 
-# Vorbereitung der Kreuzvalidierung mit 10 Splits
-kfold = KFold(n_splits=10)
+Dieses Prinzip behalten wir bei, erlauben aber eine größere Auswahl an
+Übertragungs- und Aktivierungsfunktionen, um das Perzeptron auf das sogenannte
+**künstliche Neuron** zu verallgemeinern. Später werden wir die künstlichen
+Neuronen in einem Netz zusammensetzen.
 
-# wiederholte Kreuzvalidierung für Baumtiefe 3, 4, 5 und 6
-for max_tiefe in [3, 4, 5, 6]:
-    modell = DecisionTreeClassifier(max_depth=max_tiefe)
-    cv_results = cross_validate(modell, X,y, cv=kfold)
-    test_scores = cv_results['test_score']
-    print(f'Testscores: {test_scores}')
+```{admonition} Was ist ... ein künstliches Neuron?
+:class: note
+Ein künstliches Neuron verarbeitet Informationen, indem es
+
+1. Eingaben mit Gewichten multipliziert und zusammenaddiert,
+2. eine Aktivierungsfunktion auf die gewichtete Summe anwendet und
+3. das Ergebnis ausgibt.
 ```
 
-Die Ausgabe von 10 Testscores ist jedoch unübersichtlich. Stattdessen berechnen
-wir besser den Mittelwert (Mean) und die Standardabweichung (Standard Deviation)
-der Scores. Dazu importieren wir `mean()` und `std()` aus dem NumPy-Modul und
-passen die `print()`-Anweisung entsprechend an.
+Bei neuronalen Netzen werden vor allem die
+[ReLU-Funktion](https://de.wikipedia.org/wiki/Rectifier_(neuronale_Netzwerke))
+(rectified linear unit) und der [Tangens
+hyperbolicus](https://de.wikipedia.org/wiki/Tangens_hyperbolicus_und_Kotangens_hyperbolicus)
+als Aktivierungsfunktion verwendet, die im Folgenden dargestellt werden.
 
-```{code-cell}
-from numpy import mean, std
+ReLU-Funktion:
 
-for max_tiefe in [3, 4, 5, 6]:
-    modell = DecisionTreeClassifier(max_depth=max_tiefe)
-    cv_results = cross_validate(modell, X,y, cv=kfold)
-    test_scores = cv_results['test_score']
-    print(f'Mittelwert Testscores: {mean(test_scores):.2f}, Standardabweichung: {std(test_scores):.2f}')
+```{figure} pics/fig_12_02_plot_relu_function.svg
+---
+name: fig_12_02_plot_relu_function
+width: 100%
+---
+ReLU-Funktion (Quelle: eigene Darstellung; Lizenz:
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Das beste Ergebnis erzielen wir mit einem Entscheidungsbaum der Tiefe 3. Diesen
-könnten wir nun als finales Modell wählen.
+Tangens hyperbolicus:
 
-Es gibt jedoch ein Problem: Wir haben die Modellauswahl mit den Scores der
-Testdaten begründet, wodurch diese in das Modelltraining eingeflossen sind. Daher
-benötigen wir einen frischen Datensatz, um die Prognosequalität zu testen. Die
-Lösung dafür ist `train_test_split()`.
-
-Zuerst teilen wir die Daten in Trainings- und Testdaten. Dann verwenden wir die
-Kreuzvalidierung auf den Trainingsdaten, um die Hyperparameter zu bewerten. Die
-Kreuzvalidierung teilt die Trainingsdaten erneut in Trainings- und Testdaten
-auf.  Damit diese »internen« Testdaten nicht mit den richtigen Testdaten
-verwechselt werden, nennt man sie auch **Validierungsdaten**. Die Mittelwerte
-der Scores speichern wir in einem Dictionary, um später das beste Modell zu
-ermitteln. Schließlich trainieren wir das beste Modell auf allen Trainingsdaten
-und bewerten es mit den Testdaten.
-
-Das Hyperparameter-Tuning bzw. die Modellwahl mit Kreuzvalidierung funktioniert
-komplett also wie folgt:
-
-```{code-cell}
-from sklearn.model_selection import cross_validate, KFold, train_test_split
-from sklearn.tree import DecisionTreeClassifier
-
-X = daten[['Merkmal 1', 'Merkmal 2']]
-y = daten['Wirkung']
-
-X_train, X_test, y_train, y_test = train_test_split(X,y)
-
-kfold = KFold(n_splits=10)
-
-mean_scores = {}
-for max_tiefe in [3, 4, 5, 6]:
-    modell = DecisionTreeClassifier(max_depth=max_tiefe)
-    cv_results_modell = cross_validate(modell, X_train, y_train, cv=kfold)
-    test_scores = cv_results_modell['test_score']
-    mean_scores[max_tiefe] = mean(test_scores)
-    print(f'Mittelwert Testscores: {mean(test_scores):.2f}, Standardabweichung: {std(test_scores):.2f}')
-
-# Ermitteln der besten Baumtiefe (argmax o.ä. wäre einfacher)
-tiefe = 3
-score = mean_scores[3]
-for t in [4,5,6]:
-    if mean_scores[t] > score:
-        tiefe = t
-        score = mean_scores[t]
-print(f'\nWähle Baumtiefe {tiefe} mit dem besten Score {score:.2f}.')
-
-# Finale Modellauswahl, Training und Bewertung
-finales_modell = DecisionTreeClassifier(max_depth=tiefe)
-finales_modell.fit(X_train, y_train)
-finaler_score = finales_modell.score(X_test, y_test)
-print(f'Testscore finales Modell: {finaler_score:.2f}') 
+```{figure} pics/fig_12_02_plot_tanh_function.svg
+---
+name: fig_12_02_plot_tanh_function
+width: 100%
+---
+Tangens hyperbolicus (Quelle: eigene Darstellung; Lizenz:
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Um die Hyperparameter zu optimieren und das beste Modell zu finden, haben wir
-eine for-Schleife und manuelle Auswahl verwendet. Scikit-Learn bietet jedoch
-eine einfachere Lösung, die wir im nächsten Abschnitt behandeln: die Gittersuche
-mit Kreuzvalidierung **GridSearchCV**.
+Beide Funktionen haben einen glatten Verlauf (keinen harten Sprung wie die
+Heaviside-Funktion). Daher können die Gewichte $w_0, w_1, \ldots, w_n$ mit
+mathematischen Optimierungsverfahren besser bestimmt werden als beim klassischen
+Perzeptron mit der Heaviside-Funktion. Im nächsten Kapitel werden wir sehen, wie
+das in der Praxis mit Scikit-Learn funktioniert. Vorher beschäftigen wir uns mit
+dem Zusammensetzen von vielen Perzeptronen zu einem neuronalen Netz.
 
-## Gittersuche mit Kreuzvalidierung: GridSearchCV
+## Aus Neuronen wird ein Netz
 
-Die Gittersuche mit Kreuzvalidierung wird als **GridSearchCV** aus dem Modul
-`sklearn.model_selection` importiert. Zunächst legen wir fest, welche Parameter
-optimiert werden sollen und welche Werte dafür in Betracht kommen. Technisch
-benötigen wir dafür ein Dictionary, in dem die Schlüssel die Parameternamen und
-die Werte Listen der möglichen Einstellungen sind. In unserem Fall soll die
-Baumtiefe `'max_depth'` des Entscheidungsbaums justiert werden. Wie zuvor in der
-for-Schleife, untersuchen wir die Baumtiefen 3, 4, 5 und 6, die im folgenden
-Dictionary `parameter_gitter` definiert werden.
+Neuronale Netze sind Netze aus einzelnen künstlichen Neuronen. Im Folgenden
+werden wir auf eine mathematisch präzise Beschreibung von neuronalen Netzen
+verzichten und stattdessen das Konzept eines neuronalen Netzes anhand von
+Schemazeichnungen erläutern. Dazu vereinfachen wir zunächst die schematische
+Darstellung des künstlichen Neurons. Zunächst fassen wir die beiden
+mathematischen Operationen »Übertragungsfunktion« (Bilden der gewichteten Summe)
+und »Aktivierungsfunktion« in einem gemeinsamen Kreis in der Mitte zusammen. Die
+Bias-Einheit lassen wir in der Darstellung ebenfalls weg.
 
-```{code-cell}
-from sklearn.model_selection import GridSearchCV
-
-# Festlegung des Suchraumes
-parameter_gitter = {'max_depth': [3, 4, 5, 6]}
+```{figure} pics/fig_12_02_neuron_with_annotations.svg
+---
+width: 100%
+name: fig_12_02_neuron_with_annotations
+---
+Vereinfachte schematische Darstellung eines künstlichen Neurons (Quelle: eigene
+Darstellung; Lizenz: [CC BY-NC-SA
+4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Nun instanziieren wir ein neues `GridSearchCV`-Modell. Als erstes Argument
-übergeben wir das eigentliche Modell, hier also den Entscheidungsbaum, und als
-zweites das Dictionary mit den Hyperparametern. Das dritte Argument ist die
-Methode zur Kreuzvalidierung. Weitere Details können Sie der [Dokumentation
-Scikit-Learn →
-GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV)
-entnehmen.
+Tatsächlich sind sogar häufig Darstellungen verbreitet, bei denen die
+Beschriftungen komplett weggelassen werden.
 
-```{code-cell}
-optimiertes_modell = GridSearchCV(DecisionTreeClassifier(), param_grid=parameter_gitter, cv=kfold)
+```{figure} pics/fig_12_02_neuron_without_annotations.svg
+---
+width: 100%
+name: fig_12_02_neuron_without_annotations
+---
+Symbolbild eines künstlichen Neurons (Quelle: eigene Darstellung;
+Lizenz: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Mit der Methode `.fit()` wird die Gittersuche samt Kreuzvalidierung
-durchgeführt. Dabei werden systematisch alle Parameterkombinationen getestet,
-und das optimierte Modell wird abschließend erneut auf den gesamten
-Trainingsdaten trainiert.
+Mit Hilfe dieser stark vereinfachten Darstellung eines künstlichen Neurons
+zeigen wir nun, wie aus vielen solcher künstlicher Neuronen ein neuronales Netz
+zusammengesetzt wird. In einem ersten Schritt werden die Eingaben für jedes
+Merkmal (in diesem Beispiel vier Merkmale symbolisiert durch hellblaue Kreise)
+gewichtet, aufsummiert und dann wird darauf eine Aktivierungsfunktion angewendet
+(weißer Kreis oben). Diesen Vorgang wiederholen wir mit anderen Gewichten oder
+einer anderen Aktivierungsfunktion, also mit einem zweiten künstlichen Neuron
+(weißer Kreis unten). In einem zweiten Schritt werden die beiden Ergebnisse der
+einzelnen künstlichen Neuronen wiederum verrechnet, um daraus die finale Ausgabe
+zu prognostizieren (dunkelblauer Kreis). Die folgende Schemazeichnung
+verdeutlicht diese Vorgehensweise für vier Merkmale (die Bias-Einheit wurde
+wieder weggelassen).
 
-```{code-cell}
-optimiertes_modell.fit(X_train, y_train)
+```{figure} pics/fig_12_02_multi_layer_perceptron.svg
+---
+width: 100%
+name: fig_12_02_multi_layer_perceptron
+---
+Ein mehrschichtiges Perzeptron (Multilayer Perceptron) (Quelle: eigene
+Darstellung; Lizenz: [CC BY-NC-SA
+4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Mit der Methode `.score()` können wir die Modellgüte sowohl auf den Trainings-
-als auch auf den Testdaten bewerten. Auch die Methode `.predict()` funktioniert
-wie gewohnt.
+Bei dieser Architektur unterscheiden wir drei Arten von Schichten.
 
-```{code-cell}
-opt_score_train = optimiertes_modell.score(X_train, y_train)
-opt_score_test  = optimiertes_modell.score(X_test, y_test)
+1. Die **Eingabeschicht** (auf Englisch: Input Layer) nimmt die Eingabedaten
+   entgegen. Jedes Neuron in der Eingabeschicht entspricht einem Merkmal oder
+   einer Eigenschaft der Eingabedaten.
+2. Die **Ausgabeschicht** (auf Englisch: Output Layer) liefert das Ergebnis der
+   Berechnung. Bei einer binären Klassifikationsaufgabe besteht die
+   Ausgabeschicht beispielsweise aus einem einzigen Neuron.
+3. Zwischen Eingabe- und Ausgabeschicht liegen die **versteckten Schichten**
+   (auf Englisch: Hidden Layers). Diese Schichten heißen versteckt, weil wir von
+   außen nur die Eingabe und die Ausgabe sehen, nicht aber die
+   Zwischenergebnisse in diesen Schichten. Die versteckten Schichten ermöglichen
+   es dem neuronalen Netz, komplexe nichtlineare Zusammenhänge zwischen Eingabe
+   und Ausgabe zu erlernen. Je mehr versteckte Schichten ein neuronales Netz
+   hat, desto komplexere Muster kann es prinzipiell erfassen.
 
-print(f'optimierter Entscheidungsbaum Score Trainingsdaten: {opt_score_train:.2f}')
-print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
+Ab etwa 2-3 versteckten Schichten spricht man von **Deep Learning**.
+
+```{admonition} Mini-Übung
+:class: tip
+Betrachten Sie das mehrschichtige Perzeptron aus der Abbildung oben. Es hat vier
+Eingabeneuronen, eine versteckte Schicht mit zwei Neuronen und ein
+Ausgabeneuron.
+
+1. Wie viele Gewichte verbinden die Eingabeschicht mit der versteckten Schicht?
+2. Wie viele Gewichte verbinden die versteckte Schicht mit der Ausgabeschicht?
+3. Wie viele Bias-Einheiten benötigt das Netz insgesamt?
+4. Berechnen Sie die Gesamtzahl aller Parameter (Gewichte + Bias-Einheiten) des
+   Netzes. Mit 'Parameter' meinen wir alle Zahlen, die das Netz lernen muss,
+   also alle Gewichte und Bias-Einheiten zusammen.
 ```
 
-Zusätzlich zu den Standardmethoden wie `.fit()`, `.predict()` und `.score()`
-können wir mit dem Attribut `best_params_` herausfinden, welche
-Hyperparameter-Kombination am besten abgeschnitten hat.
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. Jedes der 4 Eingabeneuronen ist mit jedem der 2 Neuronen in der versteckten
+   Schicht verbunden: 4 × 2 = 8 Gewichte
+2. Jedes der 2 Neuronen der versteckten Schicht ist mit dem 1 Ausgabeneuron
+   verbunden: 2 × 1 = 2 Gewichte
+3. Jedes Neuron (außer den Eingabeneuronen) benötigt eine Bias-Einheit: 2
+   (versteckte Schicht) + 1 (Ausgabeschicht) = 3 Bias-Einheiten
+4. Gesamtzahl Parameter: 8 + 2 + 3 = 11 Parameter
 
-```{code-cell}
-print(optimiertes_modell.best_params_)
+*Allgemeine Formel:* Zwischen zwei Schichten mit $n$ und $m$ Neuronen gibt es $n
+\times m$ Gewichte plus $m$ Bias-Einheiten.
 ```
 
-In diesem Fall ergibt die Gittersuche, dass die optimale Baumtiefe 3 beträgt.
+Das folgende Video fasst die Struktur eines neuronalen Netzes noch einmal zusammen.
 
-Warum sprechen wir von einer **Gittersuche**? Normalerweise wollen wir nicht nur
-einen Hyperparameter optimieren, sondern mehrere gleichzeitig. Beispielsweise
-könnten wir neben der Baumtiefe auch die minimale Anzahl an Datenpunkten pro
-Blatt (`min_samples_leaf`) optimieren. Dies führt dazu, dass wir jede
-Kombination von `max_depth` mit jedem Wert von `min_samples_leaf` testen. So
-entsteht ein zweidimensionales Gitter, das die Gittersuche effizient durchläuft.
-Wir müssen lediglich das Dictionary entsprechend erweitern. In diesem Beispiel
-werden 4 Baumtiefen und 3 Werte für `min_samples_leaf` kombiniert, was zu
-insgesamt 4 x 3 = 12 Hyperparameter-Kombinationen führt. Da wir 10-fache
-Kreuzvalidierung verwenden, werden insgesamt 120 Modelle trainiert und bewertet.
-
-```{code-cell}
-parameter_gitter = {
-    'max_depth': [3, 4, 5, 6],
-    'min_samples_leaf': [1, 2, 3]
-}
-
-optimiertes_modell = GridSearchCV(DecisionTreeClassifier(), param_grid=parameter_gitter, cv=kfold)
-optimiertes_modell.fit(X_train, y_train)
-
-opt_score_train = optimiertes_modell.score(X_train, y_train)
-opt_score_test  = optimiertes_modell.score(X_test, y_test)
-
-print(f'optimierter Entscheidungsbaum Score Trainingsdaten: {opt_score_train:.2f}')
-print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
-
-print(optimiertes_modell.best_params_)
-```
-
-Auch wenn bei diesem einfachen Beispiel die Unterschiede zwischen den Modellen
-gering sind und die Vorteile der Gittersuche mit Kreuzvalidierung nicht sofort
-ersichtlich werden, ist diese Methode bei größeren Datensätzen und komplexeren
-Modellen ein sehr wertvolles Werkzeug zur Modelloptimierung, bei der alle
-möglichen Kombinationen von Hyperparametern systematisch getestet werden. Dies
-kann jedoch sehr *rechenintensiv* sein, besonders wenn der Suchraum groß ist
-oder komplexe Modelle verwendet werden. Daher unterstützt GridSearchCV die
-*Parallelisierung* der Berechnungen, indem es mehrere Kerne verwendet, um die
-Rechenzeit signifikant zu verkürzen, was besonders bei größeren Datensätzen von
-Vorteil ist.
-
-Eine Alternative zu GridSearchCV ist **RandomizedSearchCV**. Dieses Verfahren
-testet eine zufällige Auswahl von Parametern testet und spart so Zeit, während
-es dennoch gute Ergebnisse liefert. Mehr Details dazu finden Sie in der
-[Dokumentation Scikit-Learn →
-RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV).
-
-```{dropdown} Video "GridSearchCV" von Normalized Nerd
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TvB_3jVIHhg?si=s2jDNKOmqBEcJcAd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```{dropdown} Video "Neuronale Netze" von Plattform Lernende Systeme
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2dBu9wgW2-s"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
 
 ## Zusammenfassung und Ausblick
 
-In diesem Kapitel haben wir erstmals systematisch Hyperparameter optimiert und
-dabei die Gittersuche mit Kreuzvalidierung angewendet. Im nächsten Kapitel
-lernen wir ein weiteres Werkzeug kennen, das nicht nur verschiedene Modelle,
-sondern auch deren Hyperparameter optimiert und anschließend Modellvorschläge
-basierend auf den besten Einstellungen macht.
+Nachdem wir in diesem Kapitel das Konzept eines neuronalen Netzes erklärt haben,
+werden wir im nächsten Kapitel ein neuronales Netz mit Scikit-Learn trainieren.
+Dabei werden wir lernen, wie das Netz die optimalen Gewichte automatisch findet.

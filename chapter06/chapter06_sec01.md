@@ -14,6 +14,12 @@ kernelspec:
 
 # 6.1 Was ist ein Entscheidungsbaum?
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregeln sind
 simpel. Eine Person wählt eine berühmte Person oder eine Figur aus einem Film
 oder Buch, die die Mitspieler:innen erraten müssen. Die Mitspieler:innen

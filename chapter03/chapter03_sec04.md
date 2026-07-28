@@ -54,7 +54,9 @@ Kennzahlen, um Minimum und Maximum zu bestimmen.
 ```python
 import pandas as pd
 
-stud_fh_weiblich = pd.Series(data=studierende_fachhochschulen_weiblich, index=bundeslaender, name='Studentinnen an Fachhochschulen')
+stud_fh_weiblich = pd.Series(
+   data=studierende_fachhochschulen_weiblich, index=bundeslaender,
+   name='Studentinnen an Fachhochschulen')
 stud_fh_weiblich.describe()
 ```
 
@@ -103,11 +105,11 @@ print(stud_uni_maennlich)
 
 Ergebnis: Minimum im Saarland (7806) und Maximum in Nordrhein-Westfalen (235564).
 
-Zusatzfrage: Vermutlich haben auch die anderen beiden Datensätze das Minimum im 
-Saarland und das Maximum in Nordrhein-Westfalen. Begründung: Die Studierendenzahlen 
-hängen stark von der Größe und Bevölkerungszahl des Bundeslandes ab. Das Saarland 
-ist das kleinste Flächenland, Nordrhein-Westfalen das bevölkerungsreichste 
-Bundesland Deutschlands.
+Zusatzfrage: Vermutlich haben auch die anderen beiden Datensätze das Minimum im
+Saarland und das Maximum in Nordrhein-Westfalen. Begründung: Die
+Studierendenzahlen hängen stark von der Größe und Bevölkerungszahl des
+Bundeslandes ab. Das Saarland ist das kleinste Flächenland, Nordrhein-Westfalen
+das bevölkerungsreichste Bundesland Deutschlands.
 ````
 
 ```{admonition} Übung 3.3
@@ -247,10 +249,10 @@ Teil A: Erstellen Sie eine Vergleichstabelle in einer Markdown-Zelle:
 | Studenten Uni | ... | ... | ... | ja/nein |
 
 Teil B: Beantworten Sie folgende Fragen:
-1. An welcher Hochschulart (Uni oder FH) ist die Streuung der Studierendenzahlen 
+1. An welcher Hochschulart (Uni oder FH) ist die Streuung der Studierendenzahlen
    größer?
-2. Bei welchem Datensatz liegt der Median am weitesten von der Mitte zwischen 
-   Q1 und Q3 entfernt? Was bedeutet das?
+2. Bei welchem Datensatz liegt der Median am weitesten von der Mitte zwischen Q1
+   und Q3 entfernt? Was bedeutet das?
 3. Welche Bundesländer tauchen als Ausreißer auf?
 ```
 

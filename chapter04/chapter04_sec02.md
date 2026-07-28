@@ -14,6 +14,12 @@ kernelspec:
 
 # 4.2 Arbeiten mit Tabellendaten
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 In Tabellenkalkulationssoftware ist es möglich, einzelne Zeilen oder Spalten zu
 bearbeiten. Pandas mit seiner Dantestruktur DataFrame bietet diese Möglichkeit
 ebenfalls. Wie auf einzelne Spalten und Zeilen zugegriffen wird und wie die

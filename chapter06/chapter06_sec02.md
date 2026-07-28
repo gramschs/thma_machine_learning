@@ -14,6 +14,12 @@ kernelspec:
 
 # 6.2 Entscheidungsbäume visualisieren und trainieren
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Im letzten Kapitel haben wir gelernt, wie mit Scikit-Learn ein Entscheidungsbaum
 für binäre Klassifikationsaufgaben trainiert wird. In diesem Kapitel werden wir
 uns damit beschäftigen, den trainierten Entscheidungsbaum von Scikit-Learn
@@ -154,7 +160,8 @@ der die höchste Reinheit hat (also den niedrigsten Gini-Impurity-Wert). Gilt da
 für mehrere Splits, dann wird zufällig ein Split ausgewählt. Jedes Training kann
 daher zu einem anderen Entscheidungsbaum führen. Ist dieses Verhalten nicht
 gewünscht, kann der optionale Parameter `random_state=` auf einen Integer
-gesetzt werden, um die Zufallszahlen zu fixieren. Das haben wir auch bereits im vorherigen Kapitel gemacht, damit die Ergebnisse vergleichbar waren.
+gesetzt werden, um die Zufallszahlen zu fixieren. Das haben wir auch bereits im
+vorherigen Kapitel gemacht, damit die Ergebnisse vergleichbar waren.
 
 Neben dem Gini-Impurity-Kriterium gibt es noch weitere Bewertungsmaße, um einen
 Entscheidungsbaum zu trainieren. In Scikit-Learn sind die beiden Alternativen
