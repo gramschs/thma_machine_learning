@@ -7,6 +7,12 @@ kernelspec:
 
 # Übungen
 
+```{admonition} Warnung
+:class: warning
+Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
+Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+```
+
 Gegeben sind folgende Daten zu der Verteilung von Studierenden
 (männlich/weiblich) auf die Hochschularten Universität und Fachhochschulen
 (Hochschulen für angewandte Wissenschaften), Quelle:

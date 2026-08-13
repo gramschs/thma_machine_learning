@@ -241,7 +241,7 @@ vorherigen Code-Zelle überschrieben.
 
 ```{code-cell}
 diagramm = px.box(preise,
-                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'})
+                  labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'})
 diagramm.show()
 ```
 
@@ -251,8 +251,8 @@ auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
 
 ```{code-cell}
 diagramm = px.box(preise,
-                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
-                  title='Verkaufspreise der Autos')
+                  labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'},
+                  title='Verkaufspreise der 10 Autos von Autoscout24.de')
 diagramm.show()
 ```
 
@@ -316,7 +316,7 @@ Lassen wir zuerst alle Punkte anzeigen und setzen also `points='all'`.
 
 ```{code-cell}
 diagramm = px.box(preise,
-                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'},
                   title='Verkaufspreise der Autos mit Einzelpreisen',
                   points='all')
 diagramm.show()
@@ -327,7 +327,7 @@ Ausreißer anzeigen.
 
 ```{code-cell}
 diagramm = px.box(preise,
-                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'},
                   title='Verkaufspreise der Autos mit Ausreißern',
                   points='outliers')
 diagramm.show()
@@ -351,7 +351,7 @@ Nun erstellen wir den Boxplot mit der erweiterten Series erneut:
 
 ```{code-cell}
 diagramm = px.box(preise_neu,
-                  labels={'value': 'Verkaufspreis [EUR]', 'variable': 'Merkmal'},
+                  labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'},
                   title='Verkaufspreise der Autos (mit Porsche)',
                   points='outliers')
 diagramm.show()
