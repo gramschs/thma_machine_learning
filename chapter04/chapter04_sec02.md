@@ -48,12 +48,10 @@ stehen und in den Zeilen die einzelnen Datensätze. Mit den eckigen Klammern und
 dem Indexnamen greifen wir diesmal also nicht nur ein Element heraus, sondern
 gleich eine ganze Spalte.
 
-Falls Sie aus dem vorherigen Kapitel den Datensatz {download}`Download
-autoscout24_xxs.csv
-<https://gramschs.github.io/book_ml4ing/data/autoscout24_xxs.csv>` noch geladen
-haben, können Sie sich mit `.info()` die Spaltenüberschriften, also den Index,
-direkt anzeigen lassen. Ansonsten importieren Sie zuerst Pandas mit seiner
-üblichen Abkürzung pd und laden den Datensatz.
+Falls Sie aus dem vorherigen Kapitel den Datensatz `autoscout24_xxs.csv` noch
+geladen haben, können Sie sich mit `.info()` die Spaltenüberschriften, also den
+Index, direkt anzeigen lassen. Ansonsten importieren Sie zuerst Pandas mit
+seiner üblichen Abkürzung pd und laden den Datensatz.
 
 ```{code-cell}
 import pandas as pd
