@@ -1,0 +1,19 @@
+ID,Material,Farbe,Infill-Muster,Schichthoehe (mm),Drucktemperatur (C),Betttemperatur (C),Druckgeschwindigkeit (mm/s),Infill (%),Wandstaerke (mm),Bauteilvolumen (cm3),Druckzeit (min),Zugfestigkeit (MPa),Erfolgreich,Bemerkungen
+Druck Nr. 1,ABS,transparent,Waben,0.2,248,87,37,30,1.6,121.7,790,28.8,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 2,PETG,transparent,Gitter,0.1,238,70,99,80,2.0,44.2,330,45.0,ja,Erstversuch
+Druck Nr. 3,ASA,grau,Linear,0.25,260,112,82,80,1.2,22.3,80,38.4,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 4,ABS,orange,Gitter,0.2,244,76,87,25,2.0,50.2,130,24.5,nein,Oberflaeche leicht rau
+Druck Nr. 5,PLA,weiß,Linear,0.15,202,61,81,80,1.6,51.7,320,48.3,ja,Oberflaeche leicht rau
+Druck Nr. 6,ASA,transparent,Linear,0.15,254,103,80,20,1.6,97.7,350,24.4,ja,Referenzdruck fuer Serie
+Druck Nr. 7,ABS,orange,Gyroid,0.2,233,92,38,20,1.6,84.6,480,19.9,nein,Referenzdruck fuer Serie
+Druck Nr. 8,ABS,grau,Linear,0.25,235,80,80,50,1.6,113.0,330,24.6,nein,Zweitdruck nach Fehlversuch
+Druck Nr. 9,PLA,schwarz,Waben,0.3,196,56,102,50,0.8,98.0,190,37.4,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 10,PETG,gelb,Gyroid,0.2,228,68,57,15,0.8,65.8,230,25.2,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 11,PETG,rot,Waben,0.1,238,78,84,80,1.2,116.8,1030,40.9,ja,
+Druck Nr. 12,ASA,gelb,Waben,0.3,249,100,32,15,0.8,35.9,150,17.2,ja,Referenzdruck fuer Serie
+Druck Nr. 13,PETG,orange,Gyroid,0.25,232,97,61,80,1.6,17.8,90,42.7,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 14,ABS,transparent,Waben,0.25,254,97,69,10,2.0,26.3,60,19.1,ja,
+Druck Nr. 15,PETG,transparent,Gitter,0.1,233,61,119,60,2.0,105.3,560,44.2,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 16,PLA,weiß,Waben,0.15,210,58,49,60,1.6,72.7,630,49.9,ja,Referenzdruck fuer Serie
+Druck Nr. 17,PETG,grau,Gyroid,0.25,228,78,55,60,2.4,35.2,160,38.7,ja,Oberflaeche leicht rau
+Druck Nr. 18,PLA,rot,Gitter,0.3,204,74,67,50,1.6,77.6,230,37.6,ja,Oberflaeche leicht rau
