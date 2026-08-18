@@ -15,9 +15,10 @@ downloads:
 # 4.1 Datenstruktur DataFrame
 
 Bisher haben wir uns mit Datenreihen beschäftigt. Das Modul Pandas stellt zur
-Verwaltung von Datenreihen die Datenstruktur Series zur Verfügung. In diesem
-Kapitel lernen wir die Datenstruktur **DataFrame** kennen, die die Verwaltung
-von tabellarischen Daten ermöglicht.
+Verwaltung von Datenreihen die Datenstruktur Series zur Verfügung, die wir im
+letzten Kapitel kennengelernt haben. In diesem Kapitel lernen wir die
+Datenstruktur **DataFrame** kennen, die die Verwaltung von tabellarischen Daten
+ermöglicht.
 
 ## Lernziele
 
@@ -137,7 +138,7 @@ angeboten wurden.
 
 Führen Sie dann anschließend die folgende Code-Zelle aus.
 
-```{code-cell}
+```{code-cell} python
 import pandas as pd
 
 tabelle = pd.read_csv('autoscout24_xxs.csv')
@@ -164,7 +165,7 @@ Den Inhalt der Tabelle sehen wir mit der Methode `.head()` (siehe auch
 [Dokumentation →
 head](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html#pandas.DataFrame.head)).
 
-```{code-cell}
+```{code-cell} python
 tabelle.head()
 ```
 
@@ -177,7 +178,7 @@ Spaltennamen haben.
 Wenn wir beispielsweise die ersten 10 Zeilen anzeigen lassen wollen, so
 verwenden wir die Methode `.head()` mit dem Argument 10, also `.head(10)`:
 
-```{code-cell}
+```{code-cell} python
 tabelle.head(10)
 ```
 
@@ -191,7 +192,7 @@ Die Namen stehen in der 1. Spalte, was in Python-Zählweise einer 0 entspricht,
 also setzen wir `index_col=0`. Damit ändern wir die Anzahl der Spalten von 15
 auf 14, da die ID-Spalte nun der Index ist und nicht mehr mitgezählt wird.
 
-```{code-cell}
+```{code-cell} python
 tabelle = pd.read_csv('autoscout24_xxs.csv', index_col=0)
 
 print(f'Anzahl Spalten: {tabelle.shape[1]}')
@@ -203,7 +204,7 @@ Datensatzes, aber welcher Datentyp gesetzt ist und ob die Daten vollständig
 sind, zeigen uns `.shape` und `.head()` nicht. Dafür stellt Pandas die Methode
 `.info()` zur Verfügung. Probieren wir es einfach aus.
 
-```{code-cell}
+```{code-cell} python
 tabelle.info()
 ```
 
@@ -222,7 +223,7 @@ So wie die Methode `.info()` uns einen schnellen Überblick über die prinzipiel
 Struktur eines DataFrame-Objektes gibt, so liefert die Methode `.describe()`
 eine schnelle Übersicht über statistische Kennzahlen.
 
-```{code-cell}
+```{code-cell} python
 tabelle.describe()
 ```
 
