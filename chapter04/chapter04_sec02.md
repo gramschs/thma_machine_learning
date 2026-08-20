@@ -14,12 +14,6 @@ downloads:
 
 # 4.2 Arbeiten mit Tabellendaten
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
-
 In Tabellenkalkulationssoftware ist es möglich, einzelne Zeilen oder Spalten zu
 bearbeiten. Pandas bietet mit der Datenstruktur DataFrame dieselbe Möglichkeit.
 Wie auf einzelne Spalten und Zeilen zugegriffen wird und wie die Daten
@@ -80,14 +74,15 @@ type(farbe)
 ```
 
 Es handelt sich um ein Series-Objekt mit dem Namen Farbe, also dem
-ursprünglichen Spaltenlabel. Das neu erzeugte Series-Objekt kann also
-beispielsweise mit `.head()` angezeigt werden.
+ursprünglichen Spaltenlabel. Da wir bereits mit `.shape`, das 10 Autos im
+Datensatz sind, können wir das neu erzeugte Series-Objekt mit `.head(10)`
+anzeigen lassen:
 
 ```{code-cell} python
-farbe.head()
+farbe.head(10)
 ```
 
-Bei Auswahl mehrerer Spalten mit einer Liste entsteht wieder ein DataFrame, aber
+Bei der Auswahl mehrerer Spalten via Liste entsteht wieder ein DataFrame, aber
 dazu kommen wir gleich. Zunächst widmen wir uns dem Zugriff auf Zeilen und
 Zellen.
 
@@ -148,9 +143,9 @@ print(f'Durchschnittliches Bauteilvolumen: {durchschnitt:.2f} cm3')
 
 Natürlich kann es auch Gründe geben, sich einen einzelnen Datenpunkt mit allen
 Merkmalen herauszugreifen. Oder anders ausgedrückt, vielleicht möchte man in der
-Tabelle eine einzelne **Zeile** auswählen. Dazu gibt es den Indexer `.loc`
-("loc" für "location"). Danach werden wieder eckige Klammern benutzt, wobei
-diesmal der Zeilenindex und nicht der Spaltenname verwendet wird.
+Tabelle eine einzelne **Zeile** auswählen. Dazu gibt es den Indexer `.loc`.
+Dabei steht "loc" für "location". Danach werden wieder eckige Klammern benutzt,
+wobei diesmal der Zeilenindex und nicht der Spaltenname verwendet wird.
 
 Der folgende Code-Schnipsel speichert die Zeile des 4. Autos (= BMW Nr. 1) in
 der Variable `viertes_auto` ab. Wir ermitteln gleich den Datentyp dazu.
