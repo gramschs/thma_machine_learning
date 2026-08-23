@@ -1,0 +1,426 @@
+---
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+downloads:
+  - file: autoscout24_DE_2020.csv
+    title: autoscout24_DE_2020.csv
+  - file: 3ddruck_xxs.csv
+    title: 3ddruck_xxs.csv
+  - file: chapter05_sec01.md
+    title: chapter05_sec01.md
+---
+
+# 5.1 Was sind kategoriale Daten?
+
+In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
+Merkmale der Autos, wie die Marke oder die Farbe, nicht berücksichtigt. In den
+vorherigen Kapiteln konzentrierten sich unsere Analysen hauptsächlich auf
+numerische Werte wie den Kilometerstand. Dies liegt daran, dass es für Daten wie
+Farben oder Automarken keine Rechenoperationen gibt. Neben numerischen Merkmalen
+beeinflussen auch andere Merkmalsarten den Verkaufspreis eines Fahrzeugs. Dazu
+gehören beispielsweise kategoriale Merkmale wie Marke, Farbe oder Getriebe.
+Daneben können Datensätze auch Textmerkmale, etwa freie Bemerkungen, oder
+Zeitmerkmale enthalten. In diesem Kapitel betrachten wir zunächst kategoriale
+Daten.
+
+## Lernziele
+
+```{admonition} Lernziele
+:class: attention
+* [ ] Sie wissen, was **numerische (metrische oder quantitative) Daten** sind.
+* [ ] Sie wissen, was **kategoriale (qualitative) Daten** sind.
+* [ ] Sie können die Methode **.unique()** benutzen, um die eindeutigen Werte
+  eines Pandas-Series-Objektes aufzulisten.
+* [ ] Sie kennen den Unterschied zwischen **ungeordneten** und **geordneten**
+  kategorialen Daten.
+* [ ] Sie können mit der Methode **.value_counts()** die Anzahl der eindeutigen
+  Werte eines Pandas-Series-Objektes bestimmen lassen.
+* [ ] Sie wissen, was der **Modalwert** oder **Modus** eines Datensatzes ist und
+  können diesen mit der Methode **.mode()** bestimmen lassen.
+```
+
+## Was wir bisher hatten: numerische Daten
+
+In den bisherigen Kapiteln lag unser Fokus auf den Verkaufspreisen von Autos.
+Die Methode `.describe()` in Pandas bietet eine schnelle Möglichkeit, einen
+Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
+Interessanterweise berücksichtigt die `describe()`-Methode nur numerische Werte
+(also Zahlen wie Integer und Floats) für die Auswertung. Dennoch bestimmen auch
+die nicht-numerischen Merkmale eines Autos den Verkaufspreis. Die Farbe eines
+Autos beispielsweise beeinflusst häufig die Kaufentscheidung und damit den
+Preis.
+
+Bevor wir uns den nicht-numerischen Daten widmen, vertiefen wir unser
+Verständnis für numerische Daten. Diese werden oft auch als **metrische oder
+quantitative Daten** bezeichnet.
+
+```{admonition} Was sind ... metrische/quantitative/numerische Daten?
+:class: note
+Metrische Daten sind Informationen, die gemessen werden können. Daher können sie
+durch Zahlen (ganze Zahlen, rationale oder reelle Zahlen) auf einer Skala
+dargestellt werden und werden numerische Daten genannt. Ein anderer Name für
+metrische Daten ist der Begriff quantitative Daten. 
+```
+
+Wir betrachten diesmal den großen Datensatz `autoscout24_DE_2020.csv` (Download
+über Moodle oder oben rechts) mit Autoverkaufspreisen von
+[AutoScout24.de](https://www.autoscout24.de), der alle Autos enthält, die im
+Jahr 2020 zugelassen wurden. Ein kurzer Überblick über den Datensatz hilft uns,
+die Art der Daten besser zu verstehen.
+
+```{code-cell} python
+import pandas as pd
+
+data = pd.read_csv('autoscout24_DE_2020.csv')
+data.info()
+```
+
+Das Jahr und der Preis (Euro) sind ganze Zahlen (Integer). Die Leistung der
+Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
+oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
+repräsentiert. Das hätte man auch für den Verbrauch in Spalte 10 oder 11
+erwarten können. Die Angabe der Einheit l/100 km oder g/km in den Zellen hat
+verhindert, dass Pandas diese Informationen als Zahl interpretiert.
+
+Mit numerischen Daten können wir umfangreiche Datenanalysen durchführen. Wir
+können vergleichen, ob zwei Messwerte gleich oder ungleich sind. Wir können
+beurteilen, ob ein Messwert kleiner oder größer als ein anderer ist oder sogar
+das Minimum und das Maximum aller Messwerte bestimmen. Und vor allem können wir
+mit numerischen Daten rechnen. Erst dadurch ist es möglich, einen Mittelwert zu
+bilden oder Streuungsmaße wie Spannweite, Standardabweichung und
+Interquartilsabstand zu berechnen. Solche detaillierten Berechnungen sind nur
+bei numerischen Daten möglich.
+
+```{admonition} Mini-Übung
+:class: tip
+Verwenden Sie den Datensatz `3ddruck_xxs.csv`, der Angaben zu 18
+3D-Druckversuchen enthält.
+
+1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
+2. Wenden Sie `.describe()` auf den gesamten Datensatz an. Für wie viele
+   Spalten werden statistische Kennzahlen berechnet? Woran liegt das?
+3. Wie hoch ist die durchschnittliche Zugfestigkeit über alle Druckversuche?
+```
+
+```{code-cell}
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+
+# Einlesen der csv-Datei mit der Spalte Nummer als Zeilenindex
+druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
+
+# Statistische Kennzahlen
+druckversuche.describe()
+
+# Durchschnittliche Zugfestigkeit
+durchschnitt = druckversuche['Zugfestigkeit (MPa)'].mean()
+print(f'Durchschnittliche Zugfestigkeit: {durchschnitt:.2f} MPa')
+```
+
+1. Auch hier muss `index_col=0` gesetzt werden, da die Spalte "Nummer" die
+   erste Spalte in der csv-Datei ist.
+2. `.describe()` berechnet Kennzahlen für 9 Spalten. Für die übrigen Spalten
+   wie Material, Farbe oder Bemerkungen gibt es keine Rechenoperationen, da es
+   sich um kategoriale oder Freitext-Merkmale handelt.
+3. Die durchschnittliche Zugfestigkeit über alle 18 Druckversuche liegt bei
+   rund 33.71 MPa.
+````
+
+## Kategoriale Daten
+
+Kategoriale Daten sind eine wichtige Art nicht-numerischer Merkmale. Sie
+beschreiben die Zugehörigkeit einer Beobachtung zu einer Kategorie oder Gruppe,
+beispielsweise zu einer Fahrzeugmarke, Farbe oder Getriebeart. Ein weiterer
+Begriff für kategoriale Daten ist **qualitative Daten**.
+
+Nicht jedes nicht-numerische Merkmal ist jedoch kategorial: Freitext in der
+Spalte mit den Bemerkungen oder Zeitangaben gehören ebenfalls zu den
+nicht-numerischen Merkmalen, werden aber anders analysiert und verarbeitet.
+
+Der in Pandas gespeicherte Datentyp einer Spalte, beispielsweise `object`, kann
+einen ersten Hinweis darauf liefern, ob es sich um ein kategoriales Merkmal
+handelt. Entscheidend für die Einordnung als kategoriales Merkmal ist jedoch die
+fachliche Bedeutung im Kontext. So werden beispielsweise Postleitzahlen oder
+Schulnoten oft als Integer gespeichert, sind aber dennoch kategoriale
+Informationen.
+
+Die obige Ausführung der Anweisung `data.info()` hat gezeigt, dass einige Daten
+als `objects` gespeichert sind, was oft auf kategoriale Daten hinweist. Ein
+Blick in die Spalte »Marke« gibt uns weitere Einblicke.
+
+```{code-cell} python
+data['Marke'].head(10)
+```
+
+Die ersten 10 Autos sind offensichtlich Alfa Romeos. Sind vielleicht nur Alfa
+Romeos in der Tabelle enthalten? Wir schauen uns die letzten 10 Einträge an.
+
+```{code-cell} python
+data['Marke'].tail(10)
+```
+
+Die letzten Einträge sind Volvos. Vielleicht sind die Autos nach Marken
+alphabetisch geordnet? Es wäre schön zu wissen, welche verschiedenen Marken im
+Datensatz enthalten sind. Dazu gibt es die Methode `.unique()`. Sie gehört zu
+der Datenstruktur Pandas-Series. Wenn wir eine einzelne Spalte eines
+Pandas-DataFrames herausgreifen, liegt automatisch ein Pandas-Series-Objekt vor,
+so dass wir diese Methode hier benutzen können.
+
+```{code-cell} python
+data['Marke'].unique()
+```
+
+Obwohl der Datensatz insgesamt 18566 Autos umfasst, gibt es nur 41 verschiedene
+Marken. Allgemein gesagt, gibt es für das Merkmal »Marke« 41 Kategorien.
+
+```{admonition} Was sind ... kategoriale/qualitative Daten?
+:class: note
+Kategoriale Daten ordnen Beobachtungen Kategorien oder Gruppen zu. Beispiele
+sind die Marke, die Farbe oder die Getriebeart eines Autos. Oft bezeichnet man
+kategoriale Daten auch als qualitative Daten.
+
+Die konkreten möglichen Werte eines kategorialen Merkmals heißen Kategorien oder
+Ausprägungen. Kategoriale Merkmale können wenige, aber auch sehr viele
+verschiedene Kategorien besitzen. Die Anzahl unterschiedlicher Kategorien wird
+als Kardinalität bezeichnet.
+
+Entscheidend ist nicht der in Pandas gespeicherte Datentyp, sondern die
+fachliche Bedeutung des Merkmals.
+```
+
+Die Anzahl unterschiedlicher Werte eines Merkmals heißt **Kardinalität**. Sie
+ist für die spätere Verarbeitung im maschinellen Lernen wichtig: Ein Merkmal mit
+15 Farben lässt sich meist einfacher verarbeiten als ein Merkmal mit mehreren
+Tausend Modellbezeichnungen.
+
+Mit einer for-Schleife können wir auch alle Merkmale durchgehen, indem wir
+das Attribut `.columns` nutzen, in dem alle Spaltenüberschriften gespeichert
+sind. Damit betrachten wir natürlich auch die numerischen Merkmale.
+
+```{code-cell} python
+for col in data.columns:
+    anzahl_einzigartige_werte = len(data[col].unique())
+    print(f'Die Spalte {col} hat {anzahl_einzigartige_werte} einzigartige Werte.')
+```
+
+Bei unserem Beispiel sind die Merkmale Marke, Modell, Farbe, Getriebe,
+Kraftstoff und Bemerkungen nicht-numerische Eigenschaften. Allerdings hat das
+Merkmal Bemerkungen 16547 verschiedene Werte und ist als Freitext nicht
+kategorial. Die kategorialen Merkmale in dem Beispiel sind also Marke, Modell,
+Farbe, Getriebe und Kraftstoff. Modell hat dabei die höchste Kardinalität, wie
+die eingangs erwähnten „mehreren Tausend Modellbezeichnungen" bereits
+andeuteten.
+
+```{admonition} Mini-Übung
+:class: tip
+Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
+
+1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
+2. Ermitteln Sie mit einer for-Schleife über `.columns`, wie viele
+   einzigartige Werte jede Spalte besitzt.
+3. Welche Spalten sind kategoriale Merkmale? Nennen Sie mindestens drei.
+4. Die Spalte `Bemerkungen` hat in diesem kleinen Datensatz nur 8
+   einzigartige Werte, ähnlich wenige wie `Material`. Ist `Bemerkungen`
+   deshalb ebenfalls kategorial? Begründen Sie anhand des Spalteninhalts, nicht
+   anhand der Kardinalität.
+```
+
+```{code-cell}
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+
+# Einlesen der csv-Datei mit der Spalte Nummer als Zeilenindex
+druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
+
+# Anzahl einzigartiger Werte je Spalte
+for col in druckversuche.columns:
+    anzahl_einzigartige_werte = len(druckversuche[col].unique())
+    print(f'Die Spalte {col} hat {anzahl_einzigartige_werte} einzigartige Werte.')
+
+# Inhalt der Spalte Bemerkungen ansehen
+druckversuche['Bemerkungen'].unique()
+```
+
+1. Auch hier wird `index_col=0` gesetzt, da "Nummer" die erste Spalte ist.
+2. Die Ausgabe zeigt zum Beispiel Material mit 4, Farbe mit 7, Infill-Muster
+   mit 4, Oberflaechenguete mit 3 und Erfolgreich mit 2 einzigartigen Werten.
+   Bis auf Bemerkungen (8 einzigartige Werte, siehe Frage 4) sind alle
+   übrigen Spalten numerisch.
+3. Kategoriale Merkmale sind zum Beispiel Material, Farbe, Infill-Muster,
+   Oberflaechenguete und Erfolgreich.
+4. Nein. Bemerkungen stammt in diesem synthetischen Datensatz aus einem
+   festen Pool von nur 8 vorformulierten Phrasen, deshalb ist die Kardinalität
+   hier niedrig. Inhaltlich handelt es sich trotzdem um Freitext-Notizen wie
+   "Nachbearbeitet, Stuetzstruktur entfernt" und nicht um eine fachlich
+   festgelegte, abgeschlossene Menge von Kategorien. Die niedrige Kardinalität
+   ist also eine Eigenschaft dieses Beispieldatensatzes, kein Beleg dafür,
+   dass die Spalte kategorial ist.
+````
+
+## Kategoriale Daten: ungeordnet oder geordnet?
+
+Innerhalb der kategorialen bzw. qualitativen Daten gibt es wiederum zwei Arten
+von Datentypen:
+
+* ungeordnete kategoriale Daten und
+* geordnete kategoriale Daten.
+
+Ungeordnete kategoriale Daten werden in der Statistik auch **nominalskalierte
+Daten** genannt, während die geordneten kategorialen Daten auch als
+**ordinalskalierte Daten** bezeichnet werden.
+
+Ein typisches Beispiel für ungeordnete kategoriale Daten sind die Farben der
+Autos. Es gibt keine natürliche Reihenfolge für Farben. Wir könnten die Farbe
+alphabetisch anordnen, doch sobald wir eine andere Sprache benutzen, wäre auch
+die Reihenfolge anders. Farben sind ungeordnete Kategorien. Für statistische
+Analysen heißt das, dass nur bestimmt werden kann, ob die Farbe eines Autos in
+eine bestimmte Kategorie fällt oder nicht. Entweder das Auto ist gelb oder es
+ist nicht gelb. Mathematisch gesehen können wir also nur auf Gleichheit oder
+Ungleichheit prüfen. Es gibt keine Vergleiche bzgl. der Reihenfolge und auch
+kein Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
+können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
+wird der **Modus** oder **Modalwert** bestimmt.
+
+```{admonition} Was ist ... der Modus (Modalwert)?
+:class: note
+Der Modus, auch Modalwert genannt, ist der häufigste auftretende Wert in dem
+Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
+für ungeordnete und geordnete kategoriale Daten als auch für numerische Daten.
+Ein Datensatz kann auch mehrere Modi haben, wenn mehrere Werte gleich häufig
+vorkommen.
+```
+
+Pandas bietet eine Methode zur Bestimmung des Modus namens `.mode()`. Diese
+Methode funktioniert wieder nur für ein Pandas-Series-Objekt, so dass zuerst
+eine einzelne Spalte aus der Tabelle herausgeschnitten wird. Auf diese Spalte
+wird dann die Methode angewendet. Gibt es mehrere Modi, so werden alle
+zurückgegeben.
+
+```{code-cell} python
+modus_farben = data['Farbe'].mode()
+print(f'Die häufigste Farbe ist {modus_farben}.')
+```
+
+Und wie häufig kommen die anderen Farben vor? Die Methode `.value_counts()`
+zählt die Anzahl an Autos mit einer bestimmten Farbe.
+
+```{code-cell} python
+data['Farbe'].value_counts()
+```
+
+Als Beispiel für geordnete kategoriale Daten greifen wir auf den Monat der
+Erstzulassung zurück. Genau genommen ist die Spalte »Erstzulassung« ein
+Zeitmerkmal und wird üblicherweise mit eigenen Methoden der Zeitreihenanalyse
+verarbeitet, nicht mit den Methoden für kategoriale Daten. Der Monat allein hat
+jedoch eine besonders anschauliche, natürliche Reihenfolge und eignet sich
+deshalb gut, um das Prinzip geordneter Kategorien zu illustrieren. Wir
+behandeln ihn hier bewusst vereinfacht als ordinales Merkmal.
+
+*Was macht geordnete kategoriale Daten besonders?* Bei ungeordneten kategorialen
+Daten wie Farben gibt es keine sinnvolle Reihenfolge. Bei geordneten
+kategorialen Daten wie Monaten dagegen schon. Da alle Fahrzeuge im Datensatz
+aus demselben Jahr 2020 stammen, ergibt die alphabetische Sortierung der
+Zeichenketten hier zufällig auch die chronologische Reihenfolge.
+
+```{code-cell} python
+# Bei Farben: Sortierung ist willkürlich (alphabetisch)
+print("Farben alphabetisch:")
+print(data['Farbe'].value_counts())
+
+# Bei Monaten: Sortierung ist sinnvoll (chronologisch)
+print("\nMonate chronologisch:")
+print(data['Erstzulassung'].value_counts().sort_index())
+```
+
+Jetzt können wir erkennen: Im ersten Quartal (01/2020, 02/2020, 03/2020) wurden
+deutlich mehr Autos zugelassen als im letzten Quartal. Diese Aussage setzt
+voraus, dass die Kategorien eine **Reihenfolge** haben.
+
+Bei Farben wäre die Aussage "Im ersten Drittel der Farben wurden mehr Autos
+verkauft" sinnlos, denn was ist das "erste Drittel" von Farben?
+
+Das ist der entscheidende Unterschied: Bei nominalen Daten können wir nur
+Häufigkeiten zählen. Bei ordinalen Daten können wir zusätzlich die Reihenfolge
+nutzen, um Aussagen wie 'im ersten Quartal' oder 'mehr als in der zweiten
+Hälfte' zu treffen.
+
+```{admonition} Mini-Übung
+:class: tip
+Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`. Die Spalte
+`Oberflaechenguete` gibt die Oberflächenqualität eines Druckteils an: `fein`,
+`mittel` oder `grob`.
+
+1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
+2. Ist `Oberflaechenguete` ein nominales oder ein ordinales Merkmal?
+   Begründen Sie.
+3. Bestimmen Sie den Modus der Spalte `Oberflaechenguete`.
+4. Lassen Sie sich `.value_counts().sort_index()` für `Oberflaechenguete`
+   ausgeben. Entspricht die ausgegebene Reihenfolge der fachlichen Reihenfolge
+   fein, mittel, grob? Erklären Sie den Unterschied zum Monats-Beispiel aus
+   dem Haupttext.
+```
+
+```{code-cell}
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+
+# Einlesen der csv-Datei mit der Spalte Nummer als Zeilenindex
+druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
+
+# Modus
+modus = druckversuche['Oberflaechenguete'].mode()
+print(modus)
+
+# Sortierte Haeufigkeiten
+print(druckversuche['Oberflaechenguete'].value_counts().sort_index())
+```
+
+1. Auch hier wird `index_col=0` gesetzt, da "Nummer" die erste Spalte ist.
+2. `Oberflaechenguete` ist ordinal. Die drei Ausprägungen fein, mittel und
+   grob haben eine natürliche Reihenfolge, die sich aus der Schichthöhe beim
+   Druck ergibt.
+3. Der Modus ist "grob" (8 von 18 Druckversuchen).
+4. `sort_index()` liefert alphabetisch die Reihenfolge fein, grob, mittel.
+   Das ist nicht die fachliche Reihenfolge fein, mittel, grob, denn "grob"
+   steht alphabetisch vor "mittel". Anders als beim Monats-Beispiel, bei dem
+   die alphabetische Sortierung zufällig auch die chronologische Reihenfolge
+   ergibt, schlägt die alphabetische Sortierung hier fehl. Pandas kennt die
+   fachliche Reihenfolge einer Textspalte nicht von selbst.
+````
+
+## Zusammenfassung und Ausblick
+
+In diesem Kapitel haben wir uns mit dem Unterschied zwischen numerischen
+(metrischen bzw. quantitativen) und kategorialen (qualitativen) Daten
+beschäftigt. Dabei wird bei kategorialen Daten noch zwischen ungeordneten und
+geordneten Kategorien unterschieden. Je nach Art der Daten können
+unterschiedliche statistische Kennzahlen erhoben werden. Bei kategorialen
+Daten kann nur der Modus (Modalwert) berechnet werden, egal ob ungeordnet oder
+geordnet. Nur bei numerischen (metrischen bzw. quantitativen)
+Daten ist es möglich, den Mittelwert und zusätzlich die Streuungsmaße
+(Spannbreite, Standardabweichung und Interquartilsabstand) zu bestimmen. Im
+nächsten Kapitel werden wir uns mit der Visualisierung der kategorialen Daten
+beschäftigen.
