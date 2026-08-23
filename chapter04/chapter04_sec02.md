@@ -228,7 +228,7 @@ print(f'Druck Nr. 7 erfolgreich: {erfolg_7}')
 
 1. Auch hier wird `index_col=0` gesetzt, da "Nummer" die erste Spalte ist.
 2. `druck6` ist eine Series mit dem Zeilenindex `Druck Nr. 6` als Name.
-3. `print(druck6)` zeigt alle 14 Merkmale dieses Druckversuchs an, z. B.
+3. `print(druck6)` zeigt alle 15 Merkmale dieses Druckversuchs an, z. B.
    Material ASA, Farbe transparent, Zugfestigkeit 24.4 MPa.
 4. Die Zugfestigkeit von Druck Nr. 11 beträgt 40.9 MPa.
 5. Druck Nr. 7 war **nicht** erfolgreich (Eintrag "nein").

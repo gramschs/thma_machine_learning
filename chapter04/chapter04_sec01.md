@@ -288,7 +288,7 @@ druckversuche.describe()
 
 1. Ein Blick auf die csv-Daten zeigt, dass die Spalte "Nummer" die erste Spalte
    ist und daher `index_col=0` gesetzt werden muss.
-2. Der Datensatz enthält 18 Zeilen und 14 Spalten.
+2. Der Datensatz enthält 18 Zeilen und 15 Spalten.
 3. Die Spalte `Bemerkungen` hat nur 16 von 18 non-null-Einträgen, bei 2
    Druckversuchen fehlt hier also der Eintrag. Alle anderen Spalten sind
    vollständig.

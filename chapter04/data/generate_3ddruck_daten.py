@@ -51,6 +51,19 @@ INFILL_STUFEN = [10, 15, 20, 25, 30, 40, 50, 60, 80, 100]
 SCHICHTHOEHEN = [0.10, 0.15, 0.20, 0.25, 0.30]
 WANDSTAERKEN = [0.8, 1.2, 1.6, 2.0, 2.4]
 
+# Oberflaechenguete haengt in FDM-Drucken direkt von der Schichthoehe ab
+# (kleinere Schichten -> feinere Oberflaeche) und wird daher deterministisch
+# aus der Schichthoehe abgeleitet, nicht per rng gewuerfelt. So bleiben alle
+# bereits gezogenen Zufallswerte der uebrigen Spalten unveraendert.
+OBERFLAECHENGUETE_ORDNUNG = ["fein", "mittel", "grob"]
+OBERFLAECHENGUETE_NACH_SCHICHTHOEHE = {
+    0.10: "fein",
+    0.15: "fein",
+    0.20: "mittel",
+    0.25: "grob",
+    0.30: "grob",
+}
+
 BEMERKUNGEN_POOL = [
     "Erstversuch",
     "Nachbearbeitet, Stuetzstruktur entfernt",
@@ -115,12 +128,18 @@ def erzeuge_datensatz(n: int, seed: int) -> pd.DataFrame:
 
     bemerkungen = rng.choice(BEMERKUNGEN_POOL, size=n)
 
+    # deterministisch aus Schichthoehe abgeleitet, kein rng-Aufruf
+    oberflaechenguete = np.array(
+        [OBERFLAECHENGUETE_NACH_SCHICHTHOEHE[s] for s in schichthoehe]
+    )
+
     df = pd.DataFrame({
         "Nummer": [f"Druck Nr. {i+1}" for i in range(n)],
         "Material": material,
         "Farbe": farbe,
         "Infill-Muster": infill_muster,
         "Schichthoehe (mm)": schichthoehe,
+        "Oberflaechenguete": oberflaechenguete,
         "Drucktemperatur (C)": drucktemperatur,
         "Betttemperatur (C)": betttemperatur,
         "Druckgeschwindigkeit (mm/s)": geschwindigkeit,
