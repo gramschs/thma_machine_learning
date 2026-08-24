@@ -1,0 +1,286 @@
+---
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+downloads:
+  - file: autoscout24_DE_2020.csv
+    title: autoscout24_DE_2020.csv
+  - file: 3ddruck_xxs.csv
+    title: 3ddruck_xxs.csv
+  - file: chapter05_sec02.md
+    title: chapter05_sec02.md
+---
+
+# 5.2 Daten filtern und gruppieren
+
+Unabhängig davon, ob wir numerische Daten oder kategoriale Daten analysieren
+möchten, wollen wir oft nur eine Teilmenge der Daten auswerten. Beispielsweise
+könnte es sein, dass uns nur Autos interessieren, die weniger als 20 000 Euro
+kosten. Oder wir sind nur an roten Autos interessiert. Wählen wir Datenpunkte
+aus dem Datensatz nach bestimmten Merkmalen aus, sprechen wir von Filtern.
+Diesem Thema widmen wir uns in diesem Kapitel.
+
+## Lernziele
+
+```{admonition} Lernziele
+:class: attention
+* [ ] Sie wissen, dass die Wahrheitswerte `True` (wahr)  oder `False` (falsch)
+  in dem Datentyp **bool** gespeichert werden.
+* [ ] Sie kennen die wichtigsten Vergleichsoperatoren (`<`, `<=`, `>`, `>=`,
+  `==`, `!=`, `in`, `not in`) in Python.
+* [ ] Sie können ein Pandas-DataFrame-Objekt nach einem Wert filtern.
+* [ ] Sie können ein Pandas-DataFrame-Objekt mit den Methoden `groupby()` und
+  `get_group()` gruppieren.
+```
+
+## Daten filtern
+
+Im vorherigen Kapitel haben wir uns den Datensatz `autoscout24_DE_2020.csv`
+angesehen, der Autos enthält, die Mitte 2023 auf der Verkaufsplattform
+[Autoscout24.de](https://www.autoscout24.de) angeboten und die im Jahr 2020
+zugelassen wurden. Diesen Datensatz werden wir nun filtern.
+
+Zuerst laden wir den Datensatz und überprüfen den Inhalt.
+
+```{code-cell} python
+import pandas as pd
+
+data = pd.read_csv('autoscout24_DE_2020.csv')
+data.info()
+```
+
+Wir möchten uns zunächst einem numerischen Merkmal widmen, dem Kilometerstand.
+Ein schneller Blick mit `.describe()` zeigt uns, dass der Kilometerstand von 0
+km bis 435 909 km reicht.
+
+```{code-cell} python
+data.describe()
+```
+
+Wir möchten nun Autos mit einem sehr großen Kilometerstand ausschließen und
+ziehen die Grenze bei 200 000 km. Um alle Autos aus dem Datensatz zu filtern,
+deren Kilometerstand kleiner oder gleich 200 000 km ist, benutzen wir den aus
+der
+Mathematik bekannten Kleiner-gleich-Operator `<=`. Das Ergebnis dieses
+Vergleichs speichern wir in der Variable `bedingung_kilometerstand`.
+
+```{code-cell}
+bedingung_kilometerstand = data['Kilometerstand (km)'] <= 200000
+```
+
+Aber was genau ist in der Variable `bedingung_kilometerstand` enthalten? Schauen
+wir hinein:
+
+```{code-cell}
+print(bedingung_kilometerstand.head())
+print(bedingung_kilometerstand.value_counts())
+```
+
+In dem Series-Objekt sind 18 566 Einträge vom Datentyp `bool` gespeichert. Das
+Series-Objekt enthält nur `True` und `False`, was den Datentyp `bool`
+charakterisiert. In diesem Datentyp können nur zwei verschiedene Werte
+gespeichert werden, nämlich wahr (True) und falsch (False). Oft sind
+Wahrheitswerte das Ergebnis eines Vergleichs, wie das folgende Code-Beispiel
+zeigt:
+
+```{code-cell}
+x = 19
+print(x < 100)
+```
+
+In der Python-Programmierung wird der Datentyp `bool` oft verwendet, um
+Programmcode zu verzweigen. Damit ist gemeint, dass Teile des Programms nur
+durchlaufen und ausgeführt werden, wenn eine bestimmte Bedingung wahr (True)
+ist. In dieser Vorlesung benutzen wir `bool`-Werte hauptsächlich zum Filtern von
+Daten.
+
+```{admonition} Welche Vergleichsoperatoren kennt Python?
+:class: note
+In Python können die mathematischen Vergleichsoperatoren in ihrer gewohnten
+Schreibweise verwendet werden:
+* `<` kleiner als
+* `<=` kleiner als oder gleich
+* `>` größer als
+* `>=` größer als oder gleich
+* `==` gleich (`=` ist der Zuweisungsoperator, nicht mit Gleichheit
+  verwechseln!)
+* `!=` ungleich
+
+Darüber hinaus kann mit `in` oder `not in` getestet werden, ob ein Element in
+einer Liste ist oder eben nicht. Für eine Pandas-Spalte verwenden wir zur
+Auswahl mehrerer Werte meist die Methode `.isin()`.
+```
+
+Aber was machen wir jetzt mit diesem Series-Objekt? Wir können es als Index
+für den ursprünglichen Datensatz benutzen. Die Zeilen, in denen `True`
+steht, werden übernommen, die anderen verworfen.
+
+```{code-cell}
+autos_bis_200000km = data[bedingung_kilometerstand]
+autos_bis_200000km.info()
+```
+
+Von den 18 566 Autos wurden 18 525 Autos übernommen. Ist denn die Filterung
+geglückt? Wir verschaffen uns mit der `.describe()`-Methode einen schnellen
+Überblick.
+
+```{code-cell}
+autos_bis_200000km.describe()
+```
+
+Der maximale Eintrag für die Spalte `Kilometerstand (km)` ist 199 000 km. Mit dem
+Tilde-Operator `~` können wir das Pandas-Series-Objekt
+`bedingung_kilometerstand` in das Gegenteil umwandeln. Damit können wir also die
+Autos mit einem Kilometerstand über 200 000 km auswählen.
+
+```{code-cell}
+autos_ueber_200000km = data[~bedingung_kilometerstand]
+autos_ueber_200000km.info()
+```
+
+41 Autos, die 2020 zugelassen wurden, sollten Mitte 2023 mit einem
+Kilometerstand von mehr als 200 000 km verkauft werden. Schauen wir uns die
+Statistik an.
+
+```{code-cell}
+autos_ueber_200000km.describe()
+```
+
+Und was sind das für Autos?
+
+```{code-cell}
+autos_ueber_200000km.head(10)
+```
+
+```{admonition} Mini-Übung
+:class: tip
+Filtern Sie den Datensatz so, dass nur Autos mit einem Preis zwischen 
+10 000 und 30 000 Euro übrig bleiben. Wie viele Autos erfüllen diese 
+Bedingung? Tipp: Sie können zwei Bedingungen mit `&` (und) verknüpfen.
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+bedingung_preis = (data['Preis (Euro)'] >= 10000) & (data['Preis (Euro)'] <= 30000)
+autos_mittlerer_preis = data[bedingung_preis]
+print(f"Anzahl Autos: {len(autos_mittlerer_preis)}")
+```
+Es gibt 11 793 Autos in dieser Preisklasse.
+
+Wichtig: Die Klammern um die einzelnen Bedingungen sind notwendig!
+````
+
+## Daten gruppieren
+
+Eine Filterung nach Kilometerstand ermöglicht es uns, die Autos in zwei
+Datensätze zu teilen: Autos mit bis zu 200 000 km Laufleistung und jene mit mehr
+als 200 000 km (hierzu kann der Tilde-Operator (~) verwendet werden).
+
+Wenden wir nun diese Technik an, um die Fahrzeuge basierend auf ihrer Marke zu
+trennen. Ein Beispiel: Um alle "Audi"-Fahrzeuge zu extrahieren, verwenden wir
+den folgenden Code:
+
+```{code-cell}
+bedingung_audi = data['Marke'] == 'audi'
+audis = data[bedingung_audi]
+audis.info()
+```
+
+Diese Bedingung erfüllen 1 190 Autos. Der Gesamtdatensatz enthält jedoch 41
+unterschiedliche Automarken. Es wäre ineffizient, für jede Marke eine separate
+Filterung durchzuführen. Deshalb bietet Pandas die `.groupby()`-Methode, die es
+erlaubt, die Daten automatisch nach den einzigartigen Einträgen einer Spalte zu
+gruppieren:
+
+```{code-cell}
+autos_nach_marke = data.groupby('Marke')
+type(autos_nach_marke)
+```
+
+Das Resultat ist eine spezielle Pandas-Datenstruktur namens `DataFrameGroupBy`.
+Auf dieses Objekt sind nicht alle bekannten DataFrame-Methoden anwendbar, aber
+beispielsweise die `.describe()`-Methode darf verwendet werden:
+
+```{code-cell}
+autos_nach_marke.describe()
+```
+
+Für jede Automarke werden nun für jede Spalte mit numerischen Informationen die
+statistischen Kennzahlen ermittelt. Die entstehende Tabelle ist etwas
+unübersichtlich. Besser ist daher, sich eine einzelne statistische Kennzahl für
+eine bestimmte Spalte ausgeben zu lassen. Im Folgenden ermitteln wir den
+durchschnittlichen Preis pro Automarke.
+
+```{code-cell}
+durchschnittspreis_pro_marke = autos_nach_marke['Preis (Euro)'].mean()
+
+# Visualisierung
+import plotly.express as px
+fig = px.bar(durchschnittspreis_pro_marke, 
+             title='Durchschnittlicher Preis pro Automarke',
+             labels = {'value': 'Preis [EUR]'})
+fig.show()
+```
+
+Eine sehr wichtige Methode der GroupBy-Datenstruktur ist die
+`get_group()`-Methode. Damit können wir ein bestimmtes DataFrame-Objekt aus dem
+GroupBy-Objekt extrahieren:
+
+```{code-cell}
+audis_alternativ = autos_nach_marke.get_group('audi')
+audis_alternativ.info()
+```
+
+In der Variablen `audis_alternativ` steckt nun der gleiche Datensatz wie in der
+Variablen `audis`, den wir bereits durch das Filtern des ursprünglichen
+Datensatzes extrahiert haben. Beide Methoden führen zum gleichen Ergebnis. Die
+Filterung mit Bedingungen ist direkter und oft intuitiver. Die Gruppierung mit
+`.groupby()` und `.get_group()` ist besonders nützlich, wenn wir statistische
+Analysen gruppenweise durchführen möchten.
+
+```{admonition} Mini-Übung
+:class: tip
+Gruppieren Sie die Autos nach 'Kraftstoff' und berechnen Sie den 
+durchschnittlichen Preis für jede Kraftstoffart. Welche Kraftstoffart 
+ist im Durchschnitt am teuersten?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+autos_nach_kraftstoff = data.groupby('Kraftstoff')
+durchschnittspreis = autos_nach_kraftstoff['Preis (Euro)'].mean()
+print(durchschnittspreis.sort_values(ascending=False))
+```
+Die teuerste Kraftstoffart im Durchschnitt ist Hybrid (Elektro/Diesel). Einträge
+ohne Angabe vernachlässigen wir hier.
+````
+
+## Wann filtern, wann gruppieren?
+
+Wir *filtern*, wenn wir einen Ausschnitt der Daten analysieren wollen. Zum
+Beispiel könnten wir nur die Audis untersuchen wollen. Das Ergebnis ist ein
+neuer DataFrame mit den gefilterten Zeilen. Wenn wir jedoch alle Kategorien
+vergleichen wollen, nutzen wir die *Gruppierung*. Beispielsweise könnten wir die
+Durchschnittspreise pro Marke berechnen wollen.
+
+Beide Methoden können auch kombiniert werden. Wir können auch erst gruppieren
+und dann eine spezifische Gruppe mit `.get_group()` extrahieren. Dies ist
+besonders nützlich, wenn wir die Gruppierung für mehrere Analysen
+wiederverwenden möchten.
+
+## Zusammenfassung und Ausblick
+
+In diesem Kapitel haben wir die Technik des Datenfilterns kennengelernt. Um
+spezifische Einträge aus einem Datensatz basierend auf einem bestimmten Wert zu
+extrahieren, nutzen wir Vergleichsoperationen und verwenden das resultierende
+Series-Objekt als Index. Wenn das Ziel darin besteht, Daten anhand der
+einzigartigen Werte einer Spalte zu gruppieren, dann ist die Kombination von
+`.groupby()` und `.get_group()` oft der effizienteste Weg. Damit haben wir ein
+wichtiges Werkzeug kennengelernt, um Datensätze gezielt einzugrenzen und zu
+vergleichen. Im nächsten Kapitel wenden wir uns der Visualisierung kategorialer
+Daten zu und lernen, wie sich Barplots von Histogrammen unterscheiden.
