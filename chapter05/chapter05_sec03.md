@@ -1,18 +1,18 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: autoscout24_DE_2020.csv
+    title: autoscout24_DE_2020.csv
+  - file: 3ddruck_xxs.csv
+    title: 3ddruck_xxs.csv
+  - file: chapter05_sec03.md
+    title: chapter05_sec03.md
 ---
 
-# 5.3 Daten filtern und gruppieren
+# 5.3 Barplots und Histogramme
 
 ```{admonition} Warnung
 :class: warning
@@ -20,38 +20,48 @@ Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
 Vorlesung im WiSe 2026/27 zur Verfügung stehen.
 ```
 
-Im vorherigen Kapitel haben wir Autos basierend auf ihrem Kilometerstand
-gruppiert und visualisiert. Während diese Gruppierung automatisch im Hintergrund
-stattfand, werden wir in diesem Kapitel lernen, wie wir direkt auf die
-gruppierten Daten zugreifen und zusätzliche Analysen durchführen können.
+Barplots (Balken- oder Säulendiagramme) sind die am häufigsten verwendeten
+Visualisierungen für kategoriale Daten. In diesem Kapitel lernen wir, wie mit
+Plotly ein Barplot erstellt und von einem Histogramm unterschieden wird.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie wissen, dass die Wahrheitswerte `True` (wahr)  oder `False` (falsch) in
-  dem Datentyp **bool** gespeichert werden.
-* Sie kennen die wichtigsten Vergleichsoperatoren (`<`, `<=`, `>`, `>=`, `==`,
-  `!=`, `in`, `not in`) in Python.
-* Sie können ein Pandas-DataFrame-Objekt nach einem Wert filtern.
-* Sie können ein Pandas-DataFrame-Objekt mit den Methoden `groupby()` und
-  `get_group()` gruppieren.
+* Sie kennen **Barplots** zur Visualisierung kategorialer Daten und können 
+  Säulen- und Balkendiagramme unterscheiden.
+* Sie können mit **px.bar()** Barplots erstellen und anpassen.
+* Sie wissen, wann **Histogramme** statt Barplots verwendet werden.
+* Sie können mit **px.histogram()** Histogramme erstellen und die Anzahl 
+  der Bins sinnvoll wählen.
 ```
 
-## Daten filtern
+## Barplots
 
-Im vorherigen Kapitel haben wir die Kilometerstände von Autos untersucht, die im
-Jahr 2020 zugelassen und Mitte 2023 auf Autoscout24.de angeboten wurden. Bei der
-Kategorisierung der Kilometerstände fiel auf, dass Fahrzeuge mit einer
-Laufleistung von über 200000 km selten sind. Trotzdem beeinflusste dies die
-Aufteilung in zehn gleichmäßige Gruppen, die von 0 km bis 435909 km reichten,
-erheblich. Um eine genauere Analyse zu ermöglichen, wäre es sinnvoll, Fahrzeuge
-mit einer Laufleistung von bis zu 200.000 km in den Fokus zu nehmen und die
-Ausreißer auszuschließen. Daher widmen wir uns in diesem Kapitel der Filterung
-von tabellarischen Datensätzen mithilfe von Pandas.
+Im letzten Kapitel haben wir uns mit kategorialen (qualitativen) Daten
+auseinandergesetzt. Um kategoriale Daten zu visualisieren und zu vergleichen,
+eignet sich besonders der **Barplot**. Ein Barplot zeigt numerische Werte (z.B.
+Anzahlen oder Durchschnittswerte) für verschiedene Kategorien an.
 
-Zuerst laden wir den Datensatz `autoscout24_DE_2020.csv` und überprüfen den
-Inhalt.
+Bei der Visualisierung werden prinzipiell zwei Varianten unterschieden. Zum
+einen können die Kategorien entlang der x-Achse aneinandergereiht werden. Die
+Höhe der Rechtecke repräsentiert dann den Zahlenwert dieser Kategorie. Da die
+Rechtecke an Säulen erinnern, wird diese Variante **Säulendiagramm** genannt.
+Die andere Möglichkeit ist, die Kategorien untereinander entlang der y-Achse
+aufzuführen. Dann ist die Länge der Rechtecke repräsentativ für den Zahlenwert
+dieser Kategorie. Diese Variante wird **Balkendiagramm** genannt.
+
+```{admonition} Was ist ... ein Barplot?
+:class: note
+Ein Barplot ist ein Diagramm, das numerische Werte für verschiedene Kategorien 
+visualisiert. Jede Kategorie wird durch die Höhe oder Länge eines Rechtecks 
+repräsentiert, das den zugehörigen numerischen Wert darstellt.
+```
+
+Probieren wir Barplots am Beispiel der Autoscout24-Verkaufspreise für Autos aus,
+die 2020 zugelassen wurden ({download}`Download autoscout24_DE_2020.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv>`). Zuerst
+laden wir die Daten und verschaffen uns einen Überblick.
 
 ```{code-cell}
 import pandas as pd
@@ -61,251 +71,154 @@ data = pd.read_csv(url)
 data.info()
 ```
 
-Um die Autos mit einem Kilometerstand von bis zu 200000 km zu filtern,
-vergleichen wir die entsprechende Spalte mit dem Wert 200000, indem wir den aus
-der Mathematik bekannten Kleiner-gleich-Operator `<=` benutzen. Das Ergebnis
-dieses Vergleichs speichern wir in der Variable `bedingung_kilometerstand`.
+Mit der Methode `.value_counts()` lassen wir Python die Anzahl der Autos pro
+Marke bestimmen.
 
 ```{code-cell}
-bedingung_kilometerstand = data['Kilometerstand (km)'] <= 200000
+anzahl_pro_marke = data['Marke'].value_counts()
+print(anzahl_pro_marke)
 ```
 
-Aber was genau ist in der Variable `bedingung_kilometerstand` enthalten? Schauen
-wir uns den Datentyp an:
+Die Methode `.value_counts()` sortiert die Einträge standardmäßig von der
+höchsten zur niedrigsten Anzahl.
+
+Mit nur wenigen Zeilen Code können wir mit der Funktion `bar()` aus dem
+Plotly-Express-Modul eine Visualisierung erstellen. Zuerst importieren wir das
+Modul, dann erzeugen wir das Diagramm mit `bar()` und zuletzt lassen wir das
+Diagramm mit `show()` anzeigen. Mittels der Option `orientation='h'` erzeugen
+wir ein Balkendiagramm mit horizontaler Ausrichtung.
 
 ```{code-cell}
-type(bedingung_kilometerstand)
-```
-
-Offensichtlich handelt es sich um ein Pandas-Series-Objekt. Für weitere
-Informationen können wir die `.info()`-Methode aufrufen:
-
-```{code-cell}
-bedingung_kilometerstand.info()
-```
-
-In dem Series-Objekt sind 18566 Einträge vom Datentyp `bool` gespeichert. Diesen
-Datentyp haben wir bisher nicht kennengelernt. Wir lassen die ersten fünf
-Einträge ausgeben:
-
-```{code-cell}
-bedingung_kilometerstand.head()
-```
-
-Sind alle Einträge mit dem Wert `True` gefüllt? Wie viele und vor allem welche
-einzigartige Einträge gibt es in diesem Series-Objekt?
-
-```{code-cell}
-bedingung_kilometerstand.unique()
-```
-
-Das Series-Objekt enthält nur `True` und `False`, was den Datentyp `bool`
-charakterisiert. In diesem Datentyp können nur zwei verschiedene Werte
-gespeichert werden, nämlich wahr (True) und falsch (False). Oft sind
-Wahrheitswerte das Ergebnis eines Vergleichs, wie das folgende Code-Beispiel
-zeigt:
-
-```{code-cell}
-x = 19
-print(x < 100)
-```
-
-In der Python-Programmierung wird der Datentyp `bool` oft verwendet, um
-Programmcode zu verzweigen. Damit ist gemeint, dass Teile des Programms nur
-durchlaufen und ausgeführt werden, wenn eine bestimmte Bedingung wahr (True)
-ist. In dieser Vorlesung benutzen wir `bool`-Werte hauptsächlich zum Filtern von
-Daten.
-
-```{admonition} Welche Vergleichsoperatoren kennt Python?
-:class: note
-In Python können die mathematischen Vergleichsoperatoren in ihrer gewohnten
-Schreibweise verwendet werden:
-* `<` kleiner als
-* `<=` kleiner als oder gleich 
-* `>` größer als
-* `>=` größer als oder gleich
-* `==` gleich (`=` ist der Zuweisungsoperator, nicht mit Gleichheit
-  verwechseln!)
-* `!=` ungleich 
-
-Darüber hinaus kann mit `in` oder `not in` getestet werden, ob
-ein Element in einer Liste ist oder eben nicht.
-```
-
-Aber was machen wir jetzt mit diesem Series-Objekt? Wir können es als Index
-benutzen für den ursprünglichen Datensatz benutzen. Die Zeilen, in denen `True`
-steht, werden übernommen, die anderen verworfen.
-
-```{code-cell}
-autos_bis_200000km = data[bedingung_kilometerstand]
-autos_bis_200000km.info()
-```
-
-Von den 18566 Autos wurden 18525 Autos übernommen. Ist denn die Filterung
-geglückt? Wir verschaffen uns mit der `.describe()`-Methode einen schnellen
-Überblick.
-
-```{code-cell}
-autos_bis_200000km.describe()
-```
-
-Der maximale Eintrag für die Spalte `Kilometerstand (km)` ist 199000 km. Mit dem
-Tilde-Operator `~` können wir das Pandas-Series-Objekt
-`bedingung_kilometerstand` in das Gegenteil umwandeln. Damit können wir also die
-Autos mit einem Kilometerstand über 200.000 km herausfiltern.
-
-```{code-cell}
-autos_ab_200000km = data[~bedingung_kilometerstand]
-autos_ab_200000km.info()
-```
-
-41 Autos, die 2020 zugelassen wurden, sollten Mitte 2023 mit einem
-Kilometerstand von mehr als 200000 km verkauft werden. Schauen wir uns die
-Statistik an.
-
-```{code-cell}
-autos_ab_200000km.describe()
-```
-
-Und was sind das für Autos?
-
-```{code-cell}
-autos_ab_200000km.head(10)
-```
-
-```{admonition} Mini-Übung
-:class: tip
-Filtern Sie den Datensatz so, dass nur Autos mit einem Preis zwischen 
-10.000 und 30.000 Euro übrig bleiben. Wie viele Autos erfüllen diese 
-Bedingung? Tipp: Sie können zwei Bedingungen mit `&` (und) verknüpfen.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bedingung_preis = (data['Preis (Euro)'] >= 10000) & (data['Preis (Euro)'] <= 30000)
-autos_mittlerer_preis = data[bedingung_preis]
-print(f"Anzahl Autos: {len(autos_mittlerer_preis)}")
-```
-Es gibt 11.793 Autos in dieser Preisklasse.
-
-Wichtig: Die Klammern um die einzelnen Bedingungen sind notwendig!
-````
-
-## Daten gruppieren
-
-Eine Filterung nach Kilometerstand ermöglicht es uns, die Autos in zwei
-Datensätze zu teilen: Autos mit bis zu 200000 km Laufleistung und jene mit mehr
-als 200000 km (hierzu kann der Tilde-Operator (~) verwendet werden).
-
-Wenden wir nun diese Technik an, um die Fahrzeuge basierend auf ihrer Marke zu
-trennen. Ein Beispiel: Um alle "Audi"-Fahrzeuge zu extrahieren, verwenden wir
-den folgenden Code:
-
-```{code-cell}
-bedingung_audi = data['Marke'] == 'audi'
-audis = data[bedingung_audi]
-audis.info()
-```
-
-Diese Bedingung erfüllen 1.190 Autos. Der Gesamtdatensatz enthält jedoch 41
-unterschiedliche Automarken. Es wäre ineffizient, für jede Marke eine separate
-Filterung durchzuführen. Deshalb bietet Pandas die `.groupby()`-Methode, die es
-erlaubt, die Daten automatisch nach den einzigartigen Einträgen einer Spalte zu
-gruppieren:
-
-```{code-cell}
-autos_nach_marke = data.groupby('Marke')
-type(autos_nach_marke)
-```
-
-Das Resultat ist eine spezielle Pandas-Datenstruktur namens `DataFrameGroupBy`.
-Auf dieses Objekt sind nicht alle bekannten DataFrame-Methoden anwendbar, aber
-beispielsweise die `.describe()`-Methode darf verwendet werden:
-
-```{code-cell}
-autos_nach_marke.describe()
-```
-
-Für jede Automarke werden nun für jede Spalte mit numerischen Informationen die
-statistischen Kennzahlen ermittelt. Die entstehende Tabelle ist etwas
-unübersichtlich. Besser ist daher, sich die statistischen Kennzahlen einzeln
-ausgeben zu lassen. Im Folgenden ermitteln wir die Mittelwerte der numerischen
-Informationen nach Automarke. Ohne das Argument `numeric_only=True` würde Pandas
-versuchen, auch die nicht-numerischen Spalten (wie 'Marke' oder 'Farbe') zu
-mitteln, was zu einer Fehlermeldung führen würde. Mit diesem Argument wird die
-Operation nur auf numerische Spalten angewendet.
-
-```{code-cell}
-durchschnittspreis_pro_marke = autos_nach_marke['Preis (Euro)'].mean()
-
-# Visualisierung
 import plotly.express as px
-fig = px.bar(durchschnittspreis_pro_marke, 
-             title='Durchschnittlicher Preis pro Automarke',
-             labels = {'value': 'Preis [EUR]'})
+
+saeulendiagramm = px.bar(anzahl_pro_marke)
+saeulendiagramm.show()
+
+balkendiagramm = px.bar(anzahl_pro_marke, orientation='h')
+balkendiagramm.show()
+```
+
+Obwohl Plotly Express bereits eine ansprechende Visualisierung bietet, könnten
+die automatisch generierten Beschriftungen "index", "value" und "variable"
+verbessert werden. Außerdem sollte ein Diagrammtitel hinzugefügt werden. Der
+Titel kann direkt in der `bar()`-Funktion über das `title=` Argument gesetzt
+werden. Für die Achsenbeschriftungen und den Legendentitel verwenden wir die
+Funktion `update_layout()`. Die Argumente `xaxis_title=` und `yaxis_title=`
+modifizieren die Beschriftung der x- und y-Achse. Mit `legend_title=` wird der
+Titel der Legende neu beschriftet.
+
+```{code-cell}
+fig = px.bar(anzahl_pro_marke, title='Autoscout24 (Zulassungsjahr 2020)')
+fig.update_layout(
+    xaxis_title='Marke',
+    yaxis_title='Anzahl Autos',
+    legend_title='Anzahl Autos pro Marke',
+)
 fig.show()
 ```
 
-Eine sehr wichtige Methode der GroupBy-Datenstruktur ist die
-`get_group()`-Methode. Damit können wir ein bestimmtes DataFrame-Objekt aus dem
-GroupBy-Objekt extrahieren:
+## Histogramm
+
+Während Barplots in erster Linie kategoriale Daten visualisieren, dienen
+Histogramme zur Darstellung numerischer Daten. Ein Barplot zeigt typischerweise
+die Anzahl der Werte pro Kategorie. Bei numerischen Daten wäre eine solche
+Darstellung oft nicht sinnvoll. Nehmen wir als Beispiel die Kilometerstände von
+Autos. Wir lassen zuerst mit der Methode `.unique()` die verschiedenen
+Kilometerstände bestimmen. Das Ergebnis ist ein sogenanntes NumPy-Array, das
+hier wie eine Liste benutzt werden kann. Mit Hilfe der `len()`-Funktion können
+wir die Anzahl der Einträge berechnen.
 
 ```{code-cell}
-audis_alternativ = autos_nach_marke.get_group('audi')
-audis_alternativ.info()
+kilometerstaende = data['Kilometerstand (km)'].unique()
+anzahl_kilometerstaende = len(kilometerstaende)
+print(f'Es gibt {anzahl_kilometerstaende} verschiedene Kilometerstände.')
 ```
 
-In der Variablen `audis_alternativ` steckt nun der gleiche Datensatz wie in der
-Variablen `audis`, den wir bereits durch das Filtern des ursprünglichen
-Datensatzes extrahiert haben. Beide Methoden führen zum gleichen Ergebnis. Die
-Filterung mit Bedingungen ist direkter und oft intuitiver. Die Gruppierung mit
-`.groupby()` und `.get_group()` ist besonders nützlich, wenn wir mehrere Gruppen
-nacheinander untersuchen möchten, da wir die Gruppierung nur einmal durchführen
-müssen.
+Mit über 10.000 verschiedenen Kilometerständen wäre eine direkte Visualisierung
+nicht zielführend. Um dennoch eine sinnvolle Analyse durchzuführen, können wir
+den Bereich der Kilometerstände in Intervalle einteilen. Dazu bestimmen wir das
+Minimum und das Maximum der Kilometerstände.
+
+```{code-cell}
+minimaler_kilometerstand = data['Kilometerstand (km)'].min()
+maximaler_kilometerstand = data['Kilometerstand (km)'].max()
+
+print(f'minimaler Kilometerstand: {minimaler_kilometerstand}')
+print(f'maximaler Kilometerstand: {maximaler_kilometerstand}')
+```
+
+Die Daten reichen von Neuwagen (minimaler Kilometerstand 0 km) bis zu Autos mit
+hohem Kilometerstand (maximaler Kilometerstand 435909 km). Wir können diesen
+Bereich in gleichmäßige Intervalle unterteilen. Wählen wir beispielsweise 10
+Intervalle, so würde das erste Intervall alle Autos mit einem Kilometerstand von
+0 km bis 50000 km umfassen. Das zweite Intervall geht dann von 50000 km bis
+100000 km usw. Um jetzt zu ermitteln, wie viele Autos in das jeweilige Intervall
+fallen, könnten wir ein kleines Python-Programm schreiben. Tatsächlich brauchen
+wir das nicht, denn diese Funktionalität ist bereits in der
+`histogram()`-Funktion integriert, die auch die Visualisierung übernimmt.
+
+Wir übergeben der Funktion die Daten als erstes Argument. Als optionales zweites
+Argument können wir die gewünschte Anzahl an Intervallen übergeben. Die
+künstlich gewählten Intervalle werden auch als Bins bezeichnet. Daher lautet das
+Argument zum Setzen der Anzahl der Bins `nbins=`, so wie der englische Begriff
+»number of bins«.
+
+```{code-cell}
+fig = px.histogram(data['Kilometerstand (km)'], nbins=10, 
+    title='10 künstlich gewählte Intervalle bzgl. des Kilometerstandes (km)')
+fig.update_layout(
+    xaxis_title='Kategorien der Kilometerstände (km)',
+    yaxis_title='Anzahl Autos',
+    legend_title='Anzahl Autos pro Kategorie',
+)
+fig.show()
+```
+
+Die meisten Autos haben weniger als 200000 km auf dem Kilometerzähler.
+
+Ein charakteristisches Merkmal von Histogrammen ist, dass die Balken ohne Lücke
+aneinander liegen, was die kontinuierliche Natur der numerischen Daten
+widerspiegelt. Die Anzahl der Kategorien (Bins) beeinflusst die Darstellung
+maßgeblich und sollte sorgfältig gewählt werden.
+
+Die Anzahl der Kategorien ist ein sehr wichtiger Faktor bei der Visualisierung.
+Werden zu wenige Kategorien gewählt, werden auch nicht die Unterschiede
+sichtbar. Werden zu viele Kategorien gewählt, sind ggf. einige Kategorien leer.
 
 ```{admonition} Mini-Übung
 :class: tip
-Gruppieren Sie die Autos nach 'Kraftstoff' und berechnen Sie den 
-durchschnittlichen Preis für jede Kraftstoffart. Welche Kraftstoffart 
-ist im Durchschnitt am teuersten?
+Experimentieren Sie mit verschiedenen Werten für `nbins=`. Probieren Sie 
+`nbins=5`, `nbins=20` und `nbins=50` aus. Was beobachten Sie? Welche 
+Vor- und Nachteile haben wenige vs. viele Bins?
 ```
 
-````{admonition} Lösung
+```{admonition} Lösung
 :class: tip
 :class: dropdown
-```python
-autos_nach_kraftstoff = data.groupby('Kraftstoff')
-durchschnittspreis = autos_nach_kraftstoff['Preis (Euro)'].mean()
-print(durchschnittspreis.sort_values(ascending=False))
+* Mit `nbins=5` sind die Kategorien sehr breit - man erkennt nur grobe Muster.
+* Mit `nbins=50` werden viele Kategorien leer oder haben nur wenige Werte - das
+Diagramm wird unübersichtlich.
+* Mit `nbins=10` bis `nbins=20` entsteht ein guter Kompromiss: Die Verteilung
+ist erkennbar, ohne dass das Diagramm überladen wirkt.
 ```
-Die teuerste Kraftstoffart im Durchschnitt ist Hybrid (Elektro/Diesel). Einträge
-ohne Angabe vernachlässigen wir hier.
-````
 
-## Wann filtern, wann gruppieren?
+Zusammenfassend wird ein Histogramm folgendermaßen beschrieben.
 
-Wir *filtern*, wenn wir einen Ausschnitt der Daten analysieren wollen. Zum
-Beispiel könnten wir nur die Audis untersuchen wollen. Das Ergebnis ist ein
-neuer DataFrame mit den gefilterten Zeilen. Wenn wir jedoch alle Kategorien
-vergleichen wollen, nutzen wir die *Gruppierung*. Beispielsweise könnten wir die
-Durchschnittpreise pro Marke berechnen wollen.
-
-Beide Methoden können auch kombiniert werden. Wir können auch erst gruppieren
-und dann eine spezifische Gruppe mit `.get_group()` extrahieren. Dies ist
-besonders nützlich, wenn wir die Gruppierung für mehrere Analysen
-wiederverwenden möchten.
+```{admonition} Was ist ... ein Histogramm?
+:class: note
+Ein Histogramm ist eine grafische Darstellung der Häufigkeitsverteilung 
+numerischer Daten. Dabei wird der Wertebereich in gleich große Intervalle 
+(sogenannte Bins oder Klassen) eingeteilt. Die Höhe jedes Balkens zeigt, wie 
+viele Datenpunkte in das jeweilige Intervall fallen. Ein charakteristisches 
+Merkmal: Die Balken liegen ohne Lücken aneinander, da sie eine kontinuierliche 
+Skala repräsentieren.
+```
 
 ## Zusammenfassung und Ausblick
 
-In diesem Kapitel haben wir die Technik des Datenfilterns kennengelernt. Um
-spezifische Einträge aus einem Datensatz basierend auf einem bestimmten Wert zu
-extrahieren, nutzen wir Vergleichsoperationen und verwenden das resultierende
-Series-Objekt als Index. Wenn das Ziel darin besteht, Daten anhand der
-einzigartigen Werte einer Spalte zu gruppieren, dann ist die Kombination von
-`.groupby()` und `.get_group()` oft der effizienteste Weg. Damit haben wir
-unsere Einführung in die Datenexploration abgeschlossen, obwohl es noch viele
-weitere Möglichkeiten gibt, die Daten zu erkunden. Im nächsten Kapitel beginnen
-wir mit den Grundlagen des maschinellen Lernens und beschäftigen uns mit
-Entscheidungsbäumen.
+In diesem Kapitel wurden zwei wichtige Diagrammtypen vorgestellt: der Barplot
+und das Histogramm. Obwohl beide mit Rechtecken arbeiten, haben sie
+unterschiedliche Anwendungsbereiche und sollten nicht verwechselt werden.
+Während der Barplot ideal für kategoriale Daten ist, eignet sich das Histogramm
+zur Visualisierung numerischer Daten. Im nächsten Kapitel widmen wir uns dem
+Thema Datenfilterung.
