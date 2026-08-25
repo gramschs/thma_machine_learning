@@ -1,24 +1,14 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter06_sec01.md
+    title: chapter06_sec01.md
 ---
 
 # 6.1 Was ist ein Entscheidungsbaum?
-
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
 
 Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregeln sind
 simpel. Eine Person wählt eine berühmte Person oder eine Figur aus einem Film
@@ -49,14 +39,13 @@ Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie wissen, was ein **Entscheidungsbaum (Decision Tree)** ist.
-* Sie kennen die Bestandteile eines Entscheidungsbaumes:
-  * Wurzelknoten (Root Node)
-  * Knoten (Node)
-  * Zweig oder Kante (Branch)
-  * Blatt (Leaf)
-* Sie können einen Entscheidungsbaum mit Scikit-Learn trainieren.
-* Sie können mit Hilfe eines Entscheidungsbaumes Prognosen treffen.
+* [ ] Sie können erklären, wie ein **Entscheidungsbaum** Daten mithilfe von
+  Entscheidungsregeln klassifiziert.
+* [ ] ie können Wurzelknoten, innere Knoten, Kanten und Blätter in einer
+  Baumgrafik identifizieren.
+* [ ] Sie können einen Entscheidungsbaum mit Scikit-Learn trainieren.
+* [ ] Sie können für neue Eingabedaten eine Prognose erzeugen und
+  interpretieren.
 ```
 
 ## Ein Entscheidungsbaum im Autohaus
@@ -78,7 +67,7 @@ Probefahrt verkauft wurde (`True`) oder nicht (`False`). Diese Information ist
 die Zielgröße. Die Tabelle mit den Daten lässt sich effizient mit einem
 Pandas-DataFrame organisieren:
 
-```{code-cell}
+```{code-cell} python
 import pandas as pd 
 
 daten = pd.DataFrame({
@@ -90,15 +79,14 @@ daten = pd.DataFrame({
 daten.head(10)
 ```
 
-Da in unserem Beispiel von den Autos nur die beiden Eigenschaften
-`Kilometerstand [km]` und `Preis [EUR]` erfasst wurden, können wir die
-Datenpunkte anschaulich in einem zweidimensionalen Streudiagramm (Scatterplot)
-visualisieren. Dabei wird der Kilometerstand auf der x-Achse und der Preis auf
-der y-Achse abgetragen. Die Zielgröße `verkauft` kennzeichnen wir durch die
-Farbe. Dabei steht die Farbe Rot für »verkauft« (True) und Blau für »nicht
-verkauft« (False).
+Da in unserem Beispiel von den Autos nur die beiden Merkmale `Kilometerstand
+[km]` und `Preis [EUR]` erfasst wurden, können wir die Datenpunkte anschaulich
+in einem zweidimensionalen Streudiagramm (Scatterplot) visualisieren. Dabei wird
+der Kilometerstand auf der x-Achse und der Preis auf der y-Achse abgetragen. Die
+Zielgröße `verkauft` kennzeichnen wir durch die Farbe. Dabei steht die Farbe Rot
+für »verkauft« (True) und Blau für »nicht verkauft« (False).
 
-```{code-cell}
+```{code-cell} python
 import plotly.express as px
 
 fig = px.scatter(daten, x='Kilometerstand [km]', y='Preis [EUR]', 
@@ -106,8 +94,10 @@ fig = px.scatter(daten, x='Kilometerstand [km]', y='Preis [EUR]',
 fig.show()
 ```
 
-Als nächstes zeigen wir, wie die Autos anhand von Fragen in die beiden Klassen
-»verkauft« und »nicht verkauft« sortiert werden können. Im Streudiagramm
+Genau wie beim Partyspiel "Wer bin ich?" sortieren wir die Autos durch eine
+Folge von Ja/Nein-Fragen. Als nächstes zeigen wir, wie die Autos anhand von
+Fragen in die beiden Klassen »verkauft« und »nicht verkauft« sortiert werden
+können. Im Streudiagramm
 visualisieren wir die Autos mit ihren Eigenschaften `Kilometerstand [km]` und
 `Preis [EUR]` als Punkte. Dazu passend werden wir schrittweise den
 Entscheidungsbaum entwickeln. Ein Entscheidungsbaum visualisiert
@@ -119,67 +109,52 @@ er die Wurzel des Entscheidungsbaumes darstellt.
 
 ![Entscheidungsbaum - Start](pics/combined_decisiontree00.svg)
 
-![Entscheidungsbaum - Start](pics/scatterplot00.svg)
-
-![Entscheidungsbaum - Start](pics/decisiontree_cars00.svg)
-
 Dann wird eine erste Frage gestellt. *Ist der Verkaufspreis kleiner oder gleich
-16376.50 EUR?* Entsprechend dieser Entscheidung werden die Autos in zwei Gruppen
+16 376.50 EUR?* Entsprechend dieser Entscheidung werden die Autos in zwei Gruppen
 aufgeteilt. Wenn ja, wandern die Autos nach links und ansonsten nach rechts.
-Warum wir die Grenze 16376.50 gewählt haben, werden wir in einem späteren
+Warum wir die Grenze 16 376.50 gewählt haben, werden wir in einem späteren
 Kapitel besprechen. Im Entscheidungsbaum wird diese Aufteilung durch einen
 **Zweig** (Branch) nach links und einen Zweig nach rechts symbolisiert. Ein
 alternativer Name für Zweig ist **Kante**. Die Autos »rutschen« die
 Zweige/Kanten entlang und landen in zwei separaten Knoten. Im Streudiagramm
 (Scatterplot) entspricht diese Fragestellung dem Vergleich mit einer
-horizontalen Linie bei y = 16376.5. Da alle Autos mit einem Verkaufspreis
-kleiner/gleich 16376.5 EUR blau sind, also »nicht verkauft« wurden, wird im
+horizontalen Linie bei y = 16 376.5. Da alle Autos mit einem Verkaufspreis
+kleiner/gleich 16 376.5 EUR blau sind, also »nicht verkauft« wurden, wird im
 Streudiagramm (Scatterplot) alles unterhalb der horizontalen Linie blau
 eingefärbt.
 
 ![Entscheidungsbaum - 1. Entscheidung](pics/combined_decisiontree01.svg)
 
-![Entscheidungsbaum - 1. Entscheidung](pics/scatterplot01.svg)
-
-![Entscheidungsbaum - 1. Entscheidung](pics/decisiontree_cars01.svg)
-
-Bei den Autos mit einem Preis kleiner oder gleich 16376.50 EUR müssen wir nicht
+Bei den Autos mit einem Preis kleiner oder gleich 16 376.50 EUR müssen wir nicht
 weiter sortieren bzw. weitere Fragen stellen. Da aus diesem Knoten keine Zweige
 mehr wachsen, wird dieser Knoten auch **Blatt** (Leaf) genannt. Aber in dem
 Knoten des rechten Zweiges befinden sich fünf rote (also verkaufte) Autos und
 ein blaues (also nicht verkauftes) Auto. Wir wollen diese Autos durch weitere
 Fragen sortieren. Doch obwohl nur ein Auto (nämlich Auto 3) aus dieser Gruppe
 separiert werden soll, ist dies nicht durch nur eine einzige Frage möglich.
-Lautet die Frage: »Ist der Preis kleiner oder gleich 17300 EUR?«, dann wandern
+Lautet die Frage: »Ist der Preis kleiner oder gleich 17 300 EUR?«, dann wandern
 das rote Auto 8 und das blaue Auto 3 nach links. Wählen wir die Frage: »Ist der
-Kilometerstand kleiner oder gleich 13500 km?«, dann wandern ebenfalls Auto 3 und
-Auto 8 nach links. Beide Fragen sind also gleichwertig, welche sollen wir
+Kilometerstand kleiner oder gleich 13 500 km?«, dann wandern ebenfalls Auto 3
+und Auto 8 nach links. Beide Fragen sind also gleichwertig, welche sollen wir
 nehmen? In diesem vereinfachten Beispiel wählen wir willkürlich den
-Kilometerstand. Der Algorithmus brauchte jedoch Kriterien, um die beste Trennung
+Kilometerstand. Ein Algorithmus braucht jedoch Kriterien, um die beste Trennung
 zu finden. Darauf gehen wir im nächsten Kapitel ein.
 
 ![Entscheidungsbaum - 2. Entscheidung](pics/combined_decisiontree02.svg)
 
-![Entscheidungsbaum - 2. Entscheidung](pics/scatterplot02.svg)
-
-![Entscheidungsbaum - 2. Entscheidung](pics/decisiontree_cars02.svg)
-
 Im Streudiagramm (Scatterplot) wird die noch nicht eingefärbte Fläche rechts der
-vertikalen Linie 13500 km rot gefärbt. Im linken Knoten (Node) sind aber nur
+vertikalen Linie 13 500 km rot gefärbt. Im linken Knoten (Node) sind aber nur
 noch zwei Autos, so dass diesmal eine weitere Frage ausreicht, die beiden Autos
 in zwei Klassen zu sortieren. Wir fragen: *»Ist der Kilometerstand kleiner oder
-gleich 8198 km?«*
+gleich 8 198 km?«*
 
 ![Entscheidungsbaum - 3. Entscheidung](pics/combined_decisiontree03.svg)
 
-![Entscheidungsbaum - 3. Entscheidung](pics/scatterplot03.svg)
-
-![Entscheidungsbaum - 3. Entscheidung](pics/decisiontree_cars03.svg)
-
 Alle Autos sind nun durch die Fragen sortiert und befinden sich in Blättern
 (Leaves). Im Streudiagramm (Scatterplot) wird dieser Zustand kenntlich gemacht,
-indem auch die letzte verbleibende Fläche (oberhalb eines Preises von 16376.50
-EUR) links von Kilometerstand 8198 km rot und rechts davon blau eingefärbt wird.
+indem auch die letzte verbleibende Fläche (oberhalb eines Preises von
+16 376.50 EUR) links von Kilometerstand 8 198 km rot und rechts davon blau
+eingefärbt wird.
 
 ```{admonition} Was ist ... ein Entscheidungsbaum?
 :class: note
@@ -218,14 +193,14 @@ Algorithmus für Regressionsprobleme zur Verfügung. Für das obige Beispiel
 Autohaus importieren wir den Algorithmus für Klassifikationsprobleme namens
 `DecisionTreeClassifier`:
 
-```{code-cell}
+```{code-cell} python
 from sklearn.tree import DecisionTreeClassifier
 ```
 
 Dann erzeugen wir ein noch untrainiertes Entscheidungsbaum-Modell und weisen es
 der Variable `modell` zu:
 
-```{code-cell}
+```{code-cell} python
 modell = DecisionTreeClassifier()
 ```
 
@@ -238,13 +213,13 @@ Standardeinstellungen.
 Als nächstes adaptieren wir die Daten aus dem Pandas-DataFrame so, dass das
 Entscheidungsbaum-Modell trainiert werden kann. Der `DecisionTreeClassifier`
 erwartet für das Training zwei Argumente. Als erstes Argument müssen die
-Eingabedaten übergeben werden, also die Eigenschaften der Autos. Als zweites
-Argument erwartet der `DecisionTreeClassifier` die Zielgröße, also den Status
-»nicht verkauft« oder »verkauft«. Wir trennen daher den Pandas-DataFrame `daten`
-auf und verwenden die Bezeichnung `X` für die Eingabedaten und `y` für die
+Eingabedaten übergeben werden, also die Merkmale der Autos. Als zweites Argument
+erwartet der `DecisionTreeClassifier` die Zielgröße, also den Status »nicht
+verkauft« oder »verkauft«. Wir trennen daher den Pandas-DataFrame `daten` auf
+und verwenden die Bezeichnung `X` für die Eingabedaten und `y` für die
 Zielgröße.
 
-```{code-cell}
+```{code-cell} python
 X = daten[['Kilometerstand [km]', 'Preis [EUR]']]
 y = daten['verkauft']
 ```
@@ -252,7 +227,7 @@ y = daten['verkauft']
 Als nächstes wird der Entscheidungsbaum trainiert. Dazu wird die Methode
 `.fit()` mit den beiden Argumenten `X` und `y` aufgerufen.
 
-```{code-cell}
+```{code-cell} python
 modell.fit(X,y)
 ```
 
@@ -260,19 +235,19 @@ Jetzt ist zwar der Entscheidungsbaum trainiert, doch wir sehen nichts. Als
 erstes überprüfen wir mit der Methode `.score()`, wie gut die Prognose des
 Entscheidungsbaumes ist.
 
-```{code-cell}
+```{code-cell} python
 score = modell.score(X,y)
 print(score)
 ```
 
-Eine 1 steht für 100 %, also alle 10 Autos werden korrekt klassifiziert. Dazu
+Eine 1.0 steht für 100 %, also alle 10 Autos werden korrekt klassifiziert. Dazu
 hat der `DecisionTreeClassifier` basierend auf den Eingabedaten `X` eine
 Prognose erstellt und diese Prognose mit den echten Daten in `y` verglichen. Für
 die Trainingsdaten funktioniert der Entscheidungsbaum also perfekt. Ob der
 Entscheidungsbaum ein neues, elftes Auto korrekt klassifizieren würde, kann so
 erst einmal nicht entschieden werden. Möglicherweise hat der Entscheidungsbaum
 die Trainingsdaten auswendig gelernt, anstatt allgemeine Muster zu erkennen. Es
-besteht die Gefahr des sogenannten Overfittings, auf die wir im übernächsten
+besteht die Gefahr des sogenannten Overfittings, auf das wir im übernächsten
 Kapitel noch eingehen werden.
 
 ## Prognosen mit Entscheidungsbäumen treffen
@@ -283,7 +258,7 @@ Eingangsdaten haben. Wir erzeugen daher einen neuen Pandas-DataFrame, bei dem
 die erste Eigenschaft der Kilometerstand der neuen Autos ist und die zweite
 Eigenschaft ihr Preis.
 
-```{code-cell}
+```{code-cell} python
 neue_autos = pd.DataFrame({
     'Kilometerstand [km]': [11300, 20000, 7580],
     'Preis [EUR]': [12000, 14999, 20999]
@@ -294,7 +269,7 @@ neue_autos = pd.DataFrame({
 Mit Hilfe der `predict()`-Methode kann dann der Entscheidungsbaum
 prognostizieren, ob die Autos verkauft werden oder nicht.
 
-```{code-cell}
+```{code-cell} python
 prognose = modell.predict(neue_autos)
 print(prognose)
 ```
@@ -313,55 +288,55 @@ angekommen ist. Die Klasse des Blattes ist dann die Prognose für dieses Auto.
 
 ![Entscheidungsbaum - Prognose](pics/combined_decisiontree_prediction.svg)
 
-![Entscheidungsbaum - Prognose](pics/scatterplot_prediction.svg)
-
-![Entscheidungsbaum - Prognose](pics/decisiontree_cars_prediction.svg)
-
 Der Entscheidungsbaum prognostiziert, dass Auto 11 und Auto 12 nicht verkauft
-werden, aber Auto 13 könnte verkaufbar sein.
+werden, aber Auto 13 wird laut Modell verkauft.
 
 ````{admonition} Mini-Übung
 :class: tip
-Trainieren Sie einen Entscheidungsbaum für die folgenden Daten:
+Trainieren Sie einen Entscheidungsbaum für die folgenden Daten aus einer
+kleinen 3D-Druck-Versuchsreihe:
 
 ```python
-test_daten = pd.DataFrame({
-    'Kilometerstand [km]': [5000, 25000, 15000, 30000],
-    'Preis [EUR]': [18000, 14000, 19000, 12000],
-    'verkauft': [True, False, True, False]
+druck_daten = pd.DataFrame({
+    'Betttemperatur [C]': [60, 100, 65, 105],
+    'Druckgeschwindigkeit [mm/s]': [40, 90, 45, 85],
+    'erfolgreich': [True, False, True, False]
 })
 ```
 
-Geben Sie eine Prognose für ein Auto mit 10.000 km und 16.000 EUR ab.
+Geben Sie eine Prognose für einen Druck mit 70 °C Betttemperatur und
+60 mm/s Druckgeschwindigkeit ab.
 ````
 
-```{code-cell}
-# Hier Ihr Code
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
-test_daten = pd.DataFrame({
-    'Kilometerstand [km]': [5000, 25000, 15000, 30000],
-    'Preis [EUR]': [18000, 14000, 19000, 12000],
-    'verkauft': [True, False, True, False]
+druck_daten = pd.DataFrame({
+    'Betttemperatur [C]': [60, 100, 65, 105],
+    'Druckgeschwindigkeit [mm/s]': [40, 90, 45, 85],
+    'erfolgreich': [True, False, True, False]
 })
 
-X_test = test_daten[['Kilometerstand [km]', 'Preis [EUR]']]
-y_test = test_daten['verkauft']
+# Eingabedaten und Zielgröße trennen
+X_druck = druck_daten[['Betttemperatur [C]', 'Druckgeschwindigkeit [mm/s]']]
+y_druck = druck_daten['erfolgreich']
 
-modell_test = DecisionTreeClassifier()
-modell_test.fit(X_test, y_test)
+# Entscheidungsbaum trainieren
+modell_druck = DecisionTreeClassifier()
+modell_druck.fit(X_druck, y_druck)
 
-neues_auto = pd.DataFrame({
-    'Kilometerstand [km]': [10000],
-    'Preis [EUR]': [16000]
+# Prognose für den neuen Druck abgeben
+neuer_druck = pd.DataFrame({
+    'Betttemperatur [C]': [70],
+    'Druckgeschwindigkeit [mm/s]': [60]
 })
-
-prognose = modell_test.predict(neues_auto)
-print(f"Prognose für das neue Auto: {prognose[0]}")
+prognose = modell_druck.predict(neuer_druck)
+print(f"Prognose für den neuen Druck: {prognose[0]}")
 ```
 ````
 
