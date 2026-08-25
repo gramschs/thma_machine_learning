@@ -179,7 +179,7 @@ so dass wir diese Methode hier benutzen können.
 data['Marke'].unique()
 ```
 
-Obwohl der Datensatz insgesamt 18566 Autos umfasst, gibt es nur 41 verschiedene
+Obwohl der Datensatz insgesamt 18 566 Autos umfasst, gibt es nur 41 verschiedene
 Marken. Allgemein gesagt, gibt es für das Merkmal »Marke« 41 Kategorien.
 
 ```{admonition} Was sind ... kategoriale/qualitative Daten?
@@ -214,7 +214,7 @@ for col in data.columns:
 
 Bei unserem Beispiel sind die Merkmale Marke, Modell, Farbe, Getriebe,
 Kraftstoff und Bemerkungen nicht-numerische Eigenschaften. Allerdings hat das
-Merkmal Bemerkungen 16547 verschiedene Werte und ist als Freitext nicht
+Merkmal Bemerkungen 16 547 verschiedene Werte und ist als Freitext nicht
 kategorial. Die kategorialen Merkmale in dem Beispiel sind also Marke, Modell,
 Farbe, Getriebe und Kraftstoff. Modell hat dabei die höchste Kardinalität, wie
 die eingangs erwähnten „mehreren Tausend Modellbezeichnungen" bereits

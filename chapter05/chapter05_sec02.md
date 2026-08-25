@@ -16,7 +16,7 @@ downloads:
 
 Unabhängig davon, ob wir numerische Daten oder kategoriale Daten analysieren
 möchten, wollen wir oft nur eine Teilmenge der Daten auswerten. Beispielsweise
-könnte es sein, dass uns nur Autos interessieren, die weniger als 20 000 Euro
+könnte es sein, dass uns nur Autos interessieren, die weniger als 20 000 Euro
 kosten. Oder wir sind nur an roten Autos interessiert. Wählen wir Datenpunkte
 aus dem Datensatz nach bestimmten Merkmalen aus, sprechen wir vom Filtern.
 Möchten wir stattdessen alle Kategorien eines Merkmals miteinander vergleichen,
@@ -54,15 +54,15 @@ data.info()
 
 Wir möchten uns zunächst einem numerischen Merkmal widmen, dem Kilometerstand.
 Ein schneller Blick mit `.describe()` zeigt uns, dass der Kilometerstand von 0
-km bis 435 909 km reicht.
+km bis 435 909 km reicht.
 
 ```{code-cell} python
 data.describe()
 ```
 
 Wir möchten uns nun die Autos mit einem sehr großen Kilometerstand von mehr als
-200 000 km ansehen. Um alle Autos aus dem Datensatz auszuwählen, deren
-Kilometerstand größer als 200 000 km ist, benutzen wir den aus der Mathematik
+200 000 km ansehen. Um alle Autos aus dem Datensatz auszuwählen, deren
+Kilometerstand größer als 200 000 km ist, benutzen wir den aus der Mathematik
 bekannten Größer-Operator `>`. Das Ergebnis dieses Vergleichs speichern wir in
 der Variable `bedingung_kilometerstand`.
 
@@ -131,8 +131,8 @@ geglückt? Wir verschaffen uns mit der `.describe()`-Methode einen schnellen
 autos_ueber_200000km.describe()
 ```
 
-Der minimale Eintrag für die Spalte `Kilometerstand (km)` ist 201 000 km. Mehr
-als 200 000 km in rund drei bis dreieinhalb Jahren ist viel. Was sind das für
+Der minimale Eintrag für die Spalte `Kilometerstand (km)` ist 201 000 km. Mehr
+als 200 000 km in rund drei bis dreieinhalb Jahren ist viel. Was sind das für
 Autos? Schauen wir uns die ersten 10 Autos an.
 
 ```{code-cell}
@@ -176,7 +176,7 @@ Wichtig: Die Klammern um die einzelnen Bedingungen sind notwendig!
 ## Daten gruppieren
 
 Eine Filterung nach Kilometerstand ermöglicht es uns, gezielt eine bestimmte
-Teilmenge der Autos herauszugreifen, wie eben die Autos mit mehr als 200 000 km
+Teilmenge der Autos herauszugreifen, wie eben die Autos mit mehr als 200 000 km
 Laufleistung.
 
 Wenden wir nun diese Technik an, um die Fahrzeuge basierend auf ihrer Marke zu
