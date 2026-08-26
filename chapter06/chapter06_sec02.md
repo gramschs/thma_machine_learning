@@ -4,8 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
-  - file: chapter06_sec01.md
-    title: chapter06_sec01.md
+  - file: chapter06_sec02.md
+    title: chapter06_sec02.md
 ---
 
 # 6.2 Entscheidungsbäume visualisieren und trainieren
