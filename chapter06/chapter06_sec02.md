@@ -119,7 +119,7 @@ druck_daten = pd.DataFrame({
 ````
 
 ```{code-cell}
-# Hier Ihr Code
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -304,7 +304,7 @@ Verwenden Sie erneut die Druckversuch-Daten aus den vorherigen Mini-Übungen.
 ````
 
 ```{code-cell}
-# Hier Ihr Code
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
