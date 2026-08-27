@@ -101,7 +101,7 @@ $$y = w_0 + w_1 \cdot x.$$
 ```{code-cell}
 from sklearn.linear_model import LinearRegression
 
-# Adaption der Daten
+# Daten ins richtige Format bringen
 X = daten[['Geschwindigkeit [km/h]']]
 y = daten['Bremsweg [m]']
 
@@ -201,7 +201,7 @@ Quadrate hinzuzufügen. Dann transformieren wir die Input-Daten, indem wir die
 ```{code-cell}
 from sklearn.preprocessing import PolynomialFeatures
 
-# Adaption der Daten
+# Merkmale erzeugen und Daten ins richtige Format bringen
 polynom_transformator = PolynomialFeatures(degree = 2)
 X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
 y = daten['Bremsweg [m]']
@@ -262,7 +262,7 @@ unbedingt besser sein, wie das folgende Beispiel zeigt. Wir wählen als
 Polynomgrad 14.
 
 ```{code-cell}
-# Adaption der Daten
+# Merkmale erzeugen und Daten ins richtige Format bringen
 polynom_transformator = PolynomialFeatures(degree = 14)
 X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
 y = daten['Bremsweg [m]']
@@ -333,7 +333,7 @@ Vergleichen Sie die drei trainierten Modelle anhand der Tabelle:
 
 ```{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 1. Grad 2 (quadratisch) hat mit R² ≈ 0.9999 den besten Test-Score.
 2. Beim Polynom Grad 14 ist der Test-Score niedriger als der Train-Score, weil
    das Modell zu stark an die Trainingsdaten angepasst ist (Overfitting). Es
