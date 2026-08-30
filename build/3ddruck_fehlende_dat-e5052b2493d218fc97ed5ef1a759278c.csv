@@ -1,0 +1,201 @@
+Nummer,Material,Farbe,Infill-Muster,Schichthoehe (mm),Oberflaechenguete,Drucktemperatur (C),Betttemperatur (C),Druckgeschwindigkeit (mm/s),Infill (%),Wandstaerke (mm),Bauteilvolumen (cm3),Druckzeit (min),Zugfestigkeit (MPa),Erfolgreich,Bemerkungen
+Druck Nr. 1,PLA,orange,Waben,0.15,fein,201,49,79,100,2.0,93.2,660.0,54.4,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 2,ASA,transparent,Gyroid,0.1,fein,238,95,37,50,2.4,65.9,1040.0,26.9,ja,Oberflaeche leicht rau
+Druck Nr. 3,PLA,gelb,Gyroid,0.3,grob,207,46,93,15,0.8,24.5,40.0,29.6,ja,Erstversuch
+Druck Nr. 4,ABS,orange,Gitter,0.1,,243,92,82,50,2.4,19.4,140.0,34.4,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 5,ASA,blau,Gyroid,0.3,,257,101,107,60,2.0,46.4,90.0,33.8,nein,Oberflaeche leicht rau
+Druck Nr. 6,PETG,schwarz,Waben,0.25,,227,50,107,30,1.6,110.9,200.0,26.8,nein,Oberflaeche leicht rau
+Druck Nr. 7,PETG,rot,Linear,0.25,,227,53,99,50,1.6,100.1,240.0,35.1,nein,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 8,PETG,schwarz,Linear,0.3,,230,75,102,30,2.0,32.6,,29.6,ja,keine besonderen Vorkommnisse
+Druck Nr. 9,PLA,blau,Waben,0.25,grob,197,66,81,40,1.6,75.9,200.0,35.7,ja,keine besonderen Vorkommnisse
+Druck Nr. 10,PETG,weiß,Linear,0.3,grob,241,64,67,100,1.6,43.8,,41.2,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 11,PLA,blau,Waben,0.2,mittel,212,65,112,10,2.0,36.8,60.0,28.9,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 12,PLA,,Waben,0.2,mittel,203,67,86,15,0.8,101.2,240.0,30.6,ja,Erstversuch
+Druck Nr. 13,PLA,schwarz,Gitter,0.25,grob,211,55,46,15,1.2,71.4,250.0,27.6,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 14,PLA,,Waben,0.25,grob,200,85,31,25,2.4,97.5,570.0,31.8,ja,keine besonderen Vorkommnisse
+Druck Nr. 15,ABS,transparent,Waben,0.25,grob,242,97,34,25,2.0,72.0,390.0,23.4,ja,Referenzdruck fuer Serie
+Druck Nr. 16,PETG,transparent,Waben,0.3,grob,223,75,109,80,1.2,126.4,,35.1,nein,Toleranzpruefung durchgefuehrt
+Druck Nr. 17,PLA,weiß,Linear,0.15,,213,38,73,30,1.6,15.3,70.0,35.8,ja,Oberflaeche leicht rau
+Druck Nr. 18,PETG,gelb,Gyroid,0.1,fein,231,59,30,50,1.2,77.7,,40.3,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 19,PETG,gelb,Waben,0.15,fein,243,75,61,20,0.8,25.9,120.0,27.5,ja,Oberflaeche leicht rau
+Druck Nr. 20,PETG,orange,Gitter,0.2,mittel,243,82,83,40,0.8,20.7,70.0,29.5,ja,Oberflaeche leicht rau
+Druck Nr. 21,ASA,rot,Gitter,0.3,grob,258,95,42,100,2.0,100.1,670.0,39.0,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 22,PLA,rot,Gitter,0.25,grob,206,53,78,30,1.6,21.1,50.0,36.2,ja,Referenzdruck fuer Serie
+Druck Nr. 23,PETG,blau,Waben,0.2,mittel,228,75,86,15,1.6,121.8,290.0,24.6,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 24,PLA,,Linear,0.15,,211,64,34,20,1.2,34.3,290.0,29.6,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 25,PLA,rot,Waben,0.1,fein,209,29,45,50,0.8,34.8,450.0,41.7,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 26,PLA,grau,Gitter,0.2,,213,64,30,50,2.4,88.3,860.0,43.1,ja,Referenzdruck fuer Serie
+Druck Nr. 27,PETG,blau,Gyroid,0.2,mittel,237,61,31,25,2.4,43.9,320.0,32.9,ja,Erstversuch
+Druck Nr. 28,PETG,orange,Linear,0.1,,226,80,50,40,1.6,101.8,,36.1,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 29,PETG,orange,Waben,0.1,fein,227,84,97,50,1.6,73.5,440.0,35.9,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 30,PETG,schwarz,Waben,0.1,fein,242,53,67,25,2.0,126.5,,30.4,ja,keine besonderen Vorkommnisse
+Druck Nr. 31,PETG,weiß,Gitter,0.3,,246,88,104,80,1.2,102.7,240.0,35.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 32,PLA,grau,Gyroid,0.1,fein,203,54,94,40,1.2,82.1,470.0,41.4,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 33,PLA,schwarz,Linear,0.3,,205,45,66,20,1.2,86.2,190.0,29.9,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 34,PLA,orange,Gyroid,0.2,,207,78,76,40,1.6,126.8,440.0,41.0,ja,Oberflaeche leicht rau
+Druck Nr. 35,PLA,transparent,Gitter,0.15,,206,35,48,80,0.8,70.0,720.0,44.7,ja,Referenzdruck fuer Serie
+Druck Nr. 36,PETG,orange,Waben,0.3,grob,237,51,107,50,1.6,97.3,180.0,31.2,nein,Referenzdruck fuer Serie
+Druck Nr. 37,PETG,rot,Gitter,0.1,fein,233,75,117,60,2.4,108.7,,41.6,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 38,ABS,rot,Gitter,0.25,grob,246,104,95,15,1.2,91.8,160.0,22.1,ja,Oberflaeche leicht rau
+Druck Nr. 39,ASA,gelb,Linear,0.3,grob,251,94,83,50,0.8,89.0,210.0,27.7,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 40,PLA,rot,Gitter,0.2,,204,60,96,10,1.6,94.7,,28.0,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 41,ASA,orange,Waben,0.3,grob,260,64,108,80,1.6,49.0,110.0,35.5,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 42,ABS,,Waben,0.15,fein,245,111,51,10,1.6,32.9,160.0,19.8,ja,Referenzdruck fuer Serie
+Druck Nr. 43,ASA,blau,Waben,0.1,,250,100,41,15,2.4,66.3,650.0,24.4,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 44,PLA,orange,Waben,0.1,fein,207,37,92,30,2.0,79.3,,35.5,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 45,PETG,gelb,Waben,0.15,,227,56,78,60,1.2,55.2,300.0,36.8,ja,Referenzdruck fuer Serie
+Druck Nr. 46,PETG,,Linear,0.2,mittel,230,79,87,40,1.2,88.8,270.0,35.9,ja,keine besonderen Vorkommnisse
+Druck Nr. 47,ABS,blau,Gyroid,0.1,,250 C,5,61,15,,97.1,640.0,18.1,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 48,PLA,gelb,Linear,0.2,mittel,207,44,97,60,1.2,114.5,,43.4,ja,Erstversuch
+Druck Nr. 49,PETG,weiß,Gyroid,0.15,fein,239,74,45,100,2.4,99.0,1240.0,43.3,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 50,PLA,schwarz,Gyroid,0.15,fein,202,53,92,30,1.6,128.1,450.0,37.3,ja,keine besonderen Vorkommnisse
+Druck Nr. 51,PETG,transparent,Gitter,0.3,grob,229,88,34,50,0.8,100.8,580.0,33.0,ja,Referenzdruck fuer Serie
+Druck Nr. 52,PETG,grau,Linear,0.1,fein,238,60,78,80,2.4,56.3,530.0,49.8,ja,Referenzdruck fuer Serie
+Druck Nr. 53,PETG,transparent,Waben,0.15,fein,237,87,78,25,2.4,85.7,330.0,31.3,ja,keine besonderen Vorkommnisse
+Druck Nr. 54,ABS,orange,Linear,0.3,,234,100,52,30,1.2,27.5,80.0,20.3,ja,Erstversuch
+Druck Nr. 55,PLA,,Waben,0.15,fein,212,54,53,15,0.8,95.1,480.0,30.8,ja,Erstversuch
+Druck Nr. 56,PETG,,Waben,0.25,grob,241,81,50,10,2.0,139.1,420.0,24.2,ja,Oberflaeche leicht rau
+Druck Nr. 57,PLA,grau,Gyroid,0.3,grob,203,47,110,25,2.0,105.7,150.0,31.5,ja,Referenzdruck fuer Serie
+Druck Nr. 58,PETG,transparent,Gitter,0.2,mittel,234,53,71,10,2.4,15.7,40.0,28.4,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 59,PETG,grau,Gyroid,0.15,,234,51,73,50,1.2,82.9,440.0,32.7,ja,Erstversuch
+Druck Nr. 60,PLA,rot,Linear,0.2,,201,68,41,40,0.8,30.3,200.0,39.7,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 61,PLA,transparent,Waben,0.3,,208,29,78,25,2.4,105.6,210.0,30.9,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 62,PLA,,Gyroid,0.2,mittel,200,68,76,25,1.6,27.2,80.0,33.1,ja,Oberflaeche leicht rau
+Druck Nr. 63,PETG,orange,Gyroid,0.2,mittel,232,64,60,20,1.6,103.2,370.0,27.5,nein,Oberflaeche leicht rau
+Druck Nr. 64,PETG,blau,Gitter,0.2,mittel,236,89,36,10,0.8,17.3,90.0,25.2,ja,Oberflaeche leicht rau
+Druck Nr. 65,PETG,,Linear,0.15,fein,223,61,54,10,0.8,104.9,490.0,18.4,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 66,PLA,schwarz,Waben,0.25,grob,201,58,43,25,1.6,93.6,400.0,33.3,ja,Oberflaeche leicht rau
+Druck Nr. 67,ABS,weiß,Gyroid,0.1,,236,101,90,60,2.4,106.7,760.0,34.9,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 68,PLA,,Linear,0.15,,201,65,119,60,2.4,112.5,400.0,44.2,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 69,PLA,,Gitter,0.15,fein,201,48,45,100,2.4,82.1,1030.0,53.9,ja,Erstversuch
+Druck Nr. 70,ASA,rot,Waben,0.1,,253,105,61,100,2.4,126.3,1750.0,41.0,ja,Oberflaeche leicht rau
+Druck Nr. 71,PETG,gelb,Gyroid,0.25,grob,235,96,115,80,1.6,101.0,260.0,39.9,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 72,ABS,schwarz,Waben,0.2,mittel,237,80,111,10,0.8,66.5,110.0,19.5,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 73,PETG,weiß,Gyroid,0.25,,236,88,35,15,1.2,66.4,310.0,27.7,ja,Oberflaeche leicht rau
+Druck Nr. 74,PLA,weiß,Gyroid,0.3,grob,192,39,106,10,0.8,62.1,70.0,17.9,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 75,PLA,,Gitter,0.3,grob,211,68,74,10,2.4,63.4,110.0,24.8,ja,Referenzdruck fuer Serie
+Druck Nr. 76,PLA,weiß,Waben,0.2,mittel,204,49,82,10,2.4,112.1,260.0,29.0,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 77,PLA,schwarz,Linear,0.1,,210,74,98,10,0.8,21.5,80.0,25.6,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 78,PLA,schwarz,Linear,0.2,,191,51,116,25,0.8,50.5,100.0,30.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 79,PETG,gelb,Waben,0.1,fein,244,67,71,80,1.2,123.6,1290.0,37.5,ja,Erstversuch
+Druck Nr. 80,ASA,gelb,Linear,0.1,,252,114,95,25,2.4,61.7,300.0,30.6,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 81,ABS,grau,Gyroid,0.25,grob,246,96,108,30,2.4,107.5,190.0,25.4,nein,Oberflaeche leicht rau
+Druck Nr. 82,PLA,rot,Waben,0.2,mittel,205,51,37,20,1.2,41.0,240.0,36.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 83,PLA,schwarz,Gyroid,0.1,,204,68,100,30,2.0,121.8,,38.2,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 84,ABS,blau,Waben,0.15,fein,241,119,61,60,2.0,26.4,,33.2,ja,keine besonderen Vorkommnisse
+Druck Nr. 85,ASA,grau,Gyroid,0.25,,240,112,92,80,1.6,93.7,300.0,26.9,nein,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 86,PETG,blau,Waben,0.3,grob,243,48,88,20,2.4,29.1,50.0,22.6,nein,Referenzdruck fuer Serie
+Druck Nr. 87,PLA,,Gitter,0.2,,217,59,111,10,2.4,89.1,,26.2,ja,keine besonderen Vorkommnisse
+Druck Nr. 88,PETG,gelb,Gitter,0.1,,230,79,65,25,1.2,89.9,630.0,28.8,ja,Oberflaeche leicht rau
+Druck Nr. 89,PLA,schwarz,Waben,0.2,mittel,214,67,117,10,0.8,34.2,60.0,26.8,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 90,PETG,blau,Gitter,0.15,fein,241,90,59,25,2.0,50.7,260.0,28.3,ja,Erstversuch
+Druck Nr. 91,ASA,gelb,Gyroid,0.3,,257,114,37,80,2.4,25.2,170.0,37.5,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 92,PLA,,Gyroid,0.25,grob,203,62,67,30,1.6,57.8,170.0,35.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 93,PETG,weiß,Gitter,0.15,fein,238,104,80,10,2.0,34.2,110.0,26.2,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 94,PETG,rot,Gitter,0.1,fein,230,73,65,20,2.4,34.0,220.0,28.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 95,ASA,transparent,Gyroid,0.1,,252,91,50,15,0.8,48.5,390.0,22.3,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 96,PETG,grau,Waben,0.15,,231,58,97,50,2.0,37.2,150.0,38.7,nein,Erstversuch
+Druck Nr. 97,PETG,blau,Gyroid,0.2,mittel,229,70,55,40,1.2,131.5,640.0,34.3,ja,Oberflaeche leicht rau
+Druck Nr. 98,ABS,transparent,Waben,0.2,mittel,241,112,103,40,2.0,109.9,280.0,27.7,nein,Toleranzpruefung durchgefuehrt
+Druck Nr. 99,PLA,blau,Linear,0.3,,209,56,97,50,1.2,20.9,40.0,38.6,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 100,PLA,transparent,Gyroid,0.2,mittel,209,76,96,50,2.4,34.7,110.0,40.3,ja,Oberflaeche leicht rau
+Druck Nr. 101,ABS,orange,Gyroid,0.3,grob,239,101,120,20,1.6,131.4,160.0,23.7,nein,Toleranzpruefung durchgefuehrt
+Druck Nr. 102,PETG,weiß,Linear,0.2,,234,69,90,30,1.6,85.6,230.0,33.7,ja,keine besonderen Vorkommnisse
+Druck Nr. 103,ASA,orange,Waben,0.15,fein,253,122,56,20,2.4,71.7,370.0,25.6,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 104,PLA,schwarz,Waben,0.3,,192,53,100,25,1.6,22.3,30.0,26.0,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 105,PLA,transparent,Waben,0.2,mittel,212,72,85,30,1.2,22.8,,33.1,ja,Erstversuch
+Druck Nr. 106,PETG,transparent,Linear,0.1,fein,227,45,62,30,0.8,67.4,520.0,30.2,ja,keine besonderen Vorkommnisse
+Druck Nr. 107,ABS,grau,Gyroid,0.3,grob,252,83,77,100,0.8,64.9,,28.6,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 108,ASA,orange,Waben,0.25,,238,94,105,60,2.4,60.8,150.0,25.3,nein,keine besonderen Vorkommnisse
+Druck Nr. 109,PETG,grau,Gitter,0.2,mittel,229,62,59,40,2.4,19.5,90.0,38.2,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 110,PLA,gelb,Gyroid,0.15,fein,210,60,62,100,1.6,49.5,450.0,48.7,ja,keine besonderen Vorkommnisse
+Druck Nr. 111,PETG,blau,Gitter,0.3,grob,238,77,32,100,1.6,103.3,910.0,43.8,ja,Erstversuch
+Druck Nr. 112,PETG,grau,Gitter,0.15,fein,238,79,106,60,2.4,77.2,,39.6,ja,Oberflaeche leicht rau
+Druck Nr. 113,PLA,weiß,Gyroid,0.2,mittel,204,44,118,30,0.8,59.3,120.0,35.7,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 114,ABS,weiß,Waben,0.1,fein,259,89,95,20,1.2,115.1,520.0,16.2,nein,Referenzdruck fuer Serie
+Druck Nr. 115,ABS,schwarz,Gitter,0.3,grob,245,92,71,60,0.8,29.1,90.0,30.8,ja,Oberflaeche leicht rau
+Druck Nr. 116,ABS,gelb,Waben,0.15,fein,247,122,79,25,2.4,98.9,380.0,24.3,ja,Erstversuch
+Druck Nr. 117,PETG,transparent,Waben,0.1,,230,72,50,40,2.4,45.7,490.0,37.3,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 118,ABS,schwarz,Waben,0.3,grob,239,114,43,60,1.6,107.9,530.0,30.7,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 119,ABS,rot,Gyroid,0.2,mittel,254,89,100,60,0.8,54.9,170.0,30.5,nein,Toleranzpruefung durchgefuehrt
+Druck Nr. 120,PLA,,Gitter,0.3,grob,214,36,90,80,2.4,26.0,70.0,45.4,ja,Referenzdruck fuer Serie
+Druck Nr. 121,PETG,transparent,Gyroid,0.3,grob,222,77,53,30,0.8,75.1,230.0,19.9,ja,keine besonderen Vorkommnisse
+Druck Nr. 122,ASA,transparent,Gyroid,0.3,grob,251,114,44,20,0.8,29.5,100.0,19.9,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 123,PETG,grau,Waben,0.2,,244,52,103,80,2.0,108.7,390.0,37.4,nein,Referenzdruck fuer Serie
+Druck Nr. 124,PLA,transparent,Waben,0.2,mittel,205,48,55,20,0.8,129.0,500.0,33.5,ja,Referenzdruck fuer Serie
+Druck Nr. 125,PLA,orange,Gyroid,0.1,fein,212,64,111,60,0.8,80.2,460.0,44.9,ja,Oberflaeche leicht rau
+Druck Nr. 126,PLA,rot,Linear,0.1,fein,192,51,100,15,1.2,112.3,,22.9,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 127,PETG,gelb,Linear,0.15,fein,236,71,62,20,1.2,79.3,370.0,29.5,ja,Erstversuch
+Druck Nr. 128,PLA,weiß,Gitter,0.1,fein,205,66,79,50,2.4,125.0,930.0,43.1,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 129,ABS,blau,Linear,0.2,mittel,245,102,47,50,2.0,42.5,260.0,28.5,ja,keine besonderen Vorkommnisse
+Druck Nr. 130,ABS,schwarz,Waben,0.15,fein,240,102,53,15,2.4,36.3,180.0,22.5,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 131,ASA,blau,Waben,0.15,,255,93,64,40,2.0,22.6,130.0,31.6,nein,Zweitdruck nach Fehlversuch
+Druck Nr. 132,ABS,,Waben,0.2,mittel,257,104,115,50,0.8,52.4,130.0,28.3,nein,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 133,PETG,schwarz,Waben,0.15,fein,227,68,58,40,2.0,72.2,440.0,33.8,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 134,ABS,gelb,Gitter,0.2,mittel,245,120,37,40,1.2,62.1,450.0,30.4,ja,Referenzdruck fuer Serie
+Druck Nr. 135,ABS,gelb,Gitter,0.25,grob,243,57,85,100,2.4,26.9,110.0,41.8,nein,Referenzdruck fuer Serie
+Druck Nr. 136,PLA,grau,Linear,0.3,grob,203,56,100,60,2.0,79.7,170.0,44.1,ja,Oberflaeche leicht rau
+Druck Nr. 137,PLA,,Gyroid,0.1,fein,218,65,96,80,1.2,21.7,170.0,42.7,ja,Referenzdruck fuer Serie
+Druck Nr. 138,PLA,blau,Linear,0.2,,216,41,111,30,1.2,65.8,140.0,33.9,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 139,ASA,orange,Gyroid,0.3,,252,108,72,60,2.0,114.2,340.0,34.9,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 140,PETG,,Gyroid,0.25,grob,239,65,47,40,2.4,83.8,,39.2,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 141,ABS,schwarz,Gyroid,0.1,fein,239,110,63,20,0.8,88.8,600.0,24.4,ja,Erstversuch
+Druck Nr. 142,PETG,orange,Linear,0.15,fein,237,98,116,100,2.4,71.3,350.0,50.4,ja,keine besonderen Vorkommnisse
+Druck Nr. 143,PETG,weiß,Gyroid,0.25,,232,71,99,10,1.2,70.9,110.0,24.8,ja,keine besonderen Vorkommnisse
+Druck Nr. 144,PETG,transparent,Gyroid,0.3,grob,245,106,43,15,1.2,24.7,80.0,24.7,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 145,ABS,gelb,Linear,0.1,fein,248,99,78,50,0.8,22.4,,32.4,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 146,PETG,grau,Linear,0.3,,228,41,51,25,0.8,61.7,180.0,27.7,nein,Toleranzpruefung durchgefuehrt
+Druck Nr. 147,ASA,schwarz,Linear,0.2,mittel,242,94,45,40,2.4,118.2,700.0,25.4,ja,Erstversuch
+Druck Nr. 148,ABS,blau,Linear,0.15,fein,237,101,77,40,1.6,83.9,390.0,27.3,ja,Oberflaeche leicht rau
+Druck Nr. 149,ASA,grau,Waben,0.3,grob,270,103,35,20,1.6,95.6,,13.1,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 150,PLA,grau,Waben,0.3,,198,54,120,80,1.6,123.6,250.0,43.2,ja,Erstversuch
+Druck Nr. 151,PLA,grau,Gyroid,0.25,,195,60,36,80,1.2,121.8,1000.0,45.2,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 152,PETG,grau,Waben,0.25,,230,72,62,30,1.2,106.2,330.0,32.2,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 153,ABS,grau,Waben,0.25,grob,242,118,37,10,1.2,75.8,310.0,20.9,ja,Referenzdruck fuer Serie
+Druck Nr. 154,PETG,schwarz,Waben,0.15,fein,239,79,30,25,1.6,19.8,200.0,31.9,ja,keine besonderen Vorkommnisse
+Druck Nr. 155,PLA,schwarz,Waben,0.25,,200,53,86,15,1.2,63.5,120.0,32.4,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 156,PLA,rot,Linear,0.15,fein,217,80,84,50,2.4,56.3,260.0,37.1,ja,Oberflaeche leicht rau
+Druck Nr. 157,ASA,rot,Gitter,0.25,grob,255,82,80,15,1.6,84.6,170.0,22.7,nein,Oberflaeche leicht rau
+Druck Nr. 158,PLA,transparent,Waben,0.2,mittel,207,28,58,30,1.2,109.7,450.0,39.4,ja,Oberflaeche leicht rau
+Druck Nr. 159,PLA,orange,Waben,0.3,grob,215,45,73,25,2.0,123.6,260.0,30.0,ja,Erstversuch
+Druck Nr. 160,PETG,transparent,Linear,0.1,fein,236,39,115,25,2.4,113.6,450.0,32.6,nein,keine besonderen Vorkommnisse
+Druck Nr. 161,PLA,weiß,Gyroid,0.15,fein,207,61,98,10,0.8,95.0,240.0,29.6,ja,Toleranzpruefung durchgefuehrt
+Druck Nr. 162,PLA,orange,Gyroid,0.25,grob,210,50,49,40,2.0,85.6,370.0,36.9,ja,Erstversuch
+Druck Nr. 163,ABS,orange,Gitter,0.1,fein,240,129,51,20,2.0,71.6,600.0,23.3,ja,Referenzdruck fuer Serie
+Druck Nr. 164,PETG,,Linear,0.15,,231,61,91,15,1.6,17.4,50.0,26.8,ja,keine besonderen Vorkommnisse
+Druck Nr. 165,PLA,,Waben,0.1,fein,210,38,49,80,1.6,55.3,840.0,52.4,ja,Referenzdruck fuer Serie
+Druck Nr. 166,ASA,blau,Linear,0.25,,250,109,30,10,1.2,71.2,360.0,17.3,ja,keine besonderen Vorkommnisse
+Druck Nr. 167,PLA,blau,Gitter,0.1,fein,201,63,30,50,1.6,62.8,1220.0,41.4,ja,Erstversuch
+Druck Nr. 168,ABS,blau,Waben,0.1,fein,252,109,88,30,0.8,134.6,740.0,29.5,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 169,ABS,grau,Waben,0.2,,249,91,64,100,0.8,96.6,640.0,39.1,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 170,PLA,schwarz,Linear,0.2,,208,46,50,40,0.8,126.0,670.0,38.7,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 171,PLA,schwarz,Gyroid,0.1,fein,197,62,45,100,1.6,104.0,,48.4,ja,Oberflaeche leicht rau
+Druck Nr. 172,ABS,transparent,Linear,0.1,fein,259,97,110,25,0.8,78.5,320.0,20.0,nein,Zweitdruck nach Fehlversuch
+Druck Nr. 173,PLA,grau,Waben,0.15,fein,204,62,105,20,0.8,86.8,240.0,32.6,ja,keine besonderen Vorkommnisse
+Druck Nr. 174,PLA,grau,Gyroid,0.2,mittel,203,70,51,25,1.2,83.8,370.0,36.7,ja,Oberflaeche leicht rau
+Druck Nr. 175,ASA,grau,Gitter,0.2,mittel,254,95,86,25,1.6,67.8,180.0,26.1,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 176,PETG,,Waben,0.25,grob,229,82,75,40,1.6,35.5,,31.7,ja,keine besonderen Vorkommnisse
+Druck Nr. 177,ASA,grau,Gitter,0.25,grob,253,73,30,80,1.6,18.8,190.0,38.4,nein,Referenzdruck fuer Serie
+Druck Nr. 178,ASA,schwarz,Waben,0.2,mittel,269,122,102,15,1.2,34.2,70.0,16.4,nein,Oberflaeche leicht rau
+Druck Nr. 179,ABS,,Waben,0.2,,234,121,51,100,2.0,44.1,370.0,39.3,ja,keine besonderen Vorkommnisse
+Druck Nr. 180,PLA,rot,Linear,0.1,,221,57,39,10,2.4,134.0,1300.0,21.5,ja,Erstversuch
+Druck Nr. 181,PETG,grau,Gitter,0.1,fein,228,72,95,60,2.0,60.9,410.0,40.1,ja,Referenzdruck fuer Serie
+Druck Nr. 182,PLA,orange,Gyroid,0.3,grob,198,57,59,30,2.4,54.4,150.0,31.9,ja,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 183,PLA,rot,Gyroid,0.1,fein,215,59,38,30,2.4,41.7,530.0,38.1,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 184,PETG,rot,Linear,0.3,grob,249,74,108,15,0.8,113.6,140.0,16.7,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 185,ABS,blau,Waben,0.25,grob,242,91,94,30,1.6,78.0,160.0,28.0,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 186,ASA,blau,Gitter,0.3,grob,261,104,100,20,1.6,58.6,80.0,20.7,ja,Oberflaeche leicht rau
+Druck Nr. 187,PETG,gelb,Gyroid,0.25,grob,229,92,77,30,1.2,84.3,210.0,30.6,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 188,PETG,blau,Linear,0.2,mittel,232,49,104,25,0.8,52.6,120.0,28.9,nein,Erstversuch
+Druck Nr. 189,ASA,schwarz,Linear,0.15,fein,250,93,118,25,0.8,84.6,220.0,27.5,nein,"Kunde: Musterbauteil, Rueckmeldung ausstehend"
+Druck Nr. 190,PETG,gelb,Gitter,0.2,mittel,236,64,100,20,0.8,121.9,,31.9,nein,Erstversuch
+Druck Nr. 191,ABS,schwarz,Gitter,0.25,grob,240,84,90,30,2.0,47.2,100.0,24.6,nein,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 192,PETG,transparent,Waben,0.1,fein,236,75,91,40,2.4,124.2,,40.0,ja,Oberflaeche leicht rau
+Druck Nr. 193,ASA,gelb,Gitter,0.2,,252,70,71,100,2.4,69.9,420.0,42.4,nein,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 194,ABS,,Gyroid,0.1,,245,94,67,50,1.2,25.9,230.0,30.1,ja,Zweitdruck nach Fehlversuch
+Druck Nr. 195,PETG,schwarz,Gitter,0.2,mittel,235,87,86,50,2.0,15.3,50.0,39.1,ja,Referenzdruck fuer Serie
+Druck Nr. 196,PLA,grau,Gyroid,0.25,,200,68,119,15,1.2,41.5,60.0,27.7,ja,Erstversuch
+Druck Nr. 197,ASA,gelb,Waben,0.2,mittel,252,110,96,20,1.6,59.6,130.0,26.4,nein,keine besonderen Vorkommnisse
+Druck Nr. 198,PLA,,Gyroid,0.25,grob,196,60,63,80,1.2,120.1,570.0,44.3,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 199,PLA,blau,Waben,0.15,,208,67,115,25,2.4,64.0,170.0,33.1,ja,"Nachbearbeitet, Stuetzstruktur entfernt"
+Druck Nr. 200,PLA,blau,Gitter,0.2,mittel,210,57,105,50,2.4,102.8,290.0,45.3,ja,Toleranzpruefung durchgefuehrt
