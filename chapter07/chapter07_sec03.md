@@ -268,8 +268,6 @@ Trainingsdaten also kaum, macht die Prognosen außerhalb des Datenbereichs aber
 unzuverlässig. Prognosen außerhalb des Datenbereichs nennt man **Extrapolation**,
 und bei Polynomen hohen Grades ist sie mit Vorsicht zu genießen.
 
-### Der Polynomgrad ist ein Hyperparameter
-
 Der Polynomgrad wird vor dem Training festgelegt und nicht aus den Daten gelernt.
 Solche Werte heißen Hyperparameter, wie schon die maximale Tiefe bei den
 Entscheidungsbäumen in Kapitel 6.3.
