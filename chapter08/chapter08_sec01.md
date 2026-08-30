@@ -25,13 +25,13 @@ lernen einfache Methoden kennen, damit umzugehen.
 
 ```{admonition} Lernziele
 :class: attention
-* [ ] Sie können in einem Datensatz mit **isnull()** fehlende Daten aufspüren und
+* [ ] Sie können in einem Datensatz mit `isnull()` fehlende Daten aufspüren und
   analysieren.
 * [ ] Sie kennen die beiden grundlegenden Strategien, mit fehlenden Daten umzugehen:
   * **Elimination** (Löschen) und
   * **Imputation** (Vervollständigen).
-* [ ] Sie können Daten gezielt mit **drop()** löschen.
-* [ ] Sie können fehlende Daten mit **fillna()** vervollständigen.
+* [ ] Sie können Daten gezielt mit `drop()` löschen.
+* [ ] Sie können fehlende Daten mit `fillna()` vervollständigen.
 * [ ] Sie wissen, dass technisch gültige Werte trotzdem unplausibel sein können
   und deshalb zusätzliche Plausibilitätsprüfungen nötig sind.
 ```
@@ -122,7 +122,7 @@ Verfahren werden wir nun etwas detaillierter betrachten.
 ```{admonition} Mini-Übung
 :class: tip
 Übertragen Sie das Vorgehen auf einen Datensatz aus der Fertigung. Die Datei
-`3ddruck_fehlende_daten.csv` enthält 200 FDM-Druckaufträge mit jeweils 15
+`3ddruck_fehlende_daten.csv` enthält 200 3D-Druckaufträge mit jeweils 15
 Merkmalen. Auch hier fehlen Einträge.
 
 1. Lesen Sie die Datei ein. Die Spalte `Nummer` soll als Zeilenindex dienen.
@@ -302,7 +302,7 @@ daten_ohne_verbrauch.loc[2]
 Diesmal entscheiden wir uns dazu, diese Eigenschaft nicht wegzulassen.
 ML-Verfahren brauchen immer einen gültigen Wert und nicht `NaN`. Wir müssen
 daher den fehlenden Wert ersetzen. Eine Möglichkeit ist, eine Farbe zu erfinden,
-z.B. 'bunt', oder die fehlenden Werte explizit durch einen Eintrag 'keine
+zum Beispiel 'bunt', oder die fehlenden Werte explizit durch einen Eintrag 'keine
 Angabe' zu vervollständigen. Dazu benutzen wir die Methode `fillna()` (siehe
 [Pandas-Dokumentation →
 fillna()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)).

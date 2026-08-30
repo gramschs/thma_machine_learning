@@ -1,77 +1,72 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: autoscout24_kodierung.csv
+    title: autoscout24_kodierung.csv
+  - file: 3ddruck_kodierung.csv
+    title: 3ddruck_kodierung.csv
+  - file: chapter08_sec03.md
+    title: chapter08_sec03.md
 ---
 
 # 8.3 Trainings- und Testdaten
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
+Bei den Entscheidungsbäumen und der linearen Regression haben wir mit der Methode
+`.score()` bewertet, wie gut ein Modell zu den Daten passt. Je näher der Wert an
+1 liegt, desto besser. Ein hoher Wert allein sagt aber wenig aus. Ein Modell kann
+die Trainingsdaten auswendig lernen und bei neuen Daten trotzdem versagen. Diesen
+Fehler nennen wir **Overfitting**.
 
-Bei den Entscheidungsbäumen und der linearen Regression haben wir mit der
-`score()`-Methode bewertet, wie viele der Daten durch das Modell korrekt
-prognostiziert wurden. Je näher der Score an 1 liegt, desto besser. Doch selbst
-ein perfekter Score bedeutet nicht zwangsläufig, dass das Modell optimal ist. Es
-könnte überangepasst (overfitted) sein und daher bei neuen, unbekannten Daten
-schlechte Prognosen liefern. Im Folgenden beschäftigen wir uns mit der
-Aufteilung von Daten in Trainings- und Testdaten.
+Deshalb teilen wir unsere Daten in **Trainingsdaten** und **Testdaten** auf. Mit
+den Testdaten prüfen wir, wie gut ein Modell mit Daten zurechtkommt, die es beim
+Training nicht gesehen hat. Zum Schluss schauen wir uns an, wie die Skalierung
+aus Kapitel 8.2 mit dieser Aufteilung zusammenpasst.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie verstehen, warum Daten in **Trainingsdaten** und **Testdaten** aufgeteilt
-  werden.
-* Sie können mit der Funktion **train_test_split()** Pandas-DataFrames in
-  Trainings- und Testdaten aufteilen.
-* Sie kennen das Konzept der **Kreuzvalidierung**.
+* [ ] Sie können erklären, warum ein hoher Score auf den Trainingsdaten kein
+  gutes Modell garantiert (**Overfitting**).
+* [ ] Sie wissen, warum wir Daten in **Trainingsdaten** und **Testdaten**
+  aufteilen.
+* [ ] Sie können Daten mit der Funktion `train_test_split()` in Trainings- und
+  Testdaten aufteilen.
+* [ ] Sie wissen, dass ein Scaler nur an die Trainingsdaten angepasst wird, damit
+  kein **Data Leakage** entsteht.
 ```
 
 ## Auswendiglernen nützt nichts
 
-Um die Herausforderungen bei der Modellauswahl zu verdeutlichen, betrachten wir
-einen künstlich generierten Datensatz. Angenommen, wir hätten die folgenden 20
-Messwerte erfasst und möchten ein Regressionsproblem lösen.
+Wir betrachten ein einfaches Beispiel. Angenommen, wir haben die folgenden 20
+Messwerte erfasst und wollen ein Regressionsproblem lösen.
 
-```{code-cell}
-import pandas as pd 
+```{code-cell} python
+import pandas as pd
 import plotly.express as px
 
-# Generierung Daten
-daten = pd.DataFrame()
-daten['Ursache'] = [1.8681193560547067, 0.18892899670288932, 1.8907374398595373, 0.8592639746974586, 0.7909152983890833, -1.1356420176784945, 1.905097819104967, -1.9750789791816405, -0.9880705504662242, -0.26083387038221684, 1.1175316871750098, -1.2092597015989877, 1.451972942396889, 1.933602708701251, -1.3446310343812051, 0.38933577573143685, -1.96405560932978, -0.45371486942548245, -1.8233597682740017, 1.8266118708569437]
-daten['Wirkung'] = [18.06801933135814, 0.09048390063552635, 18.29951272892001, 4.02392603643671, 1.97091878521032, 6.799411114666941, 17.540101218695103, 21.051664199041685, 5.604758672240995, 0.38630710692300024, 5.261393705782588, 7.365977868421521, 10.701020062336028, 17.48514901635516, 11.263523310016517, 1.1522069460363902, 20.979929897937023, -0.08352624016486021, 18.258951764602635, 15.321589041941028]
+# Daten erzeugen
+messwerte = pd.DataFrame()
+messwerte['Ursache'] = [1.8681193560547067, 0.18892899670288932, 1.8907374398595373, 0.8592639746974586, 0.7909152983890833, -1.1356420176784945, 1.905097819104967, -1.9750789791816405, -0.9880705504662242, -0.26083387038221684, 1.1175316871750098, -1.2092597015989877, 1.451972942396889, 1.933602708701251, -1.3446310343812051, 0.38933577573143685, -1.96405560932978, -0.45371486942548245, -1.8233597682740017, 1.8266118708569437]
+messwerte['Wirkung'] = [18.06801933135814, 0.09048390063552635, 18.29951272892001, 4.02392603643671, 1.97091878521032, 6.799411114666941, 17.540101218695103, 21.051664199041685, 5.604758672240995, 0.38630710692300024, 5.261393705782588, 7.365977868421521, 10.701020062336028, 17.48514901635516, 11.263523310016517, 1.1522069460363902, 20.979929897937023, -0.08352624016486021, 18.258951764602635, 15.321589041941028]
 
 # Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', title= 'Künstlich generierte Messdaten')
+fig = px.scatter(messwerte, x='Ursache', y='Wirkung', title='Künstlich generierte Messdaten')
 fig.show()
 ```
 
-Nun würden wir das folgende Modell implementieren. Der Name des Modells sagt
-bereits alles!
+Jetzt bauen wir ein Modell. Der Name sagt bereits alles. Beim Training speichert
+es die Zielwerte. Bei einer Prognose gibt es genau diese gespeicherten Werte
+wieder zurück.
 
-```{code-cell}
+```{code-cell} python
 from sklearn.metrics import r2_score
 
 class AuswendigLerner:
-    def __init__(self) -> None:
-        self.X = None
-        self.y = None
-
-    def fit(self, X,y):
-        self.X = X
+    def fit(self, X, y):
         self.y = y
 
     def predict(self, X):
@@ -83,46 +78,44 @@ R²-Score implementieren zu müssen, verwenden wir die allgemeine Funktion aus
 Scikit-Learn (siehe [Dokumentation Scikit-Learn →
 r2_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)).
 
-```{code-cell}
-# Adaption der Daten
-X = daten[['Ursache']]
-y = daten['Wirkung']
+```{code-cell} python
+# Daten ins richtige Format bringen
+X = messwerte[['Ursache']]
+y = messwerte['Wirkung']
 
-# Auswahl Modell und Training
+# Modell wählen und trainieren
 mein_super_modell = AuswendigLerner()
 mein_super_modell.fit(X, y)
 
-# prediction
+# Prognose
 y_prognose = mein_super_modell.predict(X)
 
-# check quality
-score = r2_score(y,y_prognose)
-print(f'Der R2-Score ist: {score:.2f}')
+# Güte bewerten
+r2_training = r2_score(y, y_prognose)
+print(f'Der R²-Score auf den Trainingsdaten ist: {r2_training:.2f}')
 ```
 
-Ein R²-Score von 1, unser Modell scheint perfekt zu funktionieren! Doch wie
-prognostiziert es neue Daten? Das Modell funktioniert zwar hervorragend für die
-gegebenen Trainingsdaten, ist jedoch **nicht verallgemeinerbar**.
+Der R²-Score ist 1, unser Modell scheint perfekt zu funktionieren. Doch wie
+prognostiziert es neue Daten? Das Modell funktioniert hervorragend für die schon
+bekannten Daten, ist aber **nicht verallgemeinerbar**.
 
-```{code-cell}
+```{code-cell} python
 mein_super_modell.predict([[1.3]])
 ```
 
-Anstatt für den x-Wert $1.3$ (Ursache) eine Prognose zu treffen, gibt das Modell
-einfach die auswendig gelernten y-Werte (Wirkungen) aus.
+Statt einer einzelnen Prognose für die Ursache 1.3 gibt das Modell alle 20
+gespeicherten Wirkungen zurück. Es hat die Trainingsdaten auswendig gelernt, aber
+keinen Zusammenhang verstanden. Auf den Trainingsdaten sieht das Modell perfekt
+aus, für neue Daten ist es unbrauchbar.
 
 ## Daten für später aufheben
 
-Bei der Modellauswahl und dem Training des Modells müssen wir zusätzlich
-sicherstellen, dass das Modell verallgemeinerbar ist, das heißt, dass es auch
-für neue, zukünftige Daten verlässliche Prognosen liefern kann. Da wir jedoch
-sofort abschätzen wollen, wie gut das Modell auf neue Daten reagiert, und nicht
-warten möchten, bis die nächsten Messungen vorliegen, legen wir jetzt schon
-einen Teil der vorhandenen Daten zur Seite. Diese Daten nennen wir
-**Testdaten**. Die verbleibenden Daten verwenden wir für das Training des
-Modells, sie heißen **Trainingsdaten**. Später nutzen wir die Testdaten, um zu
-überprüfen, wie gut das Modell bei Daten funktioniert, die nicht zum Training
-verwendet wurden.
+Wir wollen wissen, ob ein Modell auch mit neuen Daten zurechtkommt. Auf die
+nächsten Messungen zu warten, dauert zu lange. Deshalb legen wir schon jetzt
+einen Teil der vorhandenen Daten beiseite. Diesen Teil nennen wir **Testdaten**,
+den Rest **Trainingsdaten**. Trainiert wird nur mit den Trainingsdaten. Mit den
+Testdaten prüfen wir danach, wie gut das Modell bei Daten funktioniert, die es
+beim Training nicht gesehen hat.
 
 Für die Aufteilung in Trainings- und Testdaten verwenden wir eine dafür
 vorgesehene Funktion von Scikit-Learn namens `train_test_split()` (siehe
@@ -133,10 +126,10 @@ Dann übergeben wir `train_test_split()` die Daten, die aufgeteilt werden sollen
 und erhalten als Rückgabe zwei DataFrames: Der erste enthält die Trainingsdaten,
 der zweite die Testdaten.
 
-```{code-cell}
+```{code-cell} python
 from sklearn.model_selection import train_test_split
 
-daten_train, daten_test = train_test_split(daten)
+messwerte_train, messwerte_test = train_test_split(messwerte)
 ```
 
 Nun wollen wir sehen, welche Datenpunkte zu den Trainingsdaten und welche zu den
@@ -145,107 +138,228 @@ füllen es mit den Strings `'Trainingsdaten'` bzw. `'Testdaten'`. Anschließend
 visualisieren wir die Datenpunkte wie oben, wobei die Punkte entsprechend ihrer
 Zugehörigkeit (Trainings- oder Testdaten) eingefärbt werden.
 
-```{code-cell}
-# Anreicherung der Daten mit dem Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
-daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
+```{code-cell} python
+# Datenpunkte nach Splitstatus einfärben
+messwerte.loc[messwerte_train.index, 'Splitstatus'] = 'Trainingsdaten'
+messwerte.loc[messwerte_test.index, 'Splitstatus'] = 'Testdaten'
 
-# Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', color='Splitstatus', 
-title='Künstlich generierte Messdaten')
+fig = px.scatter(messwerte, x='Ursache', y='Wirkung', color='Splitstatus',
+                 title='Künstlich generierte Messdaten')
 fig.show()
 ```
 
-Standardmäßig hält die Funktion `train_test_split()` 25 % der Daten als
-Testdaten zurück. Ein schnelles Zählen der fünf Testdatenpunkte bestätigt dies.
-Die Auswahl der Testdaten erfolgt zufällig, sodass jeder Durchlauf des Codes
-eine andere Aufteilung der Daten erzeugt.
+Standardmäßig hält `train_test_split()` 25 % der Daten als Testdaten zurück, hier
+also 5 von 20 Datenpunkten. Die Auswahl ist zufällig, jeder Durchlauf liefert
+eine andere Aufteilung.
 
-Die Funktion bietet aber auch Optionen, um die Aufteilung nach eigenen Wünschen
-anzupassen:
+Die Funktion hat einige nützliche Optionen:
 
-- `test_size`: Mit der Option `test_size` kann ein anderer Anteil als 25 % für
-  die Testdaten festgelegt werden. Möchte man zum Beispiel nur 10 % der Daten
-  als Testdaten zurückhalten, kann man `test_size=0.1` einstellen. Der Anteil
-  wird als Float zwischen 0.0 und 1.0 angegeben. Verwendet man stattdessen einen
-  Integer, interpretiert Scikit-Learn diesen als Anzahl der Testdatenpunkte.
-  `test_size=7` bedeutet also, dass sieben Datenpunkte als Testdaten verwendet
-  werden.
-- `random_state`: Die zufällige Auswahl der Testdaten erfolgt durch einen
-  Zufallszahlengenerator, der bei jedem Durchlauf neu gestartet wird. Wenn wir
-  zwar eine zufällige Auswahl wollen, aber den Neustart des
-  Zufallszahlengenerators verhindern möchten, können wir den Ausgangszustand des
-  Generators mit einem festen Wert (Integer) festlegen. Das ist vor allem für
-  Präsentationen oder Lehrmaterialien nützlich.
-- `shuffle`: Die Option `shuffle` bestimmt, ob die Daten vor der Aufteilung
-  durchmischt werden. Der Standard ist `True`, d.h. die Datenpunkte werden
-  zufällig durchmischt, bevor sie aufgeteilt werden. Wird diese Option auf
-  `False` gesetzt, behalten die Daten ihre ursprüngliche Reihenfolge. Bei einem
-  üblichen Split von 80/20 in Trainingsdaten und Testdaten werden die ersten 80
-  \% für die Trainingsdaten genommen und die letzten 20 % für die Testdaten. Sind
-  die Daten sortiert, kann es dadurch zu Verzerrungen kommen. Kommen
-  beispielsweise erst alle billigen Autos und dann die teuren, lernt das
-  ML-Modell mit den billigeren Autos und testet mit den teureren Autos.
-- `stratify`: Diese Option ist vor allem wichtig, wenn die Verteilung zwischen
-  verschiedenen Klassen erhalten bleiben soll. Sind im gesamten Datensatz 30 \%
-  der Autos Diesel-Fahrzeuge, sollen auch in den Trainingsdaten 30 \% der Autos
-  Diesel-Fahrzeuge sein. Diese Option erfordert, dass die Option `shuffle` auf
-  `True` gesetzt ist. Mehr Informationen zum Gebrauch von `stratify` finden wir
-  in der [Dokumentation Scikit-Learn →
-  train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html).
+- `test_size`: Anteil oder Anzahl der Testdaten. `test_size=0.1` hält 10 %
+  zurück, `test_size=7` genau 7 Datenpunkte.
+- `random_state`: Ein fester Wert wie `random_state=0` macht die zufällige
+  Aufteilung reproduzierbar. Das ist für Vergleiche und Lehrmaterial nützlich.
+- `shuffle`: Ob die Daten vor der Aufteilung gemischt werden. Standard ist
+  `True`. Bei sortierten Daten ist das wichtig, sonst landen zum Beispiel nur
+  billige Autos in den Trainingsdaten und nur teure in den Testdaten.
+- `stratify`: Sorgt dafür, dass eine Klassenverteilung in beiden Teilen gleich
+  bleibt. Sind 30 % der Autos Diesel, dann auch in Trainings- und Testdaten.
 
-Nun verwenden wir `train_test_split` für unsere Daten.
+Alle Optionen stehen in der [Dokumentation Scikit-Learn →
+train_test_split()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html).
 
-```{code-cell}
-daten_train, daten_test = train_test_split(daten, test_size=7, random_state=0)
+Für den weiteren Verlauf teilen wir unsere Messwerte mit einem festen
+`random_state` auf und halten 7 Datenpunkte als Testdaten zurück.
 
-# Aktualisierung des Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
-daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
+```{code-cell} python
+messwerte_train, messwerte_test = train_test_split(messwerte, test_size=7, random_state=0)
 
-# Visualisierung
-fig = px.scatter(daten, x = 'Ursache', y = 'Wirkung', color='Splitstatus', 
-title='Künstlich generierte Messdaten')
+# Datenpunkte nach Splitstatus einfärben
+messwerte.loc[messwerte_train.index, 'Splitstatus'] = 'Trainingsdaten'
+messwerte.loc[messwerte_test.index, 'Splitstatus'] = 'Testdaten'
+
+fig = px.scatter(messwerte, x='Ursache', y='Wirkung', color='Splitstatus',
+                 title='Künstlich generierte Messdaten')
 fig.show()
 ```
 
-## Idee der Kreuzvalidierung
+Damit haben wir das Werkzeug, um **Overfitting** aufzudecken. Ein Modell wird nur
+mit den Trainingsdaten trainiert und danach mit den Testdaten bewertet. Der
+`AuswendigLerner` aus dem ersten Abschnitt schneidet auf den Trainingsdaten
+perfekt ab. Auf den Testdaten würde er durchfallen, denn für neue Ursachen kennt
+er keine Wirkung. Ab jetzt teilen wir unsere Daten in jedem Kapitel zuerst auf.
 
-Das Zurückhalten eines Teils der Daten als Testdaten hat den Nachteil, dass
-weniger Daten für das Training zur Verfügung stehen. Besonders bei kleinen
-Datensätzen kann dies dazu führen, dass das Modell ungenau oder schlecht
-trainiert wird. Hier kommt die Kreuzvalidierung ins Spiel.
+```{admonition} Mini-Übung
+:class: tip
+Arbeiten Sie mit dem Datensatz `3ddruck_kodierung.csv`. Die Spalte `Nummer` soll
+als Zeilenindex dienen.
 
-Die Idee der **Kreuzvalidierung** ist, die Daten in mehrere Teilmengen zu
-unterteilen und das Modell mehrmals zu trainieren und zu testen, um die Leistung
-besser beurteilen zu können. Schauen wir uns zunächst die zweifache
-Kreuzvalidierung an:
+1. Teilen Sie den Datensatz in Trainings- und Testdaten auf. 20 % der Daten
+   sollen Testdaten sein. Legen Sie einen festen Wert für den Zufallsgenerator
+   fest.
+2. Prüfen Sie, wie viele Druckaufträge in den Trainingsdaten und wie viele in den
+   Testdaten sind.
+3. Im Merkmal `Erfolgreich` gibt es viel mehr erfolgreiche als nicht erfolgreiche
+   Drucke. Teilen Sie erneut auf, diesmal so, dass dieses Verhältnis in beiden
+   Teilen erhalten bleibt.
+```
 
-Bei der zweifachen Kreuzvalidierung teilen wir die Daten in zwei Teilmengen, A
-und B. Das Modell wird dann zweimal trainiert und getestet: einmal mit A als
-Trainingsdaten und B als Testdaten, und einmal umgekehrt. Die endgültige
-Modellbewertung ergibt sich aus dem Durchschnitt der beiden Testergebnisse.
+```{code-cell} python
+# Code-Zelle
+```
 
-Die dreifache Kreuzvalidierung funktioniert ähnlich, mit dem Unterschied, dass
-die Daten in drei Teilmengen A, B und C aufgeteilt werden. In drei Durchläufen
-wird jeweils mit zwei der Teilmengen trainiert und mit der dritten getestet:
+````{admonition} Lösung
+:class: tip
+:class: dropdown
 
-- Im ersten Durchlauf wird mit A und B trainiert und mit C getestet.
-- Im zweiten Durchlauf wird mit B und C trainiert und mit A getestet.
-- Im dritten Durchlauf wird mit A und C trainiert und mit B getestet. Am Ende
-wird der Durchschnitt der drei Testergebnisse als Maß für die Modellleistung
-verwendet.
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
-Dieses Verfahren lässt sich auf beliebig viele Teilmengen erweitern.
-Scikit-Learn bietet dafür auch spezielle Funktionen zur effizienten Umsetzung
-der Kreuzvalidierung. Eine detailliertere Betrachtung dieser Techniken erfolgt
-jedoch in einem späteren Kapitel. An dieser Stelle soll lediglich das Konzept
-der Kreuzvalidierung eingeführt werden.
+druckversuche = pd.read_csv('3ddruck_kodierung.csv', index_col=0)
+
+druckversuche_train, druckversuche_test = train_test_split(
+    druckversuche, test_size=0.2, random_state=0
+)
+
+print('Trainingsdaten:', len(druckversuche_train))
+print('Testdaten:', len(druckversuche_test))
+```
+
+Mit `stratify` bleibt die Verteilung von `Erfolgreich` in beiden Teilen erhalten:
+
+```python
+druckversuche_train, druckversuche_test = train_test_split(
+    druckversuche, test_size=0.2, random_state=0,
+    stratify=druckversuche['Erfolgreich']
+)
+
+print(druckversuche_train['Erfolgreich'].value_counts(normalize=True))
+print(druckversuche_test['Erfolgreich'].value_counts(normalize=True))
+```
+````
+
+## Skalieren ohne Data Leakage
+
+In Kapitel 8.2 haben wir den kompletten Datensatz auf einmal skaliert. Jetzt
+trennen wir vorher in Trainings- und Testdaten. Dabei müssen wir aufpassen.
+
+Wir holen den Autoscout24-Datensatz zurück, behalten die numerischen Merkmale und
+teilen auf.
+
+```{code-cell} python
+daten = pd.read_csv('autoscout24_kodierung.csv')
+daten = daten.drop(columns=['Marke', 'Modell', 'Farbe', 'Erstzulassung',
+                            'Getriebe', 'Kraftstoff', 'Bemerkungen', 'Zustand'])
+
+daten_train, daten_test = train_test_split(daten, test_size=0.2, random_state=7)
+```
+
+Den festen Wert 7 für den Zufallsgenerator haben wir hier so gewählt, dass ein
+besonders extremes Auto in den Testdaten landet. Warum das wichtig ist, sehen wir
+gleich.
+
+Die Regel lautet: Der Scaler wird nur mit den Trainingsdaten angepasst. Wir rufen
+`.fit()` also ausschließlich mit den Trainingsdaten auf. Danach transformieren wir
+beide Teile.
+
+```{code-cell} python
+from sklearn.preprocessing import MinMaxScaler
+
+normierung = MinMaxScaler()
+normierung.fit(daten_train)
+
+daten_train_normiert = normierung.transform(daten_train)
+daten_test_normiert = normierung.transform(daten_test)
+```
+
+Warum nur die Trainingsdaten? Berechnet der Scaler Minimum und Maximum aus allen
+Daten, fließt Wissen über die Testdaten in die Vorbereitung ein. Der Testscore
+wäre dann zu gut. Diesen schleichenden Informationsfluss nennen wir **Data
+Leakage**. Die Testdaten sollen neue, ungesehene Daten nachstellen, deshalb
+halten wir sie aus jeder Vorbereitung heraus.
+
+Eine Folge davon: Testwerte können nach der Normierung auch außerhalb von 0 bis
+1 liegen. Das passiert, wenn ein Testauto extremer ist als alle Trainingsautos.
+
+```{code-cell} python
+daten_test_normiert = pd.DataFrame(daten_test_normiert, columns=daten.columns)
+daten_test_normiert.describe()
+```
+
+Bei der Leistung und beim Kilometerstand liegt der größte Testwert über 1. In den
+Testdaten steht ein Auto mit mehr PS als jedes Auto in den Trainingsdaten. Das
+ist kein Fehler, sondern richtig so.
+
+Dasselbe Prinzip gilt für andere Vorbereitungsschritte, die etwas aus den Daten
+berechnen, zum Beispiel das Ersetzen fehlender Werte durch den Mittelwert aus
+Kapitel 8.1. Auch dieser Mittelwert wird nur aus den Trainingsdaten gebildet.
+
+```{admonition} Mini-Übung
+:class: tip
+Arbeiten Sie mit dem Datensatz `3ddruck_kodierung.csv`. Die Spalte `Nummer` soll
+als Zeilenindex dienen. Behalten Sie nur die numerischen Merkmale.
+
+1. Teilen Sie den Datensatz in Trainings- und Testdaten auf. 20 % sollen
+   Testdaten sein, mit festem Wert für den Zufallsgenerator.
+2. Normieren Sie beide Teile auf das Intervall von 0 bis 1. Passen Sie die
+   Normierung dabei nur an die Trainingsdaten an.
+3. Prüfen Sie über die statistischen Kennzahlen, ob Testwerte außerhalb von 0 bis
+   1 liegen.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+
+druckversuche = pd.read_csv('3ddruck_kodierung.csv', index_col=0)
+druckversuche = druckversuche.drop(
+    columns=['Material', 'Farbe', 'Infill-Muster', 'Oberflaechenguete',
+             'Erfolgreich', 'Bemerkungen']
+)
+
+druckversuche_train, druckversuche_test = train_test_split(
+    druckversuche, test_size=0.2, random_state=0
+)
+
+normierung = MinMaxScaler()
+normierung.fit(druckversuche_train)
+
+druckversuche_train_normiert = normierung.transform(druckversuche_train)
+druckversuche_test_normiert = normierung.transform(druckversuche_test)
+```
+
+Die Kennzahlen der normierten Testdaten:
+
+```python
+druckversuche_test_normiert = pd.DataFrame(
+    druckversuche_test_normiert, columns=druckversuche.columns
+)
+druckversuche_test_normiert.describe()
+```
+
+Bei der Drucktemperatur liegt der kleinste Testwert leicht unter 0. In den
+Testdaten gibt es einen Druck mit niedrigerer Temperatur als in allen
+Trainingsdaten.
+````
 
 ## Zusammenfassung und Ausblick
 
-In diesem Abschnitt haben wir die Aufteilung von Daten in Trainings- und
-Testdaten kennengelernt und die Funktion `train_test_split()` verwendet. Diese
-Funktion wird uns in zukünftigen Kapiteln und Projekten begleiten. Zudem haben
-wir eine erste Einführung in die Kreuzvalidierung erhalten, die wir später
-ausführlicher behandeln werden.
+Wir haben unsere Daten in **Trainingsdaten** und **Testdaten** aufgeteilt. Mit
+der Funktion `train_test_split()` geht das in einer Zeile. Trainiert wird nur mit
+den Trainingsdaten, bewertet wird mit den Testdaten. So erkennen wir
+**Overfitting**. Auch einen Scaler passen wir nur an die Trainingsdaten an, sonst
+entsteht **Data Leakage**.
+
+Ein einzelner Split hat einen Nachteil. Er hängt vom Zufall ab, und ein Teil der
+Daten steht nicht für das Training zur Verfügung. Bei der **Kreuzvalidierung**
+teilt man die Daten in mehrere Teile und trainiert und testet das Modell
+mehrmals. Wir behandeln sie ausführlich in Kapitel 10.

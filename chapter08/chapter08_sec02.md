@@ -259,7 +259,7 @@ Beispiel `Material_PLA`, `Farbe_blau` oder `Infill-Muster_Gyroid`. Der Datensatz
 hat jetzt 28 Spalten.
 ````
 
-## Skalierung von numerischen Daten
+## Numerische Daten skalieren
 
 Jetzt betrachten wir die numerischen Merkmale. Wir laden den Datensatz neu und
 behalten nur die Spalten mit Zahlen.
