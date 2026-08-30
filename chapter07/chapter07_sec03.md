@@ -1,42 +1,33 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter07_sec03.md
+    title: chapter07_sec03.md
 ---
 
 # 7.3 Polynomiale Regression
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
-
 In den letzten beiden Kapiteln haben wir uns mit der linearen Regression
-befasst. Dabei haben wir die einfache lineare Regression betrachtet, bei der die
-Zielgröße von einem einzelnen Merkmal abhängt, sowie die multiple lineare
-Regression, bei der die Zielgröße von mehreren Merkmalen beeinflusst wird. In
-diesem Kapitel werden wir uns damit beschäftigen, wie eine Regression für
-quadratische, kubische oder allgemein für polynomiale Modelle durchgeführt wird.
-Darüber hinaus diskutieren wir die Probleme Overfitting und Underfitting.
+befasst, mit einem einzelnen Merkmal und mit mehreren Merkmalen. In diesem
+Kapitel erweitern wir die Regression zu quadratischen, kubischen und allgemein
+polynomialen Modellen. Außerdem sehen wir, wie man den Polynomgrad geeignet
+wählt und warum ein zu hoher Grad die Prognosen außerhalb des Datenbereichs
+unbrauchbar macht.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können eine **polynomiale Regression** durchführen.
-* Sie wissen, dass die Wahl des Polynomgrades entscheidend dafür ist, ob
-  **Underfitting (Unteranpassung)**, **Overfitting (Überanpassung)** oder ein
-  geeignetes Modell vorliegt.
-* Sie wissen, dass der Polynomgrad ein **Hyperparameter** ist.
+* [ ] Sie können eine **polynomiale Regression** mit `PolynomialFeatures`
+  durchführen.
+* [ ] Sie können den **Polynomgrad** geeignet wählen und wissen, dass er ein
+  **Hyperparameter** ist.
+* [ ] Sie können die **Plausibilität** eines Regressionsmodells anhand von
+  Kurvenverlauf und Prognosen prüfen, besonders bei der **Extrapolation** über
+  den Datenbereich hinaus.
 ```
 
 ## Künstliches Experiment zu Bremswegen eines Autos
@@ -49,7 +40,7 @@ $$s = \frac{1}{100} \cdot v^2,$$
 
 wobei die Geschwindigkeit $v$ des Autos in km/h angegeben wird. Natürlich
 variiert der tatsächliche Bremsweg abhängig von der Straßenoberfläche (trocken /
-nass / vereist) oder dem Fahrzeugtyp (inbesondere Leistung der Bremse). Wird die
+nass / vereist) oder dem Fahrzeugtyp (insbesondere Leistung der Bremse). Wird die
 Bremsung aufgrund eines plötzlich auftauchenden Hindernisses eingeleitet, kommt
 zum Bremsweg noch der Reaktionsweg hinzu. Mehr Details finden Sie auf den
 Internetseiten des ADAC unter [Bremsweg berechnen: Mit dieser Formel
@@ -61,7 +52,7 @@ generieren wir zufällig 50 Geschwindigkeiten zwischen 30 km/h und 150 km/h.
 Gemäß der obigen Faustformel lassen wir zunächst die dazugehörigen Bremswege
 berechnen, addieren dann aber noch zufällige Schwankungen.
 
-```{code-cell}
+```{code-cell} python
 import numpy as np 
 import pandas as pd 
 
@@ -82,7 +73,7 @@ daten = pd.DataFrame({
 
 Als nächstes lassen wir die künstlich erzeugten Bremsweg-Experimente visualisieren.
 
-```{code-cell}
+```{code-cell} python
 import plotly.express as px 
 
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
@@ -98,7 +89,7 @@ $y$, dann lautet das lineare Regressionsmodell
 
 $$y = w_0 + w_1 \cdot x.$$
 
-```{code-cell}
+```{code-cell} python
 from sklearn.linear_model import LinearRegression
 
 # Daten ins richtige Format bringen
@@ -106,102 +97,81 @@ X = daten[['Geschwindigkeit [km/h]']]
 y = daten['Bremsweg [m]']
 
 # Training des Modells
-model = LinearRegression()
-model.fit(X, y)
+modell = LinearRegression()
+modell.fit(X, y)
 
 # Bewertung des Modells für die Trainingsdaten
-r2_score = model.score(X, y)
-print(f'R2-score Trainingsdaten: {r2_score:.4f}')
+r2_training = modell.score(X, y)
+print(f'R2-score Trainingsdaten: {r2_training:.4f}')
 ```
 
-Der R²-Score sieht sehr gut aus. Um uns einen Eindruck zu verschaffen, wie gut
-das lineare Modell tatsächlich ist (wir wissen ja, dass es eigentlich
-quadratisch ist!), erzeugen wir nun systematisch Geschwindigkeiten in dem
-Bereich von 30 km/h und 150 km/h und verwenden die Faustformel für die
-Berechnung der Bremswege.
+Der R²-Score sieht mit rund 0.96 gut aus. Um die Prognose zu beurteilen, schauen
+wir sie uns über einen Geschwindigkeitsbereich an, der deutlich über die
+Trainingsdaten hinausgeht. Weil wir die Daten selbst mit der Faustformel erzeugt
+haben, können wir die Prognose zusätzlich mit dieser wahren Kurve vergleichen.
 
-```{code-cell}
-v_test = np.linspace(v_min, v_max, 200)
-s_test = 1/100 * v_test**2
-testdaten = pd.DataFrame({
-    'Geschwindigkeit [km/h]': v_test,
-    'Bremsweg [m]': s_test
+```{code-cell} python
+# Geschwindigkeiten für die Prognosekurve, weit über den Datenbereich hinaus
+geschwindigkeiten = pd.DataFrame({
+    'Geschwindigkeit [km/h]': np.linspace(30, 200, 200)
     })
+faustformel = 1/100 * geschwindigkeiten['Geschwindigkeit [km/h]']**2
 ```
 
-Mit Hilfe des linearen Regressionsmodells prognostizieren wir die Bremswege für
-diese Geschwindigkeiten und lassen den R²-Score berechnen.
+```{code-cell} python
+y_prognose = modell.predict(geschwindigkeiten)
 
-```{code-cell}
-# Bewertung des Modells für die Testdaten
-X_test = testdaten[['Geschwindigkeit [km/h]']]
-y_test = testdaten['Bremsweg [m]']
-
-r2_score = model.score(X_test, y_test)
-print(f'R2-score Testdaten: {r2_score:.4f}')
-```
-
-Zuletzt visualisieren wir die Prognose.
-
-```{code-cell}
-# Berechnung der Prognose 
-y_prognose = model.predict(X_test)
-
-# Visualisierung
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
     title='Bremsweg eines Autos: lineares Modell')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_prognose, mode='lines', name='Prognose')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_test, mode='lines', name='Faustformel')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = y_prognose,
+    mode='lines', name='Prognose')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = faustformel,
+    mode='lines', name='Faustformel')
 fig.show()
 ```
 
-Vor allem die Visualisierung zeigt die Schwächen des linearen Modells. Bei
-niedrigen Geschwindigkeiten wie in der Stadt unterschätzt das lineare Modell den
-Bremsweg. Unterhalb von 40 km/h prognostiziert das Modell sogar einen negativen
-Bremsweg. Zwischen 60 km/h und 120 km/h überschätzt das Modell den Bremsweg und
-oberhalb von 120 km/h unterschätzt es den Bremsweg wieder. Das Modell ist zu
-einfach für die Prognose, es liegt **Underfitting** vor. Daher probieren wir
-als nächstes ein quadratisches Regressionsmodell aus.
+Die Gerade trifft die gekrümmte Punktwolke nur grob. Sie liegt mal über, mal
+unter der Faustformel, und im unteren Geschwindigkeitsbereich sagt sie sehr
+kleine, unter etwa 39 km/h sogar negative Bremswege voraus. Für den gekrümmten
+Zusammenhang ist eine Gerade zu einfach. Wir probieren als nächstes ein
+quadratisches Modell.
 
 ## Quadratische Regression
 
-Wenn wir in der Dokumentation von Scikit-Learn nun nach einer Funktion zur
+Wenn wir in der Dokumentation von Scikit-Learn nach einer Funktion zur
 quadratischen Regression suchen, werden wir nicht fündig. Stattdessen nutzen wir
 einen Trick und erzeugen neue Merkmale.
 
-Das lineare Regressionsmodell, das wir eben ausprobiert haben, lautet
-mathematisch formuliert folgendermaßen:
+Das lineare Regressionsmodell hat nur ein Merkmal $x$, nämlich die
+Geschwindigkeit:
 
-$$y = w_0 + w_1 \cdot x$$
-
-mit nur einem Merkmal $x$, nämlich der Geschwindigkeit.
+$$y = w_0 + w_1 \cdot x.$$
 
 Wenn wir eine quadratische Funktion als Modellfunktion wählen möchten, erzeugen
-wir einfach ein zweites Merkmal. Wir nennen die bisherigen x-Werte $x$
-jetzt $x_1$ und fügen als zweites Merkmal die neue Eigenschaft
+wir einfach ein zweites Merkmal. Wir nennen die bisherigen x-Werte $x$ jetzt
+$x_1$ und fügen als zweites Merkmal die neue Eigenschaft
 
 $$x_2 = \left( x_1 \right)^2$$
 
 hinzu. Damit wird aus dem quadratischen Regressionsmodell
 
-$$y = w_0 + w_1 \cdot x + w_2 \cdot x^2$$
+$$y = w_0 + w_1 \cdot x_1 + w_2 \cdot \left( x_1 \right)^2$$
 
 das *multiple* lineare Regressionsmodell
 
 $$y = w_0 + w_1 \cdot x_1 + w_2 \cdot x_2.$$
 
-Scikit-Learn stellt auch hier passende Methoden bereit. Aus dem
-Vorbereitungsmodul `sklearn.preprocessing` importieren wir `PolynomialFeatures`.
-Mehr Details dazu finden Sie in der [Dokumentation Scikit-Learn →
-PolynomialFeature](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html).
-Wir erzeugen das PolynomialFeature-Objekt mit der Option `degree=2`, um die
-Quadrate hinzuzufügen. Dann transformieren wir die Input-Daten, indem wir die
-`fit_transform()`-Methode auf den Input anwenden.
+Scikit-Learn stellt dafür passende Methoden bereit. Aus dem Vorbereitungsmodul
+`sklearn.preprocessing` importieren wir `PolynomialFeatures`. Mehr Details dazu
+finden Sie in der [Dokumentation Scikit-Learn →
+PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html).
+Wir erzeugen das PolynomialFeatures-Objekt mit der Option `degree=2` und
+transformieren die Input-Daten mit der `fit_transform()`-Methode.
 
-```{code-cell}
+```{code-cell} python
 from sklearn.preprocessing import PolynomialFeatures
 
-# Merkmale erzeugen und Daten ins richtige Format bringen
+# Merkmale erzeugen: aus x_1 wird (x_1, x_1 hoch 2)
 polynom_transformator = PolynomialFeatures(degree = 2)
 X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
 y = daten['Bremsweg [m]']
@@ -213,93 +183,96 @@ wendet sie an, `transform()` wendet nur die bereits gelernte Transformation an.
 Danach können wir das multiple lineare Regressionsmodell trainieren und bewerten
 lassen.
 
-```{code-cell}
+```{code-cell} python
 # Training des Modells
-model = LinearRegression()
-model.fit(X, y)
+modell = LinearRegression()
+modell.fit(X, y)
 
 # Bewertung des Modells für die Trainingsdaten
-r2_score = model.score(X, y)
-print(f'R2-score Trainingsdaten: {r2_score:.4f}')
+r2_training = modell.score(X, y)
+print(f'R2-score Trainingsdaten: {r2_training:.4f}')
 ```
 
-Zuletzt lassen wir das quadratische Regressionsmodell noch visualisieren.
-Wichtig ist, dass nun auch die Testdaten quadriert werden müssen, da das
-ML-Modell für Prognosen voraussetzt, dass die Daten in der gleichen Art und
-Weise vorliegen wie die Trainingsdaten. Wir müssen denselben Transformator
-nehmen wie zum Training der Daten und nutzen daher nur die
-`transform()`-Methode.
+Für die Prognosekurve müssen wir auch die neuen Geschwindigkeiten mit demselben
+Transformator umformen. Wir nutzen dazu die `transform()`-Methode.
 
-```{code-cell}
-# Bewertung des Modells für die Testdaten
-X_test = polynom_transformator.transform(testdaten[['Geschwindigkeit [km/h]']])
-y_test = testdaten['Bremsweg [m]']
-r2_score = model.score(X_test, y_test)
-print(f'R2-score Testdaten: {r2_score:.4f}')
+```{code-cell} python
+X_neu = polynom_transformator.transform(geschwindigkeiten)
+y_prognose = modell.predict(X_neu)
 
-# Berechnung der Prognose Testdaten
-y_prognose = model.predict(X_test)
-
-# Visualisierung der Prognose   
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
     title='Bremsweg eines Autos: quadratisches Modell')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_prognose, mode='lines', name='Prognose')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_test, mode='lines', name='Faustformel')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = y_prognose,
+    mode='lines', name='Prognose')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = faustformel,
+    mode='lines', name='Faustformel')
 fig.show()
 ```
 
-Die Prognose ist so gut, dass wir die Prognose (rot) und die Faustformel (grün)
-kaum unterscheiden können. Kleinere Abweichungen gibt es bei den Bremswegen für
-Geschwindigkeiten oberhalb von 130 km/h. Wir können in den Plot hineinzoomen, um
-uns die Unterschiede anzusehen.
+Prognose und Faustformel sind im gesamten Bereich kaum zu unterscheiden, auch
+weit über 150 km/h hinaus. Der R²-Score ist mit rund 0.998 höher als beim
+linearen Modell. Das quadratische Modell passt also gut.
 
-## Polynomiale Regression
+## Die Wahl des Polynomgrads
 
-Mit diesem Trick, die Merkmale zu quadrieren, können wir weitermachen, z.B. die
-Merkmale mit 3 potenzieren. Letztendlich können wir so jedes gewünschte Polynom
-als Regressionspolynom trainieren lassen. Dabei muss ein höheres Polynom nicht
-unbedingt besser sein, wie das folgende Beispiel zeigt. Wir wählen als
-Polynomgrad 14.
+Mit demselben Trick können wir die Merkmale auch mit 3, 4 oder mehr potenzieren
+und so Polynome beliebigen Grades trainieren. Ein höherer Grad ist aber nicht
+automatisch besser. Wir probieren Grad 6.
 
-```{code-cell}
-# Merkmale erzeugen und Daten ins richtige Format bringen
-polynom_transformator = PolynomialFeatures(degree = 14)
+```{code-cell} python
+# Merkmale bis zur 6. Potenz erzeugen
+polynom_transformator = PolynomialFeatures(degree = 6)
 X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
 y = daten['Bremsweg [m]']
 
 # Training des Modells
-model = LinearRegression()
-model.fit(X, y)
+modell = LinearRegression()
+modell.fit(X, y)
 
 # Bewertung des Modells für die Trainingsdaten
-r2_score = model.score(X, y)
-print(f'R2-score Trainingsdaten: {r2_score:.4f}')
+r2_training = modell.score(X, y)
+print(f'R2-score Trainingsdaten: {r2_training:.4f}')
 
-# Bewertung für die Testdaten
-X_test = polynom_transformator.transform(testdaten[['Geschwindigkeit [km/h]']])
-r2_score = model.score(X_test, y_test)
-print(f'R2-score Testdaten: {r2_score:.4f}')
+# Prognose bei 200 km/h
+prognose_200 = modell.predict(
+    polynom_transformator.transform(pd.DataFrame({'Geschwindigkeit [km/h]': [200]})))
+print(f'Prognose bei 200 km/h: {prognose_200[0]:.0f} m')
+```
 
-# Berechnung der Prognose und Visualisierung
-y_prognose = model.predict(X_test)
+```{code-cell} python
+X_neu = polynom_transformator.transform(geschwindigkeiten)
+y_prognose = modell.predict(X_neu)
 
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
-    title='Bremsweg eines Autos: Polynom 14. Grades')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_prognose, mode='lines', name='Prognose')
-fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_test, mode='lines', name='Faustformel')
+    title='Bremsweg eines Autos: Polynom 6. Grades')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = y_prognose,
+    mode='lines', name='Prognose')
+fig.add_scatter(x = geschwindigkeiten['Geschwindigkeit [km/h]'], y = faustformel,
+    mode='lines', name='Faustformel')
+# y-Achse begrenzen, damit die Messdaten erkennbar bleiben
+fig.update_yaxes(range=[0, 500])
 fig.show()
 ```
 
-Zwischen 30 km/h und 50 km/h ist der Brensweg konstant knapp 22 m, was natürlich
-nicht mit der Praxis übereinstimmt. Die Visualisierung der Prognose zeigt, dass
-das ein polynomiales Regressionsmodell mit Grad 14 zu sehr an die Trainingsdaten
-angepasst ist und für neue Daten (siehe Geschwindigkeiten größer 150 km/h) nicht
-gut geeignet ist. Es liegt **Overfitting** vor.
+Der R²-Score auf den Trainingsdaten ist mit rund 0.998 nicht besser als beim
+quadratischen Modell. Im Datenbereich bis 150 km/h liegt die Prognose weiterhin
+dicht an der Faustformel. Außerhalb des Datenbereichs verhält sich das Modell
+aber ganz anders: Ab etwa 150 km/h weicht die Kurve immer stärker ab, und bei
+200 km/h prognostiziert das Polynom 6. Grades einen Bremsweg von rund 835 m,
+während die Faustformel 400 m ergibt.
 
-Bei der polynomialen Regression wird der Polynomgrad zu einem
-**Hyperparameter**. Hyperparameter haben wir auch schon bei den
-Entscheidungsbäumen (Decision Trees) kennengelernt. Zur Wiederholung geben wir
-hier erneut die Definition an.
+Ein Polynom hohen Grades hat viele Freiheitsgrade. Innerhalb der Daten werden sie
+durch die Messpunkte festgelegt, außerhalb nicht. Dort kann die Kurve praktisch
+beliebig ausschlagen. Der höhere Grad verbessert die Anpassung an die
+Trainingsdaten also kaum, macht die Prognosen außerhalb des Datenbereichs aber
+unzuverlässig. Prognosen außerhalb des Datenbereichs nennt man **Extrapolation**,
+und bei Polynomen hohen Grades ist sie mit Vorsicht zu genießen.
+
+### Der Polynomgrad ist ein Hyperparameter
+
+Der Polynomgrad wird vor dem Training festgelegt und nicht aus den Daten gelernt.
+Solche Werte heißen Hyperparameter, wie schon die maximale Tiefe bei den
+Entscheidungsbäumen in Kapitel 6.3.
 
 ```{admonition} Was ist ... ein Hyperparameter?
 :class: note
@@ -309,56 +282,78 @@ Hyperparameter steuern den gesamten Lernprozess und haben einen wesentlichen
 Einfluss auf die Leistung des Modells.
 ```
 
-Für ein gutes Modell, müssen die Hyperparameter sorgsam gewählt werden, damit
-das ML-Modell weder Underfitting noch Overfitting aufweist. Wir fassen zunächst
-die R²-Scores in einer Tabelle zusammen:
+Wir fassen die drei Modelle zusammen. Der wahre Bremsweg bei 200 km/h beträgt
+nach der Faustformel 400 m.
 
-| Polynomgrad | R² (Trainingsdaten) | R² (Testdaten) |
+| Polynomgrad | R² (Trainingsdaten) | Prognose bei 200 km/h |
 | --- | --- | --- |
-| 1 | 0.9641 | 0.9698 |
-| 2 | 0.9979 | 0.9999 |
-| 14 | 0.9899 | 0.9895 |
+| 1 | 0.9641 | 288 m |
+| 2 | 0.9979 | 396 m |
+| 6 | 0.9979 | 835 m |
+
+Grad 1 ist zu einfach: Die Prognose bleibt mit 288 m deutlich unter dem wahren
+Wert. Grad 2 trifft mit 396 m fast genau. Grad 6 verbessert die Anpassung nicht
+und liefert außerhalb des Datenbereichs mit 835 m einen unrealistischen Wert.
+
+```{admonition} Faustregel: Wie wählen wir den Polynomgrad?
+:class: note
+* Wir beginnen mit einem niedrigen Grad (1 oder 2).
+* Wir erhöhen den Grad nur, wenn die Anpassung an die Daten dadurch sichtbar
+  besser wird.
+* Wir prüfen den Kurvenverlauf: Bleibt er glatt und plausibel, auch etwas
+  außerhalb des Datenbereichs?
+* Im Zweifel wählen wir den niedrigeren Grad, das einfachere Modell.
+```
+
+Systematische Methoden, um Hyperparameter wie den Polynomgrad zu wählen, lernen
+wir in Kapitel 8 kennen.
 
 ```{admonition} Mini-Übung
 :class: tip
-Vergleichen Sie die drei trainierten Modelle anhand der Tabelle:
+Trainieren Sie ein polynomiales Regressionsmodell mit Grad 4.
 
-1. Welches Modell hat den besten R²-Score auf den *Testdaten*?
-2. Beim Polynom Grad 14: Warum ist der Test-Score niedriger als der Train-Score?
-3. Ordnen Sie zu: Welches Modell zeigt Underfitting, welches ist gut angepasst,
-   welches zeigt Overfitting?
-4. Was würde vermutlich passieren, wenn wir mit dem Polynom Grad 14 Bremswege
-   bei 200 km/h prognostizieren?
+1. Lassen Sie den R²-Score auf den Trainingsdaten ausgeben.
+2. Lassen Sie die Prognose für 200 km/h ausgeben.
+3. Vergleichen Sie beide Werte mit dem quadratischen Modell (Grad 2). Welchen
+   Grad würden Sie für die Prognose von Bremswegen wählen?
 ```
 
-```{admonition} Lösung
+```{code-cell}
+# Code-Zelle
+```
+
+````{admonition} Lösung
 :class: tip
 :class: dropdown
-1. Grad 2 (quadratisch) hat mit R² ≈ 0.9999 den besten Test-Score.
-2. Beim Polynom Grad 14 ist der Test-Score niedriger als der Train-Score, weil
-   das Modell zu stark an die Trainingsdaten angepasst ist (Overfitting). Es
-   lernt auch das Rauschen in den Trainingsdaten, was bei neuen Daten nicht
-   hilft.
-3. Underfitting - gute Passung - Overfitting:
-    * Grad 1 (linear) - Underfitting (zu einfaches Modell, beide Scores um 0.96)
-    * Grad 2 (quadratisch) - gut angepasst (beide Scores nahe 1.0, passt zur
-      wahren Faustformel)
-    * Grad 14 - Overfitting (sehr flexibel, aber Test-Score schlechter als
-      Train-Score)
-4. Die Visualisierung zeigt bereits bei 150 km/h unrealistisches Verhalten. Bei
-   200 km/h würde das Modell vermutlich viel zu lange Bremswege prognostizieren.
+
+```python
+polynom_transformator = PolynomialFeatures(degree=4)
+X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
+y = daten['Bremsweg [m]']
+
+modell = LinearRegression()
+modell.fit(X, y)
+
+print(f'R2-score Trainingsdaten: {modell.score(X, y):.4f}')
+
+prognose_200 = modell.predict(
+    polynom_transformator.transform(pd.DataFrame({'Geschwindigkeit [km/h]': [200]})))
+print(f'Prognose bei 200 km/h: {prognose_200[0]:.0f} m')
 ```
 
-Sowohl bei den Trainingsdaten als auch bei den Testdaten hat das Modell mit
-Polynomgrad 2 den besten R²-Score. Interessant ist auch, dass beim Polynom Grad
-14 der Testdaten-Score (0.9895) niedriger ist als der Trainingsdaten-Score
-(0.9899), was ein Hinweis auf Overfitting ist. Beim quadratischen Modell sind
-beide Scores nahezu perfekt, was zur Faustformel passt. Daher wählen wir für das
-ML-Modell ein quadratisches Regressionsmodell.
+Der Trainings-R² ist mit rund 0.998 praktisch identisch mit dem des
+quadratischen Modells. Die Prognose bei 200 km/h ist mit rund 354 m weiter von
+der Faustformel (400 m) entfernt als beim quadratischen Modell (396 m). Grad 4
+bringt hier keinen Vorteil. Man wählt Grad 2.
+````
 
 ## Zusammenfassung und Ausblick
 
-In diesem Kapitel haben wir die polynomiale Regression mit Scikit-Learn
-kennengelernt. Auch bei der polynomialen Regression ist die Wahl des
-Hyperparameters (Polynomgrad) wichtig. Im nächsten Kapitel werden wir uns
-ansehen, wie Hyperparameter systematisch gewählt werden.
+In diesem Kapitel haben wir die polynomiale Regression mit `PolynomialFeatures`
+kennengelernt. Der Polynomgrad ist ein Hyperparameter, der vor dem Training
+festgelegt wird. Ein zu niedriger Grad beschreibt einen gekrümmten Zusammenhang
+nicht gut. Ein zu hoher Grad verbessert die Anpassung kaum, macht die Prognosen
+außerhalb des Datenbereichs aber unzuverlässig. In der Praxis beginnt man mit
+einem niedrigen Grad und erhöht ihn nur, wenn es die Anpassung sichtbar
+verbessert und der Kurvenverlauf plausibel bleibt. Systematische Methoden zur
+Wahl von Hyperparametern folgen in Kapitel 8.
