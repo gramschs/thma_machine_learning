@@ -1,24 +1,18 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: autoscout24_fehlende_daten.csv
+    title: autoscout24_fehlende_daten.csv
+  - file: 3ddruck_fehlende_daten.csv
+    title: 3ddruck_fehlende_daten.csv
+  - file: chapter08_sec01.md
+    title: chapter08_sec01.md
 ---
 
 # 8.1 Fehlende Daten
-
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
 
 Realistische Datensätze sind oft unvollständig. In einer Umfrage hat eine Person
 mit einer Frage nichts anfangen können und daher nichts angekreuzt. Oder ein
@@ -31,13 +25,15 @@ lernen einfache Methoden kennen, damit umzugehen.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können in einem Datensatz mit **isnull()** fehlende Daten aufspüren und
+* [ ] Sie können in einem Datensatz mit **isnull()** fehlende Daten aufspüren und
   analysieren.
-* Sie kennen die beiden grundlegenden Strategien, mit fehlenden Daten umzugehen:
+* [ ] Sie kennen die beiden grundlegenden Strategien, mit fehlenden Daten umzugehen:
   * **Elimination** (Löschen) und
   * **Imputation** (Vervollständigen).
-* Sie können Daten gezielt mit **drop()** löschen.
-* Sie können fehlende Daten mit **fillna()** vervollständigen.
+* [ ] Sie können Daten gezielt mit **drop()** löschen.
+* [ ] Sie können fehlende Daten mit **fillna()** vervollständigen.
+* [ ] Sie wissen, dass technisch gültige Werte trotzdem unplausibel sein können
+  und deshalb zusätzliche Plausibilitätsprüfungen nötig sind.
 ```
 
 ## Fehlende Daten aufspüren mit isnull()
@@ -46,12 +42,10 @@ Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
 [Autoscout24.de](https://www.autoscout24.de), der Verkaufsdaten zu 1000 Autos
 enthält.
 
-```{code-cell}
+```{code-cell} python
 import pandas as pd
 
-url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_fehlende_daten.csv'
-daten = pd.read_csv(url)
-
+daten = pd.read_csv('autoscout24_fehlende_daten.csv')
 daten.info()
 ```
 
@@ -68,7 +62,7 @@ dass ein Wert fehlt bzw. mit dem Eintrag `NaN` gekennzeichnet ist (= not a
 number). Weitere Details finden Sie in der [Pandas-Dokumentation →
 isnull()](https://pandas.pydata.org/docs/reference/api/pandas.isnull.html).
 
-```{code-cell}
+```{code-cell} python
 daten.isnull()
 ```
 
@@ -76,7 +70,7 @@ Bereits in der zweiten Zeile befindet sich ein Auto, bei dem das Merkmal
 »Verbrauch (l/100 km)« nicht gültig ist (ggf. müssen Sie weiter nach rechts
 scrollen), denn dort steht `True`. Wir betrachten uns diesen Eintrag:
 
-```{code-cell}
+```{code-cell} python
 daten.loc[1]
 ```
 
@@ -89,7 +83,7 @@ bei Rechnungen als 0 interpretiert wird und der boolesche Wert `True` als 1. Die
 Methode `.sum()` summiert pro Spalte alle Werte, so dass sie direkt die Anzahl
 der ungültigen Werte pro Spalte liefert.
 
-```{code-cell}
+```{code-cell} python
 fehlende_daten = daten.isnull()
 
 fehlende_daten.sum()
@@ -97,16 +91,15 @@ fehlende_daten.sum()
 
 Jetzt lassen wir uns diese 109 Autos anzeigen, bei denen ungültige Werte beim
 »Verbrauch (l/100 km)« angegeben wurden. Dazu nutzen wir die True-Werte in der
-Spalte `Verbrauch (l/100 km)` als Filter für den ursprünglichen Datensatz.
-Zumindest die ersten 20 Autos lassen wir uns dann mit der `.head(20)`-Methode
-anzeigen.
+Spalte `Verbrauch (l/100 km)` als Filter für den ursprünglichen Datensatz und
+speichern den gefilterten Datensatz in der Variable
+`autos_mit_fehlendem_verbrauch_pro_100km`. Zumindest die ersten 20 Autos lassen
+wir uns dann mit der `.head(20)`-Methode anzeigen.
 
-```{code-cell}
-autos_mit_fehlendem_verbrauch_pro_100km = daten[ fehlende_daten['Verbrauch (l/100 km)'] == True ]
+```{code-cell} python
+autos_mit_fehlendem_verbrauch_pro_100km = daten[fehlende_daten['Verbrauch (l/100 km)']]
 autos_mit_fehlendem_verbrauch_pro_100km.head(20)
 ```
-
-Bemerkung: Der Vergleich `== True` ist redundant und kann auch weggelassen werden.
 
 Beim Kraftstoff werden alle möglichen Angaben gemacht: Hybrid, Benzin, Diesel
 und Elektro. Wir müssten jetzt systematisch den fehlenden Angaben nachgehen. Für
@@ -126,6 +119,50 @@ Bei Elimination werden Datenpunkte (Autos) und/oder Merkmale gelöscht. Bei
 Imputation (Vervollständigung) werden die fehlenden Werte ergänzt. Beide
 Verfahren werden wir nun etwas detaillierter betrachten.
 
+```{admonition} Mini-Übung
+:class: tip
+Übertragen Sie das Vorgehen auf einen Datensatz aus der Fertigung. Die Datei
+`3ddruck_fehlende_daten.csv` enthält 200 FDM-Druckaufträge mit jeweils 15
+Merkmalen. Auch hier fehlen Einträge.
+
+1. Lesen Sie die Datei ein. Die Spalte `Nummer` soll als Zeilenindex dienen.
+2. Verschaffen Sie sich einen Überblick über den Datensatz. Bei welchen
+   Merkmalen fehlen Werte?
+3. Ermitteln Sie, wie viele Werte pro Merkmal fehlen.
+4. Lassen Sie sich alle Druckaufträge anzeigen, bei denen die Angabe zur
+   Druckzeit fehlt.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+
+druckversuche = pd.read_csv('3ddruck_fehlende_daten.csv', index_col=0)
+druckversuche.info()
+```
+
+Anzahl der fehlenden Werte pro Spalte:
+
+```python
+fehlende_werte = druckversuche.isnull()
+fehlende_werte.sum()
+```
+
+Werte fehlen bei `Oberflaechenguete` (60), `Farbe` (24), `Druckzeit (min)` (24)
+und `Wandstaerke (mm)` (1). Alle anderen Merkmale sind vollständig.
+
+```python
+druckversuche[fehlende_werte['Druckzeit (min)']]
+```
+````
+
 ## Löschen (Elimination) mit drop()
 
 Bei der Elimination (Löschen) können wir filigran vorgehen oder die
@@ -134,12 +171,12 @@ Holzhammer-Methode verwenden. Beispielsweise können wir entscheiden, das Merkma
 (g/km)« zu berücksichtigen. Aber ein kurzer Blick auf die Daten hatte ja bereits
 gezeigt, dass diese Werte auch nur unzuverlässig gefüllt waren, auch wenn sie
 technisch gültig sind. Wir löschen beide Merkmale. Dazu benutzen wir die Methode
-`drop()` mit dem zusätzlichen Argument `columns=['Verbrauch (l/ 100 km)',
+`drop()` mit dem zusätzlichen Argument `columns=['Verbrauch (l/100 km)',
 'Verbrauch (g/km)']`. Da wir gleich zwei Spalten auf einmal eliminieren möchten,
 müssen wir die Spalten (Columns) als Liste übergeben. Danach überprüfen wir mit
 der Methode `.info()`, ob das Löschen geklappt hat.
 
-```{code-cell}
+```{code-cell} python
 daten.drop(columns=['Verbrauch (l/100 km)', 'Verbrauch (g/km)'])
 daten.info()
 ```
@@ -152,7 +189,7 @@ den Datensatz mit den gelöschten Merkmalen weiter verwenden, müssen wir ihn in
 einer neuen Variable speichern oder die alte Variable `daten` damit
 überschreiben. Wir nehmen eine neue Variable namens `daten_ohne_verbrauch`.
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch = daten.drop(columns=['Verbrauch (l/100 km)', 'Verbrauch (g/km)'])
 daten_ohne_verbrauch.info()
 ```
@@ -160,28 +197,28 @@ daten_ohne_verbrauch.info()
 Ein weiterer Datenpunkt weist einen ungültigen Eintrag für den »Kilometerstand
 (km)« auf. Schauen wir zunächst nach, um welches Auto es sich handelt.
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch[ daten_ohne_verbrauch['Kilometerstand (km)'].isnull() ]
 ```
 
 Bei den Einträgen des Autos sind noch mehr Probleme ersichtlich. Die
 Erstzulassung war sicherlich nicht bei 37.500 km und das Jahr ist nicht 12/2020.
-Wir können jetzt diesen Datenpunkt löschen oder den Datenpunkt reparieren.
-Zunächst einmal der Code zum Löschen des Datenpunktes. Standardmäßig löscht die
-`drop()`-Methode ohnehin Zeilen, also Datenpunkte, so dass wir ohne weitere
-Optionen den Index der zu löschenden Datenpunkte angeben. Diesmal verwenden wir
-die alte Variable um den reduzierten Datensatz zu speichern.
+Wir können jetzt diesen Datenpunkt löschen oder den Datenpunkt reparieren. Das
+Reparieren einzelner Werte behandeln wir hier nicht, wir entscheiden uns für das
+Löschen. Standardmäßig löscht die `drop()`-Methode ohnehin Zeilen, also
+Datenpunkte, so dass wir ohne weitere Optionen den Index der zu löschenden
+Datenpunkte angeben. Diesmal verwenden wir die alte Variable um den reduzierten
+Datensatz zu speichern.
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch = daten_ohne_verbrauch.drop(708)
 daten_ohne_verbrauch.info()
 ```
 
-Wie wir in der [Dokumentation Pandas →
-drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
-nachlesen können, gibt es zum expliziten Überschreiben der alten Variable auch
-die Alternative, die Option `inplace=True` zu setzen. Welche Option genutzt
-wird, ist Geschmackssache.
+Weitere Optionen der `drop()`-Methode finden Sie in der [Pandas-Dokumentation →
+drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html).
+In diesem Skript bleiben wir durchgängig bei der Neuzuweisung, speichern das
+Ergebnis von `drop()` also immer in einer Variable.
 
 Ob alle Angaben plausibel sind, ist nicht gesagt. Bei dem Peugeot mit dem Index
 708 hatten wir ja gesehen, dass bei der Erstzulassung eine Kilometerangabe
@@ -191,22 +228,74 @@ beispielsweise wurde beim Import als Datentyp Object klassifiziert. Zu erwarten
 wäre jedoch der Datentyp Integer gewesen. Schauen wir noch einmal in den
 ursprünglichen Datensatz hinein.
 
-```{code-cell}
+```{code-cell} python
 daten['Jahr'].unique()
 ```
 
 Da bei dem Peugeot mit dem Index 708 das Jahr fälschlicherweise mit `12/2020`
-angegeben wurde, hat dieser eine Text-Eintrag dazu geführt, dass die komplette
-Spalte als Object klassifiziert wurde und nicht als Integer. Daher müssen stets
-weitere Plausibilitätsprüfungen durchgeführt werden, bevor die Daten genutzt
-werden, um statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.
+angegeben wurde, hat dieser Texteintrag dazu geführt, dass die komplette
+Spalte als Object klassifiziert wurde und nicht als Integer. Selbst nachdem wir
+den Peugeot gelöscht haben, bleibt die Spalte »Jahr« vom Datentyp Object, bis
+wir sie gezielt in einen Zahlentyp umwandeln. Daher müssen stets weitere
+Plausibilitätsprüfungen durchgeführt werden, bevor die Daten genutzt werden, um
+statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.
+
+```{admonition} Mini-Übung
+:class: tip
+Arbeiten Sie mit dem Datensatz aus der vorherigen Mini-Übung weiter.
+
+1. Das Merkmal `Oberflaechenguete` hat viele Lücken und lässt sich ohnehin aus
+   der Schichthöhe ableiten. Entfernen Sie dieses Merkmal und arbeiten Sie ab
+   jetzt mit einer bereinigten Kopie des Datensatzes weiter.
+2. Genau ein Merkmal hat nur einen einzigen fehlenden Wert. Finden Sie den
+   zugehörigen Druckauftrag.
+3. Sehen Sie sich diesen Datenpunkt genau an. Welche zwei Einträge sind
+   auffällig?
+4. Sehen Sie sich die Werte der Spalte `Drucktemperatur (C)` an. Warum wurde
+   diese Spalte beim Import nicht als Zahl, sondern als Text (`object`)
+   eingelesen?
+5. Entfernen Sie den auffälligen Druckauftrag aus dem bereinigten Datensatz.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+druckversuche_bereinigt = druckversuche.drop(columns=['Oberflaechenguete'])
+
+# Merkmal mit genau einem fehlenden Wert
+druckversuche_bereinigt[druckversuche_bereinigt['Wandstaerke (mm)'].isnull()]
+```
+
+Es handelt sich um `Druck Nr. 47`. Bei diesem Druckauftrag steht in der Spalte
+`Drucktemperatur (C)` der Text `250 C` statt einer Zahl, und die
+`Betttemperatur (C)` beträgt 5 Grad. Fünf Grad sind technisch ein gültiger Wert,
+für ein Druckbett aber völlig unrealistisch.
+
+```python
+druckversuche['Drucktemperatur (C)'].unique()
+```
+
+Ein einziger Texteintrag (`'250 C'`) hat dazu geführt, dass die ganze Spalte als
+Object eingelesen wurde. Ohne diesen Eintrag wären alle Werte Zahlen.
+
+```python
+druckversuche_bereinigt = druckversuche_bereinigt.drop('Druck Nr. 47')
+druckversuche_bereinigt.info()
+```
+````
 
 ## Vervollständigung (Imputation) mit fillna()
 
 Auch bei den Angaben zur Farbe fehlen Einträge. Zum Beispiel die Zeile mit
 dem Index 2 ist unvollständig.
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch.loc[2]
 ```
 
@@ -223,7 +312,7 @@ erste Argument der `fillna()`-Methode ist der Wert, durch den die NaN-Werte
 ersetzt werden sollen (hier `'keine Angabe'`). Damit die Vervollständigung
 explizit gespeichert wird, überschreiben wir die Spalte.
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch['Farbe'] = daten_ohne_verbrauch['Farbe'].fillna('keine Angabe')
 
 # Kontrolle der Vervollständigung
@@ -233,7 +322,7 @@ daten_ohne_verbrauch.isnull().sum()
 Wenn wir uns jetzt noch einmal die dritte Zeile ansehen, sehen wir, dass
 `fillna()` funktioniert hat.
 
-```{code-cell} ipython3
+```{code-cell} python
 daten_ohne_verbrauch.loc[2,:]
 ```
 
@@ -245,7 +334,7 @@ PS-Zahlen einsetzen, verändern wir zumindest den Mittelwert des gesamten
 Datensatzes nur wenig. Wir berechnen daher zuerst den Mittelwert mit der Methode
 `.mean()` und nutzen dann die `fillna()`-Methode.
 
-```{code-cell}
+```{code-cell} python
 mittelwert = daten_ohne_verbrauch['Leistung (PS)'].mean()
 print(f'Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: {mittelwert:.2f}')
 
@@ -255,22 +344,63 @@ daten_ohne_verbrauch['Leistung (PS)'] = daten_ohne_verbrauch['Leistung (PS)'].fi
 Noch einmal die Kontrolle, ob jetzt alle NaN-Werte eliminiert oder
 vervollständigt wurden:
 
-```{code-cell}
+```{code-cell} python
 daten_ohne_verbrauch.isnull().sum()
 ```
 
-Der Mittelwert der »Leistung (PS)« ist sehr hoch. Vielleicht haben wir doch den
-Datensatz eher verschlechtert, indem wir fehlende Werte durch den Mittelwert
-ersetzt haben. Mit großer Wahrscheinlichkeit haben wir die Varianz im Datensatz
-reduziert und es könnte auch sein, dass wir Korrelationen verfälscht haben.
-Vielleicht wäre der Median eine bessere Alternative. Auch könnten wir zunächst
-die Autos mit fehlenden PS-Zahlen weglassen, für die übrigen Autos ein lineares
-Regressionsmodell oder einen Entscheidungsbaum trainieren und damit die
-fehlenden PS-Zahlen abschätzen. Bei diesem Beispiel wäre die beste Lösung zur
-Imputation der ungültigen Werte »Leistung (PS)« die Umrechung der vorhandenen,
-gültigen Werte der Spalte »Leistung (kW)«. Tatsächlich sind die beiden Merkmale
-redundant, da es sich um dasselbe Merkmal in zwei verschiedenen Einheiten
-handelt, so dass wir die Spalte »Leistung (PS)« auch entfernen könnten.
+Der Mittelwert der »Leistung (PS)« liegt deutlich über dem Median. Möglicherweise
+haben wir den Datensatz durch die Ersetzung mit dem Mittelwert eher
+verschlechtert: Wir haben die Streuung der Werte verkleinert und vermutlich auch
+Zusammenhänge zwischen den Merkmalen verzerrt. Es gibt bessere Alternativen:
+
+* Statt des Mittelwerts den **Median** einsetzen, der weniger empfindlich
+  gegenüber Ausreißern ist.
+* Die Autos mit fehlenden PS-Zahlen zunächst weglassen, für die übrigen Autos ein
+  **lineares Regressionsmodell oder einen Entscheidungsbaum** trainieren und damit
+  die fehlenden PS-Zahlen abschätzen.
+* Die fehlenden Werte aus der Spalte »Leistung (kW)« **umrechnen**. Das ist hier
+  die beste Lösung, denn »Leistung (PS)« und »Leistung (kW)« sind dasselbe
+  Merkmal in zwei Einheiten. Genau genommen ist eine der beiden Spalten
+  überflüssig und wir könnten »Leistung (PS)« auch ganz entfernen.
+
+```{admonition} Mini-Übung
+:class: tip
+Arbeiten Sie mit dem bereinigten Datensatz aus der vorherigen Mini-Übung weiter.
+
+1. Die fehlenden Angaben zur `Farbe` sollen erhalten bleiben. Vervollständigen
+   Sie sie mit einem passenden Ersatzwert.
+2. Bei der `Druckzeit (min)` handelt es sich um numerische Werte, deren
+   Verteilung stark rechtsschief ist, es gibt also einige wenige sehr lange
+   Drucke. Vervollständigen Sie die fehlenden Werte mit einer geeigneten
+   Kennzahl der vorhandenen Werte und begründen Sie Ihre Wahl.
+3. Überprüfen Sie, dass der Datensatz jetzt keine fehlenden Werte mehr enthält.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+druckversuche_bereinigt['Farbe'] = druckversuche_bereinigt['Farbe'].fillna('keine Angabe')
+
+median_druckzeit = druckversuche_bereinigt['Druckzeit (min)'].median()
+print(f'Median der Druckzeit: {median_druckzeit:.1f} min')
+
+druckversuche_bereinigt['Druckzeit (min)'] = druckversuche_bereinigt['Druckzeit (min)'].fillna(median_druckzeit)
+
+# Kontrolle
+druckversuche_bereinigt.isnull().sum()
+```
+
+Der Median der `Druckzeit (min)` liegt bei rund 260 Minuten, der Mittelwert
+dagegen bei rund 338 Minuten. Weil einige wenige sehr lange Drucke den
+Mittelwert nach oben ziehen, beschreibt der Median die typische Druckzeit besser
+und verschiebt die Verteilung als Ersatzwert weniger stark.
+````
 
 ## Zusammenfassung und Ausblick
 
