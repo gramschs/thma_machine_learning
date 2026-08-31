@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter09_sec04.md
+    title: chapter09_sec04.md
 ---
 
 # Übungen
@@ -402,6 +398,34 @@ aber dafür liegt der R²-Score der Testdaten bei 0.81. Die Differenz zwischen
 dem Trainings- und dem Testscore ist kleiner.
 ````
 
+```{admonition} ML-Modell: XGBoost
+:class: tip
+Trainieren Sie nun ein XGBoost-Modell (XGBRegressor) auf denselben Daten.
+Berechnen Sie wieder die R²-Scores für Training und Test. Wie schlägt sich
+XGBoost im Vergleich zum Random Forest?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import xgboost as xgb
+
+modell_xgb = xgb.XGBRegressor(random_state=42)
+modell_xgb.fit(X_train, y_train)
+
+r2_train_xgb = modell_xgb.score(X_train, y_train)
+r2_test_xgb = modell_xgb.score(X_test, y_test)
+
+print(f'R²-Score XGBoost (Training): {r2_train_xgb:.2f}')
+print(f'R²-Score XGBoost (Test): {r2_test_xgb:.2f}')
+```
+XGBoost erreicht einen R²-Score von 0.95 auf den Trainingsdaten und 0.82 auf den
+Testdaten. Das ist vergleichbar mit dem Random Forest (0.97 und 0.81), bei etwas
+kleinerer Differenz zwischen Training und Test. Ohne weiteres Tuning liefern
+beide Ensemble-Verfahren hier also ähnlich gute Ergebnisse.
+````
+
 ```{admonition} Feature Importance
 :class: tip
 Lassen Sie sich die Feature Importance des Random-Forest-Modells ausgeben und
@@ -437,7 +461,7 @@ Personen pro Haushalt.
 :class: tip
 Trainieren Sie nun ein lineares Regressionsmodell auf denselben Daten. Berechnen
 Sie wieder die R²-Scores für Training und Test. Wie unterscheiden sich die
-Ergebnisse vom den beiden vorherigen Modellen?
+Ergebnisse von den vorherigen Modellen?
 
 Wählen Sie dann ein finales Modell.
 ```
@@ -459,7 +483,7 @@ print(f'R²-Score lineare Regression (Test): {r2_test_lr:.2f}')
 ```
 Der R²-Score der Trainingsdaten ist 0.66, für die Testdaten liegt er bei 0.58.
 Auch wenn die Differenz zwischen Trainingsscore und Testscore klein ist und wohl
-kein Overfitting vorliegt, sind die beiden Scores erheblich schlechter als beim
-Random Forest (0.97 und 0.81). Daher verwenden wir den Random Forest als finales
-Modell.
+kein Overfitting vorliegt, sind die beiden Scores erheblich schlechter als bei
+Random Forest und XGBoost. Als finales Modell wählen wir eines der beiden
+Ensemble-Verfahren, sie liefern hier vergleichbar gute Ergebnisse.
 ````

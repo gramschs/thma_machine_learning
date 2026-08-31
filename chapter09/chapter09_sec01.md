@@ -1,24 +1,14 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2 
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter09_sec01.md
+    title: chapter09_sec01.md
 ---
 
 # 9.1 Grundideen der Ensemble-Methoden
-
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
 
 Eins, zwei, viele ... im Bereich des maschinellen Lernens sind Ensemble-Methoden
 leistungsstarke Techniken zur Verbesserung der Modellgenauigkeit und Robustheit.
@@ -32,22 +22,28 @@ Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können in eigenen Worten erklären, was **Ensemble-Methoden** sind.
-* Sie kennen die Grundideen der Ensemble-Methoden
+* [ ] Sie können in eigenen Worten erklären, was **Ensemble-Methoden** sind.
+* [ ] Sie kennen die Grundideen der Ensemble-Methoden
   * **Voting**,
   * **Averaging**,
   * **Stacking**,
   * **Bagging** und 
   * **Boosting**.
+* [ ] Sie können parallele Verfahren (Voting, Averaging, Stacking, Bagging) von
+  sequentiellen Verfahren (Boosting) unterscheiden.
+* [ ] Sie können erklären, warum Bootstrapping unterschiedlich trainierte
+  Modelle liefert.
+* [ ] Sie können den Grundgedanken von Boosting beschreiben: Jedes Modell
+  reduziert die Fehler des Vorgängermodells.
 ```
 
-## Ensemble-Methoden
+## Was ist ein Ensemble?
 
-Der Begriff »Ensemble« wird im Allgemeinen eher mit Musik und Kunst in
+Der Begriff "Ensemble" wird im Allgemeinen eher mit Musik und Kunst in
 Verbindung gebracht als mit Informatik. In der Musik bezeichnet ein Ensemble
 eine kleine Gruppe von Musikern, die entweder das gleiche Instrument spielen
-oder verschiedene Instrumente kombinieren. Im Theater bezeichnet man eine Gruppe
-von Schauspielern ebenfalls als Ensemble, und in der Architektur beschreibt der
+oder verschiedene Instrumente kombinieren. Im Theater heißt eine Gruppe
+von Schauspielern ebenfalls Ensemble, und in der Architektur beschreibt der
 Begriff eine Gruppe von Gebäuden, die in einem besonderen Zusammenhang
 zueinander stehen.
 
@@ -58,16 +54,41 @@ maschinellen Modellen bezeichnet, die zusammen eine Prognose treffen sollen.
 identische Modelle oder verschiedene Modelle kombiniert werden. Diese Modelle
 können entweder gleichzeitig eine Prognose treffen, die dann kombiniert wird,
 oder nacheinander verwendet werden, wobei ein nachfolgendes Modell die Fehler
-des vorherigen korrigiert. Je nach Vorgehensweise unterscheidet man im
+des vorherigen korrigiert. Je nach Vorgehensweise unterscheiden wir im
 maschinellen Lernen zwischen **Voting**, **Averaging**, **Stacking**,
 **Bagging** und **Boosting**.
 
 In dieser Vorlesung konzentrieren wir uns auf Bagging und Boosting mit ihren
 bekanntesten Vertretern, den Random Forests und XGBoost. Die Konzepte Voting und
-Averaging sowie Stacking werden hier nur kurz ohne weitere Details vorgestellt.
+Averaging sowie Stacking stellen wir hier nur kurz ohne weitere Details vor.
 Eine allgemeine Einführung in Ensemble-Methoden mit Scikit-Learn findet sich in
 der [Dokumentation Scikit-Learn →
 Ensemble](https://scikit-learn.org/stable/modules/ensemble.html).
+
+```{admonition} Mini-Übung
+:class: tip
+Ordnen Sie die folgenden drei Situationen ein. Arbeiten die Modelle **parallel**
+(alle gleichzeitig, danach werden die Prognosen kombiniert) oder **sequentiell**
+(eines nach dem anderen)?
+
+1. Drei verschiedene Modelle (lineare Regression, polynomiale Regression und
+   Entscheidungsbaum) treffen für ein Bauteil gleichzeitig eine Prognose.
+2. Einhundert Entscheidungsbäume werden auf je einer eigenen Stichprobe der
+   Trainingsdaten trainiert.
+3. Ein Modell wird trainiert, danach ein zweites Modell, das die Fehler des
+   ersten ausgleichen soll.
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. **Parallel.** Verschiedene Modelle, die unabhängig voneinander eine Prognose
+   liefern. Die Prognosen werden anschließend kombiniert.
+2. **Parallel.** Hier ist es immer dasselbe Modell, aber die Trainingsdaten
+   unterscheiden sich. Die Bäume können unabhängig voneinander trainiert werden.
+3. **Sequentiell.** Das zweite Modell braucht die Fehler des ersten Modells und
+   kann erst danach trainiert werden.
+```
 
 ## Voting, Averaging und Stacking
 
@@ -76,9 +97,9 @@ Ensemble](https://scikit-learn.org/stable/modules/ensemble.html).
 width: 100%
 ---
 Die Prognosen von mehreren *unterschiedlichen* ML-Modellen werden zu einer
-finalen Prognose kombiniert. Die Kombination kann beispielsweise durch
-Mehrheitsentscheidung (Voting), aber auch Mittelwertbildung (Averaging)
-erfolgen.
+finalen Prognose kombiniert. Die Kombination kann durch Mehrheitsentscheidung
+(Voting), durch Mittelwertbildung (Averaging) oder durch ein weiteres ML-Modell
+(Stacking) erfolgen.
 ```
 
 In einem ersten Schritt werden mehrere ML-Modelle unabhängig voneinander auf den
@@ -93,11 +114,10 @@ dafür einen Voting Classifier an, siehe [Dokumentation Scikit-Learn → Voting
 Classifier](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier).
 
 Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt. Beim
-**Averaging** kann entweder der übliche arithmetische Mittelwert verwendet
-werden oder ein gewichteter Mittelwert, was als Weighted Averaging bezeichnet
-wird. Dennoch wird die Mittelwertbildung bei Regressionsaufgaben von
-Scikit-Learn ebenfalls als Voting bezeichnet, siehe [Dokumentation Scikit-Learn
-→ Voting
+**Averaging** verwenden wir entweder den üblichen arithmetischen Mittelwert oder
+einen gewichteten Mittelwert, der als Weighted Averaging bezeichnet wird. In
+Scikit-Learn heißen beide Varianten `Voting`, obwohl bei der Regression nicht
+abgestimmt, sondern gemittelt wird, siehe [Dokumentation Scikit-Learn → Voting
 Regressor](https://scikit-learn.org/stable/modules/ensemble.html#voting-regressor).
 
 Eine alternative Kombinationsmethode ist die Verwendung eines weiteren
@@ -116,6 +136,26 @@ steigt die Trainingszeit für das Gesamtmodell, selbst wenn die Basismodelle bei
 genügend Rechenleistung parallel trainiert werden können. Aus diesem Grund
 werden wir in dieser Vorlesung kein Stacking verwenden.
 
+```{admonition} Mini-Übung
+:class: tip
+1. Fünf Klassifikationsmodelle prognostizieren für ein Bauteil, ob es Ausschuss
+   ist: ja, ja, nein, ja, nein. Welche finale Prognose liefert ein Voting
+   Classifier?
+2. Drei Regressionsmodelle schätzen die Restlebensdauer eines Wälzlagers auf
+   800, 1200 und 1000 Stunden. Welche finale Prognose liefert Averaging?
+3. Wodurch unterscheidet sich Stacking von Voting und Averaging?
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. **ja.** Drei der fünf Modelle stimmen für "ja", das ist die Mehrheit.
+2. **1000 Stunden.** Das ist der arithmetische Mittelwert der drei Schätzungen.
+3. Bei Voting und Averaging kombiniert eine feste Regel die Einzelprognosen
+   (Mehrheit oder Mittelwert). Bei Stacking übernimmt ein weiteres ML-Modell,
+   das Meta-Modell, diese Kombination und lernt sie aus den Daten.
+```
+
 ## Bagging
 
 ```{figure} pics/concept_bagging.svg
@@ -133,7 +173,7 @@ entstehen dadurch, dass für das Training der einzelnen Modelle unterschiedliche
 Daten verwendet werden.
 
 Im ersten Schritt werden zufällige Datenpunkte aus den Trainingsdaten ausgewählt
-und in einen neuen Datensatz, „Stichprobe 1“, aufgenommen. Nachdem ein
+und in einen neuen Datensatz, "Stichprobe 1", aufgenommen. Nachdem ein
 Datenpunkt ausgewählt wurde, kehrt er in die ursprüngliche Menge der
 Trainingsdaten zurück und kann erneut ausgewählt werden. Dieser Prozess wird in
 der Mathematik als **Ziehen mit Zurücklegen** bezeichnet, auf Englisch
@@ -150,7 +190,7 @@ wird die Zusammenfassung von Daten als Aggregation bezeichnet. Auf Englisch
 heißt der Vorgang des Zusammenfassens **Aggregating**.
 
 Die beiden wesentlichen Schritte der Bagging-Methode sind also **B**ootstrapping
-und **Agg**regat**ing**, woraus sich die Abkürzung »Bagging« ableitet.
+und **Agg**regat**ing**, woraus sich die Abkürzung "Bagging" ableitet.
 Scikit-Learn bietet sowohl für Klassifikations- als auch für Regressionsaufgaben
 eine allgemeine Implementierung der Bagging-Methode an (siehe [Dokumentation
 Scikit-Learn →
@@ -161,19 +201,41 @@ und aggregiert werden. Random Forests werden wir im nächsten Kapitel
 detaillierter betrachten. Vorab beschäftigen wir uns noch mit dem Konzept der
 Boosting-Methoden.
 
+```{admonition} Mini-Übung
+:class: tip
+Ein Trainingsdatensatz enthält die fünf Bauteile A, B, C, D und E.
+
+1. Geben Sie eine mögliche Bootstrap-Stichprobe der Größe 5 an.
+2. Warum liefern zwei Entscheidungsbäume, die auf zwei verschiedenen
+   Bootstrap-Stichproben trainiert wurden, unterschiedliche Prognosen?
+3. Wofür stehen die beiden Wortbestandteile in "Bagging"?
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. Zum Beispiel A, A, C, D, D. Beim Ziehen mit Zurücklegen dürfen Bauteile
+   mehrfach vorkommen und andere ganz fehlen.
+2. Die beiden Stichproben enthalten unterschiedliche Datenpunkte. Dadurch
+   entstehen unterschiedlich trainierte Bäume, die für neue Daten verschiedene
+   Prognosen liefern.
+3. **B**ootstrapping und **Agg**regat**ing**.
+```
+
 ## Boosting
 
 ```{figure} pics/concept_boosting.svg
 ---
 width: 100%
 ---
-Der Fehler in der Prognose wird benutzt, um das nächste Modell zu trainieren.
-Beim hier gezeigten Adaboost-Verfahren werden die Daten neu gewichtet, beim
-(Stochastic) Gradient Boosting werden Modelle zur Fehlerkorrektur trainiert.
+Der Fehler des aktuellen Modells wird genutzt, um das nächste Modell zu
+trainieren. Beim hier gezeigten Adaboost-Verfahren werden die Daten neu
+gewichtet. Beim Gradient Boosting wird ein neues Modell gezielt auf die
+verbleibenden Fehler trainiert.
 ```
 
-Das englische Verb „to boost sth.“ hat viele Bedeutungen. Insbesondere wird es
-im Deutschen mit „etwas verstärken“ übersetzt. Im Kontext des maschinellen
+Das englische Verb "to boost sth." hat viele Bedeutungen. Insbesondere wird es
+im Deutschen mit "etwas verstärken" übersetzt. Im Kontext des maschinellen
 Lernens bezeichnet **Boosting** eine Ensemble-Methode, bei der mehrere ML-Modelle
 hintereinander geschaltet werden, um die Genauigkeit der Prognose zu verstärken.
 Die Idee des Boosting besteht darin, dass jedes Modell die Fehler des
@@ -221,10 +283,34 @@ trainieren. Der Trainingsprozess ähnelt dem von Gradient Boosting, wobei in
 jeder Runde ein neues Modell trainiert wird, das die Fehler der vorherigen
 Modelle korrigiert. Durch die zufällige Auswahl der Trainingsdaten in jeder
 Iteration wird eine höhere Robustheit gegenüber Overfitting (Überanpassung)
-erreicht. Stochastic Gradient Boosting wird von Scikit-Learn nicht direkt
-unterstützt. Eine sehr bekannte Implementierung davon ist XGBoost (siehe
+erreicht. Reines Stochastic Gradient Boosting wird von Scikit-Learn nicht direkt
+unterstützt. Eine sehr bekannte und besonders leistungsfähige Weiterentwicklung
+dieser Idee ist XGBoost (siehe
 [https://xgboost.readthedocs.io/](https://xgboost.readthedocs.io/en/stable/)),
 die wir in einem der nächsten Kapitel noch näher betrachten werden.
+
+```{admonition} Mini-Übung
+:class: tip
+1. Warum lässt sich Bagging parallelisieren, Boosting aber nicht?
+2. Ein Gradient-Boosting-Modell prognostiziert für ein Bauteil den Wert 42, der
+   wahre Wert ist 50. Wie groß ist das Residuum, und worauf wird das nächste
+   Modell trainiert?
+3. Ordnen Sie zu: Neugewichtung der falsch prognostizierten Datenpunkte /
+   Vorhersage der Residuen / zusätzlich eine zufällige Stichprobe je Iteration.
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. Beim Bagging werden die Modelle unabhängig voneinander trainiert und können
+   gleichzeitig berechnet werden. Beim Boosting braucht jedes Modell die Fehler
+   oder Gewichte des Vorgängermodells, deshalb ist das Training sequentiell.
+2. Das Residuum ist $50 - 42 = 8$. Das nächste Modell wird darauf trainiert,
+   dieses Residuum vorherzusagen.
+3. Neugewichtung der falsch prognostizierten Datenpunkte: **Adaboost**.
+   Vorhersage der Residuen: **Gradient Boosting**. Zusätzlich eine zufällige
+   Stichprobe je Iteration: **Stochastic Gradient Boosting**.
+```
 
 ## Zusammenfassung und Ausblick
 
@@ -233,7 +319,7 @@ und Boosting kennengelernt. Alle Methoden sind Ensemble-Methoden, bei denen
 mehrere ML-Modelle parallel oder sequentiell kombiniert werden. Obwohl diese
 Ensemble-Methoden allgemein für verschiedene ML-Modelle eingesetzt werden
 können, haben sich vor allem Random Forests (Bagging für Entscheidungsbäume) und
-Stochastic Gradient Boosting als besonders effektiv erwiesen. Letztere sind
-nicht in Scikit-Learn implementiert, sondern werden durch eine eigene Bibliothek
-namens XGBoost bereitgestellt. In den nächsten beiden Kapiteln werden wir beide
-auch mit praktischen Beispielen vertiefen.
+Gradient Boosting mit Entscheidungsbäumen als besonders effektiv erwiesen. Eine
+besonders bekannte Umsetzung des Gradient Boosting ist die Bibliothek XGBoost,
+die nicht zu Scikit-Learn gehört. In den nächsten beiden Kapiteln werden wir
+beide auch mit praktischen Beispielen vertiefen.
