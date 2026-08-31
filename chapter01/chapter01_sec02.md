@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter01_sec02.md
+    title: chapter01_sec02.md
 ---
 
 # 1.2 Überwachtes, unüberwachtes und verstärkendes Lernen
@@ -23,11 +19,11 @@ ML-Modellen: überwachtes Lernen (Supervised Learning), unüberwachtes Lernen
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können anhand eines Beispiels erklären, was die Fachbegriffe
+* [ ] Sie können anhand eines Beispiels erklären, was die Fachbegriffe
   * **überwachtes Lernen (Supervised Learning)**,
   * **unüberwachtes Lernen (Unsupervised Learning)** und
   * **verstärkendes Lernen (Reinforcement Learning)** bedeuten.
-* Sie können beim überwachten Lernen zwischen **Regression** und
+* [ ] Sie können beim überwachten Lernen zwischen **Regression** und
   **Klassifikation** unterscheiden.
 ```
 

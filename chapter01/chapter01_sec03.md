@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter01_sec03.md
+    title: chapter01_sec03.md
 ---
 
 # 1.3 Technische Voraussetzungen
@@ -29,9 +25,9 @@ sogenannten **Jupyter Notebooks** umzusetzen.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie haben eine lauffähige **Python-Distribution** installiert.
-* Sie können **JupyterLab** starten und ein **Jupyter Notebook** erzeugen.
-* Sie kennen den prinzipiellen Aufbau eines Jupyter Notebooks mit
+* [ ] Sie haben eine lauffähige **Python-Distribution** installiert.
+* [ ] Sie können **JupyterLab** starten und ein **Jupyter Notebook** erzeugen.
+* [ ] Sie kennen den prinzipiellen Aufbau eines Jupyter Notebooks mit
   **Markdown-Zellen** und **Code-Zellen**.
 ```
 

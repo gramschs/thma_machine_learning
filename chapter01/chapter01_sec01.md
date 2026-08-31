@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter01_sec01.md
+    title: chapter01_sec01.md
 ---
 
 # 1.1 Was ist maschinelles Lernen?
@@ -29,10 +25,11 @@ grundlegenenden Bestandteile eines ML-Systems ein.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie wissen, wie langes es das Forschungsgebiet **maschinelles Lernen** gibt
-  und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.
-* Sie kennen die Bestandteile eines ML-Systems: **Daten**, **Algorithmus** und
-  **Modell**. 
+* [ ] Sie wissen, wie langes es das Forschungsgebiet **maschinelles Lernen**
+  gibt und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt
+  hat.
+* [ ] Sie kennen die Bestandteile eines ML-Systems: **Daten**, **Algorithmus**
+  und **Modell**.
 ```
 
 ## Ein wenig Geschichte
