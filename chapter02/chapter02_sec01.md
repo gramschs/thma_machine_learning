@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter02_sec01.md
+    title: chapter02_sec01.md
 ---
 
 # 2.1 Datentypen, Variablen und print()
@@ -23,12 +19,12 @@ Ausgabe auf dem Bildschirm.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie kennen die einfachen Datentypen:
+* [ ] Sie kennen die einfachen Datentypen:
     * **Integer**
     * **Float**
     * **String**
-* Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
-* Sie können die **print()**-Funktion zur Ausgabe auf dem Bildschirm anwenden.
+* [ ] Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
+* [ ] Sie können die `print()`-Funktion zur Ausgabe auf dem Bildschirm anwenden.
 ```
 
 ## Einfache Datentypen

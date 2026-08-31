@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter02_sec03.md
+    title: chapter02_sec03.md
 ---
 
 # 2.3 Dictionaries, Funktionen und Methoden
@@ -26,11 +22,11 @@ werden **Methoden** genannt.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie kennen den Datentyp **Dictionary** und können Schlüssel-Wert-Paare
+* [ ] Sie kennen den Datentyp **Dictionary** und können Schlüssel-Wert-Paare
 erstellen und nutzen.
-* Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
+* [ ] Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
 Rückgabewerten arbeiten.
-* Sie wissen, was **Methoden** sind und kennen das **Konzept der
+* [ ] Sie wissen, was **Methoden** sind und kennen das **Konzept der
 objektorientierten Programmierung**.
 ```
 

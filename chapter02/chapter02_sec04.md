@@ -1,20 +1,16 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter02_sec04.md
+    title: chapter02_sec04.md
 ---
 
 # Übungen
 
-```{admonition} Übung 2.1
+```{admonition} Aufgabe 2.1
 :class: tip 
 Welcher Datentyp liegt vor? Kopieren Sie diesen Text in eine Markdown-Zelle und
 schreiben Sie Ihre Antwort hinter den Pfeil.
@@ -33,17 +29,17 @@ Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
 
 ```{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
-* 3 –> int, also Integer
-* -3 –> int, also Integer
-* ‘drei’–> str, also String
-* 3.3 –> float, also Float
-* 3,3 –> Fehlermeldung, das Dezimaltrennzeichen ist der Punkt, nicht das Komma
-* 3**3 –> int, also Integer
-* 3**(1/3) –> float, also Float
+:class: dropdown
+* 3 -> int, also Integer
+* -3 -> int, also Integer
+* 'drei'-> str, also String
+* 3.3 -> float, also Float
+* 3,3 -> Fehlermeldung, das Dezimaltrennzeichen ist der Punkt, nicht das Komma
+* 3**3 -> int, also Integer
+* 3**(1/3) -> float, also Float
 ```
 
-```{admonition} Übung 2.2
+```{admonition} Aufgabe 2.2
 :class: tip 
 Schreiben Sie ein Programm, das die Zahlen von 5 bis 15 mit ihrem Quadrat
 ausgibt, also "Das Quadrat von 5 ist 25." usw.
@@ -51,14 +47,14 @@ ausgibt, also "Das Quadrat von 5 ist 25." usw.
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
 for zahl in range(5, 16):
     print(f'Das Quadrat von {zahl} ist {zahl**2}.')
 ```
 ````
 
-````{admonition} Übung 2.3
+````{admonition} Aufgabe 2.3
 :class: tip 
 Schreiben Sie eine For-Schleife, die die Brüche 1/7, 2/7, 3/7, bis 7/7 als
 Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
@@ -75,14 +71,14 @@ Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
 for zahl in range(1, 8):
     print(f'{zahl}/7 = {zahl/7:.2f}.')
 ```
 ````
 
-````{admonition} Übung 2.4
+````{admonition} Aufgabe 2.4
 :class: tip 
 Schreiben Sie ein Programm, das eine Liste von Namen durchläuft und jede Person
 begrüßt. Wenn beispielsweise die Namen Alice, Bob und Charlie in der Liste
@@ -97,7 +93,7 @@ Hallo, Charlie!
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
 namensliste = ['Alice', 'Bob', 'Charlie']
 for name in namensliste:
@@ -105,7 +101,7 @@ for name in namensliste:
 ```
 ````
 
-```{admonition} Übung 2.5
+```{admonition} Aufgabe 2.5
 :class: tip
 Erstellen Sie ein Dictionary für einen Studierenden mit folgenden Informationen:
 
@@ -115,11 +111,11 @@ Erstellen Sie ein Dictionary für einen Studierenden mit folgenden Informationen
 - studiengang: "Maschinenbau"
 
 Geben Sie dann folgende Information aus: "Max Mustermann (123456) studiert Maschinenbau."
-````
+```
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
 studierender = {
     "vorname": "Max",
@@ -132,7 +128,7 @@ print(f'{studierender["vorname"]} {studierender["nachname"]} ({studierender["mat
 ```
 ````
 
-```{admonition} Übung 2.6
+```{admonition} Aufgabe 2.6
 :class: tip
 Gegeben ist die Liste: `zahlen = [5, 12, 3, 8, 1]`
 
@@ -143,7 +139,7 @@ Gegeben ist die Liste: `zahlen = [5, 12, 3, 8, 1]`
 
 ````{admonition} Lösung
 :class: tip
-:class: dropdown, dropdown
+:class: dropdown
 ```python
 # Liste bearbeiten
 zahlen = [5, 12, 3, 8, 1]

@@ -1,15 +1,11 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter02_sec02.md
+    title: chapter02_sec02.md
 ---
 
 # 2.2 Listen und for-Schleifen
@@ -35,18 +31,18 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 
 ```{admonition} Lernziele
 :class: attention
-* Sie kennen den Datentyp **Liste**.
-* Sie können Listen mit eckigen Klammern erzeugen. 
-* Sie können Listen mit dem **Plus-Operator** verketten und Elemente mit
-  **.append()** anhängen.
-* Sie können über den **Index** auf einzelne Listenelemente zugreifen. 
-* Sie können eine **for-Schleife mit Liste** programmieren.
-* Sie wissen, wie die Fachbegriffe der einzelnen Bestandteile der Schleife
+* [ ] Sie kennen den Datentyp **Liste**.
+* [ ] Sie können Listen mit eckigen Klammern erzeugen. 
+* [ ] Sie können Listen mit dem **Plus-Operator** verketten und Elemente mit
+  `.append()` anhängen.
+* [ ] Sie können über den **Index** auf einzelne Listenelemente zugreifen. 
+* [ ] Sie können eine **for-Schleife mit Liste** programmieren.
+* [ ] Sie wissen, wie die Fachbegriffe der einzelnen Bestandteile der Schleife
   lauten:
-  * **Kopfzeile**, wird mit **Doppelpunkt :** abgeschlossen
-  * Schlüsselwörter **for** und **in**
+  * **Kopfzeile**, wird mit **Doppelpunkt** `:` abgeschlossen
+  * Schlüsselwörter `for` und `in`
   * **Schleifenvariable**  
-* Sie wissen, dass der Anweisungsblock des Schleifeninneren eingerückt werden
+* [ ] Sie wissen, dass der Anweisungsblock des Schleifeninneren eingerückt werden
   muss. Die **Einrückung** muss immer mit der gleichen Anzahl von Zeichen
   (Leerzeichen oder Tab) erfolgen.
 ```
