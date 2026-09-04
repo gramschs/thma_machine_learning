@@ -8,7 +8,7 @@ downloads:
     title: diamonds_DE.csv
 ---
 
-# Übung
+# 11.4 Übungen
 
 ```{admonition} Warnung
 :class: warning

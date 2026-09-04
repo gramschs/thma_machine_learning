@@ -8,7 +8,7 @@ downloads:
     title: chapter02_sec04.md
 ---
 
-# Übungen
+# 2.4 Übungen
 
 ```{admonition} Aufgabe 2.1
 :class: tip 
