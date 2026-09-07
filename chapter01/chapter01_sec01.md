@@ -49,7 +49,7 @@ Arthur L. Samuel, 1959
 bietet eine weitere Definition:
 
 ```{epigraph}
-»Maschinelles Lernen (ML) ist ein Oberbegriff für die „künstliche“ Generierung
+»Maschinelles Lernen (ML) ist ein Oberbegriff für die "künstliche" Generierung
 von Wissen aus Erfahrung: Ein künstliches System lernt aus Beispielen und kann
 diese nach Beendigung der Lernphase verallgemeinern.«
 ```
@@ -242,8 +242,8 @@ Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
 dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
 wie man einen Kuchen essen würde, nachdem er gebacken ist.
 
-```{figure} pics/ml_as_baking.png
-:name: fig_ml_as_baking
+```{figure} pics/fig01_sec01_ml_as_baking.svg
+:name: fig01sec01_ml_as_baking
 
 Analogie zwischen dem ML-Workflow und dem Kuchenbacken (Quelle: eigene Darstellung)
 ```
@@ -303,8 +303,8 @@ diese Schleife erstellt werden, werden letztendlich miteinander verglichen und
 bewertet (C - Comparison and Conclusion), bevor sie produktiv eingesetzt
 werden.
 
-```{figure} pics/qua3ck_process.png
-:name: fig_qua3ck_process
+```{figure} pics/fig01_sec01_qua3ck_process.svg
+:name: fig01_sec01_qua3ck_process
 :width: 60%
 
 Typischer Ablauf eines ML-Projektes als QUA<sup>3</sup>CK-Prozess dargestellt
