@@ -291,16 +291,16 @@ neue Daten hinzukommen, muss das Modell aktualisiert werden, um mit den sich
 Die folgende Skizze zeigt den schematischen Ablauf eines typischen ML-Projektes.
 Dabei benutzen wir das sogenannte QUA3CK-Modell nach einem Vorschlag von
 {cite}`stock2020`. Das QUA3CK-Modell zeigt den typischen Ablauf eines
-ML-Projektes von der wissenschaftlichen Fragestellung (Q -- Question) bis zu
-deren Beantwortung (K -- Knowledge Transfer). Dazu gehört das Sammeln und
-Erkunden der Daten (U -- Understanding the data), mit Hilfe derer die Frage
+ML-Projektes von der wissenschaftlichen Fragestellung (Q - Question) bis zu
+deren Beantwortung (K - Knowledge Transfer). Dazu gehört das Sammeln und
+Erkunden der Daten (U - Understanding the data), mit Hilfe derer die Frage
 beantwortet werden soll. Die Phase der ML-Modellbildung wird mehrfach
 durchlaufen und besteht aus der Auswahl und dem Training des Algorithmus bzw.
-des Modells (A -- Algorithm selection and training), dazu passend der Auswahl
-und Anpassung der Daten (A -- Adaption of the data) sowie der Anpassung der
-Hyperparamter (A -- Adjustement of the hyperparameter). Die Modelle, die durch
+des Modells (A - Algorithm selection and training), dazu passend der Auswahl
+und Anpassung der Daten (A - Adaption of the data) sowie der Anpassung der
+Hyperparamter (A - Adjustement of the hyperparameter). Die Modelle, die durch
 diese Schleife erstellt werden, werden letztendlich miteinander verglichen und
-bewertet (C -- Comparison and Conclusion), bevor sie produktiv eingesetzt
+bewertet (C - Comparison and Conclusion), bevor sie produktiv eingesetzt
 werden.
 
 ```{figure} pics/qua3ck_process.png
