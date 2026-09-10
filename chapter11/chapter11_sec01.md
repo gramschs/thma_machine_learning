@@ -3,6 +3,9 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter11_sec01.md
+    title: chapter11_sec01.md
 ---
 
 # 11.1 Perzeptron = Grundbaustein neuronaler Netze

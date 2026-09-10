@@ -3,6 +3,9 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter11_sec03.md
+    title: chapter11_sec03.md
 ---
 
 # 11.3 Neuronale Netze mit Scikit-Learn

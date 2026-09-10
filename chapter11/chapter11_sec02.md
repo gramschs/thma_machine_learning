@@ -3,24 +3,30 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: chapter11_sec02.md
+    title: chapter11_sec02.md
 ---
 
 # 11.2 Mehrschichtiges Perzeptron
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
+In Kapitel 11.1 hat ein einzelnes Perzeptron entschieden, ob eine Maschine
+gewartet werden muss. Ein Perzeptron kann die beiden Klassen aber nur mit einer
+geraden Linie trennen. Für die Rasen-Beispiele aus 11.1 hat das gereicht. Oft
+liegen die Messwerte jedoch so, dass keine gerade Linie die beiden Zustände
+trennt. Ein kritischer Zustand tritt zum Beispiel nur bei mittlerer Last auf,
+nicht bei niedriger und nicht bei hoher. Für solche Fälle schalten wir in diesem
+Kapitel viele künstliche Neuronen zu einem mehrschichtigen Perzeptron zusammen
+und lernen den Begriff Deep Learning kennen.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können das Konzept eines **künstlichen Neurons** erklären.
-* Sie wissen, was ein **mehrschichtiges Perzeptron** ist und kennen den
+* [ ] Sie können das Konzept eines **künstlichen Neurons** erklären.
+* [ ] Sie wissen, was ein **mehrschichtiges Perzeptron** ist und kennen den
   englischen Begriff **Multilayer Perceptron** (MLP) dafür.
-* Sie können den Begriff **Deep Learning** erklären.
+* [ ] Sie können den Begriff **Deep Learning** erklären.
 ```
 
 +++
@@ -30,9 +36,10 @@ Vorlesung im WiSe 2026/27 zur Verfügung stehen.
 Im letzten Kapitel haben wir das Perzeptron kennengelernt. Schematisch können
 wir es folgendermaßen darstellen:
 
-```{figure} pics/fig_12_02_topology_perceptron.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec01_topology_perceptron.svg
 ---
-name: fig_12_02_topology_perceptron
+name: fig11_sec02_topology_perceptron
+width: 100%
 ---
 Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz:
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
@@ -44,16 +51,16 @@ werden die gewichteten Eingangssignale summiert. Übersteigt die gewichtete Summ
 einen Schwellenwert, feuert sozusagen das Neuron. Das Ausgabesignal wird
 aktiviert.
 
-Mathematisch gesehen, werden auf die Eingabedaten zwei mathematische Funktionen
-angewendet:
+Mathematisch gesehen laufen dabei zwei Rechenschritte ab:
 
-1. Übertragungsfunktion (hier die Bildung der gewichteten Summe) und
-2. Aktivierungsfunktion (hier die Anwendung der Heaviside-Funktion).
+1. Wir bilden die gewichtete Summe der Eingaben.
+2. Wir wenden darauf eine Aktivierungsfunktion an (hier die Heaviside-Funktion).
 
-Dieses Prinzip behalten wir bei, erlauben aber eine größere Auswahl an
-Übertragungs- und Aktivierungsfunktionen, um das Perzeptron auf das sogenannte
-**künstliche Neuron** zu verallgemeinern. Später werden wir die künstlichen
-Neuronen in einem Netz zusammensetzen.
+Dieses Prinzip behalten wir bei. Die gewichtete Summe bleibt gleich. Für die
+Aktivierungsfunktion lassen wir jetzt aber auch andere Funktionen als die
+Heaviside-Funktion zu. Damit verallgemeinern wir das
+Perzeptron zum sogenannten **künstlichen Neuron**. Später werden wir die
+künstlichen Neuronen in einem Netz zusammensetzen.
 
 ```{admonition} Was ist ... ein künstliches Neuron?
 :class: note
@@ -70,34 +77,64 @@ Bei neuronalen Netzen werden vor allem die
 hyperbolicus](https://de.wikipedia.org/wiki/Tangens_hyperbolicus_und_Kotangens_hyperbolicus)
 als Aktivierungsfunktion verwendet, die im Folgenden dargestellt werden.
 
-ReLU-Funktion:
+**ReLU-Funktion:**
 
-```{figure} pics/fig_12_02_plot_relu_function.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_plot_relu_function.svg
 ---
-name: fig_12_02_plot_relu_function
+name: fig11_sec02_plot_relu_function
 width: 100%
 ---
 ReLU-Funktion (Quelle: eigene Darstellung; Lizenz:
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Tangens hyperbolicus:
+**Tangens hyperbolicus:**
 
-```{figure} pics/fig_12_02_plot_tanh_function.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_plot_tanh_function.svg
 ---
-name: fig_12_02_plot_tanh_function
+name: fig11_sec02_plot_tanh_function
 width: 100%
 ---
 Tangens hyperbolicus (Quelle: eigene Darstellung; Lizenz:
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Beide Funktionen haben einen glatten Verlauf (keinen harten Sprung wie die
-Heaviside-Funktion). Daher können die Gewichte $w_0, w_1, \ldots, w_n$ mit
-mathematischen Optimierungsverfahren besser bestimmt werden als beim klassischen
-Perzeptron mit der Heaviside-Funktion. Im nächsten Kapitel werden wir sehen, wie
-das in der Praxis mit Scikit-Learn funktioniert. Vorher beschäftigen wir uns mit
-dem Zusammensetzen von vielen Perzeptronen zu einem neuronalen Netz.
+Anders als die Heaviside-Funktion machen diese beiden Funktionen keinen harten
+Sprung. Bei der Heaviside-Funktion ändert sich die Ausgabe fast nie, wenn wir die
+Gewichte ein wenig verändern. Das Optimierungsverfahren erkennt dadurch nicht, ob
+eine Änderung der Gewichte in die richtige Richtung geht. Bei der ReLU-Funktion
+und beim Tangens hyperbolicus wirkt sich eine kleine Änderung der Gewichte
+dagegen meist direkt auf die Ausgabe aus. Über die Steigung dieser Funktionen
+kann das Optimierungsverfahren berechnen, wie es die Gewichte anpassen muss.
+Deshalb lassen sich die Gewichte $w_0, w_1, \ldots, w_n$ mit mathematischen
+Optimierungsverfahren besser bestimmen als beim klassischen Perzeptron mit der
+Heaviside-Funktion. Im nächsten Kapitel werden wir sehen, wie das in der Praxis
+mit Scikit-Learn funktioniert. Vorher beschäftigen wir uns mit dem
+Zusammensetzen von vielen Perzeptronen zu einem neuronalen Netz.
+
+```{admonition} Mini-Übung
+:class: tip
+Ein künstliches Neuron hat zwei Eingänge mit den Gewichten $w_1 = 1$ und
+$w_2 = -0.5$ sowie den Bias $w_0 = -1$.
+
+1. Berechnen Sie die gewichtete Summe für die Eingaben $x_1 = 2$ und $x_2 = 1$.
+2. Wenden Sie die ReLU-Funktion auf das Ergebnis an.
+3. Berechnen Sie die gewichtete Summe erneut für $x_1 = 0$ und $x_2 = 3$ und
+   wenden Sie diesmal den Tangens hyperbolicus an. Ein Taschenrechner hilft.
+4. Was fällt Ihnen im Vergleich der beiden Aktivierungsfunktionen auf?
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. $z = -1 + 1 \cdot 2 + (-0.5) \cdot 1 = 0.5$.
+2. $\text{ReLU}(0.5) = \max(0, 0.5) = 0.5$.
+3. $z = -1 + 1 \cdot 0 + (-0.5) \cdot 3 = -2.5$, also
+   $\tanh(-2.5) \approx -0.99$.
+4. Die ReLU-Funktion lässt positive Werte unverändert und setzt negative Werte
+   auf 0. Der Tangens hyperbolicus staucht jeden Wert in den Bereich zwischen
+   -1 und 1.
+```
 
 ## Aus Neuronen wird ein Netz
 
@@ -105,15 +142,14 @@ Neuronale Netze sind Netze aus einzelnen künstlichen Neuronen. Im Folgenden
 werden wir auf eine mathematisch präzise Beschreibung von neuronalen Netzen
 verzichten und stattdessen das Konzept eines neuronalen Netzes anhand von
 Schemazeichnungen erläutern. Dazu vereinfachen wir zunächst die schematische
-Darstellung des künstlichen Neurons. Zunächst fassen wir die beiden
-mathematischen Operationen »Übertragungsfunktion« (Bilden der gewichteten Summe)
-und »Aktivierungsfunktion« in einem gemeinsamen Kreis in der Mitte zusammen. Die
-Bias-Einheit lassen wir in der Darstellung ebenfalls weg.
+Darstellung des künstlichen Neurons. Wir fassen die beiden Rechenschritte, die
+gewichtete Summe und die Aktivierungsfunktion, in einem gemeinsamen Kreis in der
+Mitte zusammen. Die Bias-Einheit lassen wir in der Darstellung ebenfalls weg.
 
-```{figure} pics/fig_12_02_neuron_with_annotations.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_neuron_with_annotations.svg
 ---
 width: 100%
-name: fig_12_02_neuron_with_annotations
+name: fig11_sec02_neuron_with_annotations
 ---
 Vereinfachte schematische Darstellung eines künstlichen Neurons (Quelle: eigene
 Darstellung; Lizenz: [CC BY-NC-SA
@@ -123,19 +159,19 @@ Darstellung; Lizenz: [CC BY-NC-SA
 Tatsächlich sind sogar häufig Darstellungen verbreitet, bei denen die
 Beschriftungen komplett weggelassen werden.
 
-```{figure} pics/fig_12_02_neuron_without_annotations.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_neuron_without_annotations.svg
 ---
 width: 100%
-name: fig_12_02_neuron_without_annotations
+name: fig11_sec02_neuron_without_annotations
 ---
 Symbolbild eines künstlichen Neurons (Quelle: eigene Darstellung;
 Lizenz: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
 Mit Hilfe dieser stark vereinfachten Darstellung eines künstlichen Neurons
-zeigen wir nun, wie aus vielen solcher künstlicher Neuronen ein neuronales Netz
+zeigen wir nun, wie aus vielen künstlichen Neuronen ein neuronales Netz
 zusammengesetzt wird. In einem ersten Schritt werden die Eingaben für jedes
-Merkmal (in diesem Beispiel vier Merkmale symbolisiert durch hellblaue Kreise)
+Merkmal (in diesem Beispiel vier Merkmale, symbolisiert durch hellblaue Kreise)
 gewichtet, aufsummiert und dann wird darauf eine Aktivierungsfunktion angewendet
 (weißer Kreis oben). Diesen Vorgang wiederholen wir mit anderen Gewichten oder
 einer anderen Aktivierungsfunktion, also mit einem zweiten künstlichen Neuron
@@ -145,17 +181,59 @@ zu prognostizieren (dunkelblauer Kreis). Die folgende Schemazeichnung
 verdeutlicht diese Vorgehensweise für vier Merkmale (die Bias-Einheit wurde
 wieder weggelassen).
 
-```{figure} pics/fig_12_02_multi_layer_perceptron.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_multi_layer_perceptron.svg
 ---
 width: 100%
-name: fig_12_02_multi_layer_perceptron
+name: fig11_sec02_multi_layer_perceptron
 ---
 Ein mehrschichtiges Perzeptron (Multilayer Perceptron) (Quelle: eigene
 Darstellung; Lizenz: [CC BY-NC-SA
 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
-Bei dieser Architektur unterscheiden wir drei Arten von Schichten.
+```{admonition} Mini-Übung
+:class: tip
+1. Zeichnen Sie die Schemazeichnung für ein Netz mit drei Merkmalen, einer
+   versteckten Schicht mit zwei Neuronen und einem Ausgabeneuron. Nutzen Sie
+   Kreise für die Neuronen und Kanten für die Gewichte.
+2. Zählen Sie die Kanten in Ihrer Zeichnung.
+3. Ein einzelner Messwert am Eingang ändert sich. Beschreiben Sie Schritt für
+   Schritt, über welche Neuronen sich diese Änderung bis zur Ausgabe
+   fortpflanzt.
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+Die Zeichnung sieht so aus:
+
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec02_miniuebung_netz.svg
+---
+width: 100%
+name: fig11_sec02_miniuebung_netz
+---
+Netz mit drei Merkmalen, einer versteckten Schicht mit zwei Neuronen und einem
+Ausgabeneuron (Quelle: eigene Darstellung; Lizenz: [CC BY-NC-SA
+4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
+```
+
+1. Links drei Kreise für die Merkmale, in der Mitte zwei Kreise für die
+   versteckte Schicht, rechts ein Kreis für die Ausgabe. Jeder Merkmalskreis
+   ist mit beiden versteckten Neuronen verbunden, beide versteckten Neuronen
+   sind mit dem Ausgabeneuron verbunden.
+2. $3 \cdot 2 + 2 \cdot 1 = 8$ Kanten.
+3. Der geänderte Messwert geht über seine zwei Kanten in beide Neuronen der
+   versteckten Schicht ein. Dort ändern sich jeweils die gewichtete Summe und
+   damit die Ausgabe des Neurons. Diese beiden Werte fließen in das
+   Ausgabeneuron, dessen gewichtete Summe sich ebenfalls ändert. Am Ende ändert
+   sich die Prognose.
+````
+
+## Schichten und Tiefe
+
+Wir schauen uns das mehrschichtige Perzeptron aus
+{numref}`fig11_sec02_multi_layer_perceptron` noch einmal genauer an. Bei dieser
+Architektur unterscheiden wir drei Arten von Schichten.
 
 1. Die **Eingabeschicht** (auf Englisch: Input Layer) nimmt die Eingabedaten
    entgegen. Jedes Neuron in der Eingabeschicht entspricht einem Merkmal oder
@@ -171,35 +249,63 @@ Bei dieser Architektur unterscheiden wir drei Arten von Schichten.
    und Ausgabe zu erlernen. Je mehr versteckte Schichten ein neuronales Netz
    hat, desto komplexere Muster kann es prinzipiell erfassen.
 
-Ab etwa 2-3 versteckten Schichten spricht man von **Deep Learning**.
+```{admonition} Was ist ... ein mehrschichtiges Perzeptron?
+:class: note
+Ein mehrschichtiges Perzeptron (Multilayer Perceptron, MLP) ist ein neuronales
+Netz aus künstlichen Neuronen, die in Schichten angeordnet sind:
+
+1. Die Eingabeschicht nimmt die Merkmale entgegen.
+2. Eine oder mehrere versteckte Schichten verarbeiten die Werte weiter.
+3. Die Ausgabeschicht liefert die Prognose.
+
+Jedes Neuron einer Schicht ist mit allen Neuronen der nächsten Schicht
+verbunden. Die Informationen fließen von links nach rechts durch das Netz.
+```
+
+Damit lösen wir das Problem aus der Einleitung. Ein einzelnes Perzeptron kann
+zwei Klassen nur mit einer geraden Linie trennen. Solche Daten nennen wir
+**linear trennbar**. Liegen die Klassen so, dass keine gerade Linie sie trennt,
+scheitert ein einzelnes Perzeptron. Ein Netz mit versteckten Schichten kann
+dagegen krumme Trennlinien ziehen. Möglich wird das erst durch nichtlineare
+Aktivierungsfunktionen wie die ReLU-Funktion oder den Tangens hyperbolicus.
+Würden alle Neuronen nur gewichtete Summen bilden, ließe sich das gesamte Netz
+wieder zu einer einzigen gewichteten Summe zusammenfassen. In Kapitel 11.3
+werden wir solche Trennlinien für ein Beispiel zeichnen lassen.
+
+Hat ein neuronales Netz mehr als eine versteckte Schicht, sprechen wir von einem
+**tiefen neuronalen Netz** und von **Deep Learning**. Eine feste Grenze, ab wie
+vielen Schichten ein Netz als tief gilt, gibt es nicht. Die heutigen KI-Systeme
+für Sprache oder Bilder bestehen aus sehr vielen versteckten Schichten.
 
 ```{admonition} Mini-Übung
 :class: tip
-Betrachten Sie das mehrschichtige Perzeptron aus der Abbildung oben. Es hat vier
-Eingabeneuronen, eine versteckte Schicht mit zwei Neuronen und ein
-Ausgabeneuron.
+Betrachten Sie das mehrschichtige Perzeptron aus
+{numref}`fig11_sec02_multi_layer_perceptron`. Es hat vier Eingabeneuronen, eine
+versteckte Schicht mit zwei Neuronen und ein Ausgabeneuron.
 
 1. Wie viele Gewichte verbinden die Eingabeschicht mit der versteckten Schicht?
 2. Wie viele Gewichte verbinden die versteckte Schicht mit der Ausgabeschicht?
-3. Wie viele Bias-Einheiten benötigt das Netz insgesamt?
-4. Berechnen Sie die Gesamtzahl aller Parameter (Gewichte + Bias-Einheiten) des
-   Netzes. Mit 'Parameter' meinen wir alle Zahlen, die das Netz lernen muss,
-   also alle Gewichte und Bias-Einheiten zusammen.
+3. Jedes Neuron in der versteckten Schicht und in der Ausgabeschicht hat wie das
+   Perzeptron aus Kapitel 11.1 einen eigenen Bias. Wie viele Bias-Werte hat das
+   Netz insgesamt?
+4. Berechnen Sie die Gesamtzahl aller Parameter des Netzes. Mit "Parameter"
+   meinen wir alle Zahlen, die das Netz lernen muss, also alle Gewichte und alle
+   Bias-Werte zusammen.
 ```
 
 ```{admonition} Lösung
 :class: tip
 :class: dropdown
 1. Jedes der 4 Eingabeneuronen ist mit jedem der 2 Neuronen in der versteckten
-   Schicht verbunden: 4 × 2 = 8 Gewichte
-2. Jedes der 2 Neuronen der versteckten Schicht ist mit dem 1 Ausgabeneuron
-   verbunden: 2 × 1 = 2 Gewichte
-3. Jedes Neuron (außer den Eingabeneuronen) benötigt eine Bias-Einheit: 2
-   (versteckte Schicht) + 1 (Ausgabeschicht) = 3 Bias-Einheiten
-4. Gesamtzahl Parameter: 8 + 2 + 3 = 11 Parameter
+   Schicht verbunden: $4 \cdot 2 = 8$ Gewichte.
+2. Jedes der 2 Neuronen der versteckten Schicht ist mit dem einen Ausgabeneuron
+   verbunden: $2 \cdot 1 = 2$ Gewichte.
+3. Jedes Neuron in der versteckten Schicht und in der Ausgabeschicht hat einen
+   eigenen Bias: $2 + 1 = 3$ Bias-Werte.
+4. Gesamtzahl der Parameter: $8 + 2 + 3 = 11$ Parameter.
 
-*Allgemeine Formel:* Zwischen zwei Schichten mit $n$ und $m$ Neuronen gibt es $n
-\times m$ Gewichte plus $m$ Bias-Einheiten.
+Allgemeine Formel: Zwischen zwei Schichten mit $n$ und $m$ Neuronen gibt es
+$n \cdot m$ Gewichte plus $m$ Bias-Werte.
 ```
 
 Das folgende Video fasst die Struktur eines neuronalen Netzes noch einmal zusammen.
@@ -212,6 +318,12 @@ encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></ifr
 
 ## Zusammenfassung und Ausblick
 
-Nachdem wir in diesem Kapitel das Konzept eines neuronalen Netzes erklärt haben,
-werden wir im nächsten Kapitel ein neuronales Netz mit Scikit-Learn trainieren.
-Dabei werden wir lernen, wie das Netz die optimalen Gewichte automatisch findet.
+In diesem Kapitel haben wir das Perzeptron zum künstlichen Neuron
+verallgemeinert. Ein künstliches Neuron bildet die gewichtete Summe seiner
+Eingaben und wendet darauf eine Aktivierungsfunktion an. Viele Neuronen in
+Schichten ergeben ein mehrschichtiges Perzeptron. Die versteckten Schichten
+erlauben dem Netz, auch nicht linear trennbare Zusammenhänge zu lernen. Ab
+mehreren versteckten Schichten sprechen wir von Deep Learning.
+
+Im nächsten Kapitel trainieren wir ein neuronales Netz mit Scikit-Learn und
+sehen, wie es die passenden Gewichte automatisch aus den Daten findet.
