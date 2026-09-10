@@ -7,9 +7,12 @@ kernelspec:
 
 # 11.1 Perzeptron = Grundbaustein neuronaler Netze
 
-Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste
-künstliche neuronale Netz ist das Perzeptron. In diesem Kapitel werden wir das
-Perzeptron vorstellen.
+Eine Maschine überwacht sich selbst: Aus Messwerten wie Temperatur und
+Schwingung soll sie entscheiden, ob eine Wartung nötig ist oder nicht. Das ist
+eine binäre Klassifikationsaufgabe, und das einfachste Modell dafür ist das
+Perzeptron, ein einzelnes künstliches Neuron. Bisher haben wir solche Aufgaben
+mit Entscheidungsbäumen und Random Forests gelöst. In diesem Kapitel lernen wir
+mit dem Perzeptron den Grundbaustein neuronaler Netze kennen.
 
 ## Lernziele
 
@@ -26,13 +29,13 @@ Perzeptron vorstellen.
   überwachten Lernens einordnen.
 ```
 
-## Die Hirnzelle dient als Vorlage für künstliche Neuronen
+## Vom biologischen Neuron zur mathematischen Ungleichung
 
 1943 haben die Forscher Warren McCulloch und Walter Pitts das erste Modell einer
 vereinfachten Hirnzelle präsentiert. Zu Ehren der beiden Forscher heißt dieses
 Modell **MCP-Neuron**. Inspiriert wurden die Forscher dabei durch den Aufbau des
 Gehirns und der Verknüpfung der Nervenzellen. Darauf aufbauend publizierte Frank
-Rosenblatt 1957 seine Idee einer Lernregel für das künstliche Neuron. Das
+Rosenblatt 1958 seine Idee einer Lernregel für das künstliche Neuron. Das
 sogenannte **Perzeptron** bildet die Grundlage der künstlichen neuronalen Netze.
 
 ```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec01_neuron_wikipedia.svg
@@ -49,10 +52,6 @@ Sie auf [Wikipedia/Nervenzelle](https://de.wikipedia.org/wiki/Nervenzelle).
 [Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
 Lizenz: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
 ```
-
-+++
-
-## Von logischem ODER zur mathematischen Ungleichung
 
 Das einfachste künstliche Neuron besteht aus zwei Inputs und einem Output. Dabei
 sind für die beiden Inputs nur zwei Zustände zugelassen und auch der Output
@@ -85,8 +84,8 @@ Rasensprenger eingeschaltet ist. Dann soll der Python-Interpreter ausgeben, ob
 der Rasen nass wird oder nicht.
 ```
 
-```{code-cell}
-# Ihr Code:
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -124,21 +123,8 @@ x1 | x2 | y
 0  | 1  | 1
 1  | 1  | 1
 
-+++
+Verwenden wir 0 und 1 für die Eingaben, erhalten wir folgenden Python-Code.
 
-```{admonition} Mini-Übung
-:class: tip
-Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Verwenden Sie
-Integer 0 und 1 für die Eingaben.
-```
-
-```{code-cell}
-# Ihr Code:
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
 ```python
 # Eingabe
 x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
@@ -153,9 +139,6 @@ if y == True:
 else:
     print('Der Rasen wird nicht nass.')
 ```
-````
-
-+++
 
 Nun ersetzen wir das logische ODER durch ein mathematisches Konstrukt:
 Wenn die Ungleichung
@@ -177,7 +160,8 @@ Beispielsweise würde $w_1 = 0.3$, $w_2=0.3$ und $\theta = 0.2$ passen:
 * $1 \cdot 0.3 + 0 \cdot 0.3 = 0.3 \geq 0.2$ erfüllt
 * $1 \cdot 0.3 + 1 \cdot 0.3 = 0.6 \geq 0.2$ erfüllt
 
-+++
+Wir haben hier die Gewichte von Hand gewählt. Beim überwachten Lernen berechnet
+ein Lernalgorithmus sie aus den Trainingsdaten.
 
 ```{admonition} Mini-Übung
 :class: tip
@@ -186,8 +170,8 @@ logische ODER durch die linke Seite der Ungleichung und vergleichen Sie
 anschließend mit $0.2$, um zu entscheiden, ob der Rasen nass wird oder nicht.
 ```
 
-```{code-cell}
-# Ihr Code:
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -199,10 +183,10 @@ x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
 x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
 
 # Verarbeitung
-y = 0.3 * x1 + 0.3 * x2
+z = 0.3 * x1 + 0.3 * x2
 
 # Ausgabe
-if y >= 0.2:
+if z >= 0.2:
     print('Der Rasen wird nass.')
 else:
     print('Der Rasen wird nicht nass.')
@@ -228,9 +212,9 @@ Mathematik eine passende Funktion, die sogenannte
 [Heaviside-Funktion](https://de.wikipedia.org/wiki/Heaviside-Funktion) (manchmal
 auch Theta-, Stufen- oder Treppenfunktion genannt).
 
-```{figure} pics/heaviside_wikipedia.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec01_heaviside_wikipedia.svg
 ---
-name: fig_heaviside_wikipedia
+name: fig11_sec01_heaviside_wikipedia
 ---
 Schaubild der Heaviside-Funktion
 (Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Heaviside.svg) von
@@ -239,31 +223,42 @@ Lennart Kudling; Lizenz: gemeinfrei)
 
 Definiert ist die Heaviside-Funktion folgendermaßen:
 
-$$\Phi(x) = \begin{cases}0:&x<0\\1:&x\geq 0\end{cases}$$
+$$H(x) = \begin{cases}
+0:&x<0\\
+1:&x> 0\\
+\end{cases}$$
 
-In dem Modul NumPy ist die Heaviside-Funktion schon hinterlegt, siehe
-> <https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html>
+Welchen Wert die Funktion genau an der Sprungstelle $x = 0$ annimmt, ist
+Konvention. Das untersuchen wir in der folgenden Mini-Übung. In der obigen
+Abbildung ist an der Sprungstelle der Wert 1 gewählt.
+
+Wir brauchen die Heaviside-Funktion nicht selbst implementieren, in NumPy ist
+sie schon hinterlegt, siehe [Dokumentation →
+Heaviside](https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html).
 
 +++
 
 ```{admonition} Mini-Übung
 :class: tip
-Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101
-Punkten. Setzen Sie das zweite Argument einmal auf 0 und einmal auf 2. Was
-bewirkt das zweite Argument? Sehen Sie einen Unterschied in der Visualisierung?
+Visualisieren Sie die Heaviside-Funktion auf dem Intervall $[-3, 3]$. Wählen Sie
+eine ungerade Anzahl an Punkten, damit die Stelle $x = 0$ dabei ist und der
+Sprung gut sichtbar wird.
 
-Erhöhen Sie auch die Anzahl der Punkte im Intervall. Wählen Sie dabei immer eine
-ungerade Anzahl an Punkten, damit die 0 dabei ist und der Sprung an der Stelle
-$x = 0$ besser sichtbar wird.
+Untersuchen Sie, welchen Funktionswert die Funktion genau an der Sprungstelle
+$x = 0$ annimmt und ob Sie diesen Wert beeinflussen können. Ein Blick in die
+Dokumentation hilft.
 ```
 
-```{code-cell}
-# Ihr Code:
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
+Die NumPy-Funktion `np.heaviside` erwartet ein zweites Argument. Wir probieren
+zwei verschiedene Werte aus:
+
 ```python
 import pandas as pd
 import plotly.express as px
@@ -286,16 +281,15 @@ fig.show()
 ```
 ````
 
-Das zweite Argument der Heaviside-Funktion `heaviside` in NumPy gibt an, welchen
-Funktionswert die Heaviside-Funktion an der Stelle $x=0$ hat. Der Standard ist
-$0.5$.
+Das zweite Argument der Funktion `heaviside` in NumPy gibt an, welchen
+Funktionswert die Heaviside-Funktion an der Stelle $x=0$ hat. Damit legen wir die
+Konvention für die Sprungstelle fest. Für das Perzeptron wählen wir den Wert 1,
+damit auch die gewichtete Summe 0 zur Ausgabe $y = 1$ führt.
 
 Mit der Heaviside-Funktion können wir nun den Vergleich in der
 Programmverzweigung mit $0.2$ durch eine direkte Berechnung ersetzen. Betrachten
 wir den folgenden Programm-Code, der zeigt, wie wir ohne logisches Oder bzw.
 ohne Programmverzweigung if-else auskommen.
-
-+++
 
 ```python
 # Import der notwendigen Module
@@ -306,11 +300,12 @@ x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
 x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
 
 # Verarbeitung
-y = np.heaviside(-0.2 + 0.3 * x1 + 0.3 * x2, 1.0)
+z = -0.2 + 0.3 * x1 + 0.3 * x2
+y_prognose = np.heaviside(z, 1.0)
 
 # Ausgabe
 ergebnis_als_text = ['Der Rasen wird nicht nass.', 'Der Rasen wird nass.']
-print(ergebnis_als_text[int(y)])
+print(ergebnis_als_text[int(y_prognose)])
 ```
 
 +++
@@ -359,10 +354,10 @@ Genaugenommen hätten wir jetzt natürlich für die Vektoren $\mathbf{w}$ und
 $\mathbf{x}$ neue Bezeichnungen einführen müssen, aber ab sofort gehen wir immer
 davon aus, dass ab jetzt immer die erweiterten Vektoren gemeint sind, die um den
 negativen Schwellenwert $-\theta$ bzw. die 1 ergänzt wurden. Der negative
-Schwellenwert wird in der ML-Community **Bias** oder **Bias-Einheit (Bias
-Unit)** genannt.
+Schwellenwert wird in der ML-Community **Bias** genannt und der dazugehörige
+konstante Input $x_0=1$ **Bias-Einheit (Bias Unit)**.
 
-Um jetzt klassifizieren zu können, wird auf die gewichtete Summe
+Um jetzt klassifizieren zu können, wird auf die **gewichtete Summe**
 $\mathbf{x}^{T}\mathbf{w}$ die Heaviside-Funktion angewendet. In späteren
 Kapiteln werden wir sehen, dass auch andere Funktionstypen anstatt der
 Heaviside-Funktion verwendet werden, die bessere mathematische Eigenschaften
@@ -376,28 +371,29 @@ gewichtete Summe der Eingaben bildet und dann darauf eine Aktivierungsfunktion
 anwendet.
 ```
 
-Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
-gezeigt. Wir lesen es von links nach rechts und beginnen mit den Eingaben der
-Merkmale, die durch (hellblaue) Kreise symbolisiert werden. In manchen
-Darstellungen wird die Bias-Einheit ebenfalls durch einen Kreis symbolisiert und
-als Eingabe dargestellt. Manchmal wird auf die Darstellung der Bias-Einheit
-komplett verzichtet. Als Kompromiss zwischen diesen beiden Ansätzen ist in
-dieser Grafik die Bias-Einheit zwar als Kreis symbolisiert, aber der Kreis
-befindet sich nicht in einer Reihe mit den Merkmalen, sondern ist etwas nach
-rechts eingerückt. Die Multiplikation der Inputs $x_j$ mit den Gewichten $w_j$
-wird durch Kanten dargestellt. Die einzelnen Summanden $x_j w_j$ treffen sich
-sozusagen im linken, mittleren Kreis, wo die gewichtete Summe $\sum_{j=0}^{n}
-x_j w_j$ gebildet wird. Auf die gewichtete Summe wird dann im rechten, mittleren
-Kreis eine Aktivierungsfunktion angewendet. Um zu verdeutlichen, dass hier zwei
-mathematische Operationen durchgeführt werden, sind die beiden Kreise weiß
-eingefärbt. Das Perzeptron berechnet dann die Ausgabe $\hat{y}$ und dieser Wert
-wird dann ganz rechts als (dunkelblauer) Kreis dargestellt. Um berechnete
-Ausgaben zu kennzeichnen, verwenden wir das $\wedge$-Symbol und setzen es über
-das $y$, so dass das Symbol $\hat{y}$ entsteht.
+Eine typische Visualisierung des Perzeptrons zeigt die folgende Abbildung. Wir
+lesen sie von links nach rechts:
 
-```{figure} pics/fig_12_01_topology_perceptron.svg
+* Links stehen die Eingaben $x_1, x_2, \ldots, x_n$ als hellblaue Kreise. Der
+  etwas nach rechts eingerückte Kreis ist die Bias-Einheit $x_0 = 1$.
+* Die Kanten stehen für die Multiplikation der Eingaben $x_j$ mit den Gewichten
+  $w_j$.
+* Im ersten weißen Kreis laufen die Summanden $x_j w_j$ zur gewichteten Summe
+  $\sum_{j=0}^{n} x_j w_j$ zusammen.
+* Im zweiten weißen Kreis wird darauf die Aktivierungsfunktion angewendet. Die
+  beiden Kreise sind weiß, weil hier gerechnet wird.
+* Rechts steht das Ergebnis als dunkelblauer Kreis, die Ausgabe $\hat{y}$.
+
+Für die Bias-Einheit gibt es unterschiedliche Konventionen. Manche Darstellungen
+zeigen sie als weiteren Kreis in einer Reihe mit den Merkmalen, manche lassen
+sie ganz weg. Wir stellen sie als eigenen, etwas eingerückten Kreis dar.
+
+Berechnete Ausgaben kennzeichnen wir mit einem Dach über dem Buchstaben. Aus $y$
+wird so $\hat{y}$.
+
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec01_topology_perceptron.svg
 ---
-name: fig_perzeptron
+name: fig11_sec01_topology_perceptron
 ---
 Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
@@ -406,9 +402,83 @@ Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz
 Selbstverständlich können die Farben in anderen Abbildungen anders gewählt sein.
 Wichtig ist die Darstellung mit Kreisen und Kanten.
 
++++
+
+```{admonition} Mini-Übung
+:class: tip
+Wir erweitern das Rasen-Beispiel um einen dritten Eingang $x_3$: Es ist heiß und
+windig. Dann verdunstet das Wasser des Rasensprengers, bevor es den Boden
+erreicht. Wenn es dagegen regnet, wird der Rasen trotz Hitze und Wind nass.
+
+Für die drei Eingänge soll das Perzeptron folgende Ausgabe liefern:
+
+$x_1$ (Regen) | $x_2$ (Sprenger) | $x_3$ (heiß und windig) | $y$ (Rasen nass)
+--------------|------------------|-------------------------|-----------------
+0             | 0                | 0                       | 0
+0             | 0                | 1                       | 0
+0             | 1                | 0                       | 1
+0             | 1                | 1                       | 0
+1             | 0                | 0                       | 1
+1             | 0                | 1                       | 1
+1             | 1                | 0                       | 1
+1             | 1                | 1                       | 1
+
+Suchen Sie Gewichte $w_1$, $w_2$, $w_3$ und einen Schwellenwert $\theta$, mit
+denen das Perzeptron diese Tabelle richtig wiedergibt. Das Gewicht $w_3$ muss
+negativ sein, weil Hitze und Wind gegen einen nassen Rasen wirken. Erweitern Sie
+anschließend das Programm vom Ende des vorigen Abschnitts um den dritten Eingang.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+Ein passender Satz Zahlen ist $w_1 = 0.5$, $w_2 = 0.3$, $w_3 = -0.2$ und
+$\theta = 0.2$. Der Bias ist dann $w_0 = -\theta = -0.2$ und die Bias-Einheit
+$x_0 = 1$. Für die gewichtete Summe
+$z = -0.2 + 0.5 \, x_1 + 0.3 \, x_2 - 0.2 \, x_3$ ergibt sich:
+
+* $\mathbf{x} = (0, 0, 0)$: $z = -0.2 < 0$, also $y = 0$
+* $\mathbf{x} = (0, 0, 1)$: $z = -0.4 < 0$, also $y = 0$
+* $\mathbf{x} = (0, 1, 0)$: $z = 0.1 \geq 0$, also $y = 1$
+* $\mathbf{x} = (0, 1, 1)$: $z = -0.1 < 0$, also $y = 0$
+* $\mathbf{x} = (1, 0, 0)$: $z = 0.3 \geq 0$, also $y = 1$
+* $\mathbf{x} = (1, 0, 1)$: $z = 0.1 \geq 0$, also $y = 1$
+* $\mathbf{x} = (1, 1, 0)$: $z = 0.6 \geq 0$, also $y = 1$
+* $\mathbf{x} = (1, 1, 1)$: $z = 0.4 \geq 0$, also $y = 1$
+
+Das stimmt mit der Tabelle überein. Als Programm:
+
+```python
+# Import der notwendigen Module
+import numpy as np
+
+# Eingabe
+x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
+x2 = int(input('Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)'))
+x3 = int(input('Ist es heiß und windig? (ja = 1 | nein = 0)'))
+
+# Verarbeitung
+z = -0.2 + 0.5 * x1 + 0.3 * x2 - 0.2 * x3
+y_prognose = np.heaviside(z, 1.0)
+
+# Ausgabe
+ergebnis_als_text = ['Der Rasen wird nicht nass.', 'Der Rasen wird nass.']
+print(ergebnis_als_text[int(y_prognose)])
+```
+````
+
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
 aus den Daten mit Hilfe von Gewichten und einer Aktivierungsfunktion der binäre
-Zustand prognostiziert wird. Im nächsten Kapitel werden wir mehrere Perzeptrons
-zu mehrschichtigen Netzen verbinden und erhalten ein neuronales Netz.
+Zustand prognostiziert wird. Unsere Rasen-Beispiele waren alle vom Typ "das eine
+oder das andere". Hängt das Ergebnis von einer komplizierteren Kombination der
+Eingaben ab, reicht ein einzelnes Perzeptron nicht mehr aus. Deshalb verbinden
+wir in Kapitel 11.2 mehrere Perzeptrons zu einem mehrschichtigen Netz. Die von
+Rosenblatt vorgeschlagene Lernregel, mit der ein Perzeptron seine Gewichte
+selbst aus Daten bestimmt, behandeln wir nicht im Detail. Ab Kapitel 11.3
+übernimmt das die Bibliothek Scikit-Learn für uns.
