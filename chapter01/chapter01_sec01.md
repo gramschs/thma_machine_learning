@@ -242,7 +242,7 @@ Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
 dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
 wie man einen Kuchen essen würde, nachdem er gebacken ist.
 
-```{figure} pics/fig01_sec01_ml_as_baking.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter01/fig01_sec01_ml_as_baking.svg
 :name: fig01sec01_ml_as_baking
 
 Analogie zwischen dem ML-Workflow und dem Kuchenbacken (Quelle: eigene Darstellung)
@@ -303,7 +303,7 @@ diese Schleife erstellt werden, werden letztendlich miteinander verglichen und
 bewertet (C - Comparison and Conclusion), bevor sie produktiv eingesetzt
 werden.
 
-```{figure} pics/fig01_sec01_qua3ck_process.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter01/fig01_sec01_qua3ck_process.svg
 :name: fig01_sec01_qua3ck_process
 :width: 60%
 

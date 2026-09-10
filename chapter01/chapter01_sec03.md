@@ -130,8 +130,8 @@ in JupyterLab erstellt wird.
    Sie zusätzliche Pakete benötigen, können Sie diese über den
    "Environments"-Tab im Anaconda-Navigator installieren.
 
-```{figure} pics/fig_chap01_sec02_jupyterlab.png
-:name: fig_chap01_sec02_jupyterlab
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter01/fig01_sec03_screenshot_start_jupyterlab.png
+:name: fig01_sec03_screenshot_start_jupyterlab
 
 Startansicht der Software JupyterLab: ein neues Jupyter Notebook wird mit Klick auf den Button Python 3 (ipykernel) erstellt.
 ```
@@ -145,8 +145,8 @@ Julia oder JavaScript geschrieben werden. Erkennbar sind Jupyter Notebooks an
 der Dateiendung `ipynb`, die die Abkürzung für »**i**ntelligentes **Py**thon
 **N**ote**b**ook« darstellt.
 
-```{figure} pics/fig_chap01_sec03_zellen.png
-:name: fig_chap01_sec03_zellen
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter01/fig01_sec03_screenshot_notebook.png
+:name: fig01_sec03_notebook
 
 Screenshot eines Jupyter Notebooks mit einer nicht ausgeführten Markdown-Zelle (1), einer ausgeführten Code-Zelle (2) und dem Run-Button (3)
 ```

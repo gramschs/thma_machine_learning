@@ -7,28 +7,22 @@ kernelspec:
 
 # 11.1 Perzeptron = Grundbaustein neuronaler Netze
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
-
 Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste
-künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir
-das Perzeptron vorstellen.
+künstliche neuronale Netz ist das Perzeptron. In diesem Kapitel werden wir das
+Perzeptron vorstellen.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie können das Perzeptron als mathematische Funktion formulieren und in diesem
+* [ ] Sie können das Perzeptron als mathematische Funktion formulieren und in diesem
   Zusammenhang die folgenden Begriffe erklären:
     * **gewichtete Summe** (Weighted Sum),
     * **Bias** oder Bias-Einheit (Bias),
     * **Schwellenwert** (Threshold)  
     * **Heaviside-Funktion** (Heaviside Function) und
     * **Aktivierungsfunktion** (Activation Function).
-* Sie können das Perzeptron als ein binäres Klassifikationsproblem des
+* [ ] Sie können das Perzeptron als ein binäres Klassifikationsproblem des
   überwachten Lernens einordnen.
 ```
 
@@ -36,26 +30,25 @@ das Perzeptron vorstellen.
 
 1943 haben die Forscher Warren McCulloch und Walter Pitts das erste Modell einer
 vereinfachten Hirnzelle präsentiert. Zu Ehren der beiden Forscher heißt dieses
-Modell MCP-Neuron. Darauf aufbauend publizierte Frank Rosenblatt 1957 seine Idee
-einer Lernregel für das künstliche Neuron. Das sogenannte Perzeptron bildet die
-Grundlage der künstlichen neuronalen Netze. Inspiriert wurden die Forscher dabei
-durch den Aufbau des Gehirns und der Verknüpfung der Nervenzellen.
+Modell **MCP-Neuron**. Inspiriert wurden die Forscher dabei durch den Aufbau des
+Gehirns und der Verknüpfung der Nervenzellen. Darauf aufbauend publizierte Frank
+Rosenblatt 1957 seine Idee einer Lernregel für das künstliche Neuron. Das
+sogenannte **Perzeptron** bildet die Grundlage der künstlichen neuronalen Netze.
 
-```{figure} pics/neuron_wikipedia.svg
+```{figure} https://gramschs.github.io/thma_machine_learning_assets/pics/chapter11/fig11_sec01_neuron_wikipedia.svg
 ---
-width: 600px
-name: fig_neuron_wikipedia
+width: 75%
+name: fig11_sec01_neuron_wikipedia
 ---
-Schematische Darstellung einer Nervenzelle
-(Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
+Schematische Darstellung einer Nervenzelle: Elektrische und chemische
+Eingabesignale kommen bei den Dendriten an und laufen im Zellkörper zusammen.
+Sobald ein bestimmter Schwellwert überschritten wird, wird ein Ausgabesignal
+erzeugt und über das Axon weitergeleitet. Mehr Details zu Nervenzellen finden
+Sie auf [Wikipedia/Nervenzelle](https://de.wikipedia.org/wiki/Nervenzelle).
+(Quelle:
+[Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
 Lizenz: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
 ```
-
-Elektrische und chemische Eingabesignale kommen bei den Dendriten an und laufen
-im Zellkörper zusammen. Sobald ein bestimmter Schwellwert überschritten wird,
-wird ein Ausgabesignal erzeugt und über das Axon weitergeleitet. Mehr Details zu
-Nervenzellen finden Sie auf
-[Wikipedia/Nervenzelle](https://de.wikipedia.org/wiki/Nervenzelle).
 
 +++
 
