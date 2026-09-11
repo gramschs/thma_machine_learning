@@ -1,25 +1,17 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: 3ddruck_xxs.csv
+    title: 3ddruck_xxs.csv
+  - file: chapter10_sec01.md
+    title: chapter10_sec01.md
 ---
 
 
 # 10.1 Kreuzvalidierung
-
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
 
 In der Praxis ist es entscheidend, dass ein ML-Modell nicht nur gute Prognosen
 für die Daten liefert, sondern auch für neue, unbekannte Daten zuverlässig
@@ -35,13 +27,14 @@ Modellleistung ermöglicht.
 
 ```{admonition} Lernziele
 :class: attention
-- Sie sind in der Lage, das Konzept der **Kreuzvalidierung (Cross Validation)**
-  verständlich zu erklären.
-- Sie können die Vor- und Nachteile der Kreuzvalidierung aufzählen und bewerten.
-- Sie können mit **KFold** einen Datensatz in verschiedene **Teilmengen
+* [ ] Sie sind in der Lage, das Konzept der **Kreuzvalidierung (Cross
+  Validation)** verständlich zu erklären.
+* [ ] Sie können die Vor- und Nachteile der Kreuzvalidierung aufzählen und
+  bewerten.
+* [ ] Sie können mit **KFold** einen Datensatz in verschiedene **Teilmengen
   (Folds)** aufteilen.
-- Sie beherrschen die Durchführung einer Kreuzvalidierung mithilfe der Funktion
-  **cross_validate()**.
+* [ ] Sie beherrschen die Durchführung einer Kreuzvalidierung mithilfe der
+  Scikit-Learn-Funktion `cross_validate()`.
 ```
 
 ## Idee der Kreuzvalidierung
@@ -77,10 +70,10 @@ Aufteilung passieren könnte.
 
 Zusammengefasst bietet die Kreuzvalidierung mehrere Vorteile:
 
-- **Effizientere Datennutzung**: Jeder Datenpunkt wird mindestens einmal als
+- *Effizientere Datennutzung*: Jeder Datenpunkt wird genau einmal als
   Testdatenpunkt verwendet, was besonders bei kleinen Datensätzen wichtig ist,
   da die Daten optimal ausgenutzt werden.
-- **Stabilere Schätzung der Modellleistung**: Durch das wiederholte Training und
+- *Stabilere Schätzung der Modellleistung*: Durch das wiederholte Training und
   Testen auf verschiedenen Daten erhöht sich die Robustheit der geschätzten
   Modellleistung (Score), da zufällige Verzerrungen durch unbalancierte Splits
   minimiert werden.
@@ -89,24 +82,73 @@ Ein Nachteil der Kreuzvalidierung ist der erhöhte Rechenaufwand, da das Modell
 mehrfach trainiert und getestet wird.
 
 Können wir also auf die Aufteilung in Trainings- und Testdaten verzichten? Nein,
-denn für das Hyperparameter-Tuning ist der Split weiterhin notwendig. Mehr dazu
-im nächsten Kapitel. Zunächst widmen wir uns der praktischen Umsetzung der
+denn nach dem Tuning brauchen wir weiterhin unberührte Testdaten, um das
+ausgewählte Modell abschließend und unverzerrt zu bewerten. Mehr dazu im
+nächsten Kapitel. Zunächst widmen wir uns der praktischen Umsetzung der
 Kreuzvalidierung in Scikit-Learn.
+
+```{admonition} Mini-Übung
+:class: tip
+Der 3D-Druck-Datensatz `3ddruck_xxs.csv` enthält 18 Druckversuche. Als
+Zielgröße wird erfasst, ob ein Druck erfolgreich war oder nicht
+(`Erfolgreich`: ja/nein).
+
+1. Angenommen, wir teilen die Daten wie bisher üblich in 75 % Trainings- und
+   25 % Testdaten auf. Wie viele Druckversuche landen ungefähr im
+   Testdatensatz? Warum ist eine so kleine Testmenge problematisch für die
+   Einschätzung der Modellqualität?
+2. Führen wir stattdessen eine 5-fache Kreuzvalidierung durch: Wie viele
+   Druckversuche werden in jedem Durchlauf ungefähr als Testdaten
+   zurückgehalten? Wie oft wird das Modell insgesamt trainiert und getestet?
+3. Erklären Sie in eigenen Worten, warum die Kreuzvalidierung bei einem so
+   kleinen Datensatz wie diesem eine stabilere Einschätzung der
+   Modellleistung liefert als eine einzelne Aufteilung in Trainings- und
+   Testdaten.
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+Zu 1. 25 % von 18 Druckversuchen sind 4.5, also etwa 4 bis 5 Druckversuche im
+Testdatensatz. Das ist eine sehr kleine Menge. Schon ein einziger untypischer
+Druckversuch im Test kann den Score stark verändern und zu einer zufälligen,
+wenig aussagekräftigen Einschätzung führen.
+
+Zu 2. Bei 5 Folds und 18 Druckversuchen enthält jeder Testfold 18/5 = 3.6,
+also etwa 3 bis 4 Druckversuche. Scikit-Learn teilt die 18 Druckversuche
+tatsächlich in drei Folds mit je 4 und zwei Folds mit je 3 Druckversuchen auf.
+Das Modell wird insgesamt fünfmal trainiert und getestet, einmal pro Fold.
+
+Zu 3. Bei der Kreuzvalidierung ist jeder Druckversuch einmal Teil der
+Testdaten. Dadurch mittelt sich der Einfluss einzelner, möglicherweise
+untypischer Druckversuche über die fünf Durchläufe heraus. Eine einzelne
+Aufteilung könnte dagegen zufällig genau die "einfachen" oder genau die
+"schwierigen" Druckversuche in den Test legen und so ein zu optimistisches
+oder zu pessimistisches Bild der Modellqualität liefern.
+````
+
+```{dropdown} Video (EN) "Machine Learning Fundamentals: Cross Validation" von StatQuest
+<iframe width="929" height="522" src="https://www.youtube.com/embed/fSytzGwwBVw" title="Machine Learning Fundamentals: Cross Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
 
 ## Kreuzvalidierung mit KFold
 
 Um die Kreuzvalidierung in Scikit-Learn zu demonstrieren, generieren wir
 zunächst einen künstlichen Datensatz. Mithilfe der Funktion `make_moons()`
-erstellen wir 50 Datenpunkte und speichern sie in einem Pandas-DataFrame. Für
+erstellen wir 50 Datenpunkte und speichern sie in einem Pandas DataFrame. Für
 eine einfachere Visualisierung mit Plotly Express wandeln wir die Zielvariable
 `'Wirkung'` von den Werten 0/1 in boolesche Werte (False/True) um.
 
-```{code-cell}
+```{code-cell} python
 import pandas as pd
 import plotly.express as px
-from sklearn.datasets import make_moons 
+from sklearn.datasets import make_moons
 
+# Erzeugung der zufälligen Datenpunkte als NumPy-Array
 X_array, y_array = make_moons(noise = 0.5, n_samples=50, random_state=3)
+
+# Überführung der Arrays in einen Pandas DataFrame
 daten = pd.DataFrame({
     'Merkmal 1': X_array[:,0],
     'Merkmal 2': X_array[:,1],
@@ -114,8 +156,10 @@ daten = pd.DataFrame({
 })
 daten['Wirkung'] = daten['Wirkung'].astype('bool')
 
-fig = px.scatter(daten, x = 'Merkmal 1', y = 'Merkmal 2', color='Wirkung',
-    title='Künstliche Daten')
+# Visualisierung als Scatterplot
+fig = px.scatter(daten,
+    x = 'Merkmal 1', y = 'Merkmal 2',
+    color='Wirkung', title='Künstliche Daten')
 fig.show()
 ```
 
@@ -126,17 +170,17 @@ dies die Standardeinstellung, wie uns die [Dokumentation Scikit-Learn →
 KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
 zeigt. Das Argument könnte also weggelassen werden.
 
-```{code-cell}
+```{code-cell} python
 from sklearn.model_selection import KFold
 
 kfold = KFold(n_splits = 5)
 ```
 
-Im Hintergrund wurde ein Generator erzeugt, mit Hilfe dessen wir Daten in fünf
+Im Hintergrund wurde ein Generator erzeugt, mithilfe dessen wir Daten in fünf
 Teilmengen (Folds) aufteilen können. Dazu benutzen wir die Methode `.split()`
 und übergeben ihr die Daten, die gesplittet werden sollen.
 
-```{code-cell}
+```{code-cell} python
 kfold.split(daten)
 ```
 
@@ -147,24 +191,26 @@ auf die Trainings- und Testindizes zu, die die Methode `split()` als Tupel
 zurückgibt. Das erste Element enthält die Indizes der Trainingsdaten, das zweite
 die der Testdaten.
 
-```{code-cell}
+```{code-cell} python
 for (train_index, test_index) in kfold.split(daten):
-  print(f'Index Trainingsdaten: {train_index}')
-  print(f'Index Testdaten: {test_index}')
+    print(f'Index Trainingsdaten: {train_index}')
+    print(f'Index Testdaten: {test_index}')
 ```
 
 Die Aufteilung der Daten erfolgt hierbei sehr systematisch. Im ersten Durchgang
-werden die Datenpunkte 0–9 als Testdaten verwendet, im zweiten Durchgang die
-Punkte 10–19 und so weiter. Bei sortierten Daten kann dies ungünstig sein. Um
+werden die Datenpunkte 0-9 als Testdaten verwendet, im zweiten Durchgang die
+Punkte 10-19 und so weiter. Bei sortierten Daten kann dies ungünstig sein. Um
 eine zufällige Aufteilung zu gewährleisten, können wir das Argument
-`shuffle=True` verwenden, um die Daten vor dem Split zu mischen.
+`shuffle=True` verwenden, um die Daten vor dem Split zu mischen. Aus
+didaktischen Gründen verwenden wir zusätzlich das Argument `random_state=0`, um
+die Ergebnisse mit dem Vorlesungsskript vergleichbar zu machen.
 
-```{code-cell}
-kfold = KFold(n_splits = 5, shuffle=True)
+```{code-cell} python
+kfold = KFold(n_splits = 5, shuffle=True, random_state=0)
 
 for (train_index, test_index) in kfold.split(daten):
-  print(f'Index Trainingsdaten: {train_index}')
-  print(f'Index Testdaten: {test_index}')
+    print(f'Index Trainingsdaten: {train_index}')
+    print(f'Index Testdaten: {test_index}')
 ```
 
 Nun verwenden wir diese fünf Aufteilungen, um einen Entscheidungsbaum zu
@@ -172,32 +218,102 @@ trainieren. Dabei begrenzen wir die Baumtiefe auf 3 und bewerten in jedem
 Durchgang die Genauigkeit (Score) sowohl auf den Trainings- als auch auf den
 Testdaten.
 
-```{code-cell}
+```{code-cell} python
 from sklearn.tree import DecisionTreeClassifier
 
-modell = DecisionTreeClassifier(max_depth=3) 
+# Wahl des Modells (Entscheidungsbaum) und Erzeugung der Folds
+modell = DecisionTreeClassifier(max_depth=3, random_state=0)
 kfold = KFold(n_splits = 5, shuffle=True, random_state=0)
 
+# Kreuzvalidierung
 for (train_index, test_index) in kfold.split(daten):
-  X_train = daten.loc[train_index, ['Merkmal 1', 'Merkmal 2']]
-  y_train = daten.loc[train_index, 'Wirkung']
-  X_test = daten.loc[test_index, ['Merkmal 1', 'Merkmal 2']]
-  y_test = daten.loc[test_index, 'Wirkung']
-  
-  modell.fit(X_train, y_train)
-  score_train = modell.score(X_train, y_train)
-  score_test = modell.score(X_test, y_test)
+    X_train = daten.loc[train_index, ['Merkmal 1', 'Merkmal 2']]
+    y_train = daten.loc[train_index, 'Wirkung']
+    X_test = daten.loc[test_index, ['Merkmal 1', 'Merkmal 2']]
+    y_test = daten.loc[test_index, 'Wirkung']
 
-  print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
+    # Training des Entscheidungsbaums
+    modell.fit(X_train, y_train)
+
+    # Analyse der Scores auf Trainings- und Testdaten
+    score_train = modell.score(X_train, y_train)
+    score_test = modell.score(X_test, y_test)
+    print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
 ```
 
 Die Scores auf den Trainingsdaten könnten den Eindruck erwecken, dass der
-Entscheidungsbaum sehr gut funktioniert. Doch die Testdaten zeigen Schwankungen
-zwischen 0.4 und 0.8. Hätten wir eine einfache Aufteilung in Trainings- und
-Testdaten vorgenommen und zufällig den dritten Split erwischt, hätten wir
-wahrscheinlich eine zu optimistische Einschätzung der Modellqualität getroffen.
-Aus didaktischen Gründen verwenden wir das Argument `random_state=0`, um die
-Ergebnisse mit dem Vorlesungsskript vergleichbar zu machen.
+Entscheidungsbaum sehr gut funktioniert. Doch die Scores der Testdaten zeigen
+Schwankungen zwischen 0.4 und 0.8. Hätten wir eine einfache Aufteilung in
+Trainings- und Testdaten vorgenommen und zufällig den dritten Split erwischt,
+hätten wir wahrscheinlich eine zu optimistische Einschätzung der Modellqualität
+getroffen.
+
+```{admonition} Mini-Übung
+:class: tip
+Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv` mit den 18
+Druckversuchen. Wir wollen mit einem Entscheidungsbaum vorhersagen, ob ein
+Druck erfolgreich war oder nicht.
+
+1. Lesen Sie die Datei ein.
+2. Legen Sie als Eingabedaten die beiden Merkmale `Betttemperatur (C)` und
+   `Druckgeschwindigkeit (mm/s)` fest, als Zielgröße die Spalte
+   `Erfolgreich`.
+3. Teilen Sie die Daten diesmal in sechs statt fünf Folds auf. Mischen Sie
+   die Daten vorher und verwenden Sie sowohl für die Aufteilung als auch für
+   den Entscheidungsbaum `random_state=0`, damit Ihre Ergebnisse mit der
+   Lösung vergleichbar sind.
+4. Trainieren und bewerten Sie für jeden der sechs Folds einen
+   Entscheidungsbaum, diesmal mit einer maximalen Tiefe von 2. Geben Sie
+   jeweils den Score auf den Trainings- und den Testdaten aus.
+5. Wie stark schwanken die sechs Testscores? Vergleichen Sie mit den
+   Schwankungen im Fließtext (5 Folds, Baumtiefe 3). Was schließen Sie
+   daraus: Liegt die Schwankung an der gewählten Fold-Anzahl bzw.
+   Baumtiefe, oder eher an der Größe des Datensatzes?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+from sklearn.model_selection import KFold
+from sklearn.tree import DecisionTreeClassifier
+
+# Daten importieren
+daten = pd.read_csv('3ddruck_xxs.csv')
+
+# Aufteilung in Folds und Auswahl ML-Modell
+kfold = KFold(n_splits=6, shuffle=True, random_state=0)
+modell = DecisionTreeClassifier(max_depth=2, random_state=0)
+
+# Kreuzvalidierung
+for (train_index, test_index) in kfold.split(daten):
+    X_train = daten.loc[train_index, ['Betttemperatur (C)', 'Druckgeschwindigkeit (mm/s)']]
+    y_train = daten.loc[train_index, 'Erfolgreich']
+    X_test = daten.loc[test_index, ['Betttemperatur (C)', 'Druckgeschwindigkeit (mm/s)']]
+    y_test = daten.loc[test_index, 'Erfolgreich']
+
+    # Training
+    modell.fit(X_train, y_train)
+
+    # Bewertung
+    score_train = modell.score(X_train, y_train)
+    score_test = modell.score(X_test, y_test)
+    print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
+```
+
+Die sechs Testscores lauten der Reihe nach 0.00, 0.33, 1.00, 0.67, 0.00 und
+1.00 (Trainingsscores zwischen 0.80 und 0.93).
+
+Zu 5. Die Testscores schwanken wieder extrem, von 0.00 bis 1.00, genau wie im
+Fließtext mit 5 Folds und Baumtiefe 3. Weder die andere Fold-Anzahl noch die
+geringere Baumtiefe ändern daran etwas. Der Grund liegt nicht in diesen
+Einstellungen, sondern im Datensatz selbst: Bei nur 18 Druckversuchen, davon
+nur 4 mit `Erfolgreich = nein`, landen in jedem Testfold nur sehr wenige
+Datenpunkte. Ein einzelner untypischer Druckversuch entscheidet dann bereits
+über einen großen Teil des Scores.
+````
 
 ## Automatische Kreuzvalidierung mit cross_validate
 
@@ -210,14 +326,16 @@ Eingabedaten `X` und Zielgröße `y` auf.
 
 Die Funktion `cross_validate()` wird mit dem ML-Modell (hier einem
 Entscheidungsbaum), den Eingabedaten `X` und der Zielgröße `y` aufgerufen.
-Standardmäßig wird eine 5-fache Kreuzvalidierung ohne Mischen durchgeführt. Mit
+Standardmäßig wird eine 5-fache Kreuzvalidierung ohne Mischen durchgeführt (bei
+Klassifikationsmodellen achtet Scikit-Learn dabei zusätzlich automatisch auf
+eine ausgewogene Klassenverteilung in jedem Fold). Mit
 dem optionalen Argument `cv=` kann jedoch auch ein benutzerdefinierter
 Aufteilungsgenerator übergeben werden, wie zum Beispiel `KFold`. Das zusätzliche
 Argument `return_train_score=True` sorgt dafür, dass auch die Trainingsscores in
 jedem Durchlauf gespeichert werden. Der entsprechende Code sieht folgendermaßen
 aus:
 
-```{code-cell}
+```{code-cell} python
 from sklearn.model_selection import cross_validate
 
 X = daten[['Merkmal 1', 'Merkmal 2']]
@@ -229,7 +347,7 @@ cv_results = cross_validate(modell, X,y, cv=kfold, return_train_score=True)
 Die Funktion `cross_validate()` gibt ein Dictionary zurück, das wie folgt
 aufgebaut ist:
 
-```{code-cell}
+```{code-cell} python
 print(cv_results)
 ```
 
@@ -240,7 +358,7 @@ Scores der Testdaten (`'test_score'`). Falls das Argument
 der Trainingsdaten (`'train_score'`). Die Scores können wir wie folgt anzeigen
 lassen:
 
-```{code-cell}
+```{code-cell} python
 print(cv_results['test_score'])
 print(cv_results['train_score'])
 ```
@@ -248,6 +366,61 @@ print(cv_results['train_score'])
 Weitere Details zu der Funktion `cross_validate()` finden Sie in der
 [Dokumentation Scikit-Learn →
 cross_validate](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html).
+
+```{admonition} Mini-Übung
+:class: tip
+Verwenden Sie erneut den Datensatz, die Merkmale, die Zielgröße, die
+Fold-Aufteilung und den Entscheidungsbaum aus der vorherigen Mini-Übung
+(sechs Folds, Baumtiefe 2, jeweils `random_state=0`).
+
+1. Führen Sie die Kreuzvalidierung diesmal mit `cross_validate()` durch,
+   statt die for-Schleife selbst zu schreiben. Lassen Sie sich auch die
+   Trainingsscores mit ausgeben.
+2. Geben Sie die Testscores und die Trainingsscores aus. Stimmen sie mit den
+   Werten aus der vorherigen Mini-Übung überein?
+3. Was ist an `cross_validate()` praktischer als die selbst geschriebene
+   for-Schleife aus der vorherigen Mini-Übung?
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+
+```python
+import pandas as pd
+from sklearn.model_selection import KFold, cross_validate
+from sklearn.tree import DecisionTreeClassifier
+
+# Import der Daten
+daten = pd.read_csv('3ddruck_xxs.csv')
+
+# Aufteilung in Eingabemerkmale und Zielgröße
+X = daten[['Betttemperatur (C)', 'Druckgeschwindigkeit (mm/s)']]
+y = daten['Erfolgreich']
+
+# Unterteilung in Folds und Auswahl des ML-Modells Entscheidungsbaum
+kfold = KFold(n_splits=6, shuffle=True, random_state=0)
+modell = DecisionTreeClassifier(max_depth=2, random_state=0)
+
+# Kreuzvalidierung
+cv_results = cross_validate(modell, X, y, cv=kfold, return_train_score=True)
+
+# Ausgabe der Scores für Trainings- und Testdaten
+print(cv_results['test_score'])
+print(cv_results['train_score'])
+```
+
+Zu 2. Ja, die Werte stimmen mit der vorherigen Mini-Übung überein (Testscores
+0.00, 0.33, 1.00, 0.67, 0.00, 1.00). Da dieselbe Fold-Aufteilung und derselbe
+Entscheidungsbaum mit denselben `random_state`-Werten verwendet werden, liefert
+`cross_validate()` genau dieselben Trainings- und Testergebnisse wie die
+Schleife von Hand.
+
+Zu 3. `cross_validate()` übernimmt das Trainieren, Testen und Sammeln der
+Scores automatisch. Wir müssen keine for-Schleife und keine Indizierung mit
+`.loc` von Hand programmieren, was besonders praktisch wird, wenn wir später
+mehrere Modelle oder Hyperparameter miteinander vergleichen wollen.
+````
 
 ## Zusammenfassung und Ausblick
 
