@@ -10,22 +10,25 @@ downloads:
 
 # 11.3 Neuronale Netze mit Scikit-Learn
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
+Im letzten Kapitel haben wir gesehen, wie künstliche Neuronen zu einem
+mehrschichtigen Perzeptron zusammengesetzt werden. Die Gewichte haben wir dabei
+nie selbst berechnet. Jetzt trainieren wir ein neuronales Netz mit
+Scikit-Learn und lassen die Bibliothek die passenden Gewichte automatisch aus
+Daten bestimmen. Dabei lernen wir auch, wie wir die Architektur des Netzes
+anpassen und mit Gittersuche systematisch die beste Konfiguration finden.
+
+## Lernziele
 
 ```{admonition} Lernziele
 :class: attention
-* Sie wissen, was die **Architektur** eines neuronalen Netzes ist.
-* Sie können mit Scikit-Learn ein neuronales Netz zur Klassifikation trainieren.
-* Sie wissen, dass neuronale Netze sensitiv auf unskalierte Daten reagieren
+* [ ] Sie wissen, was die **Architektur** eines neuronalen Netzes ist.
+* [ ] Sie können mit Scikit-Learn ein neuronales Netz zur Klassifikation
+  trainieren.
+* [ ] Sie wissen, dass neuronale Netze sensitiv auf unskalierte Daten reagieren
   und daher skaliert werden müssen.
-* Sie können neuronale Netze mit Gittersuche und Kreuzvalidierung trainieren.
+* [ ] Sie können neuronale Netze mit Gittersuche und Kreuzvalidierung
+  trainieren.
 ```
-
-+++
 
 ## Neuronale Netze zur Klassifikation
 
@@ -34,7 +37,7 @@ funktioniert. Dazu erzeugen wir zunächst künstliche Daten für eine binäre
 Klassifikationsaufgabe, splitten sie in Trainings- und Testdaten und lassen sie
 visualisieren.
 
-```{code-cell} ipython3
+```{code-cell} python
 import pandas as pd
 import plotly.express as px
 from sklearn.datasets import make_circles
@@ -59,7 +62,7 @@ fig = px.scatter(df, x='Feature 1', y='Feature 2', color='Category',
 fig.show()
 ```
 
-Die neuronalen Netze sind in dem Untermodul `sklearn.neural_network`. Da es sich
+Neuronale Netze befinden sich im Untermodul `sklearn.neural_network`. Da es sich
 um eine Klassifikationsaufgabe handelt, laden wir das Multilayer-Perzeptron mit
 `MLPClassifier`. Mehr Details dazu können wir in der Dokumentation
 
@@ -69,7 +72,7 @@ nachlesen. Wir lassen das neuronale Netz mit `.fit()` trainieren und geben die
 Scores für die Trainings- und Testdaten mit `.score()` aus. Aus didaktischen
 Gründen fixieren wir den Zufallsseed mit `random_state=0`.
 
-```{code-cell} ipython3
+```{code-cell} python
 from sklearn.neural_network import MLPClassifier
 
 # Auswahl des Modells
@@ -96,7 +99,7 @@ Gewichten des neuronalen Netzes nach der fest eingestellten Anzahl von 200
 Schritten eingestellt wurde. Wir erhöhen diese Zahl auf 2000 mit dem optionalen
 Argument `max_iter=2000` und wiederholen das Training.
 
-```{code-cell} ipython3
+```{code-cell} python
 # Auswahl des Modells mit maximal 2000 Iterationen
 neuronales_netz = MLPClassifier(max_iter=2000, random_state=0)
 
@@ -124,36 +127,36 @@ vor, so wird das Training erschwert. Daher ist es sinnvoll, die Daten auf
 ```
 
 In dem obigen Beispiel sind die künstlichen Daten jedoch bereits in einem
-ähnlichen Größenbreich, so dass wir hier keine Skalierung vornehmen müssen.
+ähnlichen Größenbereich, so dass wir hier keine Skalierung vornehmen müssen.
 
 ## Architektur des neuronalen Netzes ändern
 
-Neuronale Netze sind zusammengesetzte künstliche Neuronen. Aber welche
-Zusammensetzung liegt hier vor? Wie viele versteckte Schichten gibt es, wie
-viele Neuronen sind in den einzelnen versteckten Schichten? Welche
+Neuronale Netze sind Netze aus zusammengesetzten künstlichen Neuronen. Aber
+welche Zusammensetzung liegt hier vor? Wie viele versteckte Schichten gibt
+es, wie viele Neuronen sind in den einzelnen versteckten Schichten? Welche
 Aktivierungsfunktion wurde verwendet? Die zentralen Bestandteile eines
 neuronalen Netzes werden **Architektur** des neuronalen Netzes genannt.
 
-Die Voreinstellung für die Anzahl der versteckten Schichten ist
+Die Voreinstellung für die Architektur der versteckten Schichten ist
 `hidden_layer_sizes=(100,)`. Dem optionalen Argument `hidden_layer_sizes` wird
 ein Tupel mit ganzen Zahlen übergeben, wobei hier das Tupel nur eine Zahl
 enthält, nämlich 100. Das bedeutet, dass das neuronale Netz eine versteckte
 Schicht hat und diese aus 100 Neuronen besteht. Besteht das Tupel aus mehreren
-Zahlen, z.B. `(50, 20, 40)`, dann gibt die die erste Zahl in dem Tupel die
+Zahlen, z.B. `(50, 20, 40)`, dann gibt die erste Zahl in dem Tupel die
 Anzahl der Neuronen in der ersten versteckten Schicht an (also 50), die zweite
 Zahl die Anzahl der Neuronen in der zweiten Schicht (also 20) und immer so
 weiter.
 
-Jetzt wo wir wissen, dass das neuronale Netz mit der Standardeinstellung
+Da wir nun wissen, dass das neuronale Netz mit der Standardeinstellung
 `MLPClassifier()` eine versteckte Schicht mit 100 Neuronen hat, können wir uns
-überlegen, wie viele Gewichte das Modell hat. Bei zwei Merkmalen, einer
+überlegen, wie viele Parameter das Modell hat. Bei zwei Merkmalen, einer
 versteckten Schicht mit 100 Neuronen und einer Ausgabe brauchen wir insgesamt 2
-x 100 + 100 + 100 x 1 = 401 Parameter (Gewichte und Bias-Einheiten).
+x 100 + 100 + 100 x 1 + 1 = 401 Parameter (Gewichte und Bias-Werte).
 Gleichzeitig haben wir nur 100 Datenpunkte, also nur ein Viertel so viele
 Informationen wie Parameter. Damit ist die Gefahr groß, dass Overfitting
 vorliegt. Wir wählen zwei versteckte Schichten mit jeweils zwei Neuronen.
 
-```{code-cell} ipython3
+```{code-cell} python
 # Auswahl des Modells
 neuronales_netz = MLPClassifier(max_iter=2000, hidden_layer_sizes=(2,2), random_state=0)
 
@@ -169,9 +172,10 @@ print(f'Score für Testdaten: {score_test:.2f}')
 
 Die Scores für Trainings- und Testdaten sind schlecht. Wir zeichnen die
 Entscheidungsgrenzen ein, um zu sehen, wo das neuronale Netz die Trennlinien
-zieht.
+zieht. Den Code für die Visualisierung blenden wir aus, da er nicht
+prüfungsrelevant ist.
 
-```{code-cell} ipython3
+```{code-cell} python
 :tags: ["hide-input"]
 import plotly.graph_objects as go
 import numpy as np
@@ -204,16 +208,42 @@ zu klassifizieren.
 
 ```{admonition} Mini-Übung
 :class: tip
-Experimentieren Sie mit verschiedenen Architekturen:
-1. Testen Sie `hidden_layer_sizes=(20,)`, also eine Schicht mit 20 Neuronen.
-2. Testen Sie `hidden_layer_sizes=(15, 10, 5)`, also drei Schichten.
-3. Welche Architektur funktioniert am besten?
-4. Was passiert mit sehr großen Netzen wie `hidden_layer_sizes=(100, 100)`?
+Experimentieren Sie mit verschiedenen Architekturen für das neuronale Netz:
+1. Testen Sie eine einzelne versteckte Schicht mit deutlich mehr Neuronen.
+2. Testen Sie drei versteckte Schichten unterschiedlicher Größe.
+3. Testen Sie ein sehr großes Netz mit zwei versteckten Schichten mit jeweils
+   100 Neuronen.
+4. Vergleichen Sie jeweils die Scores für Trainings- und Testdaten. Welche
+   Architektur würden Sie empfehlen?
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+Wir testen die Architekturen `hidden_layer_sizes=(20,)`,
+`hidden_layer_sizes=(15, 10, 5)` und `hidden_layer_sizes=(100, 100)`.
+
+| Architektur | Score Training | Score Test |
+|---|---|---|
+| (20,) | 0.93 | 0.92 |
+| (15, 10, 5) | 1.00 | 0.92 |
+| (100, 100) | 0.97 | 0.92 |
+
+Alle drei Architekturen erreichen auf den Testdaten einen etwas höheren Score
+(0.92) als das Netz mit `hidden_layer_sizes=(5, 5)` weiter unten (Testscore
+0.88). Ein Blick auf den Trainingsscore zeigt aber, wie unterschiedlich dieser
+Vorteil zustande kommt: Bei `(15, 10, 5)` ist der Trainingsscore mit 1.00
+perfekt, das Netz hat die Trainingsdaten also praktisch auswendig gelernt, das
+ist Overfitting. Bei `(20,)` liegen Trainings- und Testscore mit 0.93 und 0.92
+dagegen dicht beieinander, das Netz generalisiert gut, obwohl es nur eine
+einzige versteckte Schicht hat. Ein größeres oder tieferes Netz ist also nicht
+automatisch besser. Wir würden `(20,)` empfehlen, da diese Architektur mit
+wenigen Parametern eine gute und robuste Vorhersage liefert.
 ```
 
 Probieren wir zwei versteckte Schichten mit jeweils fünf Neuronen aus.
 
-```{code-cell} ipython3
+```{code-cell} python
 # Auswahl des Modells
 neuronales_netz = MLPClassifier(max_iter=2000, hidden_layer_sizes=(5,5), random_state=0)
 
@@ -229,7 +259,7 @@ print(f'Score für Testdaten: {score_test:.2f}')
 
 Erneut lassen wir die Entscheidungsgrenzen visualisieren.
 
-```{code-cell} ipython3
+```{code-cell} python
 :tags: ["hide-input"]
 gridZ = neuronales_netz.predict_proba(np.column_stack([gridX.ravel(), gridY.ravel()]))[:, 1]
 Z = gridZ.reshape(gridX.shape)
@@ -263,11 +293,11 @@ systematisch verschiedene Kombinationen von Parametern und findet die beste
 Konfiguration. Dabei wird jede Kombination mit Kreuzvalidierung (Cross
 Validation) getestet: Die Trainingsdaten werden in 5 Teile aufgeteilt und das
 Modell wird 5-mal trainiert, wobei jedes Mal ein anderer Teil zur Validierung
-dient. Neben der Anzahl der versteckten Schichten ändern wir auch noch die
-Aktivierungsfunktion. Auch wenn es eigentlich nicht nötig ist, skalieren wir die
-Daten, so wie es in der Regel notwendig ist.
+dient. Neben der Architektur ändern wir auch noch die Regularisierungsstärke
+und die Aktivierungsfunktion. Auch wenn es eigentlich nicht nötig ist,
+skalieren wir die Daten, so wie es in der Regel notwendig ist.
 
-```{code-cell} ipython3
+```{code-cell} python
 import pandas as pd
 import plotly.express as px
 from sklearn.datasets import make_circles
@@ -278,27 +308,29 @@ from sklearn.preprocessing import StandardScaler
 # Künstliche Daten generieren
 X, y = make_circles(noise=0.2, factor=0.5, random_state=1)
 
-# Daten skalieren (wichtig für neuronale Netze!)
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
 # Split in Trainings- und Testdaten
-X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled, y, random_state=0
-)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+# Daten skalieren (wichtig für neuronale Netze!)
+# Der Scaler wird nur mit den Trainingsdaten angepasst, sonst würden
+# Informationen aus den Testdaten in das Training einfließen (Data Leakage).
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
 # Definition des Suchraums
-# Wir testen verschiedene Architekturen und Lernraten
+# Wir testen verschiedene Architekturen, Regularisierungsstärken und
+# Aktivierungsfunktionen
 gitter = {
     'hidden_layer_sizes': [
         (5,),           # 1 Schicht mit 5 Neuronen
         (10,),          # 1 Schicht mit 10 Neuronen
-        (5, 5),        # 2 Schichten mit je 5 Neuronen
-        (10, 5),       # 2 Schichten mit 10 und 5 Neuronen
-        (10, 10),      # 2 Schichten mit je 10 Neuronen
+        (5, 5),         # 2 Schichten mit je 5 Neuronen
+        (10, 5),        # 2 Schichten mit 10 und 5 Neuronen
+        (10, 10),       # 2 Schichten mit je 10 Neuronen
     ],
     'alpha': [0.0001, 0.001, 0.01],  # Regularisierung (verhindert Overfitting)
-    'solver': ['lbfgs', 'adam']      # Solver
+    'activation': ['relu', 'tanh']   # Aktivierungsfunktion
 }
 
 # Basismodell erstellen
@@ -328,8 +360,9 @@ print(f"Score auf Testdaten: {test_score:.3f}")
 
 Für das beste Modell sehen die Entscheidungsgrenzen wie folgt aus.
 
-```{code-cell} ipython3
+```{code-cell} python
 :tags: ["hide-input"]
+X_scaled = scaler.transform(X)
 gridX, gridY = np.meshgrid(np.linspace(-2.5, 2.5, 100), np.linspace(-2.5, 2.5, 100))
 gridZ = bestes_modell.predict_proba(np.column_stack([gridX.ravel(), gridY.ravel()]))[:, 1]
 Z = gridZ.reshape(gridX.shape)
@@ -352,12 +385,40 @@ fig.update_layout(title='Künstliche Messdaten und Entscheidungsgrenzen des best
 fig.show()
 ```
 
-Es ist schwierig, eine gute Architektur des neuronalen Netzes zu finden. Auch
-fällt das Ergebnis jedesmal ein wenig anders aus, weil im Hintergrund
-stochastische Verfahren für das Trainieren der Gewichte benutzt werden. Aus
-diesem Grund sollten neuronale Netze nur eingesetzt werden, wenn sehr große
-Datenmengen vorliegen und auch dann noch ist das Finden der besten Architektur
-eine große Herausforderung.
+Es ist schwierig, eine gute Architektur des neuronalen Netzes zu finden. Ohne
+einen fixierten Zufallsseed würde das Ergebnis zudem jedesmal ein wenig anders
+ausfallen, weil im Hintergrund stochastische Verfahren für das Trainieren der
+Gewichte benutzt werden. Aus diesem Grund sollten neuronale Netze nur
+eingesetzt werden, wenn sehr große Datenmengen vorliegen und auch dann noch ist
+das Finden der besten Architektur eine große Herausforderung.
+
+```{admonition} Mini-Übung
+:class: tip
+Betrachten Sie das Gitter aus dem Beispiel oben mit 5 Architekturen, 3
+Regularisierungsstärken und 2 Aktivierungsfunktionen.
+1. Wie viele Kombinationen von Hyperparametern testet die Gittersuche
+   insgesamt?
+2. Bei einer 5-fachen Kreuzvalidierung wird für jede Kombination 5-mal ein
+   Modell trainiert. Wie viele Modelle werden insgesamt trainiert?
+3. Wir fügen dem Gitter eine weitere Architektur mit drei versteckten
+   Schichten hinzu. Wie ändert sich die Anzahl der insgesamt trainierten
+   Modelle?
+4. Was bedeutet das für die Rechenzeit, wenn wir das Gitter immer weiter
+   vergrößern?
+```
+
+```{admonition} Lösung
+:class: tip
+:class: dropdown
+1. $5 \cdot 3 \cdot 2 = 30$ Kombinationen von Hyperparametern.
+2. Jede der 30 Kombinationen wird 5-mal trainiert: $30 \cdot 5 = 150$ Modelle
+   insgesamt.
+3. Mit einer zusätzlichen Architektur sind es $6 \cdot 3 \cdot 2 = 36$
+   Kombinationen, also $36 \cdot 5 = 180$ Modelle.
+4. Die Rechenzeit wächst multiplikativ mit jedem zusätzlichen Wert in jeder
+   Dimension des Gitters. Ein größeres Gitter findet zwar potenziell eine
+   bessere Konfiguration, die Gittersuche dauert dann aber deutlich länger.
+```
 
 ## Zusammenfassung und Ausblick
 
@@ -366,3 +427,6 @@ Datenmengen und ein sorgfältiges Training. In vielen Fällen sollten erst
 einfachere ML-Modelle wie beispielsweise das Random-Forest-Modell ausprobiert
 werden, das in der Regel einen guten Kompromiss zwischen Geschwindigkeit und
 Genauigkeit darstellt, bevor neuronale Netze eingesetzt werden.
+
+Im nächsten Kapitel wechseln wir das Thema und beschäftigen uns mit
+Zeitreihen.
