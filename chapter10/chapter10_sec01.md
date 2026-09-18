@@ -136,7 +136,7 @@ oder zu pessimistisches Bild der Modellqualität liefern.
 
 Um die Kreuzvalidierung in Scikit-Learn zu demonstrieren, generieren wir
 zunächst einen künstlichen Datensatz. Mithilfe der Funktion `make_moons()`
-erstellen wir 50 Datenpunkte und speichern sie in einem Pandas DataFrame. Für
+erstellen wir 50 Datenpunkte und speichern sie in einem Pandas-DataFrame. Für
 eine einfachere Visualisierung mit Plotly Express wandeln wir die Zielvariable
 `'Wirkung'` von den Werten 0/1 in boolesche Werte (False/True) um.
 
@@ -148,7 +148,7 @@ from sklearn.datasets import make_moons
 # Erzeugung der zufälligen Datenpunkte als NumPy-Array
 X_array, y_array = make_moons(noise = 0.5, n_samples=50, random_state=3)
 
-# Überführung der Arrays in einen Pandas DataFrame
+# Überführung der Arrays in einen Pandas-DataFrame
 daten = pd.DataFrame({
     'Merkmal 1': X_array[:,0],
     'Merkmal 2': X_array[:,1],
