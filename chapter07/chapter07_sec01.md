@@ -242,7 +242,7 @@ fig.show()
 In diesen künstlich erzeugten Daten steigt der Preis tendenziell mit der
 Leistung. Der Zusammenhang sieht linear aus.
 
-Als nächstes trainieren wir ein lineares Regressionsmodell auf den Daten.
+Als Nächstes trainieren wir ein lineares Regressionsmodell auf den Daten.
 Lineare ML-Modelle fasst Scikit-Learn in einem Untermodul namens `linear_model`
 zusammen. Um also das lineare Regressionsmodell `LinearRegression` verwenden zu
 können, müssen wir es folgendermaßen importieren und initialisieren:

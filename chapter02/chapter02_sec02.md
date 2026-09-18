@@ -222,7 +222,7 @@ for i in [2, 4, 6, 8, 10]:
 ```
 
 Eine Schleife beginnt mit dem Schlüsselwort **for**. Danach kommt der Name der
-sogenannten **Schleifenvariable**, in diesem Fall also `i`. Als nächstes folgt
+sogenannten **Schleifenvariable**, in diesem Fall also `i`. Als Nächstes folgt
 wieder ein Schlüsselwort, nämlich **in** und zuletzt Liste. Diese Zeile nennt
 man **Kopfzeile**.
 

@@ -77,7 +77,7 @@ X = daten[['Kilometerstand (km)', 'Preis (EUR)']]
 y = daten['verkauft'].values
 ```
 
-Als nächstes importieren wir XGBoost. Es ist üblich, das ganze Modul zu
+Als Nächstes importieren wir XGBoost. Es ist üblich, das ganze Modul zu
 importieren und mit `xgb` abzukürzen. Danach initialisieren wir das
 Klassifikationsmodell `XGBClassifier` und trainieren es auf den Daten.
 
@@ -88,7 +88,7 @@ modell = xgb.XGBClassifier(random_state=0)
 modell.fit(X, y)
 ```
 
-Als nächstes visualisieren wir die Prognose des trainierten
+Als Nächstes visualisieren wir die Prognose des trainierten
 XGBoost-Klassifikators. Wie im vorherigen Kapitel verwenden wir dafür
 `DecisionBoundaryDisplay` aus Scikit-Learn. Dieser Code baut auf Matplotlib auf
 und ist nicht klausurrelevant. Wichtig ist nur, dass Sie das Bild lesen können.

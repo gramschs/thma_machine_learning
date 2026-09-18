@@ -148,7 +148,7 @@ liegt. Das ist etwas niedriger als der Mittelwert von 0.8 Karat. Der höhere
 Mittelwert wird sicherlich bedingt durch die vielen Ausreißer nach oben ab 2 bis
 ca. 5 Karat.
 
-Als nächstes werden Tiefe und Tafel untersucht.
+Als Nächstes werden Tiefe und Tafel untersucht.
 
 ```python
 fig = px.box(daten, y = ['Tiefe', 'Tafel'],

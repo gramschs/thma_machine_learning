@@ -106,7 +106,7 @@ die Häufigkeiten. Sind die Werte plausibel?
 :class: tip
 :class: dropdown
 
-Als erstes schauen wir uns an, was sich hinter den Objekten verbirgt.
+Als Erstes schauen wir uns an, was sich hinter den Objekten verbirgt.
 
 ```python
 daten.head(10)
@@ -330,7 +330,7 @@ Werte plausibel?
 daten.describe()
 ```
 
-Als nächstes visualisieren wir die statistischen Kennzahlen des
+Als Nächstes visualisieren wir die statistischen Kennzahlen des
 Marketing-Budgets.
 
 ```python

@@ -106,7 +106,7 @@ fig = px.bar(data['Geschlecht'],
 fig.show()
 ```
 
-Als nächstes betrachten wir die Größe der Abalonen.
+Als Nächstes betrachten wir die Größe der Abalonen.
 
 ```python
 data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']].describe()
@@ -148,7 +148,7 @@ fig = px.box(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']],
 fig.show()
 ```
 
-Als nächstes betrachten wir die Gewichtsangaben.
+Als Nächstes betrachten wir die Gewichtsangaben.
 
 ```python
 data[['Gesamtgewicht [g]', 'Gewicht geschält [g]', 'Gewicht der Eingeweide [g]', 'Gewicht der Schale [g]']].describe()
@@ -186,7 +186,7 @@ fig.show()
 Mittelwert 9.9 und Median 9 stimmen praktisch überein. Das Histogramm der Ringe
 zeigt aber auch eine ganz leichte Rechtsschiefe.
 
-Als nächstes untersuchen wir, welche Wirkung Größe und Gewicht auf die Ringe haben.
+Als Nächstes untersuchen wir, welche Wirkung Größe und Gewicht auf die Ringe haben.
 
 ```python
 fig = px.scatter_matrix(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]', 'Ringe']])
@@ -359,7 +359,7 @@ Jahre, bei denen mehr als 4 Mio. Arbeitslose (Q3) gibt. Es gibt keine Ausreißer
 
 +++
 
-Als nächstes visualisieren wir die Arbeitslosenzahlen abhängig vom Jahr.
+Als Nächstes visualisieren wir die Arbeitslosenzahlen abhängig vom Jahr.
 
 ```python
 fig = px.scatter(data, x = 'Jahr', y = 'Arbeitslosenzahl',

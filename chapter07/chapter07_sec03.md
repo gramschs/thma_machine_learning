@@ -71,7 +71,7 @@ daten = pd.DataFrame({
     })
 ```
 
-Als nächstes lassen wir die künstlich erzeugten Bremsweg-Experimente visualisieren.
+Als Nächstes lassen wir die künstlich erzeugten Bremsweg-Experimente visualisieren.
 
 ```{code-cell} python
 import plotly.express as px 
@@ -83,7 +83,7 @@ fig.show()
 
 ## Erster Versuch: lineare Regression
 
-Als erstes verwenden wir die lineare Regression, um ein Modell für die Messdaten
+Als Erstes verwenden wir die lineare Regression, um ein Modell für die Messdaten
 zu finden. Wenn wir die Geschwindigkeit mit $x$ bezeichnen und den Bremsweg mit
 $y$, dann lautet das lineare Regressionsmodell
 
@@ -133,7 +133,7 @@ fig.show()
 Die Gerade trifft die gekrümmte Punktwolke nur grob. Sie liegt mal über, mal
 unter der Faustformel, und im unteren Geschwindigkeitsbereich sagt sie sehr
 kleine, unter etwa 39 km/h sogar negative Bremswege voraus. Für den gekrümmten
-Zusammenhang ist eine Gerade zu einfach. Wir probieren als nächstes ein
+Zusammenhang ist eine Gerade zu einfach. Wir probieren als Nächstes ein
 quadratisches Modell.
 
 ## Quadratische Regression

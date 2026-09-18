@@ -27,7 +27,7 @@ könnte:
 * Spieler 5: Bist du Michael Jackson?
 * Spieler 1: Ja! Richtig!
 
-Als nächstes wäre jetzt Spieler 5 an der Reihe, sich eine Person oder Figur
+Als Nächstes wäre jetzt Spieler 5 an der Reihe, sich eine Person oder Figur
 auszuwählen, die die anderen Spieler erraten sollen. Vielleicht kennen Sie auch
 die umgekehrte Variante. Der Name der zu ratenden Person/Figur wird der Person
 mit einem Zettel auf die Stirn geklebt. Und nun muss die Person raten, während
@@ -95,7 +95,7 @@ fig.show()
 ```
 
 Genau wie beim Partyspiel "Wer bin ich?" sortieren wir die Autos durch eine
-Folge von Ja/Nein-Fragen. Als nächstes zeigen wir, wie die Autos anhand von
+Folge von Ja/Nein-Fragen. Als Nächstes zeigen wir, wie die Autos anhand von
 Fragen in die beiden Klassen »verkauft« und »nicht verkauft« sortiert werden
 können. Im Streudiagramm
 visualisieren wir die Autos mit ihren Eigenschaften `Kilometerstand [km]` und
@@ -210,7 +210,7 @@ DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklear
 nachgelesen werden können. Zunächst belassen wir es aber bei den
 Standardeinstellungen.
 
-Als nächstes adaptieren wir die Daten aus dem Pandas-DataFrame so, dass das
+Als Nächstes adaptieren wir die Daten aus dem Pandas-DataFrame so, dass das
 Entscheidungsbaum-Modell trainiert werden kann. Der `DecisionTreeClassifier`
 erwartet für das Training zwei Argumente. Als erstes Argument müssen die
 Eingabedaten übergeben werden, also die Merkmale der Autos. Als zweites Argument
@@ -224,7 +224,7 @@ X = daten[['Kilometerstand [km]', 'Preis [EUR]']]
 y = daten['verkauft']
 ```
 
-Als nächstes wird der Entscheidungsbaum trainiert. Dazu wird die Methode
+Als Nächstes wird der Entscheidungsbaum trainiert. Dazu wird die Methode
 `.fit()` mit den beiden Argumenten `X` und `y` aufgerufen.
 
 ```{code-cell} python

@@ -119,7 +119,7 @@ fig.show()
 Die Temperatur ist gleichmäßig verteilt, der Median liegt mittig zwischen Q1 und
 Q3 und passt auch sehr gut zum Mittelwert 10.5 Grad Celsius.
 
-Als nächstes visualisieren wir den zeitlichen Verlauf der drei Eigenschaften.
+Als Nächstes visualisieren wir den zeitlichen Verlauf der drei Eigenschaften.
 
 ```python
 fig = px.scatter(data, y = 'wind_generation_actual')
@@ -147,7 +147,7 @@ Wie erwartet schwanken die Temperaturen periodisch mit den Jahreszeiten. In den
 Wintermonaten sind die Temperaturen niedrig, in den Monaten Juli / August am
 höchsten.
 
-Als nächstes visualisieren wir die Scattermatrix.
+Als Nächstes visualisieren wir die Scattermatrix.
 
 ```python
 fig = px.scatter_matrix(data)
@@ -224,7 +224,7 @@ data['category'].unique()
 
 Es gibt 17 verschiedene Kategorien. 
 
-Als nächstes werden die Verkaufspreise pro Kategorie statistisch ausgewertet.
+Als Nächstes werden die Verkaufspreise pro Kategorie statistisch ausgewertet.
 
 ```python
 categories = data.groupby('category')

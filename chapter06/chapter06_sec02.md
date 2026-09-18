@@ -150,7 +150,7 @@ plot_tree(modell_druck,
    mit `value = [2, 0]` und einmal mit `value = [0, 2]`.
 ````
 
-Als nächstes widmen wir uns der Bedeutung von `gini`.
+Als Nächstes widmen wir uns der Bedeutung von `gini`.
 
 ## Was ist das Gini-Impurity-Kriterium?
 

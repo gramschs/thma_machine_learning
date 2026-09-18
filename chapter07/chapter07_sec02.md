@@ -92,7 +92,7 @@ fest, dass die Scattermatrix symmetrisch ist und die Hauptdiagonale die
 Verteilung der Datenpunkte visualisiert.
 
 Beim Betrachten der Scattermatrix scheint das Merkmal Leistung stärker linear
-mit dem Preis zusammenzuhängen als das Alter. Als nächstes wollen wir bewerten,
+mit dem Preis zusammenzuhängen als das Alter. Als Nächstes wollen wir bewerten,
 wie stark der lineare Zusammenhang zwischen jedem Merkmal und jedem anderen
 Merkmal ist. Dazu betrachten wir die sogenannte **Korrelationsmatrix**. Mit der
 Methode `corr()` können wir sie einfach berechnen lassen:

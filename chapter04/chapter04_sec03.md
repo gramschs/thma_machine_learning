@@ -65,7 +65,7 @@ daten.info()
 Uns interessiert, ob es einen Zusammenhang zwischen dem Verkaufspreis eines
 Autos und dem Kilometerstand gibt. Um einen solchen möglichen Zusammenhang zu
 visualisieren, importieren wir Plotly Express mit der üblichen Abkürzung `px`.
-Den Scatterplot erzeugen wir, indem wir als erstes den Pandas DataFrame
+Den Scatterplot erzeugen wir, indem wir als Erstes den Pandas-DataFrame
 übergeben und dann für die beiden Optionen `x=` und `y=` die Spaltennamen
 eintragen. Zuletzt lassen wir den Scatterplot mit `.show()` anzeigen.
 
@@ -188,7 +188,7 @@ diagramm.update_traces(textposition='top center')
 diagramm.show()
 ```
 
-Als nächstes möchten wir weitere Zusatzinformationen in das Diagramm packen.
+Als Nächstes möchten wir weitere Zusatzinformationen in das Diagramm packen.
 Nicht immer ist es sinnvoll, so viele Zusatzinformationen in ein Diagramm zu
 bringen, da damit das Publikum auch schnell überfordert werden kann. Daher
 sollte gut überlegt werden, ob die beiden nächsten Möglichkeiten gleichzeitig

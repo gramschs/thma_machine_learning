@@ -101,7 +101,7 @@ wald = RandomForestClassifier(n_estimators=4, random_state=0)
 wald.fit(X, y)
 ```
 
-Als nächstes lassen wir den Random Forest für jeden Punkt des Gebiets
+Als Nächstes lassen wir den Random Forest für jeden Punkt des Gebiets
 prognostizieren, ob ein Auto mit diesem Kilometerstand und diesem Preis
 verkaufbar wäre oder nicht. Dafür verwenden wir die Funktion
 `DecisionBoundaryDisplay` aus Scikit-Learn. Diese Funktion baut auf Matplotlib

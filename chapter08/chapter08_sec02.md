@@ -18,8 +18,8 @@ Bisher haben wir zur Prognose des Verkaufspreises eines Autos nur numerische
 Merkmale wie den Kilometerstand genutzt. Viele Merkmale liegen aber als Text vor,
 zum Beispiel die Farbe oder der Kraftstoff. Andere numerische Merkmale liegen in
 sehr unterschiedlichen Größenordnungen. Damit ein ML-Modell auch diese Merkmale
-nutzen kann, bereiten wir die Daten in zwei Schritten vor: mit der **Kodierung**
-von kategorialen Daten und der **Skalierung** von numerischen Daten.
+nutzen kann, bereiten wir die Daten in zwei Schritten vor: mit der Kodierung
+von kategorialen Daten und der Skalierung von numerischen Daten.
 
 ## Lernziele
 
@@ -46,9 +46,10 @@ Verkaufspreises nur numerische Merkmale genutzt, zum Beispiel den Kilometerstand
 Es gibt aber weitere Merkmale, die den Preis beeinflussen, etwa den Kraftstoff
 (Diesel oder Benzin) oder den Zustand des Autos. Diese Merkmale liegen als Text
 vor, in Pandas erkennbar am Datentyp `object`. Ein ML-Modell kann mit Text nicht
-rechnen. Wir müssen die Kategorien vorher in Zahlen übersetzen. Wie wir das tun,
-hängt davon ab, ob die Kategorien eine natürliche Reihenfolge haben. In diesem
-Abschnitt behandeln wir geordnete Kategorien.
+rechnen. Wir müssen die Kategorien vorher in Zahlen übersetzen. Diesen Schritt
+nennen wir **Kodierung**. Wie wir das tun, hängt davon ab, ob die Kategorien
+eine natürliche Reihenfolge haben. In diesem Abschnitt behandeln wir geordnete
+Kategorien.
 
 Wir laden einen Datensatz mit Verkaufsdaten der Plattform
 [Autoscout24.de](https://www.autoscout24.de). Mit der Methode `.info()` lassen
