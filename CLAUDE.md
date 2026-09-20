@@ -48,3 +48,22 @@ kernelspec:
   display_name: 'Python 3'
 ---
 ```
+
+## Code-Along-Lücken in Notebooks
+
+- `build_notebooks.sh` kopiert `chapterNN/*.md` nach `notebooks/chapterNN/*.md`
+  und bereinigt sie. Die Originale außerhalb von `notebooks/` bleiben
+  unangetastet, nur die Kopien in `notebooks/` bekommen Lücken.
+- Nur `sec01`-`sec03` sind ca. 30-minütige Code-Along-Notebooks und bekommen
+  Lücken. `sec04` ist ein Übungs-Notebook fürs Selbststudium (Hausaufgabe) und
+  bleibt unverändert. Lücken nur im Hauptteil (vor "## Mini-Übungen"), nie in
+  den Mini-Übungen selbst.
+- Markierung: `# TODO: ???` ersetzt entfernten Code. Bei Teilzeilen bleibt die
+  linke Seite stehen, z.B. `A = # TODO: ???`. Bei mehrzeiligen Blöcken
+  (z.B. Matrixzeilen) ein `# TODO: ???` pro Zeile mit kurzem Hinweis, welcher
+  Schritt gemeint ist.
+- Richtwert 3-5 Lücken pro Notebook. Feine Granularität (pro Zeile) nur beim
+  zentralen Lernkonzept der Einheit, sonst grob bzw. einzeilig. Rein
+  mechanische Schritte (gegebene Werte, Prints, Unpacking) bleiben ausgefüllt.
+- Lösung ergibt sich aus den unveränderten Originaldateien außerhalb von
+  `notebooks/`.

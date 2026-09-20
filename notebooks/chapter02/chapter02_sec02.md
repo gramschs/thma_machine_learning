@@ -3,9 +3,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-downloads:
-  - file: chapter02_sec02.md
-    title: chapter02_sec02.md
 ---
 
 # 2.2 Listen und for-Schleifen
@@ -26,26 +23,6 @@ beschäftigen.
 Oft kommt es vor, dass für jedes Element der Liste bestimmte Aktionen
 durchgeführt werden sollen. Daher werden wir uns auch mit der Wiederholung von
 Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
-
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie kennen den Datentyp **Liste**.
-* [ ] Sie können Listen mit eckigen Klammern erzeugen. 
-* [ ] Sie können Listen mit dem **Plus-Operator** verketten und Elemente mit
-  `.append()` anhängen.
-* [ ] Sie können über den **Index** auf einzelne Listenelemente zugreifen. 
-* [ ] Sie können eine **for-Schleife mit Liste** programmieren.
-* [ ] Sie wissen, wie die Fachbegriffe der einzelnen Bestandteile der Schleife
-  lauten:
-  * **Kopfzeile**, wird mit **Doppelpunkt** `:` abgeschlossen
-  * Schlüsselwörter `for` und `in`
-  * **Schleifenvariable**  
-* [ ] Sie wissen, dass der Anweisungsblock des Schleifeninneren eingerückt werden
-  muss. Die **Einrückung** muss immer mit der gleichen Anzahl von Zeichen
-  (Leerzeichen oder Tab) erfolgen.
-```
 
 ## Datentyp Liste
 
@@ -91,31 +68,9 @@ folgende Beispiel zeigt eine Mischung aus Elementen der drei Datentypen Integer,
 Float und String.
 
 ```{code-cell} python
-a = [123, 'Ente', -42, 17.4, 0, 'Elefant']
+a = # TODO: ???  (Liste mit gemischten Datentypen)
 print(a)
 ```
-
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie eine Einkaufsliste, um einen Obstsalat zuzubereiten und speichern
-Sie diese Liste in der Variablen `einkaufsliste`. Lassen Sie dann den Computer
-bzw. den Python-Interpreter zählen, wie viele Zutaten Ihre Liste enthält und
-geben Sie dann die Anzahl aus.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
-anzahl_zutaten = len(einkaufsliste)
-print(anzahl_zutaten)
-```
-````
 
 ## Listen bearbeiten
 
@@ -139,37 +94,8 @@ und dann den Methodennamen.
 a = [34, 56, 23]
 print(a)
 
-a.append(42)
+# TODO: ???  (42 anhängen)
 print(a)
-```
-
-```{admonition} Mini-Übung
-:class: tip
-Nehmen Sie Ihre Einkaufsliste für den Obstsalat von vorhin. Fügen Sie noch Zimt
-und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
-einkaufsliste.append('Zimt')
-einkaufsliste.append('Zucker')
-anzahl = len(einkaufsliste)
-print(f'Anzahl: {anzahl}')
-```
-````
-
-```{dropdown} Video zu "Listen in Python - Einführung" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ihF8bZoauBs" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
 ```
 
 ## Zugriff auf einzelne Listenelemente
@@ -196,19 +122,12 @@ print(f'Das letzte Element in der Liste ist: {letztes}')
 meine_liste = ['rot', 'grün', 'blau', 'gelb', 'weiß', 'schwarz']
 
 # das fünfte Element weiß wird durch lila ersetzt
-meine_liste[4] = 'lila'
+meine_liste[4] = # TODO: ???  (fünftes Element durch 'lila' ersetzen)
 print(meine_liste)
 ```
 
 Das Bearbeiten von einzelnen Listenelementen wird auch **Zugriff** genannt. Das
 folgende Video zeigt die Zugriffsmöglichkeiten von Listen.
-
-```{dropdown} Video zu "Zugriff aus Listen" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_XzWPXvya2w" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
 
 ## Code wiederholen mit der for-Schleife
 
@@ -252,35 +171,9 @@ Schauen wir uns ein weiteres Beispiel an. Jedes Element der Liste
 
 ```{code-cell} python
 for zahl in [4,5,7,11,21]:
-    ergebnis = zahl + 2
-    print(f'Wenn ich {zahl} + 2 rechne, erhalte ich {ergebnis}.')
+    # TODO: ???  (ergebnis = zahl + 2 berechnen)
+    # TODO: ???  (Ergebnis mit f-String ausgeben)
 print('Ich bin fertig!')
-```
-
-```{admonition} Mini-Übung
-:class: tip  
-Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben. 
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-einkaufsliste = ['Apfel', 'Bananen', 'Trauben', 'Joghurt', 'Honig', 'Zimt']
-for zutat in einkaufsliste:
-    print(zutat)
-```
-````
-
-```{dropdown} Video zu "Schleifen in Python: for-Schleife" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ISo1uqLcVw8" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
 ```
 
 Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
@@ -296,13 +189,6 @@ for i in range(5):
 Mehr Details zu `range()` in Kombination mit einer for-Schleife finden Sie in
 dem folgenden Video.
 
-```{dropdown} Video zu "for-Schleife in Python: Zählerschleife"
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pQh5Idw2sKM" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
 ## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben wir uns mit dem Datentyp Liste befasst, der zur
@@ -315,3 +201,33 @@ eine bestimmte Bedingung erfüllt ist. Anstatt uns weiterhin auf solche Aspekte
 der Python-Programmierung zu konzentrieren, werden wir im nächsten Kapitel den
 Fokus auf die Implementierung eigener Funktionen legen und einen kurzen Ausflug
 in die objektorientierte Programmierung unternehmen.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Erzeugen Sie eine Einkaufsliste, um einen Obstsalat zuzubereiten und speichern
+Sie diese Liste in der Variablen `einkaufsliste`. Lassen Sie dann den Computer
+bzw. den Python-Interpreter zählen, wie viele Zutaten Ihre Liste enthält und
+geben Sie dann die Anzahl aus.
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 2
+
+Nehmen Sie Ihre Einkaufsliste für den Obstsalat von vorhin. Fügen Sie noch Zimt
+und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 3
+
+Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben.
+
+```{code-cell} python
+# Code-Zelle
+```

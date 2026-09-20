@@ -3,9 +3,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-downloads:
-  - file: chapter02_sec03.md
-    title: chapter02_sec03.md
 ---
 
 # 2.3 Dictionaries, Funktionen und Methoden
@@ -17,18 +14,6 @@ weitere wichtige Datenstruktur kennen. Anschließend vertiefen wir unser
 Verständnis von Funktionen und lernen das Konzept der objektorientierten
 Programmierung kennen. Funktionen, die direkt an einen Datentyp gekoppelt sind,
 werden **Methoden** genannt.
-
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie kennen den Datentyp **Dictionary** und können Schlüssel-Wert-Paare
-erstellen und nutzen.
-* [ ] Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
-Rückgabewerten arbeiten.
-* [ ] Sie wissen, was **Methoden** sind und kennen das **Konzept der
-objektorientierten Programmierung**.
-```
 
 ## Dictionaries
 
@@ -51,9 +36,9 @@ Kommas `,`. Schauen wir uns dazu ein Beispiel an:
 
 ```{code-cell} python
 person = {
-    "name": "Alice",
-    "alter": 25,
-    "stadt": "Berlin"
+    # TODO: ???  (Schlüssel "name" mit Wert "Alice")
+    # TODO: ???  (Schlüssel "alter" mit Wert 25)
+    # TODO: ???  (Schlüssel "stadt" mit Wert "Berlin")
 }
 print(person)
 ```
@@ -94,37 +79,6 @@ person_dict = {"name": "Alice", "alter": 25, "stadt": "Berlin"}
 print(f'Name (Dictionary): {person_dict["name"]}')
 ```
 
-```{admonition} Mini-Übung
-:class: tip
-Erstellen Sie ein Dictionary für einen Datenpunkt mit folgenden Informationen:
-- temperatur: 23.5
-- luftfeuchtigkeit: 65
-- standort: "Sensor_01"
-
-Geben Sie dann die Temperatur und den Standort mit passenden Beschriftungen aus.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Dictionary für Datenpunkt erstellen
-messwert = {
-    "temperatur": 23.5,
-    "luftfeuchtigkeit": 65,
-    "standort": "Sensor_01"
-}
-
-# Zugriff auf spezifische Werte
-print(f'Temperatur: {messwert["temperatur"]} °C')
-print(f'Standort: {messwert["standort"]}')
-```
-````
-
 Dictionaries werden uns in späteren Kapiteln häufiger begegnen. Insbesondere bei
 der Visualisierung mit Plotly werden wir Dictionaries verwenden, um
 Konfigurationen für Diagramme zu definieren.
@@ -159,7 +113,7 @@ Variable zuweisen, um weiter damit zu arbeiten:
 
 ```{code-cell} python
 wort = 'Maschinelles Lernen'
-anzahl_zeichen = len(wort)
+anzahl_zeichen = # TODO: ???  (Länge von wort ermitteln)
 print(f'Der Text "{wort}" hat {anzahl_zeichen} Zeichen.')
 ```
 
@@ -171,26 +125,6 @@ wir bestehende Funktionen effektiv nutzen können.
 
 Falls Sie sich dafür interessieren, Funktionen selbst zu definieren, finden Sie
 in den drei folgenden Videos weitere Details zur Implementierung von Funktionen.
-
-```{dropdown} Video zu "Funktionen selbst definieren" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LQCfN5HS9xI" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
-
-```{dropdown} Video zu "Funktionen mit Parametern" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/af9ORp1Pty0" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
-```{dropdown} Video zu "Funktionen mit Rückgabewert" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ehSP-sYoKCY" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
 
 ## Objektorientierte Programmierung
 
@@ -232,7 +166,7 @@ text_klein = text.lower()
 print(text_klein)
 
 # Methode replace(): ersetzt Teile des Strings
-text_neu = text.replace("Welt", "Python")
+text_neu = # TODO: ???  (Welt durch Python ersetzen)
 print(text_neu)
 ```
 
@@ -264,34 +198,6 @@ uns die verschiedenen Bibliotheken zur Verfügung stellen. Die folgenden Videos
 geben einen vertieften Einblick in die Objektorientierung mit Python für alle,
 die mehr darüber erfahren möchten.
 
-```{dropdown} Video zu "Konzept der Objektorientierung" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/46yolPy-2VQ" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
-```{dropdown} Video zu "Klassen und Objekte" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XxCZrT7Z3G4" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
-```{dropdown} Video zu "Der self Parameter" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CLoK-_qNTnU" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
-```{dropdown} Video zu "Methoden in Klassen" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/58IjjwHs_4A" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir drei wichtige Konzepte kennengelernt. Zunächst haben
@@ -307,3 +213,19 @@ implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei der
 Datenexploration und den maschinellen Lernalgorithmen werden wir die
 vorgefertigten Funktionsbausteine nutzen, wie wir in den nächsten Kapiteln sehen
 werden.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Erstellen Sie ein Dictionary für einen Datenpunkt mit folgenden Informationen:
+
+- temperatur: 23.5
+- luftfeuchtigkeit: 65
+- standort: "Sensor_01"
+
+Geben Sie dann die Temperatur und den Standort mit passenden Beschriftungen aus.
+
+```{code-cell} python
+# Code-Zelle
+```

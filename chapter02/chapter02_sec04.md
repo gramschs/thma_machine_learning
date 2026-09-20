@@ -27,6 +27,10 @@ Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
 überprüfen.
 ```
 
+```{code-cell} python
+# Code-Zelle
+```
+
 ```{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -43,6 +47,10 @@ Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
 :class: tip 
 Schreiben Sie ein Programm, das die Zahlen von 5 bis 15 mit ihrem Quadrat
 ausgibt, also "Das Quadrat von 5 ist 25." usw.
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -69,6 +77,10 @@ Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
 ```
 ````
 
+```{code-cell} python
+# Code-Zelle
+```
+
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -91,6 +103,10 @@ Hallo, Charlie!
 ```
 ````
 
+```{code-cell} python
+# Code-Zelle
+```
+
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -100,6 +116,10 @@ for name in namensliste:
     print(f'Hallo, {name}!')
 ```
 ````
+
+```{code-cell} python
+# Code-Zelle
+```
 
 ```{admonition} Aufgabe 2.5
 :class: tip
@@ -127,6 +147,10 @@ studierender = {
 print(f'{studierender["vorname"]} {studierender["nachname"]} ({studierender["matrikelnummer"]}) studiert {studierender["studiengang"]}.')
 ```
 ````
+
+```{code-cell} python
+# Code-Zelle
+```
 
 ```{admonition} Aufgabe 2.6
 :class: tip

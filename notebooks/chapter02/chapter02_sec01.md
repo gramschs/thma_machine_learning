@@ -3,9 +3,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-downloads:
-  - file: chapter02_sec01.md
-    title: chapter02_sec01.md
 ---
 
 # 2.1 Datentypen, Variablen und print()
@@ -14,18 +11,6 @@ Beim maschinellen Lernen geht es um Daten und Algorithmen. Dabei können die
 Daten alles Mögliche umfassen, beispielsweise Zahlen oder Texte. Daher
 beschäftigen wir uns zuerst mit Datentypen. Dann geht es um Variablen und deren
 Ausgabe auf dem Bildschirm.
-
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie kennen die einfachen Datentypen:
-    * **Integer**
-    * **Float**
-    * **String**
-* [ ] Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
-* [ ] Sie können die `print()`-Funktion zur Ausgabe auf dem Bildschirm anwenden.
-```
 
 ## Einfache Datentypen
 
@@ -112,20 +97,11 @@ der englische Begriff **Float** für **Fließkommazahl** verwendet.
 3.5 * (2.6 - 3.8 / 1.9)
 ```
 
-```{admonition} Hinweis
-:class: warning
-Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein
+**Hinweis**
+tets einen Punkt als Dezimaltrennzeichen, nicht ein
 Komma!
-```
 
 Das folgende Video gibt eine Einführung in das Thema »Zahlen mit Python«.
-
-```{dropdown} Video zu "Zahlen in Python" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VtiDkRDPA_c" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
 
 ### String
 
@@ -146,7 +122,7 @@ Mit Strings kann man ebenfalls "rechnen", nur ist das Ergebnis vielleicht anders
 als erwartet.
 
 ```{code-cell} python
-2 * 'Dies ist ein String!'
+# TODO: ???  (String mit 2 multiplizieren)
 ```
 
 ```{code-cell} python
@@ -154,13 +130,6 @@ als erwartet.
 ```
 
 Das folgende Video gibt eine Einführung zum Thema »Strings in Python«.
-
-```{dropdown} Video zu "Strings in Python" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sTEf4_mrLvw" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
 
 ## Variablen und Zuweisung
 
@@ -203,18 +172,6 @@ zuweist.
 Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
 sie verwendet werden können, sonst tritt ein Fehler auf.
 
-```{admonition} Mini-Übung
-:class: tip
-Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur `n`. Lassen Sie die Code-Zelle ausführen. Was passiert?
-```
-
-```{admonition} Lösung
-:class: tip
-:class: dropdown
-Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor
-sie das erste Mal benutzt wird.
-```
-
 Sehr häufig findet man Code wie
 
 ```{code-cell} python
@@ -236,8 +193,8 @@ gelesen werden:
    Seite an das auf der rechten Seite angezeigte Objekt).
 
 ```{code-cell} python
-x = 4     
-x = x + 1
+# TODO: ???  (x mit 4 initialisieren)
+# TODO: ???  (x um 1 erhöhen)
 x
 ```
 
@@ -289,20 +246,6 @@ der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.
 Die folgenden beiden Videos fassen die beiden Themen Variablen und Zuweisungen
 nochmals zusammen.
 
-```{dropdown} Video zu "Variablen in Python" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jfOLXKPGXJ0" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
-```{dropdown} Video zu "Zuweisungen in Python" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
-
 ### Datentypen ermitteln mit type()
 
 Werden zwei Integer geteilt, so wird das Ergebnis automatisch in einen Float
@@ -319,7 +262,7 @@ soll, schreiben wir die Variable in runde Klammern.
 
 ```{code-cell} python
 x = 25 * 5
-type(x)
+# TODO: ???   (Datentyp mit type() ermitteln)
 ```
 
 ```{code-cell} python
@@ -331,13 +274,6 @@ Nicht immer ist es aber möglich, Datentypen zu mischen. Dann meldet Python eine
 Fehler.
 
 Das folgende Video fasst die Datentypen Integer, Float und String nochmal zusammen.
-
-```{dropdown} Video zu "Datentypen in Python" von Programmieren lernen
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1WqFJ5wsA4o" 
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
 
 ## Ausgaben mit print()
 
@@ -371,48 +307,12 @@ Fall rechnet der Python-Interpreter erst den Wert der Rechnung, also `3+3=6` aus
 und übergibt dann die `6` an die print()-Funktion. Die print()-Funktion wiederum
 zeigt dann die `6` am Bildschirm an.
 
-```{admonition} Mini-Übung
-:class: tip
-Lassen Sie Python den Term $3:4$ berechnen und geben Sie das Ergebnis mit der print()-Funktion aus. 
-```
-
-```{code-cell} python
-# Geben Sie nach diesem Kommentar Ihren Code ein:
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-print(3/4)
-```
-````
-
 Python kann mit der print()-Funktion jedoch nicht nur Zahlen ausgeben, sondern
 auch Texte, also Strings.
 
 ```{code-cell} python
-print('Hallo')
+# TODO: ???  ('Hallo' mit print() ausgeben)
 ```
-
-```{admonition} Mini-Übung
-:class: tip
-Probieren Sie aus was passiert, wenn Sie die einfachen Anführungszeichen `'`
-durch doppelte Anführungszeichen `"` ersetzen. Lassen Sie den Text Hallo Welt
-ausgeben :-)
-```
-
-```{code-cell} python
-# Geben Sie nach diesem Kommentar Ihren Code ein:
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-print("Hallo Welt")
-```
-````
 
 Zum Schluss behandeln wir noch formatierte Strings, die sogenannten f-Strings.
 Seit Python 3.6 erleichtert dieser Typ von String die Programmierung. Falls Sie
@@ -432,7 +332,7 @@ Hier ein Beispiel:
 ```{code-cell} python
 name = 'Alice'
 alter = 20
-print(f'Mein Name ist {name} und ich bin {alter} Jahre alt.')
+# TODO: ???  (f-String mit name und alter ausgeben)
 ```
 
 Insbesondere bei Ausgabe von Zahlen sind f-Strings besonders nützlich. Wenn nach
@@ -453,27 +353,6 @@ Internetseite
 finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Dokument
 herunterladen.
 
-```{admonition} Mini-Übung
-:class: tip
-Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beiden Seitenlängen werden jeweils in den Variablen `laenge` und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.", wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Eingabe
-laenge = 5.5
-breite = 6.3
-
-# Verarbeitung
-flaeche = laenge * breite
-
-# Ausgabe 
-print(f'Der Flächeninhalt eines Rechtecks mit den Seiten {laenge} und {breite} ist {flaeche:.1f}.')
-```
-````
-
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir gelernt, was ein Datentyp ist, wie eine Variable mit
@@ -482,3 +361,44 @@ wird. Die einfachsten Datentypen Integer, Float und String reichen allerdings
 nicht aus, um z.B. die eine Adresse mit Straße (String), Hausnummer (Integer)
 und Postleitzahl (Integer) in einer Variablen gemeinsam zu speichern. Dazu
 lernen wir im nächsten Abschnitt den Datentyp Liste kennen.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur
+`n`. Lassen Sie die Code-Zelle ausführen. Was passiert?
+
++++
+
+### Mini-Übung 2
+
+Lassen Sie Python den Term $3:4$ berechnen und geben Sie das Ergebnis mit der
+print()-Funktion aus.
+
+```{code-cell} python
+# Geben Sie nach diesem Kommentar Ihren Code ein:
+```
+
++++
+
+### Mini-Übung 3
+
+Probieren Sie aus was passiert, wenn Sie die einfachen Anführungszeichen `'`
+durch doppelte Anführungszeichen `"` ersetzen. Lassen Sie den Text Hallo Welt
+ausgeben :-)
+
+```{code-cell} python
+# Geben Sie nach diesem Kommentar Ihren Code ein:
+```
+
++++
+
+### Mini-Übung 4
+
+Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet
+werden soll. Die beiden Seitenlängen werden jeweils in den Variablen `laenge`
+und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden
+soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.",
+wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf
+eine Nachkommastelle gerundet werden soll.
