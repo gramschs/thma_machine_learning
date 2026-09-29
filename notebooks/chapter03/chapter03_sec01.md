@@ -13,19 +13,6 @@ gespeichert. In diesem Abschnitt lernen wir, warum Listen für Datenreihen nicht
 ausreichen und wie die Datenstruktur **Series** aus dem Python-Modul Pandas
 dieses Problem löst.
 
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie kennen die Pandas-Datenstruktur **Series** und können erklären, worin
-  sie sich von Python-Listen unterscheidet.
-* [ ] Sie erzeugen eine Series aus einer **Liste** oder einem **Dictionary**.
-* [ ] Sie vergeben beim Erzeugen einer Series einen eigenen **Index** und kennen
-  den Default-Index.
-* [ ] Sie fragen die Attribute **.array**, **.index**, **.dtype** und **.name**
-  einer Series ab und interpretieren deren Bedeutung.
-```
-
 ## Die Datenstruktur Series
 
 Einfache Listen reichen nicht aus, um größere Datenmengen effizient zu speichern
@@ -61,28 +48,6 @@ wir in der offiziellen
 import pandas as pd
 ```
 
-```{admonition} Mini-Übung
-:class: tip
-Ordnen Sie zu: Welche Datenstruktur (Liste, Dictionary oder Pandas Series)
-passt am besten zu den folgenden Aufgaben? Begründen Sie kurz.
-
-1. Ein Telefonbuch, in dem zu jedem Namen eine Telefonnummer nachgeschlagen
-   wird.
-2. Eine Einkaufsliste mit gemischten Einträgen wie `['Milch', 2, 'Brot', 0.5]`.
-3. Die Monatsmitteltemperaturen eines Jahres, auf die über den Monatsnamen
-   zugegriffen werden soll und mit denen anschließend gerechnet wird.
-```
-
-```{admonition} Lösung
-:class: tip
-:class: dropdown
-1. Dictionary: reines Nachschlagen von Schlüssel-Wert-Paaren, Reihenfolge und
-   Berechnungen spielen keine Rolle.
-2. Liste: geeignet für eine einfache geordnete Folge von Einträgen ohne Labels.
-3. Pandas Series: hier kommt beides zusammen: der Zugriff über Labels
-   (Monatsnamen) und die effiziente Verarbeitung von Zahlen für Berechnungen.
-```
-
 ## Series erzeugen
 
 Wir starten mit der einfachsten Möglichkeit, eine Series zu erzeugen, der
@@ -94,7 +59,7 @@ erzeugt wird.
 
 ```{code-cell} python
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
-preise = pd.Series(preisliste)
+preise = # TODO: ???  (Series aus preisliste erzeugen)
 print(preise)
 ```
 
@@ -119,7 +84,7 @@ sind, die nächsten sind BMWs und die letzten fünf sind von der Marke Citroën.
 
 ```{code-cell} python
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
-preise = pd.Series(preisliste, index=autos)
+preise = # TODO: ???  (Series mit autos als Index erzeugen)
 print(preise)
 ```
 
@@ -130,7 +95,7 @@ den Verkaufspreis des dritten Autos zuzugreifen. Das dritte Auto ist `Audi Nr.
 3`. Wie bei Listen verwenden wir eckige Klammern:
 
 ```{code-cell} python
-preis_drittes_auto = preise['Audi Nr. 3']
+preis_drittes_auto = # TODO: ???  (Zugriff über das Label 'Audi Nr. 3')
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -153,51 +118,13 @@ preis_dictionary = {
     'Citroen Nr. 4': 21990,
     'Citroen Nr. 5': 12450,
 }
-preise = pd.Series(preis_dictionary)
+preise = # TODO: ???  (Series aus preis_dictionary erzeugen)
 print(preise)
 ```
 
 Beide Wege erzeugen eine inhaltlich gleiche Series. Welchen Weg wir wählen,
 hängt davon ab, in welcher Form die Daten vorliegen: als Liste oder als
 Dictionary.
-
-```{admonition} Mini-Übung
-:class: tip
-Eine Studentin hat ihre Bildschirmzeiten der letzten Woche notiert: Montag 2.5,
-Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5, Samstag 6.5 und
-Sonntag 5 Stunden. Erzeugen Sie daraus ein Series-Objekt. Verwenden Sie dazu
-ein Dictionary mit den Wochentagen als Schlüssel und den Bildschirmzeiten in
-Stunden als Werte. Lassen Sie sich die Series ausgeben. Was ist der Index der
-Series?
-
-*Zusatz:* Ermitteln Sie anschließend Ihre eigenen Bildschirmzeiten (Ihr
-Smartphone zeigt die Wochenstatistik in den Einstellungen an) und wiederholen
-Sie die Übung mit Ihren Werten.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-print(bildschirmzeit)
-```
-
-Die Schlüssel des Dictionaries (= Wochentage) werden automatisch zum Index der
-Series. Ein zusätzlicher Parameter `index=` ist nicht nötig.
-````
 
 ## Attribute einer Series
 
@@ -234,7 +161,7 @@ Series-Objektes gespeichert. Anders als eine Liste erzwingt eine Series einen
 gemeinsamen Datentyp für alle Elemente und welcher das ist, verrät uns `.dtype`:
 
 ```{code-cell} python
-datentyp_preise = preise.dtype
+datentyp_preise = # TODO: ???  (Datentyp über das Attribut dtype abfragen)
 print(f'Die einzelnen Elemente des Series-Objektes "preise" haben den Datentyp {datentyp_preise}.')
 ```
 
@@ -267,8 +194,48 @@ preise = pd.Series(preisliste, index=autos, name='Verkaufspreis')
 print(preise)
 ```
 
-```{admonition} Mini-Übung
-:class: tip
+## Zusammenfassung und Ausblick
+
+In diesem Kapitel haben wir Pandas und die sehr wichtige Datenstruktur Series
+kennengelernt. Eine Series kombiniert die feste Reihenfolge einer Liste mit
+einem expliziten Index, über den wir Elemente mit sprechenden Labels ansprechen
+können. Erzeugen lässt sich eine Series aus einer Liste oder einem Dictionary,
+und über die Attribute `.array`, `.index`, `.dtype` und `.name` erhalten wir die
+wichtigsten Zusatzinformationen. Im nächsten Kapitel geht es darum, auf Elemente
+der Series zuzugreifen und mit einer Series zu rechnen.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Ordnen Sie zu: Welche Datenstruktur (Liste, Dictionary oder Pandas Series)
+passt am besten zu den folgenden Aufgaben? Begründen Sie kurz.
+
+1. Ein Telefonbuch, in dem zu jedem Namen eine Telefonnummer nachgeschlagen
+   wird.
+2. Eine Einkaufsliste mit gemischten Einträgen wie `['Milch', 2, 'Brot', 0.5]`.
+3. Die Monatsmitteltemperaturen eines Jahres, auf die über den Monatsnamen
+   zugegriffen werden soll und mit denen anschließend gerechnet wird.
+
+### Mini-Übung 2
+
+Eine Studentin hat ihre Bildschirmzeiten der letzten Woche notiert: Montag 2.5,
+Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5, Samstag 6.5 und
+Sonntag 5 Stunden. Erzeugen Sie daraus ein Series-Objekt. Verwenden Sie dazu
+ein Dictionary mit den Wochentagen als Schlüssel und den Bildschirmzeiten in
+Stunden als Werte. Lassen Sie sich die Series ausgeben. Was ist der Index der
+Series?
+
+*Zusatz:* Ermitteln Sie anschließend Ihre eigenen Bildschirmzeiten (Ihr
+Smartphone zeigt die Wochenstatistik in den Einstellungen an) und wiederholen
+Sie die Übung mit Ihren Werten.
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 3
+
 Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus der
 letzten Mini-Übung (oder verwenden Sie Ihre Variable weiter).
 
@@ -280,51 +247,7 @@ letzten Mini-Übung (oder verwenden Sie Ihre Variable weiter).
 
 *Zusatz:* Prüfen Sie auch den `dtype` Ihrer eigenen Bildschirmzeiten-Series.
 Ist er ebenfalls `float64`? Warum (nicht)?
-```
 
 ```{code-cell} python
 # Code-Zelle
 ```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-
-print(bildschirmzeit.array)
-print(bildschirmzeit.index)
-print(f'Datentyp: {bildschirmzeit.dtype}')
-
-bildschirmzeit.name = 'Bildschirmzeit in Stunden'
-print(bildschirmzeit)
-```
-
-Der Datentyp ist `float64`. Eine Series erzwingt einen gemeinsamen Datentyp
-für alle Elemente. Da in den Daten Kommazahlen wie `3.5` vorkommen, wandelt
-Pandas auch die Ganzzahl `3` in die Kommazahl `3.0` um.
-
-Zum Zusatz: Bei Ihren eigenen Daten hängt der Datentyp von den eingegebenen
-Werten ab. Enthält Ihre Series mindestens eine Kommazahl, ist der Datentyp
-`float64`. Sind dagegen alle Ihre Werte Ganzzahlen, ergibt sich `int64`. Beides
-ist richtig, genau diese Abhängigkeit des Datentyps von den Daten sollten Sie
-aus dieser Übung mitnehmen.
-````
-
-## Zusammenfassung und Ausblick
-
-In diesem Kapitel haben wir Pandas und die sehr wichtige Datenstruktur Series
-kennengelernt. Eine Series kombiniert die feste Reihenfolge einer Liste mit
-einem expliziten Index, über den wir Elemente mit sprechenden Labels ansprechen
-können. Erzeugen lässt sich eine Series aus einer Liste oder einem Dictionary,
-und über die Attribute `.array`, `.index`, `.dtype` und `.name` erhalten wir die
-wichtigsten Zusatzinformationen. Im nächsten Kapitel geht es darum, auf Elemente
-der Series zuzugreifen und mit einer Series zu rechnen.

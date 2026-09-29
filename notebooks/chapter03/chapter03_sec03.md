@@ -16,21 +16,6 @@ Gelegentlich wird auch der deutsche Begriff Kastendiagramm dafür gebraucht.
 Zum Schluss lernen wir, was ein Ausreißer ist und wie wir Ausreißer im Boxplot
 anzeigen lassen.
 
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie berechnen statistische Kennzahlen einer Series mit **.mean()**,
-  **.std()**, **.min()**, **.max()**, **.quantile()** und **.describe()**.
-* [ ] Sie erstellen mit `px.box()` aus Plotly Express einen Boxplot für eine
-  Series und beschriften ihn mit **labels=** und **title=**.
-* [ ] Sie interpretieren die Elemente eines Boxplots (**Median**, **Quartile**,
-  **Whisker**, **Ausreißer**) und ordnen ihnen die entsprechenden statistischen
-  Kennzahlen zu, inklusive der IQR-Regel zur Ausreißerdefinition.
-* [ ] Sie lassen mit **points='outliers'** die Ausreißer einer Series im Boxplot
-  anzeigen und rechnen die Ausreißergrenzen mit **.quantile()** nach.
-```
-
 ## Statistische Kennzahlen ermitteln
 
 Die Methode `.describe()` aus dem Pandas-Modul (siehe
@@ -56,7 +41,7 @@ sondern gibt sie auch als Ergebnis zurück. Dieses Ergebnis können wir in einer
 Variablen zwischenspeichern und später weiterverwenden.
 
 ```{code-cell} python
-kennzahlen = preise.describe()
+kennzahlen = # TODO: ???  (Kennzahlen mit .describe() ermitteln)
 ```
 
 Zur Kontrolle lassen wir uns den Inhalt der Variablen ausgeben:
@@ -122,7 +107,7 @@ $50 \%$ der Werte darunter. Dieses Quantil heißt auch **Median**. Mit der
 Methode `.quantile()` können wir diesen Wert leicht aus den Daten holen.
 
 ```{code-cell} python
-median = preise.quantile(0.5)
+median = # TODO: ???  (0.5-Quantil berechnen)
 print(f'Der Median, d.h. das 0.5-Quantil, liegt bei {median} EUR.')
 ```
 
@@ -130,69 +115,6 @@ Der Median liegt bei 18900 EUR, d.h. 50 % aller Autos werden zu einem Preis
 angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
 teurer angeboten. Das 0.25- und das 0.75-Quantil werden uns gleich im Boxplot
 wieder begegnen.
-
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie erneut die Bildschirmzeiten-Series aus den letzten beiden
-Kapiteln (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5,
-Samstag 6.5, Sonntag 5 Stunden).
-
-1. Verschaffen Sie sich mit `.describe()` einen Überblick. Wie hoch war die
-   längste Bildschirmzeit?
-2. Berechnen Sie Mittelwert und Median. Welcher der beiden Werte ist größer?
-   Haben Sie eine Vermutung, woran das liegt?
-3. Berechnen Sie die Standardabweichung. Wie interpretieren Sie den Wert?
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-
-# 1. Überblick mit describe()
-print(bildschirmzeit.describe())
-
-# 2. Mittelwert und Median
-print(f'Mittelwert: {bildschirmzeit.mean():.2f} Stunden')
-print(f'Median: {bildschirmzeit.quantile(0.5)} Stunden')
-
-# 3. Standardabweichung
-print(f'Standardabweichung: {bildschirmzeit.std():.2f} Stunden')
-```
-
-Antworten:
-1. Die Kennzahl `max` zeigt 6.5 Stunden, das war der Samstag.
-2. Der Mittelwert (rund 3.93 Stunden) ist größer als der Median
-   (3.5 Stunden). Die beiden langen Wochenendtage ziehen den Mittelwert nach
-   oben, während der Median davon kaum beeinflusst wird.
-3. Die Standardabweichung beträgt rund 1.43 Stunden. Die Bildschirmzeiten
-   weichen also typischerweise um etwa eineinhalb Stunden vom Mittelwert ab.
-````
-
-```{dropdown} Video zu "Mittelwert" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU"
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
-
-```{dropdown} Video zu "Standardabweichung" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM"
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
 
 ## Boxplots mit Plotly Express
 
@@ -216,7 +138,7 @@ anzeigen zu lassen, verwenden wir die Methode `.show()`. Zusammen sieht der
 Python-Code zur Erzeugung eines Boxplots folgendermaßen aus:
 
 ```{code-cell} python
-diagramm = px.box(preise)
+diagramm = # TODO: ???  (Boxplot der Preise erzeugen)
 diagramm.show()
 ```
 
@@ -252,7 +174,8 @@ auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
 ```{code-cell} python
 diagramm = px.box(preise,
                   labels={'variable': 'Merkmal', 'value': 'Angaben in EUR'},
-                  title='Verkaufspreise der 10 Autos von Autoscout24.de')
+                  # TODO: ???  (Titel 'Verkaufspreise der 10 Autos von Autoscout24.de' setzen)
+                  )
 diagramm.show()
 ```
 
@@ -264,45 +187,6 @@ Median wird durch die horizontale Linie in der Box dargestellt. Die Antennen
 (englisch Whisker) reichen bis zum kleinsten bzw. größten Datenpunkt, der noch
 nicht als Ausreißer gilt. Mit Ausreißern beschäftigen wir uns im nächsten
 Abschnitt.
-
-```{admonition} Mini-Übung
-:class: tip
-Verwenden Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung.
-
-1. Erstellen Sie einen Boxplot der Bildschirmzeiten.
-2. Beschriften Sie die x-Achse mit `'Wochenprotokoll'` und die y-Achse mit
-   `'Bildschirmzeit [h]'`. Geben Sie dem Diagramm den Titel `'Bildschirmzeit pro
-   Tag'`.
-3. Lesen Sie mit der Maus ab: Wo liegt der Median? Zwischen welchen beiden
-   Werten liegt die Box, also die mittleren 50 % der Tage?
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-diagramm = px.box(bildschirmzeit,
-               labels={'variable': 'Wochenprotokoll', 'value': 'Bildschirmzeit [h]'},
-               title='Bildschirmzeit pro Tag')
-diagramm.show()
-```
-
-Antworten:
-
-3. Der Median liegt bei 3.5 Stunden. Die Box reicht von rund 2.9 bis rund
-   4.6 Stunden, in diesem Bereich liegen die mittleren 50 % der Tage.
-````
-
-```{dropdown} Video zu "Boxplot" von Datatab
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1I_ma7nvKQw"
-title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
-```
 
 ## Ausreißer anzeigen
 
@@ -379,13 +263,13 @@ Rechnen wir die Grenzen mit der Methode `.quantile()` selbst nach:
 ```{code-cell} python
 q1 = preise_neu.quantile(0.25)
 q3 = preise_neu.quantile(0.75)
-iqr = q3 - q1
+iqr = # TODO: ???  (Interquartilsabstand berechnen)
 print(f'Q1: {q1} EUR')
 print(f'Q3: {q3} EUR')
 print(f'IQR: {iqr} EUR')
 
-untere_grenze = q1 - 1.5 * iqr
-obere_grenze = q3 + 1.5 * iqr
+untere_grenze = # TODO: ???  (Q1 - 1.5 IQR)
+obere_grenze = # TODO: ???  (Q3 + 1.5 IQR)
 print(f'Untere Grenze: {untere_grenze} EUR')
 print(f'Obere Grenze: {obere_grenze} EUR')
 ```
@@ -397,8 +281,8 @@ Porsche Nr. 1 mit 98500 EUR über dieser Grenze. BMW Nr. 1 mit 46830 EUR bleibt
 darunter und markiert deshalb das Ende der oberen Antenne. Damit sind beide
 Fragen beantwortet.
 
-```{admonition} Hinweis: Quartile sind Konventionssache
-:class: warning
+**Hinweis: Quartile sind Konventionssache**
+
 Statistiksoftware berechnet Quartile nicht einheitlich, es gibt mehrere
 gebräuchliche Rechenverfahren. Plotly verwendet eine etwas andere Konvention
 als die Pandas-Methode `.quantile()`. Die Hover-Werte für Q1 und Q3 im Boxplot
@@ -406,7 +290,6 @@ können deshalb leicht von den selbst berechneten Werten abweichen. Liegt ein
 Datenpunkt sehr nahe an einer Ausreißergrenze, kann er je nach Software einmal
 als Ausreißer eingestuft werden und einmal nicht. An der Interpretation des
 Boxplots ändert das nichts.
-```
 
 Eine Warnung zum Schluss: Ein Ausreißer ist nicht automatisch ein Fehler. Er
 kann ein Tippfehler oder ein Sensordefekt sein, dann sollte er entfernt oder
@@ -415,60 +298,6 @@ Beispiel ein tatsächlich sehr teures Auto. Bevor Ausreißer gelöscht werden,
 sollte immer geprüft werden, wie sie entstanden sind. Beim maschinellen Lernen
 kommen wir auf diese Frage zurück, denn Ausreißer können Modelle stark
 verzerren.
-
-```{admonition} Mini-Übung
-:class: tip
-In der Woche darauf gab es am Samstag einen Serienmarathon: 12 Stunden
-Bildschirmzeit statt 6.5 Stunden.
-
-1. Ändern Sie den Samstagswert der Bildschirmzeiten-Series auf 12 Stunden.
-   Tipp: Weisen Sie den neuen Wert über das Label zu, so wie wir den Porsche
-   in die Preisliste aufgenommen haben.
-2. Erstellen Sie einen Boxplot mit `points='outliers'`. Wird der Samstag als
-   Ausreißer angezeigt? Wo endet die obere Antenne?
-3. Rechnen Sie mit `.quantile()` die obere Ausreißergrenze nach. Passt das
-   Ergebnis zum Diagramm?
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# 1. Samstagswert über das Label ändern
-bildschirmzeit['Samstag'] = 12
-print(bildschirmzeit)
-
-# 2. Boxplot mit Ausreißern
-diagramm = px.box(bildschirmzeit, points='outliers')
-diagramm.show()
-
-# 3. obere Ausreißergrenze nachrechnen
-q1 = bildschirmzeit.quantile(0.25)
-q3 = bildschirmzeit.quantile(0.75)
-iqr = q3 - q1
-obere_grenze = q3 + 1.5 * iqr
-print(f'Q1: {q1} Stunden')
-print(f'Q3: {q3} Stunden')
-print(f'IQR: {iqr} Stunden')
-print(f'Obere Grenze: {obere_grenze} Stunden')
-```
-
-Antworten:
-
-2. Der Samstag erscheint als einzelner Punkt oberhalb der Antenne. Die obere
-   Antenne endet beim Sonntag mit 5 Stunden.
-3. Mit Q1 = 2.875 Stunden und Q3 = 4.625 Stunden ergibt sich ein
-   Interquartilsabstand von 1.75 Stunden und eine obere Grenze von
-   7.25 Stunden. Der Samstag mit 12 Stunden liegt deutlich darüber und ist
-   damit ein Ausreißer. Der Sonntag mit 5 Stunden ist der größte Wert
-   innerhalb der Grenze, deshalb endet dort die Antenne. Und wie beim Porsche
-   gilt: Der Ausreißer ist kein Fehler in den Daten, der Serienmarathon hat ja
-   wirklich stattgefunden.
-````
 
 ## Zusammenfassung und Ausblick
 
@@ -483,3 +312,54 @@ Parameter `points=` steuern wir die Anzeige der Datenpunkte. Ob ein Ausreißer
 entfernt werden darf, hängt von seiner Ursache ab. Die Stärke des Boxplots zeigt
 sich besonders, sobald mehrere Datensätze miteinander verglichen werden sollen.
 Daher werden wir uns im nächsten Kapitel mit Tabellen beschäftigen.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Erzeugen Sie erneut die Bildschirmzeiten-Series aus den letzten beiden
+Kapiteln (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75, Freitag 3.5,
+Samstag 6.5, Sonntag 5 Stunden).
+
+1. Verschaffen Sie sich mit `.describe()` einen Überblick. Wie hoch war die
+   längste Bildschirmzeit?
+2. Berechnen Sie Mittelwert und Median. Welcher der beiden Werte ist größer?
+   Haben Sie eine Vermutung, woran das liegt?
+3. Berechnen Sie die Standardabweichung. Wie interpretieren Sie den Wert?
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 2
+
+Verwenden Sie erneut die Bildschirmzeiten-Series aus der letzten Mini-Übung.
+
+1. Erstellen Sie einen Boxplot der Bildschirmzeiten.
+2. Beschriften Sie die x-Achse mit `'Wochenprotokoll'` und die y-Achse mit
+   `'Bildschirmzeit [h]'`. Geben Sie dem Diagramm den Titel `'Bildschirmzeit pro
+   Tag'`.
+3. Lesen Sie mit der Maus ab: Wo liegt der Median? Zwischen welchen beiden
+   Werten liegt die Box, also die mittleren 50 % der Tage?
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 3
+
+In der Woche darauf gab es am Samstag einen Serienmarathon: 12 Stunden
+Bildschirmzeit statt 6.5 Stunden.
+
+1. Ändern Sie den Samstagswert der Bildschirmzeiten-Series auf 12 Stunden.
+   Tipp: Weisen Sie den neuen Wert über das Label zu, so wie wir den Porsche
+   in die Preisliste aufgenommen haben.
+2. Erstellen Sie einen Boxplot mit `points='outliers'`. Wird der Samstag als
+   Ausreißer angezeigt? Wo endet die obere Antenne?
+3. Rechnen Sie mit `.quantile()` die obere Ausreißergrenze nach. Passt das
+   Ergebnis zum Diagramm?
+
+```{code-cell} python
+# Code-Zelle
+```
+

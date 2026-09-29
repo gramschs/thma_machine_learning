@@ -65,5 +65,21 @@ kernelspec:
 - Richtwert 3-5 Lücken pro Notebook. Feine Granularität (pro Zeile) nur beim
   zentralen Lernkonzept der Einheit, sonst grob bzw. einzeilig. Rein
   mechanische Schritte (gegebene Werte, Prints, Unpacking) bleiben ausgefüllt.
+- Lücken nur in Code, den der Text unmittelbar davor erklärt. Wer den Absatz
+  gelesen hat, muss die Lücke füllen können.
+- Pro H2-Abschnitt die ein bis zwei Zeilen wählen, die das neue Konzept tragen
+  (erstmals eingeführte Methode oder Syntax, z.B. `pd.Series(...)`, `.loc[]`,
+  `.describe()`). Lücken über alle H2-Abschnitte verteilen.
+- Wiederholungen eines gerade geübten Musters bleiben ausgefüllt (z.B. zweiter
+  Filter nach dem ersten, `.loc`-Slicing wenn `.iloc`-Slicing schon Lücke ist),
+  ebenso Importe und gegebene Daten.
+- Ist ein Stolperstein Thema des Abschnitts, die Stelle bewusst zur Lücke
+  machen, damit die Studierenden ihn selbst erleben (z.B. `.iloc[0:4]` wegen
+  der exklusiven Obergrenze).
+- Hinweis in Klammern sagt, *was* passieren soll, nicht die exakte Syntax.
+  Methodennamen nur nennen, wenn der Text sie direkt davor einführt.
+- Bei einer Teillücke in einem mehrzeiligen Funktionsaufruf die ganze Zeile
+  durch `# TODO: ???` ersetzen und die schließende Klammer in eine eigene Zeile
+  setzen.
 - Lösung ergibt sich aus den unveränderten Originaldateien außerhalb von
   `notebooks/`.

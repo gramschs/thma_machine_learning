@@ -50,6 +50,10 @@ Sie dann ab: In welchem Bundesland studieren die wenigsten Studentinnen und im
 welchem Bundesland die meisten?
 ```
 
+```{code-cell} python
+# Code-Zelle
+```
+
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -92,6 +96,10 @@ durch Anzeige des Datensatzes, welches Bundesland dazugehört.
 
 Zusatzfrage: Was vermuten Sie für die anderen beiden Datensätze, die Sie nicht
 untersucht haben? Begründen Sie Ihre Vermutung.
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -138,6 +146,10 @@ zu verwenden (z.B. `diagramm2` statt `diagramm`), damit der erste Boxplot nicht
 
 Interpretationsfrage: Gibt es Ausreißer? Wenn ja, bei welchem Datensatz und
 welches Bundesland ist betroffen?
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -194,6 +206,10 @@ Verwenden Sie für jeden Boxplot:
 Hinweis: Die Boxplots müssen nicht einzeln angezeigt werden, speichern Sie 
 sie aber in den Variablen `fig1`, `fig2`, `fig3` und `fig4`, damit Sie sie in 
 der nächsten Aufgabe vergleichen können.
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung
@@ -260,6 +276,10 @@ Teil B: Beantworten Sie folgende Fragen:
 2. Bei welchem Datensatz liegt der Median am weitesten von der Mitte zwischen Q1
    und Q3 entfernt? Was bedeutet das?
 3. Welche Bundesländer tauchen als Ausreißer auf?
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung

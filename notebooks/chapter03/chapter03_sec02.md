@@ -13,18 +13,6 @@ gezielt auf einzelne Elemente und Teilbereiche zu, wir rechnen mit allen Werten
 auf einmal und wir filtern die Daten nach Bedingungen. Als Beispiel dient uns
 weiterhin das fiktive Autohaus mit seinen zehn Autos.
 
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie greifen mit **.loc[]** über das Label und mit **.iloc[]** über die
-  Position auf einzelne Elemente und Teilbereiche zu und unterscheiden beide
-  Zugriffsarten.
-* [ ] Sie wenden **vektorisierte arithmetische Operationen** auf eine Series an,
-  ohne Schleifen zu verwenden.
-* [ ] Sie filtern eine Series mit **boolescher Indizierung**.
-```
-
 ## Zugriff mit .loc[] und .iloc[]
 
 Zunächst erzeugen wir wieder unser Series-Objekt mit den Verkaufspreisen der
@@ -55,7 +43,7 @@ Der Preis des dritten Autos lässt sich also auf zwei Arten ermitteln. Einmal
 über das Label:
 
 ```{code-cell} python
-preis_drittes_auto = preise.loc['Audi Nr. 3']
+preis_drittes_auto = # TODO: ???  (Zugriff über das Label mit .loc[])
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -63,7 +51,7 @@ Und einmal über die Position (zur Erinnerung: Python zählt ab 0, das dritte
 Auto steht also an Position 2):
 
 ```{code-cell} python
-preis_drittes_auto = preise.iloc[2]
+preis_drittes_auto = # TODO: ???  (Zugriff über die Position mit .iloc[])
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -82,71 +70,24 @@ Wir erhalten vier Autos, denn `BMW Nr. 1` ist in der Auswahl enthalten, also
 erhalten. Die vier Autos stehen an den Positionen 0, 1, 2 und 3:
 
 ```{code-cell} python
-teilbereich = preise.iloc[0:4]
+teilbereich = # TODO: ???  (Positionen 0 bis 3 mit .iloc[] auswählen)
 print(teilbereich)
 ```
 
 Auch hier erhalten wir vier Autos, aber Vorsicht: Wir mussten `0:4` schreiben,
 nicht `0:3`. Hier lauert ein beliebter Stolperstein.
 
-```{admonition} Achtung: Obergrenze beim Slicing
-:class: warning
+**Achtung: Obergrenze beim Slicing**
 Beim Slicing mit `.loc[]` ist die Obergrenze **eingeschlossen/inklusiv**, beim
 Slicing mit `.iloc[]` ist sie **ausgeschlossen/exklusiv** (wie bei
 Python-Listen). Der Ausdruck `preise.loc['Audi Nr. 1':'BMW Nr. 1']` liefert vier
 Elemente inklusive `BMW Nr. 1`, der Ausdruck `preise.iloc[0:4]` liefert die
 Positionen 0 bis 3.
-```
 
 Die Regel lässt sich gut merken, wenn man sich den Grund überlegt: Bei Labels
 wissen wir nicht, welches Label "eins weiter" wäre. Deshalb nimmt Pandas das
 Label der Obergrenze noch mit. Bei Positionen dagegen bleibt Pandas bei der
 üblichen Python-Konvention.
-
-```{admonition} Mini-Übung
-:class: tip
-Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus dem
-letzten Kapitel (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75,
-Freitag 3.5, Samstag 6.5, Sonntag 5 Stunden).
-
-1. Greifen Sie auf die Bildschirmzeit von Mittwoch zu, einmal mit `.loc[]` und
-   einmal mit `.iloc[]`.
-2. Wählen Sie den Teilbereich von Dienstag bis Donnerstag aus, ebenfalls auf
-   beide Arten. Achten Sie auf die Obergrenze.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# Eingabe Daten
-bildschirmzeit = pd.Series({
-    'Montag': 2.5,
-    'Dienstag': 3,
-    'Mittwoch': 4.25,
-    'Donnerstag': 2.75,
-    'Freitag': 3.5,
-    'Samstag': 6.5,
-    'Sonntag': 5
-})
-
-# 1. Zugriff auf Mittwoch
-print(bildschirmzeit.loc['Mittwoch'])
-print(bildschirmzeit.iloc[2])
-
-# 2. Teilbereich Dienstag bis Donnerstag
-print(bildschirmzeit.loc['Dienstag':'Donnerstag'])
-print(bildschirmzeit.iloc[1:4])
-```
-
-Beim Zugriff über die Labels ist `'Donnerstag'` eingeschlossen. Beim Zugriff
-über die Positionen müssen wir `1:4` schreiben, damit die Position 3 (also
-Donnerstag) noch dabei ist.
-````
 
 ## Rechnen mit Series
 
@@ -156,7 +97,7 @@ lassen sich beispielsweise die Preise nicht in Euro, sondern in Cent angeben,
 wenn wir alle Preise mit 100 multiplizieren.
 
 ```{code-cell} python
-preise_in_cent = preise * 100
+preise_in_cent = # TODO: ???  (alle Preise in Cent umrechnen)
 print(preise_in_cent)
 ```
 
@@ -224,38 +165,6 @@ Auto den Wahrheitswert `True` oder `False` und hat den Datentyp `bool`. Man
 spricht von einer **booleschen Series**. Was wir damit anfangen können, sehen
 wir im nächsten Abschnitt.
 
-```{admonition} Mini-Übung
-:class: tip
-Verwenden Sie erneut die Bildschirmzeiten-Series.
-
-1. Rechnen Sie die Bildschirmzeiten von Stunden in Minuten um und geben Sie das
-   Ergebnis aus.
-2. Erzeugen Sie eine boolesche Series, die für jeden Tag angibt, ob Sie mehr
-   als 4 Stunden am Bildschirm verbracht haben. An welchen Tagen steht `True`?
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-# 1. Umrechnung in Minuten
-bildschirmzeit_minuten = bildschirmzeit * 60
-print(bildschirmzeit_minuten)
-
-# 2. Boolesche Series
-viel_bildschirmzeit = bildschirmzeit > 4
-print(viel_bildschirmzeit)
-```
-
-An drei Tagen steht `True`: am Mittwoch (4.25 Stunden), am Samstag
-(6.5 Stunden) und am Sonntag (5 Stunden). An allen anderen Tagen lag die
-Bildschirmzeit bei höchstens 4 Stunden.
-````
-
 ## Series filtern mit boolescher Indizierung
 
 Die boolesche Series aus dem letzten Abschnitt ist mehr als eine Spielerei. Wir
@@ -265,7 +174,7 @@ dann genau die Elemente, bei denen `True` steht. Diese Technik heißt
 Datenanalyse überhaupt.
 
 ```{code-cell} python
-teure_autos = preise[preise > 20000]
+teure_autos = # TODO: ???  (Preise über 20000 EUR herausfiltern)
 print(teure_autos)
 ```
 
@@ -286,28 +195,6 @@ Das Ergebnis ist wieder ein ganz normales Series-Objekt, mit dem wir
 weiterarbeiten können. Der explizite Index sorgt dafür, dass wir auch nach dem
 Filtern noch wissen, um welche Autos es sich handelt.
 
-```{admonition} Mini-Übung
-:class: tip
-Filtern Sie aus der Bildschirmzeiten-Series alle Tage heraus, an denen Sie mehr
-als 6 Stunden Bildschirmzeit hatten. Geben Sie das Ergebnis aus.
-```
-
-```{code-cell} python
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-zuviel_bildschirmzeit = bildschirmzeit[bildschirmzeit > 6]
-print(zuviel_bildschirmzeit)
-```
-
-Übrig bleibt nur der Samstag mit 6.5 Stunden. Der Filter liefert ein neues
-Series-Objekt, das nur die Tage enthält, an denen die Bedingung erfüllt ist.
-````
-
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir gelernt, mit den Daten in einem Series-Objekt zu
@@ -319,3 +206,42 @@ Schleifen. Mit der booleschen Indizierung filtern wir schließlich alle Elemente
 heraus, die eine Bedingung erfüllen. Im nächsten Kapitel lernen wir die
 wichtigsten statistischen Kennzahlen kennen und visualisieren sie mit einem
 Boxplot.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Erzeugen Sie erneut die Bildschirmzeiten-Series mit den Beispieldaten aus dem
+letzten Kapitel (Montag 2.5, Dienstag 3, Mittwoch 4.25, Donnerstag 2.75,
+Freitag 3.5, Samstag 6.5, Sonntag 5 Stunden).
+
+1. Greifen Sie auf die Bildschirmzeit von Mittwoch zu, einmal mit `.loc[]` und
+   einmal mit `.iloc[]`.
+2. Wählen Sie den Teilbereich von Dienstag bis Donnerstag aus, ebenfalls auf
+   beide Arten. Achten Sie auf die Obergrenze.
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 2
+
+Verwenden Sie erneut die Bildschirmzeiten-Series.
+
+1. Rechnen Sie die Bildschirmzeiten von Stunden in Minuten um und geben Sie das
+   Ergebnis aus.
+2. Erzeugen Sie eine boolesche Series, die für jeden Tag angibt, ob Sie mehr
+   als 4 Stunden am Bildschirm verbracht haben. An welchen Tagen steht `True`?
+
+```{code-cell} python
+# Code-Zelle
+```
+
+### Mini-Übung 3
+
+Filtern Sie aus der Bildschirmzeiten-Series alle Tage heraus, an denen Sie mehr
+als 6 Stunden Bildschirmzeit hatten. Geben Sie das Ergebnis aus.
+
+```{code-cell} python
+# Code-Zelle
+```
