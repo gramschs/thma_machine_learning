@@ -3,6 +3,11 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter03/chapter03_sec01.ipynb
+    title: chapter03_sec01.ipynb
+  - file: chapter03_sec01.md
+    title: chapter03_sec01.md
 ---
 
 # 3.1 Pandas Series

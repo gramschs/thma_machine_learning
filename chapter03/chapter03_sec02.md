@@ -3,6 +3,11 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter03/chapter03_sec02.ipynb
+    title: chapter03_sec02.ipynb
+  - file: chapter03_sec02.md
+    title: chapter03_sec02.md
 ---
 
 # 3.2 Auswählen und Rechnen mit Series

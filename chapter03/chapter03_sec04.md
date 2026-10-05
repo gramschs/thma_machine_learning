@@ -3,15 +3,14 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter03/chapter03_sec04.ipynb
+    title: chapter03_sec04.ipynb
+  - file: chapter03_sec04.md
+    title: chapter03_sec04.md
 ---
 
 # 3.4 Übungen
-
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
 
 Gegeben sind folgende Daten zu der Verteilung von Studierenden
 (männlich/weiblich) auf die Hochschularten Universität und Fachhochschulen
@@ -54,6 +53,7 @@ welchem Bundesland die meisten?
 # Code-Zelle
 ```
 
+<!--
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -80,6 +80,7 @@ print(stud_fh_weiblich)
 Wir lesen ab: am wenigsten Studentinnen an Fachhochschulen studieren im Saarland
 und am meisten in Nordrhein-Westfalen.
 ````
+-->
 
 ```{admonition} Übung 3.2
 :class: tip
@@ -102,6 +103,7 @@ untersucht haben? Begründen Sie Ihre Vermutung.
 # Code-Zelle
 ```
 
+<!--
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -125,6 +127,7 @@ Studierendenzahlen hängen stark von der Größe und Bevölkerungszahl des
 Bundeslandes ab. Das Saarland ist das kleinste Flächenland, Nordrhein-Westfalen
 das bevölkerungsreichste Bundesland Deutschlands.
 ````
+-->
 
 ```{admonition} Übung 3.3
 :class: tip
@@ -152,6 +155,7 @@ welches Bundesland ist betroffen?
 # Code-Zelle
 ```
 
+<!--
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -188,6 +192,7 @@ Interpretationsfrage: Ja, es gibt einen Ausreißer beim Datensatz "Studenten an
 Fachhochschulen". Das betroffene Bundesland ist Nordrhein-Westfalen mit 132.976 
 Studenten. Bei den Studentinnen an Fachhochschulen gibt es keinen Ausreißer.
 ````
+-->
 
 ```{admonition} Übung 3.4
 :class: tip
@@ -212,6 +217,7 @@ der nächsten Aufgabe vergleichen können.
 # Code-Zelle
 ```
 
+<!--
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -254,6 +260,7 @@ fig4 = px.box(stud_uni_weiblich,
 fig1.show()
 ```
 ````
+-->
 
 ```{admonition} Übung 3.5
 :class: tip
@@ -282,6 +289,7 @@ Teil B: Beantworten Sie folgende Fragen:
 # Code-Zelle
 ```
 
+<!--
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -319,3 +327,4 @@ Teil B: Interpretation:
    auf (nicht bei Studentinnen FH). Das ist plausibel, da NRW das
    bevölkerungsreichste Bundesland ist.
 ````
+-->

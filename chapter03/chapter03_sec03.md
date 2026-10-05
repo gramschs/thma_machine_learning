@@ -3,6 +3,11 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter03/chapter03_sec03.ipynb
+    title: chapter03_sec03.ipynb
+  - file: chapter03_sec03.md
+    title: chapter03_sec03.md
 ---
 
 # 3.3 Kennzahlen, Boxplots und Ausreißer
