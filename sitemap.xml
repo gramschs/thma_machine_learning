@@ -23,6 +23,9 @@
     <loc>http://localhost:3000/chapter02-sec03</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/chapter02-sec04</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/chapter03-sec01</loc>
   </url>
   <url>
@@ -30,6 +33,9 @@
   </url>
   <url>
     <loc>http://localhost:3000/chapter03-sec03</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/chapter03-sec04</loc>
   </url>
   <url>
     <loc>http://localhost:3000/chapter04-sec01</loc>
