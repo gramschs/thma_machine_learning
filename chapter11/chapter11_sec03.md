@@ -69,7 +69,7 @@ um eine Klassifikationsaufgabe handelt, laden wir das Multilayer-Perzeptron mit
 > [https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier)
 
 nachlesen. Wir lassen das neuronale Netz mit `.fit()` trainieren und geben die
-Scores für die Trainings- und Testdaten mit `.score()` aus. Aus didaktischen
+Accuracy für die Trainings- und Testdaten mit `.score()` aus. Aus didaktischen
 Gründen fixieren wir den Zufallsseed mit `random_state=0`.
 
 ```{code-cell} python
@@ -81,11 +81,11 @@ neuronales_netz = MLPClassifier(random_state=0)
 # Training
 neuronales_netz.fit(X_train, y_train)
 
-# Validierung 
-score_train = neuronales_netz.score(X_train, y_train)
-score_test = neuronales_netz.score(X_test, y_test)
-print(f'Score für Trainingsdaten: {score_train:.2f}')
-print(f'Score für Testdaten: {score_test:.2f}')
+# Bewertung
+accuracy_training = neuronales_netz.score(X_train, y_train)
+accuracy_test = neuronales_netz.score(X_test, y_test)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
+print(f'Accuracy Testdaten: {accuracy_test:.2f}')
 ```
 
 Beim Training des neuronalen Netzes erscheint die Warnung: `Stochastic
@@ -106,11 +106,11 @@ neuronales_netz = MLPClassifier(max_iter=2000, random_state=0)
 # Training
 neuronales_netz.fit(X_train, y_train)
 
-# Validierung 
-score_train = neuronales_netz.score(X_train, y_train)
-score_test = neuronales_netz.score(X_test, y_test)
-print(f'Score für Trainingsdaten: {score_train:.2f}')
-print(f'Score für Testdaten: {score_test:.2f}')
+# Bewertung
+accuracy_training = neuronales_netz.score(X_train, y_train)
+accuracy_test = neuronales_netz.score(X_test, y_test)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
+print(f'Accuracy Testdaten: {accuracy_test:.2f}')
 ```
 
 Jetzt ist die Anzahl der Schritte ausreichend, um das neuronale Netz zu
@@ -163,14 +163,14 @@ neuronales_netz = MLPClassifier(max_iter=2000, hidden_layer_sizes=(2,2), random_
 # Training
 neuronales_netz.fit(X_train, y_train)
 
-# Validierung 
-score_train = neuronales_netz.score(X_train, y_train)
-score_test = neuronales_netz.score(X_test, y_test)
-print(f'Score für Trainingsdaten: {score_train:.2f}')
-print(f'Score für Testdaten: {score_test:.2f}')
+# Bewertung
+accuracy_training = neuronales_netz.score(X_train, y_train)
+accuracy_test = neuronales_netz.score(X_test, y_test)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
+print(f'Accuracy Testdaten: {accuracy_test:.2f}')
 ```
 
-Die Scores für Trainings- und Testdaten sind schlecht. Wir zeichnen die
+Die Accuracy auf Trainings- und Testdaten ist schlecht. Wir zeichnen die
 Entscheidungsgrenzen ein, um zu sehen, wo das neuronale Netz die Trennlinien
 zieht. Den Code für die Visualisierung blenden wir aus, da er nicht
 prüfungsrelevant ist.
@@ -213,7 +213,7 @@ Experimentieren Sie mit verschiedenen Architekturen für das neuronale Netz:
 2. Testen Sie drei versteckte Schichten unterschiedlicher Größe.
 3. Testen Sie ein sehr großes Netz mit zwei versteckten Schichten mit jeweils
    100 Neuronen.
-4. Vergleichen Sie jeweils die Scores für Trainings- und Testdaten. Welche
+4. Vergleichen Sie jeweils die Accuracy auf Trainings- und Testdaten. Welche
    Architektur würden Sie empfehlen?
 ```
 
@@ -223,18 +223,18 @@ Experimentieren Sie mit verschiedenen Architekturen für das neuronale Netz:
 Wir testen die Architekturen `hidden_layer_sizes=(20,)`,
 `hidden_layer_sizes=(15, 10, 5)` und `hidden_layer_sizes=(100, 100)`.
 
-| Architektur | Score Training | Score Test |
+| Architektur | Accuracy Training | Accuracy Test |
 |---|---|---|
 | (20,) | 0.93 | 0.92 |
 | (15, 10, 5) | 1.00 | 0.92 |
 | (100, 100) | 0.97 | 0.92 |
 
-Alle drei Architekturen erreichen auf den Testdaten einen etwas höheren Score
-(0.92) als das Netz mit `hidden_layer_sizes=(5, 5)` weiter unten (Testscore
-0.88). Ein Blick auf den Trainingsscore zeigt aber, wie unterschiedlich dieser
-Vorteil zustande kommt: Bei `(15, 10, 5)` ist der Trainingsscore mit 1.00
-perfekt, das Netz hat die Trainingsdaten also praktisch auswendig gelernt, das
-ist Overfitting. Bei `(20,)` liegen Trainings- und Testscore mit 0.93 und 0.92
+Alle drei Architekturen erreichen auf den Testdaten eine etwas höhere Accuracy
+(0.92) als das Netz mit `hidden_layer_sizes=(5, 5)` weiter unten (0.88). Ein
+Blick auf die Accuracy der Trainingsdaten zeigt aber, wie unterschiedlich dieser
+Vorteil zustande kommt: Bei `(15, 10, 5)` ist sie mit 1.00 perfekt, das Netz
+hat die Trainingsdaten also praktisch auswendig gelernt, das ist Overfitting.
+Bei `(20,)` liegt die Accuracy auf Trainings- und Testdaten mit 0.93 und 0.92
 dagegen dicht beieinander, das Netz generalisiert gut, obwohl es nur eine
 einzige versteckte Schicht hat. Ein größeres oder tieferes Netz ist also nicht
 automatisch besser. Wir würden `(20,)` empfehlen, da diese Architektur mit
@@ -250,11 +250,11 @@ neuronales_netz = MLPClassifier(max_iter=2000, hidden_layer_sizes=(5,5), random_
 # Training
 neuronales_netz.fit(X_train, y_train)
 
-# Validierung 
-score_train = neuronales_netz.score(X_train, y_train)
-score_test = neuronales_netz.score(X_test, y_test)
-print(f'Score für Trainingsdaten: {score_train:.2f}')
-print(f'Score für Testdaten: {score_test:.2f}')
+# Bewertung
+accuracy_training = neuronales_netz.score(X_train, y_train)
+accuracy_test = neuronales_netz.score(X_test, y_test)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
+print(f'Accuracy Testdaten: {accuracy_test:.2f}')
 ```
 
 Erneut lassen wir die Entscheidungsgrenzen visualisieren.
@@ -282,7 +282,7 @@ fig.update_layout(title='Künstliche Messdaten und Entscheidungsgrenzen des neur
 fig.show()
 ```
 
-Die Scores für Trainings- und Testdaten sind gut und die Entscheidungsgrenzen
+Die Accuracy auf Trainings- und Testdaten ist gut und die Entscheidungsgrenzen
 sind plausibel.
 
 ## Optimierung mit Gittersuche
@@ -350,12 +350,12 @@ gittersuche.fit(X_train, y_train)
 # Beste Parameter ausgeben
 print('Ergebnisse der Gittersuche:')
 print(f'beste Parameter: {gittersuche.best_params_}')
-print(f'bester Score (Kreuzvalidierung): {gittersuche.best_score_:.2f}')
+print(f'Bester Validierungsscore: {gittersuche.best_score_:.2f}')
 
 # Bestes Modell auf Testdaten evaluieren
 bestes_modell = gittersuche.best_estimator_
-test_score = bestes_modell.score(X_test, y_test)
-print(f"Score auf Testdaten: {test_score:.3f}")
+accuracy_test = bestes_modell.score(X_test, y_test)
+print(f'Accuracy Testdaten: {accuracy_test:.3f}')
 ```
 
 Für das beste Modell sehen die Entscheidungsgrenzen wie folgt aus.
@@ -426,7 +426,7 @@ Neuronale Netze sind ein sehr mächtiges Werkzeug, erfordern aber auch große
 Datenmengen und ein sorgfältiges Training. In vielen Fällen sollten erst
 einfachere ML-Modelle wie beispielsweise das Random-Forest-Modell ausprobiert
 werden, das in der Regel einen guten Kompromiss zwischen Geschwindigkeit und
-Genauigkeit darstellt, bevor neuronale Netze eingesetzt werden.
+Prognosequalität darstellt, bevor neuronale Netze eingesetzt werden.
 
 Im nächsten Kapitel wechseln wir das Thema und beschäftigen uns mit
 Zeitreihen.

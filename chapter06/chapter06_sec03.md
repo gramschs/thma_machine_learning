@@ -111,7 +111,7 @@ plot_tree(modell,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 
-print(f'Score des Entscheidungsbaumes ohne Pruning: {modell.score(X,y)}')
+print(f'Accuracy des Entscheidungsbaumes ohne Pruning: {modell.score(X,y)}')
 print(f'Tiefe des Entscheidungsbaumes ohne Pruning: {modell.get_depth()}')
 ```
 
@@ -225,14 +225,17 @@ fig.ax_.set_title('Entscheidungsgrenzen');
 ```
 
 Insbesondere die Visualisierung der Entscheidungsgrenzen zeigt aber auch, dass
-dieser Entscheidungsbaum nicht besonders gut die Daten erklärt. Der Score ist
-mit
+dieser Entscheidungsbaum nicht besonders gut die Daten erklärt. Die Accuracy
+ist mit
 
 ```{code-cell} python
-print(f'Score des Entscheidungsbaumes mit Tiefe 1: {modell_tiefe1.score(X,y)}')
+print(f'Accuracy des Entscheidungsbaumes mit Tiefe 1: {modell_tiefe1.score(X,y)}')
 ```
 
-auch nicht gut. Daher verwenden wir nun als maximale Tiefe des
+auch nicht gut. Diesen Wert können wir direkt am Baum nachrechnen. Im linken
+Blatt sind die 24 verkauften Autos richtig klassifiziert, im rechten Blatt die
+12 nicht verkauften Autos. Das sind 36 richtige Prognosen bei 50 Autos, also
+eine Accuracy von 36/50 = 0.72. Daher verwenden wir nun als maximale Tiefe des
 Entscheidungsbaumes einen Wert von 2.
 
 ```{code-cell} python
@@ -243,13 +246,13 @@ plot_tree(modell_tiefe2,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 
-print(f'Score des Entscheidungsbaumes mit Tiefe 2: {modell_tiefe2.score(X,y)}')
+print(f'Accuracy des Entscheidungsbaumes mit Tiefe 2: {modell_tiefe2.score(X,y)}')
 ```
 
-Mit einem Score von 0.78 ist der Entscheidungsbaum mit einer maximalen Tiefe von
-2 zwar besser als der Baum mit einer maximalen Tiefe von 1, aber deutlich
-entfernt von dem Score 1.0 bei einer Baumtiefe von 7. Die Entscheidungsgrenzen
-sehen folgendermaßen aus:
+Mit einer Accuracy von 0.78, also 39 von 50 richtig klassifizierten Autos, ist
+der Entscheidungsbaum mit einer maximalen Tiefe von 2 zwar besser als der Baum
+mit einer maximalen Tiefe von 1, aber deutlich entfernt von der Accuracy 1.0 bei
+einer Baumtiefe von 7. Die Entscheidungsgrenzen sehen folgendermaßen aus:
 
 ```{code-cell} python
 fig = DecisionBoundaryDisplay.from_estimator(modell_tiefe2, X, cmap=ListedColormap(['#EF553B33', '#636EFA33']), grid_resolution=1000)
@@ -272,13 +275,13 @@ Hyperparameter steuern den gesamten Lernprozess und haben einen wesentlichen
 Einfluss auf die Leistung des Modells.
 ```
 
-Ein Score von 1.0 auf den Trainingsdaten ist nicht zwangsläufig schlecht. Er
-kann bedeuten, dass das Modell die Daten wirklich gut erklärt. Er kann aber
+Eine Accuracy von 1.0 auf den Trainingsdaten ist nicht zwangsläufig schlecht.
+Sie kann bedeuten, dass das Modell die Daten wirklich gut erklärt. Sie kann aber
 auch bedeuten, dass das Modell die Trainingsdaten auswendig gelernt hat
 (Overfitting) und mit neuen, unbekannten Daten deutlich schlechter
-zurechtkommt. Ein sehr niedriger Score deutet dagegen auf Underfitting hin,
+zurechtkommt. Eine sehr niedrige Accuracy deutet dagegen auf Underfitting hin,
 d.h. das Modell ist zu einfach, um die Struktur der Daten zu erfassen. Ein
-Warnsignal für Overfitting ist es, wenn ein hoher Score nur durch eine
+Warnsignal für Overfitting ist es, wenn eine hohe Accuracy nur durch eine
 deutlich größere Baumtiefe und damit ein deutlich komplexeres Modell erkauft
 wird, so wie beim Sprung von Tiefe 2 auf Tiefe 7. Ob ein Modell tatsächlich
 gut auf neue Daten generalisiert, lässt sich letztlich nur mit Daten
@@ -320,10 +323,10 @@ plot_tree(modell_knotenbegrenzung,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 
-print(f'Score des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Knoten: {modell_knotenbegrenzung.score(X,y)}')
+print(f'Accuracy des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Knoten: {modell_knotenbegrenzung.score(X,y)}')
 ```
 
-Der Score ist 0.92. Nun fordern wir, dass in jedem Blatt mindestens sechs
+Die Accuracy ist 0.92. Nun fordern wir, dass in jedem Blatt mindestens sechs
 Datenpunkte verbleiben müssen.
 
 ```{code-cell} python
@@ -334,10 +337,10 @@ plot_tree(modell_blattbegrenzung,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 
-print(f'Score des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Blatt: {modell_blattbegrenzung.score(X,y)}')
+print(f'Accuracy des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Blatt: {modell_blattbegrenzung.score(X,y)}')
 ```
 
-In diesem Fall erhalten wir einen Entscheidungsbaum mit einem Score von 0.82.
+In diesem Fall erhalten wir einen Entscheidungsbaum mit einer Accuracy von 0.82.
 Was jetzt die bessere Wahl ist, die Begrenzung der Baumtiefe oder die Festlegung
 einer Mindestanzahl von Datenpunkten Knoten/Blatt, und vor allem welchen Wert
 der Hyperparameter haben soll, ist eine zentrale Herausforderung im maschinellen
@@ -365,20 +368,20 @@ Antwort B, denn eine große maximale Tiefe erlaubt sehr komplexe Bäume.
 
 Überprüfung durch Code:
 ```python
-# Die drei Modelle trainieren und Scores vergleichen
+# Die drei Modelle trainieren und ihre Accuracy vergleichen
 modell_a = DecisionTreeClassifier(max_depth=2, random_state=0)
 modell_a.fit(X, y)
-print(f'Score A (max_depth=2): {modell_a.score(X, y):.3f}')
+print(f'Accuracy A (max_depth=2): {modell_a.score(X, y):.3f}')
 
 modell_b = DecisionTreeClassifier(max_depth=10, random_state=0)
 modell_b.fit(X, y)
-print(f'Score B (max_depth=10): {modell_b.score(X, y):.3f}')
+print(f'Accuracy B (max_depth=10): {modell_b.score(X, y):.3f}')
 
 modell_c = DecisionTreeClassifier(min_samples_leaf=20, random_state=0)
 modell_c.fit(X, y)
-print(f'Score C (min_samples_leaf=20): {modell_c.score(X, y):.3f}')
+print(f'Accuracy C (min_samples_leaf=20): {modell_c.score(X, y):.3f}')
 
-# Modell B hat vermutlich den höchsten Score (nahe 1.0) → Overfitting!
+# Modell B hat vermutlich die höchste Accuracy (nahe 1.0) → Overfitting!
 ```
 ````
 

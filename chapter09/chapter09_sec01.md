@@ -11,7 +11,7 @@ downloads:
 # 9.1 Grundideen der Ensemble-Methoden
 
 Eins, zwei, viele ... im Bereich des maschinellen Lernens sind Ensemble-Methoden
-leistungsstarke Techniken zur Verbesserung der Modellgenauigkeit und Robustheit.
+leistungsstarke Techniken zur Verbesserung der Prognosequalität und Robustheit.
 Diese Methoden kombinieren mehrere Modelle, um die Gesamtleistung zu steigern,
 indem sie die individuellen Stärken der Modelle nutzen und deren Schwächen
 ausgleichen. In diesem Kapitel werden wir die grundlegenden Konzepte und
@@ -237,7 +237,7 @@ verbleibenden Fehler trainiert.
 Das englische Verb "to boost sth." hat viele Bedeutungen. Insbesondere wird es
 im Deutschen mit "etwas verstärken" übersetzt. Im Kontext des maschinellen
 Lernens bezeichnet **Boosting** eine Ensemble-Methode, bei der mehrere ML-Modelle
-hintereinander geschaltet werden, um die Genauigkeit der Prognose zu verstärken.
+hintereinander geschaltet werden, um die Prognosequalität zu verstärken.
 Die Idee des Boosting besteht darin, dass jedes Modell die Fehler des
 Vorgängermodells reduziert. Es gibt mehrere Varianten zur Fehlerreduktion, aus
 denen sich unterschiedliche Boosting-Methoden ableiten. Die wichtigsten

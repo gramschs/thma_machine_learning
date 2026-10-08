@@ -206,15 +206,15 @@ modell = xgb.XGBClassifier(n_estimators=200, random_state=0)
 
 modell.fit(X_train, y_train)
 
-score_train = modell.score(X_train, y_train)
-print(f'Score bezogen auf Trainingsdaten: {score_train:.3f}')
-score_test = modell.score(X_test, y_test)
-print(f'Score bezogen auf Testdaten: {score_test:.3f}')
+accuracy_training = modell.score(X_train, y_train)
+print(f'Accuracy bezogen auf Trainingsdaten: {accuracy_training:.3f}')
+accuracy_test = modell.score(X_test, y_test)
+print(f'Accuracy bezogen auf Testdaten: {accuracy_test:.3f}')
 ```
 
 Die Trainingsdaten werden nahezu perfekt prognostiziert. Auch bei den Testdaten
-erhalten wir ein gutes Ergebnis, das aber im Vergleich zu dem sehr guten Score
-bei den Trainingsdaten abfällt. Es fällt schwer, zu entscheiden, ob eine
+erhalten wir ein gutes Ergebnis, das aber im Vergleich zu der sehr guten
+Accuracy bei den Trainingsdaten abfällt. Es fällt schwer, zu entscheiden, ob eine
 Overfitting vorliegt. XGBoost ist ein iteratives Verfahren.
 Zunächst wird Modell Nr. 1 trainiert, darauf aufbauend Modell Nr. 2 usw. Wir
 wiederholen jetzt das Training des XGBoost-Klassifikators, aber lassen durch ein
@@ -434,7 +434,7 @@ beiden Verfahren Random Forest und XGBoost.
 | Overfitting | wenig anfällig | anfällig bei zu vielen Runden |
 | Hyperparameter-Tuning | wenig nötig | intensiv nötig |
 | Geschwindigkeit | schnell | langsamer |
-| Typische Genauigkeit | gut | sehr gut |
+| Typische Prognosequalität | gut | sehr gut |
 
 Random Forests eignen sich gut für einen schnellen ersten Ansatz, während
 XGBoost durch sorgfältiges Tuning oft bessere Ergebnisse liefert, aber mehr

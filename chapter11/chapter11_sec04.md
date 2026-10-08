@@ -313,7 +313,7 @@ Ziel der Regressionsaufgabe ist es, den Preis der Diamanten zu prognostizieren.
 * Falls notwendig, skalieren Sie die Daten.
 * Führen Sie einen Split der Daten in Trainings- und Testdaten durch.
 * Trainieren Sie jedes ML-Modell.
-* Validieren Sie jedes ML-Modell bzgl. der Trainingsdaten und der Testdaten.
+* Bewerten Sie jedes ML-Modell mit den Trainingsdaten und den Testdaten.
 * Bewerten Sie abschließend: welches der zwei Modelle würden Sie empfehlen?
   Begründen Sie Ihre Empfehlung.
 ```
@@ -344,14 +344,14 @@ X_train, X_test, y_train, y_test = train_test_split(input_numerical, daten['Prei
 ```
 
 ```python
-model_linear_regression = LinearRegression()
-model_linear_regression.fit(X_train, y_train)
+modell_linear_regression = LinearRegression()
+modell_linear_regression.fit(X_train, y_train)
 
-score_train = model_linear_regression.score(X_train, y_train)
-score_test = model_linear_regression.score(X_test, y_test)
+r2_training = modell_linear_regression.score(X_train, y_train)
+r2_test = modell_linear_regression.score(X_test, y_test)
 
-print(f'Score Trainingsdaten: {score_train:.2f}')
-print(f'Score Testdaten: {score_test:.2f}')
+print(f'R2-Score Trainingsdaten: {r2_training:.2f}')
+print(f'R2-Score Testdaten: {r2_test:.2f}')
 ```
 
 Support Vector Machines beherrschen auch nichtlineare Zusammenhänge. Es werden
@@ -368,23 +368,23 @@ X_train, X_test, y_train, y_test = train_test_split(input_numerical, daten['Prei
 ```
 
 ```python
-model_svr = SVR()
-model_svr.fit(X_train, y_train)
+modell_svr = SVR()
+modell_svr.fit(X_train, y_train)
 
-score_train = model_svr.score(X_train, y_train)
-score_test = model_svr.score(X_test, y_test)
+r2_training = modell_svr.score(X_train, y_train)
+r2_test = modell_svr.score(X_test, y_test)
 
-print(f'Score Trainingsdaten: {score_train:.2f}')
-print(f'Score Testdaten: {score_test:.2f}')
+print(f'R2-Score Trainingsdaten: {r2_training:.2f}')
+print(f'R2-Score Testdaten: {r2_test:.2f}')
 ```
 
-Zusammenfassung der Scores für die Testdaten:
+Zusammenfassung der R²-Scores für die Testdaten:
 
 lineare Regression: 0.85
 Support Vector Machines: 0.55
 
-Die lineare Regression erreicht bessere Testscores als die SVM, daher ist dieses
-Modell zu bevorzugen.
+Die lineare Regression erreicht auf den Testdaten einen besseren R²-Score als
+die SVM, daher ist dieses Modell zu bevorzugen.
 ````
 
 ```{admonition} Regression mit neuronalem Netz
@@ -398,7 +398,7 @@ Modell zu bevorzugen.
    * `hidden_layer_sizes=(10,)`
    * `hidden_layer_sizes=(20, 10)`
    * `hidden_layer_sizes=(50, 25, 10)`
-* Notieren Sie für jede Architektur die Scores für Trainings- und Testdaten.
+* Notieren Sie für jede Architektur die R²-Scores für Trainings- und Testdaten.
 * Verwenden Sie dann Gittersuche, um systematisch die beste Architektur zu
   finden. Testen Sie dabei:
    * `hidden_layer_sizes`: [(10,), (20,), (10, 10), (20, 10)]
@@ -435,52 +435,52 @@ X_train, X_test, y_train, y_test = train_test_split(
 from sklearn.neural_network import MLPRegressor
 
 # Architektur 1: Eine Schicht mit 10 Neuronen
-model_nn1 = MLPRegressor(hidden_layer_sizes=(10,), max_iter=2000, random_state=0)
-model_nn1.fit(X_train, y_train)
+modell_nn1 = MLPRegressor(hidden_layer_sizes=(10,), max_iter=2000, random_state=0)
+modell_nn1.fit(X_train, y_train)
 
-score_train = model_nn1.score(X_train, y_train)
-score_test = model_nn1.score(X_test, y_test)
+r2_training = modell_nn1.score(X_train, y_train)
+r2_test = modell_nn1.score(X_test, y_test)
 print('Architektur (10,):')
-print(f'  Score Trainingsdaten: {score_train:.2f}')
-print(f'  Score Testdaten: {score_test:.2f}')
+print(f'  R2-Score Trainingsdaten: {r2_training:.2f}')
+print(f'  R2-Score Testdaten: {r2_test:.2f}')
 ```
 
 Mit `max_iter=2000` erscheint eine Konvergenz-Warnung. Wenn wir `max_iter`
-erhöhen (z.B. auf 10000), konvergiert der Algorithmus und liefert einen Score
-von 0.88.
+erhöhen (z.B. auf 10000), konvergiert der Algorithmus und liefert einen
+R²-Score von 0.88.
 
 ```python
 # Architektur 2: Zwei Schichten mit 20 und 10 Neuronen
-model_nn2 = MLPRegressor(hidden_layer_sizes=(20, 10), max_iter=2000, random_state=0)
-model_nn2.fit(X_train, y_train)
+modell_nn2 = MLPRegressor(hidden_layer_sizes=(20, 10), max_iter=2000, random_state=0)
+modell_nn2.fit(X_train, y_train)
 
-score_train = model_nn2.score(X_train, y_train)
-score_test = model_nn2.score(X_test, y_test)
+r2_training = modell_nn2.score(X_train, y_train)
+r2_test = modell_nn2.score(X_test, y_test)
 print('Architektur (20, 10):')
-print(f'  Score Trainingsdaten: {score_train:.2f}')
-print(f'  Score Testdaten: {score_test:.2f}')
+print(f'  R2-Score Trainingsdaten: {r2_training:.2f}')
+print(f'  R2-Score Testdaten: {r2_test:.2f}')
 ```
 
-Ein Trainingsscore von 0.88 und ein Testscore von 0.88 sind gute Ergebnisse.
+Ein R²-Score von 0.88 auf Trainings- und Testdaten ist ein gutes Ergebnis.
 Dabei mussten wir die Anzahl der Iterationen nicht hochsetzen und der
 Algorithmus berechnete die Parameter des neuronalen Netzes deutlich schneller
 (ca. 15 s) als bei Fall 1 (ca. 1 min 30 s).
 
 ```python
 # Architektur 3: Drei Schichten mit 50, 25 und 10 Neuronen
-model_nn3 = MLPRegressor(hidden_layer_sizes=(50, 25, 10), max_iter=2000, random_state=0)
-model_nn3.fit(X_train, y_train)
+modell_nn3 = MLPRegressor(hidden_layer_sizes=(50, 25, 10), max_iter=2000, random_state=0)
+modell_nn3.fit(X_train, y_train)
 
-score_train = model_nn3.score(X_train, y_train)
-score_test = model_nn3.score(X_test, y_test)
+r2_training = modell_nn3.score(X_train, y_train)
+r2_test = modell_nn3.score(X_test, y_test)
 print('Architektur (50, 25, 10):')
-print(f'  Score Trainingsdaten: {score_train:.2f}')
-print(f'  Score Testdaten: {score_test:.2f}')
+print(f'  R2-Score Trainingsdaten: {r2_training:.2f}')
+print(f'  R2-Score Testdaten: {r2_test:.2f}')
 ```
 
-Erneut erhalten wir einen Trainings- und Testscore von 0.88. Die Rechenzeit ist
-vergleichbar mit Fall 2 und liegt bei ca. 20 s. Eine Erhöhung der maximalen
-Anzahl von Iterationen ist nicht notwendig.
+Erneut erhalten wir auf Trainings- und Testdaten einen R²-Score von 0.88. Die
+Rechenzeit ist vergleichbar mit Fall 2 und liegt bei ca. 20 s. Eine Erhöhung
+der maximalen Anzahl von Iterationen ist nicht notwendig.
 
 **Systematische Optimierung mit Gittersuche**
 
@@ -513,37 +513,37 @@ gittersuche.fit(X_train, y_train)
 print('Ergebnisse der Gittersuche:')
 print(f'   beste Architektur: {gittersuche.best_params_["hidden_layer_sizes"]}')
 print(f'   bester Alpha-Wert: {gittersuche.best_params_["alpha"]}')
-print(f'   bester Score (Kreuzvalidierung): {gittersuche.best_score_:.2f}')
+print(f'   Bester Validierungsscore: {gittersuche.best_score_:.2f}')
 
 # Test auf ungesehenen Daten
 bestes_modell = gittersuche.best_estimator_
-test_score = bestes_modell.score(X_test, y_test)
-print(f'Score auf Testdaten: {test_score:.2f}')
+r2_test = bestes_modell.score(X_test, y_test)
+print(f'R2-Score Testdaten: {r2_test:.2f}')
 ```
 
 **Vergleich mit linearer Regression**
 
 Aus der vorherigen Aufgabe:
-- Lineare Regression (nur Karat): Score Testdaten = 0.85
-- Support Vector Machine (alle Features): Score Testdaten = 0.55
+- Lineare Regression (nur Karat): R²-Score Testdaten = 0.85
+- Support Vector Machine (alle Features): R²-Score Testdaten = 0.55
 
-Neuronales Netz (alle numerischen Features): Score Testdaten = 0.88
+Neuronales Netz (alle numerischen Features): R²-Score Testdaten = 0.88
 
-Das neuronale Netz erreicht mit allen Features den besten Score!
+Das neuronale Netz erreicht mit allen Features den besten R²-Score!
 
 **Interpretation und Bewertung**
 
 Das neuronale Netz kann die komplexen nichtlinearen Zusammenhänge zwischen den
 Eigenschaften (Karat, Abmessungen, Tiefe, Tafel) und dem Preis etwas besser
-erfassen als die lineare Regression. Das neuronale Netz verbessert die
-Vorhersagegenauigkeit um 3 Prozentpunkte (von 0.85 auf 0.88).
+erfassen als die lineare Regression. Das neuronale Netz verbessert den R²-Score
+auf den Testdaten von 0.85 auf 0.88.
 
 Wann lohnt sich der Einsatz eines neuronalen Netzes?
 
 Pro neuronales Netz:
 - Bei komplexen, nichtlinearen Zusammenhängen
 - Wenn ausreichend Daten vorhanden sind (hier: >50.000 Datenpunkte)
-- Wenn höchste Genauigkeit wichtig ist
+- Wenn höchste Prognosequalität wichtig ist
 - Wenn Rechenzeit keine große Rolle spielt
 
 Contra neuronales Netz:
@@ -556,5 +556,5 @@ Fazit: Für diesen Datensatz ist das neuronale Netz die beste Wahl. Allerdings
 ist der Vorteil gegenüber der linearen Regression (0.88 vs 0.85) relativ gering.
 In der Praxis müsste abgewogen werden, ob der Mehraufwand (längere Rechenzeit,
 schwierigere Interpretation, aufwändige Architektur-Optimierung) den geringen
-Genauigkeitsgewinn rechtfertigt.
+Gewinn an Prognosequalität rechtfertigt.
 ````

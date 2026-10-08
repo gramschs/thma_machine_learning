@@ -235,8 +235,8 @@ Mal mit den Testdaten.
 ```{code-cell} python
 finales_modell = DecisionTreeClassifier(max_depth=3, random_state=0)
 finales_modell.fit(X_train, y_train)
-finaler_score = finales_modell.score(X_test, y_test)
-print(f'Testscore finales Modell: {finaler_score:.2f}')
+accuracy_test = finales_modell.score(X_test, y_test)
+print(f'Accuracy Testdaten finales Modell: {accuracy_test:.2f}')
 ```
 
 Der Testscore von 0.72 liegt etwas unter dem besten Validierungsscore von 0.77.
@@ -283,8 +283,8 @@ Validierungsscore von 0.75 am besten ab.
 ```python
 finales_modell = DecisionTreeClassifier(max_depth=3, random_state=0)
 finales_modell.fit(X_druck_train, y_druck_train)
-finaler_score = finales_modell.score(X_druck_test, y_druck_test)
-print(f'Testscore finales Modell: {finaler_score:.2f}')
+accuracy_test_druck = finales_modell.score(X_druck_test, y_druck_test)
+print(f'Accuracy Testdaten finales Modell: {accuracy_test_druck:.2f}')
 ```
 
 Zu 3. Der Testscore von 0.71 liegt etwas unter dem besten Validierungsscore von
@@ -339,8 +339,8 @@ Die Methoden `.score()` und `.predict()` funktionieren wie bei jedem anderen
 Modell. Mit `.score()` bewerten wir das optimierte Modell auf den Testdaten.
 
 ```{code-cell} python
-opt_score_test = optimiertes_modell.score(X_test, y_test)
-print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
+accuracy_test_optimiert = optimiertes_modell.score(X_test, y_test)
+print(f'optimierter Entscheidungsbaum Accuracy Testdaten: {accuracy_test_optimiert:.2f}')
 ```
 
 Zusätzlich zu den Standardmethoden wie `.fit()`, `.predict()` und `.score()`
@@ -377,11 +377,11 @@ parameter_gitter = {
 
 optimiertes_modell = GridSearchCV(DecisionTreeClassifier(random_state=0), param_grid=parameter_gitter, cv=kfold)
 optimiertes_modell.fit(X_train, y_train)
-opt_score_test = optimiertes_modell.score(X_test, y_test)
+accuracy_test_optimiert = optimiertes_modell.score(X_test, y_test)
 
 print(optimiertes_modell.best_params_)
 print(f'Bester Validierungsscore: {optimiertes_modell.best_score_:.2f}')
-print(f'optimierter Entscheidungsbaum Score Testdaten: {opt_score_test:.2f}')
+print(f'optimierter Entscheidungsbaum Accuracy Testdaten: {accuracy_test_optimiert:.2f}')
 ```
 
 Mit dem erweiterten Gitter wählt die Gittersuche die Baumtiefe 4 mit mindestens
@@ -450,11 +450,11 @@ parameter_gitter = {
 
 gittersuche = GridSearchCV(DecisionTreeClassifier(random_state=0), param_grid=parameter_gitter, cv=kfold)
 gittersuche.fit(X_druck_train, y_druck_train)
-score_test = gittersuche.score(X_druck_test, y_druck_test)
+accuracy_test_druck = gittersuche.score(X_druck_test, y_druck_test)
 
 print(gittersuche.best_params_)
 print(f'Bester Validierungsscore: {gittersuche.best_score_:.2f}')
-print(f'Testscore: {score_test:.2f}')
+print(f'Accuracy Testdaten: {accuracy_test_druck:.2f}')
 ```
 
 Zu 2. Das Gitter enthält 6 × 3 = 18 Kombinationen. Bei 5-facher
@@ -481,10 +481,10 @@ abschließende, unbefangene Bewertung. Die Gittersuche mit Kreuzvalidierung
 nimmt uns das Trainieren und Vergleichen ab, sobald wir ihr ein Parametergitter
 übergeben.
 
-Eine Frage haben wir dabei die ganze Zeit übergangen. Wir haben immer "den
-Score" optimiert, ohne zu fragen, was dieser Score eigentlich misst. Bei einer
-Klassifikation ist das standardmäßig der Anteil der richtig zugeordneten
-Datenpunkte. Für eine Qualitätskontrolle kann das eine schlechte Wahl sein.
+Eine Frage haben wir dabei die ganze Zeit übergangen. Wir haben immer die
+Accuracy optimiert, also den Anteil der richtig zugeordneten Datenpunkte. Ob sie
+für jede Aufgabe das richtige Gütemaß ist, haben wir nie gefragt. Für eine
+Qualitätskontrolle kann sie eine schlechte Wahl sein.
 Wenn nur 2 % aller Bauteile Ausschuss sind, erreicht ein Modell, das immer "in
 Ordnung" vorhersagt, bereits 98 %. Im nächsten Kapitel lernen wir daher
 verschiedene Gütemaße für Klassifikation und Regression kennen und klären, wann

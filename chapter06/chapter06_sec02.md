@@ -273,8 +273,8 @@ nutzen, um ein Wunschergebnis zu erzwingen.
 
 Experimentieren Sie mit verschiedenen Werten für `random_state` (z.B. 0, 1, 2,
 3). Sie werden feststellen, dass sich die Baumstruktur vor allem dort ändern
-kann, wo es mehrere gleich gute Splits gab, während die Vorhersagegenauigkeit
-auf den Trainingsdaten meist gleich bleibt. Testen Sie auch verschiedene
+kann, wo es mehrere gleich gute Splits gab, während die Accuracy auf den
+Trainingsdaten meist gleich bleibt. Testen Sie auch verschiedene
 Splitting-Kriterien (`criterion='gini'` vs. `criterion='entropy'`) und
 vergleichen Sie die entstehenden Bäume.
 

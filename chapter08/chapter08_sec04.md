@@ -212,7 +212,7 @@ from sklearn.model_selection import train_test_split
 data_train, data_test = train_test_split(data, random_state=42)
 
 # Wahl des linearen Regressionsmodells
-model = LinearRegression()
+modell = LinearRegression()
 
 # Adaption der Daten für das lineare Regressionsmodell
 # Geschlecht wird weggelassen, da kategorial
@@ -220,15 +220,15 @@ X_train = data_train.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]']
 y_train = data_train['Ringe']
 
 # Training
-model.fit(X_train, y_train)
+modell.fit(X_train, y_train)
 
 # Validierung
-r2_score_train = model.score(X_train, y_train)
+r2_score_train = modell.score(X_train, y_train)
 
 X_test = data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]']
 y_test = data_test['Ringe']
 
-r2_score_test = model.score(X_test, y_test)
+r2_score_test = modell.score(X_test, y_test)
 
 print(f'R2-Score Trainingsdaten: {r2_score_train:.2f}')
 print(f'R2-Score Testdaten: {r2_score_test:.2f}')
@@ -252,15 +252,15 @@ for d in [2, 3, 4, 5]:
     y_train = data_train['Ringe']
 
     # Training
-    model.fit(X_train, y_train)
+    modell.fit(X_train, y_train)
 
     # Validierung
-    r2_score_train = model.score(X_train, y_train)
+    r2_score_train = modell.score(X_train, y_train)
 
     X_test = polynom_transformator.transform(data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]'])
     y_test = data_test['Ringe']
 
-    r2_score_test = model.score(X_test, y_test)
+    r2_score_test = modell.score(X_test, y_test)
 
     print(f'Grad: {d} ==> R2-Score Trainingsdaten: {r2_score_train:.2f} | R2-Score Testdaten: {r2_score_test:.2f}')
 ```
@@ -288,12 +288,12 @@ data_train, data_test = train_test_split(data_kodiert, random_state=42)
 # Training mit Geschlecht
 X_train = data_train.drop(columns=['Ringe'])
 y_train = data_train['Ringe']
-model.fit(X_train, y_train)
+modell.fit(X_train, y_train)
 
 # Validierung
 X_test = data_test.drop(columns=['Ringe'])
 y_test = data_test['Ringe']
-r2_score_test = model.score(X_test, y_test)
+r2_score_test = modell.score(X_test, y_test)
 print(f'R2-Score mit Geschlecht: {r2_score_test:.2f}')
 ```
 
@@ -378,7 +378,7 @@ from sklearn.preprocessing import PolynomialFeatures
 
 
 # Auswahl des Modells
-model = LinearRegression()
+modell = LinearRegression()
 
 
 # Adaption der Daten
@@ -395,12 +395,12 @@ for grad in [1, 2, 3, 4, 5]:
     polynom_transformator = PolynomialFeatures(degree = grad)
 
     X_train_transformiert =  polynom_transformator.fit_transform(X_train)
-    model.fit(X_train_transformiert, y_train)
+    modell.fit(X_train_transformiert, y_train)
 
     # Validierung mit Testdaten
-    r2_score_train = model.score(X_train_transformiert, y_train)
+    r2_score_train = modell.score(X_train_transformiert, y_train)
     X_test_transformiert = polynom_transformator.transform(X_test)
-    r2_score_test  = model.score(X_test_transformiert, y_test)
+    r2_score_test  = modell.score(X_test_transformiert, y_test)
 
     # Vergleich der Modelle
     print(f'Grad {grad}: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
@@ -415,12 +415,12 @@ deutlich kleiner als für die Trainingsdaten.  Dies deutet darauf hin, dass das 
 polynom_transformator = PolynomialFeatures(degree = 3)
 
 X_train_transformiert =  polynom_transformator.fit_transform(X_train)
-model.fit(X_train_transformiert, y_train)
+modell.fit(X_train_transformiert, y_train)
 
 # Validierung mit Testdaten
-r2_score_train = model.score(X_train_transformiert, y_train)
+r2_score_train = modell.score(X_train_transformiert, y_train)
 X_test_transformiert = polynom_transformator.transform(X_test)
-r2_score_test  = model.score(X_test_transformiert, y_test)
+r2_score_test  = modell.score(X_test_transformiert, y_test)
 
 # Vergleich der Modelle
 print(f'Grad 3: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
@@ -435,7 +435,7 @@ prognose = pd.DataFrame()
 prognose['Jahr'] = np.arange(1990, 2031)
 
 X_prognose = polynom_transformator.transform(prognose[['Jahr']])
-prognose['Arbeitslosenzahl'] = model.predict(X_prognose)
+prognose['Arbeitslosenzahl'] = modell.predict(X_prognose)
 
 ```
 

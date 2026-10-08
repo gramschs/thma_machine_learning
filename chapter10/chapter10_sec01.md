@@ -215,7 +215,7 @@ for (train_index, test_index) in kfold.split(daten):
 
 Nun verwenden wir diese fünf Aufteilungen, um einen Entscheidungsbaum zu
 trainieren. Dabei begrenzen wir die Baumtiefe auf 3 und bewerten in jedem
-Durchgang die Genauigkeit (Score) sowohl auf den Trainings- als auch auf den
+Durchgang die Accuracy (Score) sowohl auf den Trainings- als auch auf den
 Testdaten.
 
 ```{code-cell} python
@@ -235,10 +235,10 @@ for (train_index, test_index) in kfold.split(daten):
     # Training des Entscheidungsbaums
     modell.fit(X_train, y_train)
 
-    # Analyse der Scores auf Trainings- und Testdaten
-    score_train = modell.score(X_train, y_train)
-    score_test = modell.score(X_test, y_test)
-    print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
+    # Accuracy auf Trainings- und Testdaten
+    accuracy_training = modell.score(X_train, y_train)
+    accuracy_test = modell.score(X_test, y_test)
+    print(f'Accuracy Training: {accuracy_training:.2f}, Accuracy Test: {accuracy_test:.2f}')
 ```
 
 Die Scores auf den Trainingsdaten könnten den Eindruck erwecken, dass der
@@ -298,9 +298,9 @@ for (train_index, test_index) in kfold.split(daten):
     modell.fit(X_train, y_train)
 
     # Bewertung
-    score_train = modell.score(X_train, y_train)
-    score_test = modell.score(X_test, y_test)
-    print(f'Score Training: {score_train:.2f}, Score Test: {score_test:.2f}')
+    accuracy_training = modell.score(X_train, y_train)
+    accuracy_test = modell.score(X_test, y_test)
+    print(f'Accuracy Training: {accuracy_training:.2f}, Accuracy Test: {accuracy_test:.2f}')
 ```
 
 Die sechs Testscores lauten der Reihe nach 0.00, 0.33, 1.00, 0.67, 0.00 und
@@ -355,8 +355,9 @@ In diesem Dictionary sind zunächst die Rechenzeiten für das Training
 (`'fit_time'`) und die Prognose (`'score_time'`) gespeichert. Danach folgen die
 Scores der Testdaten (`'test_score'`). Falls das Argument
 `return_train_score=True` gesetzt wurde, enthält das Dictionary auch die Scores
-der Trainingsdaten (`'train_score'`). Die Scores können wir wie folgt anzeigen
-lassen:
+der Trainingsdaten (`'train_score'`). Scikit-Learn spricht hier allgemein von
+Scores. Bei unserem Entscheidungsbaum ist das wie bisher die Accuracy. Die
+Scores können wir wie folgt anzeigen lassen:
 
 ```{code-cell} python
 print(cv_results['test_score'])

@@ -24,7 +24,7 @@ sogenannten **Random Forests**.
 * [ ] Sie können mit einem Train-Test-Split zeigen, dass ein Random Forest
   weniger zu **Overfitting** neigt als ein einzelner Entscheidungsbaum.
 * [ ] Sie können mit Hilfe der **Feature Importance** bewerten, wie groß der
-  Einfluss eines Merkmals auf die Prognosegenauigkeit des Random Forests ist.
+  Einfluss eines Merkmals auf die Prognosequalität des Random Forests ist.
 ```
 
 ## Random Forests mit Scikit-Learn
@@ -268,8 +268,8 @@ einer anderen Reihenfolge der Entscheidungsfragen und zu anderen Grenzen. Dafür
 bietet der Random Forest eine alternative Bewertung, wie wichtig einzelne
 Merkmale (Features) sind, die sogenannte **Feature Importance**.
 
-Die Feature Importance bewertet, wie stark ein Merkmal zur Genauigkeit der
-Prognose beiträgt. Ein höherer Wert bedeutet mehr Einfluss. Bei einem
+Die Feature Importance bewertet, wie stark ein Merkmal zur Prognosequalität
+beiträgt. Ein höherer Wert bedeutet mehr Einfluss. Bei einem
 Entscheidungsbaum wird dazu für jedes Merkmal aufsummiert, wie stark die Splits
 mit diesem Merkmal die Gini-Impurity reduzieren. Bei einem einzelnen Baum ist
 dieser Wert wenig verlässlich, denn er hängt stark von der zufälligen Stichprobe

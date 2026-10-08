@@ -178,8 +178,8 @@ from sklearn.tree import DecisionTreeClassifier
 entscheidungsbaum =  DecisionTreeClassifier()
 entscheidungsbaum.fit(X,y)
 entscheidungsbaum.score(X,y)
-score = entscheidungsbaum.score(X,y)
-print(f'Score: {score:.2f}')
+accuracy_training = entscheidungsbaum.score(X,y)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
 ```
 
 ```python
@@ -204,8 +204,8 @@ die ein Überleben der Passagiere gesichert haben?
 for baumtiefe in [2, 3, 4]:
     baum = DecisionTreeClassifier(max_depth=baumtiefe)
     baum.fit(X,y)
-    score = baum.score(X,y)
-    print(f'Score für eine Baumtiefe von {baumtiefe}: {score: .2f}')
+    accuracy_training = baum.score(X,y)
+    print(f'Accuracy für eine Baumtiefe von {baumtiefe}: {accuracy_training: .2f}')
 ```
 
 Tatsächlich ist der Entscheidungsbaum/Decision Tree mit einer Baumtiefe von 3
@@ -398,8 +398,8 @@ from sklearn.tree import DecisionTreeClassifier
 modell = DecisionTreeClassifier()
 modell.fit(X,y)
 
-score = modell.score(X,y)
-print(f'Score: {score:.2f}')
+accuracy_training = modell.score(X,y)
+print(f'Accuracy Trainingsdaten: {accuracy_training:.2f}')
 ```
 
 ```python
@@ -425,12 +425,12 @@ die Diabetes auslösen können?
 for baumtiefe in [2, 3, 4]:
     baum = DecisionTreeClassifier(max_depth=baumtiefe)
     baum.fit(X,y)
-    score = baum.score(X,y)
-    print(f'Score für eine Baumtiefe von {baumtiefe}: {score: .2f}')
+    accuracy_training = baum.score(X,y)
+    print(f'Accuracy für eine Baumtiefe von {baumtiefe}: {accuracy_training: .2f}')
 ```
 
-Wieder gibt es kaum Unterschiede im Score für die verschiedenen Baumtiefen. Wir
-betrachten nun ein Modell der Baumtiefe 2.
+Wieder gibt es kaum Unterschiede in der Accuracy für die verschiedenen
+Baumtiefen. Wir betrachten nun ein Modell der Baumtiefe 2.
 
 ```python
 finales_modell = DecisionTreeClassifier(max_depth=2)

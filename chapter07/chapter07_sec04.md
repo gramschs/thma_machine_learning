@@ -425,8 +425,8 @@ for merkmal in ['youtube', 'facebook', 'newspaper']:
     X = daten[[merkmal]]
     modell = LinearRegression()
     modell.fit(X,y)
-    r2_score = modell.score(X,y)
-    print(f'Input: {merkmal}, R2-Score = {r2_score:.2f}')
+    r2_training = modell.score(X,y)
+    print(f'Input: {merkmal}, R2-Score = {r2_training:.2f}')
 ```
 
 Wie erwartet sind die R²-Scores bei YouTube besser als bei Facebook und den
@@ -450,9 +450,9 @@ y = daten['sales']
 
 modell_multiple_regression = LinearRegression()
 modell_multiple_regression.fit(X,y)
-r2_score = modell_multiple_regression.score(X,y)
+r2_training = modell_multiple_regression.score(X,y)
 
-print(f'R2-Score multiples Regressionsmodell: {r2_score:.2f}')
+print(f'R2-Score multiples Regressionsmodell: {r2_training:.2f}')
 
 print(f'Koeffizienten: {modell_multiple_regression.coef_}')
 print(f'Achsenabschnitt: {modell_multiple_regression.intercept_:.4f}')

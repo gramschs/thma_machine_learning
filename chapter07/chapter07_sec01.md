@@ -436,7 +436,9 @@ Beobachten Sie dabei, wie die Fehler (rot) kleiner werden.
 ```
 
 Wie ist nun der R²-Score für das trainierte lineare Regressionsmodell? Dazu
-verwenden wir die `score()`-Methode.
+verwenden wir die `score()`-Methode. Bei den Entscheidungsbäumen für
+Klassifikation hat `score()` die Accuracy berechnet. Bei Regressionsmodellen
+berechnet dieselbe Methode den R²-Score.
 
 ```{code-cell} python
 r2 = modell.score(X,y)

@@ -41,9 +41,11 @@ Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 :class: attention
 * [ ] Sie können erklären, wie ein **Entscheidungsbaum** Daten mithilfe von
   Entscheidungsregeln klassifiziert.
-* [ ] ie können Wurzelknoten, innere Knoten, Kanten und Blätter in einer
+* [ ] Sie können Wurzelknoten, innere Knoten, Kanten und Blätter in einer
   Baumgrafik identifizieren.
 * [ ] Sie können einen Entscheidungsbaum mit Scikit-Learn trainieren.
+* [ ] Sie können mit der **Accuracy** beurteilen, wie gut ein Entscheidungsbaum
+  die Trainingsdaten klassifiziert.
 * [ ] Sie können für neue Eingabedaten eine Prognose erzeugen und
   interpretieren.
 ```
@@ -236,14 +238,23 @@ erstes überprüfen wir mit der Methode `.score()`, wie gut die Prognose des
 Entscheidungsbaumes ist.
 
 ```{code-cell} python
-score = modell.score(X,y)
-print(score)
+accuracy_training = modell.score(X,y)
+print(f'Accuracy Trainingsdaten: {accuracy_training}')
 ```
 
-Eine 1.0 steht für 100 %, also alle 10 Autos werden korrekt klassifiziert. Dazu
-hat der `DecisionTreeClassifier` basierend auf den Eingabedaten `X` eine
-Prognose erstellt und diese Prognose mit den echten Daten in `y` verglichen. Für
-die Trainingsdaten funktioniert der Entscheidungsbaum also perfekt. Ob der
+Was berechnet `.score()` hier genau? Der Entscheidungsbaum erstellt für jedes
+Auto in `X` eine Prognose und vergleicht sie mit dem echten Wert in `y`. Dann
+zählt er die richtigen Prognosen und teilt durch die Anzahl aller Autos. Dieses
+Gütemaß heißt **Accuracy** (deutsch: Genauigkeit). Die Accuracy ist der Anteil
+der richtig klassifizierten Datenpunkte:
+
+$$\text{Accuracy} = \frac{\text{richtige Prognosen}}{\text{alle Prognosen}}$$
+
+Die Accuracy liegt daher immer zwischen 0 und 1. Würde der Entscheidungsbaum 8
+der 10 Autos richtig einordnen, wäre die Accuracy 8/10 = 0.8, also 80 %. Unsere
+Accuracy von 1.0 steht für 100 %, also werden alle 10 Autos korrekt
+klassifiziert.
+Für die Trainingsdaten funktioniert der Entscheidungsbaum also perfekt. Ob der
 Entscheidungsbaum ein neues, elftes Auto korrekt klassifizieren würde, kann so
 erst einmal nicht entschieden werden. Möglicherweise hat der Entscheidungsbaum
 die Trainingsdaten auswendig gelernt, anstatt allgemeine Muster zu erkennen. Es
@@ -344,7 +355,8 @@ print(f"Prognose für den neuen Druck: {prognose[0]}")
 
 In diesem Kapitel haben Sie den Entscheidungsbaum (Decision Tree) anhand einer
 Klassifikationsaufgabe kennengelernt. Mit Hilfe von Scikit-Learn wurde ein
-Entscheidungsbaum trainiert und dazu benutzt, eine Prognose für neue Daten
-abzugeben. Im nächsten Kapitel werden wir uns damit beschäftigen, weitere
-Einstellmöglichkeiten beim Training des Entscheidungsbaumes zu nutzen und
-Entscheidungsbäume durch Scikit-Learn visualisieren zu lassen.
+Entscheidungsbaum trainiert, mit der Accuracy bewertet und dazu benutzt, eine
+Prognose für neue Daten abzugeben. Im nächsten Kapitel werden wir uns damit
+beschäftigen, weitere Einstellmöglichkeiten beim Training des
+Entscheidungsbaumes zu nutzen und Entscheidungsbäume durch Scikit-Learn
+visualisieren zu lassen.
