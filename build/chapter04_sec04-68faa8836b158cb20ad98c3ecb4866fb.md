@@ -1,0 +1,686 @@
+---
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+downloads:
+  - file: pokemon_DE.csv
+    title: pokemon_DE.csv
+  - file: wetter_mannheim_2025.csv
+    title: wetter_mannheim_2025.csv
+  - file: stromverbrauch_hessen.csv
+    title: stromverbrauch_hessen.csv
+  - file: ai4i2020_DE.csv
+    title: ai4i2020_DE.csv
+  - file: chapter04_sec04.md
+    title: chapter04_sec04.md
+---
+
+# 4.4 Übungen
+
+Diese Aufgaben sind für das Selbststudium zuhause gedacht und wiederholen den
+Stoff der Kapitel 4.1 bis 4.3. Rechnen Sie mit gut eineinhalb Stunden
+Bearbeitungszeit.
+
+Der Schwierigkeitsgrad steht im Titel jeder Aufgabe:
+
+* ✩ Verständnis: Code und Ausgaben vorhersagen und erklären (ca. 5 min)
+* ✩✩ Anwendung: eigenen Code schreiben und Ergebnisse interpretieren (ca. 10 min)
+* ✩✩✩ Mini-Projekt: mehrere Konzepte des Kapitels kombinieren (ca. 30 min)
+
+Alle Datensätze stehen über das Download-Symbol rechts oben zur Verfügung.
+Speichern Sie sie in denselben Ordner wie dieses Jupyter Notebook.
+
+* `pokemon_DE.csv`: Werte von 800 Pokémon aus den Videospielen der
+  Generationen 1 bis 6, Spaltennamen und Typen ins Deutsche übersetzt (Quelle:
+  [Kaggle, Pokemon with stats](https://www.kaggle.com/datasets/abcsds/pokemon),
+  Lizenz CC0)
+* `wetter_mannheim_2025.csv`: Tageswerte der Wetterstation Mannheim im Jahr
+  2025 (Quelle: [Deutscher Wetterdienst, Climate Data
+  Center](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/),
+  Lizenz CC BY 4.0)
+* `stromverbrauch_hessen.csv`: Stromverbrauch in Hessen 2000 bis 2021 nach
+  Verbrauchergruppen
+* `ai4i2020_DE.csv`: synthetische Prozessdaten einer Werkzeugmaschine,
+  Spaltennamen ins Deutsche übersetzt (Quelle: [S. Matzka, AI4I 2020
+  Predictive Maintenance Dataset, UCI Machine Learning
+  Repository](https://doi.org/10.24432/C5HS5C), Lizenz CC BY 4.0)
+
+````{admonition} Aufgabe 4.1 (✩)
+:class: tip
+Die Datei `pokemon_DE.csv` enthält 800 Pokémon und beginnt mit folgenden
+Zeilen:
+
+```none
+Nr.,Name,Typ 1,Typ 2,Gesamt,KP,Angriff,Verteidigung,Spezial-Angriff,Spezial-Verteidigung,Initiative,Generation,Legendaer
+1,Bulbasaur,Pflanze,Gift,318,45,49,49,65,65,45,1,nein
+2,Ivysaur,Pflanze,Gift,405,60,62,63,80,80,60,1,nein
+3,Venusaur,Pflanze,Gift,525,80,82,83,100,100,80,1,nein
+3,VenusaurMega Venusaur,Pflanze,Gift,625,80,100,123,122,120,80,1,nein
+4,Charmander,Feuer,,309,39,52,43,60,50,65,1,nein
+```
+
+Gegeben ist folgender Code:
+
+```python
+import pandas as pd
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+```
+
+Notieren Sie Ihre Vermutung in einer Markdown-Zelle, bevor Sie den Code
+ausführen.
+
+1. Welche Spalte wird zum Zeilenindex? Was gibt `pokemon.shape` zurück?
+2. Warum wäre die Spalte `Nr.` als Zeilenindex ungeeignet?
+3. Bei Charmander fehlt der zweite Typ. Insgesamt haben 386 Pokémon nur einen
+   Typ. Wie viele non-null-Einträge zeigt `pokemon.info()` für die Spalte
+   `Typ 2` an?
+4. Für wie viele Spalten berechnet `pokemon.describe()` statistische
+   Kennzahlen? Sind alle diese Kennzahlen sinnvoll?
+5. Führen Sie den Code aus und überprüfen Sie Ihre Vorhersagen.
+````
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+
+print(pokemon.shape)
+pokemon.info()
+pokemon.describe()
+```
+Ausgabe (ohne die Tabelle von `.describe()`):
+```
+(800, 12)
+<class 'pandas.core.frame.DataFrame'>
+Index: 800 entries, Bulbasaur to Volcanion
+Data columns (total 12 columns):
+ #   Column                Non-Null Count  Dtype 
+---  ------                --------------  ----- 
+ 0   Nr.                   800 non-null    int64 
+ 1   Typ 1                 800 non-null    object
+ 2   Typ 2                 414 non-null    object
+ 3   Gesamt                800 non-null    int64 
+ 4   KP                    800 non-null    int64 
+ 5   Angriff               800 non-null    int64 
+ 6   Verteidigung          800 non-null    int64 
+ 7   Spezial-Angriff       800 non-null    int64 
+ 8   Spezial-Verteidigung  800 non-null    int64 
+ 9   Initiative            800 non-null    int64 
+ 10  Generation            800 non-null    int64 
+ 11  Legendaer             800 non-null    object
+dtypes: int64(9), object(3)
+memory usage: 81.2+ KB
+```
+1. Python beginnt bei 0 zu zählen, `index_col=1` wählt also die zweite Spalte
+   `Name` als Zeilenindex. Von den 13 Spalten der Datei bleiben 12 übrig:
+   `(800, 12)`.
+2. Die Nummer ist nicht eindeutig. Venusaur und seine Mega-Entwicklung haben
+   beide die Nummer 3. Ein Zeilenindex soll aber jede Zeile eindeutig
+   kennzeichnen. Mit `index_col=0` würde `pokemon.loc[3]` zwei Zeilen liefern,
+   also einen DataFrame statt einer Series.
+3. Es sind $800 - 386 = 414$ non-null-Einträge.
+4. `.describe()` wertet die 9 Spalten mit Zahlen aus (Datentyp `int64`). Die
+   Spalten `Typ 1`, `Typ 2` und `Legendaer` enthalten Text (Datentyp `object`)
+   und werden ignoriert. Für die Spalte `Nr.` sind Mittelwert oder
+   Standardabweichung nicht sinnvoll, denn die Nummer kennzeichnet ein Pokémon
+   nur und ist keine Messgröße. Pandas erkennt das nicht, sondern wertet jede
+   Spalte mit Zahlen aus.
+````
+
+````{admonition} Aufgabe 4.2 (✩)
+:class: tip
+Gegeben ist folgender Code:
+
+```python
+import pandas as pd
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+
+a = pokemon['Angriff']
+b = pokemon.loc['Pikachu']
+c = pokemon.loc['Pikachu', 'Initiative']
+d = pokemon[['Angriff', 'Verteidigung']]
+e = pokemon.loc['Bulbasaur':'Charmander']
+```
+
+Notieren Sie Ihre Vermutung in einer Markdown-Zelle, bevor Sie den Code
+ausführen.
+
+1. Welchen Datentyp haben `a`, `b`, `c` und `d`: Series, DataFrame oder ein
+   einzelner Wert?
+2. Wie viele Einträge hat `b`?
+3. Wie viele Zeilen hat `e`? Schauen Sie dazu noch einmal auf den Dateianfang
+   in Aufgabe 4.1.
+4. Was passiert bei `pokemon['Pikachu']`?
+5. Führen Sie den Code aus und überprüfen Sie Ihre Vorhersagen.
+````
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+
+a = pokemon['Angriff']
+b = pokemon.loc['Pikachu']
+c = pokemon.loc['Pikachu', 'Initiative']
+d = pokemon[['Angriff', 'Verteidigung']]
+e = pokemon.loc['Bulbasaur':'Charmander']
+
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
+print(b.shape)
+print(e.shape)
+print(e.index)
+```
+Ausgabe:
+```
+<class 'pandas.core.series.Series'>
+<class 'pandas.core.series.Series'>
+<class 'numpy.int64'>
+<class 'pandas.core.frame.DataFrame'>
+(12,)
+(5, 12)
+Index(['Bulbasaur', 'Ivysaur', 'Venusaur', 'VenusaurMega Venusaur',
+       'Charmander'],
+      dtype='object', name='Name')
+```
+1. Eine einzelne Spalte (`a`) und eine einzelne Zeile (`b`) sind jeweils eine
+   Series. `c` ist der Inhalt einer einzelnen Zelle, hier die ganze Zahl 90.
+   Eine Liste von Spalten (`d`) liefert einen DataFrame.
+2. `b` enthält alle 12 Merkmale von Pikachu.
+3. `e` hat 5 Zeilen. Beim Slicing mit `.loc[]` ist das Ende eingeschlossen,
+   und die Mega-Entwicklung von Venusaur ist eine eigene Zeile.
+4. Eckige Klammern ohne `.loc` wählen Spalten aus. Eine Spalte `Pikachu` gibt
+   es nicht, daher bricht Python mit der Fehlermeldung `KeyError: 'Pikachu'`
+   ab.
+````
+
+````{admonition} Aufgabe 4.3 (✩)
+:class: tip
+Gegeben ist folgender Code:
+
+```python
+import pandas as pd
+import plotly.express as px
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+
+auswahl = ['KP', 'Angriff', 'Verteidigung', 'Spezial-Angriff',
+           'Spezial-Verteidigung', 'Initiative']
+diagramm = px.scatter_matrix(pokemon, dimensions=auswahl, color='Legendaer')
+diagramm.show()
+
+diagramm = px.scatter(pokemon, x='Angriff', y='Verteidigung',
+                      color='Gesamt', size='KP')
+diagramm.show()
+```
+
+Notieren Sie Ihre Vermutung in einer Markdown-Zelle, bevor Sie den Code
+ausführen.
+
+1. Aus wie vielen Einzeldiagrammen besteht die Scattermatrix? Wie viele
+   verschiedene Paare aus zwei unterschiedlichen Merkmalen zeigt sie?
+2. Die Scattermatrix ist nach `Legendaer` eingefärbt, der Scatterplot nach
+   `Gesamt`. Wie unterscheiden sich die beiden Farbdarstellungen und warum?
+3. Was bedeutet im Scatterplot ein besonders großer Kreis?
+4. Legendaere Pokémon gelten als besonders stark. In welchem Bereich der
+   Einzeldiagramme erwarten Sie die legendären Pokémon?
+5. Führen Sie den Code aus und überprüfen Sie Ihre Vorhersagen.
+````
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+Der Code ist vollständig gegeben, es gibt keine Textausgabe, sondern zwei
+Diagramme.
+
+1. Bei sechs Merkmalen entstehen $6 \cdot 6 = 36$ Einzeldiagramme. Sechs davon
+   liegen auf der Diagonalen und zeigen ein Merkmal gegen sich selbst. Die
+   übrigen 30 Diagramme zeigen jedes Paar zweimal, einmal mit vertauschten
+   Achsen. Es sind also $5 + 4 + 3 + 2 + 1 = 15$ verschiedene Paare.
+2. `Legendaer` ist ein kategoriales Merkmal mit den Werten ja und nein. Plotly
+   verwendet daher zwei einzelne Farben mit einer Legende. `Gesamt` ist ein
+   numerisches Merkmal, daher erscheint eine kontinuierliche Farbskala mit
+   Farbbalken.
+3. Die Größe der Kreise ist an die Spalte `KP` gekoppelt. Ein großer Kreis
+   steht für ein Pokémon mit vielen Kraftpunkten.
+4. Die legendären Pokémon liegen in den meisten Einzeldiagrammen rechts oben,
+   sind also in beiden Merkmalen stark. Es gibt aber Ausnahmen in beide
+   Richtungen. Im Scatterplot fällt zum Beispiel ganz links oben ein Pokémon
+   mit Angriff 10 und Verteidigung 230 auf (Shuckle), das nicht legendär ist.
+````
+
+```{admonition} Aufgabe 4.4 (✩✩)
+:class: tip
+Wir bleiben bei den Pokémon. Lesen Sie die Datei `pokemon_DE.csv` mit dem
+Namen als Zeilenindex ein.
+
+1. Die Spalte `Gesamt` soll die Summe der sechs Werte KP, Angriff,
+   Verteidigung, Spezial-Angriff, Spezial-Verteidigung und Initiative sein.
+   Prüfen Sie das: Erweitern Sie die Tabelle um eine Spalte `Kontrolle` mit
+   der Differenz und lassen Sie sich die statistischen Kennzahlen dieser
+   Spalte ausgeben.
+2. Vergleichen Sie die drei Start-Pokémon Bulbasaur, Charmander und Squirtle.
+   Wählen Sie dazu gleichzeitig diese drei Zeilen und die Spalten `Typ 1`,
+   `Gesamt`, `Angriff`, `Verteidigung` und `Initiative` aus. Welches der drei
+   Pokémon ist am schnellsten, hat also die höchste Initiative?
+3. Erstellen Sie einen Scatterplot mit dem Angriff auf der x-Achse und der
+   Verteidigung auf der y-Achse. Färben Sie die Punkte danach ein, ob ein
+   Pokémon legendär ist, und setzen Sie einen Titel.
+4. Werten Sie den Scatterplot nach Beobachtung, Deutung und Einschränkung aus.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+import plotly.express as px
+
+pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
+
+# Kontrollspalte: Gesamt minus Summe der sechs Werte
+summe = pokemon['KP'] + pokemon['Angriff'] + pokemon['Verteidigung']
+summe = summe + pokemon['Spezial-Angriff'] + pokemon['Spezial-Verteidigung']
+summe = summe + pokemon['Initiative']
+pokemon['Kontrolle'] = pokemon['Gesamt'] - summe
+print(pokemon['Kontrolle'].describe())
+
+# Start-Pokémon vergleichen
+starter = pokemon.loc[['Bulbasaur', 'Charmander', 'Squirtle'],
+                      ['Typ 1', 'Gesamt', 'Angriff', 'Verteidigung', 'Initiative']]
+print(starter)
+
+# Scatterplot
+diagramm = px.scatter(pokemon, x='Angriff', y='Verteidigung', color='Legendaer',
+                      title='Angriff und Verteidigung von 800 Pokémon')
+diagramm.show()
+```
+Ausgabe:
+```
+count    800.0
+mean       0.0
+std        0.0
+min        0.0
+25%        0.0
+50%        0.0
+75%        0.0
+max        0.0
+Name: Kontrolle, dtype: float64
+              Typ 1  Gesamt  Angriff  Verteidigung  Initiative
+Name                                                          
+Bulbasaur   Pflanze     318       49            49          45
+Charmander    Feuer     309       52            43          65
+Squirtle     Wasser     314       48            65          43
+```
+1. Alle Kennzahlen der Kontrollspalte sind 0. Die Spalte `Gesamt` ist also bei
+   allen 800 Pokémon exakt die Summe der sechs Werte.
+2. Charmander ist mit einer Initiative von 65 am schnellsten. Dafür hat
+   Squirtle die höchste Verteidigung und Bulbasaur den höchsten Gesamtwert.
+3. Siehe Code oben.
+4. *Beobachtung*: Die Punkte liegen tendenziell von links unten nach rechts
+   oben. Die legendären Pokémon finden sich überwiegend im rechten oberen
+   Bereich. Es gibt Ausreißer wie Shuckle mit Angriff 10 und Verteidigung 230.
+
+   *Deutung*: Pokémon, die einen hohen Angriff haben, haben oft auch eine hohe
+   Verteidigung. Legendaere Pokémon sind insgesamt stärker gestaltet.
+
+   *Einschränkung*: Ein hoher Angriff verursacht keine hohe Verteidigung.
+   Beide Werte hängen von einer dritten Größe ab: Weiterentwickelte Pokémon
+   haben in fast allen Werten höhere Zahlen als ihre Vorstufen. Außerdem
+   wurden die Werte von den Spieleentwicklern festgelegt und nicht gemessen.
+````
+
+```{admonition} Aufgabe 4.5 (✩✩)
+:class: tip
+Die Datenreihe der Wetterstation Mannheim beginnt im Jahr 1781 und gehört
+damit zu den ältesten der Welt. Die Datei `wetter_mannheim_2025.csv` enthält
+die Tageswerte des Jahres 2025. Die Spalte `Jahreszeit` haben wir ergänzt
+(meteorologische Jahreszeiten, z. B. Winter = Dezember bis Februar).
+
+1. Lesen Sie die Datei mit dem Datum als Zeilenindex ein. Wie viele Tage
+   enthält der Datensatz? In welchen Spalten fehlen Werte und wie viele?
+2. Berechnen Sie die durchschnittliche Mitteltemperatur im Januar und im Juli.
+   Wählen Sie dazu jeden Monat als zusammenhängenden Bereich aus.
+3. Erweitern Sie die Tabelle um eine Spalte `Tagesspanne (C)`, die Differenz
+   aus Höchst- und Tiefsttemperatur.
+4. Erstellen Sie einen Scatterplot mit der Sonnenscheindauer auf der x-Achse
+   und der Tagesspanne auf der y-Achse. Färben Sie die Punkte nach der
+   Jahreszeit ein und setzen Sie einen Titel.
+5. Werten Sie den Scatterplot nach Beobachtung, Deutung und Einschränkung aus.
+   Gibt es ein Merkmal im Datensatz, das beide Größen gleichzeitig
+   beeinflussen könnte?
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+import plotly.express as px
+
+wetter = pd.read_csv('wetter_mannheim_2025.csv', index_col=0)
+wetter.info()
+
+# Durchschnittliche Mitteltemperatur im Januar und im Juli
+januar = wetter.loc['2025-01-01':'2025-01-31', 'Mitteltemperatur (C)'].mean()
+juli = wetter.loc['2025-07-01':'2025-07-31', 'Mitteltemperatur (C)'].mean()
+print(f'Januar: {januar:.1f} °C')
+print(f'Juli:   {juli:.1f} °C')
+
+# Tagesspanne als neue Spalte
+wetter['Tagesspanne (C)'] = wetter['Hoechsttemperatur (C)'] - wetter['Tiefsttemperatur (C)']
+
+# Scatterplot
+diagramm = px.scatter(wetter, x='Sonnenscheindauer (h)', y='Tagesspanne (C)',
+                      color='Jahreszeit',
+                      title='Sonnenscheindauer und Tagesspanne in Mannheim 2025')
+diagramm.show()
+```
+Ausgabe:
+```
+<class 'pandas.core.frame.DataFrame'>
+Index: 365 entries, 2025-01-01 to 2025-12-31
+Data columns (total 10 columns):
+ #   Column                     Non-Null Count  Dtype  
+---  ------                     --------------  -----  
+ 0   Mitteltemperatur (C)       365 non-null    float64
+ 1   Hoechsttemperatur (C)      365 non-null    float64
+ 2   Tiefsttemperatur (C)       365 non-null    float64
+ 3   Niederschlag (mm)          365 non-null    float64
+ 4   Sonnenscheindauer (h)      365 non-null    float64
+ 5   Bewoelkung (Achtel)        362 non-null    float64
+ 6   Luftfeuchte (%)            362 non-null    float64
+ 7   Windgeschwindigkeit (m/s)  362 non-null    float64
+ 8   Windspitze (m/s)           363 non-null    float64
+ 9   Jahreszeit                 365 non-null    object 
+dtypes: float64(9), object(1)
+memory usage: 31.4+ KB
+Januar: 3.5 °C
+Juli:   20.6 °C
+```
+1. Der Datensatz enthält 365 Tage. Bei Bewölkung, Luftfeuchte und
+   Windgeschwindigkeit fehlen je 3 Werte, bei der Windspitze 2 Werte.
+2. Im Januar lag die Mitteltemperatur im Durchschnitt bei 3.5 °C, im Juli bei
+   20.6 °C. Da die Datumsangaben im Index sortiert sind, funktioniert das
+   Slicing auch mit Text wie `'2025-07-01'`.
+3. Siehe Code oben.
+4. Siehe Code oben.
+5. *Beobachtung*: Die Punkte steigen deutlich von links unten nach rechts
+   oben. Tage mit viel Sonne haben eine große Tagesspanne, trübe Tage eine
+   kleine. Sommer und Frühling liegen eher rechts oben, Winter und Herbst eher
+   links unten.
+
+   *Deutung*: Die Sonne erwärmt die Luft tagsüber stark. In klaren Nächten
+   strahlt der Boden Wärme ab und es kühlt stark ab. Beides vergrößert die
+   Spanne zwischen Höchst- und Tiefsttemperatur.
+
+   *Einschränkung*: Die Sonnenscheindauer selbst sorgt nicht für die kalte
+   Nacht. Die Bewölkung beeinflusst beide Größen gleichzeitig: Wenige Wolken
+   bedeuten viel Sonne am Tag und starke Abkühlung in der Nacht. Auch die
+   Jahreszeit spielt mit, weil Sommertage länger sind. Zudem stammen die Daten
+   von einer einzigen Station aus einem einzigen Jahr.
+````
+
+```{admonition} Aufgabe 4.6 (✩✩)
+:class: tip
+Die Datei `stromverbrauch_hessen.csv` enthält den Stromverbrauch in Hessen
+von 2000 bis 2021 nach Verbrauchergruppen in Gigawattstunden (GWh).
+
+1. Schauen Sie sich die Datei zunächst im Texteditor an. In welcher Zeile
+   beginnen die Daten? Lesen Sie die Datei mit dem Jahr als Zeilenindex ein
+   und überspringen Sie dabei die Beschreibungszeilen am Dateianfang. Schlagen
+   Sie dazu in der Dokumentation von `read_csv()` nach, mit welchem Argument
+   sich Zeilen überspringen lassen.
+2. Prüfen Sie mit einer Kontrollspalte, ob die Spalte `insgesamt` die Summe
+   der drei Verbrauchergruppen ist. Wie erklären Sie die Abweichungen?
+3. Erweitern Sie die Tabelle um eine Spalte `Anteil Industrie (%)` und lassen
+   Sie sich diese Spalte für die Jahre 2007 bis 2010 anzeigen.
+4. Erstellen Sie einen Scatterplot mit dem Jahr auf der x-Achse und dem
+   Stromverbrauch der Industrie auf der y-Achse. Hinweis: Das Jahr ist der
+   Zeilenindex und keine Spalte. Übergeben Sie für die x-Achse deshalb wie bei
+   `text=` in Kapitel 4.3 den Zeilenindex selbst. Werten Sie den Scatterplot
+   nach Beobachtung, Deutung und Einschränkung aus.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+import plotly.express as px
+
+# Die ersten vier Zeilen enthalten eine Beschreibung
+strom = pd.read_csv('stromverbrauch_hessen.csv', skiprows=4, index_col=0)
+
+# Kontrollspalte
+haushalte = 'Haushalte, Gewerbe, Handel, Dienstleistungen und uebrige Verbraucher'
+strom['Differenz'] = strom['insgesamt'] - strom['Industrie'] - strom['Verkehr'] - strom[haushalte]
+print(strom['Differenz'].describe())
+
+# Anteil der Industrie am Gesamtverbrauch
+strom['Anteil Industrie (%)'] = strom['Industrie'] / strom['insgesamt'] * 100
+print(strom.loc[2007:2010, 'Anteil Industrie (%)'])
+
+# Scatterplot mit dem Zeilenindex auf der x-Achse
+diagramm = px.scatter(strom, x=strom.index, y='Industrie',
+                      title='Stromverbrauch der Industrie in Hessen (GWh)')
+diagramm.show()
+```
+Ausgabe:
+```
+count    22.000000
+mean      0.045455
+std       0.485727
+min      -1.000000
+25%       0.000000
+50%       0.000000
+75%       0.000000
+max       1.000000
+Name: Differenz, dtype: float64
+Jahr
+2007    31.565770
+2008    30.927808
+2009    27.192481
+2010    30.391841
+Name: Anteil Industrie (%), dtype: float64
+```
+1. Die Daten beginnen in Zeile 5 mit der Kopfzeile `Jahr,insgesamt,...`. Die
+   vier Zeilen davor überspringt das Argument `skiprows=4`.
+2. Die Differenz liegt zwischen −1 und 1 GWh. Bei Werten von über 30000 GWh
+   handelt es sich um Rundungsdifferenzen. Die Daten sind also stimmig.
+3. In den Jahren 2007, 2008 und 2010 liegt der Anteil der Industrie bei rund
+   30 bis 32 %. Im Jahr 2009 sinkt er auf rund 27 %.
+4. *Beobachtung*: Der Stromverbrauch der Industrie liegt von 2000 bis 2008
+   recht stabil zwischen rund 11400 und 12000 GWh. 2009 bricht er auf knapp
+   10000 GWh ein und erholt sich 2010 wieder. Ab 2019 sinkt er erneut, mit dem
+   Tiefpunkt 2020 bei rund 9800 GWh.
+
+   *Deutung*: Die beiden Einbrüche fallen zeitlich mit der Wirtschaftskrise
+   2008/2009 und mit der Corona-Pandemie 2020 zusammen. Vermutlich hat die
+   Industrie in diesen Jahren weniger produziert und daher weniger Strom
+   verbraucht.
+
+   *Einschränkung*: Dass zwei Ereignisse zeitlich zusammenfallen, beweist noch
+   keinen Zusammenhang von Ursache und Wirkung. Um die Vermutung zu prüfen,
+   bräuchten wir weitere Daten, zum Beispiel zur Industrieproduktion in Hessen.
+````
+
+````{admonition} Aufgabe 4.7 (✩✩✩) Mini-Projekt: Predictive Maintenance
+:class: tip
+Bei der vorausschauenden Wartung (Predictive Maintenance) werten wir
+Maschinendaten aus, um Ausfälle zu erkennen, bevor sie passieren. Die Datei
+`ai4i2020_DE.csv` enthält 10000 Bearbeitungsprozesse einer Werkzeugmaschine.
+Die Daten sind synthetisch, also von einem Programm erzeugt, das realen
+Industriedaten nachempfunden ist. Jede Zeile beschreibt einen Prozess mit
+folgenden Merkmalen:
+
+* `Qualitaet`: Qualitätsvariante des Produkts (L, M oder H für niedrig, mittel
+  oder hoch)
+* `Lufttemperatur (K)` und `Prozesstemperatur (K)` in Kelvin
+* `Drehzahl (1/min)` und `Drehmoment (Nm)` des Antriebs
+* `Werkzeugverschleiss (min)`: bisherige Einsatzzeit des Werkzeugs in Minuten
+* `Ausfall`: 1, wenn die Maschine ausgefallen ist, sonst 0. Die fünf Spalten
+  danach geben an, welche Art von Ausfall vorlag.
+
+**Teil 1:** Lesen Sie die Datei mit der Spalte `Nr.` als Zeilenindex ein und
+verschaffen Sie sich einen Überblick. Fehlen Werte? Wie viel Prozent der
+Prozesse endeten mit einem Ausfall? Hinweis: Was bedeutet der Mittelwert einer
+Spalte, die nur die Werte 0 und 1 enthält?
+
+**Teil 2:** Erzeugen Sie eine Scattermatrix der fünf Prozessgrößen
+Lufttemperatur, Prozesstemperatur, Drehzahl, Drehmoment und
+Werkzeugverschleiß. Färben Sie die Punkte nach `Ausfall` ein. Welche zwei
+Merkmalspaare zeigen einen deutlichen Zusammenhang? In welchen Bereichen
+häufen sich die Ausfälle?
+
+**Teil 3:** Die mechanische Leistung des Antriebs ist $P = M \cdot \omega$ mit
+dem Drehmoment $M$ in Nm und der Winkelgeschwindigkeit
+$\omega = 2 \pi \cdot n / 60$ in 1/s, wobei $n$ die Drehzahl in 1/min ist.
+Erweitern Sie die Tabelle um eine Spalte `Leistung (W)` (verwenden Sie
+$\pi \approx 3.1416$) und lassen Sie sich die statistischen Kennzahlen der
+Leistung ausgeben. Erstellen Sie dann einen Scatterplot mit der Drehzahl auf
+der x-Achse und der Leistung auf der y-Achse, eingefärbt nach `Ausfall`.
+Unterhalb welcher und oberhalb welcher Leistung fällt die Maschine immer aus?
+Schauen Sie sich zur Kontrolle die Prozesse Nr. 51 und Nr. 70 an.
+
+**Abschlussfrage:** Die Daten sind synthetisch. Was bedeutet das für die
+Erkenntnisse aus Teil 3? Was wäre bei echten Maschinendaten anders?
+````
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+import plotly.express as px
+
+# Teil 1: Import und Überblick
+maschinendaten = pd.read_csv('ai4i2020_DE.csv', index_col=0)
+maschinendaten.info()
+
+ausfallquote = maschinendaten['Ausfall'].mean() * 100
+print(f'Anteil Prozesse mit Ausfall: {ausfallquote:.2f} %')
+
+# Teil 2: Scattermatrix der Prozessgrößen
+auswahl = ['Lufttemperatur (K)', 'Prozesstemperatur (K)', 'Drehzahl (1/min)',
+           'Drehmoment (Nm)', 'Werkzeugverschleiss (min)']
+diagramm = px.scatter_matrix(maschinendaten, dimensions=auswahl, color='Ausfall')
+diagramm.show()
+
+# Teil 3: Leistung P = M * 2 * pi * n / 60
+maschinendaten['Leistung (W)'] = maschinendaten['Drehmoment (Nm)'] * 2 * 3.1416 * maschinendaten['Drehzahl (1/min)'] / 60
+print(maschinendaten['Leistung (W)'].describe())
+
+diagramm = px.scatter(maschinendaten, x='Drehzahl (1/min)', y='Leistung (W)',
+                      color='Ausfall',
+                      title='Leistung und Ausfälle von 10000 Bearbeitungsprozessen')
+diagramm.show()
+
+print(maschinendaten.loc[[51, 70], ['Drehzahl (1/min)', 'Drehmoment (Nm)',
+                                    'Leistung (W)', 'Ausfall Leistung']])
+```
+Ausgabe:
+```
+<class 'pandas.core.frame.DataFrame'>
+Index: 10000 entries, 1 to 10000
+Data columns (total 13 columns):
+ #   Column                     Non-Null Count  Dtype  
+---  ------                     --------------  -----  
+ 0   Produkt-ID                 10000 non-null  object 
+ 1   Qualitaet                  10000 non-null  object 
+ 2   Lufttemperatur (K)         10000 non-null  float64
+ 3   Prozesstemperatur (K)      10000 non-null  float64
+ 4   Drehzahl (1/min)           10000 non-null  int64  
+ 5   Drehmoment (Nm)            10000 non-null  float64
+ 6   Werkzeugverschleiss (min)  10000 non-null  int64  
+ 7   Ausfall                    10000 non-null  int64  
+ 8   Ausfall Werkzeug           10000 non-null  int64  
+ 9   Ausfall Waermeabfuhr       10000 non-null  int64  
+ 10  Ausfall Leistung           10000 non-null  int64  
+ 11  Ausfall Ueberlast          10000 non-null  int64  
+ 12  Ausfall zufaellig          10000 non-null  int64  
+dtypes: float64(3), int64(8), object(2)
+memory usage: 1.1+ MB
+Anteil Prozesse mit Ausfall: 3.39 %
+count    10000.000000
+mean      6279.759638
+std       1067.420791
+min       1148.443296
+25%       5561.197488
+50%       6271.042008
+75%       7003.019100
+max      10469.947488
+Name: Leistung (W), dtype: float64
+     Drehzahl (1/min)  Drehmoment (Nm)  Leistung (W)  Ausfall Leistung
+Nr.                                                                   
+51               2861              4.6   1378.178032                 1
+70               1410             65.7   9700.946640                 1
+```
+**Teil 1:** Es fehlen keine Werte. Der Mittelwert einer Spalte mit den Werten
+0 und 1 ist der Anteil der Einsen. Bei 3.39 % der 10000 Prozesse, also 339
+Prozessen, ist die Maschine ausgefallen. Ausfälle sind selten.
+
+**Teil 2:** Deutliche Zusammenhänge zeigen zwei Paare. Die Prozesstemperatur
+steigt mit der Lufttemperatur, die Punkte liegen eng um eine steigende Gerade.
+Drehzahl und Drehmoment bilden eine fallende Kurve: Bei hoher Drehzahl ist das
+Drehmoment klein und umgekehrt. Die Ausfälle häufen sich bei hohem
+Werkzeugverschleiß von über 200 min, bei sehr hohem Drehmoment und am Rand der
+Drehzahl-Drehmoment-Kurve. Da `Ausfall` numerisch ist, zeigt Plotly eine
+kontinuierliche Farbskala, obwohl es nur die Werte 0 und 1 gibt.
+
+**Teil 3:** Die Leistung liegt zwischen rund 1150 W und 10470 W, im Mittel bei
+rund 6280 W. Im Scatterplot sind alle Prozesse mit einer Leistung unter etwa
+3500 W und über etwa 9000 W ausgefallen. Prozess Nr. 51 läuft mit hoher
+Drehzahl, aber sehr kleinem Drehmoment und erreicht nur rund 1380 W. Prozess
+Nr. 70 erreicht mit hohem Drehmoment rund 9700 W. Beide sind als
+Leistungsausfall markiert.
+
+**Abschlussfrage:** Laut Dokumentation des Datensatzes erzeugt das Programm
+einen Leistungsausfall genau dann, wenn die Leistung unter 3500 W oder über
+9000 W liegt. Wir haben also die Regel wiederentdeckt, die bei der Erzeugung
+der Daten eingebaut wurde. Über eine echte Maschine sagt das nur so viel aus,
+wie diese Regel der Wirklichkeit entspricht. Bei echten Maschinendaten wären
+die Grenzen unscharf, weil Messfehler, unterschiedliche Werkzeuge und
+Umgebungsbedingungen hinzukommen. Außerdem wüssten wir nicht, welche Regel
+hinter den Ausfällen steckt. Genau diese Regel aus den Daten zu lernen, ist
+die Aufgabe des maschinellen Lernens.
+````
