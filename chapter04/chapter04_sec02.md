@@ -62,7 +62,9 @@ print('\nAnzeige der Merkmale der ersten fünf Autos:')
 tabelle.head()
 ```
 
-Die Farben der 10 Autos können wir folgendermaßen aus der Tabelle auswählen:
+Dazu schreiben wir hinter den Namen des DataFrames eckige Klammern mit dem
+Spaltennamen als String, also `tabelle['Spaltenname']`. Die Farben der 10 Autos
+können wir folgendermaßen aus der Tabelle auswählen:
 
 ```{code-cell} python
 farbe = tabelle['Farbe']
@@ -147,7 +149,8 @@ Natürlich kann es auch Gründe geben, sich einen einzelnen Datenpunkt mit allen
 Merkmalen herauszugreifen. Oder anders ausgedrückt, vielleicht möchte man in der
 Tabelle eine einzelne **Zeile** auswählen. Dazu gibt es den Indexer `.loc`.
 Dabei steht "loc" für "location". Danach werden wieder eckige Klammern benutzt,
-wobei diesmal der Zeilenindex und nicht der Spaltenname verwendet wird.
+wobei diesmal der Zeilenindex und nicht der Spaltenname verwendet wird, also
+`tabelle.loc['Zeilenindex']`.
 
 Der folgende Code-Schnipsel speichert die Zeile des 4. Autos (= BMW Nr. 1) in
 der Variable `viertes_auto` ab. Wir ermitteln gleich den Datentyp dazu.
@@ -170,7 +173,8 @@ Es kann auch vorkommen, dass man gezielt auf eine einzelne **Zelle** zugreifen
 möchte. Auch dazu benutzen wir den Indexer `.loc[]`. Für eine einzelne Zelle
 müssen wir angeben, in welcher Zeile und in welcher Spalte sich diese Zelle
 befindet. Der Indexer `.loc[]` ermöglicht auch zwei Angaben, also Zeile und
-Spalte, indem beide Werte durch ein Komma getrennt werden.
+Spalte, indem beide Werte durch ein Komma getrennt werden:
+`tabelle.loc['Zeilenindex', 'Spaltenname']`.
 
 Wollen wir beispielsweise wissen, wann der Audi Nr. 3 zum ersten Mal zugelassen
 wurde, so gehen wir folgendermaßen vor:
@@ -255,7 +259,8 @@ Wenn Spalten oder Zeilen aufeinanderfolgen, also zusammenhängend sind, brauchen
 wir nicht alle Indizes in die Liste zu schreiben. Es genügt, den ersten Index
 und den letzten Index zu nehmen und dazwischen einen Doppelpunkt zu setzen.
 Diese Art, Zeilen oder Spalten auszuwählen, wird in der Informatik als
-**Slicing** bezeichnet. Da die Autos in diesem Datensatz nach Marke sortiert
+**Slicing** bezeichnet. Für Zeilen schreiben wir `tabelle.loc['Start':'Ende']`.
+Da die Autos in diesem Datensatz nach Marke sortiert
 sind, können wir alle Autos der Marke Citroën per Slicing extrahieren:
 
 ```{code-cell} python

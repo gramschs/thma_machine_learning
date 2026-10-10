@@ -308,7 +308,8 @@ Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
 Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
 
 1. Lesen Sie die Datei ein und legen Sie die Liste
-   `auswahl = ['Infill (%)', 'Bauteilvolumen (cm3)', 'Druckzeit (min)', 'Zugfestigkeit (MPa)']`
+   `auswahl = ['Infill (%)', 'Bauteilvolumen (cm3)', 'Druckzeit (min)',
+   'Zugfestigkeit (MPa)']`
    an.
 2. Erzeugen Sie eine Scattermatrix mit `dimensions=auswahl`. Wie viele
    Diagramme werden insgesamt angezeigt?
@@ -327,4 +328,3 @@ Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
 ```{code-cell}
 # Code-Zelle
 ```
-
