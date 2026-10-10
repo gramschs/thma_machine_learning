@@ -1,3 +1,13 @@
+---
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+downloads:
+  - file: chapter12_sec03.md
+    title: chapter12_sec03.md
+---
+
 # 12.3 Zustandsüberwachung und Prognose
 
 ```{admonition} Warnung

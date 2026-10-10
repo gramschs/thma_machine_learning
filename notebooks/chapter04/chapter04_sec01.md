@@ -3,15 +3,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-downloads:
-  - file: ../notebooks/chapter04/chapter04_sec01.ipynb
-    title: chapter04_sec01.ipynb
-  - file: autoscout24_xxs.csv
-    title: autoscout24_xxs.csv
-  - file: 3ddruck_xxs.csv
-    title: 3ddruck_xxs.csv
-  - file: chapter04_sec01.md
-    title: chapter04_sec01.md
 ---
 
 # 4.1 Datenstruktur DataFrame
@@ -21,18 +12,6 @@ Verwaltung von Datenreihen die Datenstruktur Series zur Verfügung, die wir im
 letzten Kapitel kennengelernt haben. In diesem Kapitel lernen wir die
 Datenstruktur **DataFrame** kennen, die die Verwaltung von tabellarischen Daten
 ermöglicht.
-
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie kennen die Datenstruktur **DataFrame**.
-* [ ] Sie kennen das **csv-Dateiformat**.
-* [ ] Sie können eine csv-Datei mit **read_csv()** einlesen.
-* [ ] Sie können sich mit **.shape**, **.head()**, **.info()** und
-  **.describe()** einen ersten Überblick über die importierten Daten
-  verschaffen.
-```
 
 ## Was ist ein DataFrame?
 
@@ -44,45 +23,13 @@ Spaltenlabels beschriftet. Typischerweise werden die Daten in der Tabelle
 zeilenweise angeordnet. Damit ist gemeint, dass jede Zeile einen Datenpunkt
 enthält und die Spalten die Merkmale speichern.
 
-```{figure} pics/screenshot_libreoffice.png
----
-name: chap04_sec01_fig01
----
+![screenshot libreoffice](pics/screenshot_libreoffice.png)
+
 Screenshot einer Tabellenkalkulationssoftware: die Zeilen sind mit Zahlen
 indiziert, die Spalten mit Großbuchstaben beschriftet. Jede Zeile enthält einen
 Datenpunkt mit der Beschreibung der Merkmale eines Autos. (Quelle: eigene
 Abbildung; Lizenz [CC BY-SA
 4.0](https://creativecommons.org/licenses/by-sa/4.0))
-```
-
-```{admonition} Mini-Übung
-:class: tip
-Betrachten Sie die folgende kleine Tabelle mit drei 3D-Druckversuchen:
-
-| | Material | Zugfestigkeit (MPa) |
-|---|---|---|
-| 0 | PLA | 48.3 |
-| 1 | PETG | 45.0 |
-| 2 | ABS | 24.5 |
-
-1. Was stellt in dieser Tabelle jede Zeile dar, was jede Spalte?
-2. Vergleichen Sie mit der Abbildung oben (Screenshot der Tabellenkalkulation):
-   Dort sind die Zeilen mit den Zahlen 1 bis 11 indiziert und die Spalten mit
-   Buchstaben beschriftet. Wie sind hier die Zeilen indiziert und die Spalten
-   beschriftet?
-3. Stellen Sie sich einen vierten Druckversuch mit ASA (38.4 MPa) vor. Welchen
-   Index würde diese Zeile bekommen?
-```
-
-```{admonition} Lösung
-:class: tip
-:class: dropdown
-1. Jede Zeile entspricht einem Druckversuch, also einem Datenpunkt. Jede Spalte
-   entspricht einem Merkmal dieses Druckversuchs (Material bzw. Zugfestigkeit).
-2. Die Zeilen sind mit 0, 1, 2 durchnummeriert und die Spalten sind mit den
-   Labels Material bzw. Zugfestigkeit (MPa) beschriftet.
-3. Der vierte Druckversuch würde den Index 3 bekommen.
-```
 
 Ein DataFrame kann direkt über mehrere Pandas-Series-Objekte oder verschachtelte
 Listen erzeugt werden. Da dies in der Praxis nur selten vorkommt und nur für sehr
@@ -143,7 +90,7 @@ Führen Sie dann anschließend die folgende Code-Zelle aus.
 ```{code-cell} python
 import pandas as pd
 
-tabelle = pd.read_csv('autoscout24_xxs.csv')
+tabelle = # TODO: ???  (Datei autoscout24_xxs.csv einlesen)
 ```
 
 Es erscheint keine Fehlermeldung, aber den Inhalt der geladenen Datei sehen wir
@@ -156,7 +103,7 @@ Wie viele Datenpunkte haben wir denn importiert? Das Attribut `.shape` verrät
 die Anzahl der Zeilen und Spalten in Form eines Tupels.
 
 ```{code-cell}
-print(tabelle.shape)
+# TODO: ???  (Anzahl der Zeilen und Spalten ausgeben)
 ```
 
 Wir haben 10 Zeilen und 15 Spalten (siehe auch [Dokumentation →
@@ -195,7 +142,7 @@ also setzen wir `index_col=0`. Damit ändern wir die Anzahl der Spalten von 15
 auf 14, da die ID-Spalte nun der Index ist und nicht mehr mitgezählt wird.
 
 ```{code-cell} python
-tabelle = pd.read_csv('autoscout24_xxs.csv', index_col=0)
+tabelle = # TODO: ???  (erneut einlesen, erste Spalte als Zeilenindex)
 
 print(f'Anzahl Spalten: {tabelle.shape[1]}')
 tabelle.head(10)
@@ -207,7 +154,7 @@ sind, zeigen uns `.shape` und `.head()` nicht. Dafür stellt Pandas die Methode
 `.info()` zur Verfügung. Probieren wir es einfach aus.
 
 ```{code-cell} python
-tabelle.info()
+# TODO: ???  (Überblick über Datentypen und fehlende Werte anzeigen)
 ```
 
 Mit `.info()` erhalten wir den Datentyp der Variablen `tabelle` (hier ein
@@ -249,8 +196,35 @@ hier auch auf den Datentyp reagiert und nur für die numerischen Werte (Integer
 oder Float) die statistischen Kennzahlen ermittelt. Spalten wie beispielsweise
 Farbe oder Getriebe wurden ignoriert.
 
-```{admonition} Mini-Übung
-:class: tip
+## Zusammenfassung und Ausblick
+
+Mit Hilfe der Datenstruktur DataFrame können tabellarische Daten effizient in
+Python verwaltet werden. In den nächsten Kapiteln werden wir uns damit
+beschäftigen, auf einzelne Spalten oder Zeilen zuzugreifen und die Datenpunkte
+der Tabelle als sogenannten Scatterplot zu visualisieren.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Betrachten Sie die folgende kleine Tabelle mit drei 3D-Druckversuchen:
+
+| | Material | Zugfestigkeit (MPa) |
+|---|---|---|
+| 0 | PLA | 48.3 |
+| 1 | PETG | 45.0 |
+| 2 | ABS | 24.5 |
+
+1. Was stellt in dieser Tabelle jede Zeile dar, was jede Spalte?
+2. Vergleichen Sie mit der Abbildung oben (Screenshot der Tabellenkalkulation):
+   Dort sind die Zeilen mit den Zahlen 1 bis 11 indiziert und die Spalten mit
+   Buchstaben beschriftet. Wie sind hier die Zeilen indiziert und die Spalten
+   beschriftet?
+3. Stellen Sie sich einen vierten Druckversuch mit ASA (38.4 MPa) vor. Welchen
+   Index würde diese Zeile bekommen?
+
+### Mini-Übung 2
+
 Verwenden Sie den Datensatz `3ddruck_xxs.csv`, der Angaben zu 18 3D-Druckversuchen
 enthält.
 
@@ -261,47 +235,8 @@ enthält.
    Druckversuchen fehlt der Eintrag?
 4. Wie hoch ist die durchschnittliche Zugfestigkeit über alle Druckversuche?
    Wie groß ist die Spannweite (Maximum minus Minimum) der Druckzeit?
-```
 
 ```{code-cell}
 # Code-Zelle
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-import pandas as pd
-
-# Einlesen der csv-Datei mit der Spalte Nummer als Zeilenindex
-druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
-
-# Anzahl und Inhalt
-print(druckversuche.shape)
-druckversuche.head()
-
-# Fehlende Einträge und Datentypen
-druckversuche.info()
-
-# Statistische Kennzahlen
-druckversuche.describe()
-```
-
-1. Ein Blick auf die csv-Daten zeigt, dass die Spalte "Nummer" die erste Spalte
-   ist und daher `index_col=0` gesetzt werden muss.
-2. Der Datensatz enthält 18 Zeilen und 15 Spalten.
-3. Die Spalte `Bemerkungen` hat nur 16 von 18 non-null-Einträgen, bei 2
-   Druckversuchen fehlt hier also der Eintrag. Alle anderen Spalten sind
-   vollständig.
-4. Wir ermitteln die statistischen Kennzahlen und lesen dann ab. Die
-   durchschnittliche Zugfestigkeit liegt bei rund 33.7 MPa. Die Druckzeit reicht
-   von 60 bis 1030 Minuten, die Spannweite beträgt also 970 Minuten.
-````
-
-## Zusammenfassung und Ausblick
-
-Mit Hilfe der Datenstruktur DataFrame können tabellarische Daten effizient in
-Python verwaltet werden. In den nächsten Kapiteln werden wir uns damit
-beschäftigen, auf einzelne Spalten oder Zeilen zuzugreifen und die Datenpunkte
-der Tabelle als sogenannten Scatterplot zu visualisieren.

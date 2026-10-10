@@ -43,7 +43,7 @@ Der Preis des dritten Autos lässt sich also auf zwei Arten ermitteln. Einmal
 über das Label:
 
 ```{code-cell} python
-preis_drittes_auto = # TODO: ???  (Zugriff über das Label mit .loc[])
+preis_drittes_auto = # TODO: ???  (Preis des dritten Autos über das Label abfragen)
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -51,7 +51,7 @@ Und einmal über die Position (zur Erinnerung: Python zählt ab 0, das dritte
 Auto steht also an Position 2):
 
 ```{code-cell} python
-preis_drittes_auto = # TODO: ???  (Zugriff über die Position mit .iloc[])
+preis_drittes_auto = # TODO: ???  (Preis des dritten Autos über die Position abfragen)
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
 
@@ -70,7 +70,7 @@ Wir erhalten vier Autos, denn `BMW Nr. 1` ist in der Auswahl enthalten, also
 erhalten. Die vier Autos stehen an den Positionen 0, 1, 2 und 3:
 
 ```{code-cell} python
-teilbereich = # TODO: ???  (Positionen 0 bis 3 mit .iloc[] auswählen)
+teilbereich = # TODO: ???  (Positionen 0 bis 3 auswählen)
 print(teilbereich)
 ```
 

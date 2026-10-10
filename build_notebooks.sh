@@ -8,9 +8,11 @@
 # convert_myst_to_notebook.py (entfernt Lernziele und Lösungen, wandelt
 # Übungs-/Aufgaben-Admonitions in einfache Überschriften um, sammelt
 # Mini-Übungen am Ende) und kopiert die zugehörigen Bilder (pics/) und
-# Datensätze (*.csv) mit. Die bereinigten .md-Dateien müssen noch von Hand um
-# die Code-Along-Lücken ergänzt werden, bevor sie mit jupytext (--to ipynb,
-# dann --set-formats ipynb) in .ipynb umgewandelt werden.
+# Datensätze (*.csv) mit. In den Originalen chapterNN/*.md wird das Notebook
+# mit add_notebook_download.py als Download verlinkt, falls der Eintrag noch
+# fehlt. Die bereinigten .md-Dateien müssen noch von Hand um die
+# Code-Along-Lücken ergänzt werden, bevor sie mit jupytext (--to ipynb, dann
+# --set-formats ipynb) in .ipynb umgewandelt werden.
 
 set -euo pipefail
 
@@ -52,6 +54,10 @@ fi
 
 for md_file in "$target_dir"/*.md; do
     python3 "$script_dir/convert_myst_to_notebook.py" "$md_file"
+done
+
+for md_file in "$source_dir"/*.md; do
+    python3 "$script_dir/add_notebook_download.py" "$md_file"
 done
 
 echo "Bereinigtes Markdown liegt in $target_dir"

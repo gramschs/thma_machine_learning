@@ -262,7 +262,7 @@ soll, schreiben wir die Variable in runde Klammern.
 
 ```{code-cell} python
 x = 25 * 5
-# TODO: ???   (Datentyp mit type() ermitteln)
+# TODO: ???  (Datentyp von x ermitteln)
 ```
 
 ```{code-cell} python
@@ -311,7 +311,7 @@ Python kann mit der print()-Funktion jedoch nicht nur Zahlen ausgeben, sondern
 auch Texte, also Strings.
 
 ```{code-cell} python
-# TODO: ???  ('Hallo' mit print() ausgeben)
+# TODO: ???  (Text 'Hallo' ausgeben)
 ```
 
 Zum Schluss behandeln wir noch formatierte Strings, die sogenannten f-Strings.
@@ -332,7 +332,7 @@ Hier ein Beispiel:
 ```{code-cell} python
 name = 'Alice'
 alter = 20
-# TODO: ???  (f-String mit name und alter ausgeben)
+# TODO: ???  (Satz mit name und alter ausgeben)
 ```
 
 Insbesondere bei Ausgabe von Zahlen sind f-Strings besonders nützlich. Wenn nach

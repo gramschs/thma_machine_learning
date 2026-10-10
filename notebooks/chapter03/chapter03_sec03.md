@@ -41,7 +41,7 @@ sondern gibt sie auch als Ergebnis zurück. Dieses Ergebnis können wir in einer
 Variablen zwischenspeichern und später weiterverwenden.
 
 ```{code-cell} python
-kennzahlen = # TODO: ???  (Kennzahlen mit .describe() ermitteln)
+kennzahlen = # TODO: ???  (statistische Kennzahlen der Preise ermitteln)
 ```
 
 Zur Kontrolle lassen wir uns den Inhalt der Variablen ausgeben:

@@ -161,7 +161,7 @@ Series-Objektes gespeichert. Anders als eine Liste erzwingt eine Series einen
 gemeinsamen Datentyp für alle Elemente und welcher das ist, verrät uns `.dtype`:
 
 ```{code-cell} python
-datentyp_preise = # TODO: ???  (Datentyp über das Attribut dtype abfragen)
+datentyp_preise = # TODO: ???  (Datentyp der Elemente von preise abfragen)
 print(f'Die einzelnen Elemente des Series-Objektes "preise" haben den Datentyp {datentyp_preise}.')
 ```
 

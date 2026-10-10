@@ -4,8 +4,10 @@ kernelspec:
   language: python
   name: python3
 downloads:
-    file: ./data/diamonds_DE.csv
+  - file: diamonds_DE.csv
     title: diamonds_DE.csv
+  - file: chapter11_sec04.md
+    title: chapter11_sec04.md
 ---
 
 # 11.4 Übungen
@@ -16,7 +18,7 @@ Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
 Vorlesung im WiSe 2026/27 zur Verfügung stehen.
 ```
 
-Der Datensatz {download}`./data/diamonds_DE.csv` enthält die Preise und Eigenschaften
+Der Datensatz {download}`diamonds_DE.csv` enthält die Preise und Eigenschaften
 von Diamanten. Die Eigenschaften sind:
 
 * Karat (Gewicht des Diamanten)

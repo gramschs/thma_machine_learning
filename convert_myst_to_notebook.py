@@ -41,6 +41,18 @@ def read_admonition_classes(lines, index):
 
 def read_figure_options(lines, index):
     options = {}
+
+    # Optionen als YAML-Block zwischen zwei ---Zeilen
+    if index < len(lines) and lines[index].strip() == '---':
+        index += 1
+        while index < len(lines) and lines[index].strip() != '---':
+            match = re.match(r'^(\w+):\s*(.*)$', lines[index].strip())
+            if match:
+                options[match.group(1)] = match.group(2).strip()
+            index += 1
+        return options, index + 1
+
+    # Optionen im Format :name: wert
     while index < len(lines):
         match = OPTION_RE.match(lines[index].strip())
         if not match:

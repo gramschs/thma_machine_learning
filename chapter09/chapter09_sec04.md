@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: california_housing_DE.csv
+    title: california_housing_DE.csv
   - file: chapter09_sec04.md
     title: chapter09_sec04.md
 ---

@@ -3,15 +3,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-downloads:
-  - file: ../notebooks/chapter04/chapter04_sec03.ipynb
-    title: chapter04_sec03.ipynb
-  - file: autoscout24_xxs.csv
-    title: autoscout24_xxs.csv
-  - file: 3ddruck_xxs.csv
-    title: 3ddruck_xxs.csv
-  - file: chapter04_sec03.md
-    title: chapter04_sec03.md
 ---
 
 # 4.3 Scatterplots und Scattermatrix
@@ -28,24 +19,6 @@ die Diagrammtypen
 * Scattermatrix.
 
 Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.
-
-## Lernziele
-
-```{admonition} Lernziele
-:class: attention
-* [ ] Sie können mit der Funktion **px.scatter()** einen **Scatterplot**
-  erzeugen und mögliche Zusammenhänge zwischen zwei numerischen Merkmalen
-  untersuchen.
-* [ ] Sie kennen die folgenden Styling-Optionen
-  * Textannotation **text=**,
-  * Farbe **color=** sowie
-  * Größe **size=**.
-  und können mit **title=** den Titel des Diagramms setzen.
-* [ ] Sie können erklären, warum ein sichtbarer Zusammenhang keine Kausalität
-  beweist.
-* [ ] Sie können eine **Scattermatrix** mit **scatter_matrix()** erzeugen und
-  interpretieren.
-```
 
 ## Scatterplots
 
@@ -75,7 +48,7 @@ und `y=` die Spaltennamen eintragen. Zuletzt lassen wir den Scatterplot mit
 ```{code-cell} python
 import plotly.express as px
 
-diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)')
+diagramm = # TODO: ???  (Scatterplot mit Kilometerstand auf der x-Achse und Preis auf der y-Achse erzeugen)
 diagramm.show()
 ```
 
@@ -104,63 +77,6 @@ Um herauszufinden, welche Fahrzeuge die beiden auffälligen Kreise darstellen
 und welche weiteren Merkmale ihren Preis erklären könnten, ergänzen wir den
 Scatterplot im nächsten Abschnitt um zusätzliche Informationen.
 
-```{admonition} Mini-Übung
-:class: tip
-Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`. Uns interessiert, ob der
-Infill-Anteil (Füllgrad) eines Bauteils einen Einfluss auf dessen
-Zugfestigkeit hat.
-
-1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
-2. Erzeugen Sie einen Scatterplot mit `Infill (%)` auf der x-Achse und
-   `Zugfestigkeit (MPa)` auf der y-Achse.
-3. *Beobachtung*: Beschreiben Sie, was im Diagramm auffällt.
-4. *Deutung*: Formulieren Sie eine mögliche technische Erklärung für den
-   Zusammenhang.
-5. *Einschränkung*: Fällt Ihnen ein weiteres Merkmal im Datensatz ein, das
-   ebenfalls für den Zusammenhang verantwortlich sein könnte, statt oder
-   zusätzlich zum Infill-Anteil selbst?
-```
-
-```{code-cell}
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-import pandas as pd
-import plotly.express as px
-
-druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
-
-diagramm = px.scatter(druckversuche, x='Infill (%)', y='Zugfestigkeit (MPa)')
-diagramm.show()
-```
-
-1. Siehe Code oben.
-2. Siehe Code oben.
-3. *Beobachtung*: Die Kreise liegen tendenziell von links unten nach rechts
-   oben. Druckversuche mit niedrigem Infill (zum Beispiel 10 bis 20 %)
-   erreichen meist nur Zugfestigkeiten um 17 bis 25 MPa, während
-   Druckversuche mit hohem Infill (60 bis 80 %) häufiger Werte über 40 MPa
-   erreichen. Der Zusammenhang ist aber nicht perfekt: Bei Infill 80 %
-   streuen die Werte zwischen 38.4 und 48.3 MPa.
-4. *Deutung*: Ein höherer Infill-Anteil bedeutet mehr Füllmaterial im Inneren
-   des Bauteils und damit einen größeren tragenden Querschnitt. Das könnte
-   die höhere Zugfestigkeit erklären.
-5. *Einschränkung*: Das verwendete Material ist eine mögliche Drittvariable.
-   In diesem Datensatz wurden ABS-Drucke im Mittel mit deutlich geringerem
-   Infill-Anteil gedruckt (Ø 27 %) als PLA- und PETG-Drucke (Ø 60 bzw.
-   62.5 %). Gleichzeitig erreichen ABS-Proben im Mittel niedrigere
-   Zugfestigkeiten (Ø 23.4 MPa) als PLA-Proben (Ø 43.3 MPa). Aus diesem
-   Datensatz lässt sich daher nicht eindeutig trennen, welcher Anteil des
-   sichtbaren Zusammenhangs auf das Material, den Infill-Anteil oder weitere,
-   hier nicht erfasste Prozessparameter zurückzuführen ist. Das ist eine
-   ähnliche Situation wie beim Jahr/Kilometerstand-Beispiel im Haupttext.
-````
-
 ## Styling von Scatterplots
 
 Die Voreinstellungen von Plotly sind bereits sehr gut gewählt, so dass ohne
@@ -171,7 +87,8 @@ den Zeilenindex als Text, der in dem Attribut `.index` gespeichert ist.
 
 ```{code-cell} python
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)',
-                      text=daten.index)
+                      # TODO: ???  (Zeilenindex als Text an die Kreise schreiben)
+                      )
 diagramm.show()
 ```
 
@@ -206,7 +123,9 @@ gegeben.
 
 ```{code-cell} python
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)',
-                      text=daten.index, color='Jahr')
+                      text=daten.index,
+                      # TODO: ???  (Kreise nach dem Jahr einfärben)
+                      )
 diagramm.update_traces(textposition='top center')
 diagramm.show()
 ```
@@ -251,81 +170,6 @@ diagramm.update_traces(textposition='top center')
 diagramm.show()
 ```
 
-```{admonition} Mini-Übung
-:class: tip
-Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
-
-1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
-2. Erzeugen Sie einen Scatterplot mit `Drucktemperatur (C)` auf der x-Achse
-   und `Zugfestigkeit (MPa)` auf der y-Achse. Verwenden Sie zusätzlich
-   `text=` mit dem Zeilenindex, `color='Material'`, `size='Infill (%)'` und
-   einen passenden Titel.
-3. Setzen Sie die Textposition mit `update_traces()` auf `'top center'`.
-4. Vergleichen Sie die Farblegende mit dem Beispiel `color='Jahr'` im
-   Haupttext. Was unterscheidet sich?
-5. *Bonus*: Erstellen Sie den Plot erneut, diesmal mit `color='Erfolgreich'`
-   statt `color='Material'`. Erkennen Sie ein Muster, bei welchen
-   Prozessparametern Druckversuche eher scheitern?
-```
-
-```{code-cell}
-# Code-Zelle
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-import pandas as pd
-import plotly.express as px
-
-druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
-
-diagramm = px.scatter(druckversuche, x='Drucktemperatur (C)',
-                      y='Zugfestigkeit (MPa)', text=druckversuche.index,
-                      color='Material', size='Infill (%)',
-                      title='Zugfestigkeit von 18 3D-Druckversuchen')
-diagramm.update_traces(textposition='top center')
-diagramm.show()
-```
-
-1. Siehe Code oben.
-2. Siehe Code oben.
-3. Siehe Code oben.
-4. `Material` ist ein kategoriales Merkmal: Es gibt einzelne Materialklassen
-   wie ABS, ASA, PETG und PLA, keine durchgehende Skala dazwischen. Plotly
-   verwendet daher eine diskrete Farbskala mit einer Legende aus einzelnen
-   Einträgen, statt eines Farbverlaufs mit Farbbalken wie bei der
-   numerischen Spalte Jahr. Man erkennt deutlich, dass die ABS-Punkte
-   überwiegend im unteren Bereich der Zugfestigkeit liegen, PLA- und
-   PETG-Punkte eher oben.
-
-```python
-diagramm2 = px.scatter(druckversuche, x='Drucktemperatur (C)',
-                       y='Zugfestigkeit (MPa)', text=druckversuche.index,
-                       color='Erfolgreich', size='Infill (%)',
-                       title='Erfolgreiche und gescheiterte Druckversuche')
-diagramm2.update_traces(textposition='top center')
-diagramm2.show()
-```
-
-5. *Bonus*: Nicht erfolgreiche Druckversuche wurden in diesem kleinen Datensatz
-   im Mittel bei höherer Temperatur (Durchschnitt 236.25 °C) und höherer
-   Druckgeschwindigkeit (Durchschnitt 81 mm/s) durchgeführt als erfolgreiche
-   Versuche (Durchschnitt 231.5 °C bzw. Durchschnitt 68.2 mm/s). Das deutet auf
-   einen möglichen Zusammenhang hin, erlaubt aber keine Aussage, dass eine hohe
-   Temperatur oder eine hohe Geschwindigkeit das Scheitern verursacht. Drei der
-   vier nicht erfolgreichen Druckversuche wurden zudem mit ABS gedruckt, sodass
-   Material, Temperatur, Geschwindigkeit und weitere Parameter hier nicht
-   unabhängig voneinander variiert wurden. Zudem gibt es nur 4 nicht
-   erfolgreiche Versuche, was für eine belastbare Aussage zu wenig ist.
-   Auffällig ist außerdem, dass für alle nicht erfolgreichen Druckversuche
-   trotzdem Zugfestigkeitswerte vorliegen. Erfolgreich = nein bedeutet in diesem
-   Datensatz vermutlich, dass ein vorab festgelegtes Qualitätskriterium nicht
-   erfüllt wurde, nicht dass der Druck vollständig fehlgeschlagen ist.
-````
-
 ## Scattermatrix
 
 Unsere Tabelle hat sieben Spalten mit numerischen Werten: Jahr, Preis (Euro),
@@ -354,7 +198,7 @@ ausgewählten Spalten als Argument für den Parameter `dimensions=`.
 auswahl = ['Jahr', 'Preis (Euro)', 'Leistung (kW)', 'Leistung (PS)',
             'Verbrauch (l/100 km)', 'Verbrauch (g/km)', 'Kilometerstand (km)']
 
-diagramm = px.scatter_matrix(daten, dimensions=auswahl)
+diagramm = # TODO: ???  (Scattermatrix der Spalten in auswahl erzeugen)
 diagramm.show()
 ```
 
@@ -406,8 +250,61 @@ Datenexploration schnell, interessante Zusammenhänge zwischen einzelnen
 Merkmalen aufzudecken, die dann durch einzelne Scatterplots näher untersucht
 werden können.
 
-```{admonition} Mini-Übung
-:class: tip
+## Zusammenfassung und Ausblick
+
+In diesem Kapitel haben wir uns mit der Visualisierung von numerischen Werten
+beschäftigt. Die Scattermatrix ordnet alle Kombinationen von einzelnen
+Scatterplots in einer Matrix an. Damit können schnell Muster in den Daten
+gefunden werden, deren Zusammenhänge dann wiederum durch einzelne Scatterplots
+detaillierter beleuchtet werden können. Bisher haben wir aber nur die
+numerischen Werte untersucht. Wie auch die nicht-numerischen Werte wie
+beispielsweise die Farbe der Autos mit in die Visualisierung einbezogen werden
+können, sehen wir im nächsten Kapitel.
+
+## Mini-Übungen
+
+### Mini-Übung 1
+
+Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`. Uns interessiert, ob der
+Infill-Anteil (Füllgrad) eines Bauteils einen Einfluss auf dessen
+Zugfestigkeit hat.
+
+1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
+2. Erzeugen Sie einen Scatterplot mit `Infill (%)` auf der x-Achse und
+   `Zugfestigkeit (MPa)` auf der y-Achse.
+3. *Beobachtung*: Beschreiben Sie, was im Diagramm auffällt.
+4. *Deutung*: Formulieren Sie eine mögliche technische Erklärung für den
+   Zusammenhang.
+5. *Einschränkung*: Fällt Ihnen ein weiteres Merkmal im Datensatz ein, das
+   ebenfalls für den Zusammenhang verantwortlich sein könnte, statt oder
+   zusätzlich zum Infill-Anteil selbst?
+
+```{code-cell}
+# Code-Zelle
+```
+
+### Mini-Übung 2
+
+Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
+
+1. Lesen Sie die Datei ein und verwenden Sie dabei die Nummer als Zeilenindex.
+2. Erzeugen Sie einen Scatterplot mit `Drucktemperatur (C)` auf der x-Achse
+   und `Zugfestigkeit (MPa)` auf der y-Achse. Verwenden Sie zusätzlich
+   `text=` mit dem Zeilenindex, `color='Material'`, `size='Infill (%)'` und
+   einen passenden Titel.
+3. Setzen Sie die Textposition mit `update_traces()` auf `'top center'`.
+4. Vergleichen Sie die Farblegende mit dem Beispiel `color='Jahr'` im
+   Haupttext. Was unterscheidet sich?
+5. *Bonus*: Erstellen Sie den Plot erneut, diesmal mit `color='Erfolgreich'`
+   statt `color='Material'`. Erkennen Sie ein Muster, bei welchen
+   Prozessparametern Druckversuche eher scheitern?
+
+```{code-cell}
+# Code-Zelle
+```
+
+### Mini-Übung 3
+
 Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
 
 1. Lesen Sie die Datei ein und legen Sie die Liste
@@ -426,75 +323,8 @@ Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
    Feld Infill gegen Zugfestigkeit: Gilt der in der vorherigen Übung
    gefundene Zusammenhang auch innerhalb einer einzelnen Farbe, also
    innerhalb eines Materials, oder verschwindet er dort weitgehend?
-```
 
 ```{code-cell}
 # Code-Zelle
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-import pandas as pd
-import plotly.express as px
-
-druckversuche = pd.read_csv('3ddruck_xxs.csv', index_col=0)
-
-auswahl = ['Infill (%)', 'Bauteilvolumen (cm3)', 'Druckzeit (min)',
-           'Zugfestigkeit (MPa)']
-
-diagramm = px.scatter_matrix(druckversuche, dimensions=auswahl)
-diagramm.show()
-```
-
-1. Siehe Code oben.
-2. Bei vier ausgewählten Merkmalen ergeben sich 4 × 4 = 16 Diagramme: 4
-   Diagonalfelder und 12 Felder für die sechs Merkmalspaare, jeweils in
-   beiden Achsenrichtungen.
-3. Visuell wirkt der aufsteigende Zusammenhang zwischen Infill-Anteil und
-   Zugfestigkeit am deutlichsten (siehe vorherige Übung). Auch zwischen
-   Bauteilvolumen und Druckzeit ist ein aufsteigender Trend sichtbar. Ohne
-   ein berechnetes Maß, zum Beispiel den Korrelationskoeffizienten, bleibt
-   das aber eine visuelle Einschätzung.
-4. Anders als bei Leistung (kW) und Leistung (PS) handelt es sich hier nicht
-   um eine redundante Spalte. Bauteilvolumen (cm³) und Druckzeit (min)
-   messen zwei grundsätzlich verschiedene physikalische Größen. Der
-   Zusammenhang ist trotzdem plausibel: Ein größeres Bauteil enthält mehr
-   Material und benötigt mehr Druckbahnen, was tendenziell zu einer längeren
-   Druckzeit führt. Allerdings hängt die Druckzeit auch von weiteren
-   Merkmalen ab, etwa der Schichthöhe, der Druckgeschwindigkeit, der
-   Wandstärke oder dem Infill-Anteil, sodass die Ursache-Wirkung-Beziehung
-   nicht allein auf das Bauteilvolumen zurückgeführt werden sollte. Zwei
-   unterschiedliche Größen können also korrelieren, ohne dass eine davon
-   überflüssig wird.
-
-```python
-diagramm2 = px.scatter_matrix(druckversuche, dimensions=auswahl,
-                              color='Material')
-diagramm2.show()
-```
-
-5. *Bonus*: Durch die Einfärbung nach Material wird zunächst sichtbar, dass
-   sich die Materialien deutlich in ihrer Zugfestigkeit unterscheiden.
-   Betrachtet man aber die einzelnen Farben für sich, bleibt innerhalb der
-   meisten Materialien weiterhin ein steigender Zusammenhang zwischen
-   Infill-Anteil und Zugfestigkeit erkennbar, besonders bei ASA und PETG.
-   Der sichtbare Gesamttrend wird also wahrscheinlich sowohl durch
-   Unterschiede zwischen den Materialien als auch durch den Infill-Anteil
-   selbst beeinflusst. Wegen der sehr kleinen Anzahl an Druckversuchen pro
-   Material (3 bis 6 pro Material) lassen sich daraus jedoch keine
-   belastbaren allgemeinen Aussagen ableiten.
-````
-
-## Zusammenfassung und Ausblick
-
-In diesem Kapitel haben wir uns mit der Visualisierung von numerischen Werten
-beschäftigt. Die Scattermatrix ordnet alle Kombinationen von einzelnen
-Scatterplots in einer Matrix an. Damit können schnell Muster in den Daten
-gefunden werden, deren Zusammenhänge dann wiederum durch einzelne Scatterplots
-detaillierter beleuchtet werden können. Bisher haben wir aber nur die
-numerischen Werte untersucht. Wie auch die nicht-numerischen Werte wie
-beispielsweise die Farbe der Autos mit in die Visualisierung einbezogen werden
-können, sehen wir im nächsten Kapitel.

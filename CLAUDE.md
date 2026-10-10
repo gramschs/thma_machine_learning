@@ -52,8 +52,10 @@ kernelspec:
 ## Code-Along-Lücken in Notebooks
 
 - `build_notebooks.sh` kopiert `chapterNN/*.md` nach `notebooks/chapterNN/*.md`
-  und bereinigt sie. Die Originale außerhalb von `notebooks/` bleiben
-  unangetastet, nur die Kopien in `notebooks/` bekommen Lücken.
+  und bereinigt sie. Nur die Kopien in `notebooks/` bekommen Lücken. In den
+  Originalen ergänzt das Skript lediglich im YAML-Header den Download-Eintrag
+  `../notebooks/chapterNN/name.ipynb` (über `add_notebook_download.py`, nur
+  falls er fehlt).
 - Nur `sec01`-`sec03` sind ca. 30-minütige Code-Along-Notebooks und bekommen
   Lücken. `sec04` ist ein Übungs-Notebook fürs Selbststudium (Hausaufgabe) und
   bleibt unverändert. Lücken nur im Hauptteil (vor "## Mini-Übungen"), nie in
@@ -66,7 +68,12 @@ kernelspec:
   zentralen Lernkonzept der Einheit, sonst grob bzw. einzeilig. Rein
   mechanische Schritte (gegebene Werte, Prints, Unpacking) bleiben ausgefüllt.
 - Lücken nur in Code, den der Text unmittelbar davor erklärt. Wer den Absatz
-  gelesen hat, muss die Lücke füllen können.
+  gelesen hat, muss die Lücke füllen können. Die nötige Syntax (Funktionsname,
+  Argument, Klammerschreibweise) muss im Fließtext vor der Zelle stehen oder
+  aus früheren Kapiteln bekannt sein. Lernziele zählen nicht, weil der
+  Konverter sie entfernt. Fehlt die Syntax im Text, sie im Original
+  `chapterNN/*.md` und von Hand in der Kopie `notebooks/chapterNN/*.md`
+  ergänzen (ein Neubau würde die Lücken löschen).
 - Pro H2-Abschnitt die ein bis zwei Zeilen wählen, die das neue Konzept tragen
   (erstmals eingeführte Methode oder Syntax, z.B. `pd.Series(...)`, `.loc[]`,
   `.describe()`). Lücken über alle H2-Abschnitte verteilen.
@@ -76,8 +83,11 @@ kernelspec:
 - Ist ein Stolperstein Thema des Abschnitts, die Stelle bewusst zur Lücke
   machen, damit die Studierenden ihn selbst erleben (z.B. `.iloc[0:4]` wegen
   der exklusiven Obergrenze).
-- Hinweis in Klammern sagt, *was* passieren soll, nicht die exakte Syntax.
-  Methodennamen nur nennen, wenn der Text sie direkt davor einführt.
+- Hinweis in Klammern beschreibt die Aufgabe in Worten, ganz ohne Syntax:
+  keine Funktions- oder Methodennamen, keine Operatoren, keine Index- oder
+  Argumentschreibweise, auch keine Begriffe, die das Werkzeug verraten (z.B.
+  "per Slicing"). Inhaltliche Angaben wie Spalten-, Datei- und Zeilennamen
+  oder Zahlenwerte bleiben stehen, z.B. `(Zeile von BMW Nr. 1 auswählen)`.
 - Bei einer Teillücke in einem mehrzeiligen Funktionsaufruf die ganze Zeile
   durch `# TODO: ???` ersetzen und die schließende Klammer in eine eigene Zeile
   setzen.

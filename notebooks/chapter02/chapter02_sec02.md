@@ -171,8 +171,8 @@ Schauen wir uns ein weiteres Beispiel an. Jedes Element der Liste
 
 ```{code-cell} python
 for zahl in [4,5,7,11,21]:
-    # TODO: ???  (ergebnis = zahl + 2 berechnen)
-    # TODO: ???  (Ergebnis mit f-String ausgeben)
+    # TODO: ???  (zahl um 2 erhöhen und in ergebnis speichern)
+    # TODO: ???  (Rechnung und Ergebnis in einem Satz ausgeben)
 print('Ich bin fertig!')
 ```
 

@@ -1,3 +1,13 @@
+---
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+downloads:
+  - file: chapter12_sec02.md
+    title: chapter12_sec02.md
+---
+
 # 12.2 Merkmalsextraktion aus Zeitreihen
 
 ```{admonition} Warnung
