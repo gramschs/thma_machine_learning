@@ -362,4 +362,3 @@ Bildschirmzeit statt 6.5 Stunden.
 ```{code-cell} python
 # Code-Zelle
 ```
-

@@ -225,6 +225,10 @@ def clean_myst_file(input_filename, output_filename):
 
     output_lines = collapse_blank_lines(output_lines)
 
+    # Keine Leerzeile am Dateiende, z.B. vor einer entfernten letzten Lösung
+    while output_lines and output_lines[-1].strip() == '':
+        output_lines.pop()
+
     with open(output_filename, 'w') as output_file:
         output_file.writelines(output_lines)
 

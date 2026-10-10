@@ -49,6 +49,10 @@ Nr.,Name,Typ 1,Typ 2,Gesamt,KP,Angriff,Verteidigung,Spezial-Angriff,Spezial-Vert
 4,Charmander,Feuer,,309,39,52,43,60,50,65,1,nein
 ```
 
+Die sechs Spalten von `KP` bis `Initiative` sind die Kampfwerte eines Pokémon.
+`KP` steht für Kraftpunkte und gibt an, wie viel Schaden ein Pokémon einstecken
+kann, bevor es kampfunfähig ist.
+
 Gegeben ist folgender Code:
 
 ```python
@@ -171,9 +175,11 @@ die Tageswerte des Jahres 2025. Die Spalte `Jahreszeit` haben wir ergänzt
 (meteorologische Jahreszeiten, z. B. Winter = Dezember bis Februar).
 
 1. Lesen Sie die Datei mit dem Datum als Zeilenindex ein. Wie viele Tage
-   enthält der Datensatz? In welchen Spalten fehlen Werte und wie viele?
+   enthält der Datensatz? In welcher Form ist das Datum geschrieben? In
+   welchen Spalten fehlen Werte und wie viele?
 2. Berechnen Sie die durchschnittliche Mitteltemperatur im Januar und im Juli.
-   Wählen Sie dazu jeden Monat als zusammenhängenden Bereich aus.
+   Wählen Sie dazu jeden Monat als zusammenhängenden Bereich vom ersten bis
+   zum letzten Tag aus. Die Schreibweise des Datums kennen Sie aus Teil 1.
 3. Erweitern Sie die Tabelle um eine Spalte `Tagesspanne (C)`, die Differenz
    aus Höchst- und Tiefsttemperatur.
 4. Erstellen Sie einen Scatterplot mit der Sonnenscheindauer auf der x-Achse
@@ -195,8 +201,9 @@ von 2000 bis 2021 nach Verbrauchergruppen in Gigawattstunden (GWh).
 1. Schauen Sie sich die Datei zunächst im Texteditor an. In welcher Zeile
    beginnen die Daten? Lesen Sie die Datei mit dem Jahr als Zeilenindex ein
    und überspringen Sie dabei die Beschreibungszeilen am Dateianfang. Schlagen
-   Sie dazu in der Dokumentation von `read_csv()` nach, mit welchem Argument
-   sich Zeilen überspringen lassen.
+   Sie dazu in der [Dokumentation →
+   read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+   nach, mit welchem Argument sich Zeilen überspringen lassen.
 2. Prüfen Sie mit einer Kontrollspalte, ob die Spalte `insgesamt` die Summe
    der drei Verbrauchergruppen ist. Wie erklären Sie die Abweichungen?
 3. Erweitern Sie die Tabelle um eine Spalte `Anteil Industrie (%)` und lassen
@@ -255,4 +262,3 @@ Erkenntnisse aus Teil 3? Was wäre bei echten Maschinendaten anders?
 ```{code-cell} python
 # Code-Zelle
 ```
-

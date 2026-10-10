@@ -239,4 +239,3 @@ enthält.
 ```{code-cell}
 # Code-Zelle
 ```
-

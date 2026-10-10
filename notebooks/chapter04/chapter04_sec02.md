@@ -244,4 +244,3 @@ Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`.
 ```{code-cell}
 # Code-Zelle
 ```
-

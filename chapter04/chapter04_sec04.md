@@ -62,6 +62,10 @@ Nr.,Name,Typ 1,Typ 2,Gesamt,KP,Angriff,Verteidigung,Spezial-Angriff,Spezial-Vert
 4,Charmander,Feuer,,309,39,52,43,60,50,65,1,nein
 ```
 
+Die sechs Spalten von `KP` bis `Initiative` sind die Kampfwerte eines Pokémon.
+`KP` steht für Kraftpunkte und gibt an, wie viel Schaden ein Pokémon einstecken
+kann, bevor es kampfunfähig ist.
+
 Gegeben ist folgender Code:
 
 ```python
@@ -308,9 +312,9 @@ import plotly.express as px
 pokemon = pd.read_csv('pokemon_DE.csv', index_col=1)
 
 # Kontrollspalte: Gesamt minus Summe der sechs Werte
-summe = pokemon['KP'] + pokemon['Angriff'] + pokemon['Verteidigung']
-summe = summe + pokemon['Spezial-Angriff'] + pokemon['Spezial-Verteidigung']
-summe = summe + pokemon['Initiative']
+summe = (pokemon['KP'] + pokemon['Angriff'] + pokemon['Verteidigung']
+         + pokemon['Spezial-Angriff'] + pokemon['Spezial-Verteidigung']
+         + pokemon['Initiative'])
 pokemon['Kontrolle'] = pokemon['Gesamt'] - summe
 print(pokemon['Kontrolle'].describe())
 
@@ -367,9 +371,11 @@ die Tageswerte des Jahres 2025. Die Spalte `Jahreszeit` haben wir ergänzt
 (meteorologische Jahreszeiten, z. B. Winter = Dezember bis Februar).
 
 1. Lesen Sie die Datei mit dem Datum als Zeilenindex ein. Wie viele Tage
-   enthält der Datensatz? In welchen Spalten fehlen Werte und wie viele?
+   enthält der Datensatz? In welcher Form ist das Datum geschrieben? In
+   welchen Spalten fehlen Werte und wie viele?
 2. Berechnen Sie die durchschnittliche Mitteltemperatur im Januar und im Juli.
-   Wählen Sie dazu jeden Monat als zusammenhängenden Bereich aus.
+   Wählen Sie dazu jeden Monat als zusammenhängenden Bereich vom ersten bis
+   zum letzten Tag aus. Die Schreibweise des Datums kennen Sie aus Teil 1.
 3. Erweitern Sie die Tabelle um eine Spalte `Tagesspanne (C)`, die Differenz
    aus Höchst- und Tiefsttemperatur.
 4. Erstellen Sie einen Scatterplot mit der Sonnenscheindauer auf der x-Achse
@@ -431,7 +437,9 @@ memory usage: 31.4+ KB
 Januar: 3.5 °C
 Juli:   20.6 °C
 ```
-1. Der Datensatz enthält 365 Tage. Bei Bewölkung, Luftfeuchte und
+1. Der Datensatz enthält 365 Tage. Das Datum ist als Text in der Form
+   Jahr-Monat-Tag geschrieben, z. B. `2025-01-01`. Das zeigt die zweite Zeile
+   der Ausgabe von `.info()`. Bei Bewölkung, Luftfeuchte und
    Windgeschwindigkeit fehlen je 3 Werte, bei der Windspitze 2 Werte.
 2. Im Januar lag die Mitteltemperatur im Durchschnitt bei 3.5 °C, im Juli bei
    20.6 °C. Da die Datumsangaben im Index sortiert sind, funktioniert das
@@ -462,8 +470,9 @@ von 2000 bis 2021 nach Verbrauchergruppen in Gigawattstunden (GWh).
 1. Schauen Sie sich die Datei zunächst im Texteditor an. In welcher Zeile
    beginnen die Daten? Lesen Sie die Datei mit dem Jahr als Zeilenindex ein
    und überspringen Sie dabei die Beschreibungszeilen am Dateianfang. Schlagen
-   Sie dazu in der Dokumentation von `read_csv()` nach, mit welchem Argument
-   sich Zeilen überspringen lassen.
+   Sie dazu in der [Dokumentation →
+   read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+   nach, mit welchem Argument sich Zeilen überspringen lassen.
 2. Prüfen Sie mit einer Kontrollspalte, ob die Spalte `insgesamt` die Summe
    der drei Verbrauchergruppen ist. Wie erklären Sie die Abweichungen?
 3. Erweitern Sie die Tabelle um eine Spalte `Anteil Industrie (%)` und lassen
