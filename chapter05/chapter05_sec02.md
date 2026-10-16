@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter05/chapter05_sec02.ipynb
+    title: chapter05_sec02.ipynb
   - file: autoscout24_DE_2020.csv
     title: autoscout24_DE_2020.csv
   - file: 3ddruck_xxs.csv
@@ -156,6 +158,10 @@ Bedingung?
 Tipp: Sie können zwei Bedingungen mit `&` (und) verknüpfen.
 ```
 
+```{code-cell} python
+# Code-Zelle
+```
+
 ````{admonition} Lösung
 :class: tip
 :class: dropdown
@@ -212,7 +218,8 @@ DataFrame, allerdings vermischt. Der Gesamtdatensatz enthält jedoch 41
 unterschiedliche Automarken. Möchten wir jede Marke einzeln auswerten, wäre es
 umständlich, für jede Marke eine separate Filterung durchzuführen. Deshalb
 bietet Pandas die `.groupby()`-Methode, die es erlaubt, die Daten automatisch
-nach den unterschiedlichen Werten einer Spalte zu gruppieren:
+nach den unterschiedlichen Werten einer Spalte zu gruppieren. Als Argument
+übergeben wir den Namen dieser Spalte:
 
 ```{code-cell}
 autos_nach_marke = data.groupby('Marke')
@@ -231,7 +238,11 @@ Für jede Automarke werden nun für jede Spalte mit numerischen Informationen di
 statistischen Kennzahlen ermittelt. Die entstehende Tabelle ist etwas
 unübersichtlich. Besser ist daher, sich eine einzelne statistische Kennzahl für
 eine bestimmte Spalte ausgeben zu lassen. Im Folgenden ermitteln wir den
-durchschnittlichen Preis pro Automarke.
+durchschnittlichen Preis pro Automarke. Dazu wählen wir aus den gruppierten
+Daten wie bei einem DataFrame mit eckigen Klammern die Spalte `Preis (Euro)`
+aus und wenden darauf die Methode `.mean()` an. Zum Schluss sortieren wir das
+Ergebnis mit `.sort_values(ascending=False)` absteigend, also vom teuersten
+zum günstigsten Durchschnittspreis.
 
 ```{code-cell}
 durchschnittspreis_pro_marke = autos_nach_marke['Preis (Euro)'].mean()
@@ -244,6 +255,10 @@ Verwenden Sie erneut den Datensatz `3ddruck_xxs.csv`. Gruppieren Sie die
 Druckversuche nach `Material` und berechnen Sie die durchschnittliche
 Zugfestigkeit für jedes Material. Welches Material erzielt im Durchschnitt
 die höchste Zugfestigkeit?
+```
+
+```{code-cell} python
+# Code-Zelle
 ```
 
 ````{admonition} Lösung

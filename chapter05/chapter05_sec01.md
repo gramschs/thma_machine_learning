@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter05/chapter05_sec01.ipynb
+    title: chapter05_sec01.ipynb
   - file: autoscout24_DE_2020.csv
     title: autoscout24_DE_2020.csv
   - file: 3ddruck_xxs.csv
@@ -336,9 +338,12 @@ behandeln ihn hier bewusst vereinfacht als ordinales Merkmal.
 
 *Was macht geordnete kategoriale Daten besonders?* Bei ungeordneten kategorialen
 Daten wie Farben gibt es keine sinnvolle Reihenfolge. Bei geordneten
-kategorialen Daten wie Monaten dagegen schon. Da alle Fahrzeuge im Datensatz
-aus demselben Jahr 2020 stammen, ergibt die alphabetische Sortierung der
-Zeichenketten hier zufällig auch die chronologische Reihenfolge.
+kategorialen Daten wie Monaten dagegen schon. Die Methode `.value_counts()`
+sortiert die Kategorien nach ihrer Häufigkeit. Hängen wir die Methode
+`.sort_index()` an, sortiert Pandas stattdessen nach den Kategorien selbst, bei
+Text also alphabetisch. Da alle Fahrzeuge im Datensatz aus demselben Jahr 2020
+stammen, ergibt die alphabetische Sortierung der Zeichenketten hier zufällig
+auch die chronologische Reihenfolge.
 
 ```{code-cell} python
 # Bei Farben: value_counts() sortiert standardmaessig nach Haeufigkeit,

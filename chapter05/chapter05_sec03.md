@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter05/chapter05_sec03.ipynb
+    title: chapter05_sec03.ipynb
   - file: autoscout24_DE_2020.csv
     title: autoscout24_DE_2020.csv
   - file: 3ddruck_xxs.csv
