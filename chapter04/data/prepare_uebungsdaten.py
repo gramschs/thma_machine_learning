@@ -1,10 +1,14 @@
 """
-Aufbereitung der Datensaetze fuer die Uebungen in Kapitel 4.4.
+Aufbereitung der Datensaetze fuer die Uebungen ab Kapitel 4.4.
 
 Die Rohdaten werden nicht veraendert, nur Spaltennamen (und bei Pokemon die
 Typ-Bezeichnungen) ins Deutsche uebersetzt und Fehlwerte als leere Zellen
 gespeichert. Spaltennamen enthalten keine Umlaute (ae, oe, ue, ss), damit sie
 sich im Code leicht tippen lassen.
+
+Die Wetterdaten 2024 dienen in Kapitel 6.4 als unbekanntes Jahr, mit dem wir
+einen auf 2025 trainierten Entscheidungsbaum pruefen. Spaetere Kapitel
+verwenden Kopien der Dateien in ihrem eigenen Verzeichnis.
 
 Quellen der Rohdaten:
 
@@ -131,4 +135,5 @@ if __name__ == '__main__':
 
     pokemon(args.pokemon, os.path.join(args.out, 'pokemon_DE.csv'))
     wetter(args.dwd, os.path.join(args.out, 'wetter_mannheim_2025.csv'))
+    wetter(args.dwd, os.path.join(args.out, 'wetter_mannheim_2024.csv'), jahr=2024)
     ai4i(args.ai4i, os.path.join(args.out, 'ai4i2020_DE.csv'))

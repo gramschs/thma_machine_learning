@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter06/chapter06_sec03.ipynb
+    title: chapter06_sec03.ipynb
   - file: chapter06_sec03.md
     title: chapter06_sec03.md
 ---
@@ -39,7 +41,9 @@ Möglichkeit, den trainierten Entscheidungsbaum zu visualisieren, wodurch es
 leicht nachvollziehbar wird, welche Merkmale der Baum für seine Entscheidungen
 verwendet. Ein weiterer Vorteil ist ihre Effizienz bei heterogenen Daten;
 grundsätzlich können sowohl numerische als auch kategoriale Eigenschaften
-problemlos verarbeitet werden. Entscheidungsbäume sind selbst bei
+verarbeitet werden. Scikit-Learn erwartet allerdings Zahlen. Wie wir
+kategoriale Merkmale in Zahlen umwandeln, lernen wir in Kapitel 8.2.
+Entscheidungsbäume sind selbst bei
 unterschiedlichen Datenskalen robust und erfordern nur wenig Vorverarbeitung.
 
 Trotz dieser Stärken besitzen Entscheidungsbäume eine Neigung zum
@@ -87,7 +91,9 @@ y_array = (y_array - 1.0) * (-1)
 y = pd.Series(y_array, name='verkauft', dtype='bool')
 ```
 
-Nach der Datenvorbereitung visualisieren wir diese:
+Nach der Datenvorbereitung visualisieren wir die Daten. Achtung: In den
+Diagrammen dieses Kapitels steht Blau für verkauft und Rot für nicht verkauft,
+also umgekehrt als in Kapitel 6.1.
 
 ```{code-cell} python
 import plotly.express as px
@@ -213,9 +219,9 @@ plot_tree(modell_tiefe1,
 Eine Tiefe von 1 bedeutet, dass nur noch eine einzige Entscheidungsfrage
 gestellt wird. Das reicht nicht mehr, um die Autos in reine Blätter zu
 sortieren. Im linken Blatt sind 13 nicht verkaufte Autos und 24 verkaufte Autos,
-weshalb diesem Blatt die Kategorie »verkauft« zugeordnet wird. Im rechten Blatt
+weshalb diesem Blatt die Kategorie "verkauft" zugeordnet wird. Im rechten Blatt
 sind 12 nicht verkaufte Autos und ein verkauftes Auto, so dass dieses Blatt
-insgesamt als »nicht verkauft« gilt. Die Visualisierung der Entscheidungsgrenzen
+insgesamt als "nicht verkauft" gilt. Die Visualisierung der Entscheidungsgrenzen
 zeigt, um welche Autos es sich handelt.
 
 ```{code-cell} python
@@ -264,7 +270,7 @@ Was ist jetzt besser, eine maximale Tiefe von 1 oder 2? Oder doch 3 vielleicht?
 Die Einführung der maximalen Tiefe bietet den Vorteil, das Overfitting zu
 bekämpfen. Der Nachteil davon ist, dass wir jetzt einen neuen Parameter haben,
 der das Training und die Prognose des Modells bestimmt. Und für diesen Parameter
-muss ein passender Wert eingestellt werden. Solche Parameter nennt man
+muss ein passender Wert eingestellt werden. Solche Parameter heißen
 **Hyperparameter**.
 
 ```{admonition} Was ist ... ein Hyperparameter?

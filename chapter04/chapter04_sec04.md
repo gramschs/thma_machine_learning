@@ -247,7 +247,7 @@ ausführen.
 2. Die Scattermatrix ist nach `Legendaer` eingefärbt, der Scatterplot nach
    `Gesamt`. Wie unterscheiden sich die beiden Farbdarstellungen und warum?
 3. Was bedeutet im Scatterplot ein besonders großer Kreis?
-4. Legendaere Pokémon gelten als besonders stark. In welchem Bereich der
+4. Legendäre Pokémon gelten als besonders stark. In welchem Bereich der
    Einzeldiagramme erwarten Sie die legendären Pokémon?
 5. Führen Sie den Code aus und überprüfen Sie Ihre Vorhersagen.
 ````
@@ -355,7 +355,7 @@ Squirtle     Wasser     314       48            65          43
    Bereich. Es gibt Ausreißer wie Shuckle mit Angriff 10 und Verteidigung 230.
 
    *Deutung*: Pokémon, die einen hohen Angriff haben, haben oft auch eine hohe
-   Verteidigung. Legendaere Pokémon sind insgesamt stärker gestaltet.
+   Verteidigung. Legendäre Pokémon sind insgesamt stärker gestaltet.
 
    *Einschränkung*: Ein hoher Angriff verursacht keine hohe Verteidigung.
    Beide Werte hängen von einer dritten Größe ab: Weiterentwickelte Pokémon

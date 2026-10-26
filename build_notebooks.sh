@@ -37,9 +37,15 @@ fi
 mkdir -p "$target_dir"
 cp "$source_dir"/*.md "$target_dir"/
 
+# Nur Bilddateien kopieren, keine Unterordner wie pics/src mit den
+# Grafik-Quelldateien.
 if [ -d "$source_dir/pics" ]; then
     mkdir -p "$target_dir/pics"
-    cp "$source_dir"/pics/* "$target_dir/pics/"
+    for pic_file in "$source_dir"/pics/*; do
+        if [ -f "$pic_file" ]; then
+            cp "$pic_file" "$target_dir/pics/"
+        fi
+    done
 fi
 
 # Datensätze, die die Kapitel direkt per pd.read_csv('name.csv') einlesen,

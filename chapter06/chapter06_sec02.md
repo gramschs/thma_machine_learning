@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter06/chapter06_sec02.ipynb
+    title: chapter06_sec02.ipynb
   - file: chapter06_sec02.md
     title: chapter06_sec02.md
 ---
@@ -25,8 +27,8 @@ Entscheidungsbäume in Scikit-Learn gibt.
   visualisieren.
 * [ ] Sie können Entscheidungsfragen sowie die Angaben `samples` und `value` in
   einer Baumvisualisierung interpretieren.
-* [ ] Sie können die Gini-Unreinheit als Maß für die Klassenmischung eines
-  Knotens erläutern.
+* [ ] Sie können das Gini-Impurity-Kriterium als Maß für die Klassenmischung
+  eines Knotens erläutern.
 * [ ] Sie können `random_state` und `criterion` beim Training eines
   Entscheidungsbaums verwenden.
 ```
@@ -57,7 +59,7 @@ daten.head(10)
 # Auswahl des Modells: Entscheidungsbaum für Klassifikation
 modell = DecisionTreeClassifier(random_state=0)
 
-# Adaption der Daten
+# Daten ins richtige Format bringen
 X = daten[['Kilometerstand [km]', 'Preis [EUR]']]
 y = daten['verkauft']
 
@@ -65,8 +67,8 @@ y = daten['verkauft']
 modell.fit(X,y)
 ```
 
-Nun können wir die Funktion `plot_tree` importieren und das trainierte Modell
-visualisieren lassen.
+Nun können wir die Funktion `plot_tree` importieren und ihr das trainierte
+Modell `modell` übergeben, um es visualisieren zu lassen.
 
 ```{code-cell} ipython3
 from sklearn.tree import plot_tree
@@ -82,7 +84,10 @@ Entscheidungsfragen stehen in der ersten Zeile der Knoten. Danach folgen weitere
 Angaben wie `gini`, `samples` und `value`. Um diese Angaben zu erklären,
 ergänzen wir zunächst weitere Angaben. Mit der Option `feature_names=` wird eine
 Liste mit den Eigenschaften ergänzt, die Option `class_names=` ergänzt die
-Klassenbezeichnungen. So erhalten wir folgendes Diagramm:
+Klassenbezeichnungen. Die Klassennamen müssen in der Reihenfolge stehen, in der
+Scikit-Learn die Klassen sortiert. Bei `False` und `True` kommt `False` zuerst,
+also zuerst "nicht verkauft" und dann "verkauft". So erhalten wir folgendes
+Diagramm:
 
 ```{code-cell} ipython3
 plot_tree(modell, 
@@ -97,7 +102,7 @@ diesem Knoten befinden. `value` listet auf, wie viele Datenobjekte die
 Zielgröße `nicht verkauft` (= False bzw. 0) haben und wie viele zu der Klasse
 `verkauft` (= True bzw. 1) gehören.
 
-Weitere Details zu den Optionen der `plot_tree`-Funktion finden Sie in der
+Weitere Details zu den Optionen der `plot_tree`-Funktion stehen in der
 [Dokumentation Scikit-Learn →
 plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html).
 
@@ -167,12 +172,12 @@ Die Formel zur Berechnung des genauen Wertes des Gini-Impurity-Kriteriums lautet
 
 $$\text{GI} = 1 - p^2 - (1-p)^2,$$
 
-wenn $p$ der prozentuale Anteil der verkauften Autos ist (das gilt natürlich
+wenn $p$ der Anteil der verkauften Autos ist (das gilt natürlich
 allgemein für binäre Klassifikationsaufgaben und nicht nur das
 Autohaus-Beispiel).
 
 Die folgende Abbildung zeigt die konkreten Werte des Gini-Impurity-Kriteriums
-für den prozentualen Anteil an verkauften Autos.
+für den Anteil an verkauften Autos.
 
 ```{code-cell} ipython3
 from numpy import linspace
@@ -184,7 +189,7 @@ import plotly.express as px
 
 fig = px.line(x = p, y = gini,
         title='Gini-Impurity-Kriterium',
-        labels={'x': 'prozentualer Anteil', 'y': 'Wert des Gini-Impurity-Kriteriums'})
+        labels={'x': 'Anteil der verkauften Autos', 'y': 'Wert des Gini-Impurity-Kriteriums'})
 fig.show()
 ```
 
@@ -262,21 +267,21 @@ weitere Optionen an, wie in der [Dokumentation Scikit-Learn →
 DecisionTreeClassifier()](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
 nachgelesen werden kann.
 
-Sowohl bei der Initialisierung des Entscheidungsbaumes können Parameter gesetzt
-werden, als auch beim Verwenden der verschiedenen Methoden. Tatsächlich haben
+Parameter können wir sowohl bei der Initialisierung des Entscheidungsbaumes
+setzen als auch beim Aufruf der verschiedenen Methoden. Tatsächlich haben
 wir bereits weiter oben den Parameter `random_state=0` bei der Initialisierung
 gesetzt. Das dient der Reproduzierbarkeit: Immer wenn es beim Training mehrere
 gleich gute Splits zur Auswahl gibt (siehe oben), sorgt ein fester
 `random_state` dafür, dass bei jedem Durchlauf derselbe Entscheidungsbaum
-entsteht. In einem echten Projekt würde man diesen Parameter nicht dazu
-nutzen, um ein Wunschergebnis zu erzwingen.
+entsteht. In einem echten Projekt nutzen wir diesen Parameter aber nicht, um
+ein Wunschergebnis zu erzwingen.
 
-Experimentieren Sie mit verschiedenen Werten für `random_state` (z.B. 0, 1, 2,
-3). Sie werden feststellen, dass sich die Baumstruktur vor allem dort ändern
-kann, wo es mehrere gleich gute Splits gab, während die Accuracy auf den
-Trainingsdaten meist gleich bleibt. Testen Sie auch verschiedene
-Splitting-Kriterien (`criterion='gini'` vs. `criterion='entropy'`) und
-vergleichen Sie die entstehenden Bäume.
+Probieren wir verschiedene Werte für `random_state` aus (z.B. 0, 1, 2, 3), dann
+ändert sich die Baumstruktur vor allem dort, wo es mehrere gleich gute Splits
+gab. Die Accuracy auf den Trainingsdaten bleibt dagegen meist gleich. Ebenso
+können wir die Splitting-Kriterien `criterion='gini'` und `criterion='entropy'`
+vergleichen. Im folgenden Beispiel verwenden wir `criterion='entropy'` und
+`random_state=3`.
 
 ```{code-cell} ipython3
 modell = DecisionTreeClassifier(criterion='entropy', random_state=3)

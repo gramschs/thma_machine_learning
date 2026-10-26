@@ -39,13 +39,13 @@ project:
         - file: chapter04/chapter04_sec01.md
         - file: chapter04/chapter04_sec02.md
         - file: chapter04/chapter04_sec03.md
-#        - file: chapter04/chapter04_sec04.md
+        - file: chapter04/chapter04_sec04.md
     - title: 5. Kategoriale Daten
       children:
         - file: chapter05/chapter05_sec01.md
         - file: chapter05/chapter05_sec02.md
         - file: chapter05/chapter05_sec03.md
-#        - file: chapter05/chapter05_sec04.md
+        - file: chapter05/chapter05_sec04.md
     - title: 6. Entscheidungsbäume (Decision Trees)
       children:
         - file: chapter06/chapter06_sec01.md

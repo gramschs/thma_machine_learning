@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter06/chapter06_sec01.ipynb
+    title: chapter06_sec01.ipynb
   - file: chapter06_sec01.md
     title: chapter06_sec01.md
 ---
@@ -28,8 +30,8 @@ könnte:
 * Spieler 1: Ja! Richtig!
 
 Als Nächstes wäre jetzt Spieler 5 an der Reihe, sich eine Person oder Figur
-auszuwählen, die die anderen Spieler erraten sollen. Vielleicht kennen Sie auch
-die umgekehrte Variante. Der Name der zu ratenden Person/Figur wird der Person
+auszuwählen, die die anderen Spieler erraten sollen. Es gibt auch eine
+umgekehrte Variante. Der Name der zu ratenden Person/Figur wird der Person
 mit einem Zettel auf die Stirn geklebt. Und nun muss die Person raten, während
 die Mitspieler:innen mit Ja/Nein antworten.
 
@@ -41,7 +43,7 @@ Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 :class: attention
 * [ ] Sie können erklären, wie ein **Entscheidungsbaum** Daten mithilfe von
   Entscheidungsregeln klassifiziert.
-* [ ] Sie können Wurzelknoten, innere Knoten, Kanten und Blätter in einer
+* [ ] Sie können Wurzelknoten, Knoten, Kanten und Blätter in einer
   Baumgrafik identifizieren.
 * [ ] Sie können einen Entscheidungsbaum mit Scikit-Learn trainieren.
 * [ ] Sie können mit der **Accuracy** beurteilen, wie gut ein Entscheidungsbaum
@@ -86,7 +88,7 @@ Da in unserem Beispiel von den Autos nur die beiden Merkmale `Kilometerstand
 in einem zweidimensionalen Streudiagramm (Scatterplot) visualisieren. Dabei wird
 der Kilometerstand auf der x-Achse und der Preis auf der y-Achse abgetragen. Die
 Zielgröße `verkauft` kennzeichnen wir durch die Farbe. Dabei steht die Farbe Rot
-für »verkauft« (True) und Blau für »nicht verkauft« (False).
+für "verkauft" (True) und Blau für "nicht verkauft" (False).
 
 ```{code-cell} python
 import plotly.express as px
@@ -98,7 +100,7 @@ fig.show()
 
 Genau wie beim Partyspiel "Wer bin ich?" sortieren wir die Autos durch eine
 Folge von Ja/Nein-Fragen. Als Nächstes zeigen wir, wie die Autos anhand von
-Fragen in die beiden Klassen »verkauft« und »nicht verkauft« sortiert werden
+Fragen in die beiden Klassen "verkauft" und "nicht verkauft" sortiert werden
 können. Im Streudiagramm
 visualisieren wir die Autos mit ihren Eigenschaften `Kilometerstand [km]` und
 `Preis [EUR]` als Punkte. Dazu passend werden wir schrittweise den
@@ -117,11 +119,11 @@ aufgeteilt. Wenn ja, wandern die Autos nach links und ansonsten nach rechts.
 Warum wir die Grenze 16 376.50 gewählt haben, werden wir in einem späteren
 Kapitel besprechen. Im Entscheidungsbaum wird diese Aufteilung durch einen
 **Zweig** (Branch) nach links und einen Zweig nach rechts symbolisiert. Ein
-alternativer Name für Zweig ist **Kante**. Die Autos »rutschen« die
+alternativer Name für Zweig ist **Kante**. Die Autos "rutschen" die
 Zweige/Kanten entlang und landen in zwei separaten Knoten. Im Streudiagramm
 (Scatterplot) entspricht diese Fragestellung dem Vergleich mit einer
 horizontalen Linie bei y = 16 376.5. Da alle Autos mit einem Verkaufspreis
-kleiner/gleich 16 376.5 EUR blau sind, also »nicht verkauft« wurden, wird im
+kleiner/gleich 16 376.5 EUR blau sind, also "nicht verkauft" wurden, wird im
 Streudiagramm (Scatterplot) alles unterhalb der horizontalen Linie blau
 eingefärbt.
 
@@ -134,9 +136,9 @@ Knoten des rechten Zweiges befinden sich fünf rote (also verkaufte) Autos und
 ein blaues (also nicht verkauftes) Auto. Wir wollen diese Autos durch weitere
 Fragen sortieren. Doch obwohl nur ein Auto (nämlich Auto 3) aus dieser Gruppe
 separiert werden soll, ist dies nicht durch nur eine einzige Frage möglich.
-Lautet die Frage: »Ist der Preis kleiner oder gleich 17 300 EUR?«, dann wandern
-das rote Auto 8 und das blaue Auto 3 nach links. Wählen wir die Frage: »Ist der
-Kilometerstand kleiner oder gleich 13 500 km?«, dann wandern ebenfalls Auto 3
+Lautet die Frage: "Ist der Preis kleiner oder gleich 17 300 EUR?", dann wandern
+das rote Auto 8 und das blaue Auto 3 nach links. Wählen wir die Frage: "Ist der
+Kilometerstand kleiner oder gleich 13 500 km?", dann wandern ebenfalls Auto 3
 und Auto 8 nach links. Beide Fragen sind also gleichwertig, welche sollen wir
 nehmen? In diesem vereinfachten Beispiel wählen wir willkürlich den
 Kilometerstand. Ein Algorithmus braucht jedoch Kriterien, um die beste Trennung
@@ -147,8 +149,8 @@ zu finden. Darauf gehen wir im nächsten Kapitel ein.
 Im Streudiagramm (Scatterplot) wird die noch nicht eingefärbte Fläche rechts der
 vertikalen Linie 13 500 km rot gefärbt. Im linken Knoten (Node) sind aber nur
 noch zwei Autos, so dass diesmal eine weitere Frage ausreicht, die beiden Autos
-in zwei Klassen zu sortieren. Wir fragen: *»Ist der Kilometerstand kleiner oder
-gleich 8 198 km?«*
+in zwei Klassen zu sortieren. Wir fragen: *"Ist der Kilometerstand kleiner oder
+gleich 8 198 km?"*
 
 ![Entscheidungsbaum - 3. Entscheidung](pics/combined_decisiontree03.svg)
 
@@ -212,12 +214,12 @@ DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklear
 nachgelesen werden können. Zunächst belassen wir es aber bei den
 Standardeinstellungen.
 
-Als Nächstes adaptieren wir die Daten aus dem Pandas-DataFrame so, dass das
-Entscheidungsbaum-Modell trainiert werden kann. Der `DecisionTreeClassifier`
+Als Nächstes bringen wir die Daten aus dem Pandas-DataFrame ins richtige
+Format, damit wir das Entscheidungsbaum-Modell trainieren können. Der `DecisionTreeClassifier`
 erwartet für das Training zwei Argumente. Als erstes Argument müssen die
 Eingabedaten übergeben werden, also die Merkmale der Autos. Als zweites Argument
-erwartet der `DecisionTreeClassifier` die Zielgröße, also den Status »nicht
-verkauft« oder »verkauft«. Wir trennen daher den Pandas-DataFrame `daten` auf
+erwartet der `DecisionTreeClassifier` die Zielgröße, also den Status "nicht
+verkauft" oder "verkauft". Wir trennen daher den Pandas-DataFrame `daten` auf
 und verwenden die Bezeichnung `X` für die Eingabedaten und `y` für die
 Zielgröße.
 
@@ -235,7 +237,8 @@ modell.fit(X,y)
 
 Jetzt ist zwar der Entscheidungsbaum trainiert, doch wir sehen nichts. Als
 erstes überprüfen wir mit der Methode `.score()`, wie gut die Prognose des
-Entscheidungsbaumes ist.
+Entscheidungsbaumes ist. Wie `.fit()` bekommt auch `.score()` die
+Eingabedaten `X` und die Zielgröße `y` übergeben.
 
 ```{code-cell} python
 accuracy_training = modell.score(X,y)
@@ -278,7 +281,8 @@ neue_autos = pd.DataFrame({
 ```
 
 Mit Hilfe der `predict()`-Methode kann dann der Entscheidungsbaum
-prognostizieren, ob die Autos verkauft werden oder nicht.
+prognostizieren, ob die Autos verkauft werden oder nicht. Dazu übergeben wir
+ihr den DataFrame `neue_autos`.
 
 ```{code-cell} python
 prognose = modell.predict(neue_autos)
@@ -289,8 +293,8 @@ Um für ein neues Auto eine Prognose abzugeben, werden zunächst den Blättern
 Klassen zugeordnet. Dazu wird die sogenannte Reinheit der Blätter untersucht.
 Befinden sich nur Autos einer einzigen Klasse in einem Blatt, so nennen wir das
 Blatt **rein** und es bekommt diese Klasse zugeordnet. Ist ein Blatt nicht rein,
-sondern enthält noch Autos mit unterschiedlichen Klassen »verkauft« oder »nicht
-verkauft«, so wird diesem Blatt diejenige Klasse zugeordnet, die am häufigsten
+sondern enthält noch Autos mit unterschiedlichen Klassen "verkauft" oder "nicht
+verkauft", so wird diesem Blatt diejenige Klasse zugeordnet, die am häufigsten
 auftritt. Um diese Idee zu visualisieren, färben wir im Entscheidungsbaum die
 Blätter entsprechend rot und blau ein.
 
@@ -353,7 +357,7 @@ print(f"Prognose für den neuen Druck: {prognose[0]}")
 
 ## Zusammenfassung und Ausblick
 
-In diesem Kapitel haben Sie den Entscheidungsbaum (Decision Tree) anhand einer
+In diesem Kapitel haben wir den Entscheidungsbaum (Decision Tree) anhand einer
 Klassifikationsaufgabe kennengelernt. Mit Hilfe von Scikit-Learn wurde ein
 Entscheidungsbaum trainiert, mit der Accuracy bewertet und dazu benutzt, eine
 Prognose für neue Daten abzugeben. Im nächsten Kapitel werden wir uns damit

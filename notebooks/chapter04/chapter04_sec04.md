@@ -136,7 +136,7 @@ ausführen.
 2. Die Scattermatrix ist nach `Legendaer` eingefärbt, der Scatterplot nach
    `Gesamt`. Wie unterscheiden sich die beiden Farbdarstellungen und warum?
 3. Was bedeutet im Scatterplot ein besonders großer Kreis?
-4. Legendaere Pokémon gelten als besonders stark. In welchem Bereich der
+4. Legendäre Pokémon gelten als besonders stark. In welchem Bereich der
    Einzeldiagramme erwarten Sie die legendären Pokémon?
 5. Führen Sie den Code aus und überprüfen Sie Ihre Vorhersagen.
 
