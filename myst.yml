@@ -57,7 +57,7 @@ project:
         - file: chapter07/chapter07_sec01.md
         - file: chapter07/chapter07_sec02.md
         - file: chapter07/chapter07_sec03.md
-#        - file: chapter07/chapter07_sec04.md
+        - file: chapter07/chapter07_sec04.md
     - title: 8. ML-Workflow Datenvorverarbeitung
       children:
         - file: chapter08/chapter08_sec01.md

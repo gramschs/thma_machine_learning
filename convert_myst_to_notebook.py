@@ -137,6 +137,9 @@ def clean_myst_file(input_filename, output_filename):
     output_lines = []
     mini_exercises = []
     warning_tags = ['```{mermaid}']
+    # Unter einer Überschrift "## Projekt ..." (Übungen ab Kapitel 7.4)
+    # werden die Admonitions der Teilaufgaben zu Unterüberschriften.
+    in_project = False
 
     i = 0
     while i < len(lines):
@@ -166,6 +169,8 @@ def clean_myst_file(input_filename, output_filename):
         match = ADMONITION_RE.match(line.rstrip('\n'))
 
         if match is None:
+            if line.startswith('## '):
+                in_project = line[3:].startswith('Projekt')
             for tag in warning_tags:
                 if tag in line:
                     print(f'warning line {i + 1}: {line.rstrip()}')
@@ -206,7 +211,8 @@ def clean_myst_file(input_filename, output_filename):
         # Übrige Admonitions (Warnung, Was ist ... ?, Aufgabe N, Übung N.N,
         # Hinweis, ...): bleiben als einfache Überschrift erhalten; eine
         # nachfolgende Code-Zelle wird unverändert durchgereicht.
-        output_lines.append(f'## {title}\n')
+        heading = '###' if in_project else '##'
+        output_lines.append(f'{heading} {title}\n')
         output_lines.append('\n')
         output_lines.extend(body)
 

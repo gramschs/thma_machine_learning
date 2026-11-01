@@ -1,465 +1,717 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter07/chapter07_sec04.ipynb
+    title: chapter07_sec04.ipynb
+  - file: bevoelkerung_deutschland.csv
+    title: bevoelkerung_deutschland.csv
+  - file: beton_DE.csv
+    title: beton_DE.csv
+  - file: chapter07_sec04.md
+    title: chapter07_sec04.md
 ---
 
 # 7.4 Übungen
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
+Diese Aufgaben sind für das Selbststudium zuhause gedacht und wiederholen den
+Stoff der Kapitel 7.1 bis 7.3. Rechnen Sie mit gut eineinhalb Stunden
+Bearbeitungszeit. Diesmal besteht die Übung aus zwei Projekten. Beide folgen
+dem Ablauf, den wir auch in größeren ML-Projekten verwenden: Daten erkunden,
+Daten ins richtige Format bringen, Modelle trainieren und bewerten, Prognosen
+treffen und die Ergebnisse kritisch prüfen. Projekt 7.1 führt Sie in kleinen
+Schritten durch diesen Ablauf. In Projekt 7.2 treffen Sie mehr Entscheidungen
+selbst.
+
+Bei den meisten Teilen finden Sie einen Kontrollwert. Damit können Sie prüfen,
+ob Ihr Zwischenergebnis stimmt, bevor Sie weiterarbeiten.
+
+Beide Datensätze stehen über das Download-Symbol rechts oben zur Verfügung.
+Speichern Sie sie in denselben Ordner wie dieses Jupyter Notebook.
+
+* `bevoelkerung_deutschland.csv`: Einwohnerzahl Deutschlands in den Jahren
+  1800 bis 2021, Spaltennamen ins Deutsche übersetzt (Quelle: [Our World in
+  Data, Population](https://ourworldindata.org/population-sources), Stand 2021,
+  bis 1950 nach Gapminder, ab 1950 nach UN World Population Prospects 2019,
+  Lizenz CC BY 4.0)
+* `beton_DE.csv`: 1030 Laborversuche zur Druckfestigkeit von Beton,
+  Spaltennamen ins Deutsche übersetzt (Quelle: [I-C. Yeh, Concrete Compressive
+  Strength, UCI Machine Learning Repository](https://doi.org/10.24432/C5PK67),
+  Lizenz CC BY 4.0)
+
+## Projekt 7.1: Bevölkerung in Deutschland bis 2100
+
+Wie viele Menschen werden im Jahr 2100 in Deutschland leben? Solche Prognosen
+braucht zum Beispiel die Energiewirtschaft, um den Strombedarf der nächsten
+Jahrzehnte abzuschätzen. Die Datei `bevoelkerung_deutschland.csv` enthält die
+Einwohnerzahl Deutschlands für jedes Jahr von 1800 bis 2021. Wir trainieren
+verschiedene Regressionsmodelle mit dem Jahr als Merkmal und vergleichen ihre
+Prognosen. Rechnen Sie mit etwa 40 Minuten.
+
+```{admonition} Teil 1: Daten erkunden
+:class: tip
+Lesen Sie die Datei ein und verschaffen Sie sich einen Überblick. Wie viele
+Datenpunkte gibt es? Welche Spalten und Datentypen enthält die Tabelle? Fehlen
+Werte? Welche Spalten sind für unsere Fragestellung überflüssig?
+
+Erweitern Sie die Tabelle um eine Spalte `Einwohner (Mio.)` mit der
+Einwohnerzahl in Millionen. Erstellen Sie einen Scatterplot mit dem Jahr auf
+der x-Achse und der Einwohnerzahl in Millionen auf der y-Achse. In welchen
+Zeiträumen ist die Bevölkerung zurückgegangen? Haben Sie eine Erklärung?
+
+Zur Kontrolle: Im Jahr 1800 lebten 18 Mio. Menschen in Deutschland.
 ```
 
-## Aufgabe 7.1 Bevölkerungszahlen in Deutschland
-
-In dieser Aufgabe betrachten wir den Datensatz `population_germany.csv`. Führen
-Sie zuerst eine explorative Datenanalyse durch. Geben Sie dann mit Hilfe eines
-Entscheidungsbaumes (Decision Tree) und eines linearen Regressionsmodells
-jeweils eine Prognose ab, wie viele Menschen in Deutschland im Jahr 2100 leben
-werden. Unterscheiden sich die beiden Prognosen?
-
-```{admonition} Überblick über die Daten
-:class: tip 
-
-Laden Sie die csv-Datei `population_germany.csv`. Welche Daten enthält die
-Datei? Wie viele Datenpunkte sind vorhanden? Wie viele und welche Merkmale gibt
-es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
+```{code-cell} python
+# Code-Zelle
 ```
 
-````{admonition} Lösung
+````{admonition} Lösung Teil 1
 :class: tip
 :class: dropdown
-
 ```python
 import pandas as pd
+import plotly.express as px
 
-daten = pd.read_csv('population_germany.csv')
-daten.info()
+bevoelkerung = pd.read_csv('bevoelkerung_deutschland.csv')
+bevoelkerung.info()
 ```
-
-Es liegen 222 Einträge vor und 4 Merkmale: Region, Code, Jahr, Population. Die
-ersten beiden Eigenschaften Region und Code sind Objects. Die Eigenschaften Jahr
-und Population sind Integer.
-````
-
-```{admonition} Statistik der numerischen Daten
-:class: tip 
-
-Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
-Daten. Visualisieren Sie anschließend die statistischen Kennzahlen mit Boxplots.
-Interpretieren Sie die statistischen Kennzahlen. Gibt es Ausreißer? Sind die
-Werte plausibel?
+Ausgabe:
 ```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 222 entries, 0 to 221
+Data columns (total 4 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   Land       222 non-null    object
+ 1   Code       222 non-null    object
+ 2   Jahr       222 non-null    int64 
+ 3   Einwohner  222 non-null    int64 
+dtypes: int64(2), object(2)
+memory usage: 7.1+ KB
+```
+Die Tabelle enthält 222 Datenpunkte, einen für jedes Jahr von 1800 bis 2021.
+Es gibt vier Spalten. `Land` und `Code` enthalten Strings, `Jahr` und
+`Einwohner` ganze Zahlen. Es fehlen keine Werte. Was in den beiden
+String-Spalten steht, sehen wir uns genauer an.
 
 ```python
-daten.describe()
+print(bevoelkerung['Land'].unique())
+print(bevoelkerung['Code'].unique())
 ```
-
-Das erste Merkmal ist das Jahr. Wir erhalten zwar eine Statistik für die
-Jahreszahlen und können ablesen, dass 50 % der Jahre vor 1910 liegen, aber
-sinnvoll ist die Statistik für die Jahreszahlen nicht. Eigentlich sind die
-Jahreszahlen für diese Fragestellung ein Index und werden daher nicht weiter
-betrachtet.
-
-Das zweite numerische Merkmal sind die Bevölkerungszahlen. Die minimale
-Population sind 18 Mio. Einwohner, die maximale Einwohnerzahl 83.9 Mio.
-Einwohner. Der Mittelwert von 55.4 Mio. Einwohner ist deutlich unter dem Median
-von 62.4 Mio. Einwohner. Es gibt einige Jahre mit hohen Bevölkerungszahlen, die 
-den Mittelwert nach oben ziehen. Die Verteilung könnte rechtsschief sein. Das
-bestätigt auch der Boxplot.
+Ausgabe:
+```
+['Deutschland']
+['DEU']
+```
+Beide Spalten enthalten in allen Zeilen denselben Wert. Sie tragen keine
+Information und spielen im Folgenden keine Rolle.
 
 ```python
-import plotly.express as px 
+bevoelkerung['Einwohner (Mio.)'] = bevoelkerung['Einwohner'] / 1000000
 
-fig = px.box(daten['Population'],
-    labels={'variable':'', 'value': 'Einwohnerzahl'},
-    title='Population in Deutschland')
+fig = px.scatter(bevoelkerung, x='Jahr', y='Einwohner (Mio.)',
+                 title='Bevölkerung in Deutschland')
 fig.show()
 ```
+Die Bevölkerung wächst von 18 Mio. im Jahr 1800 auf 83.9 Mio. im Jahr 2021.
+Am schnellsten wächst sie zwischen 1880 und 1910. Seit den 1970er Jahren
+wächst sie nur noch langsam. Zurückgegangen ist die Bevölkerung vor allem in
+vier Zeiträumen:
 
-Der Boxplot zeigt keine Ausreißer. Insgesamt erscheinen die Werte plausibel.
+* zwischen 1912 und 1919: Erster Weltkrieg und Grippepandemie ab 1918
+* zwischen 1941 und 1949: Zweiter Weltkrieg und Nachkriegszeit
+* zwischen 1973 und 1984: Es starben mehr Menschen, als Kinder geboren wurden.
+* zwischen 2004 und 2010: wieder mehr Sterbefälle als Geburten und kaum
+  Zuwanderung
+
+In den Kriegsjahren sinken die Werte auffällig gleichmäßig. Für diese Zeit
+gibt es nur Schätzungen, zwischen denen offenbar interpoliert wurde.
 ````
 
-```{admonition} Statistik der kategorialen Daten
-:class: tip 
+```{admonition} Teil 2: Einfache lineare Regression
+:class: tip
+Trainieren Sie ein lineares Regressionsmodell mit dem Jahr als Merkmal und der
+Einwohnerzahl in Millionen als Zielgröße.
 
-Erstellen Sie eine Übersicht der Häufigkeiten für die kategorialen Daten.
-Visualisieren Sie anschließend die Häufigkeiten mit Barplots. Interpretieren Sie
-die Häufigkeiten. Sind die Werte plausibel?
+1. Wie gut erklärt das Modell die Daten laut R²-Score?
+2. Notieren Sie die Modellgleichung. Um wie viele Menschen wächst die
+   Bevölkerung laut Modell pro Jahr? Welche Bedeutung hat der
+   y-Achsenabschnitt hier, und ist sein Wert plausibel?
+3. Welche Einwohnerzahlen prognostiziert das Modell für die Jahre 2030 und
+   2100?
+
+Zur Kontrolle: Der R²-Score beträgt 0.9717.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 2
 :class: tip
 :class: dropdown
-
-Als Erstes schauen wir uns an, was sich hinter den Objekten verbirgt.
-
 ```python
-daten.head(10)
-```
-
-Bei Region scheinen Länderbezeichnungen (Strings) aufgelistet zu werden und der
-Code scheint ein Länderkürzel (String) zu beinhalten. Bei den ersten 10
-Einträgen findet sich bei Region nur `'Germany'` und bei Code nur `'DEU'`. Mit
-`.unique()` überprüfen wir, wie viele verschiedene Einträge es überhaupt gibt.
-Sind diese Werte als kategoriale Daten einzuordnen?
-
-```python
-for merkmal in ['Region', 'Code']:
-    einzigartige_werte = daten[merkmal].unique()
-    anzahl = len(einzigartige_werte)
-    print(f'Das Merkmal {merkmal} hat {anzahl} einzigartige Einträge.')
-```
-
-Nein, in beiden Fällen gibt es nur einen einzigen Wert, nämlich `'Germany'` und
-`'DEU'`. Wir können diese beiden Merkmale im Folgenden ignorieren und brauchen
-daher auch keinen Barplot für die Häufigkeiten.
-````
-
-```{admonition} Korrelationen
-:class: tip
-Erstellen Sie einen Scatterplot mit dem Jahr auf der x-Achse und der Population
-auf der y-Achse. Beschriften Sie den Scatterplot sinnvoll. Vermuten Sie einen
-Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können
-Sie die Besonderheiten mit Geschichtswissen erklären?
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-fig = px.scatter(daten, x = 'Jahr', y = 'Population',
-    title='Population in Deutschland')
-fig.show()
-```
-
-Es scheint einen linearen Zusammenhang zu geben.
-
-Die Bevölkerung ist seit 1800 gewachsen. Zu Beginn der 1910er Jahr gibt es einen
-Bevölkerungsrückgang bis 1919/1920, dann steigt die Bevölkerung wieder an. Auch
-in den 1940er Jahren kam es zu einem Bevölkerungsrückgang. In beiden Fällen
-können wir vermuten, dass diese mit den beiden Weltkriegen zu tun hat. Aber auch
-in späteren Zeiten kam es trotz des langfristigen Wachstumstrends immer
-wieder zu einem kurzen Bevölkerungsrückgang, z.B. um 1984 oder 2010.
-````
-
-```{admonition} Lineares Regressionsmodell
-:class: tip
-
-Adaptieren Sie die Daten. Wählen Sie als Input das Jahr und als Output die
-Population. Trainieren Sie ein lineares Regressionsmodell und lassen Sie den
-R²-Score berechnen und ausgeben.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-```python
-X = daten[['Jahr']]
-y = daten['Population']
-
 from sklearn.linear_model import LinearRegression
 
-modell_linear = LinearRegression()
-modell_linear.fit(X,y)
-r2_score_lineares_modell = modell_linear.score(X,y)
-print(f'R2-Score lineares Modell: {r2_score_lineares_modell:.2f}')
-```
+X = bevoelkerung[['Jahr']]
+y = bevoelkerung['Einwohner (Mio.)']
 
-Der R²-Score ist mit 0.97 sehr gut.
+modell_linear = LinearRegression()
+modell_linear.fit(X, y)
+print(f'R2-Score: {modell_linear.score(X, y):.4f}')
+print(f'w_0 (y-Achsenabschnitt): {modell_linear.intercept_:.1f}')
+print(f'w_1 (Steigung): {modell_linear.coef_[0]:.4f}')
+
+prognosejahre = pd.DataFrame({'Jahr': [2030, 2100]})
+print(modell_linear.predict(prognosejahre))
+```
+Ausgabe:
+```
+R2-Score: 0.9717
+w_0 (y-Achsenabschnitt): -566.3
+w_1 (Steigung): 0.3254
+[ 94.31931614 117.10078963]
+```
+1. Mit 0.97 ist der R²-Score sehr hoch. Das Modell erklärt rund 97 Prozent der
+   Streuung der Einwohnerzahl.
+2. Die Modellgleichung lautet $y = -566.3 + 0.3254 \cdot x$ mit dem Jahr $x$
+   und der Einwohnerzahl $y$ in Millionen. Laut Modell wächst die Bevölkerung
+   pro Jahr um 0.3254 Mio., also um rund 325 000 Menschen. Der
+   y-Achsenabschnitt ist die Einwohnerzahl, die das Modell für das Jahr 0
+   prognostiziert, nämlich -566 Mio. Das ist natürlich unsinnig. Das Jahr 0
+   liegt weit außerhalb des Datenbereichs, und eine Gerade, die zu den Jahren
+   1800 bis 2021 passt, sagt über diese Zeit nichts aus.
+3. Das Modell prognostiziert 94.3 Mio. für 2030 und 117.1 Mio. für 2100.
 ````
 
-```{admonition} Entscheidungsbaum/Decision Tree
+```{admonition} Teil 3: Polynomiale Regression
 :class: tip
-Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den R²-Score
-ausgeben. 
+Trainieren Sie zusätzlich polynomiale Regressionsmodelle mit den Polynomgraden
+2 und 3. Bleiben Sie bei höchstens Grad 3. Bei Jahreszahlen um 2000 werden die
+höheren Potenzen so riesig (2000 hoch 4 sind schon 16 Billionen), dass die
+Rechnung ungenau wird.
 
-Tipp: Das Scikit-Learn-Modell heißt DecisionTreeRegressor.
+1. Vergleichen Sie die R²-Scores und die Prognosen für 2030 und 2100 der drei
+   Modelle mit den Graden 1, 2 und 3.
+2. Stellen Sie die Messwerte zusammen mit den Kurven aller drei Modelle für die
+   Jahre 1800 bis 2100 in einem gemeinsamen Diagramm dar. Welcher
+   Kurvenverlauf nach 2021 erscheint Ihnen plausibel?
+
+Zur Kontrolle: Mit dem Grad 2 beträgt der R²-Score 0.9856.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
 :class: tip
 :class: dropdown
+Wir trainieren alle drei Modelle in einer for-Schleife. Mit dem Grad 1 liefert
+`PolynomialFeatures` dasselbe Modell wie die lineare Regression aus Teil 2.
 
+```python
+from sklearn.preprocessing import PolynomialFeatures
+
+jahre = pd.DataFrame({'Jahr': range(1800, 2101)})
+
+fig = px.scatter(bevoelkerung, x='Jahr', y='Einwohner (Mio.)',
+                 title='Bevölkerung in Deutschland: Prognosen')
+for grad in [1, 2, 3]:
+    polynom_transformator = PolynomialFeatures(degree=grad)
+    X_polynom = polynom_transformator.fit_transform(bevoelkerung[['Jahr']])
+    modell = LinearRegression()
+    modell.fit(X_polynom, y)
+    r2_training = modell.score(X_polynom, y)
+    prognose = modell.predict(polynom_transformator.transform(prognosejahre))
+    print(f'Grad {grad}: R2-Score {r2_training:.4f}')
+    print(f'  Prognose 2030: {prognose[0]:.1f} Mio., 2100: {prognose[1]:.1f} Mio.')
+
+    kurve = modell.predict(polynom_transformator.transform(jahre))
+    fig.add_scatter(x=jahre['Jahr'], y=kurve, mode='lines', name=f'Grad {grad}')
+fig.show()
+```
+Ausgabe:
+```
+Grad 1: R2-Score 0.9717
+  Prognose 2030: 94.3 Mio., 2100: 117.1 Mio.
+Grad 2: R2-Score 0.9856
+  Prognose 2030: 87.4 Mio., 2100: 95.5 Mio.
+Grad 3: R2-Score 0.9942
+  Prognose 2030: 79.6 Mio., 2100: 44.1 Mio.
+```
+1. Der R²-Score steigt mit dem Grad von 0.9717 über 0.9856 auf 0.9942. Die
+   Prognosen laufen dabei immer weiter auseinander. Für 2100 liegen sie
+   zwischen 44.1 Mio. und 117.1 Mio.
+2. Die Gerade kann das Abflachen in den letzten Jahrzehnten nicht abbilden.
+   Schon für 2021 liefert sie 91.4 Mio., das sind 7.5 Mio. mehr als gemessen.
+   Die Parabel mit dem Grad 2 krümmt sich zwar, steigt aber bis 2100 weiter
+   an. Das Polynom 3. Grades folgt den Messwerten am besten. Es erreicht 2007
+   sein Maximum mit 81.5 Mio. und fällt danach immer steiler ab, bis 2100 auf
+   fast die Hälfte. Einen solchen Einbruch zeigen die Messwerte nicht, das
+   Polynom setzt nur seine Krümmung fort. Wirklich plausibel ist keiner der
+   drei Verläufe. Für die nächsten Jahre erscheint am ehesten ein flacher
+   Verlauf plausibel, wie ihn die Messwerte seit etwa 1990 zeigen.
+````
+
+```{admonition} Teil 4: Entscheidungsbaum zum Vergleich
+:class: tip
+In Kapitel 6 haben wir Entscheidungsbäume für Klassifikationsaufgaben
+kennengelernt. Für Regressionsaufgaben gibt es in Scikit-Learn das Modell
+`DecisionTreeRegressor`. Es wird ebenfalls aus `sklearn.tree` importiert und
+genauso verwendet wie `DecisionTreeClassifier`. Statt einer Klasse
+prognostiziert jedes Blatt eine Zahl, nämlich den Mittelwert der Zielgröße
+aller Trainingsdaten in diesem Blatt.
+
+Trainieren Sie einen Entscheidungsbaum ohne Begrenzung der Tiefe mit
+`random_state=0`. Welchen R²-Score erreicht er? Welche Einwohnerzahlen
+prognostiziert er für 2030 und 2100? Ergänzen Sie seine Kurve im Diagramm aus
+Teil 3 und erklären Sie den Verlauf nach 2021.
+
+Zur Kontrolle: Der Baum hat die Tiefe 14.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 4
+:class: tip
+:class: dropdown
 ```python
 from sklearn.tree import DecisionTreeRegressor
 
-modell_entscheidungsbaum = DecisionTreeRegressor()
-modell_entscheidungsbaum.fit(X,y)
-r2_score_entscheidungsbaum = modell_entscheidungsbaum.score(X,y)
-print(f'R2-Score Entscheidungsbaum: {r2_score_entscheidungsbaum:.2f}')
-```
-Der R²-Score ist mit 1.0 scheinbar perfekt, aber das ist ein Zeichen für
-Overfitting auf den Trainingsdaten.
-````
+modell_baum = DecisionTreeRegressor(random_state=0)
+modell_baum.fit(X, y)
+print(f'R2-Score: {modell_baum.score(X, y):.4f}')
+print(f'Tiefe: {modell_baum.get_depth()}')
+print(modell_baum.predict(prognosejahre))
 
-````{admonition} Bewertung und Prognose
-:class: tip
-
-Für welches Modell würden Sie sich entscheiden? Begründen Sie Ihre Wahl. 
-
-Lassen Sie dann sowohl das lineare Regressionsmodell als auch den
-Entscheidungsbaum die Populationen von 1800 bis 2100 prognostizieren. Verwenden
-Sie dazu den folgenden Datensatz:
-
-```python
-prognosedaten = pd.DataFrame({
-    'Jahr': range(1800, 2101)
-})
-```
-
-Visualisieren Sie die Prognosen zusammen mit den gemessenen Populationen in
-einem gemeinsamen Scatterplot.
-
-
-Tipp: Mit 
-
-`fig.add_scatter(x = prognosedaten['Jahr'],y = prognose_linear, name='lineare Regression')``
-
-können Sie einen weiteren Scatterplot zu einem schon existierenden (hier in der
-Variable `fig` gespeichert) hinzufügen.
-
-Welches Modell würden Sie nach der Visualisierung bevorzugen?
-````
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare
-Regressionsmodell, da der R²-Score besser ist. Daher könnte man sich für einen
-Entscheidungsbaum/Decision Tree entscheiden.
-
-```python
-prognosedaten = pd.DataFrame({
-    'Jahr': range(1800, 2101)
-})
-
-prognose_linear = modell_linear.predict(prognosedaten)
-prognose_entscheidungsbaum = modell_entscheidungsbaum.predict(prognosedaten)
-
-fig = px.scatter(daten, x = 'Jahr', y = 'Population', title='Vergleich der Modelle')
-fig.add_scatter(x = prognosedaten['Jahr'],y = prognose_linear, name='lineare Regression')
-fig.add_scatter(x = prognosedaten['Jahr'],y = prognose_entscheidungsbaum, name='Entscheidungsbaum')
+fig.add_scatter(x=jahre['Jahr'], y=modell_baum.predict(jahre),
+                mode='lines', name='Entscheidungsbaum')
 fig.show()
 ```
-
-Die Visualisierung der beiden Modelle zeigt zunächst die bessere Performance des
-Entscheidungsbaumes. Am Ende lernt der Entscheidungsbaum jeden Punkt auswendig
-und liefert daher für die bekannten Daten die perfekte Prognose. Er ist jedoch
-nicht in der Lage, auf unbekannte Daten (also Zeitraum 2022 bis 2100) zu
-verallgemeinern. Es liegt Overfitting vor. Daher ist das lineare
-Regressionsmodell zu bevorzugen.
-
-```python
-print(f'Prognose im Jahr 2100: {prognose_linear[-1]:.1f}')
+Ausgabe:
 ```
+R2-Score: 1.0000
+Tiefe: 14
+[83.900471 83.900471]
+```
+Der Baum erreicht einen R²-Score von 1.0. Jedes Jahr kommt nur einmal vor, also
+kann der Baum so lange fragen, bis jedes Jahr ein eigenes Blatt hat. Er kennt
+die Trainingsdaten dann auswendig, wie in Kapitel 6.3.
+
+Für 2030 und 2100 prognostiziert er beide Male 83.9 Mio., also genau die
+Einwohnerzahl von 2021. Ein Jahr nach 2021 ist größer als jede Grenze, nach der
+der Baum fragt, und landet deshalb immer im Blatt des Jahres 2021. Nach 2021
+verläuft die Kurve daher waagerecht. Ein Entscheidungsbaum kann nur Werte
+prognostizieren, die in seinen Blättern stehen. Einen Trend über den
+Datenbereich hinaus fortsetzen kann er nicht.
 ````
 
-## Aufgabe 7.2 Marketing-Budget für soziale Medien und Zeitungen
-
-Eine Firma erhebt statistische Daten zu ihren Verkaufszahlen (angegeben in
-Tausend US-Dollar) abhängig von dem eingesetzten Marketing-Budget in den
-jeweiligen Sozialen Medien (Quelle siehe
-<https://www.kaggle.com/datasets/fayejavad/marketing-linear-multiple-regression>).
-
-Erstellen Sie eine explorative Datenanalyse (EDA). Trainieren Sie dann
-ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt
-zu investieren.
-
-```{admonition} Überblick über die Daten
-:class: tip 
-Laden Sie die csv-Datei `marketing_data.csv`. Welche Daten enthält die
-Datei? Wie viele Datenpunkte sind vorhanden? Wie viele und welche Merkmale gibt
-es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
+```{admonition} Abschlussfrage
+:class: tip
+Sie sollen eine Prognose für die Einwohnerzahl im Jahr 2100 abgeben. Für
+welches der vier Modelle würden Sie sich entscheiden? Was sagt der R²-Score
+über die Qualität dieser Prognose aus?
 ```
 
-````{admonition} Lösung
+````{admonition} Lösung Abschlussfrage
 :class: tip
 :class: dropdown
+Die vier Modelle im Überblick:
 
-```python
-import pandas as pd 
+| Modell | R²-Score | Prognose 2030 | Prognose 2100 |
+| --- | --- | --- | --- |
+| Grad 1 | 0.9717 | 94.3 Mio. | 117.1 Mio. |
+| Grad 2 | 0.9856 | 87.4 Mio. | 95.5 Mio. |
+| Grad 3 | 0.9942 | 79.6 Mio. | 44.1 Mio. |
+| Entscheidungsbaum | 1.0000 | 83.9 Mio. | 83.9 Mio. |
 
-daten = pd.read_csv('marketing_data.csv')
-daten.info()
-```
+Der R²-Score sagt über die Prognose für 2100 nichts aus. Er misst nur, wie gut
+ein Modell die Trainingsdaten von 1800 bis 2021 beschreibt. Das Modell mit dem
+höchsten R²-Score, der Entscheidungsbaum, schreibt einfach den letzten Wert
+fort. Das Modell mit dem zweithöchsten R²-Score, das Polynom 3. Grades,
+prognostiziert einen Einbruch auf 44 Mio. Und das Modell mit dem niedrigsten
+R²-Score, die Gerade, liegt schon 2021 deutlich daneben.
 
-Die Daten enthalten 171 Einträge, die von 0 bis 170 indiziert sind. Es gibt vier
-Eigenschaften, die alle als Floats gespeichert sind. Alle Einträge sind gültig.
-Aufgrund der Aufgabenstellung ist klar, dass die ersten drei Eigenschaften das
-investierte Marketing-Budget in die sozialen Medien YouTube, Facebook und
-Newspaper darstellen. Die Spalte 'sales' repräsentiert dahingehend die Wirkung
-der Marketing-Budgets. Wir werfen noch einen Blick auf die ersten 10 Zeilen der 
-Tabelle:
+Das Jahr 2100 liegt fast 80 Jahre hinter dem letzten Messwert. Für eine so
+weite Extrapolation ist keines der Modelle geeignet. Alle kennen nur das Jahr
+als Merkmal, aber nicht die Gründe, warum sich die Bevölkerung verändert:
+Geburten, Sterbefälle und Zuwanderung. Das Statistische Bundesamt rechnet
+deshalb in seinen Bevölkerungsvorausberechnungen mit Annahmen zu genau diesen
+Größen. Es gibt auch keine einzelne Zahl an, sondern mehrere Varianten.
 
-```python
-daten.head(10)
-```
+Für eine kurzfristige Prognose, etwa für 2030, sind Modelle brauchbar, die den
+letzten Jahrzehnten folgen. Das Polynom 3. Grades und der Entscheidungsbaum
+liefern hier ähnliche Werte zwischen 80 und 84 Mio.
 ````
 
-```{admonition} Statistik der numerischen Daten
-:class: tip 
+## Projekt 7.2: Druckfestigkeit von Beton
 
-Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
-Daten. Visualisieren Sie anschließend die statistischen Kennzahlen mit Boxplots.
-Interpretieren Sie die statistischen Kennzahlen. Gibt es Ausreißer? Sind die
-Werte plausibel?
+Beton ist der meistverwendete Baustoff der Welt, im Maschinenbau zum Beispiel
+für Maschinenfundamente. Seine wichtigste Kenngröße ist die Druckfestigkeit.
+Sie hängt von der Rezeptur ab und vom Alter, denn Beton härtet über Wochen und
+Monate aus. Für die Einteilung in Festigkeitsklassen wird die Druckfestigkeit
+nach 28 Tagen geprüft. Ein Betonwerk möchte die Druckfestigkeit neuer
+Rezepturen abschätzen, bevor es aufwendige Versuche durchführt.
+
+Die Datei `beton_DE.csv` enthält 1030 Laborversuche. Jede Zeile beschreibt
+einen Probekörper: die Mengen der sieben Bestandteile in kg pro Kubikmeter
+Beton, das Alter in Tagen bei der Prüfung und die gemessene Druckfestigkeit in
+MPa. Neben Zement, Wasser, Grobzuschlag (Kies) und Feinzuschlag (Sand)
+enthalten viele Rezepturen drei weitere Bestandteile:
+
+* Hüttensand fällt bei der Roheisenherstellung im Hochofen an und ersetzt
+  einen Teil des Zements.
+* Flugasche stammt aus Kohlekraftwerken und ersetzt ebenfalls einen Teil des
+  Zements.
+* Fließmittel macht den frischen Beton flüssiger, ohne dass dafür mehr Wasser
+  nötig ist.
+
+Projekt 7.2 ist offener als Projekt 7.1. Sie entscheiden häufiger selbst, wie
+Sie vorgehen. Rechnen Sie mit etwa 50 Minuten.
+
+```{admonition} Teil 1: Daten erkunden und erstes Modell
+:class: tip
+Lesen Sie die Datei mit der Spalte `Nr.` als Zeilenindex ein und verschaffen
+Sie sich einen Überblick. Lassen Sie dann die Korrelationsmatrix als Heatmap
+anzeigen. Tipp: Mit der Option `text_auto='.2f'` zeigt die Heatmap die Werte
+mit zwei Nachkommastellen an.
+
+1. Welches Merkmal hängt am stärksten linear mit der Druckfestigkeit zusammen?
+   Welche Merkmale hängen negativ mit ihr zusammen?
+2. Trainieren Sie mit dem stärksten Merkmal ein einfaches lineares
+   Regressionsmodell. Notieren Sie die Modellgleichung und interpretieren Sie
+   die Steigung. Wie gut erklärt das Modell die Druckfestigkeit?
+
+Zur Kontrolle: Im Mittel haben die Probekörper eine Druckfestigkeit von
+35.8 MPa.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 1
 :class: tip
 :class: dropdown
-
 ```python
-daten.describe()
-```
-
-Als Nächstes visualisieren wir die statistischen Kennzahlen des
-Marketing-Budgets.
-
-```python
+import pandas as pd
 import plotly.express as px
-
-X = daten.loc[:, 'youtube' : 'newspaper']
-fig = px.box(X,
-             title='Marketing-Budget',
-             labels={'variable': 'Kategorie', 'value': 'Tsd. US-Dollar'})
-
-fig.show()
-```
-
-Mit großem Abstand wird am meisten in das Marketing bei YouTube investiert. Im
-Mittel 178 Tsd. US-Dollar, wohingegen nur 27 Tsd. US-Dollar in Facebook und 35
-Tsd. US-Dollar in Zeitungen (Newspaper) investiert werden. Bei allen drei
-Kategorien ist der Median ungefähr mittig zwischen Q1 und Q3. Bei der Kategorie
-Newspaper gibt es einen Ausreißer.
-
-Zuletzt betrachten wir noch den Boxplot der Wirkung 'sales'.
-
-```python
-import plotly.express as px
-
-y = daten['sales']
-fig = px.box(y,
-             title='Verkäufe',
-             labels={'variable': 'Kategorie', 'value': 'Tsd. US-Dollar'})
-
-fig.show()
-```
-
-Auch bei den Verkäufen gibt es keine Ausreißer. Der Median liegt näher an Q1 als
-an Q3 und unterhalb des Mittelwertes von 16 Tsd. US-Dollar.
-````
-
-```{admonition} Korrelationen
-:class: tip
-Erstellen Sie zuerst eine Scattermatrix, um Zusammenhänge zwischen den Merkmalen
-zu analysieren. Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und
-interpretieren Sie das Ergebnis.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-Alle drei Merkmale YouTube, Facebook und Newspaper könnten eine Wirkung auf die
-Verkaufszahlen haben. Am einfachsten ist zunächst die Visualisierung als
-Scattermatrix.
-
-```python
-fig = px.scatter_matrix(daten)
-fig.show()
-```
-
-YouTube und Facebook scheinen eine stärke lineare Wirkung auf die Verkaufszahlen
-zu haben als die Zeitungen. Genaueres zeigt uns die Korrelationsmatrix:
-
-```python
-korrelationsmatrix = daten.corr()
-
-fig = px.imshow(korrelationsmatrix, text_auto=True)
-fig.show()
-```
-
-Alle drei sozialen Medien sind positiv korreliert, also je mehr
-Marketing-Budget, desto höhere Verkaufszahlen. Am stärksten korreliert YouTube
-gefolgt von Facebook. Newspaper haben den geringsten Einfluss.
-````
-
-```{admonition} Lineares Regressionsmodell
-:class: tip
-
-Trainieren Sie drei lineare Regressinsmodelle, jeweils mit einem anderen Merkmal
-als Input, d.h. mit jeweils `youtube`, `facebook`, `newspaper`. Adaptieren Sie
-dazu passend die Daten. Lassen Sie jeweils den R²-Score berechnen und ausgeben.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-
-Wir trainieren zunächst drei einzelne lineare
-Regressionsmodelle und bestimmen den jeweiligen R²-Score.
-
-```python
 from sklearn.linear_model import LinearRegression
 
-y = daten['sales']
-for merkmal in ['youtube', 'facebook', 'newspaper']:
-    X = daten[[merkmal]]
-    modell = LinearRegression()
-    modell.fit(X,y)
-    r2_training = modell.score(X,y)
-    print(f'Input: {merkmal}, R2-Score = {r2_training:.2f}')
+beton = pd.read_csv('beton_DE.csv', index_col=0)
+beton.info()
+beton.describe()
 ```
-
-Wie erwartet sind die R²-Scores bei YouTube besser als bei Facebook und den
-Newspapern, da dort ein lineares Modell besser passt.
-````
-
-```{admonition} Finales Modell
-:class: tip
-Trainieren Sie nun als finales Modell ein multiples Regressionsmodell und
-stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
-dazugehörige Modellfunktion auf.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
+Alle neun Spalten sind numerisch, es fehlen keine Werte. Die Druckfestigkeit
+liegt zwischen 2.3 MPa und 82.6 MPa, im Mittel bei 35.8 MPa. Das Alter reicht
+von 1 bis 365 Tagen, der Median liegt bei 28 Tagen. Viele Probekörper wurden
+also nach der üblichen Prüfzeit von 28 Tagen getestet.
 
 ```python
-X = daten[['youtube', 'facebook', 'newspaper']]
-y = daten['sales']
+korrelationsmatrix = beton.corr()
 
-modell_multiple_regression = LinearRegression()
-modell_multiple_regression.fit(X,y)
-r2_training = modell_multiple_regression.score(X,y)
+fig = px.imshow(korrelationsmatrix, text_auto='.2f',
+                color_continuous_scale='RdBu_r', zmin=-1, zmax=1)
+fig.show()
+```
+1. Am stärksten hängt der Zement mit der Druckfestigkeit zusammen (0.50),
+   danach folgen das Fließmittel (0.37) und das Alter (0.33). Negativ hängen
+   Wasser (-0.29), Feinzuschlag (-0.17), Grobzuschlag (-0.16) und Flugasche
+   (-0.11) mit der Druckfestigkeit zusammen. Mehr Zement macht den Beton
+   fester, mehr Wasser macht ihn poröser und damit schwächer. Kein Merkmal
+   hängt allerdings stärker als mittelstark mit der Druckfestigkeit zusammen.
 
-print(f'R2-Score multiples Regressionsmodell: {r2_training:.2f}')
+```python
+X = beton[['Zement (kg/m3)']]
+y = beton['Druckfestigkeit (MPa)']
 
-print(f'Koeffizienten: {modell_multiple_regression.coef_}')
-print(f'Achsenabschnitt: {modell_multiple_regression.intercept_:.4f}')
+modell_zement = LinearRegression()
+modell_zement.fit(X, y)
+print(f'R2-Score: {modell_zement.score(X, y):.2f}')
+print(f'w_0 (y-Achsenabschnitt): {modell_zement.intercept_:.2f}')
+print(f'w_1 (Steigung): {modell_zement.coef_[0]:.4f}')
+```
+Ausgabe:
+```
+R2-Score: 0.25
+w_0 (y-Achsenabschnitt): 13.44
+w_1 (Steigung): 0.0796
+```
+2. Die Modellgleichung lautet $y = 13.44 + 0.0796 \cdot x$ mit der
+   Zementmenge $x$ in kg/m³ und der Druckfestigkeit $y$ in MPa. Mit 100 kg
+   Zement mehr pro Kubikmeter steigt die Druckfestigkeit laut Modell um rund
+   8 MPa. Der R²-Score von 0.25 ist niedrig. Der Zement allein erklärt nur ein
+   Viertel der Streuung der Druckfestigkeit.
+````
+
+```{admonition} Teil 2: Multiple lineare Regression
+:class: tip
+Trainieren Sie ein multiples lineares Regressionsmodell mit allen sieben
+Bestandteilen der Rezeptur. Nehmen Sie danach das Alter als achtes Merkmal
+hinzu.
+
+1. Wie verändert sich der R²-Score gegenüber Teil 1, erst mit der ganzen
+   Rezeptur und dann zusätzlich mit dem Alter?
+2. Lassen Sie sich die Koeffizienten des Modells mit acht Merkmalen ausgeben.
+   Tipp: Speichern Sie die Koeffizienten in einer Series mit den
+   Merkmalsnamen als Index, dann ist die Ausgabe übersichtlicher.
+   Interpretieren Sie die Koeffizienten von Wasser und Alter.
+3. Die Flugasche hängt laut Korrelationsmatrix negativ mit der
+   Druckfestigkeit zusammen. Welches Vorzeichen hat ihr Koeffizient im Modell?
+   Erklären Sie den scheinbaren Widerspruch. Tipp: Schauen Sie in der Heatmap
+   nach, wie Flugasche und Zement zusammenhängen.
+
+Zur Kontrolle: Mit den sieben Bestandteilen erreicht das Modell einen R²-Score
+von 0.45.
 ```
 
-Modellfunktion: 
+```{code-cell} python
+# Code-Zelle
+```
 
-$$y = 0.0452\cdot x_{\text{youtube}} + 0.1884\cdot x_{\text{facebook}}
-+ 0.0043\cdot x_{\text{newspaper}} + 3.5059.$$
+````{admonition} Lösung Teil 2
+:class: tip
+:class: dropdown
+```python
+bestandteile = ['Zement (kg/m3)', 'Huettensand (kg/m3)', 'Flugasche (kg/m3)',
+                'Wasser (kg/m3)', 'Fliessmittel (kg/m3)',
+                'Grobzuschlag (kg/m3)', 'Feinzuschlag (kg/m3)']
+X_rezeptur = beton[bestandteile]
+
+modell_rezeptur = LinearRegression()
+modell_rezeptur.fit(X_rezeptur, y)
+print(f'7 Bestandteile: R2-Score {modell_rezeptur.score(X_rezeptur, y):.2f}')
+
+merkmale = bestandteile + ['Alter (Tage)']
+X_alter = beton[merkmale]
+
+modell_alter = LinearRegression()
+modell_alter.fit(X_alter, y)
+print(f'mit Alter: R2-Score {modell_alter.score(X_alter, y):.2f}')
+print(pd.Series(modell_alter.coef_, index=merkmale))
+```
+Ausgabe:
+```
+7 Bestandteile: R2-Score 0.45
+mit Alter: R2-Score 0.62
+Zement (kg/m3)          0.119804
+Huettensand (kg/m3)     0.103866
+Flugasche (kg/m3)       0.087934
+Wasser (kg/m3)         -0.149918
+Fliessmittel (kg/m3)    0.292225
+Grobzuschlag (kg/m3)    0.018086
+Feinzuschlag (kg/m3)    0.020190
+Alter (Tage)            0.114222
+dtype: float64
+```
+1. Der R²-Score steigt von 0.25 mit dem Zement allein auf 0.45 mit der ganzen
+   Rezeptur und auf 0.62 mit dem Alter. Das Alter bringt also viel zusätzliche
+   Information. Probekörper aus demselben Beton sind je nach Alter
+   unterschiedlich fest.
+2. Bei sonst gleicher Rezeptur und gleichem Alter sinkt die Druckfestigkeit
+   laut Modell um 0.15 MPa pro kg Wasser mehr. 20 kg Wasser mehr pro
+   Kubikmeter kosten also rund 3 MPa. Mit jedem Tag Alter steigt die
+   Druckfestigkeit bei gleicher Rezeptur um 0.11 MPa. Das Modell nimmt dabei
+   an, dass der Beton in der ersten Woche genauso schnell fester wird wie nach
+   einem halben Jahr. Ob das stimmt, untersuchen wir in Teil 3.
+3. Der Koeffizient der Flugasche ist positiv (0.088). In der Heatmap hängen
+   Flugasche und Zement mit -0.40 negativ zusammen. Rezepturen mit viel
+   Flugasche enthalten also meist wenig Zement, denn die Flugasche ersetzt
+   einen Teil davon. Die Korrelation zwischen Flugasche und Druckfestigkeit
+   vermischt beide Effekte und zeigt vor allem den fehlenden Zement. Die
+   multiple lineare Regression bewertet die Flugasche dagegen bei gleicher
+   Zementmenge. Dann erhöht mehr Flugasche die Druckfestigkeit leicht. Das ist
+   derselbe Effekt wie beim Alter der Autos in Kapitel 7.2.
+````
+
+```{admonition} Teil 3: Das Alter genauer betrachten
+:class: tip
+Erstellen Sie einen Scatterplot mit dem Alter auf der x-Achse und der
+Druckfestigkeit auf der y-Achse. Beschreiben Sie den Verlauf. Passt dazu ein
+Modell, in dem die Druckfestigkeit linear vom Alter abhängt?
+
+Nutzen Sie den Trick aus Kapitel 7.3: Erweitern Sie die Tabelle um eine Spalte
+`Alter hoch 2` mit dem Quadrat des Alters. Trainieren Sie das Modell aus Teil 2
+mit diesem zusätzlichen Merkmal. Wie verändert sich der R²-Score?
+
+Zur Kontrolle: Versuch Nr. 1 wurde nach 28 Tagen geprüft, in der neuen Spalte
+steht dort 784.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
+:class: tip
+:class: dropdown
+```python
+fig = px.scatter(beton, x='Alter (Tage)', y='Druckfestigkeit (MPa)',
+                 title='Druckfestigkeit von Beton in Abhängigkeit vom Alter')
+fig.show()
+```
+Die Punkte stehen in senkrechten Säulen, weil nur an bestimmten Tagen geprüft
+wurde, zum Beispiel nach 3, 7, 14, 28, 56, 90, 180 und 365 Tagen. Innerhalb
+einer Säule streut die Druckfestigkeit stark, weil dort Probekörper mit ganz
+unterschiedlichen Rezepturen stehen. Am oberen Rand der Punktwolke ist der
+Verlauf gut zu erkennen: In den ersten Wochen steigt die Druckfestigkeit
+steil an, danach nur noch wenig. Eine Gerade kann diesen Verlauf nicht
+abbilden, sie steigt überall gleich stark.
+
+```python
+beton['Alter hoch 2'] = beton['Alter (Tage)']**2
+print(beton.loc[1, 'Alter hoch 2'])
+
+merkmale_quadrat = merkmale + ['Alter hoch 2']
+X_quadrat = beton[merkmale_quadrat]
+
+modell_quadrat = LinearRegression()
+modell_quadrat.fit(X_quadrat, y)
+print(f'mit Alter hoch 2: R2-Score {modell_quadrat.score(X_quadrat, y):.2f}')
+```
+Ausgabe:
+```
+784
+mit Alter hoch 2: R2-Score 0.74
+```
+Mit dem Quadrat des Alters steigt der R²-Score von 0.62 auf 0.74. Wie in
+Kapitel 7.3 ist das Modell quadratisch im Alter, wird aber trotzdem mit der
+linearen Regression trainiert.
+````
+
+```{admonition} Teil 4: Prognose für eine Rezeptur
+:class: tip
+Für die Rezeptur mit 540 kg Zement, 173 kg Wasser, 1125 kg Grobzuschlag und
+613 kg Feinzuschlag pro Kubikmeter, ohne Hüttensand, Flugasche und
+Fließmittel, enthält der Datensatz Messungen nach unterschiedlich vielen Tagen.
+
+1. Filtern Sie diese Versuche aus der Tabelle. Tipp: Zement und Wasser reichen
+   dafür aus.
+2. Lassen Sie die Modelle aus Teil 2 und Teil 3 die Druckfestigkeit dieser
+   Rezeptur für ein Alter von 1 bis 730 Tagen prognostizieren. Stellen Sie die
+   Messwerte und beide Prognosekurven in einem gemeinsamen Diagramm dar.
+   Tipp: Wenn Sie beim Erzeugen eines DataFrames für eine Spalte eine einzelne
+   Zahl statt einer Liste angeben, übernimmt Pandas diese Zahl für alle
+   Zeilen. Wählen Sie für jedes Modell genau die Spalten aus, mit denen es
+   trainiert wurde.
+3. Welches Modell beschreibt die Messwerte besser? Lesen Sie im Diagramm ab,
+   welche Druckfestigkeit die beiden Modelle nach zwei Jahren prognostizieren.
+   Ist das plausibel?
+
+Zur Kontrolle: Die Rezeptur wurde siebenmal geprüft. Nach 28 Tagen erreichte
+sie 67.31 MPa.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 4
+:class: tip
+:class: dropdown
+```python
+messungen = beton[(beton['Zement (kg/m3)'] == 540) & (beton['Wasser (kg/m3)'] == 173)]
+print(messungen[['Alter (Tage)', 'Druckfestigkeit (MPa)']])
+```
+Ausgabe:
+```
+     Alter (Tage)  Druckfestigkeit (MPa)
+Nr.                                     
+752             7                  52.61
+753            14                  59.76
+754            28                  67.31
+755            90                  69.66
+756           180                  71.62
+757           270                  74.17
+800             3                  41.64
+```
+In einer neuen Code-Zelle:
+```python
+# Einzelwerte gelten für alle Zeilen, das Alter läuft von 1 bis 730 Tage
+rezeptur = pd.DataFrame({
+    'Zement (kg/m3)': 540,
+    'Huettensand (kg/m3)': 0,
+    'Flugasche (kg/m3)': 0,
+    'Wasser (kg/m3)': 173,
+    'Fliessmittel (kg/m3)': 0,
+    'Grobzuschlag (kg/m3)': 1125,
+    'Feinzuschlag (kg/m3)': 613,
+    'Alter (Tage)': range(1, 731)
+    })
+rezeptur['Alter hoch 2'] = rezeptur['Alter (Tage)']**2
+
+prognose_alter = modell_alter.predict(rezeptur[merkmale])
+prognose_quadrat = modell_quadrat.predict(rezeptur[merkmale_quadrat])
+
+fig = px.scatter(messungen, x='Alter (Tage)', y='Druckfestigkeit (MPa)',
+                 title='Rezeptur mit 540 kg Zement: Messwerte und Prognosen')
+fig.add_scatter(x=rezeptur['Alter (Tage)'], y=prognose_alter,
+                mode='lines', name='Modell aus Teil 2')
+fig.add_scatter(x=rezeptur['Alter (Tage)'], y=prognose_quadrat,
+                mode='lines', name='Modell aus Teil 3')
+fig.show()
+```
+Beide Modelle unterschätzen, wie schnell diese Rezeptur in den ersten Wochen
+fest wird. Nach 28 Tagen wurden 67.3 MPa gemessen, die Modelle prognostizieren
+nur 51.3 MPa und 52.1 MPa. Den Verlauf gibt das Modell aus Teil 3 besser
+wieder: Es steigt anfangs steiler und flacht dann ab. Nach 90 Tagen
+prognostiziert es 68.0 MPa, gemessen wurden 69.7 MPa. Das Modell aus Teil 2
+steigt dagegen gleichmäßig und liegt nach 90 Tagen erst bei 58.4 MPa.
+
+Nach zwei Jahren prognostiziert das Modell aus Teil 2 rund 131.5 MPa. Das ist
+weit mehr als der festeste Probekörper im ganzen Datensatz mit 82.6 MPa. Das
+Modell aus Teil 3 prognostiziert sogar -133.1 MPa, also eine negative
+Druckfestigkeit. Die Parabel erreicht nach 217 Tagen ihr Maximum von 81.1 MPa
+und fällt danach ab, ab Tag 533 ist sie negativ. Beides ist nicht plausibel.
+Echter Beton verliert mit dem Alter nicht an Festigkeit, sondern wird langsam
+immer noch fester, wie die Messwerte nach 180 und 270 Tagen zeigen. Das älteste
+Prüfalter im Datensatz ist 365 Tage. Danach extrapolieren beide Modelle, und
+wie in Kapitel 7.3 sind die Prognosen dort unbrauchbar.
+````
+
+```{admonition} Abschlussfrage
+:class: tip
+Fassen Sie zusammen, wie sich der R²-Score von Teil 1 bis Teil 3 entwickelt
+hat. Welches Modell würden Sie dem Betonwerk empfehlen, und für welche
+Prognosen sollte es nicht eingesetzt werden? Was können Sie über die
+Prognosegüte für neue Rezepturen sagen, die nicht im Datensatz enthalten sind?
+```
+
+````{admonition} Lösung Abschlussfrage
+:class: tip
+:class: dropdown
+| Modell | Merkmale | R²-Score |
+| --- | --- | --- |
+| Teil 1 | Zement | 0.25 |
+| Teil 2 | sieben Bestandteile | 0.45 |
+| Teil 2 | sieben Bestandteile und Alter | 0.62 |
+| Teil 3 | sieben Bestandteile, Alter und Alter hoch 2 | 0.74 |
+
+Mit jedem zusätzlichen Merkmal erklärt das Modell mehr von der Streuung der
+Druckfestigkeit. Den größten Sprung bringt das Alter. Das Quadrat des Alters
+bildet zusätzlich ab, dass der Beton anfangs schnell und später langsamer fest
+wird.
+
+Empfehlen würden wir das Modell aus Teil 3, aber nur für ein Alter innerhalb
+des Datenbereichs. Weil die Parabel nach gut 200 Tagen wieder abfällt, sollte
+das Modell für ältere Probekörper nicht eingesetzt werden. Für die wichtige
+Prüfung nach 28 Tagen ist es brauchbar, aber nicht genau. Ein Viertel der
+Streuung bleibt unerklärt, und bei der Rezeptur aus Teil 4 lag die Prognose
+um 15 MPa daneben.
+
+Über neue Rezepturen können wir mit diesen Zahlen nichts Sicheres sagen. Alle
+R²-Scores wurden auf denselben Daten berechnet, mit denen die Modelle
+trainiert wurden. Wie wir einen Teil der Daten für einen fairen Test
+zurückhalten, lernen wir in Kapitel 8.3.
+
+Noch besser passt übrigens ein Merkmal, das wie die Druckfestigkeit erst
+schnell und dann immer langsamer wächst, zum Beispiel der Logarithmus des
+Alters. Ersetzen wir das Alter und sein Quadrat durch den Logarithmus des
+Alters, steigt der R²-Score auf 0.82.
 ````

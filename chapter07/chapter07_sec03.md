@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter07/chapter07_sec03.ipynb
+    title: chapter07_sec03.ipynb
   - file: chapter07_sec03.md
     title: chapter07_sec03.md
 ---
@@ -168,6 +170,9 @@ PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.pr
 Wir erzeugen das PolynomialFeatures-Objekt mit der Option `degree=2` und
 transformieren die Input-Daten mit der `fit_transform()`-Methode.
 
+Wichtig: `fit_transform()` lernt die Transformation aus den Trainingsdaten und
+wendet sie an, `transform()` wendet nur die bereits gelernte Transformation an.
+
 ```{code-cell} python
 from sklearn.preprocessing import PolynomialFeatures
 
@@ -176,9 +181,6 @@ polynom_transformator = PolynomialFeatures(degree = 2)
 X = polynom_transformator.fit_transform(daten[['Geschwindigkeit [km/h]']])
 y = daten['Bremsweg [m]']
 ```
-
-Wichtig: `fit_transform()` lernt die Transformation aus den Trainingsdaten und
-wendet sie an, `transform()` wendet nur die bereits gelernte Transformation an.
 
 Danach können wir das multiple lineare Regressionsmodell trainieren und bewerten
 lassen.
