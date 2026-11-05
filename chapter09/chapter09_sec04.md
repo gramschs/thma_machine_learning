@@ -4,488 +4,696 @@ kernelspec:
   language: python
   name: python3
 downloads:
-  - file: california_housing_DE.csv
-    title: california_housing_DE.csv
+  - file: waldtypen_colorado.csv
+    title: waldtypen_colorado.csv
+  - file: beton_DE.csv
+    title: beton_DE.csv
   - file: chapter09_sec04.md
     title: chapter09_sec04.md
 ---
 
 # 9.4 Übungen
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
+Diese Aufgaben sind für das Selbststudium zuhause gedacht und wiederholen den
+Stoff der Kapitel 9.1 bis 9.3. Rechnen Sie mit gut eineinhalb Stunden
+Bearbeitungszeit. Wie in den Kapiteln 7.4 und 8.4 besteht die Übung aus zwei
+Projekten. In Projekt 9.1 lernen Sie einen neuen Datensatz kennen und
+vergleichen Schritt für Schritt einen Entscheidungsbaum, einen Random Forest
+und XGBoost bei einer Klassifikationsaufgabe. In Projekt 9.2 kehren Sie zum
+Beton aus den Projekten 7.2 und 8.2 zurück und übertragen die Ensemble-Methoden
+auf eine Regressionsaufgabe. Dabei treffen Sie mehr Entscheidungen selbst.
 
-Der California-Housing-Datensatz ist ein klassischer Datensatz für
-Regressionsaufgaben im maschinellen Lernen. Er wurde 1990 aus dem US-Census
-extrahiert und enthält Daten zu **Wohnblöcken** in Kalifornien. Ein Wohnblock
-ist eine statistische Einheit mit typischerweise 600-3000 Einwohnern. Die
-Merkmale sind Durchschnittswerte für alle Haushalte in diesem Block. Das Ziel
-ist, den Median-Hauswert (in US-Dollar) vorherzusagen.
+Bei den meisten Teilen finden Sie einen Kontrollwert. Damit können Sie prüfen,
+ob Ihr Zwischenergebnis stimmt, bevor Sie weiterarbeiten. Die Kontrollwerte
+gelten nur für die angegebenen Werte von `random_state`. Für beide Projekte
+brauchen Sie XGBoost, siehe Kapitel 9.3.
 
-```{admonition} Überblick über die Daten
+Beide Datensätze stehen über das Download-Symbol rechts oben zur Verfügung.
+Speichern Sie sie in denselben Ordner wie dieses Jupyter Notebook.
+
+* `waldtypen_colorado.csv`: Stichprobe von 20 000 Waldflächen im Roosevelt
+  National Forest in Colorado, Spaltennamen und Einträge ins Deutsche
+  übersetzt (Quelle: [J. Blackard, Covertype, UCI Machine Learning
+  Repository](https://doi.org/10.24432/C50K5N), Lizenz CC BY 4.0)
+* `beton_DE.csv`: 1030 Laborversuche zur Druckfestigkeit von Beton,
+  Spaltennamen ins Deutsche übersetzt (Quelle: [I-C. Yeh, Concrete Compressive
+  Strength, UCI Machine Learning Repository](https://doi.org/10.24432/C5PK67),
+  Lizenz CC BY 4.0)
+
+## Projekt 9.1: Welcher Wald wächst hier?
+
+In den Rocky Mountains im Norden von Colorado hat die US-Forstverwaltung für
+sehr viele Flächen von 30 m × 30 m erfasst, welcher Waldtyp dort wächst. Jede
+Fläche zu begehen ist aufwendig. Kartendaten wie die Höhe, die Hangneigung oder
+der Abstand zum nächsten Gewässer liegen dagegen für jede Fläche vor. Lässt sich
+der Waldtyp aus diesen Kartendaten prognostizieren? Wir lassen also einen
+Random Forest einen echten Wald vorhersagen.
+
+Die Datei `waldtypen_colorado.csv` enthält 20 000 Flächen aus vier
+Schutzgebieten. Zu jeder Fläche gibt es sieben Messgrößen:
+
+* die Höhe über dem Meeresspiegel in m,
+* die Ausrichtung, also die Himmelsrichtung, in die der Hang zeigt, in Grad
+  (0 für Norden, 90 für Osten, 180 für Süden, 270 für Westen),
+* die Hangneigung in Grad,
+* den waagerechten Abstand und den Höhenunterschied zum nächsten Gewässer in m,
+* den Abstand zur nächsten Straße in m,
+* den Abstand zur nächsten Stelle, an der ein Waldbrand ausgebrochen ist, in m.
+
+Dazu kommen das Schutzgebiet (`Gebiet`) und der Waldtyp. Es gibt sieben
+Waldtypen: Fichte/Tanne, Drehkiefer, Gelbkiefer, Pappel/Weide, Espe, Douglasie
+und Krummholz. Rechnen Sie mit etwa 50 Minuten.
+
+```{admonition} Teil 1: Daten erkunden
 :class: tip
-Laden Sie den Datensatz `california_housing_DE.csv`.
+Lesen Sie die Datei mit der Spalte `Nr.` als Zeilenindex ein und verschaffen
+Sie sich einen Überblick.
 
-* Welche Daten enthält der Datensatz?
-* Wie viele Datenpunkte und Merkmale gibt es?
-* Sind die Daten vollständig?
-* Welche Datentypen haben die Merkmale?
-* Gibt es Merkmale mit unerwarteten Datentypen?
+1. Wie oft kommt jeder Waldtyp vor? Welche Accuracy erreicht ein Modell, das
+   immer den häufigsten Waldtyp prognostiziert?
+2. Stellen Sie die Höhe für jeden Waldtyp in einem Boxplot dar. Welche
+   Waldtypen wachsen weit oben, welche weiter unten? Reicht die Höhe allein, um
+   die Waldtypen zu unterscheiden?
+
+Zur Kontrolle: Auf 9760 Flächen wächst Drehkiefer.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 1
 :class: tip
 :class: dropdown
 ```python
 import pandas as pd
-
-# Laden der Daten und erste Informationen
-daten = pd.read_csv('california_housing_DE.csv')
-daten.info()
-
-# Check der Vollständigkeit
-print(daten.isnull().sum())
-
-# Inhalt der ersten 10 Zeilen
-daten.head(10)
-```
-Der Datensatz enthält 20.640 Datenpunkte (Wohnblöcke) mit 10 Merkmalen. Die Daten
-sind nicht vollständig, denn beim Merkmal Schlafzimmer fehlen 207 Einträge. Die
-übrigen Merkmale sind vollständig. Die Datentypen der Merkmale sind wie folgt:
-
-* Laenge --> float64,
-* Breite --> float64,
-* Alter --> float64,
-* Zimmer --> float64,
-* Schlafzimmer --> float64,
-* Bevoelkerung --> float64,
-* Haushalte --> float64,
-* Einkommen --> float64,
-* Hauswert --> float64 und
-* Kuestennaehe --> object.
-
-Die Datentypen sind für die Merkmale angemessen.
-````
-
-```{admonition} Datenvorverarbeitung
-:class: tip
-Der Datensatz enthält fehlende Werte in der Spalte `Schlafzimmer`. Entscheiden
-Sie, wie Sie diese behandeln möchten. Begründen Sie Ihre Wahl. Führen Sie die
-gewählte Methode durch.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-Es fehlen 207 Werte (ca. 1 \% des Datensatzes). Da es sich um eine numerische
-Spalte handelt und der Anteil der fehlenden Werte gering ist, ist eine
-*Imputation mit dem Median* sinnvoll. Der Median ist robust gegenüber Ausreißern
-und verändert die Verteilung der Daten kaum.
-
-Die Imputation führen wir wie folgt durch:
-
-```python
-# Median berechnen
-median_schlafzimmer = daten['Schlafzimmer'].median()
-print(f'Median Schlafzimmer: {median_schlafzimmer:.1f} ')
-
-# fehlende Werte ersetzen
-daten['Schlafzimmer'] = daten['Schlafzimmer'].fillna(median_schlafzimmer)
-
-# Überprüfen, ob keine fehlenden Werte mehr vorhanden sind
-print(f"Fehlende Werte nach Imputation: {daten['Schlafzimmer'].isna().sum()}")
-```
-Nach der Imputation sind keine fehlenden Werte mehr in der Spalte `Schlafzimmer`
-vorhanden.
-
-Alternativen wären: Zeilen löschen (bei nur 1 % vertretbar), Mittelwert (aber
-weniger robust) oder komplexere Imputation mit ML-Modellen (hier übertrieben
-aufwendig).
-````
-
-```{admonition} Statistik der numerischen Daten
-:class: tip 
-Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
-Daten. Interpretieren Sie die statistischen Kennzahlen. Gibt es Auffälligkeiten?
-Sind die Werte plausibel?
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
 import plotly.express as px
 
-# Laenge, Breite wird weggelassen, da die Positionen weniger gut statistisch
-# interpretiert werden kann; Hauswert wird gesondert untersucht, da es die 
-# Zielgröße ist 
-fig = px.box(daten.loc[:, 'Alter':'Einkommen'],
-             labels={'variable': 'Merkmal', 'value': 'Wert'})
-
-fig.show()
-
-# Statistik für alle Merkmale und Zielgröße
-daten.describe()
+flaechen = pd.read_csv('waldtypen_colorado.csv', index_col=0)
+flaechen.info()
+print(flaechen['Waldtyp'].value_counts())
 ```
-Beobachtungen:
-
-* Alter: reicht von 1 bis 52 Jahren, durchschnittlich 28.6 Jahre
-* Zimmer: sehr große Spannweite (2 bis 39320), Median (2127) deutlich unter
-  Mittelwert (2635), d.h. rechtsschiefe Verteilung, Ausreißer vorhanden
-* Schlafzimmer: ähnliches Bild wie bei Zimmer
-* Bevoelkerung: Maximum von 35682 deutet auf sehr große Bezirke hin
-* Einkommen: reicht von 0.5 bis 15 (Einheit: 10.000 USD)
-* Hauswert: Maximum von 500001 ist auffällig, vermutlich werden Werte über
-  500.000 USD gekappt
-
-Die Werte erscheinen grundsätzlich plausibel, zeigen aber deutliche Ausreißer.
-````
-
-```{admonition} Statistik der kategorialen Merkmale
-:class: tip 
-Wie viele Beobachtungen gibt es pro Kategorie in Küstennähe? Visualisieren
-Sie die Verteilung mit einem Balkendiagramm. Ist der Datensatz ausgewogen?
+Ausgabe:
 ```
+<class 'pandas.core.frame.DataFrame'>
+Index: 20000 entries, 24 to 580973
+Data columns (total 9 columns):
+ #   Column                         Non-Null Count  Dtype 
+---  ------                         --------------  ----- 
+ 0   Hoehe (m)                      20000 non-null  int64 
+ 1   Ausrichtung (Grad)             20000 non-null  int64 
+ 2   Hangneigung (Grad)             20000 non-null  int64 
+ 3   Abstand Wasser horizontal (m)  20000 non-null  int64 
+ 4   Abstand Wasser vertikal (m)    20000 non-null  int64 
+ 5   Abstand Strasse (m)            20000 non-null  int64 
+ 6   Abstand Brandstelle (m)        20000 non-null  int64 
+ 7   Gebiet                         20000 non-null  object
+ 8   Waldtyp                        20000 non-null  object
+dtypes: int64(7), object(2)
+memory usage: 1.5+ MB
+Waldtyp
+Drehkiefer      9760
+Fichte/Tanne    7308
+Gelbkiefer      1170
+Krummholz        719
+Douglasie        592
+Espe             346
+Pappel/Weide     105
+Name: count, dtype: int64
+```
+1. Es fehlen keine Werte. Die sieben Messgrößen sind ganze Zahlen, das Gebiet
+   und der Waldtyp sind Text. Drehkiefer und Fichte/Tanne wachsen zusammen auf
+   gut 85 % der Flächen. Pappel/Weide kommt nur auf 105 Flächen vor. Ein
+   Modell, das immer Drehkiefer prognostiziert, erreicht eine Accuracy von
+   9760 / 20000 = 0.488. Daran messen wir alle weiteren Modelle.
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
 ```python
-haeufigkeiten = daten['Kuestennaehe'].value_counts()
-print(haeufigkeiten)
-
-fig = px.bar(x=haeufigkeiten.index, y=haeufigkeiten.values,
-             labels={'x': 'Küstennähe', 'y': 'Anzahl'},
-             title='Verteilung der Kuestennähe-Kategorien')
+fig = px.box(flaechen, x='Waldtyp', y='Hoehe (m)',
+             title='Höhenlage der Waldtypen')
 fig.show()
+print(flaechen.groupby('Waldtyp')['Hoehe (m)'].median().sort_values())
 ```
-Der Datensatz ist nicht ausgewogen. Die Kategorie 'weniger_als_1h_zum_Ozean'
-dominiert mit über 9000 Einträgen, gefolgt von 'Binnenland' mit über 6000
-Einträgen. 'nahe_Bucht' und 'nahe_Ozean' haben deutlich weniger Einträge, und
-'Insel' ist mit nur 5 Beobachtungen extrem unterrepräsentiert.
+Ausgabe:
+```
+Waldtyp
+Pappel/Weide    2227.0
+Gelbkiefer      2411.0
+Douglasie       2420.0
+Espe            2782.5
+Drehkiefer      2939.0
+Fichte/Tanne    3147.0
+Krummholz       3367.0
+Name: Hoehe (m), dtype: float64
+```
+2. Die Waldtypen wachsen in unterschiedlichen Höhenstufen. Pappel und Weide,
+   Gelbkiefer und Douglasie wachsen unten, im Median zwischen gut 2200 und gut
+   2400 m.
+   Darüber folgen Espe und Drehkiefer, dann Fichte/Tanne. Am höchsten liegt
+   das Krummholz mit einem Median von fast 3400 m, also an der Baumgrenze. Die
+   Boxen überlappen sich aber stark, vor allem bei den beiden häufigsten
+   Waldtypen Drehkiefer und Fichte/Tanne. Die Höhe allein reicht deshalb nicht
+   aus.
 ````
 
-```{admonition} Analyse der Zielgröße
-:class: tip 
-Visualisieren Sie die Verteilung der Zielgröße `Hauswert` mit einem
-Histogramm. Ist die Verteilung normalverteilt? Gibt es Auffälligkeiten?
-```
-
-````{admonition} Lösung
+```{admonition} Teil 2: Entscheidungsbaum gegen Random Forest
 :class: tip
-:class: dropdown
-```python
-fig = px.histogram(daten, x='Hauswert', 
-                   nbins=50,
-                   title='Verteilung der Hauswerte')
-fig.update_layout(
-    yaxis_title='Anzahl',
-    xaxis_title='Hauswert (USD)'
-)
-fig.show()
-```
-Die Verteilung ist rechtsschief und nicht normalverteilt. Auffällig ist der
-große Balken bei 500.001 USD. Hier wurden offensichtlich alle Werte über 500.000
-USD auf diesen Maximalwert gesetzt. Dies ist eine Besonderheit des Datensatzes,
-die man bei der Interpretation der Ergebnisse berücksichtigen sollte.
-````
+Kodieren Sie das Gebiet mit der One-Hot-Kodierung. Teilen Sie die Daten in
+Trainings- und Testdaten auf, mit 20 % Testdaten und `random_state=0`. Sorgen
+Sie dafür, dass die Anteile der Waldtypen in beiden Teilen gleich bleiben,
+denn manche Waldtypen sind sehr selten.
 
-```{admonition} Korrelationen
-:class: tip
-Erstellen Sie eine Korrelationsmatrix für alle numerischen Variablen und
-visualisieren Sie diese als Heatmap. Welche Merkmale korrelieren am stärksten
-mit dem Hauswert? Gibt es starke Korrelationen zwischen den Merkmalen?
+Trainieren Sie einen Entscheidungsbaum ohne Begrenzung der Tiefe und einen
+Random Forest mit 100 Bäumen, beide mit `random_state=0`.
+
+1. Vergleichen Sie die Accuracy auf den Trainings- und Testdaten. Bei welchem
+   Modell sehen Sie Overfitting?
+2. Wie viel besser als das Modell aus Teil 1, das immer Drehkiefer
+   prognostiziert, sind die beiden Modelle?
+
+Zur Kontrolle: Der Entscheidungsbaum hat die Tiefe 29.
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-numerische_daten = daten.loc[:, 'Laenge' : 'Hauswert']
-korrelation = numerische_daten.corr()
-
-fig = px.imshow(korrelation, 
-                text_auto='.2f',
-                aspect='auto',
-                labels={'color': 'Korrelation'},
-                title='Korrelationsmatrix')
-fig.show()
-```
-Eine häufig verwendete Faustregel für die Interpretation des
-Korrelationskoeffizienten r ist
-
-* |r| < 0.3: schwacher Zusammenhang
-* 0.3 ≤ |r| < 0.7: mittelstarker Zusammenhang
-* |r| ≥ 0.7: starker Zusammenhang
-
-Das Einkommen korreliert am stärksten mit dem Hauswert (r = 0.69). Alle anderen
-Merkmale zeigen keine bzw. nur einen sehr schwachen Zusammenhang zum Hauswert
-(Werte zwischen -0.14 bis 0.13).
-
-Bei den Merkmalen untereinander gibt es starke Korrelationen zwischen den
-Zimmern, Schlafzimmern, Bevölkerung und Haushalten (0.86 bis 0.93).
-````
-
-```{admonition} Analyse der Positionen
-:class: tip
-Erstellen Sie einen Scatterplot mit Längengrad (x-Achse) und Breitengrad
-(y-Achse). Färben Sie die Punkte nach Hauswert ein. Erkennen Sie geografische
-Muster?
-
-Tipp: Benutzen Sie das optionale Argument `opacity=0.5`, damit knapp
-übereinanderliegende Punkte dennoch sichtbar werden.
+```{code-cell} python
+# Code-Zelle
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-fig = px.scatter(daten, 
-                 x='Laenge', 
-                 y='Breite',
-                 color='Hauswert',
-                 labels={'Laenge': 'Längengrad',
-                        'Breite': 'Breitengrad',
-                        'Hauswert': 'Hauswert (USD)'},
-                 title='Geografische Verteilung der Hauswerte',
-                 opacity=0.5
-                )
-fig.show()
-```
-Die Form von Kalifornien ist deutlich erkennbar. Die höchsten Hauswerte sind in
-den Küstenregionen (Vergleich mit Atlas: San Francisco Bay Area und Los
-Angeles/San Diego). Im Binnenland sind die Hauswerte niedriger.
-
-Die geografische Lage ist ein wichtiger Einflussfaktor auf den Hauswert. Der
-Einfluss ist allerdings nichtlinear, denn sonst hätten wir in der
-Korrelationsmatrix nicht r = -0.05 für die Laenge und r = -0.14 für die Breite
-erhalten.
-````
-
-```{admonition} Neue Merkmale
-:class: tip
-Wir haben festgestellt, dass die Merkmale Zimmer, Schlafzimmer, Bevölkerung und
-Haushalte stark linear korreliert sind.
-
-Erstellen Sie folgende neue Merkmale:
-* Zimmer pro Haushalt
-* Schlafzimmer pro gesamte Anzahl Zimmer  
-* Personen pro Haushalt
-
-Dürfen die drei Divisionen durchgeführt werden? Berechnen Sie die Korrelation
-dieser neuen Merkmale mit der Zielgröße.
-```
-
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-Die statische Analyse ergab, dass das Minimum der Haushalte 1 ist und die
-minimale Anzahl der Zimmer 2. Null kommt nicht vor, so dass alle drei Divisionen
-durchgeführt werden können.
-```python
-# Erstellung neue Merkmale als zusätzliche Spalten
-daten['Zimmer_pro_Haushalt'] = daten['Zimmer'] / daten['Haushalte']
-daten['Schlafzimmer_Anteil'] = daten['Schlafzimmer'] / daten['Zimmer']
-daten['Personen_pro_Haushalt'] = daten['Bevoelkerung'] / daten['Haushalte']
-
-# Auswahl der Merkmale für Korrelationsmatrix
-neue_daten = daten.loc[:, ['Zimmer_pro_Haushalt', 'Schlafzimmer_Anteil', 'Personen_pro_Haushalt', 'Hauswert' ]]
-
-# Berechnung und Anzeige Korrelationsmatrix
-neue_korrelationen = neue_daten.corr()
-print(neue_korrelationen)
-
-# Visualisierung Korrelationsmatrix als Heatmap
-fig = px.imshow(neue_korrelationen, 
-                text_auto='.2f',
-                aspect='auto',
-                labels={'color': 'Korrelation'},
-                title='Neue Korrelationsmatrix')
-fig.show()
-```
-Die neuen Merkmale zeigen stärkere Korrelationen als die ursprünglichen
-Merkmale. Besonders der `Schlafzimmer_Anteil` könnte ein nützliches Merkmal zur
-Prognose des Hauswertes sein.
-````
-
-```{admonition} Vorbereitung der Daten für das Training
-:class: tip
-Bereiten Sie die Daten für das maschinelle Lernen vor:
-
-1. Kodieren Sie die kategoriale Variable Küstennähe mit One-Hot-Encoding.
-2. Trennen Sie die Merkmale (Input X) und die Zielgröße (Output y).
-3. Teilen Sie die Daten in Trainings- und Testdaten im Verhältnis 80:20 auf.
-```
-
-````{admonition} Lösung
+````{admonition} Lösung Teil 2
 :class: tip
 :class: dropdown
 ```python
 from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
-# One-Hot-Encoding für Kuestennaehe
-daten = pd.get_dummies(data=daten, columns=['Kuestennaehe'])
-daten.head()
+# Daten ins richtige Format bringen
+flaechen_kodiert = pd.get_dummies(flaechen, columns=['Gebiet'], dtype=int)
+X = flaechen_kodiert.drop(columns=['Waldtyp'])
+y = flaechen_kodiert['Waldtyp']
 
-# Input und Output trennen
-X = daten.drop('Hauswert', axis=1)
-y = daten['Hauswert']
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0, stratify=y)
 
-# Train-Test-Split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+baum = DecisionTreeClassifier(random_state=0)
+baum.fit(X_train, y_train)
+accuracy_training = baum.score(X_train, y_train)
+accuracy_test = baum.score(X_test, y_test)
+print(f'Baum (Tiefe {baum.get_depth()}): Training {accuracy_training:.3f}, Test {accuracy_test:.3f}')
 
-print(f'Trainingsdaten: {X_train.shape[0]} Datenpunkte')
-print(f'Testdaten: {X_test.shape[0]} Datenpunkte')
-print(f'Anzahl Merkmale: {X_train.shape[1]}')
+wald = RandomForestClassifier(random_state=0)
+wald.fit(X_train, y_train)
+accuracy_training = wald.score(X_train, y_train)
+accuracy_test = wald.score(X_test, y_test)
+print(f'Wald: Training {accuracy_training:.3f}, Test {accuracy_test:.3f}')
 ```
+Ausgabe:
+```
+Baum (Tiefe 29): Training 1.000, Test 0.742
+Wald: Training 1.000, Test 0.827
+```
+1. Der Entscheidungsbaum wird 29 Ebenen tief und lernt die Trainingsdaten
+   auswendig. Auf den Testdaten erreicht er nur 0.742. Diese große Lücke ist
+   das typische Zeichen für Overfitting. Auch der Random Forest erreicht auf
+   den Trainingsdaten 1.000, denn er besteht aus 100 unbegrenzten Bäumen. Auf
+   den Testdaten liegt er mit 0.827 aber deutlich über dem einzelnen Baum.
+   Das Mitteln vieler Bäume gleicht einen Teil ihrer zufälligen Fehler aus,
+   wie in Kapitel 9.2.
+2. Das Modell, das immer Drehkiefer prognostiziert, erreicht 0.488. Der Baum
+   liegt gut 25 Prozentpunkte darüber, der Random Forest fast 34
+   Prozentpunkte.
 ````
 
-```{admonition} ML-Modell: Entscheidungsbaum
+```{admonition} Teil 3: Feature Importance
 :class: tip
-Trainieren Sie einen Entscheidungsbaum (DecisionTreeRegressor) auf den
-Trainingsdaten. Berechnen Sie den R²-Score auf den Trainings- und Testdaten. Was
-fällt Ihnen auf?
+Stellen Sie die Feature Importance des Random Forests als Balkendiagramm dar,
+sortiert nach ihrer Größe.
+
+1. Welches Merkmal ist am wichtigsten? Passt das zu Ihrem Boxplot aus Teil 1?
+2. Das Gebiet ist durch die One-Hot-Kodierung auf vier Spalten verteilt. Wie
+   wichtig ist das Gebiet insgesamt?
+3. Auf den Plätzen zwei und drei liegen der Abstand zur nächsten Straße und
+   der Abstand zur nächsten Brandstelle. Wächst eine Fichte, weil die Straße
+   weit weg ist? Was zeigt die Feature Importance, und was zeigt sie nicht?
+
+Zur Kontrolle: Die Höhe hat eine Feature Importance von 0.329.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
 :class: tip
 :class: dropdown
 ```python
-from sklearn.tree import DecisionTreeRegressor
+feature_importances = pd.Series(wald.feature_importances_, index=X.columns)
 
-modell_baum = DecisionTreeRegressor(random_state=42)
-modell_baum.fit(X_train, y_train)
-
-r2_train_baum = modell_baum.score(X_train, y_train)
-r2_test_baum = modell_baum.score(X_test, y_test)
-
-print(f'R²-Score Entscheidungsbaum (Training): {r2_train_baum:.2f}')
-print(f'R²-Score Entscheidungsbaum (Test): {r2_test_baum:.2f}')
+fig = px.bar(feature_importances.sort_values(), orientation='h',
+             title='Feature Importance: Waldtypen',
+             labels={'value': 'Feature Importance', 'index': 'Merkmal'})
+fig.update_traces(showlegend=False)
+fig.show()
+print(feature_importances.sort_values(ascending=False).round(3))
 ```
-Der R²-Score auf den Trainingsdaten ist nahezu perfekt (1.0), während der Score
-auf den Testdaten deutlich niedriger ist (0.6). Dies ist ein klares Zeichen für
-Overfitting. Das Modell hat die Trainingsdaten auswendig gelernt, kann aber
-schlecht auf neue Daten verallgemeinern.
+Ausgabe:
+```
+Hoehe (m)                        0.329
+Abstand Strasse (m)              0.136
+Abstand Brandstelle (m)          0.127
+Ausrichtung (Grad)               0.105
+Abstand Wasser horizontal (m)    0.088
+Abstand Wasser vertikal (m)      0.083
+Hangneigung (Grad)               0.068
+Gebiet_Cache la Poudre           0.033
+Gebiet_Rawah                     0.014
+Gebiet_Comanche Peak             0.011
+Gebiet_Neota                     0.006
+dtype: float64
+```
+1. Die Höhe ist mit 0.329 mit Abstand am wichtigsten. Das passt zu den
+   Höhenstufen im Boxplot aus Teil 1.
+2. Zusammen kommen die vier Gebietsspalten auf 0.033 + 0.014 + 0.011 + 0.006 =
+   0.064. Das Gebiet ist also weniger wichtig als jede einzelne Messgröße. Ein
+   Grund: Die Gebiete liegen unterschiedlich hoch, und diese Information
+   steckt schon in der Höhe.
+3. Nein. Die Feature Importance zeigt nur, welche Merkmale der Random Forest
+   für seine Prognosen nutzt. Über Ursachen sagt sie nichts. Straßen und
+   Brandstellen liegen an bestimmten Orten. Ihre Abstände verraten deshalb
+   ungefähr, wo im Gebiet eine Fläche liegt, und Waldtypen wachsen oft in
+   zusammenhängenden Bereichen. Außerdem haben die Abstände sehr viele
+   verschiedene Werte. Wie in Kapitel 9.2 beschrieben, bevorzugt die
+   Feature Importance solche Merkmale.
 ````
 
-```{admonition} ML-Modell: Random Forest
+```{admonition} Teil 4: XGBoost
 :class: tip
+XGBoost erwartet die Klassen als ganze Zahlen von 0 bis 6. Kodieren Sie den
+Waldtyp in den Trainings- und Testdaten entsprechend. Welcher Waldtyp welche
+Zahl bekommt, spielt keine Rolle.
 
-Trainieren Sie nun einen Random Forest (RandomForestRegressor) mit 100 Bäumen
-auf denselben Daten. Berechnen Sie wieder die R²-Scores für Training und Test.
-Wie unterscheiden sich die Ergebnisse vom einzelnen Entscheidungsbaum?
+Trainieren Sie dann ein XGBoost-Modell mit 200 Boosting-Runden und
+`random_state=0`. Lassen Sie dabei wie in Kapitel 9.3 den Fehler und den Log
+Loss für die Trainings- und Testdaten mitprotokollieren. Bei mehr als zwei
+Klassen heißen diese Maßzahlen in XGBoost `'merror'` und `'mlogloss'`.
+
+1. Vergleichen Sie die Accuracy auf den Testdaten mit dem Random Forest.
+2. Stellen Sie den Fehler und den Log Loss in jeder Boosting-Runde dar. Nach
+   wie vielen Runden erreichen die beiden Maßzahlen auf den Testdaten ihr
+   Minimum? Vergleichen Sie mit dem Beispiel aus Kapitel 9.3. Würde frühes
+   Stoppen hier helfen?
+
+Zur Kontrolle: Auf den Trainingsdaten erreicht XGBoost eine Accuracy von
+0.991.
 ```
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
-```python
-from sklearn.ensemble import RandomForestRegressor
-
-modell_rf = RandomForestRegressor(n_estimators=100, random_state=42)
-modell_rf.fit(X_train, y_train)
-
-r2_train_rf = modell_rf.score(X_train, y_train)
-r2_test_rf = modell_rf.score(X_test, y_test)
-
-print(f'R²-Score Random Forest (Training): {r2_train_rf:.2f}')
-print(f'R²-Score Random Forest (Test): {r2_test_rf:.2f}')
-```
-Der Random Forest zeigt weniger Overfitting, er lässt sich besser
-verallgemeinern. Der R²-Score für die Trainingsdaten ist etwas geringer (0.97),
-aber dafür liegt der R²-Score der Testdaten bei 0.81. Die Differenz zwischen
-dem Trainings- und dem Testscore ist kleiner.
-````
-
-```{admonition} ML-Modell: XGBoost
-:class: tip
-Trainieren Sie nun ein XGBoost-Modell (XGBRegressor) auf denselben Daten.
-Berechnen Sie wieder die R²-Scores für Training und Test. Wie schlägt sich
-XGBoost im Vergleich zum Random Forest?
+```{code-cell} python
+# Code-Zelle
 ```
 
-````{admonition} Lösung
+````{admonition} Lösung Teil 4
 :class: tip
 :class: dropdown
 ```python
 import xgboost as xgb
 
-modell_xgb = xgb.XGBRegressor(random_state=42)
-modell_xgb.fit(X_train, y_train)
+# XGBoost erwartet die Klassen als Zahlen 0 bis 6
+waldtyp_kodierung = {
+    'Fichte/Tanne': '0',
+    'Drehkiefer': '1',
+    'Gelbkiefer': '2',
+    'Pappel/Weide': '3',
+    'Espe': '4',
+    'Douglasie': '5',
+    'Krummholz': '6',
+}
+y_train_kodiert = y_train.replace(waldtyp_kodierung).astype('int')
+y_test_kodiert = y_test.replace(waldtyp_kodierung).astype('int')
 
-r2_train_xgb = modell_xgb.score(X_train, y_train)
-r2_test_xgb = modell_xgb.score(X_test, y_test)
-
-print(f'R²-Score XGBoost (Training): {r2_train_xgb:.2f}')
-print(f'R²-Score XGBoost (Test): {r2_test_xgb:.2f}')
+modell = xgb.XGBClassifier(n_estimators=200, eval_metric=['merror', 'mlogloss'], random_state=0)
+modell.fit(X_train, y_train_kodiert,
+           eval_set=[(X_train, y_train_kodiert), (X_test, y_test_kodiert)], verbose=False)
+accuracy_training = modell.score(X_train, y_train_kodiert)
+accuracy_test = modell.score(X_test, y_test_kodiert)
+print(f'XGBoost: Training {accuracy_training:.3f}, Test {accuracy_test:.3f}')
 ```
-XGBoost erreicht einen R²-Score von 0.95 auf den Trainingsdaten und 0.82 auf den
-Testdaten. Das ist vergleichbar mit dem Random Forest (0.97 und 0.81), bei etwas
-kleinerer Differenz zwischen Training und Test. Ohne weiteres Tuning liefern
-beide Ensemble-Verfahren hier also ähnlich gute Ergebnisse.
-````
-
-```{admonition} Feature Importance
-:class: tip
-Lassen Sie sich die Feature Importance des Random-Forest-Modells ausgeben und
-visualisieren Sie die Top 10 wichtigsten Merkmale als Balkendiagramm. Welche
-Merkmale sind am wichtigsten für die Vorhersage?
+Ausgabe:
 ```
+XGBoost: Training 0.991, Test 0.817
+```
+1. XGBoost erreicht auf den Testdaten 0.817 und liegt damit knapp hinter dem
+   Random Forest mit 0.827.
 
-````{admonition} Lösung
-:class: tip
-:class: dropdown
+In einer neuen Code-Zelle stellen wir die Maßzahlen dar:
 ```python
-# Feature Importance extrahieren
-importance = pd.DataFrame({
-    'Merkmal': X_train.columns,
-    'Feature Importance': modell_rf.feature_importances_
-}).sort_values('Feature Importance', ascending=False)
+masszahlen = modell.evals_result()
+metriken = pd.DataFrame({
+    'Fehler Train': masszahlen['validation_0']['merror'],
+    'Fehler Test': masszahlen['validation_1']['merror'],
+    'Log Loss Train': masszahlen['validation_0']['mlogloss'],
+    'Log Loss Test': masszahlen['validation_1']['mlogloss']
+    })
 
-# Top 10 visualisieren
-top10 = importance.head(10)
-fig = px.bar(top10, x='Feature Importance', y='Merkmal', orientation='h',
-             title='Top 10 wichtigste Merkmale im Random Forest')
-fig.update_yaxes(autorange="reversed")
+fig = px.line(metriken[['Fehler Train', 'Fehler Test']],
+    title='Fehler in jeder Boosting-Runde',
+    labels={'value': 'Fehler', 'index': 'Boosting-Runde', 'variable': 'Legende'})
 fig.show()
 
-print(top10)
+fig = px.line(metriken[['Log Loss Train', 'Log Loss Test']],
+    title='Log Loss in jeder Boosting-Runde',
+    labels={'value': 'Log Loss', 'index': 'Boosting-Runde', 'variable': 'Legende'})
+fig.show()
 ```
-Das wichtigste Merkmal aus den vorhandenen Merkmalen ist das Einkommen. Mit
-etwas Abstand kommen dann die Lage (Küstennähe Binnenland) und die Anzahl der
-Personen pro Haushalt.
+2. Der Fehler auf den Trainingsdaten sinkt bis auf knapp 0.01. Der Fehler auf
+   den Testdaten sinkt fast bis zur letzten Runde und erreicht sein Minimum
+   von 0.181 erst in Runde 196. Der Log Loss auf den Testdaten erreicht sein
+   Minimum von 0.467 nach rund 150 Runden und steigt danach nur ganz leicht
+   an. Im Beispiel aus Kapitel 9.3 lag das Minimum schon bei etwa 10 Runden.
+   Hier setzt Overfitting viel später ein, denn es gibt 16 000 Trainingsdaten
+   statt 1000. Frühes Stoppen hilft hier kaum, wie die folgende Rechnung
+   zeigt. Wie in Kapitel 9.3 verwenden wir dafür vereinfacht die Testdaten.
+
+```python
+modell_stopp = xgb.XGBClassifier(n_estimators=200, early_stopping_rounds=10,
+                                 eval_metric=['merror', 'mlogloss'], random_state=0)
+modell_stopp.fit(X_train, y_train_kodiert,
+                 eval_set=[(X_train, y_train_kodiert), (X_test, y_test_kodiert)], verbose=False)
+print(f'Training gestoppt nach {modell_stopp.best_iteration + 1} Boosting-Runden')
+print(f'Accuracy Test: {modell_stopp.score(X_test, y_test_kodiert):.3f}')
+```
+Ausgabe:
+```
+Training gestoppt nach 151 Boosting-Runden
+Accuracy Test: 0.812
+```
+Das frühe Stoppen orientiert sich an der letzten Maßzahl in der Liste, hier
+also am Log Loss. Das Modell aus Runde 151 ist auf den Testdaten sogar etwas
+schlechter als nach 200 Runden.
 ````
 
-```{admonition} ML-Modell: lineare Regression
+```{admonition} Abschlussfrage
 :class: tip
-Trainieren Sie nun ein lineares Regressionsmodell auf denselben Daten. Berechnen
-Sie wieder die R²-Scores für Training und Test. Wie unterscheiden sich die
-Ergebnisse von den vorherigen Modellen?
+Welches der drei Modelle würden Sie der Forstverwaltung empfehlen?
 
-Wählen Sie dann ein finales Modell.
+Wie gut erkennt der Random Forest die einzelnen Waldtypen? Berechnen Sie die
+Accuracy getrennt für die Testflächen jedes Waldtyps. Tipp: Wenden Sie die
+Methode `.score()` nur auf die Testflächen eines einzelnen Waldtyps an. Was
+verrät die gesamte Accuracy über die seltenen Waldtypen?
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Abschlussfrage
+:class: tip
+:class: dropdown
+| Modell | Accuracy Training | Accuracy Test |
+| --- | --- | --- |
+| immer Drehkiefer | 0.488 | 0.488 |
+| Entscheidungsbaum | 1.000 | 0.742 |
+| Random Forest | 1.000 | 0.827 |
+| XGBoost mit 200 Runden | 0.991 | 0.817 |
+
+Wir würden den Random Forest empfehlen. Er erreicht die höchste Accuracy auf
+den Testdaten und funktioniert ohne jede Feinjustierung. XGBoost liegt knapp
+dahinter. Wie die Tabelle in Kapitel 9.3 sagt, kann XGBoost mit sorgfältig
+eingestellten Hyperparametern oft noch zulegen. Das ist aber Aufwand, und wie
+wir Hyperparameter systematisch suchen, lernen wir erst in Kapitel 10.
+
+```python
+for waldtyp in y_test.value_counts().index:
+    auswahl = y_test == waldtyp
+    anzahl = len(y_test[auswahl])
+    accuracy_waldtyp = wald.score(X_test[auswahl], y_test[auswahl])
+    print(f'{waldtyp}: {anzahl} Testflächen, Accuracy {accuracy_waldtyp:.2f}')
+```
+Ausgabe:
+```
+Drehkiefer: 1952 Testflächen, Accuracy 0.88
+Fichte/Tanne: 1462 Testflächen, Accuracy 0.83
+Gelbkiefer: 234 Testflächen, Accuracy 0.83
+Krummholz: 144 Testflächen, Accuracy 0.69
+Douglasie: 118 Testflächen, Accuracy 0.45
+Espe: 69 Testflächen, Accuracy 0.28
+Pappel/Weide: 21 Testflächen, Accuracy 0.48
+```
+Die häufigen Waldtypen erkennt der Random Forest gut, die seltenen schlecht.
+Von den Espen-Flächen ordnet er nicht einmal jede dritte richtig ein. Die
+gesamte Accuracy von 0.827 verdeckt das, denn sie wird von den vielen Flächen
+mit Drehkiefer und Fichte/Tanne bestimmt. Wer sich gerade für Espen oder
+Douglasien interessiert, darf sich auf diese Zahl nicht verlassen. Mit welchen
+Gütemaßen wir solche Schwächen sichtbar machen, lernen wir in Kapitel 10.3.
+````
+
+## Projekt 9.2: Beton, die dritte Runde
+
+In Projekt 7.2 haben wir lineare Modelle für die Druckfestigkeit von Beton
+trainiert, in Projekt 8.2 haben wir sie und weitere Modelle mit Testdaten
+geprüft. Am besten schnitten dort das Polynom 3. Grades und der
+Entscheidungsbaum ab. Jetzt treten die Ensemble-Methoden gegen sie an. Damit
+der Vergleich fair ist, verwenden wir dieselbe Aufteilung in Trainings- und
+Testdaten wie in Projekt 8.2. Projekt 9.2 ist offener als Projekt 9.1. Rechnen
+Sie mit etwa 40 Minuten.
+
+```{admonition} Teil 1: Random Forest und XGBoost
+:class: tip
+Lesen Sie die Datei `beton_DE.csv` mit der Spalte `Nr.` als Zeilenindex ein und
+teilen Sie die Daten wie in Projekt 8.2 auf, mit 20 % Testdaten und
+`random_state=0`. Verwenden Sie die sieben Bestandteile und das Alter als
+Merkmale.
+
+Für Regressionsaufgaben gibt es den `RandomForestRegressor`. Er wird ebenfalls
+aus `sklearn.ensemble` importiert und genauso verwendet wie der
+`RandomForestClassifier`. Bei XGBoost heißt das Gegenstück `XGBRegressor`.
+
+Trainieren Sie einen Random Forest und ein XGBoost-Modell, beide mit
+`random_state=0` und sonst mit den voreingestellten Werten. Vergleichen Sie die
+R²-Scores auf den Trainings- und Testdaten mit den Modellen aus Projekt 8.2.
+
+Zur Kontrolle: Der Random Forest erreicht auf den Trainingsdaten einen
+R²-Score von 0.98.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 1
 :class: tip
 :class: dropdown
 ```python
-from sklearn.linear_model import LinearRegression
+import pandas as pd
+import plotly.express as px
+import xgboost as xgb
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 
-modell_lr = LinearRegression()
-modell_lr.fit(X_train, y_train)
+beton = pd.read_csv('beton_DE.csv', index_col=0)
+beton_train, beton_test = train_test_split(beton, test_size=0.2, random_state=0)
 
-r2_train_lr = modell_lr.score(X_train, y_train)
-r2_test_lr = modell_lr.score(X_test, y_test)
+merkmale = ['Zement (kg/m3)', 'Huettensand (kg/m3)', 'Flugasche (kg/m3)',
+            'Wasser (kg/m3)', 'Fliessmittel (kg/m3)',
+            'Grobzuschlag (kg/m3)', 'Feinzuschlag (kg/m3)', 'Alter (Tage)']
+X_train = beton_train[merkmale]
+X_test = beton_test[merkmale]
+y_train = beton_train['Druckfestigkeit (MPa)']
+y_test = beton_test['Druckfestigkeit (MPa)']
 
-print(f'R²-Score lineare Regression (Training): {r2_train_lr:.2f}')
-print(f'R²-Score lineare Regression (Test): {r2_test_lr:.2f}')
+wald_beton = RandomForestRegressor(random_state=0)
+wald_beton.fit(X_train, y_train)
+r2_training = wald_beton.score(X_train, y_train)
+r2_test = wald_beton.score(X_test, y_test)
+print(f'Random Forest: Training {r2_training:.2f}, Test {r2_test:.2f}')
+
+boosting_beton = xgb.XGBRegressor(random_state=0)
+boosting_beton.fit(X_train, y_train)
+r2_training = boosting_beton.score(X_train, y_train)
+r2_test = boosting_beton.score(X_test, y_test)
+print(f'XGBoost: Training {r2_training:.2f}, Test {r2_test:.2f}')
 ```
-Der R²-Score der Trainingsdaten ist 0.66, für die Testdaten liegt er bei 0.58.
-Auch wenn die Differenz zwischen Trainingsscore und Testscore klein ist und wohl
-kein Overfitting vorliegt, sind die beiden Scores erheblich schlechter als bei
-Random Forest und XGBoost. Als finales Modell wählen wir eines der beiden
-Ensemble-Verfahren, sie liefern hier vergleichbar gute Ergebnisse.
+Ausgabe:
+```
+Random Forest: Training 0.98, Test 0.93
+XGBoost: Training 1.00, Test 0.93
+```
+Beide Ensemble-Methoden erreichen auf den Testdaten einen R²-Score von 0.93.
+Das ist deutlich mehr als bei allen Modellen aus Projekt 8.2. Dort lag das
+Polynom 3. Grades mit 0.81 vorn, der einzelne Entscheidungsbaum erreichte 0.78.
+Beim Random Forest liegen Training und Test nah beieinander. XGBoost passt
+sich den Trainingsdaten fast perfekt an und ist auf den Testdaten trotzdem
+genauso gut.
+````
+
+```{admonition} Teil 2: Was zählt für die Druckfestigkeit?
+:class: tip
+Stellen Sie die Feature Importance des Random Forests als Balkendiagramm dar.
+
+In Projekt 8.2 haben wir die Merkmale mit den standardisierten Koeffizienten
+der linearen Regression verglichen. Dort lag der Zement vorn, gefolgt von
+Hüttensand und Alter. Welche Rangfolge ergibt die Feature Importance? Haben
+Sie eine Erklärung für den Unterschied? Denken Sie an den Scatterplot von
+Alter und Druckfestigkeit aus Projekt 7.2.
+
+Zur Kontrolle: Der Zement hat eine Feature Importance von 0.280.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 2
+:class: tip
+:class: dropdown
+```python
+feature_importances = pd.Series(wald_beton.feature_importances_, index=merkmale)
+
+fig = px.bar(feature_importances.sort_values(), orientation='h',
+             title='Feature Importance: Druckfestigkeit von Beton',
+             labels={'value': 'Feature Importance', 'index': 'Merkmal'})
+fig.update_traces(showlegend=False)
+fig.show()
+print(feature_importances.sort_values(ascending=False).round(3))
+```
+Ausgabe:
+```
+Alter (Tage)            0.345
+Zement (kg/m3)          0.280
+Wasser (kg/m3)          0.106
+Fliessmittel (kg/m3)    0.106
+Huettensand (kg/m3)     0.071
+Feinzuschlag (kg/m3)    0.042
+Grobzuschlag (kg/m3)    0.029
+Flugasche (kg/m3)       0.021
+dtype: float64
+```
+Für den Random Forest ist das Alter am wichtigsten, knapp vor dem Zement. In
+der linearen Regression lag das Alter nur auf Platz drei. Der Scatterplot aus
+Projekt 7.2 zeigt den Grund: In den ersten Wochen steigt die Druckfestigkeit
+steil an, danach nur noch wenig. Eine lineare Regression kann im Alter nur
+eine Gerade abbilden und nutzt deshalb nur einen Teil dieser Information. Die
+Bäume des Random Forests teilen das Alter dagegen in Abschnitte ein und bilden
+so auch den gekrümmten Verlauf ab.
+
+Beide Verfahren sind sich einig, dass der Zement eine große Rolle spielt und
+Grobzuschlag und Feinzuschlag eine kleine. Ganz vergleichen lassen sich die
+Zahlen aber nicht. Ein standardisierter Koeffizient gibt an, wie stark sich die
+Prognose ändert, wenn ein Merkmal um eine Standardabweichung steigt. Die
+Feature Importance misst dagegen, wie oft und wie erfolgreich die Bäume mit
+einem Merkmal trennen. Und wie in Kapitel 9.2 gilt: Sie gibt eher eine Tendenz
+an als eine exakte Rangfolge.
+````
+
+```{admonition} Teil 3: Prognose für die Rezeptur aus Projekt 7.2
+:class: tip
+In Projekt 7.2 Teil 4 haben wir die Druckfestigkeit der Rezeptur mit 540 kg
+Zement, 173 kg Wasser, 1125 kg Grobzuschlag und 613 kg Feinzuschlag pro
+Kubikmeter, ohne Hüttensand, Flugasche und Fließmittel, für ein Alter von 1 bis
+730 Tagen prognostiziert. Nach zwei Jahren lieferten die linearen Modelle dort
+131.5 MPa und -133.1 MPa.
+
+Wiederholen Sie diese Prognose mit dem Random Forest und dem XGBoost-Modell
+aus Teil 1. Stellen Sie die Messwerte der Rezeptur und beide Prognosekurven in
+einem gemeinsamen Diagramm dar.
+
+1. Wie gut folgen die Kurven den Messwerten?
+2. Was prognostizieren die beiden Modelle nach zwei Jahren? Warum verlaufen die
+   Kurven ab einem bestimmten Alter waagerecht?
+3. Fünf der sieben Probekörper dieser Rezeptur liegen in den Trainingsdaten.
+   Was bedeutet das für die Güte der Kurven?
+
+Zur Kontrolle: Für ein Alter von 28 Tagen prognostiziert der Random Forest
+66.9 MPa.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
+:class: tip
+:class: dropdown
+```python
+messungen = beton[(beton['Zement (kg/m3)'] == 540) & (beton['Wasser (kg/m3)'] == 173)]
+
+# Einzelwerte gelten für alle Zeilen, das Alter läuft von 1 bis 730 Tage
+rezeptur = pd.DataFrame({
+    'Zement (kg/m3)': 540,
+    'Huettensand (kg/m3)': 0,
+    'Flugasche (kg/m3)': 0,
+    'Wasser (kg/m3)': 173,
+    'Fliessmittel (kg/m3)': 0,
+    'Grobzuschlag (kg/m3)': 1125,
+    'Feinzuschlag (kg/m3)': 613,
+    'Alter (Tage)': range(1, 731)
+    })
+rezeptur['Random Forest'] = wald_beton.predict(rezeptur[merkmale])
+rezeptur['XGBoost'] = boosting_beton.predict(rezeptur[merkmale])
+
+fig = px.scatter(messungen, x='Alter (Tage)', y='Druckfestigkeit (MPa)',
+                 title='Rezeptur mit 540 kg Zement: Messwerte und Prognosen')
+fig.add_scatter(x=rezeptur['Alter (Tage)'], y=rezeptur['Random Forest'],
+                mode='lines', name='Random Forest')
+fig.add_scatter(x=rezeptur['Alter (Tage)'], y=rezeptur['XGBoost'],
+                mode='lines', name='XGBoost')
+fig.show()
+```
+1. Beide Kurven verlaufen in Stufen und folgen den Messwerten sehr eng. Nach
+   28 Tagen wurden 67.3 MPa gemessen. Der Random Forest prognostiziert
+   66.9 MPa, XGBoost 67.6 MPa. Die linearen Modelle aus Projekt 7.2 lagen hier
+   noch rund 15 MPa zu niedrig.
+2. Nach zwei Jahren prognostiziert der Random Forest 73.2 MPa und XGBoost
+   74.2 MPa. Das ist plausibel, ganz anders als die 131.5 MPa und -133.1 MPa
+   der linearen Modelle. Spätestens ab einem Alter von 270 Tagen verlaufen
+   beide Kurven waagerecht. Beide Modelle bestehen aus Entscheidungsbäumen,
+   und ein Baum kann nur Werte prognostizieren, die in seinen Blättern stehen.
+   Wie der Baum in Projekt 7.1 setzt er keinen Trend über den Datenbereich
+   hinaus fort. Dass echter Beton auch nach einem Jahr noch langsam fester wird,
+   bilden die Modelle deshalb nicht ab.
+3. Die Kurven sehen besser aus, als die Modelle für eine ganz neue Rezeptur
+   wären. Die Modelle kennen fünf Messwerte genau dieser Rezeptur aus dem
+   Training. Auch die beiden Probekörper in den Testdaten, nach 3 und nach
+   7 Tagen, haben Nachbarn derselben Rezeptur in den Trainingsdaten, zum
+   Beispiel den Probekörper nach 14 Tagen.
+````
+
+```{admonition} Abschlussfrage
+:class: tip
+Stellen Sie die R²-Scores auf den Testdaten aller Betonmodelle aus den
+Projekten 8.2 und 9.2 in einer Tabelle zusammen. Welches Modell würden Sie
+dem Betonwerk jetzt empfehlen?
+
+In der Abschlussfrage von Projekt 8.2 haben wir gesehen, dass der Testscore für
+ganz neue Rezepturen zu optimistisch ist. Was bedeutet das für Ihre
+Empfehlung?
+```
+
+````{admonition} Lösung Abschlussfrage
+:class: tip
+:class: dropdown
+| Modell | Projekt | R²-Score Test |
+| --- | --- | --- |
+| linear mit Alter | 8.2 | 0.64 |
+| linear mit Alter und Alter hoch 2 | 8.2 | 0.72 |
+| Polynom Grad 3 | 8.2 | 0.81 |
+| Entscheidungsbaum ohne Begrenzung | 8.2 | 0.78 |
+| Random Forest | 9.2 | 0.93 |
+| XGBoost | 9.2 | 0.93 |
+
+Wir würden den Random Forest empfehlen. Er ist so gut wie XGBoost, braucht
+aber keine Feinjustierung und neigt weniger zu Overfitting. Wie alle Modelle
+aus Bäumen taugt er nur für ein Alter innerhalb des Datenbereichs, also bis
+365 Tage.
+
+Für ganz neue Rezepturen ist auch der Wert 0.93 zu optimistisch. Teilen wir
+die Daten so auf, dass alle Probekörper einer Rezeptur gemeinsam in den
+Trainings- oder in den Testdaten landen, sinkt der R²-Score des Random
+Forests. In zehn solchen Aufteilungen liegt er zwischen 0.79 und 0.89, im
+Mittel bei 0.85. Selbst dann liegt er im Mittel noch über dem besten Modell
+aus Projekt 8.2, das ja ebenfalls von der zufälligen Aufteilung profitiert
+hat. An der Empfehlung ändert sich also nichts. Für das Betonwerk ist aber
+0.85 die ehrlichere Zahl.
+
+Bisher haben wir jedes Modell mit einer einzigen zufälligen Aufteilung
+bewertet. In Kapitel 10 lernen wir mit der Kreuzvalidierung, Modelle
+zuverlässiger zu vergleichen, und mit der Gittersuche, Hyperparameter
+systematisch einzustellen.
 ````

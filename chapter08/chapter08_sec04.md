@@ -1,455 +1,831 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: olympia_rio2016.csv
+    title: olympia_rio2016.csv
+  - file: beton_DE.csv
+    title: beton_DE.csv
+  - file: chapter08_sec04.md
+    title: chapter08_sec04.md
 ---
 
 # 8.4 Übungen
 
-```{admonition} Warnung
-:class: warning
-Dieses Kapitel befindet sich derzeit im Umbau und wird rechtzeitig vor der
-Vorlesung im WiSe 2026/27 zur Verfügung stehen.
-```
+Diese Aufgaben sind für das Selbststudium zuhause gedacht und wiederholen den
+Stoff der Kapitel 8.1 bis 8.3. Rechnen Sie mit gut eineinhalb Stunden
+Bearbeitungszeit. Wie in Kapitel 7.4 besteht die Übung aus zwei Projekten.
+Projekt 8.1 führt Sie in kleinen Schritten von unvollständigen Rohdaten zu
+einem Modell, das fehlende Werte schätzt. In Projekt 8.2 testen Sie die
+Betonmodelle aus Projekt 7.2 mit Testdaten und treffen dabei mehr
+Entscheidungen selbst.
 
-```{admonition} Aufgabe 1
+Bei den meisten Teilen finden Sie einen Kontrollwert. Damit können Sie prüfen,
+ob Ihr Zwischenergebnis stimmt, bevor Sie weiterarbeiten. Die Kontrollwerte
+gelten nur für die angegebenen Werte von `random_state`.
+
+Beide Datensätze kennen Sie bereits aus früheren Kapiteln. Sie stehen über das
+Download-Symbol rechts oben zur Verfügung. Speichern Sie sie in denselben
+Ordner wie dieses Jupyter Notebook.
+
+* `olympia_rio2016.csv`: Athletinnen und Athleten der Olympischen
+  Sommerspiele 2016 in acht Sportarten, ohne Namen, Spaltennamen und Einträge
+  ins Deutsche übersetzt (Quelle: [R. H. Griffin, 120 years of Olympic
+  history: athletes and results,
+  Kaggle](https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results),
+  Lizenz CC0)
+* `beton_DE.csv`: 1030 Laborversuche zur Druckfestigkeit von Beton,
+  Spaltennamen ins Deutsche übersetzt (Quelle: [I-C. Yeh, Concrete Compressive
+  Strength, UCI Machine Learning Repository](https://doi.org/10.24432/C5PK67),
+  Lizenz CC BY 4.0)
+
+## Projekt 8.1: Fehlende Gewichte schätzen
+
+In Aufgabe 5.5 haben wir festgestellt, dass im Olympia-Datensatz bei 13
+Personen das Gewicht fehlt. In Kapitel 8.1 haben wir fehlende Zahlenwerte durch
+den Mittelwert oder den Median ersetzt. Als bessere Alternative haben wir dort
+ein Regressionsmodell genannt, das die fehlenden Werte aus den übrigen
+Merkmalen schätzt. Genau das probieren wir jetzt aus. Dasselbe Vorgehen hilft
+auch in der Produktion: Fällt ein Sensor aus, lassen sich seine Messwerte oft
+aus den Werten der anderen Sensoren schätzen. Rechnen Sie mit etwa 40 Minuten.
+
+```{admonition} Teil 1: Fehlende Werte untersuchen
 :class: tip
-Eine Abalone oder ein Seeohr ist eine Schnecke mit Schale, die einer Ohrmuschel
-ähnelt (siehe https://de.wikipedia.org/wiki/Seeohren). Laden Sie den Datensatz
-'abalone_DE.csv'. Ziel dieser Aufgabe ist ein Modell zu trainieren, das aus den
-Angaben zu Geschlecht, Größe und Gewicht die Anzahl der Ringe prognostiziert.
-Die Anzahl der Ringe +1.5 gibt das Alter der Abalone an. 
+Lesen Sie die Datei mit der Spalte `Nr.` als Zeilenindex ein.
 
-1. Führen Sie eine Datenexploration durch. Dazu gehören insbesondere 
-   * Übersicht
-   * statistische Kennzahlen der Eigenschaften
-   * Visualisierungen der Eigenschaften
-   * Analyse bzgl. Ausreißer
-2. Bereinigen Sie den Datensatz. Dazu gehört insbesondere die Entfernung von
-   Ausreißern.  
-3. Wählen Sie ein Modell.
-4. Bereiten Sie die Daten für das Modell auf. Dazu gehört insbesondere auch der
-   Split in Trainings- und Testdaten.
-5. Validieren Sie das Modell. Erhöhen Sie die Modellkomplexität und beurteilen
-   Sie, ob Over- oder Underfitting vorliegt.
-6. Kodieren Sie das Geschlecht mit One-Hot-Kodierung und trainieren Sie das
-   Modell erneut. Verbessert sich die Prognose?
+1. Ermitteln Sie, wie viele Werte pro Merkmal fehlen.
+2. In der Spalte `Medaille` fehlen die meisten Einträge. Aus Aufgabe 5.5
+   wissen Sie, dass das kein Datenfehler ist. Vervollständigen Sie die Spalte
+   mit einem passenden Ersatzwert.
+3. Lassen Sie sich alle Personen anzeigen, bei denen das Gewicht fehlt. Bei
+   wie vielen von ihnen fehlt auch die Körpergröße? Welche Sportart fällt auf?
+
+Zur Kontrolle: Insgesamt fehlen im Datensatz 1986 Werte, davon 1963 in der
+Spalte `Medaille`.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 1
 :class: tip
 :class: dropdown
-
 ```python
 import pandas as pd
 
-data = pd.read_csv('abalone_DE.csv', skiprows=3)
+olympia = pd.read_csv('olympia_rio2016.csv', index_col=0)
+print(olympia.isnull().sum())
+```
+Ausgabe:
+```
+Geschlecht         0
+Alter              0
+Groesse (cm)      10
+Gewicht (kg)      13
+Land               0
+Sportart           0
+Medaille        1963
+dtype: int64
+```
+Es fehlen 10 Körpergrößen, 13 Gewichte und 1963 Medaillen, zusammen also 1986
+Werte. Bei der Medaille bedeutet der fehlende Eintrag, dass die Person keine
+Medaille gewonnen hat. Wir ersetzen ihn deshalb durch den Text `'keine'`.
+
+```python
+olympia['Medaille'] = olympia['Medaille'].fillna('keine')
+print(olympia['Medaille'].value_counts())
+```
+Ausgabe:
+```
+Medaille
+keine     1963
+Bronze     195
+Silber     181
+Gold       181
+Name: count, dtype: int64
 ```
 
 ```python
-data.head(10)
+ohne_gewicht = olympia[olympia['Gewicht (kg)'].isnull()]
+print(ohne_gewicht)
 ```
-
-Abalone oder Seeohr: https://de.wikipedia.org/wiki/Seeohren
-
-Der Abalone-Datensatz enthält folgende Variablen:
-
-Sex → Geschlecht
-Length → Länge (in Millimetern)
-Diameter → Durchmesser (senkrecht zur Länge, in Millimetern)
-Height → Höhe (mit Fleisch in der Schale, in Millimetern)
-Whole weight → Gesamtgewicht (in Gramm)
-Shucked weight → Gewicht geschält (Gewicht Fleisch, in Gramm)
-Viscera weight → Gewicht der Eingeweide (in Gramm)
-Shell weight → Gewicht der Schale (nach dem Trocknen, in Gramm)
-Rings → Ringe (+ 1.5 ergibt das Alter der Abalone)
-
-```python
-data.info()
+Ausgabe:
 ```
-
-Der Abalone-Datensatz enthält 4177 gültige Einträge mit 9 Eigenschaften. Der
-Datentyp des Geschlechts ist Object. Die physikalischen Eigenschaften der
-Abalonen Größe (Länge, Durchmesser und Höhe) und Gewicht (Gesamtgewicht, Gewicht
-geschält, Gewicht der Eingeweide, Gewicht der Schale) sind als Floats gegeben.
-Die Anzahl der Ringe wird durch einen Integer repräsentiert. Alle Einträge sind
-gültig.
-
-Wir untersuchen nacheinander Geschlecht, Größe, Gewicht und Ringe.
-
-```python
-data['Geschlecht'].describe()
+     Geschlecht  Alter  Groesse (cm)  Gewicht (kg) Land    Sportart Medaille
+Nr.                                                                         
+262           w     27         163.0           NaN  FRA  Basketball    keine
+506           m     34           NaN           NaN  HAI        Judo    keine
+587           m     29           NaN           NaN  LBA        Judo    keine
+609           m     18         171.0           NaN  NGR     Fußball   Bronze
+644           m     21         192.0           NaN  ECU        Judo    keine
+681           m     26         160.0           NaN  MGL        Judo    keine
+708           m     32           NaN           NaN  TTO        Judo    keine
+1049          m     22         188.0           NaN  UKR        Judo    keine
+1102          m     30           NaN           NaN  SUR        Judo    keine
+1586          m     22           NaN           NaN  GAM        Judo    keine
+2071          m     20           NaN           NaN  LAO        Judo    keine
+2150          m     28           NaN           NaN  SAM        Judo    keine
+2250          m     33         180.0           NaN  MLI        Judo    keine
 ```
-
-```python
-data['Geschlecht'].value_counts()
-```
-
-Das Geschlecht enthält drei einzigartige Werte: männlich, Jungtier und weiblich.
-Es sind etwas mehr männliche Abalonen im Datensatz enthalten, Jungtiere und
-weibliche Abalonen gibt es ungefähr gleich viele.
-
-```python
-import plotly.express as px
-
-fig = px.bar(data['Geschlecht'],
-             title='Anzahl der Abalonen nach Geschlecht',
-             labels={'value': '', 'count': 'Anzahl', 'variable': 'Legende'})
-fig.show()
-```
-
-Als Nächstes betrachten wir die Größe der Abalonen.
-
-```python
-data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']].describe()
-```
-
-```python
-fig = px.box(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']],
-             title='Größe der Abalonen',
-             labels={'variable': '', 'value': 'Größenangabe in mm'})
-fig.show()
-```
-
-Bei allen drei Größenangaben gibt es Ausreißer nach unten. Auffällig sind jedoch
-die beiden Ausreißer bei der Höhe. Die mittlere Höhe sind 0.139516 mm, der
-Median liegt bei 0.14 mm. Die beiden Ausreißer haben mit 0.515 mm und 1.13 mm
-mehr als die zehnfache Höhe. Um welche Abalonen handelt es sich? 
-
-```python
-data[ data['Höhe [mm]'] > 0.5 ].head(2)
-```
-
-Abalone 1417 scheint einfach nur groß zu sein, bei Abalone 2051 passt die Höhe
-aber nicht zu den ansonsten eher durchschnittlichen Größenangaben. Im Folgenden
-eliminieren wir die beiden Ausreißer aus dem Datensatz.
-
-```python
-data = data[ data['Höhe [mm]'] <= 0.5 ]
-data.info()
-```
-
-```python
-data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']].describe()
-```
-
-```python
-fig = px.box(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']],
-             title='Größe der Abalonen',
-             labels={'variable': '', 'value': 'Größenangabe in mm'})
-fig.show()
-```
-
-Als Nächstes betrachten wir die Gewichtsangaben.
-
-```python
-data[['Gesamtgewicht [g]', 'Gewicht geschält [g]', 'Gewicht der Eingeweide [g]', 'Gewicht der Schale [g]']].describe()
-```
-
-```python
-fig = px.box(data[['Gesamtgewicht [g]', 'Gewicht geschält [g]', 'Gewicht der Eingeweide [g]', 'Gewicht der Schale [g]']],
-             title='Gewicht der Abalonen',
-             labels={'variable': '', 'value': 'Gewicht in g'})
-fig.show()
-```
-
-Bei den Gewichtsangaben gibt es einige Ausreißer nach oben, aber keine
-offensichtlich herausragenden Ausreißer. 
-
-Zuletzt verschaffen wir uns noch einen Überblick über die statistischen
-Kennzahlen der Ringe.
-
-```python
-data['Ringe'].describe()
-```
-
-```python
-fig = px.box(data['Ringe'],
-             title='Ringe der Abalonen',
-             labels={'variable': '', 'value': 'Anzahl'})
-fig.show()
-```
-
-```python
-fig = px.bar(data['Ringe'].value_counts())
-fig.show()
-```
-
-Mittelwert 9.9 und Median 9 stimmen praktisch überein. Das Histogramm der Ringe
-zeigt aber auch eine ganz leichte Rechtsschiefe.
-
-Als Nächstes untersuchen wir, welche Wirkung Größe und Gewicht auf die Ringe haben.
-
-```python
-fig = px.scatter_matrix(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]', 'Ringe']])
-fig.show()
-```
-
-Je größer eine Abalone ist, desto mehr Ringe scheint sie zu haben.
-
-```python
-fig = px.scatter_matrix(data[['Gesamtgewicht [g]', 'Gewicht geschält [g]', 'Gewicht der Eingeweide [g]', 'Gewicht der Schale [g]', 'Ringe']])
-fig.show()
-```
-
-Auch bei steigenden Gewicht scheint die Anzahl der Ringe zuzunehmen.
-
-Zuletzt trainieren wir ein multiples lineares Regressionsmodell.
-
-```python
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-
-# Split der Daten in Trainingsdaten und Testdaten
-data_train, data_test = train_test_split(data, random_state=42)
-
-# Wahl des linearen Regressionsmodells
-modell = LinearRegression()
-
-# Adaption der Daten für das lineare Regressionsmodell
-# Geschlecht wird weggelassen, da kategorial
-X_train = data_train.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]']
-y_train = data_train['Ringe']
-
-# Training
-modell.fit(X_train, y_train)
-
-# Validierung
-r2_score_train = modell.score(X_train, y_train)
-
-X_test = data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]']
-y_test = data_test['Ringe']
-
-r2_score_test = modell.score(X_test, y_test)
-
-print(f'R2-Score Trainingsdaten: {r2_score_train:.2f}')
-print(f'R2-Score Testdaten: {r2_score_test:.2f}')
-```
-
-Bei den Trainingsdaten und bei den Testdaten erzielen wir R²-Scores von ca. 0.55
-(leicht variierend je nach zufälliger Aufteilung in Test- und Trainingsdaten).
-Damit scheint die gewählte Modellkomplexität für die Daten zu gering zu sein.
-Wir erhöhen die Modellkomplexität, gehen also zu einer polynomialen Regression
-über. Zu jedem Polynomgrad betrachten wir den jeweiligen R²-Score für
-Trainingsdaten und Testdaten.
-
-```python
-from sklearn.preprocessing import PolynomialFeatures
-
-for d in [2, 3, 4, 5]:
-    polynom_transformator = PolynomialFeatures(degree = d)
-
-    # Adaption der Daten für das lineare Regressionsmodell
-    X_train = polynom_transformator.fit_transform(data_train.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]'])
-    y_train = data_train['Ringe']
-
-    # Training
-    modell.fit(X_train, y_train)
-
-    # Validierung
-    r2_score_train = modell.score(X_train, y_train)
-
-    X_test = polynom_transformator.transform(data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]'])
-    y_test = data_test['Ringe']
-
-    r2_score_test = modell.score(X_test, y_test)
-
-    print(f'Grad: {d} ==> R2-Score Trainingsdaten: {r2_score_train:.2f} | R2-Score Testdaten: {r2_score_test:.2f}')
-```
-
-Der Wechsel von einem linearen auf ein quadratisches Regressionspolynom scheint
-eine leichte Verbesserung des R2-Wertes zu bringen. Aber bereits bei Grad 3
-fällt der R²-Score bei den Testdaten auf 0.25 ab, während er für die
-Trainingsdaten auf 0.61 steigt. Damit befinden wir uns bereits im Overfitting. Bei
-Grad 4 und 5 sind die R²-Scores sogar negativ. Daher darf allerhöchstens Grad 2
-für das Regressionspolynom gewählt werden. Da aber die Verbesserung von Grad 1
-auf 2 nur marginal ist, ist weiterhin das lineare multiple Regressionsmodell
-empfehlenswert.
-
-Nun beziehen wir noch das Geschlecht ein. Dazu kodieren wir es mit
-One-Hot-Kodierung und trainieren dann das lineare multiple Regressionsmodell
-erneut.
-
-```python
-# One-Hot-Kodierung des Geschlechts
-data_kodiert = pd.get_dummies(data, columns=['Geschlecht'])
-
- # Erneuter Split (mit gleichem random_state für Vergleichbarkeit)
-data_train, data_test = train_test_split(data_kodiert, random_state=42)
-
-# Training mit Geschlecht
-X_train = data_train.drop(columns=['Ringe'])
-y_train = data_train['Ringe']
-modell.fit(X_train, y_train)
-
-# Validierung
-X_test = data_test.drop(columns=['Ringe'])
-y_test = data_test['Ringe']
-r2_score_test = modell.score(X_test, y_test)
-print(f'R2-Score mit Geschlecht: {r2_score_test:.2f}')
-```
-
-Der R²-Score ist bei den Testdaten minimal von 0.56 auf 0.57 gestiegen. Eine
-signifikante Verbesserung des Modells ist es nicht, das Geschlecht mit
-hinzuzunehmen.
+Bei 7 der 13 Personen fehlt auch die Körpergröße. Auffällig ist die Sportart:
+11 der 13 Personen sind Judoka, obwohl Judo nur 389 der 2520 Personen stellt.
+Die fehlenden Werte sind also nicht zufällig über den Datensatz verteilt.
+Löschen wir diese Personen, verlieren wir vor allem Judoka.
 ````
 
-```{admonition} Aufgabe 2
+```{admonition} Teil 2: Kategoriale Merkmale kodieren
 :class: tip
-Der Datensatz
-'statistic_id226994_annual-average-unemployment-figures-for-germany-2005-2022.csv'
-stammt von Statista. Die Daten beschreiben die Entwicklung der
-Arbeitslosenzahlen (in Mio.) seit 1991. Im Original-Excel sind einige
-Ungereimtheiten, die sich auch so im csv-File befinden.
+Bringen Sie die kategorialen Merkmale in eine Form, mit der ein ML-Modell
+rechnen kann.
 
-1. Korrigieren Sie den Datensatz zuerst mit einem Texteditor. 
-2. Führen Sie dann eine explorative Datenanalyse durch (Übersicht, statistische
-   Kennzahlen, Boxplot und Visualisierung der Arbeitslosenzahlen abhängig vom
-   Jahr.)
-3. Wählen Sie mehrere ML-Modelle aus. Adaptieren Sie die Daten für das Training
-   und lassen Sie die gewählten ML-Modelle trainieren.
-4. Validieren Sie Ihr Modell: ist es geeignet? Bewerten Sie die Modelle bzgl.
-   Over- und Underfitting.
-5. Visualisieren Sie eine Prognose von 1990 bis 2030.
+1. Kodieren Sie das Geschlecht mit 0 für w und 1 für m.
+2. Die Medaille ist ein geordnetes Merkmal. Kodieren Sie sie so, dass die
+   Reihenfolge erhalten bleibt, von 0 für keine Medaille bis 3 für Gold.
+3. Kodieren Sie die Sportart mit der One-Hot-Kodierung. Die neuen Spalten
+   sollen Nullen und Einsen enthalten.
+4. Das Land kodieren wir nicht. Wie viele neue Spalten würde die
+   One-Hot-Kodierung des Landes erzeugen? Warum ist das ungünstig?
+
+Zur Kontrolle: Die Summe der kodierten Spalte `Medaille` beträgt 1100. Der
+Datensatz hat nach der Kodierung 14 Spalten.
 ```
 
-````{admonition} Lösung
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 2
 :class: tip
 :class: dropdown
+```python
+# Geschlecht: zwei Kategorien
+geschlecht_kodierung = {
+    'w': '0',
+    'm': '1',
+}
+olympia['Geschlecht'] = olympia['Geschlecht'].replace(geschlecht_kodierung)
+olympia['Geschlecht'] = olympia['Geschlecht'].astype('int')
+
+# Medaille: geordnete Kategorien
+medaille_kodierung = {
+    'keine': '0',
+    'Bronze': '1',
+    'Silber': '2',
+    'Gold': '3',
+}
+olympia['Medaille'] = olympia['Medaille'].replace(medaille_kodierung)
+olympia['Medaille'] = olympia['Medaille'].astype('int')
+print(f"Summe Medaille: {olympia['Medaille'].sum()}")
+
+# Sportart: ungeordnete Kategorien
+olympia = pd.get_dummies(data=olympia, columns=['Sportart'], dtype=int)
+olympia.info()
+```
+Ausgabe:
+```
+Summe Medaille: 1100
+<class 'pandas.core.frame.DataFrame'>
+Index: 2520 entries, 1 to 2520
+Data columns (total 14 columns):
+ #   Column                               Non-Null Count  Dtype  
+---  ------                               --------------  -----  
+ 0   Geschlecht                           2520 non-null   int64  
+ 1   Alter                                2520 non-null   int64  
+ 2   Groesse (cm)                         2510 non-null   float64
+ 3   Gewicht (kg)                         2507 non-null   float64
+ 4   Land                                 2520 non-null   object 
+ 5   Medaille                             2520 non-null   int64  
+ 6   Sportart_Basketball                  2520 non-null   int64  
+ 7   Sportart_Fußball                     2520 non-null   int64  
+ 8   Sportart_Gewichtheben                2520 non-null   int64  
+ 9   Sportart_Handball                    2520 non-null   int64  
+ 10  Sportart_Hockey                      2520 non-null   int64  
+ 11  Sportart_Judo                        2520 non-null   int64  
+ 12  Sportart_Rhythmische Sportgymnastik  2520 non-null   int64  
+ 13  Sportart_Volleyball                  2520 non-null   int64  
+dtypes: float64(2), int64(11), object(1)
+memory usage: 295.3+ KB
+```
+Aus der Spalte `Sportart` sind acht neue Spalten geworden. Die Summe 1100
+ergibt sich aus 181 Goldmedaillen mal 3, 181 Silbermedaillen mal 2 und 195
+Bronzemedaillen mal 1.
 
 ```python
-import pandas as pd
+anzahl_pro_land = olympia['Land'].value_counts()
+print(f'Anzahl Länder: {len(anzahl_pro_land)}')
+print(f'Länder mit nur einer Person: {len(anzahl_pro_land[anzahl_pro_land == 1])}')
+```
+Ausgabe:
+```
+Anzahl Länder: 152
+Länder mit nur einer Person: 48
+```
+4. Die One-Hot-Kodierung des Landes würde 152 neue Spalten erzeugen. Viele
+   Länder sind nur mit sehr wenigen Personen vertreten, 48 sogar mit einer
+   einzigen. Aus so wenigen Datenpunkten pro Spalte kann ein Modell kaum etwas
+   lernen. Außerdem würde der Datensatz sehr unübersichtlich.
+````
 
-data = pd.read_csv('statistic_id226994_korrigiert.csv')
-data.info()
+```{admonition} Teil 3: Ein Modell für das Gewicht
+:class: tip
+Für das Training brauchen wir Personen, bei denen Körpergröße und Gewicht
+bekannt sind.
+
+1. Entfernen Sie alle Personen, bei denen das Gewicht oder die Körpergröße
+   fehlt. Speichern Sie das Ergebnis unter einem neuen Namen, denn die
+   Personen ohne Gewicht brauchen wir in Teil 4 noch. Tipp: Sie können der
+   Methode `drop()` statt eines einzelnen Zeilenindex auch den Zeilenindex
+   eines gefilterten DataFrames übergeben. Dann löscht sie alle diese Zeilen
+   auf einmal.
+2. Teilen Sie die vollständigen Daten in Trainings- und Testdaten auf, mit
+   20 % Testdaten und `random_state=0`.
+3. Trainieren Sie lineare Regressionsmodelle mit dem Gewicht als Zielgröße und
+   vergleichen Sie jeweils die R²-Scores auf den Trainings- und Testdaten.
+   Beginnen Sie mit der Körpergröße als einzigem Merkmal. Nehmen Sie dann das
+   Geschlecht hinzu, danach die Sportart und zum Schluss auch Alter und
+   Medaille. Tipp: Mit `drop()` erhalten Sie schnell alle Spalten außer
+   denen, die Sie nicht als Merkmal verwenden wollen.
+4. Zum Vergleich: Ersetzen wir jedes fehlende Gewicht durch den Median wie in
+   Kapitel 8.1, prognostizieren wir für alle Personen dasselbe Gewicht.
+   Welchen R²-Score erreicht diese Prognose auf den Testdaten? Berechnen Sie
+   den Median nur aus den Trainingsdaten. Tipp: Die Funktion `r2_score()` aus
+   Kapitel 8.3 bewertet auch Prognosen, die nicht von einem Scikit-Learn-Modell
+   stammen. Wenn Sie beim Erzeugen eines DataFrames für eine Spalte eine
+   einzelne Zahl angeben, übernimmt Pandas diese Zahl für alle Zeilen.
+5. Welches Modell würden Sie zum Schätzen der fehlenden Gewichte verwenden?
+
+Zur Kontrolle: Es bleiben 2504 vollständige Datenpunkte. Mit der Körpergröße
+allein erreicht das Modell auf den Testdaten einen R²-Score von 0.55.
 ```
 
-Der Datensatz enthält 32 Zeilen und zwei Spalten. Das Jahr wird durch Integer repräsentiert, die Arbeitslosenzahl durch Floats.
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
+:class: tip
+:class: dropdown
+Wir suchen zuerst die Personen ohne Gewicht und löschen sie. Danach fehlt noch
+bei drei Personen die Körpergröße, die wir ebenfalls löschen.
 
 ```python
-einzigartige_jahre = len(data['Jahr'].unique())
-print(f'Es sind {einzigartige_jahre} verschiedene Jahreszahlen gelistet.')
+from sklearn.model_selection import train_test_split
+
+# Personen ohne Gewicht oder ohne Körpergröße entfernen
+ohne_gewicht = olympia[olympia['Gewicht (kg)'].isnull()]
+vollstaendig = olympia.drop(ohne_gewicht.index)
+ohne_groesse = vollstaendig[vollstaendig['Groesse (cm)'].isnull()]
+vollstaendig = vollstaendig.drop(ohne_groesse.index)
+print(f'Vollständige Datenpunkte: {len(vollstaendig)}')
+
+olympia_train, olympia_test = train_test_split(vollstaendig, test_size=0.2, random_state=0)
+print(f'Trainingsdaten: {len(olympia_train)}, Testdaten: {len(olympia_test)}')
 ```
-
-Die Arbeitslosenzahlen sind Floats und alle Einträge sind gültig.
-
-```python
-data.describe()
+Ausgabe:
 ```
-
-```python
-import plotly.express as px
-
-fig = px.box(data['Arbeitslosenzahl'],
-             title='Arbeitslosenzahlen in Deutschland von 1991 bis 2022',
-             labels={'variable':'', 'value': 'Mio. Personen'})
-fig.show()
+Vollständige Datenpunkte: 2504
+Trainingsdaten: 2003, Testdaten: 501
 ```
-
-Der Median liegt mittig zwischen Q1 und Q3, aber insgesamt gibt es mehrere
-Jahre, bei denen mehr als 4 Mio. Arbeitslose (Q3) gibt. Es gibt keine Ausreißer.
-
-+++
-
-Als Nächstes visualisieren wir die Arbeitslosenzahlen abhängig vom Jahr.
-
-```python
-fig = px.scatter(data, x = 'Jahr', y = 'Arbeitslosenzahl',
-             title='Arbeitslosenzahlen in Deutschland von 1991 bis 2022')
-fig.show()
-```
-
-Aufgrund der Visualisierung ist abzusehen, dass das lineare Regressionsmodell
-kein gutes Modell sein wird. Wir probieren polynomiale Regression für Grad 1 bis
-10 und notieren den jeweiligen R²-Score.
-
+In einer neuen Code-Zelle trainieren wir die vier Modelle:
 ```python
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import PolynomialFeatures
 
+y_train = olympia_train['Gewicht (kg)']
+y_test = olympia_test['Gewicht (kg)']
 
-# Auswahl des Modells
+# Modell 1: Körpergröße
+X_train = olympia_train[['Groesse (cm)']]
+X_test = olympia_test[['Groesse (cm)']]
 modell = LinearRegression()
+modell.fit(X_train, y_train)
+r2_training = modell.score(X_train, y_train)
+r2_test = modell.score(X_test, y_test)
+print(f'Größe: Training {r2_training:.2f}, Test {r2_test:.2f}')
 
+# Modell 2: Körpergröße und Geschlecht
+X_train = olympia_train[['Groesse (cm)', 'Geschlecht']]
+X_test = olympia_test[['Groesse (cm)', 'Geschlecht']]
+modell = LinearRegression()
+modell.fit(X_train, y_train)
+r2_training = modell.score(X_train, y_train)
+r2_test = modell.score(X_test, y_test)
+print(f'+ Geschlecht: Training {r2_training:.2f}, Test {r2_test:.2f}')
 
-# Adaption der Daten
-data_train, data_test = train_test_split(data, random_state=42)
+# Modell 3: zusätzlich die Sportart
+nicht_verwendet = ['Gewicht (kg)', 'Land', 'Alter', 'Medaille']
+X_train = olympia_train.drop(columns=nicht_verwendet)
+X_test = olympia_test.drop(columns=nicht_verwendet)
+modell_sportart = LinearRegression()
+modell_sportart.fit(X_train, y_train)
+r2_training = modell_sportart.score(X_train, y_train)
+r2_test = modell_sportart.score(X_test, y_test)
+print(f'+ Sportart: Training {r2_training:.2f}, Test {r2_test:.2f}')
 
-X_train = data_train[['Jahr']]
-y_train = data_train['Arbeitslosenzahl']
-
-X_test = data_test[['Jahr']]
-y_test = data_test['Arbeitslosenzahl']
-
-# Training für Polynomgrad 1 bis 5
-for grad in [1, 2, 3, 4, 5]:
-    polynom_transformator = PolynomialFeatures(degree = grad)
-
-    X_train_transformiert =  polynom_transformator.fit_transform(X_train)
-    modell.fit(X_train_transformiert, y_train)
-
-    # Validierung mit Testdaten
-    r2_score_train = modell.score(X_train_transformiert, y_train)
-    X_test_transformiert = polynom_transformator.transform(X_test)
-    r2_score_test  = modell.score(X_test_transformiert, y_test)
-
-    # Vergleich der Modelle
-    print(f'Grad {grad}: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
+# Modell 4: alle Merkmale außer dem Land
+X_train = olympia_train.drop(columns=['Gewicht (kg)', 'Land'])
+X_test = olympia_test.drop(columns=['Gewicht (kg)', 'Land'])
+modell = LinearRegression()
+modell.fit(X_train, y_train)
+r2_training = modell.score(X_train, y_train)
+r2_test = modell.score(X_test, y_test)
+print(f'+ Alter und Medaille: Training {r2_training:.2f}, Test {r2_test:.2f}')
 ```
-
-Ab Grad 3 gibt es keine Veränderung mehr. Der R²-Score für die Testdaten ist
-deutlich kleiner als für die Trainingsdaten.  Dies deutet darauf hin, dass das Modell bereits anfängt zu overfitten. Dennoch wählen wir Grad 3, da höhere Grade zu noch schlechteren Testscores führen.
+Ausgabe:
+```
+Größe: Training 0.57, Test 0.55
++ Geschlecht: Training 0.62, Test 0.59
++ Sportart: Training 0.76, Test 0.71
++ Alter und Medaille: Training 0.76, Test 0.71
+```
+Zum Vergleich bewerten wir den Median als Prognose. Dafür bauen wir ein
+DataFrame mit den echten Gewichten der Testdaten und dem Median in jeder Zeile.
 
 ```python
+from sklearn.metrics import r2_score
 
-# Wähle Grad 3
-polynom_transformator = PolynomialFeatures(degree = 3)
-
-X_train_transformiert =  polynom_transformator.fit_transform(X_train)
-modell.fit(X_train_transformiert, y_train)
-
-# Validierung mit Testdaten
-r2_score_train = modell.score(X_train_transformiert, y_train)
-X_test_transformiert = polynom_transformator.transform(X_test)
-r2_score_test  = modell.score(X_test_transformiert, y_test)
-
-# Vergleich der Modelle
-print(f'Grad 3: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
+median_gewicht = olympia_train['Gewicht (kg)'].median()
+vergleich = pd.DataFrame({'Gewicht (kg)': y_test, 'Median': median_gewicht})
+r2_median = r2_score(vergleich['Gewicht (kg)'], vergleich['Median'])
+print(f'Median {median_gewicht} kg: Test {r2_median:.2f}')
 ```
+Ausgabe:
+```
+Median 73.0 kg: Test -0.03
+```
+3. Bei allen vier Modellen liegen die R²-Scores auf den Trainings- und
+   Testdaten nah beieinander, es gibt also kein Overfitting. Die Körpergröße
+   allein erklärt gut die Hälfte der Streuung des Gewichts. Das Geschlecht
+   verbessert den R²-Score etwas, die Sportart deutlich. Bei gleicher Größe
+   sind zum Beispiel Gewichtheberinnen und Gewichtheber viel schwerer als
+   Volleyballerinnen und Volleyballer. Alter und Medaille bringen dagegen
+   nichts mehr.
+4. Der Median erreicht einen R²-Score von -0.03, also praktisch 0. Wie in
+   Kapitel 7.1 bedeutet ein R²-Score von 0, dass eine Prognose nicht besser
+   ist als der Mittelwert. Ein einziger Wert für alle Personen kann von der
+   Streuung des Gewichts nichts erklären. Leicht unter 0 liegt der Wert, weil
+   der Median der Trainingsdaten nicht genau mit dem Mittelwert der Testdaten
+   übereinstimmt.
+5. Wir wählen Modell 3 mit Körpergröße, Geschlecht und Sportart. Es ist genauso
+   gut wie Modell 4, kommt aber mit weniger Merkmalen aus.
+````
+
+```{admonition} Teil 4: Fehlende Gewichte schätzen
+:class: tip
+Schätzen Sie mit dem Modell aus Körpergröße, Geschlecht und Sportart das
+Gewicht aller Personen, bei denen nur das Gewicht fehlt, die Körpergröße aber
+bekannt ist. Tragen Sie die Schätzwerte in den Datensatz ein. Tipp: Wie in
+Kapitel 8.3 beim Einfärben nach Splitstatus können Sie mit `.loc[]` und einem
+Zeilenindex mehrere Zeilen auf einmal beschreiben.
+
+1. Bei wie vielen Personen fehlt das Gewicht danach noch?
+2. Sind die Schätzwerte plausibel? Beim Judo treten die Männer in sieben
+   Gewichtsklassen an, von bis 60 kg bis über 100 kg.
+
+Zur Kontrolle: Für die Basketballerin mit der Nr. 262 schätzt das Modell ein
+Gewicht von 51.2 kg.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 4
+:class: tip
+:class: dropdown
+```python
+# Personen, bei denen nur das Gewicht fehlt
+beide_fehlen = ohne_gewicht[ohne_gewicht['Groesse (cm)'].isnull()]
+schaetzen = ohne_gewicht.drop(beide_fehlen.index)
+
+# Daten ins richtige Format bringen und Gewicht schätzen
+X_schaetzen = schaetzen.drop(columns=nicht_verwendet)
+gewicht_geschaetzt = modell_sportart.predict(X_schaetzen)
+
+# Schätzwerte eintragen und kontrollieren
+olympia.loc[schaetzen.index, 'Gewicht (kg)'] = gewicht_geschaetzt
+print(olympia.loc[schaetzen.index, ['Geschlecht', 'Groesse (cm)', 'Gewicht (kg)']].round(1))
+print(f"Fehlende Gewichte: {olympia['Gewicht (kg)'].isnull().sum()}")
+```
+Ausgabe:
+```
+      Geschlecht  Groesse (cm)  Gewicht (kg)
+Nr.                                         
+262            0         163.0          51.2
+609            1         171.0          65.6
+644            1         192.0          99.9
+681            1         160.0          61.6
+1049           1         188.0          95.1
+2250           1         180.0          85.5
+Fehlende Gewichte: 7
+```
+1. Das Modell schätzt die Gewichte von 6 Personen. Bei 7 Personen fehlt das
+   Gewicht weiterhin.
+2. Der Fußballer mit 171 cm und 65.6 kg ist plausibel. Die Basketballerinnen
+   mit 161 bis 165 cm wiegen im Datensatz zwischen 53 und 62 kg. Die Schätzung
+   von 51.2 kg liegt etwas zu niedrig, aber in der richtigen Größenordnung.
+   Auch die Schätzungen für die vier Judoka zwischen 61.6 und 99.9 kg sind für
+   Männer ihrer Größe plausibel. Im Einzelfall kann die Schätzung trotzdem weit
+   daneben liegen, denn Judoka gleicher Größe treten in ganz unterschiedlichen
+   Gewichtsklassen an. Die Judoka mit 178 bis 182 cm wiegen im Datensatz
+   zwischen 60 und 130 kg. Das Modell kennt die Gewichtsklasse nicht und
+   schätzt deshalb ein mittleres Gewicht für die Körpergröße.
+````
+
+```{admonition} Abschlussfrage
+:class: tip
+Bei 7 Personen fehlt das Gewicht weiterhin. Warum hilft unser Modell hier
+nicht, und was würden Sie mit diesen Personen machen? Vergleichen Sie außerdem
+die beiden Strategien aus Kapitel 8.1, den Median und das Regressionsmodell.
+Wann lohnt sich der Aufwand für ein Modell?
+```
+
+````{admonition} Lösung Abschlussfrage
+:class: tip
+:class: dropdown
+Bei den 7 Personen fehlt auch die Körpergröße, und die braucht unser Modell als
+Merkmal. Wir könnten ein zweites Modell nur mit Geschlecht und Sportart
+trainieren. Es erreicht auf den Testdaten aber nur einen R²-Score von 0.43.
+Für Auswertungen, die das Gewicht brauchen, würden wir diese 7 Personen
+deshalb eher löschen. Bei den Judoka wäre die Gewichtsklasse die beste
+Informationsquelle, sie steht aber nicht im Datensatz.
+
+| Strategie | R²-Score auf den Testdaten |
+| --- | --- |
+| Median | -0.03 |
+| Körpergröße | 0.55 |
+| Körpergröße und Geschlecht | 0.59 |
+| Körpergröße, Geschlecht und Sportart | 0.71 |
+
+Das Modell schätzt deutlich besser als der Median. Der Median gibt der
+Basketballerin mit 163 cm und dem Judoka mit 192 cm dasselbe Gewicht von 73 kg.
+Trotzdem lohnt sich der Aufwand in diesem Datensatz kaum. Es fehlen nur 13 von
+2520 Gewichten. Auf den Mittelwert aller Gewichte hat die Strategie deshalb
+kaum Einfluss: Ohne die fehlenden Werte liegt er bei 75.87 kg, mit dem Median
+als Ersatzwert bei 75.85 kg.
+
+Ein Modell lohnt sich, wenn viele Werte fehlen oder wenn es auf die einzelnen
+Werte ankommt, zum Beispiel weil das Gewicht später als Merkmal in ein anderes
+Modell eingeht. Auch fehlende Messwerte aus der Produktion ersetzen wir nur
+dann aufwendig mit einem Modell, wenn ein Sensor über längere Zeit ausgefallen
+ist und die Werte später gebraucht werden. Egal für welche Strategie wir uns
+entscheiden: Den Median oder das Modell bestimmen wir nur aus den
+Trainingsdaten, damit kein Data Leakage entsteht.
+````
+
+## Projekt 8.2: Betonmodelle fair testen
+
+In Projekt 7.2 haben wir Modelle für die Druckfestigkeit von Beton trainiert
+und mit dem R²-Score bewertet. Dabei haben wir den R²-Score auf denselben
+Daten berechnet, mit denen wir die Modelle trainiert haben. Ob die Modelle
+auch für neue Probekörper taugen, wissen wir deshalb nicht. Das holen wir
+jetzt nach. Wir halten einen Teil der Laborversuche als Testdaten zurück,
+vergleichen verschiedene Modelle und entscheiden, welches wir dem Betonwerk
+empfehlen. Projekt 8.2 ist offener als Projekt 8.1. Rechnen Sie mit etwa 50
+Minuten.
+
+```{admonition} Teil 1: Die Modelle aus Projekt 7.2 fair testen
+:class: tip
+Lesen Sie die Datei `beton_DE.csv` mit der Spalte `Nr.` als Zeilenindex ein und
+ergänzen Sie wie in Projekt 7.2 die Spalte `Alter hoch 2`. Teilen Sie die Daten
+in Trainings- und Testdaten auf, mit 20 % Testdaten und `random_state=0`.
+
+Trainieren Sie die beiden Modelle aus Projekt 7.2 erneut, diesmal nur mit den
+Trainingsdaten: die multiple lineare Regression mit den sieben Bestandteilen
+und dem Alter sowie dasselbe Modell mit dem zusätzlichen Merkmal `Alter hoch 2`.
+
+1. Vergleichen Sie für beide Modelle die R²-Scores auf den Trainings- und
+   Testdaten. Liegt Overfitting vor?
+2. In Projekt 7.2 erreichten die beiden Modelle R²-Scores von 0.62 und 0.74.
+   Passen die neuen Werte dazu?
+
+Zur Kontrolle: Die Testdaten enthalten 206 Probekörper.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 1
+:class: tip
+:class: dropdown
+```python
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+beton = pd.read_csv('beton_DE.csv', index_col=0)
+beton['Alter hoch 2'] = beton['Alter (Tage)']**2
+
+beton_train, beton_test = train_test_split(beton, test_size=0.2, random_state=0)
+print(f'Trainingsdaten: {len(beton_train)}, Testdaten: {len(beton_test)}')
+
+merkmale = ['Zement (kg/m3)', 'Huettensand (kg/m3)', 'Flugasche (kg/m3)',
+            'Wasser (kg/m3)', 'Fliessmittel (kg/m3)',
+            'Grobzuschlag (kg/m3)', 'Feinzuschlag (kg/m3)', 'Alter (Tage)']
+merkmale_quadrat = merkmale + ['Alter hoch 2']
+
+y_train = beton_train['Druckfestigkeit (MPa)']
+y_test = beton_test['Druckfestigkeit (MPa)']
+
+modell_alter = LinearRegression()
+modell_alter.fit(beton_train[merkmale], y_train)
+r2_training = modell_alter.score(beton_train[merkmale], y_train)
+r2_test = modell_alter.score(beton_test[merkmale], y_test)
+print(f'mit Alter: Training {r2_training:.2f}, Test {r2_test:.2f}')
+
+modell_quadrat = LinearRegression()
+modell_quadrat.fit(beton_train[merkmale_quadrat], y_train)
+r2_training = modell_quadrat.score(beton_train[merkmale_quadrat], y_train)
+r2_test = modell_quadrat.score(beton_test[merkmale_quadrat], y_test)
+print(f'mit Alter hoch 2: Training {r2_training:.2f}, Test {r2_test:.2f}')
+```
+Ausgabe:
+```
+Trainingsdaten: 824, Testdaten: 206
+mit Alter: Training 0.61, Test 0.64
+mit Alter hoch 2: Training 0.75, Test 0.72
+```
+1. Bei beiden Modellen liegen die R²-Scores auf den Trainings- und Testdaten
+   nah beieinander. Beim ersten Modell ist der Testscore sogar etwas höher,
+   das ist Zufall der Aufteilung. Overfitting liegt nicht vor. Die beiden
+   linearen Modelle sind eher zu einfach als zu kompliziert.
+2. Die Werte passen gut zu 0.62 und 0.74 aus Projekt 7.2. Die Modelle
+   funktionieren also für Probekörper, die sie beim Training nicht gesehen
+   haben, ungefähr genauso gut wie für die Trainingsdaten.
+````
+
+```{admonition} Teil 2: Welcher Bestandteil wirkt am stärksten?
+:class: tip
+Lassen Sie sich die Koeffizienten des Modells mit acht Merkmalen aus Teil 1
+ausgeben. Das Fließmittel hat den größten Koeffizienten. Ist es deshalb der
+wichtigste Bestandteil? Vergleichen Sie dazu die Wertebereiche der Merkmale in
+den Trainingsdaten.
+
+Standardisieren Sie die acht Merkmale und trainieren Sie das Modell erneut.
+Passen Sie die Standardisierung nur an die Trainingsdaten an. Nach dem
+Standardisieren gibt jeder Koeffizient an, um wie viel MPa sich die
+Druckfestigkeit ändert, wenn das Merkmal um eine Standardabweichung zunimmt.
+Damit lassen sich die Koeffizienten direkt vergleichen.
+
+1. Welcher Bestandteil wirkt jetzt am stärksten, welcher am schwächsten?
+2. Wie verändert sich der R²-Score auf den Testdaten durch die
+   Standardisierung?
+
+Zur Kontrolle: In den Trainingsdaten hat das Fließmittel eine
+Standardabweichung von 6.0 kg/m³.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 2
+:class: tip
+:class: dropdown
+```python
+print(pd.Series(modell_alter.coef_, index=merkmale))
+beton_train[merkmale].describe()
+```
+Ausgabe:
+```
+Zement (kg/m3)          0.119238
+Huettensand (kg/m3)     0.108816
+Flugasche (kg/m3)       0.091155
+Wasser (kg/m3)         -0.145277
+Fliessmittel (kg/m3)    0.315511
+Grobzuschlag (kg/m3)    0.022254
+Feinzuschlag (kg/m3)    0.022485
+Alter (Tage)            0.115204
+dtype: float64
+```
+Pro kg erhöht das Fließmittel die Druckfestigkeit am stärksten, nämlich um
+0.32 MPa. Die statistischen Kennzahlen zeigen aber, dass die Rezepturen nur
+zwischen 0 und 32.2 kg Fließmittel enthalten, mit einer Standardabweichung von
+6.0 kg. Beim Zement reicht der Bereich von 102 bis 540 kg, die
+Standardabweichung beträgt 104.7 kg. Ein Kilogramm mehr ist beim Fließmittel
+also eine große Änderung, beim Zement eine kleine. Die Koeffizienten pro kg
+lassen sich deshalb nicht direkt vergleichen.
 
 ```python
-import numpy as np
-import plotly.graph_objects as go
+from sklearn.preprocessing import StandardScaler
 
-# Prognose für die Jahre 1990 bis 2030
-prognose = pd.DataFrame()
-prognose['Jahr'] = np.arange(1990, 2031)
+standardisierung = StandardScaler()
+standardisierung.fit(beton_train[merkmale])
+X_train_standardisiert = standardisierung.transform(beton_train[merkmale])
+X_test_standardisiert = standardisierung.transform(beton_test[merkmale])
 
-X_prognose = polynom_transformator.transform(prognose[['Jahr']])
-prognose['Arbeitslosenzahl'] = modell.predict(X_prognose)
+modell_standardisiert = LinearRegression()
+modell_standardisiert.fit(X_train_standardisiert, y_train)
+print(pd.Series(modell_standardisiert.coef_, index=merkmale).round(2))
 
+r2_test = modell_standardisiert.score(X_test_standardisiert, y_test)
+print(f'Test {r2_test:.2f}')
 ```
+Ausgabe:
+```
+Zement (kg/m3)          12.47
+Huettensand (kg/m3)      9.60
+Flugasche (kg/m3)        5.88
+Wasser (kg/m3)          -3.11
+Fliessmittel (kg/m3)     1.88
+Grobzuschlag (kg/m3)     1.73
+Feinzuschlag (kg/m3)     1.82
+Alter (Tage)             7.12
+dtype: float64
+Test 0.64
+```
+1. Am stärksten wirkt der Zement. Steigt die Zementmenge um eine
+   Standardabweichung, also um rund 105 kg, nimmt die Druckfestigkeit laut
+   Modell um 12.5 MPa zu. Danach folgen Hüttensand und Alter. Das Fließmittel
+   landet mit 1.9 MPa auf einem der hinteren Plätze. Am schwächsten wirkt der
+   Grobzuschlag mit 1.7 MPa. Das Wasser hat als einziger Bestandteil einen
+   negativen Koeffizienten.
+2. Der R²-Score auf den Testdaten bleibt bei 0.64. Die Standardisierung ändert
+   nur die Einheiten der Koeffizienten, nicht die Prognosen. Für die lineare
+   Regression ist Skalieren also nicht nötig, kann aber beim Deuten der
+   Koeffizienten helfen.
+````
+
+```{admonition} Teil 3: Polynome höheren Grades
+:class: tip
+In Kapitel 7.3 haben wir mit `PolynomialFeatures` aus den Merkmalen Potenzen
+und Produkte erzeugt. Damit die höheren Potenzen nicht riesig werden,
+normieren Sie die acht Merkmale aus Teil 1 zuerst auf das Intervall von 0 bis
+1. Passen Sie die Normierung nur an die Trainingsdaten an. Trainieren Sie
+danach polynomiale Regressionsmodelle mit den Graden 1 bis 4.
+
+1. Notieren Sie für jeden Grad die Anzahl der Spalten nach der Transformation
+   sowie die R²-Scores auf den Trainings- und Testdaten.
+2. Welcher Grad ist am besten? Was passiert beim Grad 4, und woran liegt das?
+   Vergleichen Sie die Anzahl der Spalten mit der Anzahl der Trainingsdaten.
+
+Zur Kontrolle: Mit dem Grad 2 entstehen aus den acht Merkmalen 45 Spalten.
+```
+
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 3
+:class: tip
+:class: dropdown
+Die Spalte `Alter hoch 2` brauchen wir hier nicht. Ab dem Grad 2 erzeugt
+`PolynomialFeatures` das Quadrat des Alters selbst.
 
 ```python
+from sklearn.preprocessing import MinMaxScaler, PolynomialFeatures
 
-fig1 = px.scatter(data, x = 'Jahr', y = 'Arbeitslosenzahl')
-fig2 = px.line(prognose, x = 'Jahr', y = 'Arbeitslosenzahl')
+normierung = MinMaxScaler()
+normierung.fit(beton_train[merkmale])
+X_train_normiert = normierung.transform(beton_train[merkmale])
+X_test_normiert = normierung.transform(beton_test[merkmale])
 
-fig = go.Figure(fig1.data + fig2.data)
-fig.show()
+for grad in [1, 2, 3, 4]:
+    polynom_transformator = PolynomialFeatures(degree=grad)
+    X_train_polynom = polynom_transformator.fit_transform(X_train_normiert)
+    X_test_polynom = polynom_transformator.transform(X_test_normiert)
+
+    modell_polynom = LinearRegression()
+    modell_polynom.fit(X_train_polynom, y_train)
+    r2_training = modell_polynom.score(X_train_polynom, y_train)
+    r2_test = modell_polynom.score(X_test_polynom, y_test)
+    print(f'Grad {grad}: {X_train_polynom.shape[1]} Spalten, Training {r2_training:.2f}, Test {r2_test:.2f}')
+```
+Ausgabe:
+```
+Grad 1: 9 Spalten, Training 0.61, Test 0.64
+Grad 2: 45 Spalten, Training 0.82, Test 0.76
+Grad 3: 165 Spalten, Training 0.93, Test 0.81
+Grad 4: 495 Spalten, Training 0.98, Test -11.65
+```
+1. Der Grad 1 liefert dasselbe Modell wie in Teil 1. Mit jedem Grad steigt die
+   Anzahl der Spalten stark an, von 9 auf 495. Der R²-Score auf den
+   Trainingsdaten wächst mit jedem Grad. Auf den Testdaten steigt er nur bis
+   zum Grad 3.
+2. Am besten ist der Grad 3 mit 0.81 auf den Testdaten. Beim Grad 4 bricht der
+   Testscore auf -11.65 ein. Wie in Kapitel 7.1 bedeutet ein negativer
+   R²-Score, dass das Modell schlechter ist als der einfache Mittelwert, und
+   zwar hier um ein Vielfaches. Das Modell hat 495 Spalten und damit 495
+   Gewichte, aber nur 824 Trainingsdaten. Mit so vielen Gewichten passt es
+   sich den Trainingsdaten fast perfekt an (0.98), auch an ihr Rauschen. Für
+   neue Probekörper liefert es dafür teilweise unsinnige Werte. Für einen
+   Probekörper der Testdaten prognostiziert es -502 MPa, für einen anderen
+   555 MPa. Gemessen wurden im ganzen Datensatz Druckfestigkeiten zwischen
+   2.3 und 82.6 MPa. Das ist Overfitting wie aus dem Lehrbuch.
+````
+
+```{admonition} Teil 4: Entscheidungsbaum
+:class: tip
+Trainieren Sie einen `DecisionTreeRegressor` mit `random_state=0` und den acht
+Merkmalen aus Teil 1, zunächst ohne Begrenzung der Tiefe. Eine Skalierung ist
+für Entscheidungsbäume nicht nötig.
+
+1. Wie tief wird der Baum? Vergleichen Sie die R²-Scores auf den Trainings-
+   und Testdaten.
+2. Begrenzen Sie die Tiefe auf 4 und auf 8. Verbessert sich der R²-Score auf
+   den Testdaten?
+
+Zur Kontrolle: Der Baum ohne Begrenzung hat die Tiefe 20.
 ```
 
-Da das von uns gewählte Modell ein Polynom dritten Grades ist, schwingt es für
-Jahre nach 2020 wieder nach oben. Dieses Verhalten wird nicht von den
-Trainingsdaten gestützt. Daher sollte das Modell nicht für eine Prognose in die
-Zukunft genutzt werden.
+```{code-cell} python
+# Code-Zelle
+```
+
+````{admonition} Lösung Teil 4
+:class: tip
+:class: dropdown
+```python
+from sklearn.tree import DecisionTreeRegressor
+
+modell_baum = DecisionTreeRegressor(random_state=0)
+modell_baum.fit(beton_train[merkmale], y_train)
+r2_training = modell_baum.score(beton_train[merkmale], y_train)
+r2_test = modell_baum.score(beton_test[merkmale], y_test)
+print(f'ohne Begrenzung: Tiefe {modell_baum.get_depth()}, Training {r2_training:.2f}, Test {r2_test:.2f}')
+
+for tiefe in [4, 8]:
+    modell_baum = DecisionTreeRegressor(max_depth=tiefe, random_state=0)
+    modell_baum.fit(beton_train[merkmale], y_train)
+    r2_training = modell_baum.score(beton_train[merkmale], y_train)
+    r2_test = modell_baum.score(beton_test[merkmale], y_test)
+    print(f'Tiefe {tiefe}: Training {r2_training:.2f}, Test {r2_test:.2f}')
+```
+Ausgabe:
+```
+ohne Begrenzung: Tiefe 20, Training 1.00, Test 0.78
+Tiefe 4: Training 0.74, Test 0.66
+Tiefe 8: Training 0.96, Test 0.78
+```
+1. Der Baum ohne Begrenzung wird 20 Ebenen tief und erreicht auf den
+   Trainingsdaten fast 1.0. Er lernt die Trainingsdaten also nahezu auswendig,
+   wie die Bäume in Kapitel 6.3. Auf den Testdaten erreicht er 0.78. Der große
+   Abstand zwischen Training und Test zeigt, dass ein Teil des Gelernten nur
+   für die Trainingsdaten gilt.
+2. Mit der Tiefe 4 sinkt der Testscore auf 0.66, mit der Tiefe 8 bleibt er
+   bei 0.78. Das Begrenzen verbessert den Testscore hier also nicht. Ein
+   Abstand zwischen Training und Test allein ist noch kein Grund, ein Modell
+   zu verwerfen. Für die Wahl des Modells zählt der Testscore. Mit 0.78 ist der
+   Baum besser als die linearen Modelle aus Teil 1 und fast so gut wie das
+   Polynom 3. Grades.
+````
+
+```{admonition} Abschlussfrage
+:class: tip
+Stellen Sie die R²-Scores aller Modelle auf den Trainings- und Testdaten in
+einer Tabelle zusammen. Welches Modell würden Sie dem Betonwerk empfehlen?
+
+Wiederholen Sie danach die Aufteilung mit `random_state=1` und führen Sie alle
+Teile erneut aus. Bleibt Ihre Empfehlung dieselbe?
+
+Was sagt der Testscore über die Prognosegüte für ganz neue Rezepturen aus?
+Tipp: Denken Sie an Teil 4 von Projekt 7.2. Dort wurde dieselbe Rezeptur
+siebenmal geprüft, nach unterschiedlich vielen Tagen.
+```
+
+````{admonition} Lösung Abschlussfrage
+:class: tip
+:class: dropdown
+| Modell | Training | Test | Test mit `random_state=1` |
+| --- | --- | --- | --- |
+| linear mit Alter | 0.61 | 0.64 | 0.52 |
+| linear mit Alter und Alter hoch 2 | 0.75 | 0.72 | 0.68 |
+| Polynom Grad 2 | 0.82 | 0.76 | 0.74 |
+| Polynom Grad 3 | 0.93 | 0.81 | 0.77 |
+| Polynom Grad 4 | 0.98 | -11.65 | -24.73 |
+| Baum ohne Begrenzung | 1.00 | 0.78 | 0.84 |
+| Baum mit Tiefe 4 | 0.74 | 0.66 | 0.64 |
+| Baum mit Tiefe 8 | 0.96 | 0.78 | 0.83 |
+
+Das standardisierte Modell aus Teil 2 fehlt in der Tabelle, denn es liefert
+dieselben Prognosen wie das lineare Modell mit Alter.
+
+Mit `random_state=0` schneidet das Polynom 3. Grades am besten ab, mit
+`random_state=1` der Baum ohne Begrenzung. Eindeutig ist nur, dass das Polynom
+4. Grades unbrauchbar ist und die linearen Modelle schwächer sind. Zwischen
+dem Polynom 3. Grades und dem Baum entscheidet der Zufall der Aufteilung. Wir
+würden dem Betonwerk eines der beiden Modelle empfehlen, aber nur für ein
+Alter zwischen 1 und 365 Tagen. Außerhalb dieses Bereichs sind beide Modelle
+unzuverlässig: Ein Baum kann einen Trend nicht fortsetzen, wie in Projekt 7.1,
+und ein Polynom schießt schnell über alle Grenzen, wie in Projekt 7.2. Dass ein
+einzelner Split vom Zufall abhängt, haben wir in Kapitel 8.3 schon angemerkt.
+Mit der Kreuzvalidierung in Kapitel 10 werden wir solche Vergleiche
+zuverlässiger machen.
+
+Für ganz neue Rezepturen ist der Testscore zu optimistisch. Viele Rezepturen
+wurden mehrfach geprüft, nur nach unterschiedlich vielen Tagen. Bei der
+zufälligen Aufteilung landen Probekörper derselben Rezeptur deshalb sowohl in
+den Trainings- als auch in den Testdaten. Von den sieben Probekörpern der
+Rezeptur mit 540 kg Zement aus Projekt 7.2 liegen fünf in den Trainingsdaten
+und zwei in den Testdaten. Insgesamt kommt bei 160 der 206 Probekörper in
+den Testdaten dieselbe Rezeptur auch in den Trainingsdaten vor. Um die
+Prognosegüte für neue Rezepturen fair zu prüfen, müssten alle Probekörper
+einer Rezeptur gemeinsam in den Trainings- oder in den Testdaten landen.
+
+In Kapitel 9 lernen wir Random Forests kennen, die viele Entscheidungsbäume
+kombinieren. Ein Random Forest erreicht auf denselben Testdaten wie in Teil 1
+einen R²-Score von 0.93.
 ````
