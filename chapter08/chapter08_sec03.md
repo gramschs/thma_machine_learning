@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter08/chapter08_sec03.ipynb
+    title: chapter08_sec03.ipynb
   - file: autoscout24_kodierung.csv
     title: autoscout24_kodierung.csv
   - file: 3ddruck_kodierung.csv
@@ -77,6 +79,8 @@ Wir trainieren unser Modell und lassen es dann bewerten. Um nicht selbst den
 R²-Score implementieren zu müssen, verwenden wir die allgemeine Funktion aus
 Scikit-Learn (siehe [Dokumentation Scikit-Learn →
 r2_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)).
+Der Funktion `r2_score()` übergeben wir zuerst die echten Zielwerte und danach
+die Prognosen.
 
 ```{code-cell} python
 # Daten ins richtige Format bringen

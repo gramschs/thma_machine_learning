@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter08/chapter08_sec01.ipynb
+    title: chapter08_sec01.ipynb
   - file: autoscout24_fehlende_daten.csv
     title: autoscout24_fehlende_daten.csv
   - file: 3ddruck_fehlende_daten.csv

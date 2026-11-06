@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter08/chapter08_sec04.ipynb
+    title: chapter08_sec04.ipynb
   - file: olympia_rio2016.csv
     title: olympia_rio2016.csv
   - file: beton_DE.csv
