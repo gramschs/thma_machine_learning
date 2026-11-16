@@ -2,7 +2,7 @@
 # Baut Jupyter-Notebooks für Studierende aus dem MyST-Markdown-Quellcode eines
 # Kapitels.
 #
-# Aufruf: ./build_notebooks.sh chapter01
+# Aufruf: scripts/build_notebooks.sh chapter01
 #
 # Kopiert chapterNN/*.md nach notebooks/chapterNN, bereinigt die Kopien mit
 # convert_myst_to_notebook.py (entfernt Lernziele und Lösungen, wandelt
@@ -26,8 +26,9 @@ fi
 
 chapter="$1"
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source_dir="$script_dir/$chapter"
-target_dir="$script_dir/notebooks/$chapter"
+repo_dir="$(dirname "$script_dir")"
+source_dir="$repo_dir/$chapter"
+target_dir="$repo_dir/notebooks/$chapter"
 
 if [ ! -d "$source_dir" ]; then
     echo "Kein solches Kapitelverzeichnis: $source_dir" >&2
