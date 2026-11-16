@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter09/chapter09_sec04.ipynb
+    title: chapter09_sec04.ipynb
   - file: waldtypen_colorado.csv
     title: waldtypen_colorado.csv
   - file: beton_DE.csv
@@ -16,17 +18,17 @@ downloads:
 
 Diese Aufgaben sind für das Selbststudium zuhause gedacht und wiederholen den
 Stoff der Kapitel 9.1 bis 9.3. Rechnen Sie mit gut eineinhalb Stunden
-Bearbeitungszeit. Wie in den Kapiteln 7.4 und 8.4 besteht die Übung aus zwei
-Projekten. In Projekt 9.1 lernen Sie einen neuen Datensatz kennen und
-vergleichen Schritt für Schritt einen Entscheidungsbaum, einen Random Forest
-und XGBoost bei einer Klassifikationsaufgabe. In Projekt 9.2 kehren Sie zum
-Beton aus den Projekten 7.2 und 8.2 zurück und übertragen die Ensemble-Methoden
-auf eine Regressionsaufgabe. Dabei treffen Sie mehr Entscheidungen selbst.
+Bearbeitungszeit. Die Übung besteht aus zwei Projekten. In Projekt 9.1 lernen
+Sie einen neuen Datensatz kennen und vergleichen Schritt für Schritt einen
+Entscheidungsbaum, einen Random Forest und XGBoost bei einer
+Klassifikationsaufgabe. In Projekt 9.2 kehren Sie zum Beton aus den Projekten
+7.2 und 8.2 zurück und übertragen die Ensemble-Methoden auf eine
+Regressionsaufgabe. Dabei treffen Sie mehr Entscheidungen selbst.
 
 Bei den meisten Teilen finden Sie einen Kontrollwert. Damit können Sie prüfen,
 ob Ihr Zwischenergebnis stimmt, bevor Sie weiterarbeiten. Die Kontrollwerte
 gelten nur für die angegebenen Werte von `random_state`. Für beide Projekte
-brauchen Sie XGBoost, siehe Kapitel 9.3.
+brauchen Sie XGBoost.
 
 Beide Datensätze stehen über das Download-Symbol rechts oben zur Verfügung.
 Speichern Sie sie in denselben Ordner wie dieses Jupyter Notebook.
@@ -131,19 +133,6 @@ Name: count, dtype: int64
 fig = px.box(flaechen, x='Waldtyp', y='Hoehe (m)',
              title='Höhenlage der Waldtypen')
 fig.show()
-print(flaechen.groupby('Waldtyp')['Hoehe (m)'].median().sort_values())
-```
-Ausgabe:
-```
-Waldtyp
-Pappel/Weide    2227.0
-Gelbkiefer      2411.0
-Douglasie       2420.0
-Espe            2782.5
-Drehkiefer      2939.0
-Fichte/Tanne    3147.0
-Krummholz       3367.0
-Name: Hoehe (m), dtype: float64
 ```
 2. Die Waldtypen wachsen in unterschiedlichen Höhenstufen. Pappel und Weide,
    Gelbkiefer und Douglasie wachsen unten, im Median zwischen gut 2200 und gut
@@ -215,8 +204,7 @@ Wald: Training 1.000, Test 0.827
    das typische Zeichen für Overfitting. Auch der Random Forest erreicht auf
    den Trainingsdaten 1.000, denn er besteht aus 100 unbegrenzten Bäumen. Auf
    den Testdaten liegt er mit 0.827 aber deutlich über dem einzelnen Baum.
-   Das Mitteln vieler Bäume gleicht einen Teil ihrer zufälligen Fehler aus,
-   wie in Kapitel 9.2.
+   Das Mitteln vieler Bäume gleicht einen Teil ihrer zufälligen Fehler aus.
 2. Das Modell, das immer Drehkiefer prognostiziert, erreicht 0.488. Der Baum
    liegt gut 25 Prozentpunkte darüber, der Random Forest fast 34
    Prozentpunkte.
@@ -228,9 +216,7 @@ Stellen Sie die Feature Importance des Random Forests als Balkendiagramm dar,
 sortiert nach ihrer Größe.
 
 1. Welches Merkmal ist am wichtigsten? Passt das zu Ihrem Boxplot aus Teil 1?
-2. Das Gebiet ist durch die One-Hot-Kodierung auf vier Spalten verteilt. Wie
-   wichtig ist das Gebiet insgesamt?
-3. Auf den Plätzen zwei und drei liegen der Abstand zur nächsten Straße und
+2. Auf den Plätzen zwei und drei liegen der Abstand zur nächsten Straße und
    der Abstand zur nächsten Brandstelle. Wächst eine Fichte, weil die Straße
    weit weg ist? Was zeigt die Feature Importance, und was zeigt sie nicht?
 
@@ -271,17 +257,12 @@ dtype: float64
 ```
 1. Die Höhe ist mit 0.329 mit Abstand am wichtigsten. Das passt zu den
    Höhenstufen im Boxplot aus Teil 1.
-2. Zusammen kommen die vier Gebietsspalten auf 0.033 + 0.014 + 0.011 + 0.006 =
-   0.064. Das Gebiet ist also weniger wichtig als jede einzelne Messgröße. Ein
-   Grund: Die Gebiete liegen unterschiedlich hoch, und diese Information
-   steckt schon in der Höhe.
-3. Nein. Die Feature Importance zeigt nur, welche Merkmale der Random Forest
+2. Nein. Die Feature Importance zeigt nur, welche Merkmale der Random Forest
    für seine Prognosen nutzt. Über Ursachen sagt sie nichts. Straßen und
    Brandstellen liegen an bestimmten Orten. Ihre Abstände verraten deshalb
    ungefähr, wo im Gebiet eine Fläche liegt, und Waldtypen wachsen oft in
    zusammenhängenden Bereichen. Außerdem haben die Abstände sehr viele
-   verschiedene Werte. Wie in Kapitel 9.2 beschrieben, bevorzugt die
-   Feature Importance solche Merkmale.
+   verschiedene Werte, und die Feature Importance bevorzugt solche Merkmale.
 ````
 
 ```{admonition} Teil 4: XGBoost
@@ -291,15 +272,14 @@ Waldtyp in den Trainings- und Testdaten entsprechend. Welcher Waldtyp welche
 Zahl bekommt, spielt keine Rolle.
 
 Trainieren Sie dann ein XGBoost-Modell mit 200 Boosting-Runden und
-`random_state=0`. Lassen Sie dabei wie in Kapitel 9.3 den Fehler und den Log
-Loss für die Trainings- und Testdaten mitprotokollieren. Bei mehr als zwei
-Klassen heißen diese Maßzahlen in XGBoost `'merror'` und `'mlogloss'`.
+`random_state=0`. Lassen Sie dabei den Log Loss für die Trainings- und
+Testdaten mitprotokollieren. Bei mehr als zwei Klassen heißt diese Maßzahl in
+XGBoost `'mlogloss'`.
 
 1. Vergleichen Sie die Accuracy auf den Testdaten mit dem Random Forest.
-2. Stellen Sie den Fehler und den Log Loss in jeder Boosting-Runde dar. Nach
-   wie vielen Runden erreichen die beiden Maßzahlen auf den Testdaten ihr
-   Minimum? Vergleichen Sie mit dem Beispiel aus Kapitel 9.3. Würde frühes
-   Stoppen hier helfen?
+2. Stellen Sie den Log Loss in jeder Boosting-Runde dar. Ab etwa welcher Runde
+   ändert sich der Log Loss auf den Testdaten kaum noch? Würde frühes Stoppen
+   hier helfen?
 
 Zur Kontrolle: Auf den Trainingsdaten erreicht XGBoost eine Accuracy von
 0.991.
@@ -328,7 +308,7 @@ waldtyp_kodierung = {
 y_train_kodiert = y_train.replace(waldtyp_kodierung).astype('int')
 y_test_kodiert = y_test.replace(waldtyp_kodierung).astype('int')
 
-modell = xgb.XGBClassifier(n_estimators=200, eval_metric=['merror', 'mlogloss'], random_state=0)
+modell = xgb.XGBClassifier(n_estimators=200, eval_metric='mlogloss', random_state=0)
 modell.fit(X_train, y_train_kodiert,
            eval_set=[(X_train, y_train_kodiert), (X_test, y_test_kodiert)], verbose=False)
 accuracy_training = modell.score(X_train, y_train_kodiert)
@@ -342,65 +322,30 @@ XGBoost: Training 0.991, Test 0.817
 1. XGBoost erreicht auf den Testdaten 0.817 und liegt damit knapp hinter dem
    Random Forest mit 0.827.
 
-In einer neuen Code-Zelle stellen wir die Maßzahlen dar:
+In einer neuen Code-Zelle stellen wir den Log Loss dar:
 ```python
 masszahlen = modell.evals_result()
 metriken = pd.DataFrame({
-    'Fehler Train': masszahlen['validation_0']['merror'],
-    'Fehler Test': masszahlen['validation_1']['merror'],
     'Log Loss Train': masszahlen['validation_0']['mlogloss'],
     'Log Loss Test': masszahlen['validation_1']['mlogloss']
     })
 
-fig = px.line(metriken[['Fehler Train', 'Fehler Test']],
-    title='Fehler in jeder Boosting-Runde',
-    labels={'value': 'Fehler', 'index': 'Boosting-Runde', 'variable': 'Legende'})
-fig.show()
-
-fig = px.line(metriken[['Log Loss Train', 'Log Loss Test']],
+fig = px.line(metriken,
     title='Log Loss in jeder Boosting-Runde',
     labels={'value': 'Log Loss', 'index': 'Boosting-Runde', 'variable': 'Legende'})
 fig.show()
 ```
-2. Der Fehler auf den Trainingsdaten sinkt bis auf knapp 0.01. Der Fehler auf
-   den Testdaten sinkt fast bis zur letzten Runde und erreicht sein Minimum
-   von 0.181 erst in Runde 196. Der Log Loss auf den Testdaten erreicht sein
-   Minimum von 0.467 nach rund 150 Runden und steigt danach nur ganz leicht
-   an. Im Beispiel aus Kapitel 9.3 lag das Minimum schon bei etwa 10 Runden.
-   Hier setzt Overfitting viel später ein, denn es gibt 16 000 Trainingsdaten
-   statt 1000. Frühes Stoppen hilft hier kaum, wie die folgende Rechnung
-   zeigt. Wie in Kapitel 9.3 verwenden wir dafür vereinfacht die Testdaten.
-
-```python
-modell_stopp = xgb.XGBClassifier(n_estimators=200, early_stopping_rounds=10,
-                                 eval_metric=['merror', 'mlogloss'], random_state=0)
-modell_stopp.fit(X_train, y_train_kodiert,
-                 eval_set=[(X_train, y_train_kodiert), (X_test, y_test_kodiert)], verbose=False)
-print(f'Training gestoppt nach {modell_stopp.best_iteration + 1} Boosting-Runden')
-print(f'Accuracy Test: {modell_stopp.score(X_test, y_test_kodiert):.3f}')
-```
-Ausgabe:
-```
-Training gestoppt nach 151 Boosting-Runden
-Accuracy Test: 0.812
-```
-Das frühe Stoppen orientiert sich an der letzten Maßzahl in der Liste, hier
-also am Log Loss. Das Modell aus Runde 151 ist auf den Testdaten sogar etwas
-schlechter als nach 200 Runden.
+2. Der Log Loss auf den Trainingsdaten sinkt bis zur letzten Runde. Der Log
+   Loss auf den Testdaten sinkt anfangs schnell und ändert sich ab etwa 100
+   Runden kaum noch. Sein Minimum von 0.467 erreicht er erst nach rund 150
+   Runden, danach steigt er nur ganz leicht an. Mit 16 000 Trainingsdaten
+   setzt Overfitting also erst sehr spät ein. Frühes Stoppen würde hier kaum
+   etwas bringen.
 ````
 
 ```{admonition} Abschlussfrage
 :class: tip
 Welches der drei Modelle würden Sie der Forstverwaltung empfehlen?
-
-Wie gut erkennt der Random Forest die einzelnen Waldtypen? Berechnen Sie die
-Accuracy getrennt für die Testflächen jedes Waldtyps. Tipp: Wenden Sie die
-Methode `.score()` nur auf die Testflächen eines einzelnen Waldtyps an. Was
-verrät die gesamte Accuracy über die seltenen Waldtypen?
-```
-
-```{code-cell} python
-# Code-Zelle
 ```
 
 ````{admonition} Lösung Abschlussfrage
@@ -415,51 +360,30 @@ verrät die gesamte Accuracy über die seltenen Waldtypen?
 
 Wir würden den Random Forest empfehlen. Er erreicht die höchste Accuracy auf
 den Testdaten und funktioniert ohne jede Feinjustierung. XGBoost liegt knapp
-dahinter. Wie die Tabelle in Kapitel 9.3 sagt, kann XGBoost mit sorgfältig
-eingestellten Hyperparametern oft noch zulegen. Das ist aber Aufwand, und wie
-wir Hyperparameter systematisch suchen, lernen wir erst in Kapitel 10.
+dahinter. Mit sorgfältig eingestellten Hyperparametern kann XGBoost oft noch
+zulegen. Das ist aber Aufwand.
 
-```python
-for waldtyp in y_test.value_counts().index:
-    auswahl = y_test == waldtyp
-    anzahl = len(y_test[auswahl])
-    accuracy_waldtyp = wald.score(X_test[auswahl], y_test[auswahl])
-    print(f'{waldtyp}: {anzahl} Testflächen, Accuracy {accuracy_waldtyp:.2f}')
-```
-Ausgabe:
-```
-Drehkiefer: 1952 Testflächen, Accuracy 0.88
-Fichte/Tanne: 1462 Testflächen, Accuracy 0.83
-Gelbkiefer: 234 Testflächen, Accuracy 0.83
-Krummholz: 144 Testflächen, Accuracy 0.69
-Douglasie: 118 Testflächen, Accuracy 0.45
-Espe: 69 Testflächen, Accuracy 0.28
-Pappel/Weide: 21 Testflächen, Accuracy 0.48
-```
-Die häufigen Waldtypen erkennt der Random Forest gut, die seltenen schlecht.
-Von den Espen-Flächen ordnet er nicht einmal jede dritte richtig ein. Die
-gesamte Accuracy von 0.827 verdeckt das, denn sie wird von den vielen Flächen
-mit Drehkiefer und Fichte/Tanne bestimmt. Wer sich gerade für Espen oder
-Douglasien interessiert, darf sich auf diese Zahl nicht verlassen. Mit welchen
-Gütemaßen wir solche Schwächen sichtbar machen, lernen wir in Kapitel 10.3.
+Einen Haken hat die Accuracy von 0.827 allerdings. Berechnen wir die Accuracy
+des Random Forests getrennt für die Testflächen jedes Waldtyps, ordnet er
+88 % der Flächen mit Drehkiefer richtig ein, von den Espen-Flächen aber nur
+28 %. Die häufigen Waldtypen erkennt er gut, die seltenen schlecht. Die gesamte
+Accuracy verdeckt das, denn sie wird von den vielen Flächen mit Drehkiefer und
+Fichte/Tanne bestimmt.
 ````
 
 ## Projekt 9.2: Beton, die dritte Runde
 
-In Projekt 7.2 haben wir lineare Modelle für die Druckfestigkeit von Beton
-trainiert, in Projekt 8.2 haben wir sie und weitere Modelle mit Testdaten
-geprüft. Am besten schnitten dort das Polynom 3. Grades und der
-Entscheidungsbaum ab. Jetzt treten die Ensemble-Methoden gegen sie an. Damit
-der Vergleich fair ist, verwenden wir dieselbe Aufteilung in Trainings- und
-Testdaten wie in Projekt 8.2. Projekt 9.2 ist offener als Projekt 9.1. Rechnen
+In Projekt 8.2 haben wir verschiedene Modelle für die Druckfestigkeit von Beton
+mit Testdaten geprüft. Am besten schnitten das Polynom 3. Grades und der
+Entscheidungsbaum ab. Jetzt treten die Ensemble-Methoden gegen sie an. Rechnen
 Sie mit etwa 40 Minuten.
 
 ```{admonition} Teil 1: Random Forest und XGBoost
 :class: tip
 Lesen Sie die Datei `beton_DE.csv` mit der Spalte `Nr.` als Zeilenindex ein und
 teilen Sie die Daten wie in Projekt 8.2 auf, mit 20 % Testdaten und
-`random_state=0`. Verwenden Sie die sieben Bestandteile und das Alter als
-Merkmale.
+`random_state=0`. Nur dann ist der Vergleich fair. Verwenden Sie die sieben
+Bestandteile und das Alter als Merkmale.
 
 Für Regressionsaufgaben gibt es den `RandomForestRegressor`. Er wird ebenfalls
 aus `sklearn.ensemble` importiert und genauso verwendet wie der
@@ -527,11 +451,10 @@ genauso gut.
 :class: tip
 Stellen Sie die Feature Importance des Random Forests als Balkendiagramm dar.
 
-In Projekt 8.2 haben wir die Merkmale mit den standardisierten Koeffizienten
-der linearen Regression verglichen. Dort lag der Zement vorn, gefolgt von
-Hüttensand und Alter. Welche Rangfolge ergibt die Feature Importance? Haben
-Sie eine Erklärung für den Unterschied? Denken Sie an den Scatterplot von
-Alter und Druckfestigkeit aus Projekt 7.2.
+Bei den standardisierten Koeffizienten der linearen Regression lag der Zement
+vorn, gefolgt von Hüttensand und Alter. Welche Rangfolge ergibt die Feature
+Importance? Haben Sie eine Erklärung für den Unterschied? Denken Sie daran, wie
+die Druckfestigkeit mit dem Alter ansteigt.
 
 Zur Kontrolle: Der Zement hat eine Feature Importance von 0.280.
 ```
@@ -566,8 +489,8 @@ Flugasche (kg/m3)       0.021
 dtype: float64
 ```
 Für den Random Forest ist das Alter am wichtigsten, knapp vor dem Zement. In
-der linearen Regression lag das Alter nur auf Platz drei. Der Scatterplot aus
-Projekt 7.2 zeigt den Grund: In den ersten Wochen steigt die Druckfestigkeit
+der linearen Regression lag das Alter nur auf Platz drei. Der Grund: In den
+ersten Wochen steigt die Druckfestigkeit
 steil an, danach nur noch wenig. Eine lineare Regression kann im Alter nur
 eine Gerade abbilden und nutzt deshalb nur einen Teil dieser Information. Die
 Bäume des Random Forests teilen das Alter dagegen in Abschnitte ein und bilden
@@ -578,27 +501,25 @@ Grobzuschlag und Feinzuschlag eine kleine. Ganz vergleichen lassen sich die
 Zahlen aber nicht. Ein standardisierter Koeffizient gibt an, wie stark sich die
 Prognose ändert, wenn ein Merkmal um eine Standardabweichung steigt. Die
 Feature Importance misst dagegen, wie oft und wie erfolgreich die Bäume mit
-einem Merkmal trennen. Und wie in Kapitel 9.2 gilt: Sie gibt eher eine Tendenz
-an als eine exakte Rangfolge.
+einem Merkmal trennen. Außerdem gibt sie eher eine Tendenz an als eine exakte
+Rangfolge.
 ````
 
-```{admonition} Teil 3: Prognose für die Rezeptur aus Projekt 7.2
+```{admonition} Teil 3: Prognose für eine Rezeptur
 :class: tip
-In Projekt 7.2 Teil 4 haben wir die Druckfestigkeit der Rezeptur mit 540 kg
-Zement, 173 kg Wasser, 1125 kg Grobzuschlag und 613 kg Feinzuschlag pro
-Kubikmeter, ohne Hüttensand, Flugasche und Fließmittel, für ein Alter von 1 bis
-730 Tagen prognostiziert. Nach zwei Jahren lieferten die linearen Modelle dort
-131.5 MPa und -133.1 MPa.
+Wir betrachten die Rezeptur mit 540 kg Zement, 173 kg Wasser, 1125 kg
+Grobzuschlag und 613 kg Feinzuschlag pro Kubikmeter, ohne Hüttensand,
+Flugasche und Fließmittel. Für ein Alter von zwei Jahren lieferten die
+linearen Modelle aus Projekt 7.2 dafür 131.5 MPa und -133.1 MPa.
 
-Wiederholen Sie diese Prognose mit dem Random Forest und dem XGBoost-Modell
-aus Teil 1. Stellen Sie die Messwerte der Rezeptur und beide Prognosekurven in
-einem gemeinsamen Diagramm dar.
+Prognostizieren Sie die Druckfestigkeit dieser Rezeptur jetzt mit dem Random
+Forest und dem XGBoost-Modell aus Teil 1, und zwar nur für ein Alter von 28,
+365 und 730 Tagen.
 
-1. Wie gut folgen die Kurven den Messwerten?
-2. Was prognostizieren die beiden Modelle nach zwei Jahren? Warum verlaufen die
-   Kurven ab einem bestimmten Alter waagerecht?
-3. Fünf der sieben Probekörper dieser Rezeptur liegen in den Trainingsdaten.
-   Was bedeutet das für die Güte der Kurven?
+1. Nach 28 Tagen wurden 67.3 MPa gemessen. Wie gut treffen die beiden Modelle
+   diesen Wert?
+2. Vergleichen Sie die Prognosen nach einem Jahr und nach zwei Jahren. Was fällt
+   Ihnen auf? Woran liegt das?
 
 Zur Kontrolle: Für ein Alter von 28 Tagen prognostiziert der Random Forest
 66.9 MPa.
@@ -612,9 +533,7 @@ Zur Kontrolle: Für ein Alter von 28 Tagen prognostiziert der Random Forest
 :class: tip
 :class: dropdown
 ```python
-messungen = beton[(beton['Zement (kg/m3)'] == 540) & (beton['Wasser (kg/m3)'] == 173)]
-
-# Einzelwerte gelten für alle Zeilen, das Alter läuft von 1 bis 730 Tage
+# Einzelwerte gelten für alle Zeilen, nur das Alter ändert sich
 rezeptur = pd.DataFrame({
     'Zement (kg/m3)': 540,
     'Huettensand (kg/m3)': 0,
@@ -623,36 +542,29 @@ rezeptur = pd.DataFrame({
     'Fliessmittel (kg/m3)': 0,
     'Grobzuschlag (kg/m3)': 1125,
     'Feinzuschlag (kg/m3)': 613,
-    'Alter (Tage)': range(1, 731)
+    'Alter (Tage)': [28, 365, 730]
     })
-rezeptur['Random Forest'] = wald_beton.predict(rezeptur[merkmale])
-rezeptur['XGBoost'] = boosting_beton.predict(rezeptur[merkmale])
-
-fig = px.scatter(messungen, x='Alter (Tage)', y='Druckfestigkeit (MPa)',
-                 title='Rezeptur mit 540 kg Zement: Messwerte und Prognosen')
-fig.add_scatter(x=rezeptur['Alter (Tage)'], y=rezeptur['Random Forest'],
-                mode='lines', name='Random Forest')
-fig.add_scatter(x=rezeptur['Alter (Tage)'], y=rezeptur['XGBoost'],
-                mode='lines', name='XGBoost')
-fig.show()
+print('Random Forest:', wald_beton.predict(rezeptur).round(1))
+print('XGBoost:', boosting_beton.predict(rezeptur).round(1))
 ```
-1. Beide Kurven verlaufen in Stufen und folgen den Messwerten sehr eng. Nach
-   28 Tagen wurden 67.3 MPa gemessen. Der Random Forest prognostiziert
-   66.9 MPa, XGBoost 67.6 MPa. Die linearen Modelle aus Projekt 7.2 lagen hier
-   noch rund 15 MPa zu niedrig.
-2. Nach zwei Jahren prognostiziert der Random Forest 73.2 MPa und XGBoost
-   74.2 MPa. Das ist plausibel, ganz anders als die 131.5 MPa und -133.1 MPa
-   der linearen Modelle. Spätestens ab einem Alter von 270 Tagen verlaufen
-   beide Kurven waagerecht. Beide Modelle bestehen aus Entscheidungsbäumen,
-   und ein Baum kann nur Werte prognostizieren, die in seinen Blättern stehen.
-   Wie der Baum in Projekt 7.1 setzt er keinen Trend über den Datenbereich
-   hinaus fort. Dass echter Beton auch nach einem Jahr noch langsam fester wird,
-   bilden die Modelle deshalb nicht ab.
-3. Die Kurven sehen besser aus, als die Modelle für eine ganz neue Rezeptur
-   wären. Die Modelle kennen fünf Messwerte genau dieser Rezeptur aus dem
-   Training. Auch die beiden Probekörper in den Testdaten, nach 3 und nach
-   7 Tagen, haben Nachbarn derselben Rezeptur in den Trainingsdaten, zum
-   Beispiel den Probekörper nach 14 Tagen.
+Ausgabe:
+```
+Random Forest: [66.9 73.2 73.2]
+XGBoost: [67.6 74.2 74.2]
+```
+1. Nach 28 Tagen prognostiziert der Random Forest 66.9 MPa, XGBoost 67.6 MPa.
+   Beide liegen sehr nah an den gemessenen 67.3 MPa. Allerdings liegt der
+   Probekörper nach 28 Tagen in den Trainingsdaten. Die Modelle kennen diesen
+   Messwert also schon. Für eine ganz neue Rezeptur wären sie weniger genau.
+2. Nach einem und nach zwei Jahren prognostizieren beide Modelle genau
+   denselben Wert, der Random Forest 73.2 MPa und XGBoost 74.2 MPa. Das ist
+   plausibel, ganz anders als die 131.5 MPa und -133.1 MPa der linearen
+   Modelle. Die ältesten Probekörper im Datensatz sind 365 Tage alt. Beide
+   Modelle bestehen aus Entscheidungsbäumen, und ein Baum kann nur Werte
+   prognostizieren, die in seinen Blättern stehen. Er setzt deshalb keinen
+   Trend über den Datenbereich hinaus fort. Dass echter Beton
+   auch nach einem Jahr noch langsam fester wird, bilden die Modelle deshalb
+   nicht ab.
 ````
 
 ```{admonition} Abschlussfrage
@@ -661,9 +573,9 @@ Stellen Sie die R²-Scores auf den Testdaten aller Betonmodelle aus den
 Projekten 8.2 und 9.2 in einer Tabelle zusammen. Welches Modell würden Sie
 dem Betonwerk jetzt empfehlen?
 
-In der Abschlussfrage von Projekt 8.2 haben wir gesehen, dass der Testscore für
-ganz neue Rezepturen zu optimistisch ist. Was bedeutet das für Ihre
-Empfehlung?
+Probekörper derselben Rezeptur landen teils in den Trainings- und teils in den
+Testdaten. Für ganz neue Rezepturen ist der Testscore deshalb zu optimistisch.
+Was bedeutet das für Ihre Empfehlung?
 ```
 
 ````{admonition} Lösung Abschlussfrage

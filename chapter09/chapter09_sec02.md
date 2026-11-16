@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter09/chapter09_sec02.ipynb
+    title: chapter09_sec02.ipynb
   - file: chapter09_sec02.md
     title: chapter09_sec02.md
 ---
@@ -278,7 +280,8 @@ Wenn wir die Feature Importance über alle Bäume mitteln, erhalten wir ein
 deutlich stabileres Bewertungskriterium.
 
 Wir trainieren nun einen Random Forest mit der Standardeinstellung von 100
-Entscheidungsbäumen und lassen uns dann die Feature Importance ausgeben.
+Entscheidungsbäumen und lassen uns dann die Feature Importance ausgeben. Nach
+dem Training steht sie im Attribut `feature_importances_` des Modells.
 
 ```{code-cell} python
 wald = RandomForestClassifier(random_state=0)

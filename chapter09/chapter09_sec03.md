@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter09/chapter09_sec03.ipynb
+    title: chapter09_sec03.ipynb
   - file: chapter09_sec03.md
     title: chapter09_sec03.md
 ---
