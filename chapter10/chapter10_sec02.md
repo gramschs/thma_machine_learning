@@ -76,7 +76,9 @@ erleichtern.
 Für die Aufteilung in Folds verwenden wir diesmal `StratifiedKFold`. Es
 funktioniert wie `KFold`, sorgt aber zusätzlich dafür, dass in jedem Fold beide
 Klassen möglichst im selben Verhältnis vorkommen wie im gesamten Datensatz. Bei
-Klassifikationsaufgaben ist das die bessere Wahl. Damit unsere Ergebnisse mit
+Klassifikationsaufgaben ist das meist die bessere Wahl, solange die Datenpunkte
+unabhängig voneinander sind. Bei Zeitreihen dagegen muss zum Beispiel die
+zeitliche Reihenfolge erhalten bleiben. Damit unsere Ergebnisse mit
 dem Vorlesungsskript vergleichbar sind, setzen wir bei der Aufteilung und beim
 Entscheidungsbaum `random_state=0`.
 
@@ -137,12 +139,14 @@ ja/nein).
 2. Vergleichen Sie Entscheidungsbäume mit den Baumtiefen 1 bis 6 per
    Kreuzvalidierung mit fünf Folds. Mischen Sie die Daten vorher und sorgen Sie
    wie im Fließtext dafür, dass beide Klassen in jedem Fold im selben
-   Verhältnis vertreten sind wie im gesamten Datensatz. Verwenden Sie für die Aufteilung und den Entscheidungsbaum
-   `random_state=0`, damit Ihre Ergebnisse mit der Lösung vergleichbar sind.
-   Geben Sie für jede Baumtiefe Mittelwert und Standardabweichung der Scores
-   aus.
-3. Welche Baumtiefe schneidet am besten ab? Warum schneiden der flache Baum der
-   Tiefe 1 und der tiefe Baum der Tiefe 6 schlechter ab?
+   Verhältnis vertreten sind wie im gesamten Datensatz. Verwenden Sie für die
+   Aufteilung und den Entscheidungsbaum `random_state=0`, damit Ihre
+   Ergebnisse mit der Lösung vergleichbar sind. Geben Sie für jede Baumtiefe
+   Mittelwert und Standardabweichung der Testscores aus. Lassen Sie sich
+   zusätzlich die Trainingsscores berechnen und geben Sie deren Mittelwert aus.
+3. Welche Baumtiefe schneidet am besten ab? Vergleichen Sie für die Tiefen 1
+   und 6 die Trainingsscores mit den Testscores. Was deutet auf Underfitting
+   hin, was auf Overfitting?
 ```
 
 ```{code-cell} python
@@ -169,18 +173,22 @@ kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 
 for max_tiefe in [1, 2, 3, 4, 5, 6]:
     modell = DecisionTreeClassifier(max_depth=max_tiefe, random_state=0)
-    cv_results = cross_validate(modell, X_druck, y_druck, cv=kfold)
+    cv_results = cross_validate(modell, X_druck, y_druck, cv=kfold, return_train_score=True)
     test_scores = cv_results['test_score']
     mittelwert = np.mean(test_scores)
     streuung = np.std(test_scores)
-    print(f'Baumtiefe {max_tiefe}, Testscores: Mittelwert {mittelwert:.2f}, Standardabweichung {streuung:.2f}')
+    mittelwert_training = np.mean(cv_results['train_score'])
+    print(f'Baumtiefe {max_tiefe}, Testscores: Mittelwert {mittelwert:.2f}, Standardabweichung {streuung:.2f}, '
+          f'Trainingsscores: Mittelwert {mittelwert_training:.2f}')
 ```
 
-Zu 3. Die Baumtiefe 3 schneidet mit einem mittleren Score von 0.75 am besten
-ab. Der Baum der Tiefe 1 stellt nur eine einzige Frage und ist damit zu
-einfach, um den Zusammenhang zu erfassen (Underfitting). Der Baum der Tiefe 6
-passt sich dagegen zu stark an die Trainingsdaten an und verallgemeinert
-schlechter (Overfitting).
+Zu 3. Die Baumtiefe 3 schneidet mit einem mittleren Testscore von 0.75 am
+besten ab. Beim Baum der Tiefe 1 sind Trainings- und Testscore mit 0.67 und 0.64
+beide niedrig. Schon die Trainingsdaten erfasst der Baum mit nur einer Frage
+schlecht. Das deutet auf Underfitting hin. Beim Baum der Tiefe 6 liegt der
+Trainingsscore mit 0.91 dagegen deutlich über dem Testscore von 0.69. Der Baum
+passt sich stark an die Trainingsdaten an und verallgemeinert schlechter. Das
+deutet auf Overfitting hin.
 ````
 
 ## Trainings-, Validierungs- und Testdaten
@@ -197,20 +205,20 @@ Um die Prognosequalität ehrlich einzuschätzen, brauchen wir also Daten, die
 weder das Modell noch wir selbst bei der Auswahl benutzt haben. Die Lösung
 dafür ist `train_test_split()`.
 
-Zuerst teilen wir die Daten in Trainings- und Testdaten. Die Testdaten legen wir
-zur Seite und rühren sie bis zum Schluss nicht mehr an. Dann verwenden wir die
-Kreuzvalidierung nur auf den Trainingsdaten, um die Hyperparameter zu bewerten.
-Die Kreuzvalidierung teilt die Trainingsdaten dabei erneut auf, nämlich in einen
-Trainingsteil und einen zurückgehaltenen Teil. Damit wir diesen zurückgehaltenen
-Teil nicht mit den richtigen Testdaten verwechseln, nennen wir ihn
-**Validierungsdaten**. Die Scores darauf heißen entsprechend
+Zuerst teilen wir die Daten in Trainings- und Testdaten. In der Praxis machen
+wir das ganz am Anfang, noch vor dem ersten Vergleich. Im vorigen Abschnitt sind
+wir nur anders vorgegangen, um das Problem sichtbar zu machen. Die Testdaten
+legen wir zur Seite und rühren sie bis zum Schluss nicht mehr an. Dann verwenden
+wir die Kreuzvalidierung nur auf den Trainingsdaten, um die Hyperparameter zu
+bewerten. Die Kreuzvalidierung teilt die Trainingsdaten dabei erneut auf,
+nämlich in einen Trainingsteil und einen zurückgehaltenen Teil. Damit wir diesen
+zurückgehaltenen Teil nicht mit den richtigen Testdaten verwechseln, nennen wir
+ihn **Validierungsdaten**. Die Scores darauf heißen entsprechend
 **Validierungsscores**.
 
-Scikit-Learn macht diese sprachliche Unterscheidung nicht mit. Der Schlüssel im
-Ergebnis-Dictionary von `cross_validate()` heißt weiterhin `'test_score'`. Wir
-speichern den Wert deshalb in einer Variablen `validierungs_scores`, damit im
-Code sichtbar bleibt, worum es sich handelt. Die beste Baumtiefe lesen wir
-anschließend direkt aus der Ausgabe ab.
+Scikit-Learn macht diese Unterscheidung nicht mit, der Schlüssel heißt
+weiterhin `'test_score'`. Im Code speichern wir die Werte deshalb in der
+Variablen `validierungs_scores`.
 
 ```{code-cell} python
 from sklearn.model_selection import train_test_split
@@ -288,8 +296,9 @@ print(f'Accuracy Testdaten finales Modell: {accuracy_test_druck:.2f}')
 ```
 
 Zu 3. Der Testscore von 0.71 liegt etwas unter dem besten Validierungsscore von
-0.75. Wie im Fließtext fällt der beste Validierungsscore etwas zu optimistisch
-aus.
+0.75. Das passt zu der Überlegung, dass der beste von mehreren
+Validierungsscores eher zu optimistisch ausfällt. Ein Beweis ist dieser
+einzelne Vergleich aber nicht, denn auch die Testdaten schwanken zufällig.
 ````
 
 ## Gittersuche mit GridSearchCV
@@ -388,7 +397,11 @@ Mit dem erweiterten Gitter wählt die Gittersuche die Baumtiefe 4 mit mindestens
 3 Datenpunkten pro Blatt. Der beste Validierungsscore steigt dabei von 0.77 auf
 0.81. Diese Wahl trifft die Gittersuche allein anhand der Validierungsscores.
 Die Testdaten nutzen wir erst danach, und zwar einmal für das gewählte Modell.
-Der Testscore von 0.76 liegt wieder unter dem besten Validierungsscore.
+Der Testscore von 0.76 liegt wieder unter dem besten Validierungsscore. Wir
+dürfen ihn aber nicht mit dem Testscore 0.72 der ersten Gittersuche vergleichen,
+um uns für eines der beiden Gitter zu entscheiden. Dann würden wir die
+Testdaten wieder zur Auswahl nutzen. In der Praxis legen wir das Gitter deshalb
+vorher fest und bewerten nur das endgültige Modell mit den Testdaten.
 
 Bei größeren Datensätzen und komplexeren Modellen ist die Gittersuche ein
 wertvolles Werkzeug. Da sie alle Kombinationen durchprobiert, wird sie bei einem
@@ -465,7 +478,10 @@ Druckaufträgen pro Blatt. Der beste Validierungsscore steigt nur von 0.75 auf
 0.76. Diese Verbesserung ist kleiner als die Standardabweichungen aus der
 vorherigen Mini-Übung (0.02 bis 0.06) und kann genauso gut Zufall sein. Die
 Erweiterung des Gitters hat hier kaum etwas gebracht. Das gewählte Modell
-erreicht auf den Testdaten einen Score von 0.73.
+erreicht auf den Testdaten einen Score von 0.73. Diesen Testscore vergleichen
+wir nicht mit dem Testscore 0.71 aus der vorherigen Mini-Übung, um uns für ein
+Gitter zu entscheiden. Die Entscheidung treffen wir allein anhand der
+Validierungsscores.
 ````
 
 ```{dropdown} Video "GridSearchCV" von Normalized Nerd

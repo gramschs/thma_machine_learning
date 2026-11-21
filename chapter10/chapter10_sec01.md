@@ -49,10 +49,11 @@ Daten zu unbalancierten Splits führen, die die Trainings- und Testergebnisse
 verfälschen. Eine sinnvolle Alternative zu dieser simplen Aufteilung ist die
 **Kreuzvalidierung** (engl. **Cross Validation**).
 
-Bei der Kreuzvalidierung werden die Daten in mehrere **Teilmengen**, sogenannte
-**Folds**, aufgeteilt. Beispielsweise können die Daten in fünf Folds unterteilt
-werden. Das Modell wird dann fünfmal trainiert und getestet, wobei in jedem
-Durchlauf eine andere Teilmenge als Testdaten verwendet wird. Im ersten
+Die gebräuchlichste Variante ist die **k-fache Kreuzvalidierung**. Dabei werden
+die Daten in k etwa gleich große **Teilmengen**, sogenannte **Folds**,
+aufgeteilt. Beispielsweise können die Daten in k = 5 Folds unterteilt werden.
+Das Modell wird dann fünfmal trainiert und getestet, wobei in jedem Durchlauf
+eine andere Teilmenge als Testdaten verwendet wird. Im ersten
 Durchlauf wird etwa Fold A für den Test zurückgehalten, während die Folds B, C,
 D und E zum Training genutzt werden. Im zweiten Durchlauf wird Fold B als
 Testdatensatz verwendet und die restlichen Folds dienen wieder dem Training.
@@ -64,9 +65,9 @@ Es müssen jedoch nicht zwingend fünf Folds verwendet werden. Oftmals werden di
 Daten in zehn Folds aufgeteilt, sodass 90 % der Daten zum Training und 10 % für
 den Test verwendet werden. Ein weiterer Vorteil ist, dass jeder Datenpunkt im
 Laufe der Kreuzvalidierung sowohl im Training als auch im Test berücksichtigt
-wird, jedoch nie gleichzeitig. Dies verringert die Gefahr, dass unausgewogene
-Daten zu verzerrten Testergebnissen führen, wie es bei einer zufälligen
-Aufteilung passieren könnte.
+wird, jedoch nie gleichzeitig. Ein einzelner untypischer Datenpunkt wirkt sich
+dadurch weniger stark auf den gemittelten Score aus als bei einer einzelnen
+Aufteilung mit wenigen Testdaten.
 
 Zusammengefasst bietet die Kreuzvalidierung mehrere Vorteile:
 
@@ -74,16 +75,16 @@ Zusammengefasst bietet die Kreuzvalidierung mehrere Vorteile:
   Testdatenpunkt verwendet, was besonders bei kleinen Datensätzen wichtig ist,
   da die Daten optimal ausgenutzt werden.
 - *Stabilere Schätzung der Modellleistung*: Durch das wiederholte Training und
-  Testen auf verschiedenen Daten erhöht sich die Robustheit der geschätzten
-  Modellleistung (Score), da zufällige Verzerrungen durch unbalancierte Splits
-  minimiert werden.
+  Testen auf verschiedenen Daten hängt der gemittelte Score in der Regel weniger
+  stark von einer einzelnen zufälligen Aufteilung ab. Bei sehr kleinen
+  Datensätzen kann er trotzdem deutlich schwanken.
 
 Ein Nachteil der Kreuzvalidierung ist der erhöhte Rechenaufwand, da das Modell
 mehrfach trainiert und getestet wird.
 
 Können wir also auf die Aufteilung in Trainings- und Testdaten verzichten? Nein,
 denn nach dem Tuning brauchen wir weiterhin unberührte Testdaten, um das
-ausgewählte Modell abschließend und unverzerrt zu bewerten. Mehr dazu im
+ausgewählte Modell abschließend und unbefangen zu bewerten. Mehr dazu im
 nächsten Kapitel. Zunächst widmen wir uns der praktischen Umsetzung der
 Kreuzvalidierung in Scikit-Learn.
 
@@ -101,7 +102,7 @@ Zielgröße wird erfasst, ob ein Druck erfolgreich war oder nicht
    Druckversuche werden in jedem Durchlauf ungefähr als Testdaten
    zurückgehalten? Wie oft wird das Modell insgesamt trainiert und getestet?
 3. Erklären Sie in eigenen Worten, warum die Kreuzvalidierung bei einem so
-   kleinen Datensatz wie diesem eine stabilere Einschätzung der
+   kleinen Datensatz wie diesem in der Regel eine stabilere Einschätzung der
    Modellleistung liefert als eine einzelne Aufteilung in Trainings- und
    Testdaten.
 ```
@@ -121,11 +122,13 @@ tatsächlich in drei Folds mit je 4 und zwei Folds mit je 3 Druckversuchen auf.
 Das Modell wird insgesamt fünfmal trainiert und getestet, einmal pro Fold.
 
 Zu 3. Bei der Kreuzvalidierung ist jeder Druckversuch einmal Teil der
-Testdaten. Dadurch mittelt sich der Einfluss einzelner, möglicherweise
-untypischer Druckversuche über die fünf Durchläufe heraus. Eine einzelne
-Aufteilung könnte dagegen zufällig genau die "einfachen" oder genau die
-"schwierigen" Druckversuche in den Test legen und so ein zu optimistisches
-oder zu pessimistisches Bild der Modellqualität liefern.
+Testdaten. Ein untypischer Druckversuch geht deshalb nur als einer von 18 in den
+gemittelten Score ein und nicht als einer von 4 oder 5 Testdaten. Sein Einfluss
+wird also kleiner. Eine einzelne Aufteilung könnte dagegen zufällig genau die
+"einfachen" oder genau die "schwierigen" Druckversuche in den Test legen und so
+ein zu optimistisches oder zu pessimistisches Bild der Modellqualität liefern.
+Ganz verschwindet die Unsicherheit bei nur 18 Druckversuchen aber auch mit der
+Kreuzvalidierung nicht.
 ````
 
 ```{dropdown} Video (EN) "Machine Learning Fundamentals: Cross Validation" von StatQuest
@@ -176,20 +179,19 @@ from sklearn.model_selection import KFold
 kfold = KFold(n_splits = 5)
 ```
 
-Im Hintergrund wurde ein Generator erzeugt, mithilfe dessen wir Daten in fünf
-Teilmengen (Folds) aufteilen können. Dazu benutzen wir die Methode `.split()`
-und übergeben ihr die Daten, die gesplittet werden sollen.
+Das KFold-Objekt speichert zunächst nur die Einstellungen für die Aufteilung.
+Die Aufteilung selbst liefert die Methode `.split()`, der wir die Daten
+übergeben, die aufgeteilt werden sollen.
 
 ```{code-cell} python
 kfold.split(daten)
 ```
 
-Zwar wurde hiermit die Aufteilung in fünf Teilmengen vollzogen, doch die
-eigentlichen Trainings- und Testdaten wurden noch nicht gespeichert und
-weiterverarbeitet. Mithilfe einer for-Schleife greifen wir in jedem Durchgang
-auf die Trainings- und Testindizes zu, die die Methode `split()` als Tupel
-zurückgibt. Das erste Element enthält die Indizes der Trainingsdaten, das zweite
-die der Testdaten.
+Die Ausgabe zeigt, dass `.split()` einen Generator zurückgibt. Ein Generator
+berechnet die fünf Aufteilungen nicht sofort, sondern erst nach und nach, wenn
+wir ihn durchlaufen. Mithilfe einer for-Schleife erhalten wir in jedem Durchgang
+ein Tupel mit den Trainings- und Testindizes. Das erste Element enthält die
+Indizes der Trainingsdaten, das zweite die der Testdaten.
 
 ```{code-cell} python
 for (train_index, test_index) in kfold.split(daten):
@@ -265,10 +267,9 @@ Druck erfolgreich war oder nicht.
 4. Trainieren und bewerten Sie für jeden der sechs Folds einen
    Entscheidungsbaum, diesmal mit einer maximalen Tiefe von 2. Geben Sie
    jeweils den Score auf den Trainings- und den Testdaten aus.
-5. Wie stark schwanken die sechs Testscores? Vergleichen Sie mit den
-   Schwankungen im Fließtext (5 Folds, Baumtiefe 3). Was schließen Sie
-   daraus: Liegt die Schwankung an der gewählten Fold-Anzahl bzw.
-   Baumtiefe, oder eher an der Größe des Datensatzes?
+5. Wie stark schwanken die sechs Testscores? Wie viele Druckversuche liegen in
+   jedem Testfold, und welche Werte kann die Accuracy in einem Testfold
+   überhaupt annehmen?
 ```
 
 ````{admonition} Lösung
@@ -306,13 +307,11 @@ for (train_index, test_index) in kfold.split(daten):
 Die sechs Testscores lauten der Reihe nach 0.00, 0.33, 1.00, 0.67, 0.00 und
 1.00 (Trainingsscores zwischen 0.80 und 0.93).
 
-Zu 5. Die Testscores schwanken wieder extrem, von 0.00 bis 1.00, genau wie im
-Fließtext mit 5 Folds und Baumtiefe 3. Weder die andere Fold-Anzahl noch die
-geringere Baumtiefe ändern daran etwas. Der Grund liegt nicht in diesen
-Einstellungen, sondern im Datensatz selbst: Bei nur 18 Druckversuchen, davon
-nur 4 mit `Erfolgreich = nein`, landen in jedem Testfold nur sehr wenige
-Datenpunkte. Ein einzelner untypischer Druckversuch entscheidet dann bereits
-über einen großen Teil des Scores.
+Zu 5. Die Testscores schwanken extrem, von 0.00 bis 1.00. Jeder der sechs
+Testfolds enthält nur 18/6 = 3 Druckversuche. Die Accuracy in einem Testfold
+kann deshalb nur die Werte 0, 1/3, 2/3 oder 1 annehmen. Schon ein einziger
+falsch eingeordneter Druckversuch verändert den Score um 0.33. Bei so kleinen
+Testfolds sind große Sprünge zwischen den Folds deshalb kaum zu vermeiden.
 ````
 
 ## Automatische Kreuzvalidierung mit cross_validate
@@ -326,11 +325,13 @@ Eingabedaten `X` und Zielgröße `y` auf.
 
 Die Funktion `cross_validate()` wird mit dem ML-Modell (hier einem
 Entscheidungsbaum), den Eingabedaten `X` und der Zielgröße `y` aufgerufen.
-Standardmäßig wird eine 5-fache Kreuzvalidierung ohne Mischen durchgeführt (bei
-Klassifikationsmodellen achtet Scikit-Learn dabei zusätzlich automatisch auf
-eine ausgewogene Klassenverteilung in jedem Fold). Mit
-dem optionalen Argument `cv=` kann jedoch auch ein benutzerdefinierter
-Aufteilungsgenerator übergeben werden, wie zum Beispiel `KFold`. Das zusätzliche
+Standardmäßig wird eine 5-fache Kreuzvalidierung ohne Mischen durchgeführt. Bei
+Klassifikationsmodellen teilt Scikit-Learn die Daten dabei stratifiziert auf.
+Das bedeutet, dass jede Klasse in jedem Fold ungefähr im selben Verhältnis
+vorkommt wie im gesamten Datensatz. Mit dem optionalen Argument `cv=` kann
+jedoch auch eine eigene Aufteilung übergeben werden, wie zum Beispiel unser
+KFold-Objekt. Dann gilt dessen Aufteilung, und es wird nicht stratifiziert. Das
+zusätzliche
 Argument `return_train_score=True` sorgt dafür, dass auch die Trainingsscores in
 jedem Durchlauf gespeichert werden. Der entsprechende Code sieht folgendermaßen
 aus:
@@ -352,8 +353,9 @@ print(cv_results)
 ```
 
 In diesem Dictionary sind zunächst die Rechenzeiten für das Training
-(`'fit_time'`) und die Prognose (`'score_time'`) gespeichert. Danach folgen die
-Scores der Testdaten (`'test_score'`). Falls das Argument
+(`'fit_time'`) und die Bewertung auf den Testdaten (`'score_time'`) gespeichert.
+Zur Bewertung gehören die Prognose und die Berechnung des Scores. Danach folgen
+die Scores der Testdaten (`'test_score'`). Falls das Argument
 `return_train_score=True` gesetzt wurde, enthält das Dictionary auch die Scores
 der Trainingsdaten (`'train_score'`). Scikit-Learn spricht hier allgemein von
 Scores. Bei unserem Entscheidungsbaum ist das wie bisher die Accuracy. Die
