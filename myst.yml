@@ -63,7 +63,7 @@ project:
         - file: chapter08/chapter08_sec01.md
         - file: chapter08/chapter08_sec02.md
         - file: chapter08/chapter08_sec03.md
-#        - file: chapter08/chapter08_sec04.md
+        - file: chapter08/chapter08_sec04.md
     - title: 9. Ensemble-Methoden (Random Forests und XGBoost)
       children:
         - file: chapter09/chapter09_sec01.md
