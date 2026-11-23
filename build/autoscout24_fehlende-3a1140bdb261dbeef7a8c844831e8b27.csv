@@ -1,0 +1,1001 @@
+Marke,Modell,Farbe,Erstzulassung,Jahr,Preis (Euro),Leistung (kW),Leistung (PS),Getriebe,Kraftstoff,Verbrauch (l/100 km),Verbrauch (g/km),Kilometerstand (km),Bemerkungen
+bmw,BMW 318,schwarz,11/2008,2008,6200,105,143,Schaltgetriebe,Diesel,"4,7 l/100 km",123 g/km,222000.0,318d DPF
+bmw,BMW X1,blau,06/2021,2021,42830,162,220,Automatik,Hybrid,,49 km Reichweite,29700.0,xDrive25e M Sport HUD Navi Plus DA+ Pano AHK
+hyundai,Hyundai iX20,,02/2018,2018,15490,92,125,Automatik,Benzin,"6,5 l/100 km",150 g/km,81192.0,1.6 Space Plus AUTOMATIK
+mercedes-benz,Mercedes-Benz SLK 200,schwarz,12/2007,2007,7600,120,163,Schaltgetriebe,Benzin,"8,7 l/100 km",- (g/km),176000.0,SLK 200 Kompressor
+mercedes-benz,Mercedes-Benz GL 500,weiß,11/2013,2013,44900,320,435,Automatik,Benzin,"11,5 l/100 km",273 g/km,127000.0,BE 4Matic 7 Sitze Panorama WR+SR
+peugeot,Peugeot 308,blau,08/2019,2019,16990,96,131,Schaltgetriebe,Benzin,,- (g/km),72500.0,SW PureTech 130*ALLURE*CARPLAY*3D-NAVI*ALU*
+toyota,Toyota Corolla,silber,05/2014,2014,13650,97,132,Schaltgetriebe,Benzin,6 l/100 km,142 g/km,52930.0,Executive
+skoda,Skoda Kamiq,blau,11/2020,2020,28990,85,116,Automatik,Diesel,"4,2 l/100 km",111 g/km,26713.0,Monte Carlo 1.6TDI 85kW+DSG+NAVI+LED+PANO+AHK
+opel,Opel Adam,blau,10/2013,2013,6900,51,69,Schaltgetriebe,Benzin,"5,3 l/100 km",126 g/km,151327.0,Jam*Klimaanlage*2.Hand*Aluräder*Tempomat
+volkswagen,Volkswagen Golf,schwarz,05/2008,2008,5999,90,122,Schaltgetriebe,Benzin,"6,3 l/100 km",149 g/km,259000.0,1.4 TSI GT Sport/2.Ha/Sportsitz/GT Alus/Gepfl/ZV/
+ford,Ford EcoSport,schwarz,03/2015,2015,11500,92,125,Schaltgetriebe,Benzin,"5,4 l/100 km",125 g/km,84000.0,Titanium
+volkswagen,Volkswagen Arteon,blau,10/2021,2021,34930,115,156,Automatik,Hybrid,"1,3 l/100 km",- (g/km),19900.0,Arteon Shooting Brake 1.4 eHybrid OPF DSG R-Line
+mercedes-benz,Mercedes-Benz S 500,blau,05/2000,2000,6500,225,306,Automatik,Benzin,"13,4 l/100 km",320 g/km,151000.0,W220
+mercedes-benz,Mercedes-Benz GLC 63 AMG,schwarz,11/2018,2018,58990,375,510,Automatik,Benzin,"11,9 l/100 km",270 g/km,87000.0,GLC 63s AMG Pano*Raute-Sitze*Aerodynamik*Carbon
+audi,Audi A5,weiß,02/2018,2018,32799,185,252,Automatik,Benzin,"6,2 l/100 km",141 g/km,56000.0,Coupe quattro 2.0 TFSI S-Line S-Tronic LED~
+audi,Audi A6,grau,05/2014,2014,30549,230,313,Automatik,Diesel,"6,4 l/100 km",170 g/km,109000.0,"Avant 3.0 ""S-LINE""| ACC| HUD| PANORAMA| BOSE|"
+ford,Ford Focus,silber,01/2018,2018,14000,88,120,Schaltgetriebe,Diesel,"3,8 l/100 km",98 g/km,75282.0,1.5TDCi Navi Temp. PDC SERV.NEU GARANTIE 1Hd
+audi,Audi A5,rot,04/2014,2014,12999,125,170,Automatik,Benzin,"5,8 l/100 km",137 g/km,166255.0,Sportback 1.8 TFSI s-line Automatik
+toyota,Toyota Corolla,schwarz,09/2020,2020,24480,132,179,Automatik,Hybrid,"3,7 l/100 km",120 g/km,10932.0,2.0 Team D *Technik Paket*Navi*LED*
+mercedes-benz,Mercedes-Benz ML 250,weiß,10/2013,2013,25990,150,204,Automatik,Diesel,"6,5 l/100 km",170 g/km,149887.0,BlueTEC AMG Pano Leer 20 Inch Panodak Leer Stoelve
+mazda,Mazda 2,weiß,11/2018,2018,15900,66,90,Schaltgetriebe,Benzin,"4,9 l/100 km",111 g/km,1500.0,Center-Line Touring-P. Winterreifen
+bmw,BMW Z4,rot,04/2019,2019,49200,250,340,Automatik,Benzin,"8,5 l/100 km",193 g/km,28000.0,M40i Aut.
+ford,Ford Focus,grau,10/2020,2020,19990,92,125,Schaltgetriebe,Benzin,"4,2 l/100 km",96 g/km,8034.0,Focus 1.0 EcoBoost C&C LED NAV
+mini,MINI One Clubman,rot,06/2016,2016,19490,75,102,Automatik,Benzin,"5,1 l/100 km",0 g/km,76409.0,Clubman One Led Navi Temp.
+seat,SEAT Ibiza,schwarz,07/2019,2019,16480,85,116,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,44445.0,1.0 TSI FR / Navi / DAB+ / LED
+ford,Ford Puma,grau,04/2021,2021,23350,88,120,Schaltgetriebe,Diesel,"3,8 l/100 km",99 g/km,5400.0,ST-Line Vignale
+audi,Audi Q3,,11/2022,2022,35724,110,150,Schaltgetriebe,Diesel,"4,6 l/100 km",120 g/km,10.0,35 TDI adv. LED PDC CarPlay KeyL el.HK Kam 110 ...
+skoda,Skoda Superb,weiß,05/2023,2023,39388,110,150,Automatik,Diesel,5 l/100 km,132 g/km,10.0,Combi 2.0 TDI 150 DSG Style LED Nav Kessy
+seat,SEAT Ibiza,schwarz,12/2013,2013,6598,51,69,Schaltgetriebe,Benzin,"5,4 l/100 km",125 g/km,137783.0,Style 1.2 TSI*MFL*Winter-Paket*SRA*Isofix*Climatro
+seat,SEAT Arona,grau,03/2023,2023,24990,81,110,Schaltgetriebe,Benzin,"4,8 l/100 km",109 g/km,6.0,FR 1.0 TSI LED Navi SHZ Kamera VC
+mercedes-benz,Mercedes-Benz E 300,weiß,04/2021,2021,53710,195,265,Automatik,Diesel,"6,1 l/100 km",159 g/km,17200.0,"d 4M T Night/AMG/19""/LED/Distronic/AHK/"
+mercedes-benz,Mercedes-Benz B 250,weiß,10/2021,2021,34999,160,,Automatik,Benzin,,0 g/km,22000.0,e*HYBRID*NAVI*LED*TEMPOMAT*AMG-PAKET
+volkswagen,Volkswagen Golf,schwarz,09/2016,2016,10950,81,110,Schaltgetriebe,Benzin,"4,9 l/100 km",- (g/km),110000.0,1.2 TSI BlueMotion Technology Allstar
+toyota,Toyota Corolla,bronze,03/2021,2021,27608,85,116,Schaltgetriebe,Benzin,"6,6 l/100 km",151 g/km,11982.0,1.2 Turbo Team Deutschland
+mini,MINI Cooper,schwarz,01/2020,2020,22450,100,136,Schaltgetriebe,Benzin,"5,1 l/100 km",115 g/km,26700.0,5-Türer Pepper DAB LED Pano.Dach Shz PDC
+citroen,Citroen C4 Cactus,weiß,07/2018,2018,15490,81,110,Schaltgetriebe,Benzin,45 l/100 km,104 g/km,37409.0,1.2 Puretech 110 Sitzheizung Kamera
+skoda,Skoda Fabia,schwarz,12/2017,2017,12540,55,75,Schaltgetriebe,Benzin,"4,8 l/100 km",111 g/km,30385.0,1.0 MPI Cool Plus *PDC*SHZ*BLUETOOTH*
+toyota,Toyota Yaris,schwarz,12/2006,2006,4000,64,87,Automatik,Benzin,"5,4 l/100 km",136 g/km,201000.0,"1.3 VVT-i AUTOMATIK, TÜV 07/23, 2.HD, S-Heft"
+hyundai,Hyundai i20,schwarz,05/2023,2023,31090,150,204,Schaltgetriebe,Benzin,7 l/100 km,158 g/km,620.0,1.6 T-GDI 150kW N Performance Bose SOFORT
+renault,Renault Clio,rot,08/2007,2007,1200,40,54,Schaltgetriebe,Benzin,"5,9 l/100 km",140 g/km,237000.0,Clio 1.2 Campus
+bmw,BMW X3,grau,05/2010,2010,15990,130,177,Automatik,Diesel,7 l/100 km,185 g/km,77530.0,xDrive 20d+Automatik+Xenon+Sitzheizung+PDC
+mazda,Mazda 2,rot,03/2023,2023,21770,66,90,Automatik,Benzin,"4,7 l/100 km",106 g/km,866.0,HOMURA RFK Klimaaut Lenkradheizg Tempomat Freispre
+seat,SEAT Ibiza,blau,02/2018,2018,12390,70,95,Schaltgetriebe,Benzin,"4,2 l/100 km",- (g/km),77000.0,Ibiza ST 1.0 Eco TSI S
+mercedes-benz,Mercedes-Benz E 220,,12/2015,2015,22999,125,170,Automatik,Diesel,"4,5 l/100 km",118 g/km,108000.0,BlueTEC 9G-TRONIC
+bmw,BMW X2,orange,10/2019,2019,21800,110,150,Schaltgetriebe,Diesel,"4,5 l/100 km",118 g/km,96621.0,"sDrive18d ""Advantage"" gr.Navi/Kamera/HeadUp/LED"
+opel,Opel Astra,rot,12/2015,2015,6780,81,110,Schaltgetriebe,Diesel,"3,5 l/100 km",92 g/km,160000.0,1.6 D (CDTI) Start/Stop Sports Tourer Business
+ford,Ford Focus,blau,01/2020,2020,17770,110,150,Schaltgetriebe,Diesel,"4,2 l/100 km",111 g/km,82500.0,Turnier Titanium #Standheizung # AHK Nav 110 kW...
+dacia,Dacia Dokker,weiß,03/2020,2020,16990,96,131,Schaltgetriebe,Benzin,"6,2 l/100 km",142 g/km,42800.0,"Stepway Plus Kamera, Navi Sitzheizung"
+hyundai,Hyundai i20,weiß,08/2016,2016,10890,55,75,Schaltgetriebe,Benzin,"5,1 l/100 km",119 g/km,54100.0,"blue Classic Klima/Pioneer DAB/Fin. ab 3,99%"
+bmw,BMW 523,grau,10/2007,2007,16750,140,190,Automatik,Benzin,"7,9 l/100 km",- (g/km),190478.0,5er 523i Touring Aut.
+renault,Renault Captur,blau,03/2023,2023,34990,68,92,Automatik,Hybrid,"1,3 l/100 km",132 g/km,50.0,TECHNO E-TECH Plug-in 160 Rückfahrkamera
+opel,Opel Adam,blau,07/2014,2014,7980,74,101,Schaltgetriebe,Benzin,"5,3 l/100 km",126 g/km,106475.0,Slam*Sport*SHZ*Klima*Freisprech*TOP*
+skoda,Skoda Superb,weiß,03/2012,2012,5490,103,140,Schaltgetriebe,Diesel,"5,5 l/100 km",146 g/km,245000.0,"Comfort Combi 2.0TDI KLIMA,SHZ,PDC,AHK, EU5"
+audi,Audi A3,braun,10/2017,2017,18430,110,150,Schaltgetriebe,Benzin,"5,3 l/100 km",117 g/km,44597.0,1.5 TSI ACT sport*NAVI*XENON*TEMPO*PDC*
+opel,Opel Grandland X,grau,04/2019,2019,18750,96,131,Schaltgetriebe,Benzin,"5,2 l/100 km",120 g/km,72600.0,Grandland INNOVATION 1.2 **SHZ*Navi**
+mercedes-benz,Mercedes-Benz E 220,silber,08/2006,2006,4000,110,150,Automatik,Diesel,"6,4 l/100 km",168 g/km,260000.0,CDI Automatik Classic
+hyundai,Hyundai i10,schwarz,02/2016,2016,11500,49,67,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,105800.0,1.0 YES! Silver
+peugeot,Peugeot 3008,blau,03/2021,2021,40990,221,300,Automatik,Hybrid,"6,9 l/100 km",158 g/km,29125.0,Plug-In-Hybrid 1.6 Hybrid4 300 GT Pack ACC/LED/...
+skoda,Skoda Fabia,weiß,10/2017,2017,11790,55,75,Schaltgetriebe,Benzin,"4,7 l/100 km",106 g/km,89900.0,1.0 Red&Grey Edition+Klima+Alu+DAB+SHZ+PDC
+mazda,Mazda 6,grau,03/2023,2023,41990,143,194,Automatik,Benzin,"7,6 l/100 km",172 g/km,500.0,Kombi SKYACTIV-G 194 Drive Takumi (GL/GJ/GH)
+volkswagen,Volkswagen Golf,silber,04/1999,1999,1999,92,125,Schaltgetriebe,Benzin,"8,9 l/100 km",214 g/km,266600.0,1.4 Generation
+ford,Ford Focus,weiß,06/2023,2023,36390,85,116,Automatik,Diesel,"5,3 l/100 km",143 g/km,59.0,"ST-Line X 1,5l LED,Kamera,Navi,HeadUp"
+renault,Renault Megane,schwarz,11/2022,2022,22490,103,140,Schaltgetriebe,Benzin,"5,8 l/100 km",130 g/km,3.0,IV Lim. 5-trg. Zen
+ford,Ford Transit Custom,grau,09/2017,2017,23840,96,131,Automatik,Diesel,6 l/100 km,182 g/km,139986.0,DoKa Kasten 290 L1H1 Trend Autm.
+volkswagen,Volkswagen T-Roc,weiß,07/2022,2022,32500,110,150,Automatik,Benzin,"5,4 l/100 km",123 g/km,12200.0,"R-Line 1.5 TSI DSG, NAVI, RFK, Neues Mod."
+volkswagen,Volkswagen T6 Kombi,gelb,01/2017,2017,19900,110,150,Schaltgetriebe,Diesel,"6,1 l/100 km",161 g/km,258923.0,2.0TDI LR 9-Sitzer AHZV PDC KLIMA
+peugeot,Peugeot 3008,grau,04/2019,2019,28840,132,179,Automatik,Diesel,"4,9 l/100 km",129 g/km,77430.0,Allure BlueHDi 180 EAT8 S&S - FULL LED - AHK - SHZ
+ford,Ford Fiesta,schwarz,03/2016,2016,13330,92,125,Schaltgetriebe,Benzin,"4,3 l/100 km",99 g/km,37800.0,1.0 EcoBoost Start-Stop Titanium +BT +SHZ
+chrysler,Chrysler Pacifica,schwarz,06/2022,2022,54490,214,291,Automatik,Benzin,,- (g/km),28512.0,"Touring L, 3.6l V6, NEUES MODELL,CARFAX"
+opel,Opel Meriva,weiß,01/2012,2012,7450,88,120,Schaltgetriebe,Benzin,"6,1 l/100 km",145 g/km,156000.0,B Design Edition*KLIMA*PANO*TEMPO*GARANTI
+toyota,Toyota Corolla,silber,02/2020,2020,27950,112,152,Automatik,Hybrid,"3,7 l/100 km",84 g/km,54000.0,Sports Hybrid*Scheckheft*JBL*Kamera*Pano
+toyota,Toyota Corolla,silber,11/2021,2021,25940,85,116,Schaltgetriebe,Benzin,"5,6 l/100 km",125 g/km,14520.0,1.2 Team D KLIMA PDC SHZ KAMERA LED
+skoda,Skoda Kodiaq,grau,03/2019,2019,34950,140,190,Automatik,Benzin,"6,9 l/100 km",157 g/km,51000.0,2.0 TSI Sportline 4x4 OPF (EURO 6d-TEMP)
+fiat,Fiat Tipo,schwarz,07/2017,2017,8500,70,95,Schaltgetriebe,Benzin,"5,7 l/100 km",133 g/km,119957.0,Tipo 1.4 16V Lounge
+ford,Ford Kuga,weiß,09/2017,2017,20900,110,150,Schaltgetriebe,Diesel,"4,7 l/100 km",122 g/km,78900.0,Turnier Business Navigationsystem
+bmw,BMW 430,schwarz,06/2017,2017,25999,185,252,Automatik,Benzin,"5,5 l/100 km",129 g/km,96670.0,430i Coupe Aut. -LED-Scheckheft-Navi
+mercedes-benz,Mercedes-Benz S 500,weiß,03/2015,2015,57999,335,455,Automatik,Benzin,"9,4 l/100 km",223 g/km,99999.0,"4M AMG ""Edition 1"" 21 ZOLL, ABSOLUT VOLL !"
+seat,SEAT Alhambra,blau,04/2019,2019,29990,130,177,Automatik,Diesel,,179 g/km,85200.0,2.0 TDI DSG Style*Navi*Bi-Xenon*Panoram Style
+bmw,BMW 528,grau,11/2014,2014,18950,180,245,Schaltgetriebe,Benzin,"6,6 l/100 km",156 g/km,87000.0,i Lim *Navi*HeadUP*Totwinkel*SHZ*PDC*
+bmw,BMW 520,silber,07/2019,2019,37890,140,190,Automatik,Diesel,,0 g/km,67467.0,d xDrive Touring Luxury Line NaviProf.HUD.AHK
+audi,Audi R8,blau,06/2018,2018,139990,449,610,Automatik,Benzin,"12,5 l/100 km",292 g/km,21505.0,Spyder 5.2 FSI plus quattro / Audi exclusive
+volvo,Volvo S90,schwarz,08/2020,2020,41900,246,334,Automatik,Benzin,,- (g/km),46800.0,T6 AWD R-Design ACC AutoPilot LED Panorama 3
+audi,Audi A5,weiß,08/2018,2018,28000,140,190,Automatik,Benzin,"5,5 l/100 km",126 g/km,96534.0,Sptbk 2.0 TFSI S-Tr sport S-Line MMI+ Matrix
+volkswagen,Volkswagen Golf,grau,11/2018,2018,14400,85,116,Schaltgetriebe,Diesel,"4,1 l/100 km",- (g/km),84500.0,"Golf VII 1,6 TDI Join"
+ford,Ford Focus,silber,03/2013,2013,7500,74,101,Schaltgetriebe,Benzin,"4,8 l/100 km",114 g/km,129957.0,Lim. 1.0 Champ.Edition KLIMAA/5 TRG/HU:NEU
+hyundai,Hyundai i30,blau,10/2018,2018,16995,103,140,Schaltgetriebe,Benzin,"5,5 l/100 km",129 g/km,71200.0,Kombi Passion +
+volkswagen,Volkswagen Golf,grau,03/2022,2022,24690,110,150,Schaltgetriebe,Benzin,"5,3 l/100 km",122 g/km,7745.0,VIII Variant 1.5TSI R-Line AHK RüKam Keyless LE...
+mercedes-benz,Mercedes-Benz,rot,06/2022,2022,42570,140,190,Automatik,Diesel,,-/-,7900.0,Sprinter 319 CDI Pritsche DoKa Leder S&S 7-Sitze
+nissan,Nissan Qashqai,schwarz,10/2020,2020,25600,117,159,Automatik,Benzin,,0 g/km,45915.0,Tekna PLUS ACC+LED+PANO+360°+Park Assist
+kia,Kia Carens,blau,06/2017,2017,16790,99,135,Schaltgetriebe,Benzin,"6,5 l/100 km",150 g/km,52175.0,1.6 EDITION 7 7-SITZER
+mazda,Mazda CX-5,grau,05/2019,2019,26490,143,194,Automatik,Benzin,"7,2 l/100 km",164 g/km,44000.0,Signature AWD Heat up AHZV  LED  Sitz Lenkradheiz.
+volkswagen,Volkswagen Golf,schwarz,03/2015,2015,14500,169,230,Schaltgetriebe,Benzin,,- (g/km),99000.0,"GTI Performance 2.0 TSI 6-Gang GTI Performance,19"""
+volkswagen,Volkswagen Crafter,silber,11/2019,2019,25999,130,177,Schaltgetriebe,Diesel,"7,1 l/100 km",187 g/km,143192.0,35 2.0 TDI L2H1 +1.Hd +Navi+Standhzg+AHK
+ford,Ford Kuga,grau,07/2014,2014,12950,110,150,Schaltgetriebe,Benzin,"6,6 l/100 km",154 g/km,88230.0,1.6 TITANIUM TEILLEDER·KLIMAAUT·SHZ·PARKASS
+volkswagen,Volkswagen Golf,grau,02/2023,2023,41930,147,200,Automatik,Diesel,"4,4 l/100 km",117 g/km,9550.0,8 GTD 2.0 TDI DSG Black Style-Exterieur
+mini,MINI Cooper D Countryman,grau,02/2012,2012,8950,82,111,Schaltgetriebe,Diesel,"4,4 l/100 km",117 g/km,243000.0,Chili Paket
+fiat,Fiat 500,rot,01/2023,2023,15990,51,69,Schaltgetriebe,Hybrid,"4,7 l/100 km",119 g/km,50.0,Dolcevita 1.0 Hybrid GSE 51KW 70PS VERFÜGBAR
+skoda,Skoda Octavia,schwarz,10/2019,2019,22470,110,150,Automatik,Diesel,,- (g/km),47461.0,Combi 2.0 TDI DST STYLE EL.HECK+CANTON+N
+lada,Lada Niva,braun,01/2023,2023,21445,61,83,Schaltgetriebe,Benzin,"9,5 l/100 km",260 g/km,50.0,LEGEND 1.7 4x4 +AC+SITZHEIZUNG+ALU+eSPIEGEL
+audi,Audi A3,rot,11/2015,2015,21990,110,150,Automatik,Benzin,"4,9 l/100 km",0 g/km,69854.0,Cabrio 1.4 TFSI S-Tronic LED Navi Leder
+smart,smart forFour,grau,09/2017,2017,11700,66,90,Schaltgetriebe,Benzin,"5,4 l/100 km",123 g/km,62000.0,passion+Panorama+Navi+Einparkhilfe
+opel,Opel Zafira Tourer,braun,02/2014,2014,10890,100,136,Schaltgetriebe,Diesel,"4,1 l/100 km",109 g/km,115000.0,Zafira C Tourer 1.6 CDTI Innovation*OPC-Line*7Si
+ford,Ford Fiesta,blau,02/2020,2020,15880,92,125,Schaltgetriebe,Benzin,"5,3 l/100 km",121 g/km,49952.0,1.0i  ActiveX LED Navi B&O ACC RfKWinter
+skoda,Skoda Kodiaq,blau,12/2017,2017,24898,140,190,Automatik,Diesel,"5,7 l/100 km",150 g/km,123067.0,4x4 DSG Style*LED*Pano*Navi*WiPa*
+opel,Opel Meriva,schwarz,01/2005,2005,1190,74,101,Schaltgetriebe,Diesel,"5,3 l/100 km",143 g/km,198000.0,"Edition AHK KLIMA 1,7CDTi"
+citroen,Citroen DS5,schwarz,04/2013,2013,8470,120,163,Automatik,Diesel,"4,3 l/100 km",99 g/km,248000.0,Business 2.0 HDi 165 FAP 4X4 Allrad Panorama Navi
+volkswagen,Volkswagen Tiguan,blau,12/2016,2016,19960,110,,Schaltgetriebe,Benzin,"5,8 l/100 km",132 g/km,81563.0,Trendline TSI AHK SHZ AppConnect Bluetooth
+dacia,Dacia Sandero,blau,08/2019,2019,13990,66,90,Automatik,Benzin,,167 g/km,7296.0,Stepway TCe 90 Easy-R S&S Prestige
+mazda,Mazda CX-30,rot,11/2022,2022,35250,110,150,Automatik,Benzin,"6,4 l/100 km",144 g/km,5000.0,e-SKYACTIV-G 2.0 M HYBRID 150 DRIVE SELECTION
+dacia,Dacia Sandero,grau,04/2023,2023,18990,67,91,Schaltgetriebe,Benzin,"5,1 l/100 km",115 g/km,10.0,Stepway TCe 90 LED Navi AAC Kam Apple/Andr
+audi,Audi A1,blau,05/2023,2023,35078,110,150,Automatik,Benzin,5 l/100 km,147 g/km,10.0,35 TFSI 150 S tronic LED S line-Int
+opel,Opel Rocks-e,grau,01/2023,2023,9980,9,12,Automatik,Elektro,,0 g/km,10.0,Tenko
+opel,Opel Meriva,grau,02/2014,2014,13500,88,120,Automatik,Benzin,"6,9 l/100 km",163 g/km,61270.0,1.4 Automatik Innovation
+toyota,Toyota Yaris,silber,12/2018,2018,13900,51,69,Schaltgetriebe,Benzin,"4,3 l/100 km",99 g/km,35800.0,1.0 VVT-i Comfort KLIMA RÜCKFAHRKAMERA
+porsche,Porsche Cayenne,schwarz,02/2018,2018,91950,404,549,Automatik,Benzin,"11,7 l/100 km",267 g/km,73250.0,Turbo ''Matrix 14-Wege Panorama Chrono''
+renault,Renault Captur,schwarz,02/2018,2018,20990,66,90,Schaltgetriebe,Benzin,"5,4 l/100 km",123 g/km,96699.0,(ENERGY) TCe 90 INTENS
+jaguar,Jaguar XF,schwarz,08/2020,2020,30900,120,163,Automatik,Diesel,"5,3 l/100 km",139 g/km,33700.0,"Sportbrake Aut. Prestige, Xenon, Navi, Leder"
+mercedes-benz,Mercedes-Benz CLA 200,rot,01/2019,2019,24499,115,156,Schaltgetriebe,Benzin,"6,5 l/100 km",- (g/km),97800.0,CLA Shooting Brake 200
+smart,smart forTwo,grau,10/2016,2016,23990,80,109,Automatik,Benzin,"4,6 l/100 km",104 g/km,47300.0,Cabrio 80KW Brabus*MATT*NAVI*JBL*KAM*SHZ
+mercedes-benz,Mercedes-Benz A 250,blau,02/2020,2020,38656,165,224,Automatik,Benzin,"7,7 l/100 km",176 g/km,29737.0,4M AMG NIGHT KAMERA DISTR SPUR NAVI MULTI P
+toyota,Toyota Aygo X,grün,10/2022,2022,15990,53,72,Schaltgetriebe,Benzin,5 l/100 km,114 g/km,11494.0,1.0 Pulse *CarPlay*Klima*Kamera*SHZ*ACC*
+bmw,BMW X3,schwarz,04/2015,2015,19750,140,190,Schaltgetriebe,Diesel,"5,2 l/100 km",138 g/km,129000.0,xDrive20d (F25)
+audi,Audi Q8,grau,12/2018,2018,65250,210,286,Automatik,Diesel,"6,8 l/100 km",178 g/km,63723.0,50 TDI quattro S line Matrix AHZV
+mazda,Mazda CX-5,weiß,04/2019,2019,30990,135,184,Automatik,Diesel,"5,6 l/100 km",147 g/km,50391.0,2.2 184PS  Sports-Line Plus-Paket Tec-P GSD
+bmw,BMW 420,schwarz,03/2015,2015,13900,135,184,Schaltgetriebe,Diesel,"4,7 l/100 km",128 g/km,235448.0,D Gran Coupe Sport/Navi/Head-Up/Bi-Xenon/PDC
+volkswagen,Volkswagen Caddy,blau,03/2015,2015,11499,81,110,Schaltgetriebe,Diesel,"6,4 l/100 km",168 g/km,153604.0,2.0 TDI DSG (BlueMotion Technology) Highline
+volvo,Volvo XC90,braun,01/2021,2021,57490,223,303,Automatik,Hybrid,,0 g/km,48196.0,T8 INSCRIPTION EXPRESSION 360° HEAD UP AHK
+skoda,Skoda Superb,braun,11/2015,2015,16000,140,190,Schaltgetriebe,Diesel,"4,5 l/100 km",- (g/km),186000.0,Superb Combi 2.0 TDI L
+toyota,Toyota Yaris,weiß,06/2022,2022,28490,92,125,Schaltgetriebe,Benzin,- (l/100 km),- (g/km),1001.0,1.5 VVT-iE GR SPORT
+kia,Kia Stinger,rot,09/2017,2017,12500,188,256,Automatik,Benzin,"7,9 l/100 km",181 g/km,95713.0,GT-Line Navi+ACC+HUD+LED+Memory Sitze+Klimaautom
+bmw,BMW 218,schwarz,05/2016,2016,13800,100,136,Schaltgetriebe,Benzin,"4,9 l/100 km",115 g/km,56000.0,"218i Active Tourer Parksens. vo+hi., TÜV neu"
+ford,Ford Fiesta,grau,01/2016,2016,9900,60,82,Schaltgetriebe,Benzin,"5,2 l/100 km",123 g/km,95998.0,1.25 EU6 Trend
+ford,Ford Fiesta,schwarz,03/2015,2015,8650,59,80,Schaltgetriebe,Benzin,"4,6 l/100 km",105 g/km,94980.0,1.0 Titanium
+bmw,BMW 125,weiß,04/2016,2016,15900,165,224,Automatik,Diesel,"4,6 l/100 km",122 g/km,180000.0,d Advantage adap. LED+Navi+Leder+Karmann/K
+peugeot,Peugeot 307,grau,06/2004,2004,1200,80,109,Schaltgetriebe,Benzin,"7,7 l/100 km",178 g/km,183000.0,SW 110
+audi,Audi A5,weiß,04/2019,2019,26980,140,190,Automatik,Benzin,"5,9 l/100 km",135 g/km,98505.0,Sportback 40 TFSI Start Stop S-Tronic LED+PDC+
+hyundai,Hyundai STARIA,gelb,03/2023,2023,52990,130,177,Automatik,Diesel,"8,5 l/100 km",222 g/km,5000.0,"9-Sitzer  2.2 CRDI PRIME Parkpaket, Panoram"
+opel,Opel Combo Life,grau,11/2022,2022,29990,96,131,Automatik,Benzin,"5,4 l/100 km",119 g/km,50.0,"Elegance Navi, Sitzheizung"
+mercedes-benz,Mercedes-Benz E 250,grau,04/2016,2016,19900,155,211,Automatik,Benzin,"5,8 l/100 km",135 g/km,168000.0,ELEGANCE Autom.360°Kamera*Navi
+land-rover,Land Rover Range Rover Sport,grau,11/2021,2021,82990,221,300,Automatik,Diesel,"8,3 l/100 km",200 g/km,27700.0,D300 HSE Dynamic Stealth
+volkswagen,Volkswagen Passat Variant,schwarz,12/2004,2004,4399,132,179,keine Angabe,Diesel,"7,8 l/100 km",207 g/km,305000.0,V6 TDI Highline 4Motion (3B6)
+bmw,BMW 118,rot,04/2020,2020,23997,103,140,Schaltgetriebe,Benzin,"5,7 l/100 km",129 g/km,16375.0,i Adv/Navi/PDC/LM17/
+seat,SEAT Leon,rot,07/2021,2021,24554,110,150,Schaltgetriebe,Benzin,"5,3 l/100 km",121 g/km,18600.0,"1,5 TSI FR - LAGER 110 kW (150 PS), Schaltgetriebe"
+bmw,BMW 118,,12/2017,2017,19490,110,150,Automatik,Diesel,4 l/100 km,105 g/km,70538.0,d / NAVI / LED / BT / SHZ / PDC
+bmw,BMW X4,silber,08/2019,2019,47750,140,190,Automatik,Diesel,"5,3 l/100 km",140 g/km,77438.0,xDrive 20d Aut. M Sport AHK StHz Pano HK SitzLuft
+audi,Audi A6,grau,03/2009,2009,11990,125,170,Automatik,Benzin,"8,5 l/100 km",204 g/km,122000.0,"Lim 2.0 TFSI Aut. S Line Plus Leder Xenon 19"""
+mini,MINI One,schwarz,06/2019,2019,15500,75,102,Schaltgetriebe,Benzin,"5,4 l/100 km",122 g/km,22900.0,1. Hand/Sitzhzg./PDC hinten/Alu/wenig km
+mercedes-benz,Mercedes-Benz A 200,schwarz,06/2019,2019,72980,120,163,Schaltgetriebe,Benzin,"5,8 l/100 km",142 g/km,31200.0,STYLE LED SPURHALTE TEMPOMAT GESCHW PARK
+audi,Audi A4,silber,10/2016,2016,19950,140,190,Automatik,Diesel,"4,4 l/100 km",116 g/km,152600.0,Avant 2.0 TDI S-tronic *1.HAND*NAVI*PDC*XENON*
+opel,Opel Vectra,silber,08/2004,2004,4190,114,155,Automatik,Benzin,"8,6 l/100 km",206 g/km,124133.0,GTS C Lim.
+volkswagen,Volkswagen Golf,schwarz,06/2002,2002,5599,85,116,Schaltgetriebe,Benzin,"7,8 l/100 km",190 g/km,129000.0,Cabriolet Sportline
+mazda,Mazda 6,schwarz,03/2011,2011,8500,132,179,Schaltgetriebe,Diesel,"5,3 l/100 km",141 g/km,247000.0,Sport Kombi 2.2 CD DPF Sports-Line
+nissan,Nissan Leaf,rot,07/2019,2019,24890,110,150,Automatik,Elektro,,0 g/km,40000.0,Leaf 40 kWh Tekna
+opel,Opel Astra,silber,05/2021,2021,15990,96,131,Schaltgetriebe,Benzin,"4,3 l/100 km",102 g/km,33450.0,K Edition LED SHZ TEMPOMAT LHZ APPLE/ANDROID
+renault,Renault Clio,weiß,12/2017,2017,16280,81,110,Schaltgetriebe,Diesel,"3,3 l/100 km",90 g/km,21381.0,Grandtour Bose Edition ENERGY dCi 110
+ssangyong,SsangYong Actyon,schwarz,09/2007,2007,2500,110,150,Schaltgetriebe,Benzin,,330 g/km,147822.0,"Alus , neue Reifen / Bremsen , AHK"
+volkswagen,Volkswagen Golf Variant,schwarz,06/2005,2005,3295,77,105,Schaltgetriebe,Benzin,7 l/100 km,168 g/km,269774.0,4 IV Kombi 1.6 Zahnriemen gew. TÜV 06/24 SR/WR
+ford,Ford Puma,grau,06/2023,2023,33890,147,200,Schaltgetriebe,Benzin,"6,6 l/100 km",155 g/km,15.0,"ST X 1,5l PANO,ParkAssist,elHeckk."
+ford,Ford Kuga,weiß,05/2014,2014,9900,103,140,Schaltgetriebe,Diesel,"5,3 l/100 km",- (g/km),178000.0,2.0 TDCi 2x4 SYNC
+renault,Renault Grand Scenic,schwarz,07/2010,2010,3890,96,131,Schaltgetriebe,Diesel,"5,5 l/100 km",146 g/km,240000.0,III Dynamique/Isofix/8 Fach/Tempoma
+volkswagen,Volkswagen Golf Variant,silber,06/2021,2021,24450,110,150,Automatik,Diesel,"4,6 l/100 km",121 g/km,51616.0,Golf VIII Variant 2.0 TDI *Life*LED*Navi*ACC*AHK*
+bmw,BMW 220,grau,05/2016,2016,23800,141,192,Automatik,Benzin,"5,6 l/100 km",130 g/km,18000.0,Sportline+1.Hd.+LED+Kamera
+ford,Ford Tourneo,grau,11/2019,2019,21850,74,101,Schaltgetriebe,Benzin,"5,9 l/100 km",135 g/km,34600.0,Connect Titanium
+mazda,Mazda 6,schwarz,12/2016,2016,19990,121,165,Schaltgetriebe,Benzin,6 l/100 km,139 g/km,64094.0,Lim. Exclusive-Line Klima Spurhalteassist. NSW
+kia,Kia Picanto,silber,06/2023,2023,14179,49,67,Schaltgetriebe,Benzin,"4,2 l/100 km",95 g/km,5000.0,1.0 VISION DESIGN PAKET
+land-rover,Land Rover Discovery,grau,08/2018,2018,39950,177,241,Automatik,Diesel,"6,4 l/100 km",168 g/km,64262.0,SE 2.0 SD4 UPE - 70.298.- EUR LED SHZ
+ford,Ford Focus,schwarz,12/2018,2018,15900,88,120,Automatik,Diesel,"4,4 l/100 km",116 g/km,84000.0,"1,5 TDCI Automatik ""Cool&Connect"""
+alfa-romeo,Alfa Romeo MiTo,beige,07/2010,2010,3490,58,79,Schaltgetriebe,Benzin,"5,9 l/100 km",138 g/km,167000.0,1.4 16V
+nissan,Nissan Qashqai,schwarz,11/2017,2017,19890,120,163,Schaltgetriebe,Benzin,"5,8 l/100 km",134 g/km,47715.0,1.6 DIG-T Tekna  NAPPALEDER MEMORY-SITZE
+seat,SEAT Leon,weiß,03/2016,2016,10990,81,110,Schaltgetriebe,Diesel,"3,8 l/100 km",101 g/km,123400.0,1.6TDI Style Klimaauto./Navi/Bluetooth/EUR6
+bmw,BMW X1,weiß,07/2020,2020,36500,162,220,Automatik,Hybrid,,51 km Reichweite,16700.0,X1 xDrive25e Sport Line
+volkswagen,Volkswagen Caddy,braun,11/2010,2010,8500,75,102,Schaltgetriebe,Diesel,"5,7 l/100 km",149 g/km,205300.0,1.6 TDI  Trendline Zahnriemen Bremsen Radlager neu
+seat,SEAT,weiß,03/2022,2022,39939,110,150,Automatik,Benzin,"1,4 l/100 km",33 g/km,18267.0,Formentor 1.4 e-Hybrid *Pano*Kamera*AHK
+volkswagen,Volkswagen T5 Multivan,schwarz,11/2010,2010,17990,132,179,Automatik,Diesel,"8,1 l/100 km",214 g/km,212664.0,Comfortline/Nav/Klimaaut/Standhzg
+volkswagen,Volkswagen up!,silber,11/2019,2019,9990,44,60,Schaltgetriebe,Benzin,"4,4 l/100 km",100 g/km,31880.0,/ 3 Türen / incl. Garantie / 2 Jahre Hu frei
+fiat,Fiat 500X,schwarz,07/2016,2016,13490,88,120,Schaltgetriebe,Diesel,"4,1 l/100 km",109 g/km,125000.0,1.6 Multijet Cross Plus 4x2 *KLIMA*SHZ*NAVI
+audi,Audi A3,schwarz,04/2009,2009,6250,103,140,Schaltgetriebe,Diesel,"4,4 l/100 km",115 g/km,245000.0,2.0 TDI DPF S line Sportpaket (plus)
+audi,Audi A6,schwarz,02/2018,2018,33299,160,218,Automatik,Diesel,"4,6 l/100 km",119 g/km,76661.0,Avant 3.0 TDI S-Tronic + S-Line Selection
+audi,Audi A5,grau,03/2014,2014,27980,180,245,Automatik,Diesel,,0 g/km,87611.0,Cabriolet 3.0 TDI quattro S-line S-Tronic NAV
+renault,Renault Clio,weiß,11/2018,2018,9800,54,73,Schaltgetriebe,Benzin,"5,7 l/100 km",130 g/km,36000.0,Life IV Grandtour/1Hand/Scheckheftgepflegt/36000km
+ford,Ford Fiesta,,06/2023,2023,22990,92,,Schaltgetriebe,Hybrid,5 l/100 km,114 g/km,59.0,"Titanium 1.0l MHEV Kamera,ACC,WinterP"
+ford,Ford Focus,grau,05/2015,2015,15990,110,150,Automatik,Benzin,"6,1 l/100 km",140 g/km,35920.0,Lim. Titanium*BIXENON*SHZ*PDC*TOUCH*GRA*
+audi,Audi A4,schwarz,07/2017,2017,25500,140,190,Automatik,Benzin,"5,6 l/100 km",129 g/km,64200.0,Avant 2.0 TFSI ultra sport
+toyota,Toyota Yaris,,09/2019,2019,13000,82,111,Schaltgetriebe,Benzin,"4,8 l/100 km",109 g/km,28598.0,"1,5-Dual-VVT-iE"
+volkswagen,Volkswagen Golf,weiß,03/2021,2021,24690,150,204,Automatik,Hybrid,"1,2 l/100 km",28 g/km,31127.0,1.4 eTSI DSG Style NAVI LED LM ACC MASSAGE
+volvo,Volvo V40,blau,05/2015,2015,13700,84,114,Schaltgetriebe,Diesel,"3,8 l/100 km",101 g/km,120829.0,"Basis,2HD,NAVI,KLIMA,SCHECKHEFT,PDC,TEMPOMAT"
+skoda,Skoda Fabia,blau,08/2021,2021,16150,70,95,Schaltgetriebe,Benzin,,0 g/km,25200.0,"Combi 1,0 TSI Ambition+Klima+Sitzheizung"
+renault,Renault Megane,blau,08/2016,2016,15490,97,132,Schaltgetriebe,Benzin,"5,4 l/100 km",120 g/km,59166.0,ENERGY TCe 130 GT LINE LED ACC NAVI ALCANTARA DAB
+mazda,Mazda 3,rot,05/2022,2022,25600,90,122,Automatik,Benzin,"5,4 l/100 km",122 g/km,7000.0,Lim. Automatik/5 Tür/Navi/Kamera/PDC/Sitz-Heiz
+porsche,Porsche Cayenne,grau,12/2011,2011,34590,180,245,Automatik,Diesel,"7,2 l/100 km",189 g/km,49500.0,Diesel Tiptronic Porsche-Scheckheft!
+ford,Ford Mondeo,schwarz,09/2015,2015,9750,88,120,Schaltgetriebe,Diesel,"3,8 l/100 km",99 g/km,203816.0,Turnier 1.5 TDCi ECOnetic Start-Stopp Business Edi
+porsche,Porsche Cayenne,schwarz,05/2017,2017,59800,283,385,Automatik,Diesel,8 l/100 km,209 g/km,97000.0,S Diesel Platinum Edition Park-Assistent
+seat,SEAT Leon,grau,04/2017,2017,24890,221,300,Automatik,Benzin,"7,2 l/100 km",164 g/km,45353.0,2.0 ST Cupra  4Drive +ACC+Kamera+Navi-Plus+
+volkswagen,Volkswagen Caddy,beige,05/2019,2019,29890,110,150,Schaltgetriebe,Diesel,"6,5 l/100 km",169 g/km,52000.0,HL 2.0 TDI EU6 110 kW AHK PDC NAVI
+bmw,BMW 520,schwarz,03/2012,2012,15390,135,184,Automatik,Diesel,"4,9 l/100 km",130 g/km,213900.0,d Touring*M SPORT*SHADOW*PANO*NAVI PROF*
+dacia,Dacia Duster,schwarz,08/2019,2019,13979,84,114,Schaltgetriebe,Benzin,,0 g/km,31133.0,1. Hand Navi Tempomat Nebel DAB Sitzheizung Kamera
+renault,Renault Clio,grau,04/2018,2018,18888,87,118,Schaltgetriebe,Benzin,"5,3 l/100 km",118 g/km,20492.0,IV 1.2 TCe 120 Limited Led Nav PDC DeLuxeP
+renault,Renault Kadjar,schwarz,05/2018,2018,16880,96,131,Automatik,Benzin,,- (g/km),50000.0,"1.2 TCe SPURHALTE,HANDSFREE,NAVI,METALLIC"
+mercedes-benz,Mercedes-Benz CLS 350,silber,02/2011,2011,17900,195,265,Automatik,Diesel,6 l/100 km,- (g/km),240000.0,CDI DPF BlueEFFICIENCY 7G-TRONIC
+fiat,Fiat 500,schwarz,05/2019,2019,15685,51,69,Automatik,Benzin,"4,8 l/100 km",111 g/km,89000.0,Lounge
+kia,Kia Soul,blau,12/2021,2021,29900,150,204,Automatik,Elektro,,0 g/km,17000.0,e- Vision incl. Tech-Paket. sofort verfügbar
+toyota,Toyota Avensis,grau,05/2007,2007,4500,93,126,Schaltgetriebe,Diesel,"5,9 l/100 km",- (g/km),250000.0,2.0 D-4D Combi Executive
+volvo,Volvo XC60,weiß,09/2016,2016,22300,110,150,Schaltgetriebe,Diesel,,- (g/km),92650.0,D3 Kinetic Bi-Xenon/Navi/Bluetooth/PDC/SHZ
+audi,Audi A4,blau,07/2017,2017,29950,200,272,Automatik,Diesel,"5,4 l/100 km",142 g/km,89000.0,"Avant 3,0 quattro S-LINE/PLUS|LED|VIRTUAL|RFK"
+citroen,Citroen C3,grau,06/2019,2019,14950,81,110,Schaltgetriebe,Benzin,"4,7 l/100 km",107 g/km,38585.0,"Origins,Kamera,Panoramadach,"
+audi,Audi TT,grau,05/2014,2014,24444,125,170,Automatik,Diesel,"5,6 l/100 km",- (g/km),111000.0,TT Roadster 2.0 TDI quattro S tronic
+bmw,BMW 750,schwarz,05/2016,2016,10990,330,449,Automatik,Benzin,"8,3 l/100 km",192 g/km,231000.0,i Long xDrive 4xMassage Laser M-Sportpaket
+audi,Audi A6,blau,11/2009,2009,11400,140,190,Automatik,Diesel,"6,5 l/100 km",172 g/km,287000.0,A6 2.7 TDI*Aut*1 Hd*S-Line*Alcantara*HU/AU Neu*
+skoda,Skoda Kodiaq,schwarz,02/2019,2019,33690,140,,Automatik,Diesel,"5,7 l/100 km",151 g/km,50481.0,Style 4x4 2.0 TDI StandHZG Panodach Navi Leder Mem
+opel,Opel Karl,schwarz,08/2016,2016,9399,55,75,Schaltgetriebe,Benzin,"4,1 l/100 km",97 g/km,95051.0,Innovation Start/Stop
+renault,Renault Clio,blau,03/2004,2004,1790,55,75,Schaltgetriebe,Benzin,"5,6 l/100 km",139 g/km,100871.0,Expression Confort II
+skoda,Skoda Octavia,weiß,05/2021,2021,27900,110,150,Schaltgetriebe,Diesel,"3,9 l/100 km",103 g/km,35500.0,"IV 2,0 TDI  Combi Clever LED AHK Vorb."
+renault,Renault Kadjar,weiß,11/2018,2018,14495,103,140,Schaltgetriebe,Benzin,"5,8 l/100 km",132 g/km,46739.0,TCe 140 LIFE--TÜV/AU NEU--
+volkswagen,Volkswagen Golf,schwarz,02/2020,2020,22990,110,150,Automatik,Diesel,,114 g/km,67735.0,7 2.0TDI*HIGHLIN*DSG*PAN*NAVI*LED*LEDER*ACC
+mercedes-benz,Mercedes-Benz CLA 45 AMG,grau,06/2022,2022,62890,285,387,Automatik,Benzin,9 l/100 km,204 g/km,8100.0,AMG CLA 45 4MATIC+ Shooting Brake HUD S-Sitz ACC
+seat,SEAT Leon,blau,07/2018,2018,11980,110,150,Schaltgetriebe,Diesel,,112 g/km,135006.0,ST 2.0 TDI Xcellence PDC Lane-Assist
+audi,Audi A4,silber,02/2013,2013,15500,125,170,Automatik,Benzin,6 l/100 km,139 g/km,114000.0,1.8 TFSI Avant AT NAVI XENON
+kia,Kia Sportage,schwarz,07/2017,2017,20400,100,136,Schaltgetriebe,Diesel,"5,2 l/100 km",139 g/km,74090.0,2.0 CRDI AWD Dream Team Prem+/Leder/JBL/Navi
+ford,Ford Kuga,rot,01/2021,2021,29950,140,190,Automatik,Diesel,,- (g/km),65700.0,2.0 EcoBlue ST-LINE X AHK LED ACC
+bmw,BMW 320,grau,02/2008,2008,2500,130,177,Schaltgetriebe,Diesel,"5,6 l/100 km",149 g/km,260400.0,116i
+mercedes-benz,Mercedes-Benz E 220,silber,06/2003,2003,4999,110,150,Automatik,Diesel,"7,5 l/100 km",197 g/km,245758.0,T CDI E -Klasse T-Modell (BM 211)
+mercedes-benz,Mercedes-Benz S 320,schwarz,02/1996,1996,10500,170,231,Automatik,Benzin,,- (g/km),380156.0,Elegance guter Zustand Tüv Neu
+volkswagen,Volkswagen Golf,grau,05/2017,2017,17980,81,110,Automatik,Benzin,"4,8 l/100 km",110 g/km,62900.0,VII Variant Trendline *Navi*PDC*Automatik
+audi,Audi TT,grau,04/2010,2010,12450,147,200,Automatik,Benzin,"7,8 l/100 km",186 g/km,130820.0,2.0 TFSI Roadster*Automatik*Foliert*
+opel,Opel Meriva,blau,04/2015,2015,9400,81,110,Schaltgetriebe,Diesel,"3,8 l/100 km",99 g/km,73200.0,"1.6 CDTI ecoflex  Edition, Lenkrad & Sitz"
+skoda,Skoda Rapid/Spaceback,schwarz,10/2014,2014,9990,90,122,Automatik,Benzin,"5,8 l/100 km",134 g/km,127210.0,Rapid Spaceback 1.4 TSI DSG Ambition
+peugeot,Peugeot 508,grau,09/2022,2022,29950,96,131,Automatik,Benzin,"4,9 l/100 km",112 g/km,9987.0,1.2 eTHP Allure Pack LED NAVI Stop & Go
+volkswagen,Volkswagen Sharan,braun,12/2013,2013,18000,103,140,Schaltgetriebe,Diesel,"5,5 l/100 km",- (g/km),145000.0,2.0 TDI
+opel,Opel Insignia,braun,07/2021,2021,17869,90,122,Automatik,Diesel,"4,1 l/100 km",109 g/km,67405.0,B Grand Sport 1.5 Elegance CAM
+volkswagen,Volkswagen Taigo,grün,02/2023,2023,30820,81,110,Automatik,Benzin,"4,9 l/100 km",111 g/km,2500.0,1.0 TSI DSG R-Line MATRIX+NAV+AHK+BT+APP
+audi,Audi Q5,grau,10/2009,2009,22990,125,170,Automatik,Diesel,"6,8 l/100 km",179 g/km,172000.0,2.0 TDI quattro Aut Bi-XENON LED/NAVI/NEU TÜV
+volkswagen,Volkswagen Arteon,schwarz,10/2021,2021,52900,235,320,Automatik,Benzin,"7,7 l/100 km",177 g/km,20780.0,Shooting Brake R 2.0 TSI BMT DSG 4Motion Leder LED
+bmw,BMW 440,grau,11/2016,2016,37800,240,326,Automatik,Benzin,"6,6 l/100 km",154 g/km,94101.0,i Coupe M Sport HeadUp LED Sportautomatik 360
+volkswagen,Volkswagen Tiguan,schwarz,06/2023,2023,47840,140,190,Automatik,Benzin,"6,8 l/100 km",156 g/km,900.0,2.0 TSI 4M R-Line - AHK*Pano*Navi!!
+volkswagen,Volkswagen Touareg,weiß,12/2013,2013,21000,180,245,Automatik,Diesel,"7,3 l/100 km",- (g/km),172000.0,Touareg 3.0 V6 TDI Blue Motion DPF Automatik Exclu
+bmw,BMW 530,silber,06/2020,2020,38990,195,265,Automatik,Diesel,,- (g/km),53600.0,d Touring RFK Sitzh Leder adapt.LED 2-Z Tempo
+skoda,Skoda Fabia,silber,05/2023,2023,25988,110,150,Automatik,Benzin,"4,8 l/100 km",125 g/km,10.0,1.5 TSI 150 DSG Monte Carlo Nav Pano 17Z
+ford,Ford C-Max,blau,12/2015,2015,9990,74,101,Schaltgetriebe,Benzin,"5,1 l/100 km",117 g/km,95000.0,"1,0 Eco-Boost - Business Edition - Winterpaket"
+mercedes-benz,Mercedes-Benz C 200,grau,05/2019,2019,27690,135,184,Automatik,Benzin,"6,2 l/100 km",155 g/km,59000.0,T 9G-Tronic Avantgarde Navi/Temp/Kamera/LE
+ford,Ford Fiesta,weiß,06/2009,2009,5300,44,60,Schaltgetriebe,Benzin,"5,4 l/100 km",128 g/km,108491.0,Ka 1.2 Trend
+volkswagen,Volkswagen Golf,schwarz,05/2018,2018,18750,92,125,Schaltgetriebe,Benzin,"5,4 l/100 km",125 g/km,62104.0,Sportsvan VII BMT/Start-Stopp Highline
+dacia,Dacia,silber,06/2022,2022,24985,81,110,Schaltgetriebe,Benzin,"5,6 l/100 km",130 g/km,15.0,Extreme+ 1.0 TCe 110 7-Sitzer Navi+SHZ+KAMERA+PDC+
+mini,MINI Cooper S,grau,02/2019,2019,23500,141,192,Schaltgetriebe,Benzin,"6,8 l/100 km",154 g/km,78000.0,2.0 John Cooper Works*Aut.*Led
+opel,Opel Corsa,silber,03/2003,2003,1200,55,75,Schaltgetriebe,Benzin,"6,3 l/100 km",149 g/km,208000.0,1.7 CDTI Njoy
+volkswagen,Volkswagen Golf,silber,05/2004,2004,3500,75,102,Schaltgetriebe,Benzin,"7,4 l/100 km",176 g/km,212558.0,1.6 Comfortline
+volkswagen,Volkswagen Eos,schwarz,10/2006,2006,2599,110,150,Schaltgetriebe,Benzin,"8,2 l/100 km",- (g/km),155800.0,2.0 Individual Chrom
+audi,Audi A1,weiß,12/2019,2019,18820,85,116,Schaltgetriebe,Benzin,"4,9 l/100 km",111 g/km,32255.0,Sportback 30 TFSI S line virtCo SHZ PDCplus
+land-rover,Land Rover Defender,grün,04/2023,2023,110690,294,400,Automatik,Benzin,"9,9 l/100 km",227 g/km,4999.0,110 P400 75th Limited *1 of 200 in D*
+bmw,BMW X1,orange,06/2022,2022,37890,131,178,Automatik,Benzin,"5,8 l/100 km",132 g/km,25375.0,sDrive20i Sport Line DAB LED Navi Komfortzg.
+volkswagen,Volkswagen T5 California,silber,04/2010,2010,34600,132,179,Automatik,Diesel,"8,8 l/100 km",- (g/km),133000.0,Comfortline Standheizung Markise
+renault,Renault Megane,grau,11/2022,2022,40199,160,218,Automatik,Elektro,,300 km Reichweite,10.0,E-Tech 100% ele Paket Evolution ER EV60 130
+mercedes-benz,Mercedes-Benz E 350,grau,03/2010,2010,13890,170,231,Automatik,Diesel,"6,8 l/100 km",179 g/km,188052.0,Coupe CDI BlueEfficiency NAVI
+bmw,BMW 320,braun,04/2014,2014,19999,135,184,Automatik,Diesel,"4,8 l/100 km",125 g/km,129800.0,320d Touring Modern Line LederXenonLED
+citroen,Citroen C4 Picasso,grau,08/2007,2007,4990,80,109,Automatik,Diesel,"5,1 l/100 km",135 g/km,144000.0,1.6 HDi FAP EGS6 Exclusive
+audi,Audi A3,silber,10/2014,2014,14899,110,150,Schaltgetriebe,Diesel,4 l/100 km,106 g/km,160051.0,Limousine MMI Navi plus touch TÜV neu
+volkswagen,Volkswagen Passat,schwarz,12/2014,2014,17980,110,150,Schaltgetriebe,Benzin,"4,9 l/100 km",115 g/km,88145.0,1.4 TSI BMT Comfortline  Navi/Keyless-Start/Klima
+mercedes-benz,Mercedes-Benz CLA 220,,09/2016,2016,16450,130,177,Automatik,Diesel,"4,2 l/100 km",108 g/km,204671.0,CDI / d CLA -Klasse Shooting Brake (BM 117)
+mini,MINI Cooper S,grün,11/2019,2019,23960,141,192,Schaltgetriebe,Benzin,"6,4 l/100 km",147 g/km,36620.0,Mini 60 Years Trim LEDER+NAVI+ACC+LED++ Navi/BC
+maserati,Maserati Ghibli,rot,03/2018,2018,72800,316,430,Automatik,Benzin,"11,1 l/100 km",252 g/km,47000.0,3.0 V6 GranSport S Q4/CARBON/KAMERA/B&W/
+volkswagen,Volkswagen Golf GTI,rot,05/2012,2012,20000,173,235,Automatik,Benzin,8 l/100 km,185 g/km,62000.0,1.6 TDI (5-Si.) BMT Roncalli Edition
+ford,Ford EcoSport,gelb,10/2019,2019,16790,92,125,Schaltgetriebe,Benzin,"5,3 l/100 km",119 g/km,24500.0,"Trend 1,0l Ecoboost"
+mercedes-benz,Mercedes-Benz S 500,schwarz,08/2021,2021,135997,320,435,Automatik,Benzin,"7,8 l/100 km",178 g/km,40000.0,L 4-Matic AMG-Line Fond-Ent. Massage TV
+renault,Renault Twingo,grau,04/2004,2004,1700,43,58,Schaltgetriebe,Benzin,"7,3 l/100 km",148 g/km,167000.0,Lazuli*TÜV 07/2023*SERVO*FALTDACH*
+porsche,Porsche 992,gelb,01/2022,2022,173330,331,450,Automatik,Benzin,"9,6 l/100 km",220 g/km,3272.0,911 Carrera S Leichtbau Carbon PCCB PASM LED
+fiat,Fiat 500X,schwarz,12/2017,2017,15800,103,140,Schaltgetriebe,Benzin,6 l/100 km,139 g/km,65500.0,1.4 Multiair 4x2 S&S S-Design City Look
+hyundai,Hyundai KONA,schwarz,04/2018,2018,16490,88,120,Schaltgetriebe,Benzin,"5,2 l/100 km",117 g/km,89860.0,1.0 T-GDI Select
+volkswagen,Volkswagen Passat,braun,11/2011,2011,9490,90,122,Schaltgetriebe,Benzin,"5,9 l/100 km",138 g/km,142000.0,2.0 Blue TDI SCR Comfortline
+kia,Kia Soul,rot,04/2016,2016,12965,97,132,Schaltgetriebe,Benzin,"6,8 l/100 km",153 g/km,64090.0,1.6 Dream Team Sound & Navi Pak.|SHZ
+mercedes-benz,Mercedes-Benz GLC 300,weiß,02/2023,2023,82998,190,258,Automatik,Benzin,"7,8 l/100 km",177 g/km,8050.0,4m AMG-PREMIUM-PLUS AIRMATIC AHK NIGHT
+toyota,Toyota RAV 4,weiß,02/2017,2017,25480,145,197,Automatik,Hybrid,"5,2 l/100 km",122 g/km,87300.0,"2.5 HYBRID 4x4 EXECUTIVE 360GRAD,KEYLESS"
+volkswagen,Volkswagen T-Cross,silber,03/2023,2023,25490,81,110,Automatik,Benzin,"6,2 l/100 km",141 g/km,1030.0,TSI DSG Style SmartNavi+LED+ACC+Kamera+SHZ+PDC+Kli
+audi,Audi S5,schwarz,04/2014,2014,11300,245,333,Automatik,Benzin,"8,1 l/100 km",192 g/km,91750.0,Coupé 3.0 TFSI quattro 3.0 TFSI quattro
+skoda,Skoda Karoq,grau,08/2018,2018,17990,85,116,Schaltgetriebe,Diesel,"4,3 l/100 km",114 g/km,92548.0,1.6 TDI Ambition GRA STHZG CLIMA SITZHZG MFL PDC
+toyota,Toyota Auris,weiß,11/2018,2018,16500,73,99,Automatik,Hybrid,"3,9 l/100 km",91 g/km,65888.0,Hybrid Team D Garantie* nur 65.000 km*
+citroen,Citroen Berlingo,grau,04/2020,2020,28490,96,131,Automatik,Benzin,"5,6 l/100 km",127 g/km,29500.0,Shine M
+skoda,Skoda Citigo,weiß,04/2013,2013,7800,44,60,Automatik,Benzin,"4,4 l/100 km",103 g/km,48500.0,1.0 MPI Automatik Ambition
+opel,Opel Corsa,blau,12/2021,2021,18990,74,101,Schaltgetriebe,Benzin,"4,3 l/100 km",98 g/km,9930.0,GS L.*LED*RFK*Virtual*KEYFree*Spurh*Tleder
+bmw,BMW X5,rot,10/2016,2016,35990,230,313,Automatik,Diesel,"6,9 l/100 km",183 g/km,155450.0,Baureihe X5 xDrive40d/M-Sport/Leder/AHK/LED
+volkswagen,Volkswagen Passat Variant,blau,07/2017,2017,15900,110,150,Schaltgetriebe,Benzin,"5,1 l/100 km",119 g/km,129000.0,1.4 TSI ACT (BlueMotion Technology) Comfortline
+fiat,Fiat 500,rot,11/2020,2020,16590,51,69,Schaltgetriebe,Benzin,"4,1 l/100 km",93 g/km,9351.0,"1.0 (70PS) PDC, Klima, LM-Felgen"
+bmw,BMW 530,blau,11/2008,2008,6400,173,235,Automatik,Diesel,"6,6 l/100 km",176 g/km,300000.0,530d
+seat,SEAT Leon,grau,04/2021,2021,28490,204,277,Automatik,Hybrid,"1,5 l/100 km",0 g/km,35819.0,e-HYBRID 1.4 EU6d Sportstourer FR e-Hybrid 150KW(2
+mercedes-benz,Mercedes-Benz E 300,schwarz,10/2010,2010,9800,170,231,Automatik,Diesel,"7,3 l/100 km",191 g/km,300000.0,T CDI BlueEfficiency 7G-Tronic Avantgarde
+audi,Audi Q3,,11/2017,2017,18859,110,150,Schaltgetriebe,Diesel,"4,4 l/100 km",117 g/km,165575.0,2.0 TDI AAC  Xenon Navi Kam AHK
+audi,Audi S6,rot,12/2019,2019,48830,257,349,Automatik,Diesel,"6,5 l/100 km",171 g/km,113784.0,Avant TDI quattro AHK B&O HD Matrix LED 360°Kamera
+dacia,Dacia Dokker,blau,06/2017,2017,9999,85,116,Schaltgetriebe,Benzin,"5,7 l/100 km",130 g/km,92680.0,1.2 TCe 115 Stepway CELEBRATION Klima
+mazda,Mazda CX-3,blau,02/2019,2019,20240,89,121,Automatik,Benzin,"6,1 l/100 km",161 g/km,41399.0,2.0 Skyactiv-G Sports-Line Aut.*NAVI*PDC
+smart,smart forFour,rot,10/2019,2019,17250,60,82,Automatik,Elektro,163 km (Ort),120 km Reichweite,13757.0,EQ prime Navi Leder Pano SH PDC BT Apps
+ford,Ford Focus,braun,04/2014,2014,6950,74,101,Schaltgetriebe,Benzin,"4,8 l/100 km",112 g/km,152894.0,Turnier 1.0 EcoBoost Start-Stopp-System SYNC Editi
+ford,Ford Fiesta,silber,12/2019,2019,13799,63,86,Schaltgetriebe,Benzin,,- (g/km),6950.0,1.1 COOL&CONNECT
+bmw,BMW 320,weiß,03/2020,2020,33880,135,184,Automatik,Benzin,"5,7 l/100 km",130 g/km,33168.0,"i LIVECOCKPIT,GLASDACH,KEYLESS,KAMERA,SH,1HD"
+ferrari,Ferrari 488,weiß,01/2018,2018,269900,492,669,Automatik,Benzin,"11,4 l/100 km",260 g/km,12000.0,*NAVI*LIFT*Racing*RFK*PDC**Mietkauf
+mercedes-benz,Mercedes-Benz Viano,,01/2005,2005,6500,110,150,Automatik,Diesel,"8,6 l/100 km",227 g/km,310000.0,2.2 CDI extralang Ambiente
+mercedes-benz,Mercedes-Benz A 180,grau,05/2016,2016,13990,90,122,Schaltgetriebe,Benzin,"5,6 l/100 km",131 g/km,112900.0,A -Klasse 180 STYLE/LED/SHZ/NAVI/PDC/MERCEDES ME
+seat,SEAT Leon,grau,03/2022,2022,23880,81,110,Automatik,Benzin,"5,5 l/100 km",127 g/km,34800.0,Sportstourer 1.0 eTSI Style DSG AHK LED Navi
+skoda,Skoda Scala,silber,07/2022,2022,26990,81,110,Automatik,Benzin,"4,7 l/100 km",111 g/km,9999.0,"1,0 TSI DSG Clever NAVI*EL.HECKKL*KAM*KESSY*LED"
+opel,Opel Adam,rot,03/2016,2016,10399,74,101,Schaltgetriebe,Benzin,"5,5 l/100 km",130 g/km,55800.0,1.4 16V SLAM Sportpaket PDC SHZ MFL
+skoda,Skoda Scala,blau,05/2023,2023,19990,81,110,Schaltgetriebe,Benzin,"4,9 l/100 km",119 g/km,15.0,"1.0 TSI Cool Plus *LED*SHZ*SMARTLINK*TEMPO*PDC*16"""
+mini,MINI One Cabrio,schwarz,05/2019,2019,18890,75,102,Schaltgetriebe,Benzin,"5,6 l/100 km",127 g/km,24626.0,(F57)
+ford,Ford Focus,weiß,09/2014,2014,9499,92,125,Schaltgetriebe,Benzin,5 l/100 km,119 g/km,91111.0,Lim. SYNC Edition *Bremsen+Zahnriemen NEU*
+audi,Audi TTS,grau,12/2016,2016,34500,228,310,Automatik,Benzin,"6,7 l/100 km",- (g/km),65000.0,Audi TT Coupe S tronic
+volkswagen,Volkswagen Golf,schwarz,10/2009,2009,7599,90,,Schaltgetriebe,Benzin,"6,2 l/100 km",144 g/km,118000.0,Golf 1.4 TSI Comfortline
+ford,Ford Kuga,blau,07/2016,2016,15790,110,150,Schaltgetriebe,Benzin,"6,2 l/100 km",143 g/km,79062.0,1.5 EcoBoost 2x4 Titanium
+fiat,Fiat 500X,schwarz,07/2016,2016,14600,103,140,Automatik,Diesel,"5,5 l/100 km",144 g/km,118550.0,Cross 4x4 *NAVI*TEMPOMAT*
+mercedes-benz,Mercedes-Benz S 500,schwarz,10/2014,2014,85949,335,455,Automatik,Benzin,"8,9 l/100 km",207 g/km,224000.0,"BlueEfficiency A -Klasse (BM 176), Style Paket"
+audi,Audi A3,weiß,05/2023,2023,34288,110,150,Automatik,Benzin,"5,7 l/100 km",130 g/km,10.0,35 TFSI S tronic S line LED Nav SHZ
+nissan,Nissan Leaf,schwarz,12/2019,2019,18480,110,150,Automatik,Elektro,,0 g/km,57013.0,Tekna 360K ACC+Spur Navi Bose LED V-Leder
+ford,Ford Focus,silber,09/2016,2016,9900,88,120,Automatik,Diesel,"3,8 l/100 km",99 g/km,143300.0,Turnier Business Klima
+toyota,Toyota Corolla,braun,09/2022,2022,24490,90,122,Automatik,Hybrid,"3,4 l/100 km",77 g/km,13000.0,1.8 Hybrid Team D **sofort verfügbar**
+seat,SEAT Alhambra,weiß,12/2019,2019,28990,110,150,Automatik,Diesel,,0 g/km,120334.0,Style ACC AHK Leder NAVI 7Sitzer Kamera
+volkswagen,Volkswagen Golf,schwarz,08/2012,2012,8900,125,170,Automatik,Diesel,"5,4 l/100 km",142 g/km,242000.0,2.0 TDI DPF DSG GTD
+audi,Audi A6,schwarz,10/2011,2011,19500,220,299,Automatik,Benzin,"8,2 l/100 km",190 g/km,184000.0,3.0 TFSI quattro S tronic
+bmw,BMW 118,grau,07/2019,2019,17500,110,150,Automatik,Diesel,"4,4 l/100 km",114 g/km,126469.0,DA Sport Line *ACC*KAMERA*LED*NAVIGATION*
+renault,Renault Captur,silber,06/2020,2020,25888,113,154,Automatik,Benzin,"5,7 l/100 km",139 g/km,18603.0,II TCe 155 EDC Intens LED Nav PDC SHZ 17Z
+bmw,BMW 535,blau,04/2016,2016,23950,225,306,Automatik,Benzin,"8,1 l/100 km",192 g/km,164000.0,Touring 535i xDrive *HeadUP*Navi*Xen*1.Hand*SHZ*
+skoda,Skoda Octavia,,12/2013,2013,11650,103,140,Schaltgetriebe,Benzin,"5,3 l/100 km",126 g/km,109200.0,Combi Elegance/DAB/SHZ/MFL/EFH/
+mercedes-benz,Mercedes-Benz E 320,silber,04/2004,2004,6500,165,224,Automatik,Benzin,"9,9 l/100 km",- (g/km),271000.0,Avantgarde
+mazda,Mazda CX-5,grau,10/2020,2020,33450,143,194,Automatik,Benzin,,0 g/km,22651.0,Sports-Line  Allrad Matrix Navi GSD HUD SHZ
+skoda,Skoda Fabia,weiß,05/2022,2022,19560,70,95,Automatik,Benzin,"4,9 l/100 km",111 g/km,29432.0,Combi 1.0 TSI Ambition OPF (EURO 6d) LED
+audi,Audi A4,silber,04/2020,2020,29200,140,190,Automatik,Diesel,"4,9 l/100 km",- (g/km),42500.0,A4 Avant 40 TDI quattro S tronic
+audi,Audi A4,silber,03/2011,2011,10900,118,160,Schaltgetriebe,Benzin,"7,2 l/100 km",171 g/km,142000.0,Attraction Avant RATENKAUF OHNE BANK+TÜV NEU
+bentley,Bentley Continental GT,schwarz,12/2018,2018,175000,467,635,Automatik,Benzin,"12,1 l/100 km",278 g/km,90198.0,New Continental GT
+mercedes-benz,Mercedes-Benz C 250,grau,07/2013,2013,15990,150,204,Automatik,Diesel,"5,5 l/100 km",147 g/km,215969.0,T CDI 4Matic*Edition C*AMG Line*Scheckheft MB*ILS
+peugeot,Peugeot 208,weiß,08/2018,2018,11850,81,110,Schaltgetriebe,Benzin,"4,6 l/100 km",106 g/km,113800.0,1.2 PureTech 110 Allure *NAVi*
+seat,SEAT Leon,violett,08/2018,2018,18550,135,184,Schaltgetriebe,Diesel,,- (g/km),110264.0,Sportstourer 2.0 TDI FR PANO LEDER AHK VIRT
+skoda,Skoda Octavia,grün,07/2019,2019,27990,180,245,Automatik,Benzin,"6,3 l/100 km",144 g/km,33000.0,RS |VIRTUAL|PANORAMA|SCHALENSITZE|NAVI|
+volvo,Volvo XC90,blau,04/2019,2019,47850,173,235,Automatik,Diesel,,213 g/km,81236.0,D5 Inscription AWD 21° HeadUp AHK H&K Pano
+skoda,Skoda Octavia,schwarz,05/2020,2020,22990,110,150,Automatik,Diesel,"5,5 l/100 km",138 g/km,44100.0,2.0 Euro 6 nur 44.100 Km Automatik Front Assis LED
+bmw,BMW X5,schwarz,11/2006,2006,10500,160,218,Automatik,Diesel,"9,4 l/100 km",250 g/km,181000.0,3.0 d
+mercedes-benz,Mercedes-Benz A 170,schwarz,05/2005,2005,3800,85,116,Schaltgetriebe,Benzin,"6,6 l/100 km",- (g/km),165000.0,Classic
+ford,Ford Focus,schwarz,02/2018,2018,15999,88,120,Schaltgetriebe,Diesel,"3,8 l/100 km",101 g/km,130000.0,Turnier Business
+ford,Ford Tourneo Custom,blau,02/2021,2021,50890,136,185,Automatik,Diesel,"7,3 l/100 km",192 g/km,13000.0,Titanium 320 L2H1 VA Autom AHK Navi
+mercedes-benz,Mercedes-Benz E 350,silber,12/2014,2014,23000,185,252,Automatik,Diesel,"5,6 l/100 km",149 g/km,199000.0,BlueTEC Cabrio 7G-TRONIC
+volkswagen,Volkswagen Touareg,schwarz,02/2023,2023,101980,210,286,Schaltgetriebe,Diesel,"8,3 l/100 km","219,5 g/km",6000.0,"Ed.20 TDI R-Line Black Style PANO Dynaudio 21"" HU"
+mercedes-benz,Mercedes-Benz C 200,silber,06/2015,2015,19665,100,136,Automatik,Diesel,"4,3 l/100 km",109 g/km,73000.0,BlueTEC / d T* 7G-AUTOM* NAVI* KAMERA* AHK
+mercedes-benz,Mercedes-Benz GLB 200,,10/2020,2020,39770,110,150,Automatik,Diesel,"5,6 l/100 km",147 g/km,19900.0,d AMG+MBUX+KAMERA+LED+EASYPACK+SPIEGEL+19 AMG Line
+opel,Opel Crossland X,,07/2018,2018,10490,81,110,Schaltgetriebe,Benzin,,0 g/km,42000.0,1.2 Turbo INNOVATION Allwetterreifen
+volkswagen,Volkswagen Golf Sportsvan,orange,10/2015,2015,13950,63,86,Schaltgetriebe,Benzin,"4,9 l/100 km",114 g/km,35000.0,Lounge BMT/Start-Stopp VII (AM1)
+hyundai,Hyundai i10,rot,11/2016,2016,10990,64,87,Schaltgetriebe,Benzin,"4,9 l/100 km",114 g/km,58454.0,1.2 Trend*KLIMA*SITZHZG*ALU*NAVIGATION
+jeep,Jeep Renegade,weiß,06/2018,2018,13779,81,110,Schaltgetriebe,Benzin,,0 g/km,100000.0,1.6 Longitude PDC+Navi+Lenkradheiz+DAB+
+audi,Audi SQ5,schwarz,10/2015,2015,30000,230,313,Automatik,Diesel,"6,8 l/100 km",179 g/km,85000.0,3.0 TDI quattro tiptronic
+kia,Kia Sorento,schwarz,05/2017,2017,29950,147,200,Automatik,Diesel,"6,6 l/100 km",174 g/km,58216.0,"2.2 CRDi AWD MASTERPIECE Automatik,EU6"
+opel,Opel Corsa,braun,11/1996,1996,250,33,45,Schaltgetriebe,Benzin,"6,5 l/100 km",- (g/km),183161.0,Corsa Swing
+citroen,Citroen C4,blau,05/2023,2023,26990,96,131,Automatik,Benzin,"5,8 l/100 km",131 g/km,5.0,Pure Tech 130EAT8 Feel
+audi,Audi A6,grau,07/2007,2007,4500,132,179,Automatik,Diesel,,- (g/km),330000.0,A6 allroad quattro 2.7 TDI tiptronic DPF
+fiat,Fiat 500,blau,02/2022,2022,15990,52,71,Schaltgetriebe,Hybrid,"4,6 l/100 km",107 g/km,15500.0,1.0 GSE HYBRID SPORT PDC KLIMAAUTO GLASDACH CARPLA
+volvo,Volvo XC60,weiß,05/2019,2019,33990,173,235,Automatik,Diesel,"5,6 l/100 km",147 g/km,82900.0,D5 AWD Momentum Geartronic
+volkswagen,Volkswagen T5 Transporter,weiß,04/2013,2013,11900,75,102,Schaltgetriebe,Diesel,"7,9 l/100 km",208 g/km,282007.0,Pritsche Doka / Klima / 1 Hand
+hyundai,Hyundai i20,blau,03/2021,2021,19990,74,101,Schaltgetriebe,Benzin,"4,4 l/100 km",100 g/km,8521.0,''Intro Edition'' Navi Rückfahrkamera Sitzheizung
+volkswagen,Volkswagen Polo,grau,08/2015,2015,11130,66,90,Schaltgetriebe,Benzin,"4,7 l/100 km",107 g/km,67856.0,1.2 TSI Comfortline BMT*SHZ*TEMPO*PDC*
+skoda,Skoda Kamiq,rot,08/2022,2022,26870,81,110,Automatik,Benzin,"4,7 l/100 km",108 g/km,22100.0,1.0 TSI DSG Monte Carlo LED Pano Kam GRA
+mini,MINI One,weiß,03/2009,2009,6480,55,75,Schaltgetriebe,Benzin,"5,3 l/100 km",128 g/km,137000.0,*TÜV NEU*PEPPER-PAKET*STZHEIZUNG*TOP ZUSTAND
+volkswagen,Volkswagen Golf,silber,01/2016,2016,18990,92,125,Automatik,Benzin,"5,2 l/100 km",118 g/km,88911.0,VII 1.4 TSI Allstar BMT Navi LED PDC AAC M+S
+mercedes-benz,Mercedes-Benz AMG GT,grau,01/2023,2023,193885,470,639,Automatik,Benzin,"13,3 l/100 km",303 g/km,5565.0,"63 S 4M+ MANUFAKTUR grau STANDHZG+HUD+21"""
+mercedes-benz,Mercedes-Benz C 220,weiß,04/2014,2014,36800,125,170,Automatik,Diesel,4 l/100 km,106 g/km,184000.0,BT d AVANTGARDE *COMAND*LED*LEDER*PDC*
+jeep,Jeep Renegade,weiß,02/2018,2018,16990,81,110,Schaltgetriebe,Benzin,"6,1 l/100 km",145 g/km,39350.0,"Sport 1,6 E-torQ FWD*Blutooth*"
+audi,Audi A1,,02/2022,2022,31450,110,150,Automatik,Benzin,"5,1 l/100 km",116 g/km,561.0,citycarver 35 TFSI S-Line Int. NAV VC LED PDC
+volkswagen,Volkswagen Golf,grau,05/2006,2006,2999,55,75,Schaltgetriebe,Benzin,"6,9 l/100 km",166 g/km,258500.0,"V Lim. 1.4 Goal,LPG,Navi,SHZ,PDC,Radio-CD"
+bmw,BMW 118,silber,03/2010,2010,3990,105,143,Schaltgetriebe,Diesel,"4,5 l/100 km",128 g/km,267502.0,BITTE NUR 015901182724 anrufen!!!
+volkswagen,Volkswagen Sharan,schwarz,07/2017,2017,23490,135,184,Automatik,Diesel,"5,3 l/100 km",140 g/km,141449.0,2.0 TDI DSG Comfortline Navi PDC 7-Sitzer
+isuzu,Isuzu D-Max,blau,01/2019,2019,24990,120,163,Schaltgetriebe,Diesel,,- (g/km),120000.0,4WD Space Cab *Allrad*AHK-3500Kg*Bi-Xenon*
+mercedes-benz,Mercedes-Benz A 250,blau,03/2021,2021,28730,118,160,Automatik,Hybrid,,70 km Reichweite,33700.0,e  EDITION/AMG/Night/MULTIBEAM/Fahrassist
+opel,Opel Insignia,weiß,09/2019,2019,19800,121,165,Automatik,Benzin,"6,9 l/100 km",157 g/km,69980.0,1.5 SIDI Turbo Autom.*LED*FR.SCH.HZG*NAVI
+nissan,Nissan 350Z,blau,06/2007,2007,16850,230,313,Schaltgetriebe,Benzin,12 l/100 km,288 g/km,124000.0,Roadster Leder Navi Xenon
+ford,Ford Focus,silber,03/2019,2019,19070,92,125,Automatik,Benzin,"5,6 l/100 km",152 g/km,15242.0,1.0 EcoBoost Cool&Connect Aut.*TEMPO*PDC
+mazda,Mazda 3,blau,02/2015,2015,14990,88,120,Schaltgetriebe,Benzin,"5,1 l/100 km",119 g/km,48000.0,Center-Line mit Touring und Licht Paket
+ford,Ford Fiesta,grün,01/2019,2019,18490,74,101,Automatik,Benzin,"5,7 l/100 km",129 g/km,23448.0,Active Plus+AUTOMATIK+Navi+PDC
+skoda,Skoda Karoq,grau,04/2020,2020,29990,140,190,Automatik,Diesel,5 l/100 km,132 g/km,61010.0,Scout 4x4 2.0 TDI AHK Panorama Navi digitales Cock
+audi,Audi A4,grau,06/2014,2014,16990,130,177,Schaltgetriebe,Diesel,"4,8 l/100 km",- (g/km),99890.0,2.0 TDI *S-line *Xenon *Navi *AHK
+skoda,Skoda Karoq,blau,05/2020,2020,27990,110,150,Automatik,Benzin,"5,3 l/100 km",120 g/km,57141.0,Drive 1.5 TSI DSG Canton Sound LED Shz
+opel,Opel Adam,blau,03/2018,2018,13490,74,101,Schaltgetriebe,Benzin,"5,3 l/100 km",126 g/km,17460.0,Rocks 1.4 PDC SITZHEIZUNG ONSTAR
+bmw,BMW 520,silber,09/2010,2010,9999,135,184,Automatik,Diesel,"4,7 l/100 km",123 g/km,270000.0,520d 8gang
+citroen,Citroen C5 Aircross,grau,03/2019,2019,15500,96,131,Automatik,Diesel,"4,1 l/100 km",108 g/km,31811.0,Feel Automatik AHK *31811KM*
+mercedes-benz,Mercedes-Benz A 180,silber,06/2015,2015,14899,90,122,Schaltgetriebe,Benzin,"5,5 l/100 km",130 g/km,78000.0,A -Klasse A 180 BlueEfficiency Tüv/Au 2024
+ford,Ford C-Max,silber,05/2008,2008,7999,107,145,Automatik,Benzin,"9,5 l/100 km",225 g/km,61000.0,Ghia
+skoda,Skoda Karoq,schwarz,07/2020,2020,34490,140,190,Automatik,Diesel,5 l/100 km,132 g/km,27350.0,"Style 2,0 TDI DSG 4x4 Leder|AHK|Navi|ACC"
+peugeot,Peugeot 2008,schwarz,10/2022,2022,22500,74,101,Schaltgetriebe,Benzin,"5,4 l/100 km",122 g/km,5000.0,1.2 PureTech 100PS Active Pack AHK abnehmbar Rü...
+volkswagen,Volkswagen Golf Sportsvan,schwarz,11/2019,2019,23020,110,150,Automatik,Benzin,"6,5 l/100 km",146 g/km,49100.0,Join TSi DSG Navi Discover Pro /Kamera
+ford,Ford Mustang Mach-E,orange,12/2022,2022,54980,198,269,Automatik,Elektro,400 km (Ort),440 km Reichweite,10.0,AWD MATRIX-LED ACC CO-PILOT360 KAMERA PDC-V+H uvw.
+nissan,Nissan Juke,grau,09/2021,2021,22480,84,114,Automatik,Benzin,5 l/100 km,114 g/km,16148.0,40KW Tekna | Pro-Pilot | Bose | Navi |Leder
+hyundai,Hyundai i40,weiß,09/2017,2017,15980,104,141,Automatik,Diesel,"4,3 l/100 km",123 g/km,98600.0,"cw 1.7 CRDi blue DCT Trend Navi Carplay 17"""
+ford,Ford Focus,grau,03/2015,2015,11990,92,125,Schaltgetriebe,Benzin,5 l/100 km,114 g/km,62150.0,1
+volkswagen,Volkswagen Golf,blau,06/2007,2007,5000,75,102,Schaltgetriebe,Benzin,"7,4 l/100 km",176 g/km,112000.0,1.6 Trendline
+mercedes-benz,Mercedes-Benz Vito,grau,03/2016,2016,32450,120,163,Automatik,Diesel,"6,4 l/100 km",168 g/km,133500.0,Tourer 116 CDI/Xenon/LED/Navi/Kamera
+mercedes-benz,Mercedes-Benz C 43 AMG,schwarz,05/2016,2016,34990,270,367,Automatik,Benzin,"7,8 l/100 km",178 g/km,80000.0,4M Night*LED*Ambient*GSD*FaceliftUmbau
+ford,Ford Focus,blau,03/2016,2016,7999,88,120,Schaltgetriebe,Diesel,"3,8 l/100 km",101 g/km,204000.0,Titanium 1.5 150PS Navi Klimaaut. USB/AUX
+volvo,Volvo V60,weiß,06/2017,2017,13500,110,150,Automatik,Diesel,"4,3 l/100 km",114 g/km,187000.0,Kombi Momentum*LEDER*NAVI*XENON*STANDHEIZUNG
+seat,SEAT Arona,grau,04/2022,2022,22880,81,110,Automatik,Benzin,,- (g/km),21111.0,Xperience 1.0 TSI OPF KLIMAAUTOMATIK
+kia,Kia ProCeed / pro_cee'd,weiß,01/2009,2009,3800,85,116,Schaltgetriebe,Diesel,"4,7 l/100 km",125 g/km,241465.0,Soul 1.6 CVVT
+volkswagen,Volkswagen Arteon,blau,08/2022,2022,38880,140,190,Automatik,Benzin,"5,7 l/100 km",131 g/km,10489.0,Shooting Brake 2.0 TSI DSG R-Line
+mercedes-benz,Mercedes-Benz E 270,silber,02/2000,2000,3500,125,170,Schaltgetriebe,Diesel,"6,9 l/100 km",182 g/km,365000.0,CDI Avantgarde
+volkswagen,Volkswagen Eos,grau,04/2008,2008,4900,110,150,Schaltgetriebe,Benzin,"8,3 l/100 km",198 g/km,116000.0,1.4 TSI United ****
+bmw,BMW 750,weiß,03/2018,2018,48990,294,400,Automatik,Diesel,"5,7 l/100 km",149 g/km,108109.0,d xDrive M Sport Massage 360° Laser HuD DAB H/K
+hyundai,Hyundai i30,weiß,02/2013,2013,7999,80,109,Schaltgetriebe,Benzin,"6,3 l/100 km",147 g/km,81884.0,CW 1.4 Classic
+volkswagen,Volkswagen New Beetle,schwarz,10/2003,2003,2550,75,102,Schaltgetriebe,Benzin,"7,5 l/100 km",178 g/km,130444.0,Lim. 1.6 Arte
+volkswagen,Volkswagen Golf Variant,,11/2016,2016,14999,110,150,Schaltgetriebe,Diesel,"4,3 l/100 km",110 g/km,86000.0,"Golf Variant Allstar NAVI, PDC, SHZ, KLIMAAUTO"
+kia,Kia Sportage,braun,06/2016,2016,18480,85,116,Schaltgetriebe,Diesel,"4,6 l/100 km",119 g/km,45995.0,2.0 CRDi AWD Dream-Team Edition
+mercedes-benz,Mercedes-Benz B 170,grau,12/2008,2008,9250,85,116,Schaltgetriebe,Autogas (CNG),"7,5 kg/100 km",175 g/km,75717.0,NGT/Park-Assi./SHZ/Benzin-Erdgas/Teil-Led.
+bentley,Bentley Bentayga,schwarz,06/2018,2018,109899,404,549,Automatik,Benzin,"11,4 l/100 km",260 g/km,165000.0,BENTAYGA V8 MULLiNER BLACK *LEDER-BRAUN*PANORAMA
+skoda,Skoda Fabia,schwarz,12/2018,2018,13900,55,75,Schaltgetriebe,Benzin,"4,8 l/100 km",109 g/km,10000.0,Cool Plus 1.0 MPI
+bmw,BMW X5,grau,10/2014,2014,25990,190,258,Automatik,Diesel,,0 g/km,195000.0,xDrive30d *Standheizung*Headup*1.Hand
+mercedes-benz,Mercedes-Benz CLK 200,blau,03/1999,1999,3900,100,136,Automatik,Benzin,,- (g/km),168000.0,C-Klasse Lim. C 180 Klima TÜV NEU
+opel,Opel Zafira,schwarz,07/2002,2002,2990,108,147,Schaltgetriebe,Benzin,"8,9 l/100 km",214 g/km,223000.0,A Selection Executive 7 Sitzer
+porsche,Porsche Targa,rot,07/2017,2017,139000,331,450,Automatik,Benzin,"9,7 l/100 km",- (g/km),71000.0,911 4 GTS
+bmw,BMW X3,schwarz,08/2022,2022,56400,210,286,Automatik,Diesel,"6,8 l/100 km",178 g/km,18990.0,xDrive30d Sportsitz°Pano Laser°AHK°HIFI°Rfcam
+aston-martin,Aston Martin V8,grau,11/2018,2018,124990,375,510,Automatik,Benzin,"10,3 l/100 km",236 g/km,14100.0,4.0*V8*ALCANTARA*LED*360*LEDER*2.HAND
+volkswagen,Volkswagen Golf,schwarz,10/2018,2018,16299,110,150,Schaltgetriebe,Benzin,5 l/100 km,114 g/km,77900.0,VII 1.5 TSI Join ACC+NAVI+PDC+ALU
+volkswagen,Volkswagen T-Roc,rot,04/2018,2018,16995,85,116,Schaltgetriebe,Benzin,"5,1 l/100 km",116 g/km,70126.0,Basis TSI 1.0 TSi AHK-abnehmbar AHK Spurassistent
+renault,Renault Talisman,grau,05/2021,2021,36699,165,224,Automatik,Benzin,"7,1 l/100 km",161 g/km,17613.0,Grandtour TCe 225 EDC GPF INTENS
+bmw,BMW 530,schwarz,10/2020,2020,37850,215,292,Automatik,Hybrid,,32 g/km,82000.0,e NEUES MODELL ExklusivLeder LiveCockpPRO KAM
+volkswagen,Volkswagen T-Cross,orange,08/2019,2019,22990,85,116,Automatik,Benzin,"4,9 l/100 km",0 g/km,27063.0,1.0 TSI Style LED Navigation VC PDC
+smart,smart forTwo,schwarz,05/2018,2018,14500,60,,Automatik,Elektro,,0 g/km,10557.0,EQ  cabrio electric drive W-Paket LM PDC Le
+skoda,Skoda Kodiaq,schwarz,12/2017,2017,16999,110,150,Automatik,Diesel,"4,9 l/100 km",129 g/km,303240.0,Style*NAVI*LED*KAMERA*
+mini,MINI Cooper SE Countryman,silber,02/2020,2020,30707,165,224,Automatik,Hybrid,"1,9 l/100 km",43 g/km,57960.0,Cooper S E ALL4 Countryman| Chili| LED| Kamera| Pa
+opel,Opel Astra,schwarz,09/2013,2013,6990,103,140,Schaltgetriebe,Benzin,6 l/100 km,- (g/km),148000.0,1.4 Turbo ecoFLEX Active
+mini,MINI Cooper SE Countryman,grau,12/2019,2019,28830,165,224,Automatik,Hybrid,"1,9 l/100 km",43 g/km,33630.0,ALL4 Aut. Kamera Leder 1VB
+jeep,Jeep Compass,grau,12/2020,2020,27490,110,150,Automatik,Benzin,"5,8 l/100 km",133 g/km,23503.0,Limited Autom. Kamera PDC Navi
+volkswagen,Volkswagen Sharan,blau,10/2015,2015,21649,110,150,Schaltgetriebe,Diesel,"5,2 l/100 km",138 g/km,133500.0,"2,0 TDI Comfortline 7-Sitzer AHK Navi"
+volkswagen,Volkswagen Taigo,silber,04/2023,2023,36200,81,110,Automatik,Benzin,6 l/100 km,138 g/km,1200.0,1.0 TSI DSG RLine IQ.Drive AHK NAVI KAMERA
+mazda,Mazda 6,beige,02/2018,2018,18550,129,175,Automatik,Diesel,"4,9 l/100 km",129 g/km,125000.0,Kombi 2.2 SKYACTIV-D Sports-Line Automatik EU6
+hyundai,Hyundai i10,weiß,05/2017,2017,8850,49,67,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,4263.0,Basis* 1 HAND*EURO 6
+opel,Opel Grandland,grau,04/2019,2019,19480,133,181,Automatik,Benzin,"5,8 l/100 km",132 g/km,95050.0,X 1.6Start/Stop Automatik Business Innov
+ford,Ford Mondeo,,03/2016,2016,11980,110,150,Schaltgetriebe,Diesel,"4,3 l/100 km",114 g/km,169425.0,Turnier Business Edition*SITZHEIZUNG*NAVIGATON*
+hyundai,Hyundai IONIQ,grau,09/2019,2019,22999,88,120,Automatik,Elektro,,210 km Reichweite,61193.0,Elektro Premium
+ford,Ford Tourneo Custom,silber,09/2019,2019,44970,96,131,Schaltgetriebe,Diesel,"6,7 l/100 km",178 g/km,56422.0,Trend 310 130PS/AHK/8-Sitze/Klima
+skoda,Skoda Octavia,silber,07/2019,2019,19390,110,150,Automatik,Benzin,"6,5 l/100 km",148 g/km,100700.0,COMBI 1.5 TSI DSG SOLEIL | NAVI | ACC
+opel,Opel Crossland X,silber,07/2020,2020,17990,81,110,Schaltgetriebe,Benzin,"6,3 l/100 km",141 g/km,42210.0,1.2 Turbo Start/Stop Edition
+seat,SEAT Arona,grau,03/2023,2023,23900,81,110,Automatik,Benzin,6 l/100 km,136 g/km,1100.0,FR 1.0 TSI DSG NAVI KAMERA VIRTUAL LED FUL
+hyundai,Hyundai H-1,schwarz,01/2015,2015,14495,125,170,Automatik,Diesel,"8,8 l/100 km",233 g/km,140578.0,2.5 CRDI Travel Comfort
+toyota,Toyota Corolla,weiß,07/2022,2022,27618,72,98,Automatik,Hybrid,"3,3 l/100 km",76 g/km,10.0,Hybrid Team D 1.8 EU6d
+kia,Kia Picanto,weiß,03/2020,2020,11950,49,67,Schaltgetriebe,Benzin,"4,4 l/100 km",101 g/km,34400.0,1.0 Edition7 Klima Fenster el.
+land-rover,Land Rover Range Rover,schwarz,02/2019,2019,89995,386,525,Automatik,Benzin,"12,8 l/100 km",294 g/km,73544.0,"5,0 V8 Autobiography Multimedia"
+seat,SEAT Mii,schwarz,11/2019,2019,13250,55,75,Schaltgetriebe,Benzin,"4,3 l/100 km",96 g/km,39900.0,Style
+mercedes-benz,Mercedes-Benz,weiß,06/2013,2013,13090,120,163,Schaltgetriebe,Diesel,,-/-,183000.0,Sprinter 216 CDI*TÜV*Klima*Mwst *Aufgelastet*
+renault,Renault Kangoo,weiß,05/2011,2011,5299,78,106,Schaltgetriebe,Benzin,"8,1 l/100 km",192 g/km,150000.0,Authentique 1.6/ EURO 5/ Servo
+ford,Ford EcoSport,silber,09/2019,2019,9950,74,101,Schaltgetriebe,Diesel,"4,2 l/100 km",111 g/km,196000.0,Cool&Connect Kamera-Alufelgen-8Fach
+seat,SEAT Leon,grau,06/2017,2017,16549,110,150,Automatik,Benzin,5 l/100 km,117 g/km,116508.0,ST 1.4 TSI ACT Start&Stop DSG XCELLENCE
+audi,Audi A3,schwarz,04/2018,2018,24955,110,150,Automatik,Benzin,"5,1 l/100 km",116 g/km,56341.0,Sportback sport Pano|ACC|Matrix|magnetic ride
+bmw,BMW 520,weiß,08/2022,2022,50950,140,190,Automatik,Diesel,6 l/100 km,157 g/km,14800.0,d Touring xDrive M-Sport PANO+NAVI+HUD+LED
+volkswagen,Volkswagen Golf,schwarz,10/2003,2003,2899,77,105,Schaltgetriebe,Benzin,"6,9 l/100 km",- (g/km),167197.0,Golf IV 1.6 Pacific
+volkswagen,Volkswagen Polo,silber,07/2002,2002,2100,47,64,Schaltgetriebe,Benzin,"6,3 l/100 km",151 g/km,212000.0,IV 1.2L *Comfortline* *Klimatronik* *TÜV NEU*
+mini,MINI One Clubman,grau,12/2018,2018,16490,75,102,Schaltgetriebe,Benzin,"5,1 l/100 km",121 g/km,27537.0,+SITZHEIZ.+KLIMAAUT.+PDC+UVM.
+opel,Opel Astra,rot,02/2015,2015,5995,81,110,Schaltgetriebe,Diesel,"3,7 l/100 km",98 g/km,138000.0,J 1.6 CDTi ST **Klima*Tempomat*Bluetooth**
+opel,Opel Insignia,weiß,12/2019,2019,18500,125,170,Automatik,Diesel,"5,2 l/100 km",136 g/km,56000.0,Grand Sport 2.0 Diesel Automatik Business Innovati
+seat,SEAT Ateca,silber,05/2021,2021,31790,110,150,Automatik,Diesel,"4,5 l/100 km",118 g/km,19985.0,"ATECA Xperience 2,0 TDI*EL.HECK+ACC+360°CAM+LED"
+toyota,Toyota Yaris,rot,11/2017,2017,11700,51,69,Schaltgetriebe,Benzin,"4,3 l/100 km",99 g/km,40000.0,Comfort/ Abstandswarne/Spurhal /Scheckheft
+opel,Opel Mokka,blau,12/2021,2021,22790,96,131,Schaltgetriebe,Benzin,"5,6 l/100 km",125 g/km,12912.0,Business Elegance Navi/LED/AHK/Kamera/LM Klima
+mercedes-benz,Mercedes-Benz SLS,silber,10/2010,2010,194900,420,571,Automatik,Benzin,"13,2 l/100 km",308 g/km,70782.0,"Coupe ""deutsch.Fahrzeug/B&O/Scheckheft"""
+volkswagen,Volkswagen Golf,schwarz,04/2011,2011,6890,90,122,Automatik,Benzin,"6,3 l/100 km",146 g/km,207000.0,VI Plus Team *2.Hand/Automatik/Scheckheft*
+mercedes-benz,Mercedes-Benz GLS 350,schwarz,10/2016,2016,40990,190,258,Automatik,Diesel,"7,1 l/100 km",185 g/km,137663.0,d 4Matic Pano el.AHK 7-Sitzer
+alfa-romeo,Alfa Romeo Stelvio,schwarz,10/2019,2019,34590,140,190,Automatik,Diesel,"4,7 l/100 km",124,59560.0,Super 2WD *Winter-/Assistenz-/Komfortpaket/DAB*
+ford,Ford Focus,silber,06/2013,2013,4899,70,95,Schaltgetriebe,Diesel,"4,2 l/100 km",109 g/km,199997.0,1.6 TDCi DPF Start-Stopp-System Ambiente
+opel,Opel Corsa,grau,09/2015,2015,7100,66,90,Schaltgetriebe,Benzin,"5,4 l/100 km",- (g/km),59766.0,1.4 (ecoFLEX) Start/Stop Selection
+skoda,Skoda Octavia,schwarz,05/2018,2018,14890,85,116,Schaltgetriebe,Diesel,"4,1 l/100 km",106 g/km,116000.0,Combi Style*Klimaaut.*SHZ*PDC*MFL*ACC
+volkswagen,Volkswagen Golf,weiß,08/2017,2017,19350,100,136,Automatik,Elektro,,0 g/km,48800.0,"VII E Navi Active Info-Display LED, Assistenz-P."
+peugeot,Peugeot Expert,blau,06/2017,2017,16660,110,150,Schaltgetriebe,Diesel,"5,2 l/100 km",- (g/km),111089.0,L2H1 Premium Vollausstattung
+volkswagen,Volkswagen T6 Transporter,weiß,10/2015,2015,17790,75,102,Schaltgetriebe,Diesel,"6,7 l/100 km",178 g/km,150000.0,Kasten-Kombi Klima PDC EcoProfi
+bmw,BMW 328,schwarz,07/2013,2013,13950,180,245,Schaltgetriebe,Benzin,"7,1 l/100 km",168 g/km,155000.0,i xDrive*Klimaaut*Navi*A el AHK*Xenon*PDC*LM
+hyundai,Hyundai iX35,schwarz,08/2010,2010,11490,120,163,Automatik,Benzin,"7,5 l/100 km",177 g/km,91000.0,2.0 Style 2WD
+nissan,Nissan Juke,schwarz,09/2017,2017,12600,157,213,Automatik,Benzin,"7,4 l/100 km",175 g/km,25320.0,"Nismo RS 4x4 Standheizung,Automatik 213 PS"
+opel,Opel Corsa,silber,05/2004,2004,2111,51,69,Schaltgetriebe,Diesel,,- (g/km),150000.0,1.3 CDTI
+volkswagen,Volkswagen T-Cross,silber,06/2023,2023,27990,81,110,Automatik,Benzin,5 l/100 km,114 g/km,100.0,"1,0 TSI Style KAMERA TRAVEL ASSIST"
+ford,Ford Ranger,weiß,06/2023,2023,44390,151,205,Automatik,Diesel,"8,8 l/100 km",230 g/km,10.0,Wildtrak 2.0 *NEUES MODELL*NAVI*CAM*LED*
+opel,Opel Corsa,grau,07/2019,2019,18490,51,69,Schaltgetriebe,Benzin,"5,6 l/100 km",- (g/km),38000.0,Corsa 1.2 120 Jahre
+citroen,Citroen Berlingo,weiß,10/2017,2017,11698,72,98,Schaltgetriebe,Benzin,"6,5 l/100 km",154 g/km,55000.0,Kasten 1.6 BlueHDi Business 1.H/EURO 6
+renault,Renault Twingo,weiß,12/2011,2011,5980,55,75,Schaltgetriebe,Benzin,,- (g/km),132000.0,Twingo 1.2 LEV 16V 75 Yahoo!
+mitsubishi,Mitsubishi Space Star,rot,05/2020,2020,12200,52,71,Schaltgetriebe,Benzin,4 l/100 km,92 g/km,9847.0,"Intro Edition, KLIMA, WERKSGARANTIE"
+ford,Ford Puma,silber,01/2023,2023,26950,92,125,Automatik,Benzin,"5,7 l/100 km",130 g/km,15.0,1.0 EcoBoost MHEV Autom. Titanium / Kessy
+opel,Opel Corsa,blau,06/2009,2009,8999,66,90,Automatik,Benzin,"6,9 l/100 km",166 g/km,61860.0,"Innovation ""110 Jahre"" !! BEHINDERTENUMBAU !!"
+skoda,Skoda Octavia,weiß,05/2019,2019,13999,85,116,Schaltgetriebe,Diesel,"4,1 l/100 km",106 g/km,100000.0,Combi Ambition NAVI PDC APPLECARPLAY
+bmw,BMW 530,schwarz,07/2001,2001,14999,171,232,Automatik,Benzin,,- (g/km),168288.0,Ci
+hyundai,Hyundai SANTA FE,weiß,07/2014,2014,15500,145,197,Schaltgetriebe,Diesel,"6,1 l/100 km",159 g/km,75850.0,2.2 CRDI 4WD Premium
+bmw,BMW X3,grau,03/2021,2021,52888,215,292,Automatik,Hybrid,,41 km Reichweite,42801.0,xDrive30e M Sport Navi LED HUD ACC Leder DAB
+skoda,Skoda Superb,weiß,06/2017,2017,13800,140,190,Automatik,Diesel,"4,6 l/100 km",119 g/km,255000.0,Combi 2.0TDI DSG Style Green tec Navi|ACC
+volvo,Volvo XC60,silber,03/2019,2019,41111,288,392,Automatik,Hybrid,"2,4 l/100 km",54 g/km,73600.0,R-Design AWD T6 EU6d-T Allrad HUD Navi digitales C
+skoda,Skoda Superb,weiß,03/2017,2017,14900,110,150,Schaltgetriebe,Diesel,,0 g/km,165226.0,2.0TDI STYLE/NAVI/XENON/SCHEKCHEFT/1.HAND
+seat,SEAT Leon,grau,01/2019,2019,23900,221,300,Automatik,Benzin,"7,2 l/100 km",171 g/km,131649.0,Cupra 4x4 ACC SportP TeiLeder LED PDC Navi
+hyundai,Hyundai H-1,weiß,07/2014,2014,10880,85,116,Schaltgetriebe,Diesel,"7,6 l/100 km",201 g/km,75837.0,"2.5 CRDi CARGO 3SITZE,2xSCHIEBETUER,RADIO,SH"
+ford,Ford S-Max,blau,05/2009,2009,4999,118,160,Automatik,Benzin,"9,7 l/100 km",230 g/km,221000.0,Turnier Style
+ford,Ford Kuga,silber,08/2020,2020,18440,165,224,Automatik,Hybrid,,56 km Reichweite,29800.0,2.5 Duratec PHEV ST-LINE X
+volkswagen,Volkswagen Polo,grau,06/2015,2015,8800,66,90,Schaltgetriebe,Diesel,"3,4 l/100 km",- (g/km),83207.0,Polo V 1.4 TDI Blue Motion Technology Lounge
+ferrari,Ferrari California,schwarz,09/2017,2017,169900,412,560,Halbautomatik,Benzin,,- (g/km),9300.0,T Handling Speciale Paket
+audi,Audi A5,grau,08/2015,2015,17000,140,190,Schaltgetriebe,Diesel,"4,6 l/100 km",- (g/km),87600.0,2.0 TDI Sportback (clean diesel) DPF
+audi,Audi A3,silber,05/2016,2016,15800,110,150,Automatik,Benzin,"4,9 l/100 km",- (g/km),87000.0,"1.4 TFSI ultra (cod), Sportback, S-Tronic"
+mercedes-benz,Mercedes-Benz GLS 350,schwarz,06/2018,2018,38490,190,258,Automatik,Diesel,8 l/100 km,203 g/km,79987.0,d 4M AMG NIGHT 7SITZ+PANO+AHK+AIRMATIC+
+mercedes-benz,Mercedes-Benz SLS,silber,07/2011,2011,193900,420,571,Automatik,Benzin,"13,2 l/100 km",308 g/km,10730.0,Roadster ALUBEAM KAMERA B&O CARBON EXCLU
+volkswagen,Volkswagen Tiguan,braun,09/2022,2022,31630,96,131,Schaltgetriebe,Benzin,"5,7 l/100 km",129 g/km,6944.0,1.5 TSI Life *AHK*LED*Navi*ACC*
+ssangyong,SsangYong REXTON,grau,03/2023,2023,49990,149,203,Automatik,Diesel,"7,5 l/100 km",198 g/km,100.0,"e-XDi 220 Sapphire Elegance Alu 20"" Navi Leder"
+audi,Audi Q3,blau,04/2022,2022,73988,147,200,Automatik,Diesel,"6,3 l/100 km",165 g/km,15400.0,40 TDI quattro S tronic advanced SpurH
+opel,Opel Corsa,weiß,10/2013,2013,4980,51,69,Schaltgetriebe,Benzin,"5,5 l/100 km",130 g/km,133000.0,D Selection*Klima*Radio-CD*Isofix*TÜV NEU*
+ford,Ford Fiesta,silber,03/2006,2006,2990,59,80,Automatik,Benzin,"6,6 l/100 km",157 g/km,163000.0,"Fun,Automatik,Tüv-Neu,Einparkhilfe,Ahk"
+opel,Opel Astra,grau,09/2015,2015,9380,81,110,Schaltgetriebe,Diesel,"3,7 l/100 km",98 g/km,130000.0,J Edition/Tempomat/Sitzheizung/Euro6
+audi,Audi A4,schwarz,10/2014,2014,16499,110,150,Automatik,Diesel,"4,7 l/100 km",124 g/km,109000.0,Avant 2.0 TDI DPF
+opel,Opel Insignia,silber,10/2014,2014,11980,120,163,Schaltgetriebe,Diesel,"4,5 l/100 km",119 g/km,94070.0,2.0 CDTI Sports Tourer ecoFLEXStart/Stop OPC Line
+ford,Ford Focus,braun,12/2013,2013,8990,92,125,Schaltgetriebe,Benzin,"5,1 l/100 km",121 g/km,122152.0,Turnier Titanium
+bmw,BMW 520,schwarz,03/2011,2011,9990,135,184,Schaltgetriebe,Diesel,"4,9 l/100 km",130 g/km,174000.0,d  Touring / 2.Hand / NAVI / XENON
+nissan,Nissan Qashqai,blau,03/2023,2023,28278,103,140,Schaltgetriebe,Benzin,"6,4 l/100 km",144 g/km,10.0,1.3 DIG-T 140 N-Connecta Nav WinterP 18Z
+mercedes-benz,Mercedes-Benz C 180,blau,11/2014,2014,20900,115,156,Automatik,Benzin,"7,9 l/100 km",187 g/km,68990.0,T KLIMA PDC AHK SHZ PTS NAVIGATION LED
+bmw,BMW 520,grau,07/2017,2017,22750,140,190,Schaltgetriebe,Diesel,"4,2 l/100 km",109 g/km,135344.0,d Sport Line SHADOW+PROF+LED+SHZ+LEDER+TEMP+M
+mercedes-benz,Mercedes-Benz C 300,blau,07/2018,2018,38500,180,245,Automatik,Benzin,"6,3 l/100 km",143 g/km,48000.0,Coupe 9G-TRONIC AMG Line
+skoda,Skoda Octavia,silber,05/2023,2023,36990,110,150,Automatik,Benzin,"6,7 l/100 km",150 g/km,15.0,IV Combi 1.5 TSI e-TEC DSG Style Navi e.Hk MatrixL
+opel,Opel Zafira,grau,07/2017,2017,17485,103,140,Schaltgetriebe,Benzin,"6,2 l/100 km",143 g/km,51577.0,C Innovation 1.4 Turbo NAVI+ASSISTENZPAK.
+opel,Opel Corsa,blau,12/2018,2018,13688,74,101,Schaltgetriebe,Benzin,"5,5 l/100 km",125 g/km,38500.0,E 1.4 T 100 SHZ PDC Temp SolarP 17Z Klima
+volkswagen,Volkswagen Golf Plus,silber,10/2008,2008,9000,103,140,Automatik,Diesel,"5,8 l/100 km",153 g/km,176000.0,2.0 TDI DPF United
+toyota,Toyota C-HR,schwarz,11/2022,2022,37790,135,184,Automatik,Hybrid,4 l/100 km,92 g/km,5.0,2.0 Hybrid GR Sport Black Edition 19Zoll LED JBL N
+hyundai,Hyundai SANTA FE,grau,09/2021,2021,51870,132,179,Automatik,Hybrid,,58 km Reichweite,33034.0,Signature Plug-In Hybrid 1.6 T-GDI - Leder+360Grad
+hyundai,Hyundai IONIQ,schwarz,03/2018,2018,20900,77,105,Automatik,Hybrid,- (l/100 km),- (g/km),50001.0,Plug-in-Hybrid Automatik *BIXENON*NAVI*
+hyundai,Hyundai iX20,weiß,09/2017,2017,13490,66,90,Schaltgetriebe,Benzin,"5,6 l/100 km",130 g/km,33001.0,blue 1.4 RDC Alarm Klima CD AUX USB MP3 ESP MAL Se
+bmw,BMW 750,grau,07/2022,2022,74990,390,530,Automatik,Benzin,"9,5 l/100 km",216 g/km,25484.0,i xDrive Massage*TV*360 Kamera*Glasdach*Sitzbelüft
+bmw,BMW X3 M,blau,03/2018,2018,40890,265,360,Automatik,Benzin,"8,2 l/100 km",188 g/km,136452.0,"i Sitzlüft, Sthz, AHK, TV, Pano, 1. Hand"
+volkswagen,Volkswagen Crafter,weiß,09/2014,2014,39000,59,80,keine Angabe,Diesel,,- (g/km),125000.0,Camper
+seat,SEAT Ibiza,,07/2013,2013,5300,51,69,Schaltgetriebe,Benzin,"5,4 l/100 km",128 g/km,150000.0,SC Style Salsa NAVI
+citroen,Citroen Berlingo,schwarz,10/2010,2010,7000,88,120,Schaltgetriebe,Benzin,"7,3 l/100 km",- (g/km),230000.0,Berlingo VTi 120 Multispace
+audi,Audi A6,schwarz,07/2014,2014,29999,230,313,Automatik,Diesel,"6,4 l/100 km",170 g/km,117779.0,Avant 3.0 TDI quattro*S-LINE*HEAD-UP*ACC*360°
+mercedes-benz,Mercedes-Benz E 350,schwarz,11/2018,2018,34900,210,286,Automatik,Diesel,"6,8 l/100 km",177 g/km,160000.0,d T-Modell AVANTGARDE*AHK*PANO*PARK-PAKET Autom.
+volkswagen,Volkswagen Passat Variant,blau,01/2006,2006,2950,103,140,Schaltgetriebe,Diesel,"5,9 l/100 km",159 g/km,303000.0,Highline *2-HAND*KLIMA*LEDER*AHK*EU-4*SCHECKHEFT*
+toyota,Toyota Yaris Cross,rot,06/2023,2023,29990,68,92,Automatik,Hybrid,"4,5 l/100 km",102 g/km,11.0,Hybrid 1.5 VVT-i Team Deutschland
+renault,Renault Talisman,bronze,05/2020,2020,29950,165,224,Automatik,Benzin,"7,4 l/100 km",169 g/km,29500.0,Grandtour TCe 225 EDC GPF INITIALE PARIS
+mitsubishi,Mitsubishi Outlander,weiß,06/2019,2019,23240,99,135,Automatik,Hybrid,,45 km Reichweite,103500.0,"PHEV 2.4 PLUS Intro LED,360°Kam,AHK abnehmbar"
+volkswagen,Volkswagen up!,gelb,06/2019,2019,7999,44,60,Schaltgetriebe,Benzin,"4,2 l/100 km",95 g/km,85500.0,move BMT/Start-Stopp (122/BL2)
+fiat,Fiat 500,weiß,02/2018,2018,12524,51,69,Schaltgetriebe,Benzin,,- (g/km),41600.0,CABRIO LOUNGE+START/STOP+TEMPOMAT+MULTIFUNKTIONSLE
+seat,SEAT Ateca,grau,05/2020,2020,21869,110,150,Schaltgetriebe,Benzin,"6,3 l/100 km",143 g/km,55020.0,Xcellence 1.5 TSI NAVI+RFK+SHZ+LED+PDC
+citroen,Citroen C5 X,grau,02/2023,2023,35990,165,224,Automatik,Hybrid,"1,2 l/100 km",28 g/km,100.0,Hybrid 225 Start&Stopp e-EAT8
+citroen,Citroen Grand C4 SpaceTourer,grau,04/2021,2021,27999,96,131,Automatik,Benzin,,- (g/km),19288.0,BlueHDi 130 Stop&Start EAT8 SHINE
+opel,Opel Corsa,rot,09/2019,2019,12490,66,90,Schaltgetriebe,Benzin,"6,8 l/100 km",153 g/km,31202.0,E 1.4 Color Edition Klimaauto SHZ PDC
+nissan,Nissan Qashqai,schwarz,03/2021,2021,21280,116,158,Automatik,Benzin,"5,7 l/100 km",130 g/km,87492.0,1.3l Shiro Automatik +Navi +Sitzheiz.
+volkswagen,Volkswagen Touran,beige,03/2015,2015,18300,103,140,Automatik,Diesel,"5,2 l/100 km",135 g/km,88322.0,Cup BMT 1-Hand / Open Sky / ab-AHK / BI-Xenon
+seat,SEAT Leon,rot,02/2022,2022,25590,96,131,Schaltgetriebe,Benzin,"4,9 l/100 km",112 g/km,3500.0,Leon 1.5 TSI FR 96 kW (131 PS) 6-Gang
+mercedes-benz,Mercedes-Benz Marco Polo,weiß,07/2017,2017,59300,140,190,Automatik,Diesel,"6,7 l/100 km",177 g/km,105385.0,250 d 4MATIC EDITION LED AHK Leder Autom./Klima
+audi,Audi A4,schwarz,07/2019,2019,22490,110,150,Automatik,Diesel,"4,3 l/100 km",114 g/km,100000.0,"35 TDI S tronic 1-Hand Navi Xenon Kamera 17"""
+seat,SEAT Arona,schwarz,09/2022,2022,26630,81,110,Automatik,Benzin,"6,2 l/100 km",141 g/km,3500.0,1.0 TSI Style DSG
+mercedes-benz,Mercedes-Benz C 63 AMG,weiß,04/2021,2021,89770,375,510,Automatik,Benzin,"10,6 l/100 km",243 g/km,20811.0,C63S AMG|PERFORMANCE SITZE&ABGAS|WIDESCREEN|VOLL
+bmw,BMW 218,blau,10/2021,2021,30924,100,136,Automatik,Benzin,"5,2 l/100 km",120 g/km,10000.0,Sport Line  Dienstwagen BMW
+seat,SEAT Mii,weiß,04/2019,2019,9998,55,75,Automatik,Benzin,"4,6 l/100 km",109 g/km,109000.0,"1,0 AUTOMATIK 5-türig STYLE KLIMA"
+mercedes-benz,Mercedes-Benz GLS 580,blau,06/2020,2020,122900,360,489,Automatik,Benzin,,246 g/km,31340.0,4MATIC*BRABUS*BURMESTER*PANO*360°*6-SITZ
+volkswagen,Volkswagen Polo,rot,03/2020,2020,20390,147,200,Automatik,Benzin,"5,8 l/100 km",138 g/km,22454.0,POLO 2.0 TSI GTI DSG SHZ PDC APP KLIMAAUTOMATIK
+skoda,Skoda Fabia,blau,02/2023,2023,19950,70,95,Schaltgetriebe,Benzin,"5,4 l/100 km",121 g/km,8.0,"III Combi 1,0 TSI Ambition ALU DAB PDC SHZ"
+dacia,Dacia,schwarz,03/2023,2023,23400,74,101,Schaltgetriebe,Benzin,6 l/100 km,138 g/km,1000.0,Extreme+ 1.0 TCe 100 ECO-G 7-Sitzer Navi LED Apple
+land-rover,Land Rover Range Rover Sport,schwarz,05/2019,2019,72990,225,306,Automatik,Diesel,"7,5 l/100 km",198 g/km,55000.0,HSE*ACC*Pano*AHK*Head-UP*Pixel
+skoda,Skoda Fabia,blau,05/2022,2022,19660,70,95,Schaltgetriebe,Benzin,"4,7 l/100 km",105 g/km,9700.0,Combi 1.0l TSI Ambition Tour *Front Assist
+land-rover,Land Rover Range Rover Evoque,schwarz,03/2018,2018,33990,177,241,Automatik,Diesel,,- (g/km),79971.0,SE Dynamic
+mercedes-benz,Mercedes-Benz GLA 200,braun,03/2014,2014,15490,100,136,Schaltgetriebe,Diesel,"4,3 l/100 km",114 g/km,183419.0,CDI NAVI/LEDER/XENON/PDC
+seat,SEAT Tarraco,grau,08/2019,2019,28880,110,150,Schaltgetriebe,Diesel,6 l/100 km,"159,8 g/km",66690.0,2.0TDI XCELLENCE DSG AHK DAB LED ACC Navi
+volkswagen,Volkswagen T4 Kombi,blau,01/1999,1999,8999,85,116,Schaltgetriebe,Benzin,"13,4 l/100 km",322 g/km,216156.0,"Transporter 2,5 1. Hd./TÜV neu 8-Sitzer"
+volkswagen,Volkswagen Passat Variant,schwarz,09/2020,2020,23990,110,150,Automatik,Benzin,"6,5 l/100 km",148 g/km,73638.0,Business 1.5 TSI Navi Kamera
+audi,Audi A5,blau,02/2021,2021,39888,195,265,Automatik,Benzin,8 l/100 km,"181,7 g/km",40968.0,Sportback 45 TFSI quattro S tronic S-Line*Navi*VC
+volkswagen,Volkswagen Tiguan,silber,07/2021,2021,41980,180,245,Automatik,Hybrid,"1,6 l/100 km",35 g/km,9568.0,1.4 TSI eHybrid R-Line Alu Matrix-LED AHK N
+porsche,Porsche 911,schwarz,06/2017,2017,154889,397,540,Automatik,Benzin,"9,1 l/100 km",212 g/km,21500.0,Turbo ex. WW TOP NEUZUSTAND APPROVED KD NEU
+seat,SEAT Ibiza,weiß,10/2020,2020,17677,85,116,Automatik,Benzin,"5,8 l/100 km",132 g/km,39818.0,1.0 STYLE CAM NAVI LM15 EINPARKHILFE
+mercedes-benz,Mercedes-Benz E 220,silber,09/2018,2018,30495,143,194,Automatik,Diesel,"4,9 l/100 km",126 g/km,65580.0,d T 4M Avantgarde LED ParkSpurSpgl-Pkt AHK  Klima
+seat,SEAT Ibiza,blau,03/2020,2020,14960,70,95,Schaltgetriebe,Benzin,"4,6 l/100 km",104 g/km,35947.0,Style 1.0 TSI Rückfahrkamera GJR Full Link Navi
+volkswagen,Volkswagen Golf Variant,blau,11/1999,1999,1950,55,75,Schaltgetriebe,Benzin,"6,8 l/100 km",163 g/km,183000.0,1
+hyundai,Hyundai iX35,schwarz,10/2014,2014,11500,85,116,Schaltgetriebe,Diesel,"5,3 l/100 km",- (g/km),71000.0,ix35 1.7 CRDi 2WD Fifa World Cup Edition
+mercedes-benz,Mercedes-Benz A 180,grau,06/2013,2013,12990,90,122,Schaltgetriebe,Benzin,"5,5 l/100 km",130 g/km,143680.0,BlueEfficiency Bi-Xenon Assistent+ Totwinkel Leder
+mazda,Mazda CX-60,weiß,04/2023,2023,55995,187,254,Automatik,Diesel,"5,3 l/100 km",139 g/km,5000.0,e-SKYACTIV-D 254 AWD Homura Panodach/Driver Assist
+seat,SEAT Tarraco,schwarz,06/2019,2019,39995,140,190,Automatik,Diesel,"5,6 l/100 km",147 g/km,61342.0,2.0 TDI Xcellence 4Drive DSG LED ACC
+renault,Renault Talisman,schwarz,04/2018,2018,20440,147,200,Automatik,Benzin,"5,6 l/100 km",133 g/km,95850.0,Grandtour 1.6 TCe 200 Energy Initiale Paris
+volkswagen,Volkswagen Passat,silber,09/2000,2000,2250,74,101,Schaltgetriebe,Benzin,8 l/100 km,192 g/km,226000.0,1.6 Comfortline * Neuer Tüv u. Service *
+maserati,Maserati GranCabrio,blau,07/2012,2012,67900,323,439,Automatik,Benzin,,- (g/km),84000.0,RÜCKFAHRKAMERA 20 ZOLL LEDER NAVI
+audi,Audi TT,silber,12/2001,2001,5799,132,179,Schaltgetriebe,Benzin,"8,3 l/100 km",197 g/km,128000.0,Coupe/Roadster 1.8 T Roadster*Klima*Leder*SHZ
+audi,Audi Q5,schwarz,08/2010,2010,13490,176,239,Automatik,Diesel,"7,5 l/100 km",199 g/km,217000.0,3.0 TDI Quattro/TÜV AU NEU/Leder/Xenon/2.Hand
+mini,MINI One,rot,03/2018,2018,15990,75,102,Schaltgetriebe,Benzin,"4,9 l/100 km",112 g/km,61500.0,Mini 5-trg. John Cooper Works  Exterieur
+volvo,Volvo XC60,blau,11/2019,2019,32900,140,190,Automatik,Diesel,"4,9 l/100 km",129 g/km,59464.0,Momentum Pro 2WD D4 EU6d-T LED Navi Keyless Kurven
+opel,Opel Mokka X,grau,04/2018,2018,13490,103,140,Automatik,Benzin,"6,2 l/100 km",144 g/km,30621.0,Jam ecoFlex 1.4 JAM ecoFLEX KLIMA PDC INTELLILINK
+volkswagen,Volkswagen Polo,silber,04/2019,2019,16590,70,95,Automatik,Benzin,"4,6 l/100 km",105 g/km,36000.0,1.0 Comfortline DSG Klima 5-Tür 1. Hd
+mazda,Mazda CX-5,grau,12/2019,2019,26390,110,150,Automatik,Diesel,"5,5 l/100 km",143 g/km,56131.0,Kangei/LED/Navi/360°Kamera/AHK/Head Up/Alu
+hyundai,Hyundai KONA,grau,08/2018,2018,21390,130,177,Automatik,Benzin,7 l/100 km,189 g/km,32166.0,KONA 1.6 T-GDI DCT 4WD PREMIUM NAVI+SITZPAKET+GL
+bmw,BMW 318,silber,02/2006,2006,4999,105,143,Schaltgetriebe,Benzin,"7,4 l/100 km",180 g/km,193300.0,318i Edition Exclusive
+volkswagen,Volkswagen Golf,blau,03/2019,2019,24770,135,184,Automatik,Diesel,"5,4 l/100 km","141,7 g/km",70992.0,VII 2.0 GTD DSG *ACC *LED *NAVI *SHZ *
+ford,Ford Kuga,,01/2018,2018,25990,110,150,Schaltgetriebe,Benzin,"6,3 l/100 km",145 g/km,52365.0,1.5 EcoBoost 2x4 Titanium
+volkswagen,Volkswagen T6.1 California,rot,06/2023,2023,66220,110,150,Schaltgetriebe,Diesel,"6,7 l/100 km",177 g/km,1.0,"6.1 2,0TDi Beach Camper Edition 110 kW (150 PS)..."
+toyota,Toyota RAV 4,braun,04/2017,2017,30880,145,197,Automatik,Hybrid,5 l/100 km,117 g/km,39890.0,2.5 4x4 Hyb Exe Kamera Leder SHZ AHK Navi L-Heizun
+skoda,Skoda Octavia,schwarz,11/2015,2015,11999,110,150,Automatik,Diesel,,115 g/km,184500.0,Combi Edition
+bmw,BMW X3,grau,03/2015,2015,23700,140,190,Automatik,Diesel,"5,2 l/100 km",138 g/km,122950.0,xDrive20d Aut. M Sport Ahk Pano°gr.Navi+HUP
+volvo,Volvo XC60,schwarz,07/2018,2018,37990,140,190,Automatik,Diesel,"5,8 l/100 km",153 g/km,52300.0,D4 Inscription AWD Stdhzg. AHK Cam Navi
+ford,Ford Transit Custom,weiß,01/2023,2023,65990,110,150,Schaltgetriebe,Diesel,"7,9 l/100 km",206 g/km,50.0,Nugget Aufstelldach Trail Fliegenschutztür Teilled
+citroen,Citroen Berlingo,weiß,04/2023,2023,26980,75,102,Schaltgetriebe,Diesel,,- (g/km),1001.0,Kasten L1 1.5 HDi 100 Klima PDC AHK
+seat,SEAT Ateca,rot,03/2023,2023,31990,110,150,Schaltgetriebe,Benzin,"5,7 l/100 km",131 g/km,548.0,Style 1.5 TSI 5JAHRE/150000
+peugeot,Peugeot 308,rot,08/2022,2022,22990,96,131,Automatik,Benzin,"5,9 l/100 km",133 g/km,200.0,Active Pack *AUTOMATIK*
+volkswagen,Volkswagen Golf,schwarz,03/2012,2012,7999,63,86,Schaltgetriebe,Benzin,"5,5 l/100 km",129 g/km,118450.0,VI 1.2 TSI Trendline/Klima/Allwetter/HU0924
+seat,SEAT Leon,weiß,11/2015,2015,12999,92,125,Schaltgetriebe,Benzin,"5,2 l/100 km",120 g/km,93989.0,ST 1.4 TSI Start
+ford,Ford Mondeo,weiß,10/2018,2018,14990,121,165,Schaltgetriebe,Benzin,"6,4 l/100 km",145 g/km,83000.0,Turnier Business Edition
+audi,Audi A5,silber,11/2015,2015,20990,130,177,Schaltgetriebe,Benzin,"5,5 l/100 km",130 g/km,77500.0,Coupe 1.8 TFSI
+dacia,Dacia Duster,weiß,02/2018,2018,12880,92,125,Schaltgetriebe,Benzin,"6,1 l/100 km",138 g/km,61878.0,Blackshadow TCe 125 Navi PDC Sitzheizung
+nissan,Nissan Qashqai,schwarz,01/2023,2023,36990,140,190,Automatik,Benzin,"5,4 l/100 km",121 g/km,7500.0,1.5 e-Power N-Connecta*360°CAM*NAVI*WIFI
+seat,SEAT Ibiza,schwarz,10/2020,2020,19490,85,116,Schaltgetriebe,Benzin,"4,7 l/100 km",107 g/km,36550.0,1.0 TSI 6-Gang FR ACC+LED+Navi+DAB+SHZ
+hyundai,Hyundai TUCSON,weiß,07/2016,2016,19980,136,185,Automatik,Diesel,"6,5 l/100 km",170 g/km,127954.0,2.0 CRDi 136kW Style 4WD Automatik Pano
+honda,Honda Civic,schwarz,08/2019,2019,25990,134,182,Schaltgetriebe,Benzin,,- (g/km),29613.0,1.5 VTEC Turbo Sport Plus NAVI LED PANO
+nissan,Nissan Navara,schwarz,08/2018,2018,38990,158,215,Automatik,Diesel,"6,9 l/100 km",183 g/km,81250.0,DC 4x4 Autmatik Arctic Trucks AT32 Winde Standhzg.
+volkswagen,Volkswagen Golf Plus,silber,06/2006,2006,3500,85,116,Schaltgetriebe,Benzin,"7,4 l/100 km",175 g/km,242000.0,Comfortline V (5M1)
+volkswagen,Volkswagen T5 Multivan,blau,12/2015,2015,23600,103,140,Schaltgetriebe,Diesel,"7,5 l/100 km",- (g/km),199578.0,Multivan Special
+hyundai,Hyundai i30,schwarz,11/2019,2019,19990,103,140,Schaltgetriebe,Benzin,"5,9 l/100 km",- (g/km),59000.0,i30 1.4 T-GDI Fastback Premium
+bmw,BMW 320,blau,01/2000,2000,9900,110,150,Automatik,Benzin,"9,1 l/100 km",- (g/km),151000.0,Cabrio
+volkswagen,Volkswagen Polo,silber,08/2019,2019,13870,59,80,Schaltgetriebe,Diesel,,0 g/km,54301.0,1.6 TDI Trend GRA*SITZHEIZ*TELEFON*PDC
+renault,Renault Espace,blau,05/2001,2001,1250,103,140,Schaltgetriebe,Benzin,"8,9 l/100 km",- (g/km),205000.0,Espace 2.0 Privilege
+smart,smart forTwo,silber,03/2010,2010,5490,62,84,Automatik,Benzin,"5,4 l/100 km",125 g/km,152800.0,fortwo cabrio Basis*SHZ*84PS*ALU*
+alfa-romeo,Alfa Romeo Giulietta,schwarz,05/2012,2012,4790,88,120,Schaltgetriebe,Benzin,"6,4 l/100 km",152 g/km,176835.0,Super KLIMA ALU
+kia,Kia Rio,grau,01/2020,2020,15950,88,,Schaltgetriebe,Benzin,"5,1 l/100 km",118 g/km,65100.0,"Platinum Edition 1,0 Turbo 120 PS Navi, Kame"
+seat,SEAT Ateca,schwarz,06/2022,2022,36840,110,150,Automatik,Benzin,"5,6 l/100 km",127 g/km,2900.0,FR 1.5 TSI DSG Navigation. Panoramad
+audi,Audi A6,silber,03/2005,2005,5000,130,177,Automatik,Benzin,"9,6 l/100 km",- (g/km),210000.0,2.4 multitronic
+bmw,BMW Z3,silber,06/1997,1997,21599,142,193,Schaltgetriebe,Benzin,"9,4 l/100 km",- (g/km),124000.0,Roadster 2.8 LEDER~SITZHEIZUNG
+opel,Opel Insignia,,10/2016,2016,6650,88,120,Schaltgetriebe,Diesel,"3,9 l/100 km",104 g/km,195000.0,1.6 CDTI Sports Tourer  Xenon
+mitsubishi,Mitsubishi Eclipse Cross,weiß,03/2021,2021,31950,138,188,Automatik,Hybrid,,45 km Reichweite,35936.0,2.4 Top Hybrid 4WD HUD LED PANO
+skoda,Skoda Scala,grau,05/2020,2020,18280,85,116,Automatik,Diesel,"5,1 l/100 km",134 g/km,78142.0,1.6 TDI DSG AMBITION LED NAVI CLIMATRONIC
+seat,SEAT Alhambra,blau,06/2022,2022,42290,110,150,Automatik,Benzin,"7,1 l/100 km",163 g/km,1001.0,1.4 TSI FR-Line-NAVI*CAM*SHZ*AHK*
+ford,Ford Mondeo,grau,07/2016,2016,19777,132,179,Automatik,Diesel,,- (g/km),82337.0,Turnier Titanium  Allrad
+seat,SEAT Leon,schwarz,11/2018,2018,18990,110,150,Schaltgetriebe,Benzin,"5,8 l/100 km",132 g/km,92990.0,1.5 TSI ACT 150 PS FR
+opel,Opel Meriva,grau,07/2015,2015,11890,88,120,Schaltgetriebe,Benzin,"5,9 l/100 km",139 g/km,48974.0,B 1.4 Style*1.HAND*SCHECKHEFT*GARANTIE*KAMERA*
+renault,Renault Kadjar,rot,01/2022,2022,26999,103,140,Automatik,Benzin,"5,6 l/100 km",127 g/km,19618.0,Black Edition 1.3 TCe 140 EU6d LED Navi Keyless+AU
+audi,Audi A6,grau,07/2018,2018,29750,160,218,Automatik,Diesel,"5,3 l/100 km",138 g/km,77300.0,3.0 TDI quattro Avant (4GD)
+renault,Renault Kadjar,schwarz,05/2017,2017,12999,96,131,Schaltgetriebe,Benzin,"5,9 l/100 km",126 g/km,63679.0,1.2 TCe 131PS Life Klima-Automatik Tempo
+maserati,Maserati Levante,weiß,10/2018,2018,54700,257,349,Automatik,Benzin,,- (g/km),48400.0,"Q4  21"" 360 Grad 24 Monate NW Garantie"
+audi,Audi A5,weiß,05/2018,2018,34990,140,190,Automatik,Diesel,"4,7 l/100 km",124 g/km,17447.0,Cabrio 2.0-TDI S-Line S-tr LED/MMI+/V-COCK/19
+fiat,Fiat Panda,gelb,02/2009,2009,3980,44,60,Schaltgetriebe,Benzin,"5,6 l/100 km",133 g/km,121275.0,1.2 8V Dynamic *Klima* Tüv neu* Zahn. neu*
+audi,Audi Q5,silber,12/2014,2014,23790,120,163,Automatik,Diesel,"5,7 l/100 km",149 g/km,85800.0,2.0 TDI quattro S tronic *AHK*PDC*SHZ*20'' LMF*
+lada,Lada Niva,grün,03/2016,2016,11980,61,83,Schaltgetriebe,Benzin,"9,5 l/100 km",233 g/km,54210.0,TAIGA RAPTOR LACK AHK DOTZ BÖSER BLICK
+mini,MINI Cooper,blau,03/2017,2017,16310,100,136,Schaltgetriebe,Benzin,"5,1 l/100 km",121 g/km,37839.0,Cabrio KLIMA LED NAVI ALU
+ford,Ford Mondeo,silber,12/2021,2021,26940,103,140,Automatik,Benzin,,- (g/km),7702.0,Turnier 2.0 Ti-VCT Hybrid Titanium LED*AHK
+jeep,Jeep Grand Cherokee,schwarz,05/2017,2017,19390,344,468,Automatik,Benzin,"13,5 l/100 km",- (g/km),95000.0,"SRT 6,4L , Klappenauspuff, 22 Zoll, Tiefer"
+renault,Renault Austral,schwarz,12/2022,2022,36900,103,140,Automatik,Hybrid,"6,2 l/100 km",141 g/km,2269.0,Equilibre Mild Hybrid 140 Automatik
+seat,SEAT Leon,schwarz,05/2023,2023,38699,110,150,Automatik,Benzin,"4,9 l/100 km",114 g/km,2500.0,eTSI EU6d Sportstourer FR 1.5 110 kW (150 PS) 7 Ga
+toyota,Toyota Corolla,silber,05/2023,2023,33990,103,140,Automatik,Hybrid,"5,1 l/100 km",113 g/km,1900.0,1.8 Hybrid Touring Sports Team Deutschland
+porsche,Porsche Macan,rot,07/2018,2018,49000,265,360,Automatik,Benzin,"8,8 l/100 km",- (g/km),106534.0,Macan GTS PDK
+ford,Ford Kuga,weiß,05/2018,2018,21000,178,242,Automatik,Benzin,"8,7 l/100 km",- (g/km),77152.0,2.0 EcoBoost 4x4 Aut. ST-Line
+opel,Opel Crossland,schwarz,12/2022,2022,21480,96,131,Schaltgetriebe,Benzin,"5,7 l/100 km",129 g/km,2300.0,Elegance 1.2 Turbo*DAB+*KLIMA*KAMERA*
+volkswagen,Volkswagen Golf Plus,blau,04/2010,2010,5700,66,90,Schaltgetriebe,Diesel,,- (g/km),134488.0,1.6 TDI  Klimaautomatik  Sitzheizung
+volkswagen,Volkswagen Tiguan,schwarz,10/2018,2018,26900,110,150,Automatik,Diesel,"4,9 l/100 km",- (g/km),56800.0,Tiguan 2.0 TDI SCR (BlueMotion Technology) DSG Hig
+volkswagen,Volkswagen T-Cross,orange,05/2022,2022,23580,81,110,Schaltgetriebe,Benzin,"4,8 l/100 km",110 g/km,6559.0,Active 1.0 TSI 110 PS ACC/NAVI/PDC
+bmw,BMW 520,grau,07/2012,2012,11950,135,184,Automatik,Diesel,"4,8 l/100 km",127 g/km,174500.0,d Lim. Automatik  Shadow Line *Navi *BiXenon*
+citroen,Citroen Jumpy,weiß,11/2021,2021,34000,100,136,Automatik,Elektro,,300 km Reichweite,4000.0,E-Jumpy XL 75 kW Kasten
+mercedes-benz,Mercedes-Benz A 160,silber,09/2010,2010,7790,70,95,Schaltgetriebe,Benzin,6 l/100 km,139 g/km,65000.0,A-Klasse A 160 BlueEFF. Classic 5-Türer/Xenon
+nissan,Nissan Pathfinder,schwarz,03/2012,2012,13900,140,190,Automatik,Diesel,"8,5 l/100 km",225 g/km,192000.0,1.6 Acenta/Sport-P./Klimaautom./Tempomat
+volkswagen,Volkswagen T-Roc,rot,02/2023,2023,34800,110,150,Schaltgetriebe,Benzin,"5,6 l/100 km",127 g/km,300.0,Style Cabriolet (AC8)
+opel,Opel Zafira Life,braun,09/2019,2019,33750,130,177,Automatik,Diesel,"5,4 l/100 km",143 g/km,93800.0,Edition 2.0D M **AHK*Navi**
+opel,Opel Zafira Tourer,grün,07/2015,2015,12500,125,170,Schaltgetriebe,Diesel,"4,9 l/100 km",- (g/km),132493.0,2.0 CDTI ecoFLEX Start/Stop Innovation 7-Sitzer
+ford,Ford Tourneo Connect,rot,11/2018,2018,28990,88,120,Schaltgetriebe,Diesel,"4,5 l/100 km",154 g/km,26382.0,Grand 1.5 TDCi Titanium Xenon Navi
+bmw,BMW 325,schwarz,06/2010,2010,10900,150,204,Automatik,Diesel,"6,1 l/100 km",160 g/km,333372.0,E91 320d DPF Sport Edition M-Paket EURO 5
+bmw,BMW i4,weiß,05/2023,2023,49690,210,286,Automatik,Elektro,,462 km Reichweite,4896.0,eDrive35 Navi Bluetooth PDC MP3 Schn. Klima
+volkswagen,Volkswagen Scirocco,weiß,11/2011,2011,7400,103,140,Automatik,Diesel,"5,3 l/100 km",139 g/km,245000.0,2.0 TDI (103kW) (137)
+skoda,Skoda Karoq,silber,11/2022,2022,36900,110,150,Automatik,Benzin,"7,1 l/100 km",159 g/km,5.0,1.5 TSI DSG Style Kamera PDC SHZ SmartLink LED
+mercedes-benz,Mercedes-Benz C 200,silber,07/2002,2002,2250,85,116,Schaltgetriebe,Diesel,"6,7 l/100 km",177 g/km,250000.0,SLK 200 Kompressor
+audi,Audi Q5,blau,11/2017,2017,26900,140,190,Automatik,Diesel,"4,9 l/100 km",129 g/km,168000.0,2.0 TDI quattro+XENON+NAVI+TEMPOMAT+MATRIX-LE
+toyota,Toyota Yaris Cross,gold,05/2023,2023,31480,68,92,Automatik,Hybrid,"4,4 l/100 km",113 g/km,500.0,"Hybrid 1.5 VVT-i Team Deutschland,SHZ,Kamera,Winte"
+audi,Audi A3,silber,06/2018,2018,14900,110,150,Schaltgetriebe,Diesel,"4,4 l/100 km",111 g/km,241132.0,Sportback design *Panoramaglasdach
+mini,MINI Cooper S Roadster,grau,08/2013,2013,15950,135,184,Schaltgetriebe,Benzin,6 l/100 km,139 g/km,65700.0,"Leder, Bi-Xenon, Open Sky uvm"
+ford,Ford Mondeo,silber,12/2019,2019,23590,103,140,Automatik,Hybrid,5 l/100 km,113 g/km,35000.0,Turnier Business 2.0l FHEV *Klimasitze*     -EU6d-
+land-rover,Land Rover Discovery,grau,09/2020,2020,43500,132,179,Automatik,Diesel,"5,6 l/100 km",148 g/km,26200.0,Sport *AWD*R-DYNAMIC*NAVI*HEADUP*PANO*
+bmw,BMW 520,grau,09/2010,2010,10900,135,184,Schaltgetriebe,Diesel,"4,8 l/100 km",- (g/km),237000.0,BMW M 520D F10
+hyundai,Hyundai iX20,beige,05/2020,2020,16500,92,125,Schaltgetriebe,Benzin,"6,5 l/100 km",149 g/km,42500.0,1.6 blue Space+
+citroen,Citroen Berlingo,weiß,05/2023,2023,36990,100,136,Automatik,Elektro,,285 km Reichweite,51.0,Shine Elektromotor 136Navi digitales Cockpit Apple
+nissan,Nissan Qashqai,rot,03/2020,2020,26970,117,159,Automatik,Benzin,"5,8 l/100 km",131 g/km,19841.0,"QASHQAI AT 1,3 DIG-T N-WAY NAVI, SHZ, KAMERA, PANO"
+alfa-romeo,Alfa Romeo Stelvio,grau,02/2018,2018,29499,154,209,Automatik,Diesel,"4,8 l/100 km",127 g/km,121900.0,2.2 Diesel 16V AT8-Q4 Executive AHK*Pano*Navi*SH
+skoda,Skoda Karoq,rot,05/2022,2022,36790,110,150,Automatik,Diesel,"4,9 l/100 km",130 g/km,23400.0,2.0TDI Aut. Sportline 4x4 Virtual Cockpit
+volkswagen,Volkswagen T-Cross,,12/2021,2021,23685,81,110,Schaltgetriebe,Benzin,"4,8 l/100 km",110 g/km,16510.0,Active 1.0 TSI Navi Sitzheizung PDC GRA
+volkswagen,Volkswagen Touran,silber,06/2009,2009,4200,77,105,Schaltgetriebe,Diesel,6 l/100 km,157 g/km,300000.0,1.9 TDI DPF United
+mercedes-benz,Mercedes-Benz B 200,silber,11/2009,2009,9500,100,136,Automatik,Benzin,"7,5 l/100 km",177 g/km,186000.0,Autotronic
+dodge,Dodge RAM,grau,06/2018,2018,42990,295,401,Automatik,Benzin,"14,3 l/100 km",328 g/km,99800.0,1500 CREWCAB*LONGBED*BRD*1.HAND*
+nissan,Nissan Primastar,silber,02/2022,2022,43490,125,170,Automatik,Diesel,,- (g/km),12992.0,"2,8 dCi 170 (8-Si.) DCT Tekna AHK NAVI SITZHEIZUNG"
+fiat,Fiat 500,weiß,08/2017,2017,9890,51,69,Schaltgetriebe,Benzin,"4,9 l/100 km",115 g/km,89900.0,Mirror/SONDERMODELL/UCONNECT/PDC/TEMP/BLUET
+audi,Audi A6,grau,08/2019,2019,37680,170,231,Automatik,Diesel,"7,3 l/100 km",191 g/km,60449.0,"sport 45 TDI qu. tiptr., Navi LED AHK P"
+bmw,BMW 118,schwarz,04/2010,2010,8999,105,143,Schaltgetriebe,Benzin,"6,3 l/100 km",149 g/km,170463.0,i Cabrio--Leder-Navigation-Xenon--
+audi,Audi TT RS,orange,05/2023,2023,107990,294,400,Automatik,Benzin,"8,5 l/100 km",193 g/km,2000.0,Coupe 2.5 TFSI * Edition KurvenmeisTTer *
+peugeot,Peugeot 208,blau,02/2023,2023,32900,100,136,Automatik,Elektro,,340 km Reichweite,10.0,e- Elektromotor GT ELEKTRO 136 Panorama Navi digit
+kia,Kia Stonic,weiß,03/2019,2019,14795,62,84,Schaltgetriebe,Benzin,"5,2 l/100 km",118 g/km,48300.0,1.2 Spirit Navi Kamera GRA Bluetooth
+dacia,Dacia Sandero,rot,10/2019,2019,13290,66,90,Schaltgetriebe,Benzin,"5,5 l/100 km",- (g/km),14000.0,TCe 90 Stepway Prestige
+toyota,Toyota Yaris,grau,04/2023,2023,26997,85,116,Automatik,Hybrid,5 l/100 km,113 g/km,10.0,Cross Hybrid 1.5 VVT-i Comfort* 229.- Leasing ohn
+renault,Renault Clio,grau,12/2022,2022,19750,103,140,Schaltgetriebe,Benzin,"5,6 l/100 km",128 g/km,14439.0,V TCE 140 Techno Navigation + Rückfahrkamera + Kli
+audi,Audi A5,schwarz,01/2012,2012,14500,180,245,Automatik,Diesel,"5,9 l/100 km",- (g/km),198500.0,A5 Cabrio 3.0 TDI DPF quattro S tronic
+nissan,Nissan Juke,schwarz,01/2018,2018,17990,86,117,Automatik,Benzin,6 l/100 km,139 g/km,7992.0,1.6 Navi Kamera Tempomat Klimaautomatik
+seat,SEAT Leon,weiß,02/2020,2020,21989,110,150,Automatik,Diesel,"4,3 l/100 km",112 g/km,77903.0,2.0 TDI 150PS DSG FR KAMERA NAVI ACC SPURH
+audi,Audi A8,schwarz,02/2012,2012,32450,184,250,Automatik,Diesel,"6,6 l/100 km",175 g/km,69900.0,3.0 TDI QUATTRO MATRIX SOFT CLOSE STHZG VOLL
+bmw,BMW X5,schwarz,08/2020,2020,69640,195,265,Automatik,Diesel,"7,5 l/100 km",197 g/km,33000.0,xDrive30d M Sportpaket Laser ACC AHKStandheiz
+audi,Audi A4,rot,01/2019,2019,29989,140,190,Automatik,Diesel,6 l/100 km,158 g/km,32263.0,Avant 40 TDI qu 2x S line Black S tro.*Tour*B&O*LE
+skoda,Skoda Superb,schwarz,10/2011,2011,5200,103,140,Schaltgetriebe,Diesel,"5,2 l/100 km",- (g/km),330000.0,Superb Combi 2.0 TDI Ambition
+chevrolet,Chevrolet Express,gold,07/2018,2018,74900,254,345,Automatik,Benzin,,- (g/km),15780.0,Explorer Limited SE *TV*Schlafcouch*
+seat,SEAT Mii,weiß,08/2012,2012,5500,44,60,Schaltgetriebe,Benzin,"4,1 l/100 km",97 g/km,86443.0,1.0 Ecomotive Style
+smart,smart forTwo,schwarz,02/2021,2021,13330,60,82,Schaltgetriebe,Elektro,,132 km Reichweite,10252.0,smart EQ  Smart  EQ
+toyota,Toyota Corolla,weiß,07/2020,2020,16880,72,98,Automatik,Hybrid,"3,3 l/100 km",76 g/km,255800.0,Touring Sports Hybrid Business Edition
+mercedes-benz,Mercedes-Benz SLK 350,schwarz,03/2011,2011,25890,225,306,Automatik,Benzin,"7,2 l/100 km",171 g/km,98000.0,"BlueE AMG Styling,Airscarf,Navi,H&K,Pano"
+seat,SEAT Ibiza,blau,02/2016,2016,11350,81,110,Automatik,Benzin,"4,3 l/100 km",99 g/km,96751.0,ST Style AUTOMATIK Navi Freisprech LED
+audi,Audi SQ5,schwarz,11/2013,2013,30990,230,313,Automatik,Diesel,"6,8 l/100 km",180 g/km,119000.0,3.0 TDI quattro*Pano*21´´*Kamera*ACC*B&O*AHK
+audi,Audi S6,weiß,04/2018,2018,52900,331,450,Automatik,Benzin,"9,4 l/100 km",- (g/km),63500.0,Avant
+skoda,Skoda Fabia,silber,02/2010,2010,6490,51,69,Schaltgetriebe,Benzin,"5,9 l/100 km",140 g/km,105350.0,Style Edition
+volkswagen,Volkswagen Touran,weiß,10/2014,2014,15900,103,140,Schaltgetriebe,Diesel,"4,8 l/100 km",- (g/km),92539.0,VII Trendline 1.2 TSI 77 kW (105 PS) 6-Gang Notbre
+audi,Audi A6,braun,11/2019,2019,36970,150,204,Automatik,Diesel,"4,9 l/100 km",129 g/km,42865.0,Avant 40 TDI S tronic sport MMI NAVI+ | AHK
+skoda,Skoda Fabia,silber,09/2022,2022,21790,70,95,Automatik,Benzin,"4,9 l/100 km",111 g/km,3800.0,"Combi DSG, Navi, Voll-LED, Sitzheizung, vorb. AHK"
+audi,Audi A6,schwarz,10/2014,2014,24999,230,313,Automatik,Diesel,"6,4 l/100 km",170 g/km,121352.0,Avant 3.0 TDI quattro*S-LINE*ACC*MEMORY*
+bmw,BMW 316,grau,05/2004,2004,2999,85,116,Schaltgetriebe,Benzin,7 l/100 km,170 g/km,224832.0,ti Compact Edition Lifestyle *KLIMA*PDC*SHZ*
+jeep,Jeep Renegade,blau,09/2022,2022,20990,88,120,Schaltgetriebe,Benzin,"6,8 l/100 km",151 g/km,9500.0,RENEGADE  Night Eagle 1.0l T-GDI 88kW Apple Car
+bmw,BMW X1,schwarz,03/2020,2020,31699,92,125,Automatik,Hybrid,,43 g/km,29405.0,xDrive25e Kamera DAB Navi Lordos Geschwindig
+opel,Opel Crossland X,rot,12/2021,2021,21490,81,110,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,15.0,1.2 Direct Inj Turbo Start/Stop Automatik Edition
+peugeot,Peugeot 508,grau,05/2011,2011,4800,115,156,Schaltgetriebe,Benzin,,- (g/km),191458.0,SW Active / PANORAMA  / AHK / SHZ
+volkswagen,Volkswagen Caddy,gold,12/2021,2021,35490,90,122,Automatik,Diesel,,0 g/km,13990.0,TDI DSG Standheizung Navi Climatronic Klima
+volkswagen,Volkswagen Tiguan,,07/2021,2021,55900,235,320,Automatik,Benzin,"8,1 l/100 km",186 g/km,19000.0,R 2.0 TSI DSG 4Motion LED Navi Keyless AD Kurvenli
+audi,Audi A5,braun,03/2010,2010,14490,155,211,Automatik,Benzin,"7,8 l/100 km",179 g/km,158400.0,Cabriolet 2.0 TFSI quattro S Line/TOP ZUSTAND
+audi,Audi Q5,grau,02/2012,2012,15400,125,170,Automatik,Diesel,"6,8 l/100 km",179 g/km,172800.0,"2,0 TDi Quattro"
+maserati,Maserati Grecale,schwarz,03/2023,2023,79444,221,300,Automatik,Benzin,"9,2 l/100 km",208 g/km,45.0,GT Sonderkonditionen
+hyundai,Hyundai TUCSON,rot,01/2020,2020,23950,100,136,Automatik,Diesel,"4,6 l/100 km",119 g/km,70000.0,1.6 CRDi Trend Mild Hybrid Automatik EU6d-T
+opel,Opel Insignia,rot,11/2015,2015,11950,103,140,Schaltgetriebe,Benzin,"5,6 l/100 km",133 g/km,130586.0,Sports Tourer 1.4 T Edition Navi-Sicht-
+mercedes-benz,Mercedes-Benz C 300,blau,01/2022,2022,48250,190,258,Automatik,Benzin,"6,7 l/100 km",152 g/km,17580.0,"AMG-Sport/DIGITAL/Night/Distr/Ambiente/18"""
+mercedes-benz,Mercedes-Benz SLK 350,schwarz,06/2007,2007,16000,200,272,Automatik,Benzin,"10,6 l/100 km",- (g/km),174500.0,Edition 10
+renault,Renault Talisman,grau,02/2017,2017,12988,118,160,Automatik,Diesel,"4,6 l/100 km",120 g/km,30490.0,Grandtour ENERGY dCi 160 EDC INITIALE PARIS
+bmw,BMW 320,blau,11/2019,2019,27288,140,190,Schaltgetriebe,Diesel,,127 g/km,44555.0,Gran Turismo d SPORT LINE AUTOMATIK PANORAMA KAMER
+opel,Opel Corsa,weiß,02/2015,2015,9750,66,90,Schaltgetriebe,Benzin,"5,2 l/100 km",122 g/km,68989.0,1.0 Start/Stop Jam
+ford,Ford C-Max,grau,03/2016,2016,13990,77,105,Schaltgetriebe,Diesel,"3,8 l/100 km",99 g/km,89900.0,"Titanium ""GARANTIE"""
+toyota,Toyota Corolla,weiß,09/2021,2021,22700,85,116,Schaltgetriebe,Benzin,"6,6 l/100 km",151 g/km,5.0,1.2 Turbo Team Deutschland
+volkswagen,Volkswagen Sharan,silber,01/2017,2017,26990,135,184,Automatik,Diesel,"5,3 l/100 km",140 g/km,108205.0,Highline Klima Leder AHZV Standheizung
+hyundai,Hyundai i10,weiß,06/2017,2017,13990,64,87,Schaltgetriebe,Benzin,"4,9 l/100 km",0 g/km,37117.0,1.2 YES! Plus Navi SHZ LHZ DAB APP PDC GRA
+peugeot,Peugeot 508,,37.500 km,12/2020, ACC,90,,Automatik,Automatik,2020,Diesel,,GT BlueHDi 180 EAT8 Panoramadach
+ford,Ford S-Max,grau,10/2016,2016,23890,110,150,Schaltgetriebe,Diesel,5 l/100 km,129 g/km,63766.0,2.0 TDCi Titanium LED*Klimaaut.*Sitzheiz.*PDC*1.Hd
+volkswagen,Volkswagen T5 Multivan,braun,04/2011,2011,25800,132,179,Schaltgetriebe,Diesel,"7,8 l/100 km",205 g/km,201900.0,"Multivan Highline ""Neuer Motor"""
+land-rover,Land Rover Discovery Sport,,10/2018,2018,27840,132,179,Automatik,Diesel,"5,1 l/100 km",135 g/km,86309.0,2.0TD4 Sport SE Navi|Cam|Sitzhzg
+audi,Audi A6,weiß,05/2018,2018,26990,140,190,Automatik,Diesel,"4,5 l/100 km",118 g/km,62748.0,A6 Avant 2.0 TDI ultra +NAVI+LED-SW+SHZ+AHK+1HD+
+audi,Audi Q3,grau,06/2017,2017,21500,135,184,Automatik,Diesel,"5,2 l/100 km",- (g/km),154000.0,2.0 TDI quattro S tronic sport
+mercedes-benz,Mercedes-Benz C 180,,11/2010,2010,10799,115,156,Automatik,Benzin,"7,8 l/100 km",163 g/km,133873.0,"CGI Classic BlueEfficiency PTS 16""Alu"
+mitsubishi,Mitsubishi ASX,weiß,04/2023,2023,31990,116,158,Automatik,Benzin,"5,9 l/100 km",134 g/km,1000.0,1.3MHEV Turbo Intro EditionBI-LED LEDER NAVI
+bmw,BMW 218,grau,04/2022,2022,29990,100,136,Automatik,Benzin,"5,4 l/100 km",124 g/km,43300.0,i Gran Tourer Rückfahrkamera AHK
+audi,Audi A3,rot,01/2014,2014,10700,103,140,Schaltgetriebe,Benzin,"4,8 l/100 km",111 g/km,199000.0,1.4 TFSI cylinder on demand Limousine S line Sport
+bmw,BMW 523,schwarz,06/2010,2010,15999,150,204,Automatik,Benzin,"7,6 l/100 km",- (g/km),253000.0,523i Aut.
+mini,MINI Cooper,weiß,10/2018,2018,19940,100,136,Schaltgetriebe,Benzin,"5,4 l/100 km",123 g/km,45400.0,Navi Panoramadach Bluetooth PDC MP3 Schn.
+kia,Kia Ceed / cee'd,weiß,08/2016,2016,7900,81,110,Schaltgetriebe,Diesel,"4,2 l/100 km",109 g/km,162500.0,1.6 CRDi DCT Platinum Edition Sportsw.
+mercedes-benz,Mercedes-Benz C 220,schwarz,07/2020,2020,38460,143,194,Automatik,Diesel,"5,1 l/100 km",135 g/km,50500.0,d 4M 2X AMG Line Schiebedach/Kamera/LED SHD/Klima
+volkswagen,Volkswagen Tiguan,,09/2015,2015,18990,110,150,Automatik,Diesel,"5,7 l/100 km",150 g/km,99900.0,"2,0 TDI Sport & Style 4Motion - DSG; AHK"
+seat,SEAT Arona,,05/2020,2020,19000,85,116,Automatik,Benzin,- (l/100 km),0 g/km,15502.0,"Style TSI DSG - Xenon, Navi"
+ford,Ford Focus,blau,03/2021,2021,17880,88,120,Automatik,Diesel,,0 g/km,74100.0,"Turnier 1,5 Diesel *Autom LED Kamera Navi*"
+volkswagen,Volkswagen Golf,schwarz,06/2017,2017,33889,228,310,Automatik,Benzin,7 l/100 km,160 g/km,56531.0,VII R 2.0 TSI 4Motion DSG / Navi LED RFK
+renault,Renault ZOE,grau,10/2021,2021,25490,80,109,Automatik,Elektro,395 km (Ort),240 km Reichweite,13600.0,inkl. Batterie ZE50 EXPERIENCE*Allwetter*CCS*SHZ
+ford,Ford Fiesta,grau,08/2018,2018,8690,74,101,Automatik,Benzin,"6,7 l/100 km",152 g/km,51155.0,"1.0 EcoBoost Titanium Automatik, Navi,"
+volkswagen,Volkswagen T-Cross,grün,05/2022,2022,29977,110,150,Automatik,Benzin,"5,2 l/100 km",118 g/km,1951.0,1.5TSI DSG Style LED Navi AHK Kamera ACC Travel...
+smart,smart roadster,blau,10/2003,2003,9890,60,82,Automatik,Benzin,"5,1 l/100 km",121 g/km,52695.0,BRABUS mit FLÜGELTÜREN
+porsche,Porsche Panamera,grau,12/2017,2017,74900,243,330,Automatik,Benzin,,0 g/km,39020.0,"Sport Turismo 4 PANO,LUFT,LED,ACC,1.Hd."
+citroen,Citroen C6,grau,09/2010,2010,18980,177,241,Automatik,Diesel,"7,4 l/100 km",195 g/km,124965.0,Exclusive 3.0 V6 HDI Biturbo FAP *Automatik*
+mini,MINI One,weiß,11/2019,2019,18690,75,102,Schaltgetriebe,Benzin,"5,4 l/100 km",123 g/km,34000.0,1.5 Colour Line
+opel,Opel Corsa,rot,06/2020,2020,22500,96,131,Automatik,Benzin,"4,7 l/100 km",106 g/km,10000.0,F GS Line AT-8 Navi LED PDC
+mini,MINI Cooper D Clubman,,11/2009,2009,8999,80,109,Automatik,Diesel,"5,4 l/100 km",142 g/km,172999.0,Mini One - HU/AU NEU
+renault,Renault Scenic,grau,03/2012,2012,4350,96,131,Schaltgetriebe,Diesel,"4,5 l/100 km",119 g/km,267935.0,III BOSE Edition
+volkswagen,Volkswagen T-Cross,schwarz,05/2021,2021,29900,110,150,Automatik,Benzin,"5,1 l/100 km",116 g/km,16500.0,"Style 1,5/R-Line/4 Jahre Garantie/DSG/"
+volkswagen,Volkswagen Golf,silber,09/2016,2016,32300,272,370,Schaltgetriebe,Benzin,,0 g/km,63000.0,VII R 4Motion 6-Gang ** 272 Kw / 370 PS **
+opel,Opel Insignia,silber,07/2020,2020,18999,121,165,Schaltgetriebe,Benzin,"5,7 l/100 km",132 g/km,68070.0,Grand Sport 1.5 Turbo Innovation CAM
+citroen,Citroen Jumper,weiß,02/2020,2020,15999,103,140,Schaltgetriebe,Diesel,"6,3 l/100 km",166 g/km,182000.0,33 L2H2 Control BlueHDi 140 Start
+mercedes-benz,Mercedes-Benz E 220,silber,06/2016,2016,34500,143,194,Automatik,Diesel,"4,5 l/100 km",- (g/km),74528.0,d 9G-TRONIC Avantgarde
+peugeot,Peugeot 208,gelb,04/2023,2023,21999,74,101,Schaltgetriebe,Benzin,5 l/100 km,114 g/km,4900.0,Allure Pack PureTech 100 SHZ KAMERA LED
+seat,SEAT Ateca,weiß,02/2019,2019,21888,110,150,Automatik,Benzin,"5,7 l/100 km",129 g/km,96350.0,Xcellence RFK LED ACC SHZ Pano Kessy BEATS
+audi,Audi Q3,grau,03/2014,2014,18450,110,150,Schaltgetriebe,Benzin,"5,9 l/100 km",140 g/km,78318.0,"1.4 TFSI S line,Navi,Alu,PDC vo+hi,Bose,1.Hd."
+renault,Renault Clio,schwarz,06/2017,2017,11500,87,118,Automatik,Benzin,"5,4 l/100 km",120 g/km,88200.0,Limited IV
+ford,Ford Kuga,schwarz,02/2021,2021,26840,111,151,Schaltgetriebe,Benzin,"5,5 l/100 km",155 g/km,47963.0,Vignale 1.5 EcoBoost
+volkswagen,Volkswagen Touareg,weiß,11/2014,2014,28400,193,262,Automatik,Diesel,"7,1 l/100 km",- (g/km),177210.0,3.0 V6 TDI SCR Blue Motion DPF Automatik Terrain T
+mercedes-benz,Mercedes-Benz A 180,schwarz,07/2013,2013,13900,90,122,Schaltgetriebe,Benzin,"5,5 l/100 km",- (g/km),122000.0,A 180 AMG Line
+volkswagen,Volkswagen Eos,silber,05/2009,2009,8200,118,160,Schaltgetriebe,Benzin,"6,7 l/100 km",159 g/km,126000.0,"1.4 TSI Sport Navi, Pano, SHZ, MFL, PDC"
+volkswagen,Volkswagen Touran,silber,09/2016,2016,19990,110,150,Schaltgetriebe,Diesel,"4,4 l/100 km",119 g/km,105000.0,Touran 2.0 TDI BlueMotion Highline Pano Standh.
+opel,Opel Insignia,schwarz,01/2016,2016,11500,100,136,Schaltgetriebe,Diesel,"5,1 l/100 km",130 g/km,187000.0,1.6 CDTI Sports Tourer Aut. Sport
+toyota,Toyota C-HR,schwarz,01/2018,2018,18849,85,116,Schaltgetriebe,Benzin,6 l/100 km,136 g/km,23000.0,Team D 1.2 Turbo*KLIMA*ALLWETTER*LM*KAMERA*TOP*
+opel,Opel Astra,grau,01/2023,2023,30125,96,131,Schaltgetriebe,Diesel,"4,3 l/100 km",113 g/km,6400.0,L ST ELEGANCE+NAVI+RÜCKFAHRKAMERA+SITZ-/LENKRADHEI
+mercedes-benz,Mercedes-Benz EQC 400,grau,11/2021,2021,54750,300,408,Automatik,Elektro,,0 g/km,13399.0,4M AMG leather sunroof KeyGo 360 Fahrass
+audi,Audi A6,schwarz,01/2014,2014,22900,230,313,Automatik,Diesel,"6,4 l/100 km",169 g/km,189999.0,3.0 TDI DPF quattro tiptronic sport Motorsound
+skoda,Skoda Octavia,grau,03/2019,2019,26980,180,245,Schaltgetriebe,Benzin,"6,6 l/100 km",156 g/km,38100.0,2.0 TSI RS Virtual Cockpit 1 Hand LED Dyn
+volkswagen,Volkswagen Golf,rot,08/2017,2017,24850,169,230,Automatik,Benzin,"6,3 l/100 km",145 g/km,89800.0,VII GTI 2.0TSI DSG AHK Dynaudio ACC DCC Cam
+fiat,Fiat Panda,blau,10/2009,2009,2950,40,54,Schaltgetriebe,Benzin,5 l/100 km,- (g/km),153000.0,1.2 8V Classic
+mercedes-benz,Mercedes-Benz SLK 230,silber,04/2001,2001,7999,145,197,Schaltgetriebe,Benzin,"9,7 l/100 km",- (g/km),137000.0,SLK 230 Kompressor
+skoda,Skoda Superb,schwarz,07/2007,2007,4900,142,193,Automatik,Benzin,"10,4 l/100 km",- (g/km),315000.0,2.8 V6 Tiptronic Elegance
+opel,Opel Crossland,orange,09/2021,2021,16980,81,110,Schaltgetriebe,Benzin,"5,7 l/100 km",130 g/km,36400.0,1.2 Turbo Edition SpurH LED KlimaA
+kia,Kia Sportage,schwarz,08/2017,2017,15390,97,132,Schaltgetriebe,Benzin,"6,7 l/100 km",156 g/km,75924.0,1.6 GDI 2WD Dream-Team Edition
+volkswagen,Volkswagen Polo,schwarz,04/2002,2002,1500,47,64,Schaltgetriebe,Benzin,"5,9 l/100 km",142 g/km,202000.0,1.2 Trendline
+ford,Ford EcoSport,grau,05/2020,2020,17450,92,125,Schaltgetriebe,Benzin,"5,3 l/100 km",119 g/km,41117.0,ECOSPORT 1.0 EcoBoost TITANIUM X
+ford,Ford Focus,grau,06/2015,2015,8490,88,120,Automatik,Diesel,"3,8 l/100 km",99 g/km,179980.0,"Lim.Autom,TÜV, Insp neu, GW Garantie"
+audi,Audi A4,schwarz,07/2013,2013,9000,105,143,Automatik,Diesel,"4,9 l/100 km",- (g/km),217000.0,A4 Avant 2.0 TDI DPF multitronic Ambiente
+infiniti,Infiniti QX80,blau,02/2018,2018,49450,298,405,Automatik,Benzin,,- (g/km),104633.0,/AHK/BOSE/SHZ/SBL/LED/360°/KAMERA/PDC/R20
+ford,Ford F 250,weiß,08/2006,2006,24900,240,326,Automatik,keine Angabe,,- (g/km),115950.0,XL Powerstroke 4x4 -TOP!
+volkswagen,Volkswagen Golf,schwarz,03/2023,2023,35700,150,204,Automatik,Hybrid,,64 km Reichweite,1000.0,VIII 1.4 TSI Style eHybrid NAVI ACC
+mercedes-benz,Mercedes-Benz Citan,weiß,09/2014,2014,7485,81,110,Schaltgetriebe,Diesel,"4,7 l/100 km",125 g/km,198094.0,111 CDI Lang Klima PDC SHZ LM GRA
+mercedes-benz,Mercedes-Benz A 180,gold,02/2022,2022,28900,85,116,Automatik,Diesel,,- (g/km),12889.0,d AUT~Navi~PDC~Klimaaut~Alu~Teilleder
+renault,Renault Master,weiß,04/2016,2016,6900,81,110,Schaltgetriebe,Diesel,,- (g/km),313000.0,2.3 L1 H1 / bis 2.8 T Ladebar / Tüv 5.24
+audi,Audi A1,gelb,10/2021,2021,28620,110,150,Automatik,Benzin,"6,7 l/100 km",156 g/km,22001.0,35TFSI S-tronic S-Line 18 LED NAVI
+volkswagen,Volkswagen Golf,weiß,11/2013,2013,16900,169,230,Automatik,Benzin,"6,4 l/100 km",149 g/km,140000.0,VII Lim. GTI Performance BMT
+opel,Opel Antara,schwarz,02/2014,2014,6890,135,184,Automatik,Diesel,8 l/100 km,211 g/km,262086.0,Cosmo 4x4
+bmw,BMW 520,schwarz,12/2004,2004,3790,125,170,Schaltgetriebe,Benzin,9 l/100 km,219 g/km,260727.0,bmw 520i*2.Hand*Xenon*PDC*SHZ*Temp*Bc*
+opel,Opel Mokka X,weiß,07/2017,2017,15270,103,140,Schaltgetriebe,Benzin,"5,9 l/100 km",138 g/km,29247.0,1.4  Edition Start/Stop PDC SHZ NAVI
+ford,Ford Mondeo,silber,02/2019,2019,12499,132,179,Schaltgetriebe,Diesel,"4,8 l/100 km",126 g/km,185700.0,Turnier Business Edition|1.HD|Navi|PDC|
+porsche,Porsche Macan,weiß,04/2019,2019,64999,260,354,Automatik,Benzin,"8,9 l/100 km",204 g/km,23021.0,S PDK Bose Leder RFK Top-Zustand
+mazda,Mazda 2,blau,01/2023,2023,19100,66,90,Schaltgetriebe,Hybrid,"4,4 l/100 km",100 g/km,5000.0,Homura Touring-Paket 1
+audi,Audi A1,schwarz,11/2011,2011,8390,63,86,Schaltgetriebe,Benzin,"5,1 l/100 km",121 g/km,164300.0,S line Sportpaket
+mini,MINI Cooper,grau,10/2019,2019,21750,100,136,Schaltgetriebe,Benzin,"5,3 l/100 km",121 g/km,38002.0,Cabrio Chili Navi 2J-MINI.Next:GARANTIE
+hyundai,Hyundai TUCSON,schwarz,02/2023,2023,32690,110,150,Schaltgetriebe,Benzin,"5,9 l/100 km",136 g/km,15.0,1.6 T-GDi Smart ++TAGESZULASSUNG+SOFORT++
+ford,Ford Grand C-Max,grau,02/2016,2016,15990,110,150,Schaltgetriebe,Diesel,"4,6 l/100 km",119 g/km,104440.0,2.0 Tita*Pano*7Sitz*Navi*Kamera*Bi-X
+seat,SEAT Tarraco,grau,05/2023,2023,37990,110,150,Automatik,Benzin,6 l/100 km,159 g/km,20.0,"Xperience 1,5TSI DSG*Navi*LED*AHK*"
+audi,Audi A6,schwarz,08/2007,2007,5400,171,232,Schaltgetriebe,Diesel,8 l/100 km,215 g/km,300000.0,3.0 TDI S LINE  quattro
+renault,Renault Koleos,,03/2008,2008,4000,110,150,keine Angabe,Diesel,"7,3 l/100 km",191 g/km,272000.0,Dynamique
+mini,MINI Cooper,schwarz,07/2017,2017,18000,100,136,Schaltgetriebe,Benzin,"4,5 l/100 km",- (g/km),72000.0,Seven Chili
+opel,Opel Astra,schwarz,11/2019,2019,16500,81,,Schaltgetriebe,Diesel,4 l/100 km,- (g/km),43500.0,Astra 1.5 D Start/Stop 120 Jahre
+mini,MINI One,grau,05/2022,2022,27900,75,102,Schaltgetriebe,Benzin,"5,2 l/100 km",128 g/km,8900.0,Clubman Cooper D Classic Trim Klimaaut. AHK RFT
+bmw,BMW 116,schwarz,05/2011,2011,6899,90,122,Schaltgetriebe,Benzin,"6,1 l/100 km",143 g/km,149000.0,Baureihe 1 Lim. 116i M Paket
+hyundai,Hyundai i30,weiß,07/2022,2022,19900,88,120,Schaltgetriebe,Benzin,5 l/100 km,115 g/km,5900.0,1.0 T-GDi 48-Volt Hybrid Select
+mitsubishi,Mitsubishi Eclipse Cross,grau,11/2021,2021,27680,138,188,Automatik,Hybrid,,45 km Reichweite,9331.0,Hybrid 4WD PHEV Basis 2.4 Allrad Apple CarPlay And
+skoda,Skoda Fabia,schwarz,09/2009,2009,3800,51,69,Schaltgetriebe,Benzin,"5,9 l/100 km",140 g/km,167000.0,Combi 1.2/HTP Ambiente/Klima/Tüv-Neu
+seat,SEAT Leon,weiß,03/2018,2018,22900,221,300,Automatik,Benzin,"6,8 l/100 km",156 g/km,115000.0,"Cupra 300*KW GEWINDEFAHRWERK+NAVI+19""+SH**"
+fiat,Fiat,,11/2012,2012,18890,110,150,Schaltgetriebe,Diesel,,-/-,166777.0,Ducato Boxer 2.2 HDI Koffer Ladebordwand
+volkswagen,Volkswagen Golf,weiß,02/2020,2020,21499,110,150,Automatik,Benzin,"5,1 l/100 km",116 g/km,56141.0,"VII Variant Highline BMT,LED, TÜV&Insp. neu"
+bmw,BMW 430,grau,10/2016,2016,21999,185,252,Schaltgetriebe,Benzin,"6,1 l/100 km",151 g/km,171219.0,430i Gran Coupé M Sport KEYLESS HUD MEMORY SPUR
+mazda,Mazda CX-5,grau,08/2017,2017,19750,121,165,Schaltgetriebe,Benzin,"6,4 l/100 km",149 g/km,95395.0,SKYACTIV-G Exclusive-Line + Active-Paket
+toyota,Toyota C-HR,silber,07/2022,2022,26190,135,184,Automatik,Hybrid,"5,3 l/100 km",120 g/km,25940.0,2.0 Hybrid Business Edition *Navi*Kamera*LED*
+dacia,Dacia Sandero,blau,05/2009,2009,2200,55,75,Schaltgetriebe,Benzin,7 l/100 km,165 g/km,181000.0,1.4 MPI
+ford,Ford Mustang,weiß,02/2022,2022,65840,338,460,Automatik,Benzin,12 l/100 km,284 g/km,14.0,Mach1 Aut. B&O+Shz+belüft. Y-Speiche (DE)
+volvo,Volvo XC90,schwarz,05/2019,2019,42890,184,250,Automatik,Benzin,"7,9 l/100 km",184 g/km,72052.0,T5 AWD Geartronic Inscription
+ford,Ford Fiesta,schwarz,01/2018,2018,18750,92,125,keine Angabe,Benzin,"4,3 l/100 km",98 g/km,35796.0,Titanium/ Navi
+volvo,Volvo XC40,schwarz,10/2018,2018,30840,140,190,Automatik,Diesel,5 l/100 km,133 g/km,69987.0,D4 AWD PANO+360+H&K+19Z+INTELLISAFE+ACC+LED
+bmw,BMW X5 M,braun,04/2018,2018,48500,280,381,Automatik,Diesel,"6,6 l/100 km",175 g/km,125000.0,d *INDIVIDUAL*PANO*LED*ACC*VOLL*H/K*STH*
+opel,Opel Omega,weiß,06/2001,2001,1950,106,144,Schaltgetriebe,Benzin,"9,8 l/100 km",236 g/km,194000.0,Caravan 2.2 16 V
+bmw,BMW 520,silber,06/2014,2014,18390,135,184,Automatik,Benzin,"6,8 l/100 km",161 g/km,129000.0,i Aut. Navi Leder Xenon Klimatr. SHZ PDC
+bmw,BMW X4 M,gelb,01/2023,2023,95989,375,510,Automatik,Benzin,"10,8 l/100 km",239 g/km,4009.0,Comp ACC+ 360 Cam Panorama Sitzlüft. H&K
+volkswagen,Volkswagen Passat Variant,grau,07/2013,2013,8190,130,177,Automatik,Diesel,"5,2 l/100 km",136 g/km,360000.0,"2.0 TDI DSG BlueMotion Technology Highline, SCHECK"
+seat,SEAT Ibiza,rot,11/2017,2017,13200,85,116,Schaltgetriebe,Benzin,"4,7 l/100 km",- (g/km),107000.0,1.0 EcoTSI S&S FR
+audi,Audi Q3,grau,11/2022,2022,42550,110,150,Automatik,Benzin,"5,8 l/100 km",133 g/km,15.0,Sportback 35 TFSI S-tronic LED Navi Kamera
+bmw,BMW 118,grau,12/2015,2015,15450,110,150,Schaltgetriebe,Diesel,"4,3 l/100 km",113 g/km,142000.0,118d xDrive
+opel,Opel Corsa,blau,04/2019,2019,11960,74,101,Schaltgetriebe,Benzin,"5,5 l/100 km",125 g/km,26500.0,1.4 Turbo Start/Stop 120 Jahre
+bmw,BMW 316,grau,07/2003,2003,999,85,,Schaltgetriebe,Benzin,"6,9 l/100 km",164 g/km,234833.0,Baureihe 3 Compact 316ti
+mercedes-benz,Mercedes-Benz C 200,silber,02/2016,2016,27999,135,184,Automatik,Benzin,"5,3 l/100 km",123 g/km,43000.0,C -Klasse Coupe C 200 AMG-Paket Top Zustand 1 H.
+ford,Ford Fiesta,silber,10/2017,2017,17490,74,101,Automatik,Benzin,"5,2 l/100 km",118 g/km,21250.0,1.0 EcoBoost S&S Aut. TITANIUM
+opel,Opel Astra,weiß,05/2022,2022,23990,96,131,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,500.0,"K ST Elegance 1.2,LED,Navi ,SHZ,LRHZ,PDC+Kamera"
+toyota,Toyota Yaris Cross,weiß,03/2023,2023,22890,85,116,Automatik,Hybrid,"4,4 l/100 km",101 g/km,10.0,1.5 H 4X2 COMFORT *schnell verfügbar*
+ford,Ford Mondeo,,11/2017,2017,14750,88,120,Schaltgetriebe,Diesel,"4,2 l/100 km",99 g/km,123788.0,*Titanium*Navi*Panorama*BLIS*Kamera*1Hand
+kia,Kia Ceed SW / cee'd SW,orange,04/2023,2023,32790,118,160,Automatik,Benzin,"6,2 l/100 km",141 g/km,10.0,1.5 T DCT7 GT-Line Technologie Performance Navi Kl
+volkswagen,Volkswagen Passat Variant,silber,12/2016,2016,25999,160,218,Automatik,Hybrid,"1,7 l/100 km",38 g/km,91551.0,GTE *PANO*KAMERA*NAVI*ERGO*ACC*
+peugeot,Peugeot Boxer,silber,04/2008,2008,10500,88,120,Schaltgetriebe,Diesel,"9,1 l/100 km",240 g/km,169500.0,1.6/SHEFT/KLIMA/PDC/TEMP/SPORTSITZE/
+fiat,Fiat Tipo,silber,01/2021,2021,18490,74,101,Schaltgetriebe,Benzin,"5,4 l/100 km",124 g/km,43000.0,Cross 1.0 100 PS E6D Final
+peugeot,Peugeot 208,schwarz,11/2019,2019,10980,60,82,Schaltgetriebe,Benzin,"5,9 l/100 km",132 g/km,73480.0,"1.2 VTi/PureTech 82 Signature, Sitzheizung"
+toyota,Toyota Auris,weiß,11/2017,2017,18450,100,136,Automatik,Hybrid,"3,9 l/100 km",91 g/km,33425.0,Hybrid Team D 1.8 SHZ Keyless Klimaautom
+mercedes-benz,Mercedes-Benz E 400,grau,11/2020,2020,91885,243,330,Automatik,Diesel,"6,5 l/100 km",172 g/km,33055.0,d 4M Coupe AMG PANO+NIGHT+MEMORY+360°KAMER
+volkswagen,Volkswagen ID.3,blau,02/2021,2021,25433,150,204,Automatik,Elektro,,0 g/km,24511.0,Pro Performance Basis **1. Hand/Navi
+toyota,Toyota Land Cruiser,,09/2022,2022,63840,150,204,Automatik,Diesel,"7,5 l/100 km",251 g/km,62.0,Autm. Comfort Leder DAB+ LED
+skoda,Skoda Yeti,grau,07/2017,2017,18990,81,110,Automatik,Benzin,"5,3 l/100 km",124 g/km,6500.0,1.2 TSI Drive
+opel,Opel Grandland,schwarz,04/2023,2023,39980,96,131,Schaltgetriebe,Benzin,"6,2 l/100 km",139 g/km,20.0,Ultimate Night Vision Wireless Charging
+volkswagen,Volkswagen Golf GTI,grau,10/2010,2010,11500,155,211,Schaltgetriebe,Benzin,"7,3 l/100 km",- (g/km),148275.0,Golf 2.0 GTI
+audi,Audi Q7,grau,05/2017,2017,49980,200,272,Automatik,Diesel,"6,2 l/100 km",163 g/km,51500.0,3.0 TDI quattro+Sportpaket+LED+AHK+RFK+Bose HiFi
+land-rover,Land Rover Range Rover Velar,schwarz,05/2023,2023,79999,297,404,Automatik,Hybrid,"2,3 l/100 km",53 g/km,4900.0,P400e S Hybrid Tempom.aktiv Pa
+volkswagen,Volkswagen Polo,rot,01/2006,2006,3480,47,64,Schaltgetriebe,Benzin,"5,9 l/100 km",142 g/km,125000.0,IV 1.2 Trendline/Klima/Servo/8-Fach/TÜV/TOP
+mercedes-benz,Mercedes-Benz GLC 200,grau,01/2023,2023,62770,150,204,Automatik,Benzin,"7,4 l/100 km",168 g/km,4500.0,4M AMG/Memory/LED/R-Kamera/El.Heckklappe Navi
+seat,SEAT Exeo,blau,03/2010,2010,5900,125,170,Schaltgetriebe,Diesel,"5,4 l/100 km",- (g/km),295000.0,Exeo ST 2.0 TDI CR Style
+opel,Opel Astra,,02/2006,2006,3450,92,125,Automatik,Benzin,"8,6 l/100 km",206 g/km,186000.0,H Lim. Edition Plus
+bmw,BMW 320,schwarz,05/2012,2012,9990,135,184,Schaltgetriebe,Diesel,"4,5 l/100 km",119 g/km,275397.0,Baureihe 3 Lim. 320d/Navi/Xenon/SHZ
+skoda,Skoda Kamiq,silber,05/2023,2023,23980,81,110,Schaltgetriebe,Benzin,"4,9 l/100 km",113 g/km,10.0,1.0 TSI Ambition 3 Jahre Garantie
+bmw,BMW X1,grau,02/2015,2015,21990,160,218,Schaltgetriebe,Diesel,"5,9 l/100 km",156 g/km,100000.0,Baureihe X1 xDrive 25d*Navi*PDC*Klima*Euro 5*
+opel,Opel Combo Life,blau,01/2023,2023,24590,81,110,Schaltgetriebe,Benzin,"6,8 l/100 km",154 g/km,100.0,Edition 1.2 Turbo  6-Gang Schalter
+citroen,Citroen Grand C4 Picasso,weiß,09/2017,2017,12500,88,120,Schaltgetriebe,Diesel,4 l/100 km,105 g/km,197700.0,Selection*Klima*HU Neu*Sitzheizung*2Hand*wifi
+peugeot,Peugeot Boxer,weiß,08/2018,2018,18900,120,163,Schaltgetriebe,Diesel,"6,4 l/100 km",168 g/km,184000.0,Kasten Grossraum 435 L4H3 Pro BlueHDi 160
+volkswagen,Volkswagen Polo,blau,11/2016,2016,11550,66,90,Schaltgetriebe,Benzin,"4,7 l/100 km",107 g/km,78180.0,1.2 TSI Allstar BMT*PDC*SHZ*ALU*KLIMA*
+peugeot,Peugeot Traveller,grau,03/2023,2023,51299,132,179,Automatik,Diesel,"5,5 l/100 km",145 g/km,150.0,L3 Active Drive Xenon SHZ Navi
+ford,Ford Focus,silber,02/2018,2018,10680,88,120,Schaltgetriebe,Diesel,,0 g/km,82100.0,Turnier 1.5 TDCi Navi PDC Tempo
+mercedes-benz,Mercedes-Benz C 200,schwarz,01/2015,2015,18175,135,184,Schaltgetriebe,Benzin,"5,3 l/100 km",123 g/km,113462.0,CGI C -Klasse Lim. (BM 205)
+ford,Ford Kuga,silber,04/2023,2023,38390,110,150,Schaltgetriebe,Benzin,"6,6 l/100 km",149 g/km,10.0,"ST-LINE X 1.5l B&O,StylingP.,Kamera,Navi"
+volkswagen,Volkswagen Golf,rot,03/1999,1999,1799,74,101,Schaltgetriebe,Benzin,"7,6 l/100 km",- (g/km),229634.0,1.6
+seat,SEAT Leon,rot,01/2022,2022,25980,110,150,Automatik,Diesel,"4,4 l/100 km",116 g/km,4050.0,2.0 TDI Style DSG LED/Virt./NAV
+volkswagen,Volkswagen Golf,weiß,08/2016,2016,17950,135,184,Automatik,Diesel,"4,8 l/100 km",127 g/km,150005.0,"GTD 2,0 l TDI 184 PS DSG Sport & Sound Klima"
+mercedes-benz,Mercedes-Benz ML 350,silber,02/2012,2012,30999,225,306,Automatik,Benzin,"8,5 l/100 km",199 g/km,90000.0,4MATIC (BlueEFFICIENCY) 7G-TRONIC offroad Paket
+renault,Renault Scenic,schwarz,05/2014,2014,7500,96,131,keine Angabe,Diesel,"4,4 l/100 km",117 g/km,140000.0,BOSE Edition III  X Mode
+skoda,Skoda Rapid/Spaceback,schwarz,08/2018,2018,11040,70,95,Schaltgetriebe,Benzin,"4,5 l/100 km",103 g/km,74759.0,1.0 TSI Active*ALU*AHK*KLIMA*
+kia,Kia XCeed,schwarz,10/2022,2022,28899,104,141,Automatik,Hybrid,"1,3 l/100 km",31 g/km,10796.0,1.6 Plug-in Hybrid Vision NAVI LED ACC PDC
+mercedes-benz,Mercedes-Benz CLS 350,schwarz,09/2012,2012,21990,195,265,Automatik,Diesel,"6,1 l/100 km",162 g/km,179897.0,CDI V6 BE*Comand*Leder*Temp.*Xenon*GSD*
+volkswagen,Volkswagen,schwarz,08/2018,2018,54970,81,110,Schaltgetriebe,Benzin,"4,9 l/100 km",112 g/km,69200.0,VII Join 1.0 TSI Navi SHZ Einpar
+seat,SEAT Altea,weiß,12/2014,2014,12870,92,125,Schaltgetriebe,Benzin,"6,5 l/100 km",154 g/km,56000.0,XL 4You
+citroen,Citroen C4 Cactus,grau,07/2018,2018,15500,81,110,Automatik,Benzin,"4,6 l/100 km",- (g/km),35700.0,Pure Tech 110 Stop&Start EAT6 Shine
+volkswagen,Volkswagen Passat,grau,02/2018,2018,19299,140,190,Automatik,Diesel,"4,6 l/100 km",120 g/km,124000.0,2.0 Limousine Comfortline Aut. AHK+NAVI+1.HAND
+renault,Renault Scenic,grau,05/2019,2019,17490,103,140,Automatik,Benzin,"5,8 l/100 km",132 g/km,34580.0,IV Limited DeLuxe TCE 140 EDC
+mitsubishi,Mitsubishi Space Star,,04/2018,2018,9990,52,71,Schaltgetriebe,Benzin,"4,2 l/100 km",96 g/km,77990.0,1.0 Edition 100 KLIMA
+audi,Audi S7,rot,07/2012,2012,21749,309,420,Automatik,Benzin,"9,6 l/100 km",228 g/km,238000.0,4.0 TFSI quattro Sportback
+volkswagen,Volkswagen Polo,grau,01/2016,2016,14980,81,110,Automatik,Benzin,"4,7 l/100 km",109 g/km,76400.0,1.2 TSI BMT Lounge l ACC l Navi l LED l Automatik
+opel,Opel Grandland X,schwarz,03/2018,2018,17990,96,131,Schaltgetriebe,Benzin,"5,4 l/100 km",124 g/km,18371.0,1.2 Turbo Edition *Sitzheizung*PDC*
+renault,Renault Megane,grau,02/2005,2005,3700,99,135,Automatik,Benzin,"8,2 l/100 km",196 g/km,159000.0,2.0 Coupe-Cabriolet Luxe Privilege
+ford,Ford Focus,rot,04/2019,2019,21990,92,125,Schaltgetriebe,Benzin,6 l/100 km,111 g/km,44656.0,"Turnier Active 1,0l EcoBoost +Tempomat"
+audi,Audi TT RS,grau,03/2011,2011,39850,250,340,Schaltgetriebe,Benzin,"9,5 l/100 km",221 g/km,71415.0,2.5 TFSI ROADSTER SCHALTER BOSE EXCLUSIVE!
+renault,Renault Megane,schwarz,07/2018,2018,12999,97,132,Schaltgetriebe,Benzin,"5,4 l/100 km",120 g/km,51300.0,1.2 TCE BOSE-EDITION NAVI KAM SHZG DAB VRC
+audi,Audi A8,grau,03/2013,2013,32000,258,351,Automatik,Diesel,"7,5 l/100 km",- (g/km),126000.0,A8 4.2 TDI DPF quattro tiptronic Lang -Softclose
+mercedes-benz,Mercedes-Benz C 350,blau,12/2017,2017,31598,155,211,Automatik,Benzin,"2,1 l/100 km",55 g/km,52163.0,T e Edition C Leder Navi Pano AMG LED AHK
+opel,Opel Mokka X,grau,03/2019,2019,12888,100,136,Schaltgetriebe,Diesel,"5,4 l/100 km",142 g/km,100000.0,1.6 Diesel Edition 4x4*STANDHZ*SITZHZ
+mercedes-benz,Mercedes-Benz C 250,schwarz,11/2011,2011,11690,150,204,Schaltgetriebe,Diesel,"5,8 l/100 km",153 g/km,218997.0,T CDI-AMG Paket-Navi-PDC v.h.-Leder-el.Heckklappe
+audi,Audi A3,silber,06/2022,2022,30140,81,110,Automatik,Benzin,5 l/100 km,"115,7 g/km",7400.0,Limousine 30 TFSI advanced S tronic V-Cockp. RüKa
+mercedes-benz,Mercedes-Benz C 200,grau,12/2007,2007,7000,100,136,Automatik,Diesel,"6,5 l/100 km",- (g/km),196000.0,C 200 CDI DPF Automatik Avantgarde
+ford,Ford Kuga,schwarz,03/2015,2015,15900,132,179,Schaltgetriebe,Diesel,"5,2 l/100 km",- (g/km),110790.0,Kuga 2.0 TDCi 4x4 Trend
+hyundai,Hyundai TUCSON,rot,06/2023,2023,32800,110,150,Schaltgetriebe,Benzin,"5,2 l/100 km",136 g/km,10.0,"N-Line 2WD 150PS 6G, Navi, LED, 19"" 110 kW (150..."
+porsche,Porsche Cayenne,grau,01/2011,2011,28800,368,500,Automatik,Benzin,"11,5 l/100 km",270 g/km,188900.0,Turbo Tiptronic S
+renault,Renault Scenic,,05/2004,2004,5499,83,113,Schaltgetriebe,Benzin,"7,4 l/100 km",177 g/km,41150.0,Dynamique Luxe II
+skoda,Skoda Kamiq,schwarz,04/2023,2023,24990,81,110,Automatik,Benzin,"4,7 l/100 km",- (g/km),3500.0,1.0 TSI DSG Style/SHZ/LED/DAB/SmartLink
+bmw,BMW 318,blau,04/2017,2017,18500,110,150,Schaltgetriebe,Diesel,,- (g/km),160000.0,318d
+opel,Opel Corsa,weiß,07/2011,2011,12000,155,211,Schaltgetriebe,Benzin,"7,6 l/100 km",178 g/km,120000.0,1.6 Turbo OPC Nürburgring Edition
+ford,Ford Puma,schwarz,11/2022,2022,23980,92,125,Schaltgetriebe,Benzin,"4,3 l/100 km",97 g/km,502.0,ST-Line X mHEV Winterpak+Navi+PDC
+mercedes-benz,Mercedes-Benz Viano,schwarz,05/2008,2008,24999,150,204,Automatik,Diesel,"9,2 l/100 km",244 g/km,215000.0,Elegance
+volkswagen,Volkswagen T-Cross,orange,04/2022,2022,24888,81,110,Automatik,Benzin,"5,1 l/100 km",117 g/km,8792.0,ACTIVE DSG IQ.DRIVE AHK SH NAVI PDC ACC
+dacia,Dacia Dokker,blau,01/2020,2020,19990,96,131,Schaltgetriebe,Benzin,6 l/100 km,138 g/km,34000.0,TCe 131 Stepway Plus NAVI KAMERA SZH TOP
+renault,Renault Clio,grau,08/2017,2017,8999,54,73,Schaltgetriebe,Benzin,"5,7 l/100 km",130 g/km,84665.0,"1.2 Grandtour Limited*Klima,AHK,Standhzg."
+opel,Opel Corsa,weiß,06/2018,2018,9790,55,75,Schaltgetriebe,Diesel,"3,9 l/100 km",102 g/km,82500.0,E Selection | 1.Hand | Klima | 82.500km
+porsche,Porsche Cayenne,schwarz,06/2020,2020,142900,404,549,Automatik,Benzin,"11,4 l/100 km",261 g/km,29000.0,Coupe Turbo NP: 150T€ Neuwagenzustand !
+opel,Opel Astra,silber,04/2010,2010,3500,81,110,Schaltgetriebe,Diesel,"4,5 l/100 km",119 g/km,188000.0,GTC 1.7 CDTI Diesel
+mini,MINI Cooper,grau,10/2016,2016,15900,100,136,Schaltgetriebe,Benzin,"4,7 l/100 km",109 g/km,77769.0,Chili
+infiniti,Infiniti QX30,schwarz,04/2019,2019,24000,125,170,Automatik,Diesel,"5,9 l/100 km",155 g/km,55000.0,2.2d DCT AWD Luxe Tech
+mercedes-benz,Mercedes-Benz E 200,silber,08/2017,2017,34990,135,184,Automatik,Benzin,6 l/100 km,136 g/km,105000.0,E -Klasse Coupe E 200 AMG/Widescreen/Burmester
+opel,Opel Grandland,weiß,07/2018,2018,24880,130,177,Automatik,Diesel,"6,1 l/100 km",160 g/km,48000.0,2.0 D Ultimate FLA 360 ParkAss.
+volkswagen,Volkswagen Passat Variant,grün,07/2002,2002,1900,96,131,Schaltgetriebe,Diesel,"5,8 l/100 km",154 g/km,230000.0,1.9 TDI 6-Gang/Sitzh./Klimaautomatik/Euro 3/AHK
+mazda,Mazda 6,schwarz,05/2019,2019,25890,135,184,Automatik,Diesel,"5,1 l/100 km",134 g/km,49967.0,Kombi SKYACTIV-D 184 AL-Sports MLED BOSE KA
+opel,Opel Corsa,rot,03/2023,2023,24390,74,101,Schaltgetriebe,Benzin,"4,3 l/100 km",98 g/km,8.0,F Elegance
+nissan,Nissan Micra,grau,09/2021,2021,17490,68,92,Schaltgetriebe,Benzin,"4,5 l/100 km",103 g/km,10000.0,"1,0IG-T N-WAY Navigation"
+bmw,BMW 318,grau,02/2009,2009,5850,105,143,Schaltgetriebe,Diesel,"4,8 l/100 km",125 g/km,268800.0,d touring/Sport Line/Navi/Bi-Xenon/Panorama
+mitsubishi,Mitsubishi ASX,weiß,04/2017,2017,15440,86,117,Schaltgetriebe,Benzin,"5,7 l/100 km",135 g/km,46820.0,1.6 MIVEC Star 2WD|Kamera|Sitzhzg|Bluetooth
+volvo,Volvo XC40,schwarz,09/2019,2019,31900,120,163,Automatik,Benzin,"6,5 l/100 km",147 g/km,24900.0,T3 Geartronic Mom.Pro 'Sitzheizung Rückfahrcam'
+volkswagen,Volkswagen up!,gelb,06/2019,2019,13930,55,75,Schaltgetriebe,Benzin,"5,3 l/100 km",120 g/km,17500.0,high  1.0 Sitzheizung LM KlimaA
+bmw,BMW X3,grau,12/2011,2011,14899,230,313,Automatik,Diesel,"6,1 l/100 km",162 g/km,289284.0,xDrive35d M-SPORTPAKET*1.HAND*NAVI*HUD*
+opel,Opel Astra,schwarz,09/2020,2020,13450,90,122,Schaltgetriebe,Diesel,"3,5 l/100 km",119 g/km,73815.0,ST 1.5 CDTI Edit. NAVI+SITHZ+PDC+MFL+TEMPO
+volkswagen,Volkswagen Golf Variant,silber,12/2019,2019,18350,110,150,Automatik,Diesel,"4,4 l/100 km",115 g/km,70538.0,2.0 TDI DSG NAVI PANO PDC LM ZV
+volkswagen,Volkswagen Golf,schwarz,03/2023,2023,35950,110,150,Automatik,Benzin,"5,8 l/100 km",131 g/km,334.0,"VIII Variant 1,5 eTSI Style DSG ACC DAB LED NAVI"
+porsche,Porsche Macan,schwarz,02/2018,2018,73880,324,441,Automatik,Benzin,"9,7 l/100 km",224 g/km,27514.0,"Turbo PERFORMANCE BURMESTER,CHRONO,KEYLESS"
+mercedes-benz,Mercedes-Benz GLC 350,grau,12/2017,2017,32800,155,211,Automatik,Hybrid,"2,5 l/100 km",59 g/km,124000.0,e 4Matic AMG PANO LEDER NAVI KAMERA
+mercedes-benz,Mercedes-Benz GLC 250,silber,01/2016,2016,31980,150,204,Automatik,Diesel,5 l/100 km,129 g/km,49146.0,d 4Matic*EXCLUSIVE*LED*NAVI*LEDER*1.HAND
+ford,Ford Focus,weiß,03/2010,2010,25000,224,305,Schaltgetriebe,Benzin,"9,4 l/100 km",- (g/km),140000.0,2.5 RS
+kia,Kia Niro,weiß,02/2019,2019,24380,104,141,Automatik,Hybrid,,60 km Reichweite,55926.0,Spirit 1.6 GDI Plug-in Hybrid SPIRIT Navi Leder So
+renault,Renault Clio,grau,04/2008,2008,3500,55,75,Schaltgetriebe,Benzin,"5,9 l/100 km",139 g/km,187530.0,III Edition Dynamique/Gepflegter Zustand
+volkswagen,Volkswagen Golf Plus,blau,06/2007,2007,2450,59,80,Schaltgetriebe,Benzin,"7,2 l/100 km",172 g/km,224000.0,1.4 Comfortline
+smart,smart forTwo,weiß,03/2018,2018,15000,66,90,Schaltgetriebe,Benzin,"5,3 l/100 km",- (g/km),64500.0,Smart ForTwo Cabrio 0.9 66kW BRABUS Edition
+skoda,Skoda Kamiq,schwarz,02/2023,2023,30800,81,110,Automatik,Benzin,"5,9 l/100 km",133 g/km,50.0,MONTE CARLO TSI DSG (+NAVI+AHK+AUTOMATIK+CLI
+skoda,Skoda Octavia,braun,04/2019,2019,28490,135,184,Automatik,Diesel,,0 g/km,47100.0,Combi 2.0 TDI 4x4 DSG Scout
+mercedes-benz,Mercedes-Benz E 300,schwarz,09/2010,2010,14350,150,204,Automatik,Diesel,"7,3 l/100 km",192 g/km,197434.0,CDI T AMG Comand/Bi-Xe/S-Dach/Memory/Leder
+renault,Renault Clio,,06/2013,2013,6000,54,73,Schaltgetriebe,Benzin,"5,5 l/100 km",- (g/km),137000.0,1.2 16V
+volkswagen,Volkswagen T-Roc,schwarz,01/2023,2023,31480,110,150,Automatik,Benzin,"6,1 l/100 km","139,1 g/km",6100.0,"STYLE 1.5TSI DSG AHK+KAMERA+ACC+LED+NAVI+APP+17""A"
+skoda,Skoda Superb,rot,06/2019,2019,27899,110,150,Automatik,Diesel,"5,6 l/100 km",146 g/km,49300.0,2.0 TDI SportLine NAVI ACC AHK Xenon PDC
+audi,Audi Q3,schwarz,01/2013,2013,15250,103,140,Schaltgetriebe,Diesel,"5,2 l/100 km",138 g/km,124000.0,2.0 TDI S-Line Sportpaket Navi/Xenon/AHK/Klim
+volkswagen,Volkswagen Passat,grau,09/2009,2009,4700,110,150,Schaltgetriebe,Autogas (CNG),"6,9 kg/100 km",166 g/km,112300.0,Var.1.4 TSI EcoFuel Sportline-Klimaa.-SHZ
+ford,Ford EcoSport,weiß,04/2021,2021,21490,92,125,Schaltgetriebe,Benzin,5 l/100 km,114 g/km,24500.0,Active*Winterp.*Fahrerassp.*LED*AHK*
+opel,Opel Combo,weiß,10/2009,2009,3600,55,75,Schaltgetriebe,Diesel,"5,1 l/100 km",134 g/km,203000.0,1.3 CDTI
+skoda,Skoda Superb,gold,09/2021,2021,39370,147,200,Automatik,Diesel,5 l/100 km,132 g/km,56950.0,Combi SportLine 2.0 TDI 4x4 AHK/Nav/Pano/Assist/AC
+volkswagen,Volkswagen Golf GTI,weiß,02/2017,2017,18150,169,230,Schaltgetriebe,Benzin,"6,4 l/100 km",148 g/km,108200.0,Clubsport S 95 / 400
+seat,SEAT Arona,grau,10/2022,2022,25530,81,110,Automatik,Benzin,"4,9 l/100 km",113 g/km,8550.0,1.0 TSI FR *NAVI/AHK/VOLL-LED*
+porsche,Porsche Macan,schwarz,07/2016,2016,44999,294,400,Automatik,Benzin,,255 g/km,44000.0,Turbo Panorama Standh.360Cam
+bmw,BMW 530,schwarz,06/2017,2017,29990,195,265,Automatik,Diesel,"5,3 l/100 km",139 g/km,59500.0,d xDrive Touring*2. Hand* Top-Zustand*
+volkswagen,Volkswagen T6 Transporter,,02/2016,2016,12900,110,150,Schaltgetriebe,Diesel,"6,4 l/100 km",170 g/km,105000.0,TDI 4M STH LED AHK RFK
+hyundai,Hyundai i40,silber,09/2013,2013,10500,100,136,Schaltgetriebe,Diesel,"4,7 l/100 km",124 g/km,109000.0,i40cw 1.7 CRDi Style
+mercedes-benz,Mercedes-Benz A 250,blau,05/2022,2022,38885,165,224,Automatik,Benzin,"7,5 l/100 km",171 g/km,3900.0,"4M AMG+NIGHT+19""+PANO+AHK+MULTIBEAM+SOUND"
+audi,Audi A4,schwarz,10/2014,2014,15900,180,245,Automatik,Diesel,"5,9 l/100 km",- (g/km),175000.0,A4 Avant 3.0 TDI DPF quattro S tronic Ambition
+audi,Audi A4,grau,05/2015,2015,19988,140,190,Automatik,Diesel,"5,1 l/100 km",135 g/km,81000.0,Avant 2.0 TDI 190 S-Tronic Quattro Nav PDC
+kia,Kia Niro,weiß,07/2019,2019,19980,77,105,Automatik,Hybrid,,0 g/km,79776.0,"1.6 GDI PHEV 2WD Aut. Spirit Geschlossen, 5-türig,"
+mini,MINI Cooper Clubman,schwarz,10/2018,2018,20990,75,102,Automatik,Benzin,"5,1 l/100 km",121 g/km,32512.0,NAVI~PANO~AUTOMATIK~LEDER~XENON~ALU~STH~PDC Automa
+volkswagen,Volkswagen Golf,schwarz,07/2011,2011,7500,90,122,Schaltgetriebe,Benzin,"6,2 l/100 km",- (g/km),100500.0,Golf 1.4 TSI Comfortline
+ford,Ford Ranger,weiß,06/2023,2023,44390,151,205,Automatik,Diesel,"8,8 l/100 km",230 g/km,10.0,Wildtrak 2.0 *NEUES MODELL*NAVI*CAM*LED*
+volkswagen,Volkswagen Polo,grau,05/2008,2008,3999,59,80,Schaltgetriebe,Diesel,"4,4 l/100 km",119 g/km,154000.0,1.4 TDI Comfortline
+bmw,BMW 530,braun,12/2016,2016,19999,190,258,Automatik,Diesel,"5,5 l/100 km",144 g/km,183000.0,530d Touring Aut. Luxury Line
+volkswagen,Volkswagen ID. Buzz,weiß,06/2023,2023,59590,150,204,Automatik,Elektro,,394 km Reichweite,2001.0,ID. Buzz Cargo AHK APP NAVI EL.HECKKLAPPE
+bmw,BMW 340,weiß,01/2022,2022,56900,250,340,Automatik,Diesel,"5,5 l/100 km",144 g/km,14700.0,M340d xDrive Touring LED~PANO~KAMERA~STANDHZG~
+mercedes-benz,Mercedes-Benz V 250,grün,05/2018,2018,48500,140,190,Automatik,Diesel,"6,8 l/100 km",- (g/km),68000.0,MERCEDES-BENZ V 250 d lang
+renault,Renault Scenic,gelb,12/2017,2017,16995,97,132,Schaltgetriebe,Benzin,,- (g/km),51731.0,Energy TCe 130 Intens PDC KAMERA NAVI
+porsche,Porsche Cayenne,schwarz,04/2012,2012,27990,180,245,Automatik,Diesel,"7,2 l/100 km",190 g/km,156670.0,"Diesel *1.Hand*Automatik*Garantie*3,99%*"
+ford,Ford Ranger,weiß,06/2023,2023,44390,151,205,Automatik,Diesel,"8,8 l/100 km",230 g/km,10.0,Wildtrak 2.0 *NEUES MODELL*NAVI*CAM*LED*
+volkswagen,Volkswagen Passat,silber,12/2006,2006,2650,85,116,Schaltgetriebe,Benzin,"7,5 l/100 km",180 g/km,237000.0,PASSAT 1.6 FSI LIMO TRENDLINE KLIMAAUTOMATIK SHZ
+skoda,Skoda Octavia,weiß,06/2015,2015,16999,162,220,Schaltgetriebe,Benzin,"6,2 l/100 km",147 g/km,82000.0,Combi RS 2.0 TSI BIXENON|RFKMRA|TEMPOMAT
+volkswagen,Volkswagen Passat Variant,,06/2010,2010,5500,110,150,Schaltgetriebe,Autogas (CNG),"7,2 kg/100 km",124 g/km,214400.0,Passat 1.4 Comfortline EcoFuel_NAVI_SHZ_GRA*69
+bmw,BMW 220,grau,10/2015,2015,15450,141,192,Schaltgetriebe,Benzin,"6,1 l/100 km",137 g/km,79356.0,Navi LED AHK Parkass SPORTLEN
+mercedes-benz,Mercedes-Benz E 220,weiß,10/2015,2015,18000,125,170,Automatik,Diesel,"4,9 l/100 km",130 g/km,200000.0,BlueTEC E -Klasse T-Modell (BM 212)
+peugeot,Peugeot 3008,schwarz,12/2019,2019,28990,130,177,Automatik,Diesel,"4,9 l/100 km",129 g/km,49500.0,Allure BlueHDi 180 EAT8
+seat,SEAT Arona,grün,03/2022,2022,26720,81,110,Automatik,Benzin,6 l/100 km,"137,1 g/km",9800.0,1.0 TSI DSG XPERIENCE+LED+NAVI+VIRTUALCOCK+
+kia,Kia Optima,blau,01/2019,2019,21780,120,163,Schaltgetriebe,Benzin,,- (g/km),45230.0,Sportswagon 2.0 CVVT Vision SHZ NAVI
+hyundai,Hyundai iX20,silber,11/2017,2017,12400,66,90,Schaltgetriebe,Benzin,"5,6 l/100 km",130 g/km,47900.0,1.4 blue Style
+opel,Opel Agila,blau,05/2006,2006,4499,44,60,Schaltgetriebe,Benzin,"5,8 l/100 km",139 g/km,45000.0,Edition KM 46.000 TÜV NEUE ZENTRALVERIGLUNG
+honda,Honda CR-V,weiß,04/2019,2019,28990,107,145,Automatik,Hybrid,"5,3 l/100 km",120 g/km,45000.0,2.0 i-MMD HYBRID 2WD Elegance
+volkswagen,Volkswagen T7 Multivan,weiß,05/2022,2022,57950,150,,Automatik,Benzin,"8,9 l/100 km",203 g/km,18175.0,"2,0 TSI DSG L2 Life ACC DAB LED NAVI RFK SHZ KEY"
+opel,Opel Astra,rot,01/2020,2020,23890,90,122,Automatik,Diesel,,0 g/km,45387.0,"K ST Ultimate, Navi, Leder, Klima, DAB+"
+ford,Ford Kuga,rot,07/2019,2019,21890,110,150,Automatik,Benzin,"8,8 l/100 km",201 g/km,38600.0,1.5 EcoBoost 2x4 Aut. Cool & Connect
+audi,Audi A6,schwarz,09/2016,2016,37500,240,326,Automatik,Diesel,"6,4 l/100 km",- (g/km),193000.0,Avant 3.0 TDI competition quattro tiptronic
+volvo,Volvo V60,schwarz,11/2018,2018,29900,140,190,Automatik,Diesel,"6,1 l/100 km",160 g/km,38400.0,D4 Geartronic Momentum / EURO 6d-TEMP
+citroen,Citroen C5 X,silber,03/2023,2023,42850,133,,Automatik,Benzin,"5,5 l/100 km",126 g/km,7.0,PureTech 180 EAT8 Shine
+porsche,Porsche Taycan,weiß,05/2020,2020,87450,420,571,Automatik,Elektro,,365 km Reichweite,34600.0,4S | Sonderleasing !!
+opel,Opel Combo,grau,02/2023,2023,29850,96,131,Schaltgetriebe,Diesel,"4,2 l/100 km",111 g/km,100.0,Life 1.5 D Elegance (EURO 6d)
+mazda,Mazda 6,grau,09/2013,2013,16580,121,165,Automatik,Benzin,,- (g/km),80627.0,Kombi SKYACTIV-G 165 Center-Line NAVI XENON
+toyota,Toyota RAV 4,,09/2020,2020,34890,160,218,Automatik,Hybrid,"4,6 l/100 km",105 g/km,28100.0,RAV4 2.5 Hybrid AHK Leder Einparkhilfe vorne & hin
+audi,Audi A5,grau,05/2018,2018,34790,185,252,Automatik,Benzin,"6,7 l/100 km",151 g/km,38790.0,Cabrio 2.0 TFSI quattro S tronic design
+mercedes-benz,Mercedes-Benz C 200,silber,07/2019,2019,22980,118,160,Schaltgetriebe,Diesel,"5,2 l/100 km",137 g/km,90300.0,"d Lang AMG Line+ILS+AHK+19""Alu+Kam+Edition"
+ford,Ford EcoSport,weiß,03/2017,2017,11499,92,125,Schaltgetriebe,Benzin,"5,4 l/100 km",125 g/km,82100.0,Titanium (CBW)
+mercedes-benz,Mercedes-Benz GLB 250,silber,09/2022,2022,55990,165,224,Automatik,Benzin,7 l/100 km,159 g/km,7029.0,4MATIC AMG 360° Pano Multibeam Distr. AHK
+volkswagen,Volkswagen Tiguan,schwarz,03/2017,2017,20000,110,,Schaltgetriebe,Diesel,"4,7 l/100 km",- (g/km),80000.0,2.0 TDI SCR (BlueMotion Technology) Highline
+audi,Audi A6,grau,01/2014,2014,30849,230,313,Automatik,Diesel,"6,4 l/100 km",170 g/km,86000.0,Avant 3.0*S-LINE*|LUFTF.|MEMORY|STANDHZG|BOSE
+audi,Audi A3,silber,04/2004,2004,1750,103,140,Schaltgetriebe,Diesel,"5,6 l/100 km",148 g/km,245900.0,2.0 TDI S line Sportpaket plus|BOSE|
+mercedes-benz,Mercedes-Benz GLK 200,weiß,07/2014,2014,17998,105,143,Automatik,Diesel,"5,5 l/100 km",143 g/km,108000.0,CDI*AHK abnehmbar*HU*
+skoda,Skoda Superb,schwarz,09/2017,2017,17950,140,190,Automatik,Diesel,"4,6 l/100 km",119 g/km,174150.0,Style Combi/INKL GAR/NAVI/KAMARA/STHG/1 HAND
+nissan,Nissan Micra,silber,03/2022,2022,19290,68,92,Schaltgetriebe,Benzin,"4,7 l/100 km",108 g/km,9836.0,"Schaltung Klima, CarPlay, Navi, PDC"
+opel,Opel Corsa,grau,12/2010,2010,2900,51,69,Schaltgetriebe,Benzin,,- (g/km),179013.0,H Caravan 1.6 Edition 111 Jahre Zahnr neu
+citroen,Citroen C5 Aircross,weiß,09/2020,2020,22500,96,131,Schaltgetriebe,Benzin,"5,2 l/100 km",119 g/km,45171.0,Feel
+hyundai,Hyundai IONIQ,schwarz,08/2022,2022,29519,77,105,Automatik,Hybrid,"1,1 l/100 km",26 g/km,3500.0,Advantage Plug-In Hybrid
+fiat,Fiat Panda,schwarz,06/2023,2023,15990,52,71,Schaltgetriebe,Hybrid,"4,9 l/100 km",112 g/km,99.0,CROSS CITY PLUS HYBRID 1.0 GSE TECH CARPLAY KLIMAA
+seat,SEAT Mii,weiß,06/2017,2017,8600,44,60,Schaltgetriebe,Benzin,"4,4 l/100 km",102 g/km,62540.0,"1.0 4türig, 62540km, 1.Hand"
+ford,Ford,weiß,04/2023,2023,49950,125,170,Schaltgetriebe,Diesel,,-/-,10.0,Transit Kasten 350 L4 Trend Doka*NAVI*SYNC4*
+volkswagen,Volkswagen Crafter,weiß,03/2017,2017,17300,103,140,Schaltgetriebe,Diesel,"7,8 l/100 km",205 g/km,199000.0,35 Kasten L2H2 HOCH*LANG*AHK*TEMPO*2xPDC
+mercedes-benz,Mercedes-Benz CLK 230,silber,02/2002,2002,6000,145,197,Schaltgetriebe,Benzin,"9,6 l/100 km",- (g/km),177000.0,Cabrio Kompressor Avantgarde
+bmw,BMW X2,grau,10/2019,2019,25906,140,190,Automatik,Diesel,"4,3 l/100 km",113 g/km,92472.0,sDrive20d HUD | Pano.Dach | AHK | LED | Navi
+mercedes-benz,Mercedes-Benz E 63 AMG,schwarz,11/2019,2019,90888,450,612,Automatik,Benzin,"12,1 l/100 km",274 g/km,13424.0,E 63 S AMG 4MATIC+ Limousine LEDils*360°*Keyless
+audi,Audi SQ5,rot,03/2017,2017,37490,250,340,Automatik,Diesel,"6,6 l/100 km",174 g/km,94580.0,3.0 TDI Q Tip ACC B&O DAB Memory Xenon+ Navi
+volkswagen,Volkswagen T5 California,blau,04/2005,2005,28800,128,174,Schaltgetriebe,Diesel,8 l/100 km,224 g/km,146400.0,Transporter Campmobil CAMP
+dacia,Dacia Dokker,blau,10/2015,2015,11890,61,83,Schaltgetriebe,Benzin,"7,5 l/100 km",178 g/km,27466.0,Express Ambiance 1.6*TÜV+SERVICE+GARANTIE
+audi,Audi A6,blau,01/2014,2014,19500,213,290,Automatik,Diesel,"5,8 l/100 km",- (g/km),186000.0,A6 Avant 3.0 TDI DPF quattro S tronic
+mercedes-benz,Mercedes-Benz E 220,silber,11/2018,2018,32950,143,194,Automatik,Diesel,"5,1 l/100 km",134 g/km,87000.0,d 4Matic T 9G-TRONIC Avantgarde
+volkswagen,Volkswagen Tiguan,grau,11/2019,2019,26890,140,190,Automatik,Benzin,"7,1 l/100 km",162 g/km,36000.0,Comfortline 4Motion | ACC | SHZ | LED
+kia,Kia Sportage,weiß,05/2018,2018,23479,130,177,Automatik,Benzin,"7,5 l/100 km",175 g/km,67555.0,1.6 T-GDI 4 WD GT-Line Panorama 1. Hand Navi Kamer
+toyota,Toyota Yaris,orange,12/2022,2022,29500,85,116,Automatik,Hybrid,"4,3 l/100 km",98 g/km,10.0,Hybrid 1.5 VVT-i Style (XPA1)
+opel,Opel Grandland X,schwarz,09/2019,2019,26450,96,131,Schaltgetriebe,Benzin,"6,8 l/100 km",153 g/km,57000.0,1.2 Kamera PDC Sitz+Lenkradheizung
+bmw,BMW 220,schwarz,12/2015,2015,13900,140,190,Automatik,Diesel,"4,6 l/100 km",- (g/km),206000.0,220d Active Tourer xDrive Aut. Advantage
+skoda,Skoda Superb,rot,11/2018,2018,26990,140,190,Automatik,Diesel,"5,3 l/100 km",138 g/km,69975.0,Premium Edition 4x4 AHK*DSG*Sthz*Massage*
+volkswagen,Volkswagen T-Cross,silber,05/2021,2021,23231,70,95,Schaltgetriebe,Benzin,"4,8 l/100 km",110 g/km,10.0,LIFE SHZ RFK ActiveInfoDisplay NSW App-Connect ...
