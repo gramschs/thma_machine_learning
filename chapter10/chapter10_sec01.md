@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter10/chapter10_sec01.ipynb
+    title: chapter10_sec01.ipynb
   - file: 3ddruck_xxs.csv
     title: 3ddruck_xxs.csv
   - file: chapter10_sec01.md

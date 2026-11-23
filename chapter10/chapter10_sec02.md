@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter10/chapter10_sec02.ipynb
+    title: chapter10_sec02.ipynb
   - file: 3ddruck_gittersuche.csv
     title: 3ddruck_gittersuche.csv
   - file: chapter10_sec02.md
@@ -324,9 +326,10 @@ parameter_gitter = {'max_depth': [1, 2, 3, 4, 5, 6]}
 ```
 
 Nun instanziieren wir ein neues `GridSearchCV`-Modell. Als erstes Argument
-übergeben wir das eigentliche Modell, hier also den Entscheidungsbaum, und als
-zweites das Dictionary mit den Hyperparametern. Das dritte Argument ist die
-Methode zur Kreuzvalidierung. Weitere Details stehen in der [Dokumentation
+übergeben wir das eigentliche Modell, hier also den Entscheidungsbaum. Mit
+`param_grid=` folgt das Dictionary mit den Hyperparametern und mit `cv=` wie
+bei `cross_validate()` die Aufteilung für die Kreuzvalidierung. Weitere Details
+stehen in der [Dokumentation
 Scikit-Learn →
 GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV).
 

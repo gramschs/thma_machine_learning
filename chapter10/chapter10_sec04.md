@@ -4,6 +4,8 @@ kernelspec:
   language: python
   name: python3
 downloads:
+  - file: ../notebooks/chapter10/chapter10_sec04.ipynb
+    title: chapter10_sec04.ipynb
   - file: pinguine.csv
     title: pinguine.csv
   - file: chapter10_sec04.md
